@@ -1,3 +1,4 @@
+import React from 'react';
 import {ButtonSecondaryStyled,Icon} from './styled';
 import {Button} from './types';
 
