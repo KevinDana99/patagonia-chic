@@ -4,5 +4,7 @@ export interface ButtonProps {
     primary?:boolean,
     disabled?: boolean,
     size?: "small" | "medium" | "large",
-    onClick?: MouseEventHandler<HTMLButtonElement>
+    onClick?: () => void,
+    onLoadEnd?: () => void,
+    loading?: boolean,
 }
