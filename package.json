@@ -3,6 +3,10 @@
   "version": "1.0.2",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
   "repository": "https://KevinDana99@bitbucket.org/patagoniachic/patagoniachic-react-ui.git",
   "author": "Kevin <kevindana99@gmail.com>",
   "license": "MIT",
