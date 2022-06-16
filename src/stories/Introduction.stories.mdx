@@ -7,8 +7,12 @@ import Flow from './assets/flow.svg';
 import Plugin from './assets/plugin.svg';
 import Repo from './assets/repo.svg';
 import StackAlt from './assets/stackalt.svg';
+import Logo from './assets/logo.svg';
+import BitbucketLogo from './assets/bitbucket_logo.png';
+import NPMLogo from './assets/npm_logo.png';
+import StorybookLogo from './assets/storybook_logo.svg';
 
-<Meta title="Example/Introduction" />
+<Meta title="Introduction" />
 
 <style>
 	{`
@@ -79,6 +83,7 @@ import StackAlt from './assets/stackalt.svg';
       height: 40px;
       width: 40px;
       margin-right: 15px;
+      object-fit: contain;
       flex: none;
     }
 
@@ -114,106 +119,71 @@ import StackAlt from './assets/stackalt.svg';
   `}
 </style>
 
-# Welcome to Storybook
+<img alt="PatagoniaChic" src={Logo} height="60px" />
+<br />
+<br />
 
-Storybook helps you build UI components in isolation from your app's business logic, data, and context.
-That makes it easy to develop hard-to-reach states. Save these UI states as **stories** to revisit during development, testing, or QA.
+---
+# Bienvenidx a nuestra librería de componentes 🎉
 
-Browse example stories now by navigating to them in the sidebar.
-View their code in the `stories` directory to learn how they work.
-We recommend building UIs with a [**component-driven**](https://componentdriven.org) process starting with atomic components and ending with pages.
+Aquí encontrarás todos los elementos reutilizables que podrás incoporar en el proyecto. Cuentas con:
+- Los componentes de React, pudiendo ver en acción su interacción dependiendo de las props y la manera en la que se comportan sus actions.
+- Ilustraciones.
+- Reglas de uso de elementos de diseño.
 
-<div className="subheading">Configure</div>
+La creación de esta documentación se ha hecho de la mano de Storybook, y por cada componente nuevo que añadas aquí deberás incorporar un archivo de Storybook con diferentes reglas para que pueda visualizarse aquí. Pero no te preocupes! Es sencillo.
+
+Para utilizar esta librería simplemente instála en tu proyecto con el siguiente comando:
+
+```bash
+yarn add patagoniachic-react-ui
+```
+
+<div className="subheading">Enlaces útiles</div>
 
 <div className="link-list">
 	<a
 		className="link-item"
-		href="https://storybook.js.org/docs/react/addons/addon-types"
-		target="_blank"
-	>
-		<img src={Plugin} alt="plugin" />
-		<span>
-			<strong>Presets for popular tools</strong>
-			Easy setup for TypeScript, SCSS and more.
-		</span>
-	</a>
-	<a
-		className="link-item"
-		href="https://storybook.js.org/docs/react/configure/webpack"
-		target="_blank"
-	>
-		<img src={StackAlt} alt="Build" />
-		<span>
-			<strong>Build configuration</strong>
-			How to customize webpack and Babel
-		</span>
-	</a>
-	<a
-		className="link-item"
-		href="https://storybook.js.org/docs/react/configure/styling-and-css"
+		href=""
 		target="_blank"
 	>
 		<img src={Colors} alt="colors" />
 		<span>
-			<strong>Styling</strong>
-			How to load and configure CSS libraries
+			<strong>Sistema de diseño</strong>
+			Reglas de uso de la éstetica de la marca
 		</span>
 	</a>
 	<a
 		className="link-item"
-		href="https://storybook.js.org/docs/react/get-started/setup#configure-storybook-for-your-stack"
+		href="https://storybook.js.org/docs/react"
 		target="_blank"
 	>
-		<img src={Flow} alt="flow" />
+		<img src={StorybookLogo} alt="flow" />
 		<span>
-			<strong>Data</strong>
-			Providers and mocking for data libraries
+			<strong>Documentación de Storybook</strong>
+			Aprende a configurarlo y customizarlo
 		</span>
 	</a>
-</div>
-
-<div className="subheading">Learn</div>
-
-<div className="link-list">
-	<a className="link-item" href="https://storybook.js.org/docs" target="_blank">
-		<img src={Repo} alt="repo" />
-		<span>
-			<strong>Storybook documentation</strong>
-			Configure, customize, and extend
-		</span>
-	</a>
-	<a
+  <a
 		className="link-item"
-		href="https://storybook.js.org/tutorials/"
+		href="https://bitbucket.org/patagoniachic/patagoniachic-react-ui"
 		target="_blank"
 	>
-		<img src={Direction} alt="direction" />
+		<img src={BitbucketLogo} alt="flow" />
 		<span>
-			<strong>In-depth guides</strong>
-			Best practices from leading teams
+			<strong>Repositorio</strong>
+			Codigo fuente en Bitbucket
 		</span>
 	</a>
-	<a
+  <a
 		className="link-item"
-		href="https://github.com/storybookjs/storybook"
+		href="https://npmjs.com/package/patagoniachic-react-ui"
 		target="_blank"
 	>
-		<img src={Code} alt="code" />
+		<img src={NPMLogo} alt="flow" />
 		<span>
-			<strong>GitHub project</strong>
-			View the source and add issues
+			<strong>Paquete en NPM</strong>
+			Página del paquete de NPM
 		</span>
 	</a>
-	<a className="link-item" href="https://discord.gg/storybook" target="_blank">
-		<img src={Comments} alt="comments" />
-		<span>
-			<strong>Discord chat</strong>
-			Chat with maintainers and the community
-		</span>
-	</a>
-</div>
-
-<div className="tip-wrapper">
-	<span className="tip">Tip</span>Edit the Markdown in{' '}
-	<code>stories/Introduction.stories.mdx</code>
 </div>
