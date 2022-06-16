@@ -9,7 +9,8 @@
   "scripts": {
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test": "jest"
   },
   "dependencies": {
     "react-dom": "^18.2.0",
@@ -29,9 +30,14 @@
     "@storybook/manager-webpack4": "^6.5.9",
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^14.2.0",
+    "@types/jest": "^28.1.1",
     "@types/react": "^18.0.12",
     "@types/styled-components": "^5.1.25",
     "babel-loader": "^8.2.5",
+    "jest": "^28.1.1",
     "react": "^18.2.0",
     "rollup": "^2.75.6",
     "rollup-plugin-dts": "^4.2.2",
