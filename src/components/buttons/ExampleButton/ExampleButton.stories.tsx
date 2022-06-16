@@ -1,13 +1,15 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import ExampleButton from '../components/buttons/ExampleButton';
-import {ButtonProps} from "../components/buttons/ExampleButton/types";
+import ExampleButton from '.';
+import {ButtonProps} from "./types";
 
 export default {
   title: 'Components/Buttons/ExampleButton',
   component: ExampleButton,
   argTypes: {
+    onClick: { action: 'clicked' },
+    onLoadEnd: { action: 'loaded' },
   },
 } as Meta<typeof ExampleButton>;
 
@@ -18,6 +20,7 @@ Primary.args = {
   primary: true,
   disabled: false,
   text: 'Primary',
+  loading: false,
 };
 
 export const Secondary = Template.bind({});
