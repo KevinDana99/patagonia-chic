@@ -1,6 +1,5 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-
 import PrimaryButton from './PrimaryButton';
 import {Button} from "./types";
 
@@ -13,11 +12,12 @@ export default {
   },
 } as Meta<typeof PrimaryButton>;
 
-const Template: Story<Button> = (args) => <PrimaryButton {...args} />;
+const Template: Story<Button> = (args) => <PrimaryButton {...args } />;
 
 export const Primary = Template.bind({});
 Primary.args = {
 
-  value : 'Buscar excursiones'
+  value : 'Buscar excursiones',
+
 
 };
