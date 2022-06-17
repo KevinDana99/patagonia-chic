@@ -8,12 +8,10 @@ const Input: FC<InputProps> = ({
 
 
     return (
-
-            <DataInputContainer id="container_botas-3_1__1">
-                <DataInput type="text" id="data-3_2" placeholder=" " />
-                <StyledLabel htmlFor="data-3_2"  >{text}</StyledLabel>
-            </DataInputContainer>
-
+        <DataInputContainer id="container_botas-3_1__1">
+            <DataInput type="text" id="data-3_2" placeholder=" " />
+            <StyledLabel htmlFor="data-3_2" >{text}</StyledLabel>
+        </DataInputContainer>
     )
 }
 

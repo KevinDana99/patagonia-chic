@@ -1,25 +1,20 @@
 import styled from 'styled-components';
-import { InputProps } from './types';
 
 
-/* export const DataElm = styled.div`
+export const DataInputContainer = styled.div`
     width: 375px;
     height: 78px;
     display: inline-block;
-`; */
-
-export const DataInputContainer = styled.div`
-width: 375px;
-height: 78px;
-display: inline-block;
     margin-top: 9px;
     position: relative;
     &:focus-within {
-        font-size: 12px !important;
-        top: 5px;
-        margin-top: -5px;
-        padding-top: 5px;
-        padding-bottom: 3px;
+        label {
+            font-size: 12px !important;
+            top: 5px;
+            margin-top: -5px;
+            padding-top: 5px;
+            padding-bottom: 3px;
+        }
     }
 `;
 
@@ -71,3 +66,4 @@ export const StyledLabel = styled.label`
     transition: all 80ms linear;
     z-index: 1;
 `;
+
