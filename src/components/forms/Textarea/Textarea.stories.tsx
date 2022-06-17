@@ -14,7 +14,7 @@ export default {
 
 const Template: Story<TextareaProps> = (args) => <Textarea {...args} />;
 
-export const TextareaAddMessage = Template.bind({});
+export const TextareaAddMessage: Story<TextareaProps> = Template.bind({});
 
 TextareaAddMessage.args = {
   text: 'Agregar mensaje',

@@ -1,23 +1,21 @@
 import styled from 'styled-components';
-import { TextareaProps } from './types';
 
 
-/* export const ExampleCenterContainer = styled.div`
-    text-align: center;
-    max-width: 475px;
-    margin: 0 auto;
-    background-color: #f2f2f2;
-`; */
-
-export const DataElm = styled.div`
+export const TextareaContainer = styled.div`
     width: 375px;
     height: 200px;
     display: inline-block;
-`;
-
-export const DataInputContainer = styled.div`
     margin-top: 9px;
     position: relative;
+    &:focus-within {
+        label {
+            font-size: 12px !important;
+            top: 5px;
+            margin-top: -5px;
+            padding-top: 5px;
+            padding-bottom: 3px;
+        }
+    }
 `;
 
 export const StyledTextarea = styled.textarea`
@@ -28,7 +26,6 @@ export const StyledTextarea = styled.textarea`
     display: block;
     box-sizing: border-box;
     width: 100%;
-    height: 44px;
     color: #333;
     padding: 15px 30px 0 18px;
     text-align: left;
@@ -47,8 +44,11 @@ export const StyledTextarea = styled.textarea`
     -moz-appearance: none;
     appearance: none;
     min-height: 60px;
-
     user-select: auto !important;
+    resize: none;
+    overflow: auto;
+    padding-top: 30px !important;
+    height: calc(100% - 18px) !important;
     &:focus {
         border: 2px solid #0077b9;
         padding: 14px 30px 0 16px;

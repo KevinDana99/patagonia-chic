@@ -1,6 +1,5 @@
 import React,{ FC } from 'react'
-import { DataInputContainer } from '../Input/styled'
-import { StyledTextarea, StyledLabel, DataElm } from './styled'
+import { StyledTextarea, StyledLabel, TextareaContainer } from './styled'
 import { TextareaProps } from './types'
 
 const Input: FC<TextareaProps> = ({
@@ -9,18 +8,11 @@ const Input: FC<TextareaProps> = ({
 
 
     return (
-
-            <DataElm >
-                <DataInputContainer id="container_botas-3_1__1">
-                    <StyledTextarea id="data-3_2" placeholder=" "></StyledTextarea>
-                    <StyledLabel /* for="data-3_2" */ >{text}</StyledLabel>
-                </DataInputContainer>
-            </DataElm>
-
+        <TextareaContainer>
+            <StyledTextarea  id="alergias_vianda-3_1" placeholder=" "></StyledTextarea>
+            <StyledLabel htmlFor="alergias_vianda-3_1"  >{text}</StyledLabel>
+        </TextareaContainer>
     )
 }
-/*         <StyledInput type="text" onClick={onClick} primary={primary} size={size} {...props}>
-            {text}
-        </StyledInput> */
 
 export default Input;
