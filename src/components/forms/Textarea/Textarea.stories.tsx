@@ -8,7 +8,7 @@ export default {
   title: 'Components/forms/Textarea',
   component: Textarea,
   argTypes: {
-    onsubmit: { action: 'onsubmit' },
+    onChange: { action: 'onChange' },
   },
 } as Meta<typeof Textarea>;
 
