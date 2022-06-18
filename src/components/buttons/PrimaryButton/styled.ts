@@ -14,18 +14,17 @@ position: relative;
   border: none;
   background-size: 200% 200% !important;
   background-color: rgb(35, 132, 229);
-  background-image: radial-gradient(
-    circle,
-    rgba(43, 235, 255, 0.46),
-    rgba(59, 178, 249, 0.15) 27.5%,
-    rgba(35, 132, 229, 0.3),
-    rgb(35, 132, 229) 57.5%,
-    rgba(35, 132, 229, 0.81) 75%,
-    rgba(168, 88, 224, 0.37)
-  ) !important;
+    background-image: radial-gradient( 
+      circle, 
+      rgba(43, 235, 255, 0.46), 
+      rgba(59, 178, 249, 0.15) 27.5%,
+       rgba(35, 132, 229, 0.3), 
+       rgb(35, 132, 229) 57.5%, 
+       rgba(35, 132, 229, 0.81) 75%,
+        rgba(168, 88, 224, 0.37) ) !important;
   color: #fff;
   border-radius: 28px;
-  margin: 8px 0;
+  margin: 8px 0;  
   background-repeat: no-repeat;
   font-weight: 600;
   overflow: hidden !important;
@@ -52,11 +51,5 @@ height: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
-
-`
-
-export const Spinner = styled.img`
-
-height: 30px;
 
 `

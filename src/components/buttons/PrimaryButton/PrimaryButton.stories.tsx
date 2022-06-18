@@ -18,6 +18,7 @@ export const Primary = Template.bind({});
 Primary.args = {
 
   value : 'Buscar excursiones',
-
+  loading : false,
+  
 
 };
