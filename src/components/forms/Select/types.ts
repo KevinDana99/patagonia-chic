@@ -7,7 +7,7 @@ export type SelectArray = SelectType[]
 export interface SelectProps {
     title: string;
     value: SelectArray;
-    defaultValue: string;
+    titleOptions: string;
     onChange?: () => void;
 }
 export interface Hover {

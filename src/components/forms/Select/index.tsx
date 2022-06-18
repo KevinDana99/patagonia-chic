@@ -6,7 +6,7 @@ import { orderStock } from './utils'
 const Checkbox: FC<SelectProps> = ({
     value,
     title,
-    defaultValue,
+    titleOptions,
     onChange
 }) => {
     const [state, setState] = useState<SelectArray>(value)
@@ -21,7 +21,7 @@ useEffect(()=>{
     return (
         <Container>
             <SelectStyled onChange={onChange}  onMouseOver={()=> setHoverState({...hoverState, hover: true}) } onMouseOut={()=> setHoverState({...hoverState, hover: false}) }>
-                <option hidden={true} >Seleccione talle</option>
+                <option hidden={true} >{titleOptions}</option>
                 {
                     state.map((opt, index) =>{
                         return (

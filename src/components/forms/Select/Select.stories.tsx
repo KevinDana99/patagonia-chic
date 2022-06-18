@@ -32,5 +32,5 @@ SelectSell.args = {
             stock: false
         }
     ],
-    defaultValue: "Seleccione talle",
+    titleOptions: "Seleccione talle",
 };
