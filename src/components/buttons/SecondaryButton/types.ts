@@ -1,7 +1,8 @@
 
 export interface Button{
 
-    value : string,
-
+    value : string
+    loading? : boolean
+    
     }
     

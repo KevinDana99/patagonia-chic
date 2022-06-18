@@ -17,5 +17,6 @@ const Template: Story<Button> = (args) => <SecondaryButton {...args} />;
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  value : 'Menú de la excursión'
+  value : 'Menú de la excursión',
+  loading : false
 };
