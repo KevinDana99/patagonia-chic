@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import {Hover} from './types';
 
-export const ButtonTertiaryStyled = styled.button`
+export const ButtonTertiaryStyled = styled.button<Hover>`
 font-size: 12px;
   color: #888;
   font-weight: 300;
@@ -21,7 +22,7 @@ font-size: 12px;
   } 
 `
 
-export const Icon = styled.img`
+export const Icon = styled.img<Hover>`
 
 width: 12px;
 filter : ${props => props.hover ? 'none' : 'brightness(140%) saturate(0%)'} ;
