@@ -2,7 +2,14 @@ import { SelectArray } from "./types";
 
 
 export function orderStock(value: SelectArray){
-    const inStock = value.filter(product => product.stock === true)
-    const withoutStock = value.filter(product => product.stock === false)
+    let inStock = [];
+    let withoutStock = [];
+    for (let index = 0; index < value.length; index++) {
+        if(value[index].stock === true){
+            inStock.push(value[index])
+        } else {
+            withoutStock.push(value[index])
+        }
+    }
     return withoutStock.concat(inStock)
 }
