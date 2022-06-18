@@ -8,7 +8,7 @@ export default {
   title: 'Components/forms/Input',
   component: Input,
   argTypes: {
-    onsubmit: { action: 'onsubmit' },
+    onChange: { action: 'onChange' },
   },
 } as Meta<typeof Input>;
 
