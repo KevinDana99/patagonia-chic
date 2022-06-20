@@ -1,11 +1,8 @@
-export interface Button{
+export interface Button {
+	value: string;
+	loading?: boolean;
+}
 
-    value : string,
-    loading? : boolean
-    }
-    
 export interface Hover {
-
-hover : boolean
-
+	hover: boolean;
 }
