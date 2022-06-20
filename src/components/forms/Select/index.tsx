@@ -39,7 +39,7 @@ useEffect(()=>{
                                 value={opt.name} 
                                 disabled={!opt.stock}
                             >
-                                {`${opt.name} ${opt.stock && `- Agotado`}`}
+                                {`${opt.name} ${opt.stock ? "" : `- Agotado`}`}
                             </option>
                             )
                         })
