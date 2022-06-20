@@ -8,7 +8,7 @@ export default {
   title: 'Components/forms/Checkbox',
   component: Checkbox,
   argTypes: {
-    onsubmit: { action: 'onclick' },
+    onChange: { action: 'onchange' },
   },
 } as Meta<typeof Checkbox>;
 
