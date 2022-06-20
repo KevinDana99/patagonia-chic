@@ -3,7 +3,7 @@ import { Container, SelectStyled, SpanTitleStyled, IconStyled } from './styled'
 import { SelectArray, SelectProps, Hover } from './types'
 import { orderStock } from './utils'
 
-const Checkbox: FC<SelectProps> = ({
+const Select: FC<SelectProps> = ({
     value,
     title,
     titleOptions,
@@ -56,4 +56,4 @@ useEffect(()=>{
     )
 }
 
-export default Checkbox;
+export default Select;
