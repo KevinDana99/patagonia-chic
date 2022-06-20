@@ -1,5 +1,5 @@
 export interface SelectType {
-    value: string;
+    name: string;
     stock: boolean
 }
 export type SelectArray = SelectType[]

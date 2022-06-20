@@ -20,15 +20,15 @@ SelectSell.args = {
     title: "Botas nro 1",
     value: [
         {
-            value: "Talle 41.5 EU / 8.5 US",
+            name: "Talle 41.5 EU / 8.5 US",
             stock: true
         },
         {
-            value: "Talle 39 EU / 7 US",
+            name: "Talle 39 EU / 7 US",
             stock: true
         },
         {
-            value: "Talle 40 EU / 7 US",
+            name: "Talle 40 EU / 7 US",
             stock: false
         }
     ],
