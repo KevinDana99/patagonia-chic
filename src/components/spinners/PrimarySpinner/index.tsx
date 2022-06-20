@@ -2,7 +2,7 @@ import { SpinnerStyled } from './styled';
 import React from 'react';
 import { SpinnerType } from './types';
 
-const Spinner = ({
+const PrimarySpinner = ({
 	size,
 	marginLeft,
 	marginRight,
@@ -23,4 +23,4 @@ const Spinner = ({
 	);
 };
 
-export default Spinner;
+export default PrimarySpinner;

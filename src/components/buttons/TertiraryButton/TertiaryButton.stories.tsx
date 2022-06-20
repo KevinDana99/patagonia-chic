@@ -1,11 +1,11 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import TertiaryButton from './TertiaryButton';
+import TertiaryButton from '.';
 import { Button } from './types';
 
 export default {
-	title: 'Components/Buttons/TertiaryButton',
+	title: 'Components/Buttons',
 	component: TertiaryButton,
 	argTypes: {
 		onClick: { action: 'clicked' },

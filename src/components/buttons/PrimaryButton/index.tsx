@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonPrimaryStyled, BoxLoading } from './styled';
-import Spinner from '../../spinners/Spinner';
+import Spinner from '../../spinners/PrimarySpinner';
 import { Button } from './types';
 
 const PrimaryButton = ({ value, loading }: Button) => {

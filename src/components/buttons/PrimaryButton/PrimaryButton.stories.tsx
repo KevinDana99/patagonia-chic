@@ -1,10 +1,10 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import PrimaryButton from './PrimaryButton';
+import PrimaryButton from '.';
 import { Button } from './types';
 
 export default {
-	title: 'Components/Buttons/PrimaryButton',
+	title: 'Components/Buttons',
 	component: PrimaryButton,
 	argTypes: {
 		onClick: { action: 'clicked' },
