@@ -20,9 +20,3 @@ export const ButtonTertiaryStyled = styled.button<Hover>`
 		font-size: ${(props) => (props.hover ? '12.5px' : '12px')};
 	}
 `;
-
-export const Icon = styled.img<Hover>`
-	width: 12px;
-	filter: ${(props) =>
-		props.hover ? 'none' : 'brightness(140%) saturate(0%)'};
-`;

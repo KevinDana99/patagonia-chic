@@ -19,7 +19,3 @@ export const ButtonSecondaryStyled = styled.button`
 		cursor: pointer;
 	}
 `;
-export const Icon = styled.img`
-	width: 12px;
-	margin-left: 2px;
-`;

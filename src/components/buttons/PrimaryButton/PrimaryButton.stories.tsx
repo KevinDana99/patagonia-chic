@@ -18,6 +18,6 @@ const Template: Story<PrimaryButtonType> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-	value: 'Buscar excursiones',
+	title: 'Buscar excursiones',
 	loading: false,
 };

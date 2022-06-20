@@ -19,6 +19,6 @@ const Template: Story<TertiaryButtonType> = (args) => (
 
 export const Tertiary = Template.bind({});
 Tertiary.args = {
-	value: 'Ver detalle',
+	title: 'Ver detalle',
 	loading: false,
 };
