@@ -1,25 +1,55 @@
-import { SpinnerStyled } from './styled';
 import React from 'react';
 import { PrimarySpinnerType } from './types';
+import { themesMap } from './themes_map';
 
-const PrimarySpinner = ({
-	size,
-	marginLeft,
-	marginRight,
-	marginBottom,
-	marginTop,
-}: PrimarySpinnerType) => {
+const PrimarySpinner = ({ size = 30, theme = 'color' }: PrimarySpinnerType) => {
+	const { background, color } = themesMap(theme);
+
 	return (
-		<SpinnerStyled
-			marginLeft={marginLeft}
-			marginTop={marginTop}
-			marginBottom={marginBottom}
-			marginRight={marginRight}
-			size={size}
-			src={
-				'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzBweCIgaGVpZ2h0PSI3MHB4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCIgY2xhc3M9InVpbC1yaW5nLWFsdCI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9Im5vbmUiIGNsYXNzPSJiayIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQwIiBzdHJva2U9IiNlZGVkZWQiIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQwIiBzdHJva2U9IiMyMGMxZWQiIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJzdHJva2UtZGFzaG9mZnNldCIgZHVyPSIycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGZyb209IjAiIHRvPSI1MDIiLz48YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJzdHJva2UtZGFzaGFycmF5IiBkdXI9IjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgdmFsdWVzPSIxNTAuNiAxMDAuNDsxIDI1MDsxNTAuNiAxMDAuNCIvPjwvY2lyY2xlPjwvc3ZnPg=='
-			}
-		/>
+		<div>
+			<svg
+				width={size}
+				height={size}
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 100 100"
+				preserveAspectRatio="xMidYMid"
+				className="uil-ring-alt"
+			>
+				<rect x="0" y="0" width="100" height="100" fill="none" className="bk" />
+				<circle
+					cx="50"
+					cy="50"
+					r="40"
+					stroke={background}
+					fill="none"
+					strokeWidth="10"
+					strokeLinecap="round"
+				/>
+				<circle
+					cx="50"
+					cy="50"
+					r="40"
+					stroke={color}
+					fill="none"
+					strokeWidth="6"
+					strokeLinecap="round"
+				>
+					<animate
+						attributeName="stroke-dashoffset"
+						dur="2s"
+						repeatCount="indefinite"
+						from="0"
+						to="502"
+					/>
+					<animate
+						attributeName="stroke-dasharray"
+						dur="2s"
+						repeatCount="indefinite"
+						values="150.6 100.4;1 250;150.6 100.4"
+					/>
+				</circle>
+			</svg>
+		</div>
 	);
 };
 

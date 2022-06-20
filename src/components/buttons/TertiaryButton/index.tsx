@@ -1,7 +1,6 @@
 import React from 'react';
-import { ButtonTertiaryStyled } from './styled';
+import { ButtonTertiaryStyled, SpinnerStyled } from './styled';
 import { TertiaryButtonType } from './types';
-import Spinner from '../../spinners/PrimarySpinner';
 import { IoChevronForwardSharp as ForwardIcon } from 'react-icons/io5';
 
 const TertiaryButton = ({
@@ -13,7 +12,7 @@ const TertiaryButton = ({
 		<ButtonTertiaryStyled onClick={onClick}>
 			{title}
 
-			{loading ? <Spinner size="15" marginLeft="5" /> : <ForwardIcon />}
+			{loading ? <SpinnerStyled size={15} /> : <ForwardIcon />}
 		</ButtonTertiaryStyled>
 	);
 };

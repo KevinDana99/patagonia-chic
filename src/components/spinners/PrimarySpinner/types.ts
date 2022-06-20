@@ -1,7 +1,12 @@
+import React from 'react';
+
 export type PrimarySpinnerType = {
-	size: string;
-	marginLeft?: string;
-	marginRight?: string;
-	marginTop?: string;
-	marginBottom?: string;
+	size?: number;
+	style?: React.SVGAttributes<SVGSVGElement>['style'];
+	theme?: 'color' | 'light';
+};
+
+export type ThemeType = {
+	background: string;
+	color: string;
 };

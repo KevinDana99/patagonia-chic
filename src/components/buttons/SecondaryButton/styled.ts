@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Spinner from '../../spinners/PrimarySpinner';
 
 export const ButtonSecondaryStyled = styled.button`
 	display: inline-block;
@@ -18,4 +19,8 @@ export const ButtonSecondaryStyled = styled.button`
 		text-decoration: underline;
 		cursor: pointer;
 	}
+`;
+
+export const SpinnerStyled = styled(Spinner)`
+	margin-left: 5px;
 `;

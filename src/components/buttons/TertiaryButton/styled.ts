@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Spinner from '../../spinners/PrimarySpinner';
 
 export const ButtonTertiaryStyled = styled.button`
 	font-size: 12px;
@@ -17,4 +18,8 @@ export const ButtonTertiaryStyled = styled.button`
 		font-weight: 300;
 		text-decoration: underline;
 	}
+`;
+
+export const SpinnerStyled = styled(Spinner)`
+	margin-left: 5px;
 `;

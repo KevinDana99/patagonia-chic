@@ -14,7 +14,7 @@ const PrimaryButton = ({
 				title
 			) : (
 				<BoxLoading>
-					<Spinner size="30" />
+					<Spinner theme="light" />
 				</BoxLoading>
 			)}
 		</ButtonPrimaryStyled>
