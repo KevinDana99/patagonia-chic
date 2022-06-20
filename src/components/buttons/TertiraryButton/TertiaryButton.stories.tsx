@@ -9,7 +9,6 @@ export default {
 	component: TertiaryButton,
 	argTypes: {
 		onClick: { action: 'clicked' },
-		onLoadEnd: { action: 'loaded' },
 	},
 } as Meta<typeof TertiaryButton>;
 

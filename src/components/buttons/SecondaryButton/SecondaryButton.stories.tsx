@@ -9,7 +9,6 @@ export default {
 	component: SecondaryButton,
 	argTypes: {
 		onClick: { action: 'clicked' },
-		onLoadEnd: { action: 'loaded' },
 	},
 } as Meta<typeof SecondaryButton>;
 

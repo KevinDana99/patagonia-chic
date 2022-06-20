@@ -8,7 +8,6 @@ export default {
 	component: PrimaryButton,
 	argTypes: {
 		onClick: { action: 'clicked' },
-		onLoadEnd: { action: 'loaded' },
 	},
 } as Meta<typeof PrimaryButton>;
 

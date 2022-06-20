@@ -3,9 +3,13 @@ import { ButtonPrimaryStyled, BoxLoading } from './styled';
 import Spinner from '../../spinners/PrimarySpinner';
 import { PrimaryButtonType } from './types';
 
-const PrimaryButton = ({ title, loading = false }: PrimaryButtonType) => {
+const PrimaryButton = ({
+	title,
+	loading = false,
+	onClick,
+}: PrimaryButtonType) => {
 	return (
-		<ButtonPrimaryStyled>
+		<ButtonPrimaryStyled onClick={onClick}>
 			{!loading ? (
 				title
 			) : (
