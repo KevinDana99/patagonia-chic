@@ -1,6 +1,6 @@
 import { SpinnerStyled } from './styled';
 import React from 'react';
-import { SpinnerType } from './types';
+import { PrimarySpinnerType } from './types';
 
 const PrimarySpinner = ({
 	size,
@@ -8,7 +8,7 @@ const PrimarySpinner = ({
 	marginRight,
 	marginBottom,
 	marginTop,
-}: SpinnerType) => {
+}: PrimarySpinnerType) => {
 	return (
 		<SpinnerStyled
 			marginLeft={marginLeft}

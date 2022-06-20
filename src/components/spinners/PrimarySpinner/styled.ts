@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { SpinnerType } from './types';
+import { PrimarySpinnerType } from './types';
 
-export const SpinnerStyled = styled.img<SpinnerType>`
+export const SpinnerStyled = styled.img<PrimarySpinnerType>`
 	margin-left: ${(props) =>
 		props.marginLeft ? props.marginLeft + 'px' : 'none'};
 	margin-right: ${(props) =>

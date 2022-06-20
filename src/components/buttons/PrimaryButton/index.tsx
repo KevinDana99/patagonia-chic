@@ -1,13 +1,13 @@
 import React from 'react';
 import { ButtonPrimaryStyled, BoxLoading } from './styled';
 import Spinner from '../../spinners/PrimarySpinner';
-import { Button } from './types';
+import { PrimaryButtonType } from './types';
 
-const PrimaryButton = ({ value, loading }: Button) => {
+const PrimaryButton = ({ title, loading = false }: PrimaryButtonType) => {
 	return (
 		<ButtonPrimaryStyled>
 			{!loading ? (
-				value
+				title
 			) : (
 				<BoxLoading>
 					<Spinner size="30" />

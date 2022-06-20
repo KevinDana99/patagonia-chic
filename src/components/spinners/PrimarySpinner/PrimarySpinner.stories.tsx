@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { SpinnerType } from './types';
+import { PrimarySpinnerType } from './types';
 import PrimarySpinner from '.';
 
 export default {
@@ -9,7 +9,9 @@ export default {
 	argTypes: {},
 } as Meta<typeof PrimarySpinner>;
 
-const Template: Story<SpinnerType> = (args) => <PrimarySpinner {...args} />;
+const Template: Story<PrimarySpinnerType> = (args) => (
+	<PrimarySpinner {...args} />
+);
 
 export const Primary = Template.bind({});
 Primary.args = {

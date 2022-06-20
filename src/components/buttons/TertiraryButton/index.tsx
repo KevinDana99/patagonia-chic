@@ -1,9 +1,9 @@
 import { ButtonTertiaryStyled, Icon } from './styled';
-import { Button, Hover } from './types';
+import { TertiaryButtonType, Hover } from './types';
 import React, { useState } from 'react';
 import Spinner from '../../spinners/PrimarySpinner';
 
-const TertiaryButton = ({ value, loading }: Button) => {
+const TertiaryButton = ({ title, loading = false }: TertiaryButtonType) => {
 	const [state, setState] = useState<Hover>({
 		hover: false,
 	});
@@ -14,7 +14,7 @@ const TertiaryButton = ({ value, loading }: Button) => {
 			onMouseOver={() => setState({ ...state, hover: true })}
 			onMouseOut={() => setState({ ...state, hover: false })}
 		>
-			{value}
+			{title}
 
 			{loading ? (
 				<Spinner size="15" marginLeft="5" />

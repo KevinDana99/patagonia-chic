@@ -1,4 +1,4 @@
-export interface Button {
-	value: string;
+export type SecondaryButtonType = {
+	title: string;
 	loading?: boolean;
-}
+};

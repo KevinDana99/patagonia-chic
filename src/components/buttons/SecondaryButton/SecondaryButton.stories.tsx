@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import SecondaryButton from '.';
-import { Button } from './types';
+import { SecondaryButtonType } from './types';
 
 export default {
 	title: 'Components/Buttons',
@@ -13,7 +13,9 @@ export default {
 	},
 } as Meta<typeof SecondaryButton>;
 
-const Template: Story<Button> = (args) => <SecondaryButton {...args} />;
+const Template: Story<SecondaryButtonType> = (args) => (
+	<SecondaryButton {...args} />
+);
 
 export const Secondary = Template.bind({});
 Secondary.args = {

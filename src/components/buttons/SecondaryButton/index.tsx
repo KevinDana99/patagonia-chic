@@ -1,12 +1,12 @@
 import React from 'react';
 import Spinner from '../../spinners/PrimarySpinner';
 import { ButtonSecondaryStyled, Icon } from './styled';
-import { Button } from './types';
+import { SecondaryButtonType } from './types';
 
-const SecondaryButton = ({ value, loading }: Button) => {
+const SecondaryButton = ({ title, loading = false }: SecondaryButtonType) => {
 	return (
 		<ButtonSecondaryStyled>
-			{value}
+			{title}
 
 			{loading ? (
 				<Spinner size="17" marginLeft="5" />
