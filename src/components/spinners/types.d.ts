@@ -1,5 +1,9 @@
 export interface SpinnerType {
 
-size : string
+size : string,
+marginLeft? : string
+marginRight? : string
+marginTop? : string
+marginBottom? : string
 
 }
