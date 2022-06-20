@@ -2,7 +2,7 @@ import React,{ FC } from 'react'
 import { StyledTextarea, StyledLabel, TextareaContainer } from './styled'
 import { TextareaProps } from './types'
 
-const Input: FC<TextareaProps> = ({
+const Textarea: FC<TextareaProps> = ({
     text,
     onChange,
     name,
@@ -30,4 +30,4 @@ const Input: FC<TextareaProps> = ({
     )
 }
 
-export default Input;
+export default Textarea;
