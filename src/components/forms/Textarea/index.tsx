@@ -4,14 +4,28 @@ import { TextareaProps } from './types'
 
 const Input: FC<TextareaProps> = ({
     text,
-    onChange
+    onChange,
+    name,
+    value
 }) => {
 
 
     return (
         <TextareaContainer>
-            <StyledTextarea  id="alergias_vianda-3_1" placeholder=" " onChange={onChange}></StyledTextarea>
-            <StyledLabel htmlFor="alergias_vianda-3_1"  >{text}</StyledLabel>
+
+            <StyledTextarea  
+                id="alergias_vianda-3_1" 
+                placeholder=" " 
+                onChange={onChange} 
+                name={name} 
+                value={value} 
+            >
+            </StyledTextarea>
+
+            <StyledLabel htmlFor="alergias_vianda-3_1"  >
+                {text}
+            </StyledLabel>
+            
         </TextareaContainer>
     )
 }
