@@ -1,11 +1,11 @@
 export type CheckboxListItemType = {
-	title: string;
+	label: string;
 	value?: string | number;
 	name?: string;
 };
 
 export type RestrictedCheckboxListItemType = {
-	title: string;
+	label: string;
 	value: string | number;
 	name: string;
 };
@@ -20,6 +20,6 @@ export type CheckboxItemPropsType = {
 	index: number;
 	name: string;
 	value: string | number;
-	title: string;
+	label: string;
 	handleChange: React.ChangeEventHandler<HTMLInputElement>;
 };

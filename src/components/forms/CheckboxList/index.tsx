@@ -16,9 +16,9 @@ const CheckboxList: FC<CheckboxListPropsType> = ({
 
 	// condition list items
 	const conditionedList: RestrictedCheckboxListItemType[] = list.map(
-		({ title, value, name }, index) => ({
-			title,
-			value: value ?? title,
+		({ label, value, name }, index) => ({
+			label,
+			value: value ?? label,
 			name: name ?? `item${index}`,
 		})
 	);
@@ -54,7 +54,7 @@ const CheckboxList: FC<CheckboxListPropsType> = ({
 						index={index}
 						name={item.name}
 						value={item.value}
-						title={item.title}
+						label={item.label}
 						handleChange={(e) => handleChange(e, item.name)}
 					/>
 				);

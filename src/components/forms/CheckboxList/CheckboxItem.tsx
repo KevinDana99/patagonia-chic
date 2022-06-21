@@ -12,7 +12,7 @@ const CheckboxItem: FC<CheckboxItemPropsType> = ({
 	index,
 	name,
 	value,
-	title,
+	label,
 	handleChange,
 }) => (
 	<ContainerInput>
@@ -27,7 +27,7 @@ const CheckboxItem: FC<CheckboxItemPropsType> = ({
 		<StyledLabel htmlFor={index.toString().concat('checkbox')}>
 			<IconDiv></IconDiv>
 
-			<TextDiv>{title}</TextDiv>
+			<TextDiv>{label}</TextDiv>
 		</StyledLabel>
 	</ContainerInput>
 );
