@@ -9,10 +9,10 @@ const TertiaryButton = ({
 	onClick,
 }: TertiaryButtonType) => {
 	return (
-		<ButtonTertiaryStyled onClick={onClick}>
+		<ButtonTertiaryStyled disabled={loading} onClick={onClick}>
 			{title}
 
-			{loading ? <SpinnerStyled size={15} /> : <ForwardIcon />}
+			{loading ? <SpinnerStyled size={14} /> : <ForwardIcon />}
 		</ButtonTertiaryStyled>
 	);
 };
