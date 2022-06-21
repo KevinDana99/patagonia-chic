@@ -9,7 +9,7 @@ const PrimaryButton = ({
 	onClick,
 }: PrimaryButtonType) => {
 	return (
-		<ButtonPrimaryStyled onClick={onClick}>
+		<ButtonPrimaryStyled disabled={loading} onClick={onClick}>
 			{!loading ? (
 				title
 			) : (
