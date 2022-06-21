@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { ButtonSecondaryStyled, SpinnerStyled } from './styled';
 import { SecondaryButtonType } from './types';
 import { IoChevronForwardSharp as ForwardIcon } from 'react-icons/io5';
