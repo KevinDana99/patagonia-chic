@@ -16,6 +16,8 @@ export const ButtonSecondaryStyled = styled.button`
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
+	pointer-events: ${(props) => (props.disabled ? 'none' : 'all')};
+	opacity: ${(props) => (props.disabled ? 0.7 : 1)};
 	&:hover {
 		text-decoration: underline;
 	}
