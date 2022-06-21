@@ -1,59 +1,43 @@
-import React,{ FC, useEffect, useState } from 'react'
-import { Container, SelectStyled, SpanTitleStyled, IconStyled } from './styled'
-import { SelectArray, SelectProps, Hover } from './types'
-import { orderStock } from './utils'
+import React, { FC, useEffect, useState } from 'react';
+import { Container, SelectStyled, SpanTitleStyled, IconStyled } from './styled';
+import { SelectArray, SelectProps, Hover } from './types';
+import { orderStock } from './utils';
 
-const Select: FC<SelectProps> = ({
-    value,
-    title,
-    titleOptions,
-    onChange
-}) => {
-    const [state, setState] = useState<SelectArray>(value)
-    const [hoverState, setHoverState] = useState<Hover>({
-        hover: false
-    })
+const Select: FC<SelectProps> = ({ value, title, titleOptions, onChange }) => {
+	const [state, setState] = useState<SelectArray>(value);
+	const [hoverState, setHoverState] = useState<Hover>({
+		hover: false,
+	});
 
-useEffect(()=>{
-    setState(orderStock(value))
-}, [value])
+	useEffect(() => {
+		setState(orderStock(value));
+	}, [value]);
 
-    return (
-        <Container>
+	return (
+		<Container>
+			<SelectStyled
+				onChange={onChange}
+				onMouseOver={() => setHoverState({ ...hoverState, hover: true })}
+				onMouseOut={() => setHoverState({ ...hoverState, hover: false })}
+			>
+				<option hidden={true}>{titleOptions}</option>
 
-            <SelectStyled 
-                onChange={onChange} 
-                onMouseOver={()=> setHoverState({...hoverState, hover: true}) } 
-                onMouseOut={()=> setHoverState({...hoverState, hover: false}) }
-            >
+				{state.map((opt, index) => {
+					return (
+						<option key={index} value={opt.name} disabled={!opt.stock}>
+							{`${opt.name} ${opt.stock ? '' : `- Agotado`}`}
+						</option>
+					);
+				})}
+			</SelectStyled>
 
-                <option hidden={true} >
-                    {titleOptions}
-                </option>
+			<IconStyled aria-hidden="true" hover={hoverState.hover}>
+				&nbsp;
+			</IconStyled>
 
-                {
-                    state.map((opt, index) =>{
-                        return (
-                            <option 
-                                key={index} 
-                                value={opt.name} 
-                                disabled={!opt.stock}
-                            >
-                                {`${opt.name} ${opt.stock ? "" : `- Agotado`}`}
-                            </option>
-                            )
-                        })
-                }
-                
-            </SelectStyled>
-
-            <IconStyled aria-hidden="true" hover={hoverState.hover} >
-                &nbsp;
-            </IconStyled>
-
-            <SpanTitleStyled>{title}</SpanTitleStyled>
-        </Container>
-    )
-}
+			<SpanTitleStyled>{title}</SpanTitleStyled>
+		</Container>
+	);
+};
 
 export default Select;

@@ -2,22 +2,20 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import PrimaryButton from './PrimaryButton';
-import {Button} from "./types";
+import { Button } from './types';
 
 export default {
-  title: 'Components/Buttons/PrimaryButton',
-  component: PrimaryButton,
-  argTypes: {
-    onClick: { action: 'clicked' },
-    onLoadEnd: { action: 'loaded' },
-  },
+	title: 'Components/Buttons/PrimaryButton',
+	component: PrimaryButton,
+	argTypes: {
+		onClick: { action: 'clicked' },
+		onLoadEnd: { action: 'loaded' },
+	},
 } as Meta<typeof PrimaryButton>;
 
 const Template: Story<Button> = (args) => <PrimaryButton {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-
-  value : 'Buscar excursiones'
-
+	value: 'Buscar excursiones',
 };

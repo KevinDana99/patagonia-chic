@@ -1,69 +1,67 @@
 import styled from 'styled-components';
 
-
 export const DataInputContainer = styled.div`
-    width: 375px;
-    height: 78px;
-    display: inline-block;
-    margin-top: 9px;
-    position: relative;
-    &:focus-within {
-        label {
-            font-size: 12px !important;
-            top: 5px;
-            margin-top: -5px;
-            padding-top: 5px;
-            padding-bottom: 3px;
-        }
-    }
+	width: 375px;
+	height: 78px;
+	display: inline-block;
+	margin-top: 9px;
+	position: relative;
+	&:focus-within {
+		label {
+			font-size: 12px !important;
+			top: 5px;
+			margin-top: -5px;
+			padding-top: 5px;
+			padding-bottom: 3px;
+		}
+	}
 `;
 
 export const DataInput = styled.input`
-    font-size: 17px;
-    line-height: 17px;
-    font-weight: 400;
-    letter-spacing: -.022em;
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    height: 44px;
-    color: #333;
-    padding: 15px 30px 0 18px;
-    text-align: left;
-    background: #fff;
-    background-clip: border-box;
-    background-clip: border-box;
-    background-clip: border-box;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: 1px solid #ddd;
-    border-radius: 4px;
-    background-clip: padding-box;
-    margin-bottom: 9px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    min-height: 60px;
-    user-select: auto !important;
-    &:focus {
-        border: 2px solid #0077b9;
-        padding: 14px 30px 0 16px;
-    }
+	font-size: 17px;
+	line-height: 17px;
+	font-weight: 400;
+	letter-spacing: -0.022em;
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	height: 44px;
+	color: #333;
+	padding: 15px 30px 0 18px;
+	text-align: left;
+	background: #fff;
+	background-clip: border-box;
+	background-clip: border-box;
+	background-clip: border-box;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: 1px solid #ddd;
+	border-radius: 4px;
+	background-clip: padding-box;
+	margin-bottom: 9px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	min-height: 60px;
+	user-select: auto !important;
+	&:focus {
+		border: 2px solid #0077b9;
+		padding: 14px 30px 0 16px;
+	}
 `;
 
 export const StyledLabel = styled.label`
-    font-size: 15px;
-    line-height: 30px;
-    font-weight: 300;
-    letter-spacing: -.01em;
-    position: absolute;
-    top: 15px;
-    left: 10px;
-    color: #777;
-    pointer-events: none;
-    padding: 0 0 0 8px;
-    transition: all 80ms linear;
-    z-index: 1;
+	font-size: 15px;
+	line-height: 30px;
+	font-weight: 300;
+	letter-spacing: -0.01em;
+	position: absolute;
+	top: 15px;
+	left: 10px;
+	color: #777;
+	pointer-events: none;
+	padding: 0 0 0 8px;
+	transition: all 80ms linear;
+	z-index: 1;
 `;
-

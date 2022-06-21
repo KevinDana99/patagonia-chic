@@ -1,7 +1,3 @@
-
-export interface Button{
-
-    value : string,
-
-    }
-    
+export interface Button {
+	value: string;
+}
