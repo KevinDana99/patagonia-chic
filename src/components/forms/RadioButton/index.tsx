@@ -1,19 +1,20 @@
 import React, { FC, useState } from 'react';
 import {
 	RadioButtonItemType,
-	RadioButtonListItemPropsType,
+	RadioButtonListPropsType,
 	RestrictedRadioButtonItemType,
 } from './types';
 import RadioButtonItem from './RadioButtonItem';
 
-const RadioButtonList: FC<RadioButtonListItemPropsType> = ({
+const RadioButtonList: FC<RadioButtonListPropsType> = ({
 	list,
 	onChange,
-	defaultValue = list[0],
+	defaultValue,
 }) => {
 	// esta bien?
-	const [checkedItem, setCheckedItem] =
-		useState<RadioButtonItemType>(defaultValue);
+	const [checkedItem, setCheckedItem] = useState<
+		RadioButtonItemType | undefined
+	>(defaultValue);
 
 	// condition list items
 	const conditionedList: RestrictedRadioButtonItemType[] = list.map(

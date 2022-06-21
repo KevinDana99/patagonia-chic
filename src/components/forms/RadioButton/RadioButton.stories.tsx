@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import RadioButtonList from '.';
-import { RadioButtonListItemPropsType } from './types';
+import { RadioButtonListPropsType } from './types';
 
 export default {
 	title: 'Components/forms',
@@ -12,15 +12,14 @@ export default {
 	},
 } as Meta<typeof RadioButtonList>;
 
-const Template: Story<RadioButtonListItemPropsType> = (args) => (
+const Template: Story<RadioButtonListPropsType> = (args) => (
 	<RadioButtonList {...args} />
 );
 
-export const RadioButton: Story<RadioButtonListItemPropsType> = Template.bind(
-	{}
-);
+export const RadioButton: Story<RadioButtonListPropsType> = Template.bind({});
 
 RadioButton.args = {
+	defaultValue: undefined,
 	list: [
 		{
 			label: 'Opcion A',
