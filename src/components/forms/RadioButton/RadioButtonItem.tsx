@@ -23,7 +23,7 @@ const RadioButtonItem: FC<RadioButtonItemPropsType> = ({
 			type="radio"
 			value={value}
 			onChange={handleChange}
-			checked={checkedItem.name === name}
+			checked={checkedItem?.name === name}
 		/>
 		<StyledLabel htmlFor={index.toString().concat('radio')}>
 			<IconDiv></IconDiv>
