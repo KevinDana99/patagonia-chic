@@ -1,21 +1,21 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Input from '.';
-import { InputProps } from './types';
+import InputComponent from '.';
+import { InputPropsType } from './types';
 
 export default {
 	title: 'Components/forms',
-	component: Input,
+	component: InputComponent,
 	argTypes: {
 		onChange: { action: 'onChange' },
 	},
-} as Meta<typeof Input>;
+} as Meta<typeof InputComponent>;
 
-const Template: Story<InputProps> = (args) => <Input {...args} />;
+const Template: Story<InputPropsType> = (args) => <InputComponent {...args} />;
 
-export const InputText = Template.bind({});
+export const Input: Story<InputPropsType> = Template.bind({});
 
-InputText.args = {
-	text: 'Apellido',
+Input.args = {
+	label: 'Apellido',
 };

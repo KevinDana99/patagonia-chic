@@ -1,21 +1,24 @@
 import React, { FC } from 'react';
 import { DataInputContainer, DataInput, StyledLabel } from './styled';
-import { InputProps } from './types';
+import { InputPropsType } from './types';
 
-const Input: FC<InputProps> = ({ text, onChange, name, value }) => {
+const Input: FC<InputPropsType> = ({ label, onChange, name, defaulValue }) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		onChange && onChange(e.target.value);
+	};
+
 	return (
 		<DataInputContainer id="container_botas-3_1__1">
 			<DataInput
 				type="text"
-				id="data-3_2"
 				placeholder=" "
-				onChange={onChange}
+				onChange={handleChange}
 				name={name}
-				value={value}
+				value={defaulValue}
 			/>
-			<StyledLabel htmlFor="data-3_2">{text}</StyledLabel>
+			<StyledLabel>{label}</StyledLabel>
 		</DataInputContainer>
 	);
 };
-
+//saque el id --> htmlfor
 export default Input;
