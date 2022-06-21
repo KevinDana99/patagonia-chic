@@ -7,9 +7,11 @@ const SecondaryButton = ({
 	title,
 	loading = false,
 	onClick,
+	disabled = false,
 }: SecondaryButtonType) => {
+	disabled = disabled || loading;
 	return (
-		<ButtonSecondaryStyled disabled={loading} onClick={onClick}>
+		<ButtonSecondaryStyled disabled={disabled} onClick={onClick}>
 			{title}
 
 			{loading ? <SpinnerStyled size={17} /> : <ForwardIcon />}

@@ -20,4 +20,5 @@ export const Tertiary = Template.bind({});
 Tertiary.args = {
 	title: 'Ver detalle',
 	loading: false,
+	disabled: false,
 };

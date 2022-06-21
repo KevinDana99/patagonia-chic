@@ -20,4 +20,5 @@ export const Secondary = Template.bind({});
 Secondary.args = {
 	title: 'Menú de la excursión',
 	loading: false,
+	disabled: false,
 };

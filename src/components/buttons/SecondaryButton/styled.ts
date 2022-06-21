@@ -15,7 +15,7 @@ export const ButtonSecondaryStyled = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	cursor: pointer;
+	cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 	pointer-events: ${(props) => (props.disabled ? 'none' : 'all')};
 	opacity: ${(props) => (props.disabled ? 0.7 : 1)};
 	&:hover {

@@ -7,9 +7,11 @@ const TertiaryButton = ({
 	title,
 	loading = false,
 	onClick,
+	disabled = false,
 }: TertiaryButtonType) => {
+	disabled = disabled || loading;
 	return (
-		<ButtonTertiaryStyled disabled={loading} onClick={onClick}>
+		<ButtonTertiaryStyled disabled={disabled} onClick={onClick}>
 			{title}
 
 			{loading ? <SpinnerStyled size={14} /> : <ForwardIcon />}

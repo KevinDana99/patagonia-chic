@@ -11,7 +11,7 @@ export const ButtonTertiaryStyled = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	cursor: pointer;
+	cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 	opacity: ${({ disabled }) => (disabled ? 0.7 : 1)};
 	pointer-events: ${({ disabled }) => (disabled ? 'none' : 'all')};
 
