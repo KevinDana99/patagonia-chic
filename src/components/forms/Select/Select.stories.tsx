@@ -34,5 +34,5 @@ Select.args = {
 			disabled: false,
 		},
 	],
-	labelOption: 'Seleccione talle',
+	placeholder: 'Seleccione talle',
 };

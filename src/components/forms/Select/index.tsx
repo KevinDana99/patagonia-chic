@@ -12,26 +12,28 @@ import { orderStock } from './utils';
 const Select: FC<SelectPropsType> = ({
 	ListSelectOptions,
 	label,
-	labelOption,
+	placeholder,
 	onChange,
 }) => {
-	const [listOptions, setlistOptions] =
-		useState<SelectOptionType[]>(ListSelectOptions);
+	const [list, setList] = useState<SelectOptionType[]>(ListSelectOptions);
 
 	useEffect(() => {
-		setlistOptions(orderStock(ListSelectOptions));
+		setList(orderStock(ListSelectOptions));
 	}, [ListSelectOptions]);
 
 	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		onChange && onChange(e.target.value);
+		const newValue = list.find(
+			(item) => item.value === e.target.value || item.label === e.target.value
+		);
+		newValue && onChange && onChange(newValue);
 	};
 
 	return (
 		<Container>
 			<SelectStyled onChange={(e) => handleChange(e)}>
-				<option hidden={true}>{labelOption}</option>
+				<option hidden={true}>{placeholder}</option>
 
-				{listOptions.map((item, index) => {
+				{list.map((item, index) => {
 					return (
 						<OptionStyled
 							key={index}
