@@ -7,9 +7,11 @@ const PrimaryButton = ({
 	title,
 	loading = false,
 	onClick,
+	disabled = false,
 }: PrimaryButtonType) => {
+	disabled = disabled || loading;
 	return (
-		<ButtonPrimaryStyled onClick={onClick}>
+		<ButtonPrimaryStyled disabled={disabled} onClick={onClick}>
 			{!loading ? (
 				title
 			) : (

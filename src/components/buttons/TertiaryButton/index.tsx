@@ -7,12 +7,14 @@ const TertiaryButton = ({
 	title,
 	loading = false,
 	onClick,
+	disabled = false,
 }: TertiaryButtonType) => {
+	disabled = disabled || loading;
 	return (
-		<ButtonTertiaryStyled onClick={onClick}>
+		<ButtonTertiaryStyled disabled={disabled} onClick={onClick}>
 			{title}
 
-			{loading ? <SpinnerStyled size={15} /> : <ForwardIcon />}
+			{loading ? <SpinnerStyled size={14} /> : <ForwardIcon />}
 		</ButtonTertiaryStyled>
 	);
 };

@@ -19,4 +19,5 @@ export const Primary = Template.bind({});
 Primary.args = {
 	title: 'Buscar excursiones',
 	loading: false,
+	disabled: false,
 };
