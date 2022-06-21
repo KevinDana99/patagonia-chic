@@ -1,15 +1,12 @@
-export interface SelectType {
-	name: string;
-	stock: boolean;
-}
-export type SelectArray = SelectType[];
+export type SelectOptionType = {
+	value?: string | number;
+	label: string;
+	disabled: boolean;
+};
 
-export interface SelectProps {
-	title: string;
-	value: SelectArray;
-	titleOptions: string;
-	onChange?: () => void;
-}
-export interface Hover {
-	hover?: boolean;
-}
+export type SelectPropsType = {
+	label: string;
+	ListSelectOptions: SelectOptionType[];
+	labelOption: string;
+	onChange?: (value: string | number) => void;
+};

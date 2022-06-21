@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import SelectComponent from '.';
-import { SelectProps } from './types';
+import { SelectPropsType } from './types';
 
 export default {
 	title: 'Components/forms',
@@ -12,25 +12,27 @@ export default {
 	},
 } as Meta<typeof SelectComponent>;
 
-const Template: Story<SelectProps> = (args) => <SelectComponent {...args} />;
+const Template: Story<SelectPropsType> = (args) => (
+	<SelectComponent {...args} />
+);
 
-export const Select = Template.bind({});
+export const Select: Story<SelectPropsType> = Template.bind({});
 
 Select.args = {
-	title: 'Botas nro 1',
-	value: [
+	label: 'Botas nro 1',
+	ListSelectOptions: [
 		{
-			name: 'Talle 41.5 EU / 8.5 US',
-			stock: true,
+			label: 'Talle 41.5 EU / 8.5 US',
+			disabled: false,
 		},
 		{
-			name: 'Talle 39 EU / 7 US',
-			stock: true,
+			label: 'Talle 39 EU / 7 US',
+			disabled: true,
 		},
 		{
-			name: 'Talle 40 EU / 7 US',
-			stock: false,
+			label: 'Talle 40 EU / 7 US',
+			disabled: false,
 		},
 	],
-	titleOptions: 'Seleccione talle',
+	labelOption: 'Seleccione talle',
 };

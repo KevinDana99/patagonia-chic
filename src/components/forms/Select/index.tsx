@@ -1,41 +1,52 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Container, SelectStyled, SpanTitleStyled, IconStyled } from './styled';
-import { SelectArray, SelectProps, Hover } from './types';
+import {
+	Container,
+	SelectStyled,
+	SpanTitleStyled,
+	IconStyled,
+	OptionStyled,
+} from './styled';
+import { SelectOptionType, SelectPropsType } from './types';
 import { orderStock } from './utils';
 
-const Select: FC<SelectProps> = ({ value, title, titleOptions, onChange }) => {
-	const [state, setState] = useState<SelectArray>(value);
-	const [hoverState, setHoverState] = useState<Hover>({
-		hover: false,
-	});
+const Select: FC<SelectPropsType> = ({
+	ListSelectOptions,
+	label,
+	labelOption,
+	onChange,
+}) => {
+	const [listOptions, setlistOptions] =
+		useState<SelectOptionType[]>(ListSelectOptions);
 
 	useEffect(() => {
-		setState(orderStock(value));
-	}, [value]);
+		setlistOptions(orderStock(ListSelectOptions));
+	}, [ListSelectOptions]);
+
+	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		onChange && onChange(e.target.value);
+	};
 
 	return (
 		<Container>
-			<SelectStyled
-				onChange={onChange}
-				onMouseOver={() => setHoverState({ ...hoverState, hover: true })}
-				onMouseOut={() => setHoverState({ ...hoverState, hover: false })}
-			>
-				<option hidden={true}>{titleOptions}</option>
+			<SelectStyled onChange={(e) => handleChange(e)}>
+				<option hidden={true}>{labelOption}</option>
 
-				{state.map((opt, index) => {
+				{listOptions.map((item, index) => {
 					return (
-						<option key={index} value={opt.name} disabled={!opt.stock}>
-							{`${opt.name} ${opt.stock ? '' : `- Agotado`}`}
-						</option>
+						<OptionStyled
+							key={index}
+							value={item.value ? item.value : item.label}
+							disabled={item.disabled}
+						>
+							{item.label}
+						</OptionStyled>
 					);
 				})}
 			</SelectStyled>
 
-			<IconStyled aria-hidden="true" hover={hoverState.hover}>
-				&nbsp;
-			</IconStyled>
+			<IconStyled aria-hidden="true">&nbsp;</IconStyled>
 
-			<SpanTitleStyled>{title}</SpanTitleStyled>
+			<SpanTitleStyled>{label}</SpanTitleStyled>
 		</Container>
 	);
 };
