@@ -1,21 +1,23 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Textarea from '.';
+import TextareaComponent from '.';
 import { TextareaProps } from './types';
 
 export default {
-	title: 'Components/forms/Textarea',
-	component: Textarea,
+	title: 'Components/forms',
+	component: TextareaComponent,
 	argTypes: {
 		onChange: { action: 'onChange' },
 	},
-} as Meta<typeof Textarea>;
+} as Meta<typeof TextareaComponent>;
 
-const Template: Story<TextareaProps> = (args) => <Textarea {...args} />;
+const Template: Story<TextareaProps> = (args) => (
+	<TextareaComponent {...args} />
+);
 
-export const TextareaAddMessage: Story<TextareaProps> = Template.bind({});
+export const Textarea: Story<TextareaProps> = Template.bind({});
 
-TextareaAddMessage.args = {
+Textarea.args = {
 	text: 'Agregar mensaje',
 };

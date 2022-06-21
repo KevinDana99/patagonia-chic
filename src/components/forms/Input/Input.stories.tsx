@@ -5,7 +5,7 @@ import Input from '.';
 import { InputProps } from './types';
 
 export default {
-	title: 'Components/forms/Input',
+	title: 'Components/forms',
 	component: Input,
 	argTypes: {
 		onChange: { action: 'onChange' },
@@ -14,8 +14,8 @@ export default {
 
 const Template: Story<InputProps> = (args) => <Input {...args} />;
 
-export const InputSurname = Template.bind({});
+export const InputText = Template.bind({});
 
-InputSurname.args = {
+InputText.args = {
 	text: 'Apellido',
 };

@@ -21,11 +21,11 @@ export const Checkbox: Story<CheckboxListPropsType> = Template.bind({});
 Checkbox.args = {
 	list: [
 		{
-			title: 'Opcion A',
+			label: 'Opcion A',
 			value: 1,
 		},
 		{
-			title: 'Opcion B',
+			label: 'Opcion B',
 			value: 2,
 		},
 	],

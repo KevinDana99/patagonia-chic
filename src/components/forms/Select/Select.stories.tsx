@@ -1,22 +1,22 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Select from '.';
+import SelectComponent from '.';
 import { SelectProps } from './types';
 
 export default {
-	title: 'Components/forms/Select',
-	component: Select,
+	title: 'Components/forms',
+	component: SelectComponent,
 	argTypes: {
 		onChange: { action: 'onChange' },
 	},
-} as Meta<typeof Select>;
+} as Meta<typeof SelectComponent>;
 
-const Template: Story<SelectProps> = (args) => <Select {...args} />;
+const Template: Story<SelectProps> = (args) => <SelectComponent {...args} />;
 
-export const SelectSell = Template.bind({});
+export const Select = Template.bind({});
 
-SelectSell.args = {
+Select.args = {
 	title: 'Botas nro 1',
 	value: [
 		{
