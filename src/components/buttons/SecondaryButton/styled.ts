@@ -15,12 +15,14 @@ export const ButtonSecondaryStyled = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
-	pointer-events: ${(props) => (props.disabled ? 'none' : 'all')};
 	opacity: ${(props) => (props.disabled ? 0.7 : 1)};
-	&:hover {
-		text-decoration: underline;
-	}
+	cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+	${(props) =>
+		!props.disabled
+			? `&:hover {
+				text-decoration: underline;
+	}`
+			: `&:hover`}
 `;
 
 export const SpinnerStyled = styled(PrimarySpinner)`
