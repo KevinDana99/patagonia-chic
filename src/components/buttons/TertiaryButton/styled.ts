@@ -11,16 +11,18 @@ export const ButtonTertiaryStyled = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 	opacity: ${({ disabled }) => (disabled ? 0.7 : 1)};
-	pointer-events: ${({ disabled }) => (disabled ? 'none' : 'all')};
+	cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 
-	&:hover {
-		font-size: 12px;
-		color: #0090e0;
-		font-weight: 300;
-		text-decoration: underline;
-	}
+	${(props) =>
+		!props.disabled
+			? `&:hover {
+				font-size: 12px;
+				color: #0090e0;
+				font-weight: 300;
+				text-decoration: underline;
+	}`
+			: `&:hover`}
 `;
 
 export const SpinnerStyled = styled(Spinner)`
