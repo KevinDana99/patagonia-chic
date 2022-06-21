@@ -1,7 +1,6 @@
-import React from 'react';
-export interface TextareaProps {
-	text: string;
-	onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
+export type TextareaPropsType = {
+	label: string;
+	onChange?: (newValue: string | number) => void;
 	name?: string;
-	value?: string | number;
-}
+	defaulValue?: string | number;
+};

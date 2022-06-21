@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import TextareaComponent from '.';
-import { TextareaProps } from './types';
+import { TextareaPropsType } from './types';
 
 export default {
 	title: 'Components/forms',
@@ -12,12 +12,12 @@ export default {
 	},
 } as Meta<typeof TextareaComponent>;
 
-const Template: Story<TextareaProps> = (args) => (
+const Template: Story<TextareaPropsType> = (args) => (
 	<TextareaComponent {...args} />
 );
 
-export const Textarea: Story<TextareaProps> = Template.bind({});
+export const Textarea: Story<TextareaPropsType> = Template.bind({});
 
 Textarea.args = {
-	text: 'Agregar mensaje',
+	label: 'Agregar mensaje',
 };

@@ -1,19 +1,25 @@
 import React, { FC } from 'react';
 import { StyledTextarea, StyledLabel, TextareaContainer } from './styled';
-import { TextareaProps } from './types';
+import { TextareaPropsType } from './types';
 
-const Textarea: FC<TextareaProps> = ({ text, onChange, name, value }) => {
+const Textarea: FC<TextareaPropsType> = ({
+	label,
+	onChange,
+	name,
+	defaulValue,
+}) => {
+	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		onChange && onChange(e.target.value);
+	};
 	return (
 		<TextareaContainer>
 			<StyledTextarea
-				id="alergias_vianda-3_1"
 				placeholder=" "
-				onChange={onChange}
+				onChange={handleChange}
 				name={name}
-				value={value}
+				value={defaulValue}
 			></StyledTextarea>
-
-			<StyledLabel htmlFor="alergias_vianda-3_1">{text}</StyledLabel>
+			<StyledLabel>{label}</StyledLabel>
 		</TextareaContainer>
 	);
 };
