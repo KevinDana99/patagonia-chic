@@ -1,46 +1,79 @@
 import React, { FC, useState } from 'react';
 import {
-	StyledInput,
-	ContainerInput,
-	StyledLabel,
-	IconDiv,
-	TextDiv,
-} from './styled';
-import { RadioButtonItem, RadioButtonListItemProps } from './types';
+	RadioButtonItemType,
+	RadioButtonListItemPropsType,
+	RestrictedRadioButtonItemType,
+} from './types';
+import RadioButtonItem from './RadioButtonItem';
 
-const RadioButton: FC<RadioButtonListItemProps> = ({ list, onChange }) => {
-	const [state, setState] = useState(list[0].name);
+const RadioButtonList: FC<RadioButtonListItemPropsType> = ({
+	list,
+	onChange,
+	defaultValue = list[0],
+}) => {
+	// esta bien?
+	const [checkedItem, setCheckedItem] =
+		useState<RadioButtonItemType>(defaultValue);
 
-	function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
-		setState(e.target.name);
-		onChange(e);
-	}
+	// condition list items
+	const conditionedList: RestrictedRadioButtonItemType[] = list.map(
+		({ label, value, name }, index) => ({
+			label,
+			value: value ?? label,
+			name: name ?? `item${index}`,
+		})
+	);
+
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement>,
+		itemName: string
+	) => {
+		let newCheckedItem = checkedItem;
+		const isChecked = e.target.checked;
+		const currentItem = conditionedList.find((item) => item.name === itemName);
+		if (currentItem && isChecked) {
+			newCheckedItem = currentItem;
+		}
+		setCheckedItem(newCheckedItem);
+		onChange && onChange(newCheckedItem);
+	};
 
 	return (
 		<>
-			{list.length &&
-				list.map((obj: RadioButtonItem, index) => {
-					return (
-						<ContainerInput key={index}>
-							<StyledInput
-								id={index.toString().concat('radio')}
-								name={obj.name}
-								type="radio"
-								value={obj.value}
-								onChange={handleChange}
-								checked={state === obj.name ? true : false}
-							/>
-							<StyledLabel htmlFor={index.toString().concat('radio')}>
-								<IconDiv></IconDiv>
-								<TextDiv>
-									{obj.title ? obj.title : `Opcion ${index + 1}`}
-								</TextDiv>
-							</StyledLabel>
-						</ContainerInput>
-					);
-				})}
+			{conditionedList.map((item, index) => {
+				return (
+					<RadioButtonItem
+						key={`key-${index}`}
+						index={index}
+						name={item.name}
+						value={item.value}
+						label={item.label}
+						handleChange={(e) => handleChange(e, item.name)}
+						checkedItem={checkedItem}
+					/>
+				);
+			})}
 		</>
 	);
 };
 
-export default RadioButton;
+/* return (
+	<ContainerInput key={index}>
+		<StyledInput
+			id={index.toString().concat('radio')}
+			name={item.name}
+			type="radio"
+			value={item.value}
+			onChange={e => handleChange(e, item.name)}
+			checked={state === item.name ? true : false}
+		/>
+		<StyledLabel htmlFor={index.toString().concat('radio')}>
+			<IconDiv></IconDiv>
+			<TextDiv>
+				{item.label ? item.label : `Opcion ${index + 1}`}
+			</TextDiv>
+		</StyledLabel>
+	</ContainerInput>
+); */
+
+export default RadioButtonList;
