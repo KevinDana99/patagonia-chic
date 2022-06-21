@@ -32,15 +32,19 @@ export const ButtonPrimaryStyled = styled.button`
 	transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95),
 		background-size 800ms ease-out, background-position 800ms ease-out;
 	opacity: ${(props) => (props.disabled ? 0.75 : 1)};
-	pointer-events: ${(props) => (props.disabled ? 'none' : 'all')};
 	cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
-	&:hover {
+
+	${(props) =>
+		!props.disabled
+			? `&:hover {
 		transform: perspective(1px) scale3d(1.014, 1.014, 1) translateZ(0) !important;
 		transition: background-size 800ms ease-out,
 			background-position 800ms ease-out;
 		background-size: 500% 200% !important;
 		background-position-x: 50%;
-	}
+		
+	}`
+			: `&:hover`}
 `;
 
 export const BoxLoading = styled.div`
