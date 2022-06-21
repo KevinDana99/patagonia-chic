@@ -8,7 +8,7 @@ const Input: FC<InputPropsType> = ({ label, onChange, name, defaulValue }) => {
 	};
 
 	return (
-		<DataInputContainer id="container_botas-3_1__1">
+		<DataInputContainer>
 			<DataInput
 				type="text"
 				placeholder=" "
