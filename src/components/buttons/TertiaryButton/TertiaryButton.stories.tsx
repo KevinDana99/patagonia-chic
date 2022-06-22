@@ -1,21 +1,24 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import TertiaryButton from './TertiaryButton';
-import { Button } from './types';
+import TertiaryButton from '.';
+import { TertiaryButtonType } from './types';
 
 export default {
-	title: 'Components/Buttons/TertiaryButton',
+	title: 'Components/Buttons',
 	component: TertiaryButton,
 	argTypes: {
 		onClick: { action: 'clicked' },
-		onLoadEnd: { action: 'loaded' },
 	},
 } as Meta<typeof TertiaryButton>;
 
-const Template: Story<Button> = (args) => <TertiaryButton {...args} />;
+const Template: Story<TertiaryButtonType> = (args) => (
+	<TertiaryButton {...args} />
+);
 
 export const Tertiary = Template.bind({});
 Tertiary.args = {
-	value: 'Ver detalle',
+	title: 'Ver detalle',
+	loading: false,
+	disabled: false,
 };
