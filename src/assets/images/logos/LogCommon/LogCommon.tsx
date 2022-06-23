@@ -111,7 +111,7 @@ const LogCommon: React.FC<LogoType> = ({ size }) => {
 							<stop offset="1" style={{ stopColor: '#5175E1' }} />
 						</linearGradient>
 						<polygon
-							className="st1"
+							className="st4"
 							points="79.9,-42.7 165.6,40.2 82.8,125.9 -3,43 			"
 						/>
 					</g>
@@ -141,7 +141,7 @@ const LogCommon: React.FC<LogoType> = ({ size }) => {
 							<stop offset="1" style={{ stopColor: '#5175E1' }} />
 						</linearGradient>
 						<polygon
-							className="st2"
+							className="st5"
 							points="-36.9,43.9 45,-42.6 131.6,39.3 49.7,125.9 			"
 						/>
 					</g>
