@@ -1,6 +1,6 @@
 import { IconType } from 'react-icons/lib';
 
 export type secondarySectionType = {
-	icon: IconType;
+	Icon: IconType;
 	description: string;
 };

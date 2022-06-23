@@ -2,13 +2,15 @@ import React, { FC } from 'react';
 import { Section, BoxIcon } from './styled';
 import { secondarySectionType } from './type';
 const SecondarySectionModal: FC<secondarySectionType> = ({
-	icon,
+	Icon,
 	description,
 }) => {
 	return (
 		<Section>
 			<BoxIcon>
-				<div>{icon}</div>
+				<div>
+					<Icon />
+				</div>
 			</BoxIcon>
 			<div>{description}</div>
 		</Section>
