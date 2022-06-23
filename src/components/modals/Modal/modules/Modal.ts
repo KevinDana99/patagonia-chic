@@ -1,17 +1,17 @@
-class ModalClass {
-	private modalShow: boolean;
+import { FC } from 'react';
+import { modalType } from '../types';
+import PrimaryModal from './../';
 
-	constructor() {
-		this.modalShow = false;
+class ModalClass {
+	private modal: FC<modalType>;
+
+	constructor(modalComponent: FC<modalType>) {
+		this.modal = modalComponent;
 	}
 
-	public show(): void {
-		!this.modalShow ? (this.modalShow = true) : false;
-
-		alert(this.modalShow);
+	public show({ ...args }: modalType) {
+		return this.modal({ ...args });
 	}
 }
 
-const Modal = new ModalClass();
-
-export default Modal;
+export const Modal = new ModalClass(PrimaryModal);
