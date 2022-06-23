@@ -13,11 +13,7 @@ const Section = () => {
 
 			{dataSecondary.map(({ Icon, description }, index) => {
 				return (
-					<SecondarySection
-						key={index}
-						icon={<Icon />}
-						description={description}
-					/>
+					<SecondarySection key={index} Icon={Icon} description={description} />
 				);
 			})}
 		</>
