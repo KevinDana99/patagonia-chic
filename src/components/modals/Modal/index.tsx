@@ -1,4 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+
+import SecondaryButton from '../../buttons/SecondaryButton';
+
 import { CloseIcon } from './styled';
 import {
 	BoxModal,
@@ -24,12 +27,34 @@ const PrimaryModal = ({
 	title,
 	visible = false,
 }: modalType) => {
-	return (
-		<BoxModal>
+	const [state, setState] = useState<modalType>({
+		visible,
+		closeOnTouchOutside,
+	});
+
+	const close = () => {
+		setState({ ...state, visible: false });
+		onClose && onClose();
+	};
+
+	const open = () => {
+		setState({ ...state, visible: true });
+		onOpen && onOpen();
+	};
+
+	const touchOutside = () => {
+		setState({ ...state, visible: true });
+		close();
+	};
+
+	return state.visible ? (
+		<BoxModal visible={state.visible} onClick={touchOutside}>
 			<Container>
 				<BoxTop>
 					<BoxTitle>{title}</BoxTitle>
-					<ButtonClose>{<CloseIcon />}</ButtonClose>
+					{!disableClose && (
+						<ButtonClose>{<CloseIcon onClick={close} />}</ButtonClose>
+					)}
 				</BoxTop>
 				<BoxPrueba>
 					<BoxHeader coverImage={coverImage}>
@@ -43,6 +68,8 @@ const PrimaryModal = ({
 				</BoxPrueba>
 			</Container>
 		</BoxModal>
+	) : (
+		<SecondaryButton onClick={open} title={'Abrir modal'} />
 	);
 };
 

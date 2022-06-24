@@ -6,8 +6,8 @@ export type modalType = {
 	coverImage?: string;
 	headerText?: string;
 	Children?: React.FC;
-	onClose?: React.MouseEventHandler<HTMLButtonElement>;
-	onOpen?: React.MouseEventHandler<HTMLButtonElement>;
+	onClose?: () => void;
+	onOpen?: () => void;
 	closeOnTouchOutside?: boolean;
 	closeAction?: React.MouseEventHandler<HTMLButtonElement>;
 	disableClose?: boolean;

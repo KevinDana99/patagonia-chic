@@ -8,17 +8,26 @@ export default {
 	title: 'components/modals',
 	component: PrimaryModal,
 	argTypes: {
-		onclick: { action: 'clicked' },
+		onClose: { action: 'Cerrado' },
+		onOpen: { action: 'Abierto' },
 	},
 } as Meta<typeof PrimaryModal>;
 
 const template: Story<modalType> = (args) => <PrimaryModal {...args} />;
 
-export const Modal: Story<modalType> = template.bind({});
+export const Modals: Story<modalType> = template.bind({});
 
-Modal.args = {
-	title: 'Menu del almuerzo o cena en cueva',
+Modals.args = {
+	disableClose: true,
 	visible: false,
+	closeOnTouchOutside: false,
+	title: 'Menu del almuerzo o cena en cueva',
+	onClose: () => {
+		console.log('Cerrado');
+	},
+	onOpen: () => {
+		console.log('Abierto');
+	},
 	coverImage:
 		'https://s3-sa-east-1.amazonaws.com/patagoniachic.com/assets/menu/img/Nativo.jpg',
 	Children: () => (

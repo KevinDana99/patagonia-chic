@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { modalType } from './types';
 import { IoCloseOutline as CloseI } from 'react-icons/io5';
 
-export const BoxModal = styled.div`
+export const BoxModal = styled.div<modalType>`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	position: fixed;
@@ -12,7 +12,7 @@ export const BoxModal = styled.div`
 	bottom: 0;
 	height: 100%;
 	width: 100%;
-	display: flex;
+	display: ${(props) => (props.visible ? 'flex' : 'none')};
 	justify-content: center;
 	align-items: center;
 	background-color: rgba(35, 37, 38, 0.7);
