@@ -51,8 +51,9 @@ export const BoxTop = styled.div`
 	color: #444;
 `;
 
-export const BoxPrueba = styled.div`
+export const BoxScroll = styled.div`
 	overflow-y: scroll;
+	scroll-behavior: smooth;
 
 	&::-webkit-scrollbar {
 		width: 9px;

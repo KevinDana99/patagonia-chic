@@ -1,8 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 
 import SecondaryButton from '../../buttons/SecondaryButton';
-
-import { CloseIcon } from './styled';
 import {
 	BoxModal,
 	BoxTitle,
@@ -11,7 +9,8 @@ import {
 	Container,
 	BoxHeader,
 	BoxChildren,
-	BoxPrueba,
+	BoxScroll,
+	CloseIcon,
 } from './styled';
 import { modalType } from './types';
 
@@ -62,7 +61,7 @@ const PrimaryModal = ({
 						<ButtonClose>{<CloseIcon onClick={close} />}</ButtonClose>
 					)}
 				</BoxTop>
-				<BoxPrueba>
+				<BoxScroll>
 					<BoxHeader coverImage={coverImage}>
 						{headerText && headerText}
 					</BoxHeader>
@@ -71,7 +70,7 @@ const PrimaryModal = ({
 							<Children />
 						</BoxChildren>
 					)}
-				</BoxPrueba>
+				</BoxScroll>
 			</Container>
 		</BoxModal>
 	) : (

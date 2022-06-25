@@ -19,7 +19,7 @@ export const Modals: Story<modalType> = template.bind({});
 
 Modals.args = {
 	closeAction: false,
-	disableClose: true,
+	disableClose: false,
 	visible: false,
 	closeOnTouchOutside: false,
 	title: 'Menu del almuerzo o cena en cueva',
