@@ -18,6 +18,7 @@ const template: Story<modalType> = (args) => <PrimaryModal {...args} />;
 export const Modals: Story<modalType> = template.bind({});
 
 Modals.args = {
+	closeAction: false,
 	disableClose: true,
 	visible: false,
 	closeOnTouchOutside: false,

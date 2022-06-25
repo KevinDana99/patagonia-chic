@@ -42,14 +42,20 @@ const PrimaryModal = ({
 		onOpen && onOpen();
 	};
 
-	const touchOutside = () => {
-		setState({ ...state, visible: true });
+	const touchOutside = (e: React.MouseEvent<HTMLDivElement>) => {
+		e.target && setState({ ...state, visible: true });
 		close();
 	};
 
+	closeAction && close();
+
 	return state.visible ? (
 		<BoxModal visible={state.visible} onClick={touchOutside}>
-			<Container>
+			<Container
+				onClick={(e) => {
+					e.stopPropagation();
+				}}
+			>
 				<BoxTop>
 					<BoxTitle>{title}</BoxTitle>
 					{!disableClose && (

@@ -9,6 +9,6 @@ export type modalType = {
 	onClose?: () => void;
 	onOpen?: () => void;
 	closeOnTouchOutside?: boolean;
-	closeAction?: React.MouseEventHandler<HTMLButtonElement>;
+	closeAction?: boolean;
 	disableClose?: boolean;
 };
