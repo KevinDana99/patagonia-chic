@@ -7,13 +7,25 @@ import SecondarySection from '../SecondarySection';
 const Section = () => {
 	return (
 		<>
-			{dataPrimary.map(({ title, subtitle }, index) => {
-				return <PrimarySection key={index} title={title} subtitle={subtitle} />;
+			{dataPrimary.map(({ title, subtitle, path }, index) => {
+				return (
+					<PrimarySection
+						key={index}
+						title={title}
+						subtitle={subtitle}
+						path={path}
+					/>
+				);
 			})}
 
-			{dataSecondary.map(({ Icon, description }, index) => {
+			{dataSecondary.map(({ Icon, description, track }, index) => {
 				return (
-					<SecondarySection key={index} Icon={Icon} description={description} />
+					<SecondarySection
+						key={index}
+						Icon={Icon}
+						description={description}
+						track={track}
+					/>
 				);
 			})}
 		</>

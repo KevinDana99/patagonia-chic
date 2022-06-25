@@ -16,6 +16,11 @@ export const Section = styled.section`
 	justify-content: center;
 `;
 
+export const Linking = styled.a`
+	text-decoration: none;
+	outline: none;
+`;
+
 export const Title = styled.section`
 	color: #222;
 	font-weight: 400;

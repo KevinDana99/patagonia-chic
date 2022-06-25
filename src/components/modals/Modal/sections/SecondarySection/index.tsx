@@ -4,9 +4,10 @@ import { secondarySectionType } from './type';
 const SecondarySectionModal: FC<secondarySectionType> = ({
 	Icon,
 	description,
+	track,
 }) => {
 	return (
-		<Section>
+		<Section id={track}>
 			<BoxIcon>
 				<div>
 					<Icon />

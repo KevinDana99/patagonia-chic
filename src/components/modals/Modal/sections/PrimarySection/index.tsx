@@ -1,11 +1,17 @@
 import React, { FC } from 'react';
-import { Section, Subtitle, Title } from './styled';
+import { Section, Subtitle, Title, Linking } from './styled';
 import { primarySectionType } from './type';
 
-const PrimarySectionModal: FC<primarySectionType> = ({ title, subtitle }) => {
+const PrimarySectionModal: FC<primarySectionType> = ({
+	title,
+	subtitle,
+	path,
+}) => {
 	return (
 		<Section>
-			<Title>{title}</Title>
+			<Linking href={`#${path}`}>
+				<Title>{title}</Title>
+			</Linking>
 			<Subtitle>{subtitle}</Subtitle>
 		</Section>
 	);
