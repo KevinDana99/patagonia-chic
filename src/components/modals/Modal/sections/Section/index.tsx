@@ -18,11 +18,16 @@ const Section = () => {
 				);
 			})}
 
-			{dataSecondary.map(({ Icon, description, track }, index) => {
+			{dataSecondary.map(({ iconSelector, description, track }, index) => {
 				return (
 					<SecondarySection
 						key={index}
-						Icon={Icon}
+						iconSelector={{
+							Icon: iconSelector.Icon,
+							color: iconSelector.color
+								? iconSelector.color
+								: (iconSelector.color = 'grey'),
+						}}
 						description={description}
 						track={track}
 					/>
