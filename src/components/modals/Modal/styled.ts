@@ -12,7 +12,8 @@ export const BoxModal = styled.div<modalType>`
 	bottom: 0;
 	height: 100%;
 	width: 100%;
-	display: ${(props) => (props.visible ? 'flex' : 'none')};
+	visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: rgba(35, 37, 38, 0.7);
@@ -21,17 +22,15 @@ export const BoxModal = styled.div<modalType>`
 	z-index: 5;
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<modalType>`
 	margin-top: 120px;
 	width: 100%;
 	max-width: 570px;
 	min-height: 500px;
 	height: calc(100% - 120px);
 	border-radius: 12px;
-	position: relative;
+	position: absolute;
 	background-color: #fff;
-	margin-top: 120px;
-	transition: margin-top 300ms ease-out;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -102,6 +101,29 @@ export const BoxHeader = styled.div<modalType>`
 	background-repeat: no-repeat;
 	background-size: cover;
 `;
+
+export const BoxHeaderText = styled.div`
+	width: 100%;
+	height: 100%;
+	font-size: 1.5rem;
+	color: white;
+	background-size: 200% 200% !important;
+	background-color: rgb(35, 132, 229);
+	background-image: radial-gradient(
+		circle,
+		rgba(43, 235, 255, 0.46),
+		rgba(59, 178, 249, 0.15) 27.5%,
+		rgba(35, 132, 229, 0.3),
+		rgb(35, 132, 229) 57.5%,
+		rgba(35, 132, 229, 0.81) 75%,
+		rgba(168, 88, 224, 0.37)
+	) !important;
+	opacity: 0.8;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+
 export const BoxChildren = styled.div`
 	padding: 2%;
 	box-sizing: border-box;

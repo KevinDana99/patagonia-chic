@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 export type modalType = {
 	visible?: boolean;
@@ -11,4 +11,5 @@ export type modalType = {
 	closeOnTouchOutside?: boolean;
 	closeAction?: boolean;
 	disableClose?: boolean;
+	animate?: boolean;
 };

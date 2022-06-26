@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import SecondaryButton from '../../buttons/SecondaryButton';
 import {
@@ -11,6 +11,7 @@ import {
 	BoxChildren,
 	BoxScroll,
 	CloseIcon,
+	BoxHeaderText,
 } from './styled';
 import { modalType } from './types';
 
@@ -33,6 +34,7 @@ const PrimaryModal = ({
 
 	const close = () => {
 		setState({ ...state, visible: false });
+
 		onClose && onClose();
 	};
 
@@ -41,11 +43,9 @@ const PrimaryModal = ({
 		onOpen && onOpen();
 	};
 
-	const touchOutside = (e: React.MouseEvent<HTMLDivElement>) => {
-		e.target && setState({ ...state, visible: true });
+	const touchOutside = () => {
 		close();
 	};
-
 	closeAction && close();
 
 	return state.visible ? (
@@ -63,7 +63,7 @@ const PrimaryModal = ({
 				</BoxTop>
 				<BoxScroll>
 					<BoxHeader coverImage={coverImage}>
-						{headerText && headerText}
+						{headerText && <BoxHeaderText>{headerText}</BoxHeaderText>}
 					</BoxHeader>
 					{Children && (
 						<BoxChildren>
