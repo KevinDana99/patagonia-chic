@@ -9,8 +9,7 @@ export type LanguageType = {
 
 export type SectionLeftType = {
 	logo: LogoType;
-	description: string[];
-	language: LanguageType[];
+	language: LanguageType;
 };
 
 export type LabelLinkType = {
@@ -27,15 +26,9 @@ export type SocialNetworks = {
 	url: string;
 	Icon: IconType;
 };
-export type SectionCopyrightsAndSocial = {
-	label: string;
-	Icons: SocialNetworks[];
-};
 
 export type FooterPropsType = {
-	leftList: SectionLeftType;
-	sectionList?: SectionType[];
-	sectionBottom: SectionCopyrightsAndSocial;
+	language: LanguageType;
 	backgroundColor?: string;
 	color?: string;
 	colorDivision?: string;

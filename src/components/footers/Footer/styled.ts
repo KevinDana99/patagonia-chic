@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { FooterPropsType } from './types';
+import { FooterPropsType, LanguageType } from './types';
 
 export const Container = styled.div<
-	Omit<FooterPropsType, 'leftList' | 'sectionBottom'>
+	Pick<FooterPropsType, 'backgroundColor' | 'color'>
 >`
 	padding-top: 50px;
 	padding-bottom: 40px;
@@ -16,9 +16,7 @@ export const Container = styled.div<
 	color: ${(props) => (props.color ? props.color : 'black')};
 `;
 
-export const ContainerSectionsTop = styled.div<
-	Omit<FooterPropsType, 'leftList' | 'sectionBottom'>
->`
+export const ContainerSectionsTop = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -37,6 +35,17 @@ export const Language = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	gap: 10px;
+`;
+
+export const ImgStyled = styled.div<Pick<LanguageType, 'flag'>>`
+	background-repeat: no-repeat;
+	background-image: url(${(props) => props.flag});
+	width: 50px;
+	height: 50px;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
 `;
 
 export const LeftSection = styled.div`
@@ -47,9 +56,7 @@ export const ContainerSectionCommon = styled.div`
 	padding-bottom: 80px;
 `;
 
-export const HrStyled = styled.div<
-	Omit<FooterPropsType, 'leftList' | 'sectionBottom'>
->`
+export const HrStyled = styled.div<Pick<FooterPropsType, 'colorDivision'>>`
 	width: 85%;
 	height: 2px;
 	background-color: ${({ colorDivision }) =>

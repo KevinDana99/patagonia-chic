@@ -3,17 +3,11 @@ import SectionCommon from './SectionCommon';
 import SectionLeft from './SectionLeft';
 import SectionSocial from './SectionSocial';
 import { FooterPropsType } from './types';
-import {
-	Container,
-	ContainerSectionsTop,
-	ContainerSocial,
-	HrStyled,
-} from './styled';
+import { Container, ContainerSectionsTop, HrStyled } from './styled';
+import { sectionList } from './utils';
 
 const Footer: FC<FooterPropsType> = ({
-	leftList,
-	sectionList,
-	sectionBottom,
+	language,
 	backgroundColor,
 	color,
 	colorDivision,
@@ -21,7 +15,7 @@ const Footer: FC<FooterPropsType> = ({
 	return (
 		<Container backgroundColor={backgroundColor} color={color}>
 			<ContainerSectionsTop>
-				<SectionLeft {...leftList} />
+				<SectionLeft logo={{ size: 300 }} language={language} />
 
 				{sectionList?.length &&
 					sectionList.map((item, index) => (
@@ -30,7 +24,7 @@ const Footer: FC<FooterPropsType> = ({
 			</ContainerSectionsTop>
 			<HrStyled colorDivision={colorDivision} />
 
-			<SectionSocial {...sectionBottom} />
+			<SectionSocial />
 		</Container>
 	);
 };
