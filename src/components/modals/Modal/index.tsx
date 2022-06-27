@@ -51,7 +51,7 @@ const PrimaryModal = ({
 
 	useEffect(() => {
 		state.visible && open();
-	});
+	}, []);
 
 	return (
 		<>
