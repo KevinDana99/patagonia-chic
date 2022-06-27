@@ -16,6 +16,7 @@ const Footer: FC<FooterPropsType> = ({
 	sectionBottom,
 	backgroundColor,
 	color,
+	colorDivision,
 }) => {
 	return (
 		<Container backgroundColor={backgroundColor} color={color}>
@@ -27,7 +28,7 @@ const Footer: FC<FooterPropsType> = ({
 						<SectionCommon {...item} key={index} />
 					))}
 			</ContainerSectionsTop>
-			<HrStyled />
+			<HrStyled colorDivision={colorDivision} />
 
 			<SectionSocial {...sectionBottom} />
 		</Container>

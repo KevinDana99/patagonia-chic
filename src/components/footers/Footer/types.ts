@@ -23,9 +23,13 @@ export type SectionType = {
 	label: LabelLinkType[];
 };
 
+export type SocialNetworks = {
+	url: string;
+	Icon: IconType;
+};
 export type SectionCopyrightsAndSocial = {
 	label: string;
-	Icons: IconType[];
+	Icons: SocialNetworks[];
 };
 
 export type FooterPropsType = {
@@ -34,4 +38,5 @@ export type FooterPropsType = {
 	sectionBottom: SectionCopyrightsAndSocial;
 	backgroundColor?: string;
 	color?: string;
+	colorDivision?: string;
 };

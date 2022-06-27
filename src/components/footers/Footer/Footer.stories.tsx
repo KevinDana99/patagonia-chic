@@ -82,8 +82,12 @@ Footer.args = {
 	sectionBottom: {
 		label:
 			'@Copyrights 2022 - PatagoniaChic.com EVT Leg. 15.528, Disp. 1795/14',
-		Icons: [FaFacebookF, AiFillInstagram, AiFillYoutube],
+		Icons: [
+			{ Icon: FaFacebookF, url: '' },
+			{ Icon: AiFillInstagram, url: '' },
+			{ Icon: AiFillYoutube, url: '' },
+		],
 	},
-
 	color: 'black',
+	colorDivision: 'lightblue',
 };

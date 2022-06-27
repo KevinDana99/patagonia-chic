@@ -25,7 +25,7 @@ export const ContainerSectionsTop = styled.div<
 `;
 
 export const ContainerSocial = styled.div`
-	padding-top: 10px;
+	padding-top: 30px;
 	position: relative;
 	display: flex;
 	flex-direction: row;
@@ -44,12 +44,16 @@ export const LeftSection = styled.div`
 `;
 export const ContainerSectionCommon = styled.div`
 	width: 15%;
+	padding-bottom: 80px;
 `;
 
-export const HrStyled = styled.hr`
+export const HrStyled = styled.div<
+	Omit<FooterPropsType, 'leftList' | 'sectionBottom'>
+>`
 	width: 85%;
-	height: 3px;
-	color: aliceblue;
+	height: 2px;
+	background-color: ${({ colorDivision }) =>
+		colorDivision ? colorDivision : 'lightblue'};
 `;
 
 export const CopyrightStyled = styled.p`
@@ -70,4 +74,8 @@ export const LinkStyled = styled.a`
 	:hover {
 		text-decoration: underline;
 	}
+`;
+
+export const Title = styled.h3`
+	font-weight: bold;
 `;
