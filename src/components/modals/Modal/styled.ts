@@ -34,6 +34,9 @@ export const Container = styled.div<modalType>`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	transform: ${(props) =>
+		props.animate ? 'translateY(20px)' : 'translateY(500px)'};
+	transition: all 300ms ease;
 `;
 
 export const BoxTop = styled.div`

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useState } from 'react';
 import SecondaryButton from '../../buttons/SecondaryButton';
+
 import {
 	BoxModal,
 	BoxTitle,
@@ -30,51 +30,53 @@ const PrimaryModal = ({
 	const [state, setState] = useState<modalType>({
 		visible,
 		closeOnTouchOutside,
+		animate: false,
 	});
 
 	const close = () => {
-		setState({ ...state, visible: false });
+		setState({ ...state, animate: false, visible: false });
 
 		onClose && onClose();
 	};
 
 	const open = () => {
-		setState({ ...state, visible: true });
+		setState({ ...state, visible: true, animate: true });
 		onOpen && onOpen();
 	};
 
 	const touchOutside = () => {
 		close();
 	};
-	closeAction && close();
 
-	return state.visible ? (
-		<BoxModal visible={state.visible} onClick={touchOutside}>
-			<Container
-				onClick={(e) => {
-					e.stopPropagation();
-				}}
-			>
-				<BoxTop>
-					<BoxTitle>{title}</BoxTitle>
-					{!disableClose && (
-						<ButtonClose>{<CloseIcon onClick={close} />}</ButtonClose>
-					)}
-				</BoxTop>
-				<BoxScroll>
-					<BoxHeader coverImage={coverImage}>
-						{headerText && <BoxHeaderText>{headerText}</BoxHeaderText>}
-					</BoxHeader>
-					{Children && (
-						<BoxChildren>
-							<Children />
-						</BoxChildren>
-					)}
-				</BoxScroll>
-			</Container>
-		</BoxModal>
-	) : (
-		<SecondaryButton onClick={open} title={'Abrir modal'} />
+	return (
+		<>
+			<SecondaryButton title="Abrir Modal" onClick={open} />
+			<BoxModal visible={state.visible} onClick={touchOutside}>
+				<Container
+					animate={state.animate}
+					onClick={(e) => {
+						e.stopPropagation();
+					}}
+				>
+					<BoxTop>
+						<BoxTitle>{title}</BoxTitle>
+						{!disableClose && (
+							<ButtonClose>{<CloseIcon onClick={close} />}</ButtonClose>
+						)}
+					</BoxTop>
+					<BoxScroll>
+						<BoxHeader coverImage={coverImage}>
+							{headerText && <BoxHeaderText>{headerText}</BoxHeaderText>}
+						</BoxHeader>
+						{Children && (
+							<BoxChildren>
+								<Children />
+							</BoxChildren>
+						)}
+					</BoxScroll>
+				</Container>
+			</BoxModal>
+		</>
 	);
 };
 
