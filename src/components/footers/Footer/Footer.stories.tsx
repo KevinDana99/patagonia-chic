@@ -1,20 +1,20 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Footer from '.';
+import FooterMain from '.';
 import { FooterPropsType } from './types';
 import { FaFacebookF } from 'react-icons/fa';
 import { AiFillInstagram, AiFillYoutube } from 'react-icons/ai';
 
 export default {
 	title: 'Components/footer',
-	component: Footer,
-} as Meta<typeof Footer>;
+	component: FooterMain,
+} as Meta<typeof FooterMain>;
 
-const Template: Story<FooterPropsType> = (args) => <Footer {...args} />;
+const Template: Story<FooterPropsType> = (args) => <FooterMain {...args} />;
 
-export const Checkbox: Story<FooterPropsType> = Template.bind({});
+export const Footer: Story<FooterPropsType> = Template.bind({});
 
-Checkbox.args = {
+Footer.args = {
 	leftList: {
 		logo: {
 			size: 300,
