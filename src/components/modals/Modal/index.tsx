@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SecondaryButton from '../../buttons/SecondaryButton';
 
 import {
@@ -48,6 +48,10 @@ const PrimaryModal = ({
 		setState({ ...state, closeOnTouchOutside: true });
 		close();
 	};
+
+	useEffect(() => {
+		state.visible && open();
+	});
 
 	return (
 		<>
