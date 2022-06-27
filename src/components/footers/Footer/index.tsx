@@ -3,7 +3,12 @@ import SectionCommon from './SectionCommon';
 import SectionLeft from './SectionLeft';
 import SectionSocial from './SectionSocial';
 import { FooterPropsType } from './types';
-import { Container, ContainerSectionsTop, ContainerSocial } from './styled';
+import {
+	Container,
+	ContainerSectionsTop,
+	ContainerSocial,
+	HrStyled,
+} from './styled';
 
 const Footer: FC<FooterPropsType> = ({
 	leftList,
@@ -22,7 +27,7 @@ const Footer: FC<FooterPropsType> = ({
 						<SectionCommon {...item} key={index} />
 					))}
 			</ContainerSectionsTop>
-			<hr />
+			<HrStyled />
 
 			<SectionSocial {...sectionBottom} />
 		</Container>

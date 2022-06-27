@@ -1,16 +1,16 @@
 import React, { FC } from 'react';
 import { SectionCopyrightsAndSocial } from './types';
-import { ContainerSocial } from './styled';
+import { ContainerSocial, CopyrightStyled, IconContainer } from './styled';
 
 const SectionSocial: FC<SectionCopyrightsAndSocial> = ({ label, Icons }) => {
 	return (
 		<ContainerSocial>
-			<p>{label}</p>
-			<div>
+			<CopyrightStyled>{label}</CopyrightStyled>
+			<IconContainer>
 				{Icons.map((Icon, index) => (
 					<Icon key={index} />
 				))}
-			</div>
+			</IconContainer>
 		</ContainerSocial>
 	);
 };
