@@ -35,8 +35,8 @@ export const Container = styled.div<modalType>`
 	flex-direction: column;
 	justify-content: space-between;
 	transform: ${(props) =>
-		props.animate ? 'translateY(20px)' : 'translateY(500px)'};
-	transition: all 300ms ease;
+		props.animate ? 'translateY(20px)' : 'translateY(600px)'};
+	transition: all 400ms ease;
 `;
 
 export const BoxTop = styled.div`
@@ -96,8 +96,9 @@ export const CloseIcon = styled(CloseI)`
 
 export const BoxHeader = styled.div<modalType>`
 	width: 100%;
-	height: 200px;
-	max-height: 250px;
+	//height: 200px;
+	height: 100%;
+	max-height: 280px;
 	background-image: ${({ coverImage }) =>
 		coverImage ? `url(${coverImage})` : 'none'};
 	background-position: center;

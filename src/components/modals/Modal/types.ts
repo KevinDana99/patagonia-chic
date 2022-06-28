@@ -9,7 +9,7 @@ export type modalType = {
 	onClose?: () => void;
 	onOpen?: () => void;
 	closeOnTouchOutside?: boolean;
-	closeAction?: boolean;
+	closeAction?: () => void;
 	disableClose?: boolean;
 	animate?: boolean;
 };
