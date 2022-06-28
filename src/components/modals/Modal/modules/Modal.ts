@@ -9,7 +9,7 @@ class ModalClass {
 		this.modal = ModalComponent;
 	}
 
-	public show({ ...args }) {
+	public show({ ...args }: modalType) {
 		return this.modal({ ...args });
 	}
 }
