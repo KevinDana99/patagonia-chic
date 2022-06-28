@@ -14,7 +14,7 @@ export const Container = styled.div<
 			? props.backgroundColor
 			: 'rgba(227, 236, 236, 0.404)'};
 	color: ${(props) => (props.color ? props.color : 'black')};
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		padding-top: 30px;
 	}
 `;
@@ -23,7 +23,7 @@ export const ContainerSectionsTop = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		width: 80%;
 		flex-direction: column;
 	}
@@ -37,7 +37,7 @@ export const ContainerSocial = styled.div`
 	justify-content: space-around;
 	align-items: center;
 	width: 85%;
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		width: 80%;
 	}
 `;
@@ -53,7 +53,7 @@ export const Language = styled.div<
 	flex-direction: row;
 	align-items: center;
 	gap: 10px;
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		display: none;
 	}
 `;
@@ -70,14 +70,14 @@ export const ImgStyled = styled.div<Pick<LanguageType, 'flag'>>`
 
 export const LeftSection = styled.div`
 	width: 28%;
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		width: 90%;
 	}
 `;
 export const ContainerSectionCommon = styled.div`
 	width: 15%;
 	padding-bottom: 80px;
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		width: 90%;
 	}
 `;
@@ -87,7 +87,7 @@ export const HrDivStyled = styled.div<Pick<FooterPropsType, 'colorDivision'>>`
 	height: 2px;
 	background-color: ${({ colorDivision }) =>
 		colorDivision ? colorDivision : 'lightblue'};
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		margin-top: 2rem;
 		width: 80%;
 	}
@@ -103,7 +103,7 @@ export const IconContainer = styled.div`
 	width: 100px;
 	display: flex;
 	justify-content: space-between;
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		display: none;
 	}
 `;
@@ -119,7 +119,7 @@ export const LinkStyled = styled.a`
 
 export const Title = styled.h3`
 	font-weight: bold;
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		position: absolute;
 		left: 0;
 	}
@@ -132,7 +132,7 @@ export const LanguageLabel = styled.label`
 
 export const ContainerIcons = styled.div`
 	display: none;
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		margin-top: 1.5rem;
 		display: flex;
 		width: 80%;
@@ -140,7 +140,7 @@ export const ContainerIcons = styled.div`
 	}
 `;
 export const IconsMovil = styled.div`
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		width: 100px;
 		display: flex;
 		justify-content: space-between;
@@ -148,14 +148,14 @@ export const IconsMovil = styled.div`
 `;
 
 export const DesktopSectionCommon = styled.div`
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		display: none;
 	}
 `;
 
 export const MenuButton = styled.button`
 	display: none;
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		width: 100%;
 		border: 2px solid transparent;
 		background-color: transparent;
@@ -169,7 +169,7 @@ export const MenuButton = styled.button`
 
 export const DropdownMenu = styled.div`
 	display: none;
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		display: flex;
 		position: relative;
 		width: 80%;
@@ -186,7 +186,7 @@ export const ImageOpen = styled.img`
 
 export const HrStyled = styled.hr`
 	display: none;
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 450px) {
 		display: block;
 		margin-top: 2rem;
 		margin-bottom: -3.5rem;
