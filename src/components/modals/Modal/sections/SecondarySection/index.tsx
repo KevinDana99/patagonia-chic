@@ -1,16 +1,14 @@
 import React, { FC } from 'react';
-import { Section, BoxIcon } from './styled';
+import { Section, Title } from './styled';
 import { secondarySectionType } from './type';
 const SecondarySectionModal: FC<secondarySectionType> = ({
-	iconSelector,
+	title,
 	description,
 	track,
 }) => {
 	return (
 		<Section id={track}>
-			<BoxIcon>
-				<iconSelector.Icon color={iconSelector.color} />
-			</BoxIcon>
+			<Title>{title}</Title>
 			<div>{description}</div>
 		</Section>
 	);

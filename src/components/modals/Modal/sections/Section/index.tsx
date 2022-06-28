@@ -1,8 +1,10 @@
 import React from 'react';
 import dataPrimary from './../PrimarySection/db';
 import dataSecondary from './../SecondarySection/db';
+import dataTertiary from './../TertiarySection/db';
 import PrimarySection from './../PrimarySection';
 import SecondarySection from '../SecondarySection';
+import TertiarySection from '../TertiarySection';
 
 const Section = () => {
 	return (
@@ -18,9 +20,9 @@ const Section = () => {
 				);
 			})}
 
-			{dataSecondary.map(({ iconSelector, description, track }, index) => {
+			{dataTertiary.map(({ iconSelector, description }, index) => {
 				return (
-					<SecondarySection
+					<TertiarySection
 						key={index}
 						iconSelector={{
 							Icon: iconSelector.Icon,
@@ -28,6 +30,16 @@ const Section = () => {
 								? iconSelector.color
 								: (iconSelector.color = 'grey'),
 						}}
+						description={description}
+					/>
+				);
+			})}
+
+			{dataSecondary.map(({ title, description, track }, index) => {
+				return (
+					<SecondarySection
+						key={index}
+						title={title}
 						description={description}
 						track={track}
 					/>

@@ -20,6 +20,6 @@ export default [
 	{
 		title: 'Bebidas',
 		subtitle: 'Incluye vino tinto, agua mineral o jugo sin limite.',
-		path: 'Bebida',
+		path: 'Bebidas',
 	},
 ];

@@ -1,18 +1,25 @@
-import { IoLeafSharp as Leaf, IoAdd as Add } from 'react-icons/io5';
-
 const data = [
 	{
-		iconSelector: { Icon: Leaf, color: 'green' },
-		description:
-			'Se ofrece adaptación del menú para vegetarianos con previo aviso.',
+		title: 'Entrada',
+		description: 'Esta es la seccion de entrada.',
 		track: 'Entrada',
 	},
 
 	{
-		iconSelector: { Icon: Add, color: 'yellow' },
-		description:
-			'Se ofrece adaptación del menú para celíacos con previo aviso.',
+		title: 'Plato Principal',
+		description: 'Esta es la seccion del plato principal.',
+		track: 'PlatoPrincipal',
+	},
+
+	{
+		title: 'Postre',
+		description: 'Esta es la seccion de postre.',
 		track: 'Postre',
+	},
+	{
+		title: 'Bebidas',
+		description: 'Esta es la seccion de bebidas.',
+		track: 'Bebidas',
 	},
 ];
 

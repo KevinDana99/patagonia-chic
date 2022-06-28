@@ -1,7 +1,5 @@
-import { IconType } from 'react-icons/lib';
-
 export type secondarySectionType = {
-	iconSelector: { Icon: IconType; color?: string };
+	title: string;
 	description: string;
 	track: string;
 };
