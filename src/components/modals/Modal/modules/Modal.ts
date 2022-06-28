@@ -9,10 +9,6 @@ class ModalClass {
 		this.modal = ModalComponent;
 	}
 
-	public mapArguments({ ...args }) {
-		return args;
-	}
-
 	public show({ ...args }) {
 		return this.modal({ ...args });
 	}
