@@ -110,17 +110,21 @@ export const IconContainer = styled.div`
 
 export const LinkStyled = styled.a`
 	text-decoration: none;
-	margin-bottom: -1rem;
 	color: black;
 	:hover {
 		text-decoration: underline;
 	}
+	@media screen and (max-width: 450px) {
+		margin-bottom: -1rem;
+	}
 `;
 
 export const Title = styled.h3`
+	margin-top: 2.5rem;
 	font-weight: bold;
 	@media screen and (max-width: 450px) {
 		position: absolute;
+		margin-top: 0;
 		left: 0;
 	}
 `;
@@ -178,8 +182,8 @@ export const DropdownMenu = styled.div`
 	}
 `;
 
-export const ImageOpen = styled.img`
-	width: 1rem;
+export const ImageOpen = styled.div`
+	font-size: 2rem;
 	position: absolute;
 	right: 0;
 `;

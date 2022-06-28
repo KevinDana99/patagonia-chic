@@ -12,6 +12,7 @@ const SectionLeft: React.FC<SectionLeftType> = ({
 	return (
 		<LeftSection>
 			<Logo {...logo} />
+			<br />
 			{description.map((item, index) => (
 				<p key={index}>{item}</p>
 			))}
