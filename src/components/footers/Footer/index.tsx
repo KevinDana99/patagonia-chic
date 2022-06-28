@@ -6,7 +6,7 @@ import { FooterPropsType } from './types';
 import {
 	Container,
 	ContainerSectionsTop,
-	HrStyled,
+	HrDivStyled,
 	LinkStyled,
 	IconsMovil,
 	ContainerIcons,
@@ -43,7 +43,7 @@ const Footer: FC<FooterPropsType> = ({
 					))}
 				</IconsMovil>
 			</ContainerIcons>
-			<HrStyled colorDivision={colorDivision} />
+			<HrDivStyled colorDivision={colorDivision} />
 
 			<SectionSocial />
 		</Container>
