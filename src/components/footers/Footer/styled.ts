@@ -189,6 +189,6 @@ export const HrStyled = styled.hr`
 	@media screen and (max-width: 400px) {
 		display: block;
 		margin-top: 2rem;
-		margin-bottom: -3rem;
+		margin-bottom: -3.5rem;
 	}
 `;
