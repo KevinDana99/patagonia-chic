@@ -33,6 +33,8 @@ const PrimaryModal = ({
 		animate: false,
 	});
 
+	closeAction && closeAction();
+
 	const close = () => {
 		setState({ ...state, animate: false, visible: false });
 
