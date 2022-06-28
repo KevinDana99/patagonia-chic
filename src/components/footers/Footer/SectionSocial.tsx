@@ -5,7 +5,7 @@ import {
 	IconContainer,
 	LinkStyled,
 } from './styled';
-import { Icons } from './utils';
+import { icons } from './utils';
 
 const SectionSocial: FC = () => {
 	return (
@@ -14,9 +14,9 @@ const SectionSocial: FC = () => {
 				©Copyrights 2022 - PatagoniaChic.com EVT Leg. 15.528, Disp. 1795/14
 			</CopyrightStyled>
 			<IconContainer>
-				{Icons.map(({ Icon, url }, index) => (
-					<LinkStyled href={url} key={index}>
-						<Icon />
+				{icons.map(({ Icon, url }, index) => (
+					<LinkStyled href={url} key={index} target="_blank">
+						<Icon style={{ fontSize: '1.4rem' }} />
 					</LinkStyled>
 				))}
 			</IconContainer>

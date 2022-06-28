@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FooterPropsType, LanguageType } from './types';
+import { FooterPropsType, LanguageType, SectionLeftType } from './types';
 
 export const Container = styled.div<
 	Pick<FooterPropsType, 'backgroundColor' | 'color'>
@@ -20,6 +20,10 @@ export const ContainerSectionsTop = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	@media screen and (max-width: 400px) {
+		width: 80%;
+		flex-direction: column;
+	}
 `;
 
 export const ContainerSocial = styled.div`
@@ -30,19 +34,32 @@ export const ContainerSocial = styled.div`
 	justify-content: space-around;
 	align-items: center;
 	width: 85%;
+	@media screen and (max-width: 400px) {
+		width: 80%;
+	}
 `;
-export const Language = styled.div`
+export const Language = styled.div<
+	Pick<SectionLeftType, 'backgroundColorLanguage'>
+>`
+	background-color: ${({ backgroundColorLanguage }) =>
+		backgroundColorLanguage ? backgroundColorLanguage : 'white'};
+	width: 6.5rem;
+	border-radius: 3rem;
+	padding: 0.5rem;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 10px;
+	@media screen and (max-width: 400px) {
+		display: none;
+	}
 `;
 
 export const ImgStyled = styled.div<Pick<LanguageType, 'flag'>>`
 	background-repeat: no-repeat;
 	background-image: url(${(props) => props.flag});
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
@@ -50,10 +67,16 @@ export const ImgStyled = styled.div<Pick<LanguageType, 'flag'>>`
 
 export const LeftSection = styled.div`
 	width: 28%;
+	@media screen and (max-width: 400px) {
+		width: 90%;
+	}
 `;
 export const ContainerSectionCommon = styled.div`
 	width: 15%;
 	padding-bottom: 80px;
+	@media screen and (max-width: 400px) {
+		width: 90%;
+	}
 `;
 
 export const HrStyled = styled.div<Pick<FooterPropsType, 'colorDivision'>>`
@@ -61,6 +84,9 @@ export const HrStyled = styled.div<Pick<FooterPropsType, 'colorDivision'>>`
 	height: 2px;
 	background-color: ${({ colorDivision }) =>
 		colorDivision ? colorDivision : 'lightblue'};
+	@media screen and (max-width: 400px) {
+		width: 80%;
+	}
 `;
 
 export const CopyrightStyled = styled.p`
@@ -70,9 +96,12 @@ export const CopyrightStyled = styled.p`
 export const IconContainer = styled.div`
 	position: absolute;
 	right: 0;
-	width: 80px;
+	width: 100px;
 	display: flex;
 	justify-content: space-between;
+	@media screen and (max-width: 400px) {
+		display: none;
+	}
 `;
 
 export const LinkStyled = styled.a`
@@ -85,4 +114,25 @@ export const LinkStyled = styled.a`
 
 export const Title = styled.h3`
 	font-weight: bold;
+`;
+
+export const LanguageLabel = styled.label`
+	font-size: 1.3rem;
+	font-weight: bold;
+`;
+
+export const ContainerIcons = styled.div`
+	display: none;
+	@media screen and (max-width: 400px) {
+		display: flex;
+		width: 80%;
+		justify-content: 'left';
+	}
+`;
+export const IconsMovil = styled.div`
+	@media screen and (max-width: 400px) {
+		width: 100px;
+		display: flex;
+		justify-content: space-between;
+	}
 `;

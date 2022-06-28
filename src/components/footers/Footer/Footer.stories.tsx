@@ -4,7 +4,7 @@ import FooterMain from '.';
 import { FooterPropsType } from './types';
 
 export default {
-	title: 'Components/footer',
+	title: 'Components',
 	component: FooterMain,
 } as Meta<typeof FooterMain>;
 
@@ -19,4 +19,5 @@ Footer.args = {
 	},
 	color: 'black',
 	colorDivision: 'lightblue',
+	backgroundColorLanguage: undefined,
 };
