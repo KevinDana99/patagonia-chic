@@ -16,7 +16,8 @@ export const sectionList: SectionType[] = [
 			},
 			{
 				label: 'Términos y condiciones',
-				url: '',
+				url: 'https://www.patagoniachic.com/terminos-y-condiciones/',
+				target: '_blank',
 			},
 		],
 	},
@@ -34,28 +35,34 @@ export const sectionList: SectionType[] = [
 		label: [
 			{
 				label: 'Medios de pago y promociones',
-				url: '',
+				url: 'https://www.patagoniachic.com/medios-de-pago/',
 			},
 			{
 				label: 'Mapa de excursiones',
-				url: '',
+				url: 'https://www.patagoniachic.com/mapa-excursiones/',
 			},
 			{
 				label: 'Quienes somos',
-				url: '',
+				url: 'https://www.patagoniachic.com/quienes-somos/',
 			},
 			{
 				label: 'Descargue gratis catalogo de excursiones',
-				url: '',
+				url: 'https://www.patagoniachic.com/el-calafate/excursiones/catalogo-de-excursiones/',
 			},
 		],
 	},
 ];
 
-export const Icons: SocialNetworks[] = [
-	{ Icon: FaFacebookF, url: '' },
-	{ Icon: AiFillInstagram, url: '' },
-	{ Icon: AiFillYoutube, url: '' },
+export const icons: SocialNetworks[] = [
+	{
+		Icon: AiFillInstagram,
+		url: 'https://www.instagram.com/patagoniachic_oficial/?hl=es',
+	},
+	{ Icon: FaFacebookF, url: 'https://www.facebook.com/patagoniachic/' },
+	{
+		Icon: AiFillYoutube,
+		url: 'https://www.youtube.com/c/Patagoniachic-Excursiones-El-Calafate/featured?app=desktop',
+	},
 ];
 
 export const description: string[] = [

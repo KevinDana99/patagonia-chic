@@ -7,7 +7,7 @@ const SectionCommon: FC<SectionType> = ({ title, label }) => {
 		<ContainerSectionCommon>
 			<Title>{title}</Title>
 			{label.map((item, index) => (
-				<LinkStyled href={item.url} key={index}>
+				<LinkStyled href={item.url} key={index} target={item.target}>
 					<p>{item.label}</p>
 				</LinkStyled>
 			))}
