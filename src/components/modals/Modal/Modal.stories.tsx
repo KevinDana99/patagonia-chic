@@ -7,10 +7,7 @@ import Section from './sections/Section';
 export default {
 	title: 'components/modals',
 	component: PrimaryModal,
-	argTypes: {
-		onClose: { action: 'Cerrado' },
-		onOpen: { action: 'Abierto' },
-	},
+	argTypes: {},
 } as Meta<typeof PrimaryModal>;
 
 const template: Story<modalType> = (args) => <PrimaryModal {...args} />;

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import SecondaryButton from '../../buttons/SecondaryButton';
-
 import {
 	BoxModal,
 	BoxTitle,
