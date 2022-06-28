@@ -4,15 +4,16 @@ import PrimaryModal from './../';
 
 class ModalClass {
 	private modal: FC<modalType>;
-	private params: modalType;
 
-	constructor(modalComponent: FC<modalType>) {
-		this.modal = modalComponent;
-		this.params = {};
+	constructor(ModalComponent: FC<modalType>) {
+		this.modal = ModalComponent;
 	}
 
-	public show({ ...args }: modalType) {
-		this.params = { ...args };
+	public mapArguments({ ...args }) {
+		return args;
+	}
+
+	public show({ ...args }) {
 		return this.modal({ ...args });
 	}
 }
