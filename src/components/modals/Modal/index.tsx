@@ -11,6 +11,7 @@ import {
 	BoxScroll,
 	CloseIcon,
 	BoxHeaderText,
+	BoxDownModal,
 } from './styled';
 import { modalType } from './types';
 
@@ -77,6 +78,7 @@ const PrimaryModal = ({
 						{Children && (
 							<BoxChildren>
 								<Children />
+								<BoxDownModal />
 							</BoxChildren>
 						)}
 					</BoxScroll>

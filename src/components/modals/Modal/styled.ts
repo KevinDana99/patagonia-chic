@@ -132,3 +132,12 @@ export const BoxChildren = styled.div`
 	padding: 2%;
 	box-sizing: border-box;
 `;
+
+export const BoxDownModal = styled.div`
+	width: 95%;
+	height: 50px;
+	background-color: #f5f5f591;
+	min-height: 50px;
+	position: fixed;
+	bottom: 0px;
+`;
