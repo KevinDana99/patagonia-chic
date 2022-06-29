@@ -1,6 +1,7 @@
 import React from 'react';
 
 export type modalType = {
+	width?: string;
 	visible?: boolean;
 	title?: string;
 	coverImage?: string;

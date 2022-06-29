@@ -15,6 +15,7 @@ const template: Story<modalType> = (args) => <PrimaryModal {...args} />;
 export const Modals: Story<modalType> = template.bind({});
 
 Modals.args = {
+	width: '570px',
 	headerText: '',
 	disableClose: false,
 	visible: false,

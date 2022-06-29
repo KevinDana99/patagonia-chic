@@ -16,6 +16,7 @@ import {
 import { modalType } from './types';
 
 const PrimaryModal = ({
+	width,
 	headerText,
 	Children,
 	closeAction,
@@ -60,6 +61,7 @@ const PrimaryModal = ({
 			<SecondaryButton title="Abrir Modal" onClick={open} />
 			<BoxModal visible={state.visible} onClick={touchOutside}>
 				<Container
+					width={width}
 					animate={state.animate}
 					onClick={(e) => {
 						e.stopPropagation();

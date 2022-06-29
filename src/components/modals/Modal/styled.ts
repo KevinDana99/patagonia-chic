@@ -25,7 +25,8 @@ export const BoxModal = styled.div<modalType>`
 export const Container = styled.div<modalType>`
 	margin-top: 120px;
 	width: 100%;
-	max-width: 570px;
+	min-width: 350px;
+	max-width: ${(props) => (props.width ? props.width : '570px')};
 	min-height: 500px;
 	height: calc(100% - 120px);
 	border-radius: 12px;
