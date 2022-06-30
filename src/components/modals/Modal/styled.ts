@@ -23,7 +23,6 @@ export const BoxModal = styled.div<ModalType>`
 `;
 
 export const Container = styled.div<ModalType>`
-	margin-top: 120px;
 	width: 100%;
 	min-width: 350px;
 	max-width: ${(props) => (props.width ? props.width : '570px')};
@@ -35,9 +34,13 @@ export const Container = styled.div<ModalType>`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	transform: ${(props) =>
-		props.animate ? 'translateY(20px)' : 'translateY(600px)'};
-	transition: all 400ms ease;
+
+	@media (max-width: 500px) {
+		margin-top: 120px;
+		transform: ${(props) =>
+			props.animate ? 'translateY(20px)' : 'translateY(600px)'};
+		transition: all 400ms ease;
+	}
 `;
 
 export const BoxTop = styled.div`
@@ -135,10 +138,12 @@ export const BoxChildren = styled.div`
 `;
 
 export const BoxDownModal = styled.div`
-	width: 95%;
+	width: 100%;
 	height: 50px;
-	background-color: #f5f5f591;
+	background-color: #f5f5f558;
 	min-height: 50px;
-	position: fixed;
+	position: absolute;
 	bottom: 0px;
+	right: 0.05%;
+	border-radius: 0em 0em 12px 12px;
 `;
