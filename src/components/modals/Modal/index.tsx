@@ -34,8 +34,6 @@ const PrimaryModal = ({
 		animate: false,
 	});
 
-	closeAction && closeAction();
-
 	const close = () => {
 		setState({ ...state, animate: false, visible: false });
 
@@ -70,7 +68,9 @@ const PrimaryModal = ({
 					<BoxTop>
 						<BoxTitle>{title}</BoxTitle>
 						{!disableClose && (
-							<ButtonClose>{<CloseIcon onClick={close} />}</ButtonClose>
+							<ButtonClose>
+								{<CloseIcon onClick={closeAction ? closeAction : close} />}
+							</ButtonClose>
 						)}
 					</BoxTop>
 					<BoxScroll>
