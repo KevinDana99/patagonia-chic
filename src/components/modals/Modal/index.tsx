@@ -46,8 +46,7 @@ const PrimaryModal = ({
 	};
 
 	const touchOutside = () => {
-		setState({ ...state, closeOnTouchOutside: true });
-		close();
+		closeOnTouchOutside && close();
 	};
 
 	useEffect(() => {

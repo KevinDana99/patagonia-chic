@@ -27,7 +27,6 @@ Modals.args = {
 	onOpen: () => {
 		console.log('Abierto');
 	},
-	closeAction: Date.now,
 	coverImage:
 		'https://s3-sa-east-1.amazonaws.com/patagoniachic.com/assets/menu/img/Nativo.jpg',
 	Children: () => (
