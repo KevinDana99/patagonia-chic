@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import PrimaryModal from '.';
 import { modalType } from './types';
-import Section from './sections/Section';
+import Section from '../../../examples/modal/sections/Section';
 
 export default {
 	title: 'components/modals',
