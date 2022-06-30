@@ -1,6 +1,7 @@
 import React from 'react';
 
 export type ModalType = {
+	renderOpenButton?: boolean;
 	width?: string;
 	visible?: boolean;
 	title?: string;

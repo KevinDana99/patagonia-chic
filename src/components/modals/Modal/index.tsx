@@ -16,6 +16,7 @@ import {
 import { ModalType } from './types';
 
 const PrimaryModal = ({
+	renderOpenButton,
 	width,
 	headerText,
 	Children,
@@ -55,7 +56,10 @@ const PrimaryModal = ({
 
 	return (
 		<>
-			<SecondaryButton title="Abrir Modal" onClick={open} />
+			{renderOpenButton && (
+				<SecondaryButton title="Abrir Modal" onClick={open} />
+			)}
+
 			<BoxModal visible={state.visible} onClick={touchOutside}>
 				<Container
 					width={width}
