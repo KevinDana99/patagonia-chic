@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { ModalType } from './types';
 import { IoCloseOutline as CloseI } from 'react-icons/io5';
 
+const paddingSpace = '4%';
+
 export const BoxModal = styled.div<ModalType>`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
@@ -47,7 +49,7 @@ export const BoxTop = styled.div`
 	position: sticky;
 	top: 0;
 	bottom: 0px;
-	padding: 2%;
+	padding: ${paddingSpace};
 	box-sizing: border-box;
 	width: 100%;
 	height: 60px;
@@ -100,7 +102,6 @@ export const CloseIcon = styled(CloseI)`
 
 export const BoxHeader = styled.div<ModalType>`
 	width: 100%;
-	//height: 200px;
 	height: 100%;
 	max-height: 280px;
 	background-image: ${({ coverImage }) =>
@@ -133,14 +134,18 @@ export const BoxHeaderText = styled.div`
 `;
 
 export const BoxChildren = styled.div`
-	padding: 2%;
+	padding: 0% ${paddingSpace};
 	box-sizing: border-box;
 `;
 
 export const BoxDownModal = styled.div`
 	width: 100%;
 	height: 50px;
-	background-color: #f5f5f558;
+	background: linear-gradient(
+		0deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 0) 100%
+	);
 	min-height: 50px;
 	position: absolute;
 	bottom: 0px;
