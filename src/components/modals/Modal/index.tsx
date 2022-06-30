@@ -13,7 +13,7 @@ import {
 	BoxHeaderText,
 	BoxDownModal,
 } from './styled';
-import { modalType } from './types';
+import { ModalType } from './types';
 
 const PrimaryModal = ({
 	width,
@@ -27,8 +27,8 @@ const PrimaryModal = ({
 	onOpen,
 	title,
 	visible = false,
-}: modalType) => {
-	const [state, setState] = useState<modalType>({
+}: ModalType) => {
+	const [state, setState] = useState<ModalType>({
 		visible,
 		closeOnTouchOutside,
 		animate: false,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import PrimaryModal from '.';
-import { modalType } from './types';
+import { ModalType } from './types';
 import Section from '../../../examples/modal/sections/Section';
 
 export default {
@@ -10,9 +10,9 @@ export default {
 	argTypes: {},
 } as Meta<typeof PrimaryModal>;
 
-const template: Story<modalType> = (args) => <PrimaryModal {...args} />;
+const template: Story<ModalType> = (args) => <PrimaryModal {...args} />;
 
-export const Modals: Story<modalType> = template.bind({});
+export const Modals: Story<ModalType> = template.bind({});
 
 Modals.args = {
 	width: '570px',

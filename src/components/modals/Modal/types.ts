@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type modalType = {
+export type ModalType = {
 	width?: string;
 	visible?: boolean;
 	title?: string;
