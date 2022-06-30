@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ModalType } from './types';
 import { IoCloseOutline as CloseI } from 'react-icons/io5';
 
-const paddingSpace = '4%';
+const paddingSpace = '3.5%';
 
 export const BoxModal = styled.div<ModalType>`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
