@@ -8,11 +8,12 @@ import {
 	ImageOpen,
 	DesktopSectionCommon,
 	HrStyled,
+	Text,
 } from './styled';
 import { SectionType } from './types';
 import { RiArrowDropUpLine, RiArrowDropDownLine } from 'react-icons/ri';
 
-const SectionCommon: FC<SectionType> = ({ title, label }) => {
+const SectionCommon: FC<SectionType> = ({ title, label, color }) => {
 	const [open, setOpen] = useState(false);
 	const handleClick: React.MouseEventHandler<HTMLButtonElement> = () => {
 		setOpen(!open);
@@ -22,8 +23,13 @@ const SectionCommon: FC<SectionType> = ({ title, label }) => {
 			<DesktopSectionCommon>
 				<Title>{title}</Title>
 				{label.map((item, index) => (
-					<LinkStyled href={item.url} key={index} target={item.target}>
-						<p>{item.label}</p>
+					<LinkStyled
+						href={item.url}
+						key={index}
+						target={item.target}
+						color={color}
+					>
+						<Text>{item.label}</Text>
 					</LinkStyled>
 				))}
 			</DesktopSectionCommon>
@@ -39,7 +45,12 @@ const SectionCommon: FC<SectionType> = ({ title, label }) => {
 			<DropdownMenu>
 				{open &&
 					label.map((item, index) => (
-						<LinkStyled href={item.url} key={index} target={item.target}>
+						<LinkStyled
+							href={item.url}
+							key={index}
+							target={item.target}
+							color={color}
+						>
 							<p>{item.label}</p>
 						</LinkStyled>
 					))}

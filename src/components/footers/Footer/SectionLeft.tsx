@@ -1,6 +1,12 @@
 import React from 'react';
 import Logo from '../../Logo';
-import { LeftSection, Language, ImgStyled, LanguageLabel } from './styled';
+import {
+	LeftSection,
+	Language,
+	ImgStyled,
+	LanguageLabel,
+	TextSectionLeft,
+} from './styled';
 import { SectionLeftType } from './types';
 import { description } from './utils';
 
@@ -14,7 +20,7 @@ const SectionLeft: React.FC<SectionLeftType> = ({
 			<Logo {...logo} />
 			<br />
 			{description.map((item, index) => (
-				<p key={index}>{item}</p>
+				<TextSectionLeft key={index}>{item}</TextSectionLeft>
 			))}
 			<Language backgroundColorLanguage={backgroundColorLanguage}>
 				<ImgStyled flag={language.flag}></ImgStyled>

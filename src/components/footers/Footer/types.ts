@@ -22,6 +22,7 @@ export type LabelLinkType = {
 export type SectionType = {
 	title: string;
 	label: LabelLinkType[];
+	color?: string;
 };
 
 export type SocialNetworks = {
@@ -32,7 +33,6 @@ export type SocialNetworks = {
 export type FooterPropsType = {
 	language: LanguageType;
 	backgroundColor?: string;
-	color?: string;
 	colorDivision?: string;
 	backgroundColorLanguage?: string;
 };

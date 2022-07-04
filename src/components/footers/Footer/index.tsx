@@ -10,29 +10,30 @@ import {
 	LinkStyled,
 	IconsMovil,
 	ContainerIcons,
+	ContainerSectionsCommon,
 } from './styled';
 import { icons, sectionList } from './utils';
 
 const Footer: FC<FooterPropsType> = ({
 	language,
 	backgroundColor,
-	color,
 	colorDivision,
 	backgroundColorLanguage,
 }) => {
 	return (
-		<Container backgroundColor={backgroundColor} color={color}>
+		<Container backgroundColor={backgroundColor}>
 			<ContainerSectionsTop>
 				<SectionLeft
 					logo={{ size: 220 }}
 					language={language}
 					backgroundColorLanguage={backgroundColorLanguage}
 				/>
-
-				{sectionList?.length &&
-					sectionList.map((item, index) => (
-						<SectionCommon {...item} key={index} />
-					))}
+				<ContainerSectionsCommon>
+					{sectionList?.length &&
+						sectionList.map((item, index) => (
+							<SectionCommon {...item} key={index} />
+						))}
+				</ContainerSectionsCommon>
 			</ContainerSectionsTop>
 			<ContainerIcons>
 				<IconsMovil>
