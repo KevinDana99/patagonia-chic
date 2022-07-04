@@ -18,7 +18,6 @@ const SectionLeft: React.FC<SectionLeftType> = ({
 	return (
 		<LeftSection>
 			<Logo {...logo} />
-			<br />
 			{description.map((item, index) => (
 				<TextSectionLeft key={index}>{item}</TextSectionLeft>
 			))}
@@ -29,6 +28,5 @@ const SectionLeft: React.FC<SectionLeftType> = ({
 		</LeftSection>
 	);
 };
-// la bandera del idioma es un select?
 
 export default SectionLeft;

@@ -41,10 +41,12 @@ export const ContainerSectionsCommon = styled.div`
 	height: 215px;
 	gap: 21px;
 	position: absolute;
-	border: 1px solid orange;
 	right: 0;
 	@media screen and (max-width: 1120px) {
 		flex-direction: column;
+		margin-top: 1rem;
+		gap: 0;
+		height: auto;
 	}
 	@media screen and (max-width: 450px) {
 		width: 80%;
@@ -98,6 +100,7 @@ export const ImgStyled = styled.div<Pick<LanguageType, 'flag'>>`
 export const LeftSection = styled.div`
 	width: 350px;
 	@media screen and (max-width: 1120px) {
+		width: 355px;
 	}
 	@media screen and (max-width: 450px) {
 		width: 90%;
@@ -105,9 +108,10 @@ export const LeftSection = styled.div`
 `;
 export const ContainerSectionCommon = styled.div`
 	width: 202px;
-	border: 1px solid blue;
 	padding-bottom: 80px;
 	@media screen and (max-width: 1120px) {
+		width: 350px;
+		padding-bottom: 0;
 	}
 	@media screen and (max-width: 450px) {
 		width: 90%;
@@ -134,6 +138,11 @@ export const CopyrightStyled = styled.p`
 	margin-block-start: 0;
 	margin-block-end: 0;
 	margin-top: 21px;
+	@media screen and (max-width: 1120px) {
+		margin-top: 34px;
+	}
+	@media screen and (max-width: 450px) {
+	}
 `;
 export const Text = styled.p`
 	margin-block-start: 13px;
@@ -151,6 +160,7 @@ export const IconContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	@media screen and (max-width: 1120px) {
+		margin-top: 34px;
 	}
 	@media screen and (max-width: 450px) {
 		display: none;
@@ -165,6 +175,7 @@ export const LinkStyled = styled.a`
 		text-decoration: underline;
 	}
 	@media screen and (max-width: 1120px) {
+		margin-top: 0;
 	}
 	@media screen and (max-width: 450px) {
 		margin-bottom: -1rem;
@@ -178,6 +189,8 @@ export const Title = styled.h3`
 		position: absolute;
 		margin-top: 0;
 		left: 0;
+		margin-block-start: 0;
+		margin-block-end: 0;
 	}
 	@media screen and (max-width: 450px) {
 	}
@@ -200,12 +213,11 @@ export const ContainerIcons = styled.div`
 	}
 `;
 export const IconsMovil = styled.div`
-	@media screen and (max-width: 1120px) {
+	display: none;
+	@media screen and (max-width: 450px) {
 		width: 100px;
 		display: flex;
 		justify-content: space-between;
-	}
-	@media screen and (max-width: 450px) {
 	}
 `;
 
@@ -256,8 +268,8 @@ export const HrStyled = styled.hr`
 	display: none;
 	@media screen and (max-width: 1120px) {
 		display: block;
-		margin-top: 2rem;
-		margin-bottom: -3.5rem;
+		margin-top: 21px;
+		margin-bottom: 21px;
 	}
 	@media screen and (max-width: 450px) {
 	}
