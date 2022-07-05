@@ -8,11 +8,11 @@ export const sectionList: SectionType[] = [
 		label: [
 			{
 				label: 'Centro de ayuda',
-				url: '',
+				url: 'https://www.patagoniachic.com/contacto/',
 			},
 			{
 				label: 'Política de cancelación',
-				url: '',
+				url: '', //abre un modal
 			},
 			{
 				label: 'Términos y condiciones',
@@ -26,7 +26,7 @@ export const sectionList: SectionType[] = [
 		label: [
 			{
 				label: 'El Calafate',
-				url: '',
+				url: 'https://www.patagoniachic.com/el-calafate.html',
 			},
 		],
 	},
