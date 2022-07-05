@@ -11,6 +11,9 @@ import {
 	IconsMovil,
 	ContainerIcons,
 	ContainerSectionsCommon,
+	LanguageMovil,
+	ImgStyled,
+	LanguageLabel,
 } from './styled';
 import { icons, sectionList } from './utils';
 
@@ -34,6 +37,13 @@ const Footer: FC<FooterPropsType> = ({
 							<SectionCommon {...item} key={index} />
 						))}
 				</ContainerSectionsCommon>
+
+				{/* version movil */}
+				<LanguageMovil backgroundColorLanguage={backgroundColorLanguage}>
+					<ImgStyled flag={language.flag}></ImgStyled>
+					<LanguageLabel>{language.label}</LanguageLabel>
+				</LanguageMovil>
+				{/**/}
 			</ContainerSectionsTop>
 			<ContainerIcons>
 				<IconsMovil>

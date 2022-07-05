@@ -9,9 +9,7 @@ export const Container = styled.div<Pick<FooterPropsType, 'backgroundColor'>>`
 	flex-direction: column;
 	align-items: center;
 	background-color: ${(props) =>
-		props.backgroundColor
-			? props.backgroundColor
-			: 'rgba(227, 236, 236, 0.404)'};
+		props.backgroundColor ? props.backgroundColor : '#F1F4F7'};
 	@media screen and (max-width: 1120px) {
 		padding-top: 34px;
 		height: auto;
@@ -26,12 +24,11 @@ export const ContainerSectionsTop = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	position: relative;
-	border: 1px solid blue;
 	@media screen and (max-width: 1120px) {
 		width: 720px;
 	}
 	@media screen and (max-width: 450px) {
-		width: 80%;
+		width: 335px;
 		flex-direction: column;
 	}
 `;
@@ -54,6 +51,7 @@ export const ContainerSectionsCommon = styled.div`
 		margin-top: 50px;
 	}
 	@media screen and (max-width: 450px) {
+		margin-top: 89px;
 		width: 80%;
 	}
 `;
@@ -70,14 +68,14 @@ export const ContainerSocial = styled.div`
 		width: 720px;
 	}
 	@media screen and (max-width: 450px) {
-		width: 80%;
+		width: 335px;
 	}
 `;
 export const Language = styled.div<
 	Pick<SectionLeftType, 'backgroundColorLanguage'>
 >`
 	background-color: ${({ backgroundColorLanguage }) =>
-		backgroundColorLanguage ? backgroundColorLanguage : 'white'};
+		backgroundColorLanguage ? backgroundColorLanguage : '#FFFFFF'};
 	width: 6.5rem;
 	border-radius: 3rem;
 	padding: 0.5rem;
@@ -89,6 +87,26 @@ export const Language = styled.div<
 	margin-bottom: 34px;
 	@media screen and (max-width: 1120px) {
 		margin-top: 34px;
+	}
+	@media screen and (max-width: 450px) {
+		display: none;
+	}
+`;
+export const LanguageMovil = styled.div<
+	Pick<SectionLeftType, 'backgroundColorLanguage'>
+>`
+	display: none;
+	@media screen and (max-width: 450px) {
+		display: flex;
+		background-color: ${({ backgroundColorLanguage }) =>
+			backgroundColorLanguage ? backgroundColorLanguage : '#FFFFFF'};
+		width: 6.5rem;
+		border-radius: 3rem;
+		padding: 0.5rem;
+		flex-direction: row;
+		align-items: center;
+		gap: 10px;
+		margin-top: 89px;
 	}
 `;
 
@@ -108,7 +126,7 @@ export const LeftSection = styled.div`
 		width: 355px;
 	}
 	@media screen and (max-width: 450px) {
-		width: 90%;
+		width: 335px;
 	}
 `;
 export const ContainerSectionCommon = styled.div`
@@ -119,7 +137,7 @@ export const ContainerSectionCommon = styled.div`
 		padding-bottom: 0;
 	}
 	@media screen and (max-width: 450px) {
-		width: 90%;
+		width: 335px;
 	}
 `;
 
@@ -133,7 +151,7 @@ export const HrDivStyled = styled.div<Pick<FooterPropsType, 'colorDivision'>>`
 	}
 	@media screen and (max-width: 450px) {
 		margin-top: 2rem;
-		width: 80%;
+		width: 335px;
 	}
 `;
 
@@ -175,15 +193,12 @@ export const IconContainer = styled.div`
 export const LinkStyled = styled.a`
 	margin-top: 21px;
 	text-decoration: none;
-	color: black;
+	color: #000000;
 	:hover {
 		text-decoration: underline;
 	}
 	@media screen and (max-width: 1120px) {
 		margin-top: 0;
-	}
-	@media screen and (max-width: 450px) {
-		margin-bottom: -1rem;
 	}
 `;
 
@@ -209,7 +224,7 @@ export const LanguageLabel = styled.label`
 export const ContainerIcons = styled.div`
 	display: none;
 	@media screen and (max-width: 1120px) {
-		margin-top: 1.5rem;
+		margin-top: 21px;
 		display: flex;
 		width: 80%;
 		justify-content: 'left';
@@ -249,6 +264,7 @@ export const MenuButton = styled.button`
 		margin-bottom: 3px;
 	}
 	@media screen and (max-width: 450px) {
+		width: 335px;
 	}
 `;
 
@@ -279,5 +295,6 @@ export const HrStyled = styled.hr`
 		display: block;
 	}
 	@media screen and (max-width: 450px) {
+		width: 335px;
 	}
 `;
