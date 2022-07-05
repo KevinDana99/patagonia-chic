@@ -51,7 +51,7 @@ const SectionCommon: FC<SectionType> = ({ title, label, color }) => {
 							target={item.target}
 							color={color}
 						>
-							<p>{item.label}</p>
+							<Text>{item.label}</Text>
 						</LinkStyled>
 					))}
 			</DropdownMenu>

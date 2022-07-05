@@ -44,11 +44,14 @@ export const ContainerSectionsCommon = styled.div`
 	gap: 21px;
 	position: absolute;
 	right: 0;
+	margin-top: 0.9rem;
 	@media screen and (max-width: 1120px) {
 		flex-direction: column;
 		gap: 0;
+		justify-content: flex-start;
 		height: auto;
 		position: relative;
+		margin-top: 50px;
 	}
 	@media screen and (max-width: 450px) {
 		width: 80%;
@@ -241,7 +244,9 @@ export const MenuButton = styled.button`
 		flex-direction: row;
 		align-items: center;
 		position: relative;
-		margin-top: 0.9rem;
+		cursor: pointer;
+		margin-top: 3px;
+		margin-bottom: 3px;
 	}
 	@media screen and (max-width: 450px) {
 	}
@@ -269,9 +274,9 @@ export const ImageOpen = styled.div`
 export const HrStyled = styled.hr`
 	display: none;
 	@media screen and (max-width: 1120px) {
+		margin-block-start: 21px;
+		margin-block-end: 21px;
 		display: block;
-		margin-top: 21px;
-		margin-bottom: 21px;
 	}
 	@media screen and (max-width: 450px) {
 	}
