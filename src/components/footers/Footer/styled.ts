@@ -14,6 +14,7 @@ export const Container = styled.div<Pick<FooterPropsType, 'backgroundColor'>>`
 			: 'rgba(227, 236, 236, 0.404)'};
 	@media screen and (max-width: 1120px) {
 		padding-top: 34px;
+		height: auto;
 	}
 	@media screen and (max-width: 450px) {
 	}
@@ -25,12 +26,13 @@ export const ContainerSectionsTop = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	position: relative;
+	border: 1px solid blue;
 	@media screen and (max-width: 1120px) {
 		width: 720px;
-		flex-direction: column;
 	}
 	@media screen and (max-width: 450px) {
 		width: 80%;
+		flex-direction: column;
 	}
 `;
 
@@ -44,9 +46,9 @@ export const ContainerSectionsCommon = styled.div`
 	right: 0;
 	@media screen and (max-width: 1120px) {
 		flex-direction: column;
-		margin-top: 1rem;
 		gap: 0;
 		height: auto;
+		position: relative;
 	}
 	@media screen and (max-width: 450px) {
 		width: 80%;
