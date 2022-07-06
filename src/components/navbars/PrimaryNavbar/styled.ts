@@ -96,6 +96,6 @@ export const PrimaryButtonNav = styled(PrimaryButton)`
 	height: 36px;
 	@media (max-width: 500px) {
 		margin-left: 0px;
-		margin-right: 34px;
+		margin-right: 13px;
 	}
 `;

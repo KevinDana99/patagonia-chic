@@ -7,6 +7,6 @@ export const Container = styled.div<NavbarType>`
 	color: ${(props) => props.colorTheme};
 	background-color: ${(props) => props.backgroundTheme};
 	width: 100%;
-	height: 200px;
+	height: 130px;
 	border-radius: 0em 0em 15px 15px;
 `;
