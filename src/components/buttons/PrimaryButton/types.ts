@@ -5,4 +5,5 @@ export type PrimaryButtonType = {
 	loading?: boolean;
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 	disabled?: boolean;
+	className?: string;
 };

@@ -8,10 +8,15 @@ const PrimaryButton = ({
 	loading = false,
 	onClick,
 	disabled = false,
+	className,
 }: PrimaryButtonType) => {
 	disabled = disabled || loading;
 	return (
-		<ButtonPrimaryStyled disabled={disabled} onClick={onClick}>
+		<ButtonPrimaryStyled
+			disabled={disabled}
+			onClick={onClick}
+			className={className}
+		>
 			{!loading ? (
 				title
 			) : (
