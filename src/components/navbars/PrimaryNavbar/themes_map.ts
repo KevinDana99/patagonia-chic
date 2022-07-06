@@ -3,12 +3,14 @@ export const themesMap = (name: string) => {
 		case 'transparent':
 			return {
 				background: 'transparent',
-				color: '#ededed',
+				color: '#FFFFFF',
+				languageBackground: 'none',
 			};
 		default:
 			return {
-				background: '#ededed',
-				color: '#000000',
+				background: 'rgba(255, 255, 255, 1)',
+				color: '#3B3B3B',
+				languageBackground: 'rgba(241, 244, 247, 1)',
 			};
 	}
 };

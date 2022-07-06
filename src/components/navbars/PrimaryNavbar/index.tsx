@@ -36,7 +36,7 @@ const Navbar: React.FC<NavbarType> = () => {
 
 	window.addEventListener('scroll', listenScroll);
 
-	const { background, color } = themesMap(state.theme);
+	const { background, color, languageBackground } = themesMap(state.theme);
 
 	const changeThemeNavbar = () => {
 		state.scrolling > 0
@@ -71,7 +71,7 @@ const Navbar: React.FC<NavbarType> = () => {
 						<ItemMenu>Ayuda</ItemMenu>
 					</BoxMenu>
 					<BoxReserve>
-						<BoxLanguage>
+						<BoxLanguage backgroundTheme={languageBackground}>
 							<BrasilFlag /> BRL
 						</BoxLanguage>
 						<PrimaryButton title={'Reservar'} />
