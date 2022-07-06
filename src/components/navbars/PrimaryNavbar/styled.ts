@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { IoChevronDownSharp, IoReorderFourOutline } from 'react-icons/io5';
 import { NavbarType } from './types';
+import PrimaryButton from '../../buttons/PrimaryButton';
 
-export const BoxNavbar = styled.nav<NavbarType>`
+export const BoxNavbar = styled.nav`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	width: 100%;
@@ -10,8 +11,6 @@ export const BoxNavbar = styled.nav<NavbarType>`
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	color: ${(props) => props.colorTheme};
-	background-color: ${(props) => props.backgroundTheme};
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -21,9 +20,11 @@ export const BoxNavbar = styled.nav<NavbarType>`
 	font-weight: 500;
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<NavbarType>`
 	width: 100%;
 	height: 99px;
+	color: ${(props) => props.colorTheme};
+	background-color: ${(props) => props.backgroundTheme};
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -47,7 +48,7 @@ export const ItemMenu = styled.li`
 `;
 
 export const BoxReserve = styled.div`
-	width: 200px;
+	width: auto;
 	height: 100%;
 	display: flex;
 	justify-content: space-around;
@@ -86,5 +87,15 @@ export const IcoBar = styled(IoReorderFourOutline)`
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+`;
+
+export const PrimaryButtonNav = styled(PrimaryButton)`
+	margin-left: 34px;
+	width: 96px;
+	height: 36px;
+	@media (max-width: 500px) {
+		margin-left: 0px;
+		margin-right: 34px;
 	}
 `;

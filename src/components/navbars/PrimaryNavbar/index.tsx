@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PrimaryButton from '../../buttons/PrimaryButton';
 import Logo from '../../../examples/navbar/logo';
 import { BrasilFlag } from '../../../assets/images/flags/index';
 
@@ -13,6 +12,7 @@ import {
 	IcoBar,
 	IcoDown,
 	ItemMenu,
+	PrimaryButtonNav,
 } from './styled';
 import SecondaryNavbar from '../SecondaryNavbar';
 import SideBar from '../SideBar';
@@ -58,8 +58,8 @@ const Navbar: React.FC<NavbarType> = () => {
 
 	return !state.activeSideBar ? (
 		<>
-			<BoxNavbar backgroundTheme={background} colorTheme={color}>
-				<Container>
+			<BoxNavbar>
+				<Container backgroundTheme={background} colorTheme={color}>
 					<BoxLogo>
 						<Logo />
 					</BoxLogo>
@@ -74,7 +74,7 @@ const Navbar: React.FC<NavbarType> = () => {
 						<BoxLanguage backgroundTheme={languageBackground}>
 							<BrasilFlag /> BRL
 						</BoxLanguage>
-						<PrimaryButton title={'Reservar'} />
+						<PrimaryButtonNav title={'Reservar'} />
 						<IcoBar onClick={handleSideBar} />
 					</BoxReserve>
 				</Container>
