@@ -2,15 +2,16 @@ import styled from 'styled-components';
 import { IoCloseOutline } from 'react-icons/io5';
 import TertiaryButton from '../../buttons/TertiaryButton';
 export const Container = styled.div`
+	position: absolute;
+	right: 0px;
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 
-	padding: 4%;
+	padding: 13px;
 	box-sizing: border-box;
-	width: 100%;
-	min-height: 600px;
-	height: 100%;
-	background-color: lightgrey;
+	width: 333px;
+	height: 814px;
+	background-color: rgba(255, 255, 255, 1);
 	border-radius: 15px 0px 0px 15px;
 	display: flex;
 	flex-direction: column;
@@ -73,8 +74,9 @@ export const BtnItemContent = styled(TertiaryButton)`
 	}
 `;
 
-export const BtnItemContentNormal = styled.div`
-	margin-left: 6px;
+export const BtnItemContentNormal = styled.button`
+	background-color: transparent;
+	border: none;
 	width: 80%;
 	height: 28px;
 	font-size: 12px;
