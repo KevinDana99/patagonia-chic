@@ -19,10 +19,12 @@ import {
 } from './styled';
 
 const SideBar = ({ closeAction }: SideBarType) => {
+	const [props, setProps] = useState({});
 	const [views, setViews] = useState<ViewType>([]);
 
-	const next = (view: React.FC) => {
+	const next = (view: React.FC, props?: Object) => {
 		setViews([...views, view]);
+		setProps({ ...props });
 	};
 
 	const back = () => {
@@ -55,7 +57,7 @@ const SideBar = ({ closeAction }: SideBarType) => {
 					<ItemContent>
 						<BtnItemContent
 							title={'Mi carrito'}
-							onClick={() => next(ShopCart)}
+							onClick={() => next(ShopCart, { next: next })}
 						/>
 					</ItemContent>
 					<ItemContent>
@@ -79,7 +81,9 @@ const SideBar = ({ closeAction }: SideBarType) => {
 				</Content>
 			) : (
 				views.map((CurrentView, index) => {
-					return index == views.length - 1 && <CurrentView key={index} />;
+					return (
+						index == views.length - 1 && <CurrentView key={index} {...props} />
+					);
 				})
 			)}
 		</Container>
