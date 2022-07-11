@@ -23,12 +23,15 @@ const SideBar = ({ closeAction }: SideBarType) => {
 	const [views, setViews] = useState<ViewType>([]);
 
 	const next = (view: React.FC, props?: Object) => {
-		setViews([...views, view]);
+		const newViews = views;
+		newViews.push(view);
+		setViews(newViews);
 		setProps({ ...props });
 	};
 
 	const back = () => {
 		const backState = views.filter((view) => view != views[views.length - 1]);
+
 		setViews(backState);
 	};
 	return (
@@ -63,7 +66,7 @@ const SideBar = ({ closeAction }: SideBarType) => {
 					<ItemContent>
 						<BtnItemContent
 							title={'Excursiones por destino'}
-							onClick={() => next(Excursions)}
+							onClick={() => next(Excursions, { title: 'Extursiones' })}
 						/>
 					</ItemContent>
 					<ItemContent>

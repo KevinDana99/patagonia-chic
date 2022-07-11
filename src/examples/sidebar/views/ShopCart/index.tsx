@@ -6,7 +6,7 @@ const ShopCart = ({ next }: SidebarPropsType) => {
 	return (
 		<div>
 			<button
-				onClick={() => next && next(Excursions, { title: 'Excursiones' })}
+				onClick={() => next && next(Excursions, { title: 'Excursiones', next })}
 			>
 				Ir a Excursiones
 			</button>
