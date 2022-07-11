@@ -82,7 +82,11 @@ const Navbar: React.FC<NavbarType> = () => {
 					<SecondaryNavbar backgroundTheme={background} colorTheme={color} />
 				)}
 			</BoxNavbar>
-			{state.activeSideBar && <SideBar closeAction={handleSideBar} />}
+
+			<SideBar
+				closeAction={handleSideBar}
+				activeSidebar={state.activeSideBar}
+			/>
 		</>
 	);
 };

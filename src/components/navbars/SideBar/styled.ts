@@ -1,7 +1,18 @@
 import styled from 'styled-components';
 import { IoCloseOutline } from 'react-icons/io5';
 import TertiaryButton from '../../buttons/TertiaryButton';
-export const Container = styled.div`
+import { SideBarType } from './types';
+
+export const BoxBackground = styled.div<SideBarType>`
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(3px);
+	display: ${(props) => (props.activeSidebar ? 'flex' : 'none')};
+`;
+
+export const Container = styled.div<SideBarType>`
 	position: absolute;
 	right: 0px;
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
@@ -13,7 +24,7 @@ export const Container = styled.div`
 	height: 814px;
 	background-color: rgba(255, 255, 255, 1);
 	border-radius: 15px 0px 0px 15px;
-	display: flex;
+	display: ${(props) => (props.activeSidebar ? 'flex' : 'none')};
 	flex-direction: column;
 `;
 
@@ -90,11 +101,4 @@ export const BtnItemContentNormal = styled.button`
 		outline: none;
 		background-color: #f1f4f7;
 	}
-`;
-
-export const BoxBackground = styled.div`
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.1);
-	backdrop-filter: blur(3px);
 `;

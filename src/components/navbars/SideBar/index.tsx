@@ -19,7 +19,7 @@ import {
 	BoxBackground,
 } from './styled';
 
-const SideBar = ({ closeAction }: SideBarType) => {
+const SideBar = ({ closeAction, activeSidebar }: SideBarType) => {
 	const [state, setState] = useState<ViewType>({
 		views: [],
 		props: {},
@@ -39,8 +39,9 @@ const SideBar = ({ closeAction }: SideBarType) => {
 		setState({ ...state, views: backState });
 	};
 	return (
-		<BoxBackground>
-			<Container>
+		<>
+			<BoxBackground activeSidebar={activeSidebar}></BoxBackground>
+			<Container activeSidebar={activeSidebar}>
 				<BoxControls>
 					{state.views.length == 0 ? (
 						<BoxLogo>
@@ -97,7 +98,7 @@ const SideBar = ({ closeAction }: SideBarType) => {
 					})
 				)}
 			</Container>
-		</BoxBackground>
+		</>
 	);
 };
 

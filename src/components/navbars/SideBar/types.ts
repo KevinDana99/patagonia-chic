@@ -1,4 +1,7 @@
-export type SideBarType = { closeAction: () => void };
+export type SideBarType = {
+	closeAction?: () => void;
+	activeSidebar?: boolean;
+};
 
 export type ViewType = {
 	views: React.FC[];
