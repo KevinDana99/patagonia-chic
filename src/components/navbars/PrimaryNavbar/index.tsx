@@ -56,7 +56,7 @@ const Navbar: React.FC<NavbarType> = () => {
 		changeThemeNavbar();
 	}, [state.scrolling]);
 
-	return !state.activeSideBar ? (
+	return (
 		<>
 			<BoxNavbar>
 				<Container backgroundTheme={background} colorTheme={color}>
@@ -82,9 +82,8 @@ const Navbar: React.FC<NavbarType> = () => {
 					<SecondaryNavbar backgroundTheme={background} colorTheme={color} />
 				)}
 			</BoxNavbar>
+			{state.activeSideBar && <SideBar closeAction={handleSideBar} />}
 		</>
-	) : (
-		<SideBar closeAction={handleSideBar} />
 	);
 };
 

@@ -16,80 +16,88 @@ import {
 	Hr,
 	BtnItemContent,
 	BtnItemContentNormal,
+	BoxBackground,
 } from './styled';
 
 const SideBar = ({ closeAction }: SideBarType) => {
-	const [props, setProps] = useState({});
-	const [views, setViews] = useState<ViewType>([]);
+	const [state, setState] = useState<ViewType>({
+		views: [],
+		props: {},
+	});
 
-	const next = (view: React.FC, props?: Object) => {
-		const newViews = views;
+	const next = (view: React.FC, props: Object) => {
+		const newViews = state.views;
 		newViews.push(view);
-		setViews(newViews);
-		setProps({ ...props });
+		setState({ ...state, views: newViews, props: { ...props } });
 	};
 
 	const back = () => {
-		const backState = views.filter((view) => view != views[views.length - 1]);
+		const backState = state.views.filter(
+			(view) => view != state.views[state.views.length - 1]
+		);
 
-		setViews(backState);
+		setState({ ...state, views: backState });
 	};
 	return (
-		<Container>
-			<BoxControls>
-				{views.length == 0 ? (
-					<BoxLogo>
-						<Logo />
-					</BoxLogo>
-				) : (
-					<IconBack color="grey" onClick={back} />
-				)}
-				<BoxClose>
-					<IconClose onClick={closeAction} />
-				</BoxClose>
-			</BoxControls>
-			<Hr />
+		<BoxBackground>
+			<Container>
+				<BoxControls>
+					{state.views.length == 0 ? (
+						<BoxLogo>
+							<Logo />
+						</BoxLogo>
+					) : (
+						<IconBack color="grey" onClick={back} />
+					)}
+					<BoxClose>
+						<IconClose onClick={closeAction} />
+					</BoxClose>
+				</BoxControls>
+				<Hr />
 
-			{views.length == 0 ? (
-				<Content>
-					<ItemContent>
-						<BtnItemContentNormal onClick={closeAction}>
-							Home
-						</BtnItemContentNormal>
-					</ItemContent>
-					<ItemContent>
-						<BtnItemContent
-							title={'Mi carrito'}
-							onClick={() => next(ShopCart, { next: next })}
-						/>
-					</ItemContent>
-					<ItemContent>
-						<BtnItemContent
-							title={'Excursiones por destino'}
-							onClick={() => next(Excursions, { title: 'Extursiones' })}
-						/>
-					</ItemContent>
-					<ItemContent>
-						<BtnItemContent title={'Crear itinerario de mi viaje'} />
-					</ItemContent>
-					<ItemContent>
-						<BtnItemContent title={'Medios de pago y promociones'} />
-					</ItemContent>
-					<ItemContent>
-						<BtnItemContentNormal>Enlaces útiles</BtnItemContentNormal>
-					</ItemContent>
-					<ItemContent>
-						<BtnItemContent title={'Ayuda'} />
-					</ItemContent>
-				</Content>
-			) : (
-				views.map((CurrentView, index) => {
-					return (
-						index == views.length - 1 && <CurrentView key={index} {...props} />
-					);
-				})
-			)}
-		</Container>
+				{state.views.length == 0 ? (
+					<Content>
+						<ItemContent>
+							<BtnItemContentNormal onClick={closeAction}>
+								Home
+							</BtnItemContentNormal>
+						</ItemContent>
+						<ItemContent>
+							<BtnItemContent
+								title={'Mi carrito'}
+								onClick={() => next(ShopCart, { next: next })}
+							/>
+						</ItemContent>
+						<ItemContent>
+							<BtnItemContent
+								title={'Excursiones por destino'}
+								onClick={() => next(Excursions, { title: 'Extursiones' })}
+							/>
+						</ItemContent>
+						<ItemContent>
+							<BtnItemContent title={'Crear itinerario de mi viaje'} />
+						</ItemContent>
+						<ItemContent>
+							<BtnItemContent title={'Medios de pago y promociones'} />
+						</ItemContent>
+						<ItemContent>
+							<BtnItemContentNormal>Enlaces útiles</BtnItemContentNormal>
+						</ItemContent>
+						<ItemContent>
+							<BtnItemContent title={'Ayuda'} />
+						</ItemContent>
+					</Content>
+				) : (
+					state.views.map((CurrentView, index) => {
+						return (
+							index == state.views.length - 1 && (
+								<CurrentView key={index} {...state.props} />
+							)
+						);
+					})
+				)}
+			</Container>
+		</BoxBackground>
 	);
 };
 
