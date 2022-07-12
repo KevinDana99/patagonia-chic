@@ -13,7 +13,7 @@ export const BoxBackground = styled.div<SideBarType>`
 `;
 
 export const Container = styled.div<SideBarType>`
-	position: absolute;
+	position: fixed;
 	right: 0px;
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
@@ -46,8 +46,8 @@ export const BoxClose = styled.div`
 `;
 
 export const IconClose = styled(IoCloseOutline)`
-	color: #000;
-	font-size: 1.5rem;
+	color: rgba(0, 0, 0, 1);
+	font-size: 18.89px;
 `;
 
 export const Hr = styled.div`
@@ -70,18 +70,21 @@ export const Content = styled.div`
 `;
 
 export const ItemContent = styled.div`
-	width: 100%;
-	height: 28px;
+	margin-top: 20px;
+	height: 26px;
 `;
 
 export const BtnItemContent = styled(TertiaryButton)`
 	font-weight: 300;
-	font-size: 12px;
+	font-size: 17px;
 	color: #000;
 
 	&:active {
 		color: #0090e0;
 		outline: none;
+	}
+	&:hover {
+		font-size: 17px;
 	}
 `;
 
@@ -90,7 +93,7 @@ export const BtnItemContentNormal = styled.button`
 	border: none;
 	width: 80%;
 	height: 28px;
-	font-size: 12px;
+	font-size: 17px;
 	color: #000;
 	display: flex;
 	align-items: center;
@@ -100,5 +103,6 @@ export const BtnItemContentNormal = styled.button`
 		color: #0090e0;
 		outline: none;
 		background-color: #f1f4f7;
+		font-size: 17px;
 	}
 `;

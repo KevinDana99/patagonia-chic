@@ -82,7 +82,7 @@ const SideBar = ({ closeAction, activeSidebar }: SideBarType) => {
 							<BtnItemContent title={'Medios de pago y promociones'} />
 						</ItemContent>
 						<ItemContent>
-							<BtnItemContentNormal>Enlaces útiles</BtnItemContentNormal>
+							<BtnItemContent title="Enlaces utiles" />
 						</ItemContent>
 						<ItemContent>
 							<BtnItemContent title={'Ayuda'} />
