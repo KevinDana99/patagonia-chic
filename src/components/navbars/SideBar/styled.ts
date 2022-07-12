@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IoCloseOutline } from 'react-icons/io5';
+import { IoChevronBackOutline, IoCloseOutline } from 'react-icons/io5';
 import TertiaryButton from '../../buttons/TertiaryButton';
 import { SideBarType } from './types';
 
@@ -48,6 +48,15 @@ export const BoxClose = styled.div`
 export const IconClose = styled(IoCloseOutline)`
 	color: rgba(0, 0, 0, 1);
 	font-size: 18.89px;
+`;
+
+export const ButtonBack = styled.button`
+	background-color: transparent;
+	border: none;
+	color: rgba(59, 59, 59, 1);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
 
 export const Hr = styled.div`

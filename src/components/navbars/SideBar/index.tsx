@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Logo from '../../../examples/navbar/logo';
-import { IoArrowBack as IconBack } from 'react-icons/io5';
+import { IoChevronBackOutline as IconBack } from 'react-icons/io5';
 import ShopCart from '../../../examples/sidebar/views/ShopCart';
 import Excursions from '../../../examples/sidebar/views/Excursions';
 import { SideBarType, ViewType } from './types';
@@ -17,6 +17,7 @@ import {
 	BtnItemContent,
 	BtnItemContentNormal,
 	BoxBackground,
+	ButtonBack,
 } from './styled';
 
 const SideBar = ({ closeAction, activeSidebar }: SideBarType) => {
@@ -48,7 +49,10 @@ const SideBar = ({ closeAction, activeSidebar }: SideBarType) => {
 							<Logo />
 						</BoxLogo>
 					) : (
-						<IconBack color="grey" onClick={back} />
+						<ButtonBack onClick={back}>
+							<IconBack />
+							Atrás
+						</ButtonBack>
 					)}
 					<BoxClose>
 						<IconClose onClick={closeAction} />
