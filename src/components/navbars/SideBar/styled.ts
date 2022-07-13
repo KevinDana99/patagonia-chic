@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IoCloseOutline } from 'react-icons/io5';
+import { IoCloseOutline, IoChevronBackOutline } from 'react-icons/io5';
 import TertiaryButton from '../../buttons/TertiaryButton';
 import { SideBarType } from './types';
 
@@ -26,12 +26,13 @@ export const Container = styled.div<SideBarType>`
 	border-radius: 15px 0px 0px 15px;
 	transform: ${(props) =>
 		props.activeSidebar ? 'translateX(0px)' : 'translateX(360px);'};
-	transition: all 300ms ease-out;
+	transition: all 200ms ease-out;
 	display: flex;
 	flex-direction: column;
 `;
 
 export const BoxControls = styled.div`
+	min-height: 50px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -40,8 +41,6 @@ export const BoxControls = styled.div`
 export const BoxLogo = styled.div``;
 
 export const BoxClose = styled.div`
-	width: 30px;
-	height: 30px;
 	margin-right: 10px;
 	display: flex;
 	justify-content: center;
@@ -50,16 +49,22 @@ export const BoxClose = styled.div`
 
 export const IconClose = styled(IoCloseOutline)`
 	color: rgba(0, 0, 0, 1);
-	font-size: 18.89px;
+	font-size: 35px;
 `;
 
 export const ButtonBack = styled.button`
 	background-color: transparent;
+	height: 30px;
 	border: none;
+	font-size: 17px;
 	color: rgba(59, 59, 59, 1);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+`;
+
+export const IconBack = styled(IoChevronBackOutline)`
+	margin-bottom: 2px;
 `;
 
 export const Hr = styled.div`
@@ -71,7 +76,7 @@ export const Hr = styled.div`
 `;
 
 export const Content = styled.div`
-	margin-top: 20px;
+	margin-top: 23px;
 	height: 300px;
 	display: flex;
 	flex-direction: column;
