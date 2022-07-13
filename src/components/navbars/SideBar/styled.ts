@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IoChevronBackOutline, IoCloseOutline } from 'react-icons/io5';
+import { IoCloseOutline } from 'react-icons/io5';
 import TertiaryButton from '../../buttons/TertiaryButton';
 import { SideBarType } from './types';
 
