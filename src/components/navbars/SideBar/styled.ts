@@ -24,7 +24,10 @@ export const Container = styled.div<SideBarType>`
 	height: 814px;
 	background-color: rgba(255, 255, 255, 1);
 	border-radius: 15px 0px 0px 15px;
-	display: ${(props) => (props.activeSidebar ? 'flex' : 'none')};
+	transform: ${(props) =>
+		props.activeSidebar ? 'translateX(0px)' : 'translateX(360px);'};
+	transition: all 300ms ease-out;
+	display: flex;
 	flex-direction: column;
 `;
 

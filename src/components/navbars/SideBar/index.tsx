@@ -41,7 +41,10 @@ const SideBar = ({ closeAction, activeSidebar }: SideBarType) => {
 	};
 	return (
 		<>
-			<BoxBackground activeSidebar={activeSidebar}></BoxBackground>
+			<BoxBackground
+				activeSidebar={activeSidebar}
+				onClick={closeAction}
+			></BoxBackground>
 			<Container activeSidebar={activeSidebar}>
 				<BoxControls>
 					{state.views.length == 0 ? (
