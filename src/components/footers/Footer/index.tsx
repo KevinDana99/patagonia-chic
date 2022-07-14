@@ -17,20 +17,11 @@ import {
 } from './styled';
 import { icons, sectionList } from './utils';
 
-const Footer: FC<FooterPropsType> = ({
-	language,
-	backgroundColor,
-	colorDivision,
-	backgroundColorLanguage,
-}) => {
+const Footer: FC<FooterPropsType> = ({ language }) => {
 	return (
-		<Container backgroundColor={backgroundColor}>
+		<Container>
 			<ContainerSectionsTop>
-				<SectionLeft
-					logo={{ size: 220 }}
-					language={language}
-					backgroundColorLanguage={backgroundColorLanguage}
-				/>
+				<SectionLeft logo={{ size: 220 }} language={language} />
 				<ContainerSectionsCommon>
 					{sectionList?.length &&
 						sectionList.map((item, index) => (
@@ -39,7 +30,7 @@ const Footer: FC<FooterPropsType> = ({
 				</ContainerSectionsCommon>
 
 				{/* version movil */}
-				<LanguageMovil backgroundColorLanguage={backgroundColorLanguage}>
+				<LanguageMovil>
 					<ImgStyled flag={language.flag}></ImgStyled>
 					<LanguageLabel>{language.label}</LanguageLabel>
 				</LanguageMovil>
@@ -54,7 +45,7 @@ const Footer: FC<FooterPropsType> = ({
 					))}
 				</IconsMovil>
 			</ContainerIcons>
-			<HrDivStyled colorDivision={colorDivision} />
+			<HrDivStyled />
 
 			<SectionSocial />
 		</Container>
