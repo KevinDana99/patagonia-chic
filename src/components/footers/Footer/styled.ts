@@ -1,15 +1,14 @@
 import styled from 'styled-components';
-import { FooterPropsType, LanguageType, SectionLeftType } from './types';
+import { LanguageType } from './types';
 
-export const Container = styled.div<Pick<FooterPropsType, 'backgroundColor'>>`
+export const Container = styled.div`
 	padding-top: 50px;
 	padding-bottom: 40px;
 	height: 388px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: ${(props) =>
-		props.backgroundColor ? props.backgroundColor : '#F1F4F7'};
+	background-color: #f1f4f7;
 	@media screen and (max-width: 1120px) {
 		padding-top: 34px;
 		height: auto;
@@ -71,11 +70,8 @@ export const ContainerSocial = styled.div`
 		width: 335px;
 	}
 `;
-export const Language = styled.div<
-	Pick<SectionLeftType, 'backgroundColorLanguage'>
->`
-	background-color: ${({ backgroundColorLanguage }) =>
-		backgroundColorLanguage ? backgroundColorLanguage : '#FFFFFF'};
+export const Language = styled.div`
+	background-color: #ffffff;
 	width: 6.5rem;
 	border-radius: 3rem;
 	padding: 0.5rem;
@@ -92,14 +88,11 @@ export const Language = styled.div<
 		display: none;
 	}
 `;
-export const LanguageMovil = styled.div<
-	Pick<SectionLeftType, 'backgroundColorLanguage'>
->`
+export const LanguageMovil = styled.div`
 	display: none;
 	@media screen and (max-width: 450px) {
 		display: flex;
-		background-color: ${({ backgroundColorLanguage }) =>
-			backgroundColorLanguage ? backgroundColorLanguage : '#FFFFFF'};
+		background-color: #ffffff;
 		width: 6.5rem;
 		border-radius: 3rem;
 		padding: 0.5rem;
@@ -141,11 +134,19 @@ export const ContainerSectionCommon = styled.div`
 	}
 `;
 
-export const HrDivStyled = styled.div<Pick<FooterPropsType, 'colorDivision'>>`
+export const HrDivStyled = styled.div`
 	width: 1120px;
 	height: 2px;
-	background-color: ${({ colorDivision }) =>
-		colorDivision ? colorDivision : 'lightblue'};
+	background-color: rgb(35, 132, 229);
+	background-image: radial-gradient(
+		circle,
+		rgba(43, 235, 255, 0.46),
+		rgba(59, 178, 249, 0.15) 27.5%,
+		rgba(35, 132, 229, 0.3),
+		rgb(35, 132, 229) 57.5%,
+		rgba(35, 132, 229, 0.81) 75%,
+		rgba(168, 88, 224, 0.37)
+	) !important;
 	@media screen and (max-width: 1120px) {
 		width: 720px;
 	}
