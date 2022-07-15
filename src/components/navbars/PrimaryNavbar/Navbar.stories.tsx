@@ -28,6 +28,6 @@ const template: Story<NavbarType> = (args) => (
 	</div>
 );
 
-export const PrimaryNavbar: Story<NavbarType> = template.bind({});
+export const navbar: Story<NavbarType> = template.bind({});
 
-PrimaryNavbar.args = {};
+navbar.args = {};

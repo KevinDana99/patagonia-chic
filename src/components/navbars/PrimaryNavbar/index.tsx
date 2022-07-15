@@ -18,6 +18,7 @@ import SecondaryNavbar from '../SecondaryNavbar';
 import SideBar from '../SideBar';
 import { themesMap } from './themes_map';
 import { NavbarType } from './types';
+import mapToViews from '../../../examples/sidebar/views.map';
 
 const Navbar: React.FC<NavbarType> = () => {
 	const [state, setState] = useState({
@@ -84,6 +85,7 @@ const Navbar: React.FC<NavbarType> = () => {
 			</BoxNavbar>
 
 			<SideBar
+				mapToViews={mapToViews}
 				closeAction={handleSideBar}
 				activeSidebar={state.activeSideBar}
 			/>
