@@ -85,6 +85,7 @@ const Sidebar = ({ closeAction, activeSidebar, mapToViews }: SideBarType) => {
 													next,
 													title: e.name,
 													navigationNode: e.navigationNode,
+													RenderView: e.RenderView,
 												})
 											}
 										/>

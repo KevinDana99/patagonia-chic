@@ -4,64 +4,9 @@ import Template from './views/Template';
 
 const mapToViews = [
 	{
-		name: 'Template',
+		name: 'Excursiones',
 		content: Template,
-		navigationNode: [
-			{
-				name: 'Otro template',
-				content: Template,
-				navigationNode: [
-					{
-						name: 'Enlace 1',
-						content: Template,
-					},
-					{
-						name: 'Enlace 2',
-						content: Template,
-					},
-					{
-						name: 'Enlace 3',
-						content: Template,
-					},
-				],
-			},
-			{
-				name: 'Otro template',
-				content: Template,
-				navigationNode: [
-					{
-						name: 'Enlace 1',
-						content: Template,
-					},
-					{
-						name: 'Enlace 2',
-						content: Template,
-					},
-					{
-						name: 'Enlace 3',
-						content: Template,
-					},
-				],
-			},
-			{
-				name: 'Otro template',
-				content: Template,
-				navigationNode: [
-					{
-						name: 'Enlace 1',
-						content: Template,
-					},
-					{
-						name: 'Enlace 2',
-						content: Template,
-					},
-					{
-						name: 'Enlace 3',
-						content: Template,
-					},
-				],
-			},
-		],
+		RenderView: Excursions,
 	},
 
 	{
@@ -71,6 +16,7 @@ const mapToViews = [
 			{
 				name: 'Otro template',
 				content: Template,
+				RenderView: Excursions,
 				navigationNode: [
 					{
 						name: 'Enlace 1',

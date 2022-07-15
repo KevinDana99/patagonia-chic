@@ -3,11 +3,9 @@ import { SecondaryButton } from '../../../../components';
 import { SidebarPropsType } from '../../../../components/navbars/SideBar/types';
 import { Title } from './styled';
 
-const Template = ({ next, navigationNode }: SidebarPropsType) => {
+const Template = ({ next, navigationNode, RenderView }: SidebarPropsType) => {
 	return (
 		<>
-			<Title>Esto es una plantilla</Title>
-
 			{navigationNode?.map((e, index) => {
 				return (
 					<SecondaryButton
@@ -24,6 +22,8 @@ const Template = ({ next, navigationNode }: SidebarPropsType) => {
 					/>
 				);
 			})}
+
+			{RenderView && <RenderView />}
 		</>
 	);
 };
