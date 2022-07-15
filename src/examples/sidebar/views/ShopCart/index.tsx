@@ -1,15 +1,20 @@
 import React from 'react';
+import { SecondaryButton } from '../../../../components';
 import { SidebarPropsType } from '../../../../components/navbars/SideBar/types';
-import Excursions from './../Excursions';
 
-const ShopCart = ({ next }: SidebarPropsType) => {
+const ShopCart = ({ next, navigationNode }: SidebarPropsType) => {
 	return (
 		<div>
-			<button
-				onClick={() => next && next(Excursions, { title: 'Excursiones', next })}
-			>
-				Ir a Excursiones
-			</button>
+			{navigationNode?.map((e, index) => {
+				return (
+					<SecondaryButton
+						title={e.name}
+						key={index}
+						onClick={() => next && next(e.content, { title: e.name, next })}
+					/>
+				);
+			})}
+
 			<div>Mi carrito</div>
 			<div>Otra navegacion</div>
 		</div>

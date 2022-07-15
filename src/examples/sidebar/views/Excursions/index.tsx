@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Excursions = ({ title }: { title?: string }) => {
-	return <div>{title}</div>;
+const Excursions = () => {
+	return <div>Estas son las excursiones</div>;
 };
 
 export default Excursions;
