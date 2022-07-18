@@ -1,4 +1,6 @@
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
+import { IconType } from 'react-icons';
 
 export const ButtonPrimaryStyled = styled.button`
 	min-width: 180px;
@@ -53,4 +55,19 @@ export const BoxLoading = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+`;
+
+export const ButtonPrimaryContent = styled.div`
+	display: flex;
+	justify-content: center;
+`;
+
+export const ButtonPrimaryText = styled.text``;
+
+export const Icon = styled(
+	({ component, ...props }: { component: ReactElement; props: object }) =>
+		React.cloneElement(component, props)
+)`
+	font-size: 16px;
+	margin-right: 10px;
 `;
