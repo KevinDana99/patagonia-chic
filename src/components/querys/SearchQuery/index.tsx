@@ -15,6 +15,8 @@ import 'react-dates/lib/css/_datepicker.css';
 import { Calendar } from './Calendar';
 import { PlaceList } from './PlaceList';
 import { getViewport } from './viewport.map';
+import Modal from '../../../examples/query/modal';
+import PlaceListMobile from './PlaceListMobile';
 
 export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 	const [data, setData] = useState<StateSearchQueryType>({
@@ -61,11 +63,7 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 							isSelected={showCalendar && calendarFocusedInput === 'startDate'}
 							clearData={clearDates}
 						/>
-					</>
-				)}
 
-				{dispositive == 'DESKTOP' && (
-					<>
 						<Divider />
 						<OptionItem
 							label={'Fechar llegada'}
@@ -85,15 +83,35 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 					/>
 				</ButtonContainer>
 			</SearchQueryOptions>
-			{showPlaceList && (
-				<PlaceList
-					places={places}
-					setPlaceData={setData}
-					openCalendar={() => setShowCalendar(!data.startDate || !data.endDate)}
-					closeList={() => setShowPlaceList(false)}
-					values={data}
-				/>
-			)}
+			{showPlaceList &&
+				(dispositive == 'DESKTOP' ? (
+					<PlaceList
+						places={places}
+						setPlaceData={setData}
+						openCalendar={() =>
+							setShowCalendar(!data.startDate || !data.endDate)
+						}
+						closeList={() => setShowPlaceList(false)}
+						values={data}
+					/>
+				) : (
+					<Modal
+						Children={() => (
+							<>
+								<input type="text" />
+								<PlaceList
+									places={places}
+									setPlaceData={setData}
+									openCalendar={() =>
+										setShowCalendar(!data.startDate || !data.endDate)
+									}
+									closeList={() => setShowPlaceList(false)}
+									values={data}
+								/>
+							</>
+						)}
+					/>
+				))}
 			<CalendarContainer>
 				{showCalendar && (
 					<Calendar

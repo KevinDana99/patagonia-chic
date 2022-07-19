@@ -1,4 +1,4 @@
-import { MomentInputObject } from 'moment';
+import { MomentFormatSpecification, MomentInputObject } from 'moment';
 import React from 'react';
 
 interface IPlace {
@@ -16,8 +16,11 @@ export type SearchQueryType = {
 
 export type StateSearchQueryType = {
 	place?: IPlace | null;
-	startDate?: { name?: string; date?: MomentInputObject | string } | null;
-	endDate?: { name?: string; date?: MomentInputObject | string } | null;
+	startDate?: {
+		name: string;
+		date?: MomentFormatSpecification;
+	} | null;
+	endDate?: { name: string; date?: MomentFormatSpecification } | null;
 };
 
 export type CalendarType = {
