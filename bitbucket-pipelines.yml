@@ -7,7 +7,7 @@ definitions:
         name: Build and Push to GCP registry
         image: google/cloud-sdk:alpine
         script:
-          - apk add --update alpine-sdk
+          - apk add --update alpine-sdk nodejs npm
           - npm install
           - npm run build-storybook
           - echo $GCLOUD_API_KEYFILE > /tmp/gcloud-api-key.json
