@@ -8,6 +8,8 @@ definitions:
         image: google/cloud-sdk:alpine
         script:
           - apk add --update alpine-sdk
+          - npm install
+          - npm run build-storybook
           - echo $GCLOUD_API_KEYFILE > /tmp/gcloud-api-key.json
           - gcloud auth activate-service-account --key-file /tmp/gcloud-api-key.json
           - gcloud config set project $GCLOUD_PROJECT
