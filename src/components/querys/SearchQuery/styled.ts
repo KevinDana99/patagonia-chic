@@ -16,6 +16,7 @@ export const SearchQueryContainer = styled.div`
 `;
 export const SearchQueryOptions = styled.div`
 	display: inline-flex;
+	width: 100%;
 	min-width: 350px;
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
 	border-radius: 50px;
@@ -125,6 +126,9 @@ export const CalendarContainer = styled.div<CalendarType>`
 		`
 	margin-top: 50px;
 	box-shadow: none;
+	flex-direction: column;
+	justify-content : space-around;
+	height : 60%;
 	
 	`}
 

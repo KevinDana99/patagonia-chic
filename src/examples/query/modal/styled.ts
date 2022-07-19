@@ -13,9 +13,9 @@ export const Container = styled.div`
 export const BoxModal = styled.div`
 	font-family: arial;
 	font-size: 18px;
-	padding: 5%;
+	padding: 3%;
 	box-sizing: border-box;
-	margin-top: 100px;
+	margin-top: 20px;
 	position: absolute;
 	z-index: 6;
 	width: 100%;

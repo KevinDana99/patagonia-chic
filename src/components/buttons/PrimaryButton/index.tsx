@@ -15,10 +15,15 @@ const PrimaryButton = ({
 	onClick,
 	disabled = false,
 	IconComponent,
+	className,
 }: PrimaryButtonType) => {
 	disabled = disabled || loading;
 	return (
-		<ButtonPrimaryStyled disabled={disabled} onClick={onClick}>
+		<ButtonPrimaryStyled
+			disabled={disabled}
+			onClick={onClick}
+			className={className}
+		>
 			{!loading ? (
 				<ButtonPrimaryContent>
 					{IconComponent && <Icon component={<IconComponent />} />}

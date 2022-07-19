@@ -7,4 +7,5 @@ export type PrimaryButtonType = {
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 	disabled?: boolean;
 	IconComponent?: IconType;
+	className?: string;
 };
