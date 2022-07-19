@@ -8,25 +8,29 @@ import {
 	SearchQueryContainer,
 	SearchQueryOptions,
 } from './styled';
-import { SearchQueryType } from './types';
+import { SearchQueryType, StateSearchQueryType } from './types';
 import { IoSearch } from 'react-icons/io5';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { Calendar } from './Calendar';
 import { PlaceList } from './PlaceList';
+import { getViewport } from './viewport.map';
 
 export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
-	const [data, setData] = useState({
-		place: '',
-		startDate: '',
-		endDate: '',
+	const [data, setData] = useState<StateSearchQueryType>({
+		place: null,
+		startDate: null,
+		endDate: null,
 	});
+
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
 	const [calendarFocusedInput, setCalendarFocusedInput] = useState('startDate');
+	const [viewport, setViewport] = useState(window.visualViewport.width);
+	const dispositive = getViewport(viewport);
 
 	const clearDates = () => {
-		setData({ ...data, startDate: '', endDate: '' });
+		setData({ ...data, startDate: null, endDate: null });
 		setShowCalendar(true);
 		setCalendarFocusedInput('startDate');
 	};
@@ -40,32 +44,42 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 					onClick={() => setShowPlaceList(true)}
 					value={data.place?.name}
 					clearData={() => {
-						setData({ ...data, place: '' });
+						setData({ ...data, place: null });
 						setShowPlaceList(true);
 						setShowCalendar(false);
 					}}
 					isSelected={showPlaceList}
 				/>
+
+				{dispositive == 'DESKTOP' && (
+					<>
+						<Divider />
+						<OptionItem
+							label={'Fecha partida'}
+							title={'Seleccione fecha'}
+							value={data.startDate?.name}
+							isSelected={showCalendar && calendarFocusedInput === 'startDate'}
+							clearData={clearDates}
+						/>
+					</>
+				)}
+
+				{dispositive == 'DESKTOP' && (
+					<>
+						<Divider />
+						<OptionItem
+							label={'Fechar llegada'}
+							title={'Seleccione fecha'}
+							value={data.endDate?.name}
+							isSelected={showCalendar && calendarFocusedInput === 'endDate'}
+							clearData={clearDates}
+						/>
+					</>
+				)}
 				<Divider />
-				<OptionItem
-					label={'Fecha partida'}
-					title={'Seleccione fecha'}
-					value={data.startDate?.name}
-					isSelected={showCalendar && calendarFocusedInput === 'startDate'}
-					clearData={clearDates}
-				/>
-				<Divider />
-				<OptionItem
-					label={'Fechar llegada'}
-					title={'Seleccione fecha'}
-					value={data.endDate?.name}
-					isSelected={showCalendar && calendarFocusedInput === 'endDate'}
-					clearData={clearDates}
-				/>
-				<Divider />
-				<ButtonContainer>
+				<ButtonContainer dispositive={dispositive}>
 					<PrimaryButton
-						title="Buscar Excursiones"
+						title={dispositive == 'DESKTOP' ? 'Buscar Excursiones' : ''}
 						IconComponent={IoSearch}
 						onClick={() => onQuerySubmit(data)}
 					/>
@@ -83,6 +97,7 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 			<CalendarContainer>
 				{showCalendar && (
 					<Calendar
+						dispositive={dispositive}
 						setDates={setData}
 						values={data}
 						setFocused={setCalendarFocusedInput}

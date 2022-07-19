@@ -8,6 +8,7 @@ import {
 	PlaceSubtitle,
 	PlaceTitle,
 } from './styled';
+import { PlaceListType } from './types';
 
 export const PlaceList = ({
 	places,
@@ -15,7 +16,7 @@ export const PlaceList = ({
 	openCalendar,
 	closeList,
 	values,
-}) => (
+}: PlaceListType) => (
 	<PlaceListContainer>
 		{places.map((place) => (
 			<PlaceContainer

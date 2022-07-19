@@ -4,24 +4,26 @@ import {
 	IoChevronForwardSharp,
 } from 'react-icons/io5';
 import styled from 'styled-components';
+import { CalendarType, OptionItemType } from './types';
 
 const selectedShadow =
 	'12px 0px 15px -5px rgb(0 0 0 / 20%), -12px 0px 15px -5px rgb(0 0 0 / 20%);';
 
 export const SearchQueryContainer = styled.div`
 	display: inline-block;
-	width: max-content;
+	width: 100%;
 	flex-direction: column;
 `;
 export const SearchQueryOptions = styled.div`
 	display: inline-flex;
+	min-width: 350px;
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
 	border-radius: 50px;
 	background: #ffffff;
 	overflow: hidden;
 `;
 
-export const OptionContainer = styled.div`
+export const OptionContainer = styled.div<OptionItemType>`
 	display: flex;
 	align-items: center;
 	flex: 1;
@@ -32,6 +34,13 @@ export const OptionContainer = styled.div`
 	&:hover {
 		box-shadow: ${selectedShadow};
 		cursor: pointer;
+	}
+
+	@media (max-width: 500px) {
+		width: 80%;
+		display: flex;
+		justify-content: space-around;
+		flex-direction: row;
 	}
 `;
 
@@ -73,15 +82,29 @@ export const CloseIcon = styled(IoClose)`
 	margin-right: 20px;
 `;
 
-export const Divider = styled.div`
+export const Divider = styled.div<CalendarType>`
 	border: 0.5px solid #ddd;
+	border: ${(props) => props.dispositive != 'DESKTOP' && '0.01px solid #ddd'};
 	margin-top: 10px;
 	margin-bottom: 10px;
 `;
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div<CalendarType>`
 	margin-left: 10px;
 	margin-right: 10px;
+
+	.bhSbQf {
+		${(props) =>
+			props.dispositive != 'DESKTOP' &&
+			`
+			min-width : 30px;
+		border: 100%;
+		padding-right: 5px;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		align-items: center;`}
+	}
 `;
 
 export const CalendarContainer = styled.div`

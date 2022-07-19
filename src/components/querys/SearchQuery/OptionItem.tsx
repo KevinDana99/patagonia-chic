@@ -6,6 +6,7 @@ import {
 	OptionContent,
 	Title,
 } from './styled';
+import { OptionItemType } from './types';
 
 export const OptionItem = ({
 	label,
@@ -14,7 +15,7 @@ export const OptionItem = ({
 	value,
 	clearData,
 	isSelected,
-}) => (
+}: OptionItemType) => (
 	<OptionContainer onClick={onClick} isSelected={isSelected}>
 		<OptionContent>
 			<Label>{label}</Label>
