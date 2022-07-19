@@ -16,10 +16,12 @@ export const PlaceList = ({
 	openCalendar,
 	closeList,
 	values,
+	dispositive,
 }: PlaceListType) => (
-	<PlaceListContainer>
-		{places.map((place) => (
+	<PlaceListContainer dispositive={dispositive}>
+		{places.map((place, index) => (
 			<PlaceContainer
+				key={index}
 				onClick={() => {
 					setPlaceData({ ...values, place: place });
 					closeList();

@@ -47,4 +47,5 @@ export type PlaceListType = {
 	openCalendar: () => void;
 	closeList: () => void;
 	values?: StateSearchQueryType;
+	dispositive?: string;
 };

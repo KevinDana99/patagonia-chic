@@ -7,10 +7,14 @@ export const Container = styled.div`
 	width: 100%;
 	z-index: 5;
 	height: 100%;
-	background-color: #00000062;
+	background-color: #11111162;
 `;
 
 export const BoxModal = styled.div`
+	font-family: arial;
+	font-size: 18px;
+	padding: 5%;
+	box-sizing: border-box;
 	margin-top: 100px;
 	position: absolute;
 	z-index: 6;
@@ -19,4 +23,8 @@ export const BoxModal = styled.div`
 	height: auto;
 	min-height: 800px;
 	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
 `;

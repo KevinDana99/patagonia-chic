@@ -4,7 +4,7 @@ import {
 	IoChevronForwardSharp,
 } from 'react-icons/io5';
 import styled from 'styled-components';
-import { CalendarType, OptionItemType } from './types';
+import { CalendarType, OptionItemType, PlaceListType } from './types';
 
 const selectedShadow =
 	'12px 0px 15px -5px rgb(0 0 0 / 20%), -12px 0px 15px -5px rgb(0 0 0 / 20%);';
@@ -107,7 +107,7 @@ export const ButtonContainer = styled.div<CalendarType>`
 	}
 `;
 
-export const CalendarContainer = styled.div`
+export const CalendarContainer = styled.div<CalendarType>`
 	margin-top: 20px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 24px;
@@ -120,6 +120,13 @@ export const CalendarContainer = styled.div`
 	position: absolute;
 	top: 80px;
 	background-color: #ffffff;
+	${(props) =>
+		props.dispositive != 'DESKTOP' &&
+		`
+	margin-top: 50px;
+	box-shadow: none;
+	
+	`}
 
 	.CalendarDay__selected_span {
 		background: #ebf4f8;
@@ -212,7 +219,7 @@ export const CalendarButtonNext = styled(IoChevronForwardSharp)`
 	}
 `;
 
-export const PlaceListContainer = styled.div`
+export const PlaceListContainer = styled.div<PlaceListType>`
 	position: absolute;
 	width: 350px;
 	margin-top: 10px;
@@ -220,6 +227,13 @@ export const PlaceListContainer = styled.div`
 	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
 	overflow: hidden;
 	padding: 20px 0px;
+
+	${(props) =>
+		props.dispositive == 'MOBILE' &&
+		`position : relative;
+	box-shadow: none;
+	
+	`}
 `;
 
 export const PlaceContainer = styled.div`

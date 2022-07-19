@@ -4,6 +4,7 @@ import { DayPickerRangeController } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import moment from 'moment';
+import { CalendarType, StateSearchQueryType } from './types';
 moment.locale('es');
 
 export const Calendar = ({
@@ -12,36 +13,38 @@ export const Calendar = ({
 	setFocused,
 	focused,
 	closeCalendar,
-}) => {
+	dispositive,
+}: CalendarType) => {
 	const [calendarPreviousButton, setCalendarPreviousButton] = useState(false);
 
-	const { startDate, endDate } = values;
-
 	const currentDate = moment();
+
 	return (
 		<DayPickerRangeController
-			startDate={startDate?.date}
+			startDate={values?.startDate?.date}
 			initial
-			endDate={endDate?.date}
-			onDatesChange={({ startDate, endDate }: any) => {
-				setDates({
-					...values,
-					startDate: {
-						name: moment(startDate).format('MMMM, D'),
-						date: startDate,
-					},
-					endDate: {
-						name: endDate && moment(endDate).format('MMMM, D'),
-						date: endDate,
-					},
-				});
-				focused === 'endDate' && closeCalendar();
+			endDate={values?.endDate?.date}
+			onDatesChange={({ startDate, endDate }: StateSearchQueryType) => {
+				console.log(moment(startDate).format('MMMM,D'));
+				setDates &&
+					setDates({
+						...values,
+						startDate: {
+							name: moment(startDate).format('MMMM, D'),
+							date: startDate,
+						},
+						endDate: {
+							name: moment(endDate).format('MMMM, D'),
+							date: endDate,
+						},
+					});
+				focused === 'endDate' && closeCalendar && closeCalendar();
 			}}
-			onFocusChange={(focusedInput: React.SetStateAction<undefined>) =>
-				setFocused(focusedInput)
+			onFocusChange={(focusedInput: React.SetStateAction<string>) =>
+				setFocused && setFocused(focusedInput)
 			}
 			focusedInput={focused}
-			numberOfMonths={2}
+			numberOfMonths={dispositive == 'DESKTOP' ? 2 : 1}
 			isOutsideRange={(dateRange: moment.MomentInput) =>
 				!currentDate.isSameOrAfter(dateRange) ||
 				moment(dateRange).format('MM/DD/YYYY') === moment().format('MM/DD/YYYY')

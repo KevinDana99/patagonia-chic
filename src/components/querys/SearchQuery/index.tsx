@@ -16,7 +16,7 @@ import { Calendar } from './Calendar';
 import { PlaceList } from './PlaceList';
 import { getViewport } from './viewport.map';
 import Modal from '../../../examples/query/modal';
-import PlaceListMobile from './PlaceListMobile';
+import PlaceListMobile from './PlaceListMobile/PlaceListMobile';
 
 export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 	const [data, setData] = useState<StateSearchQueryType>({
@@ -24,7 +24,7 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 		startDate: null,
 		endDate: null,
 	});
-
+	const [modal, setModal] = useState(false);
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
 	const [calendarFocusedInput, setCalendarFocusedInput] = useState('startDate');
@@ -37,13 +37,22 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 		setCalendarFocusedInput('startDate');
 	};
 
+	const openCloseModal = () => {
+		setModal(!modal);
+	};
+
 	return (
 		<SearchQueryContainer>
 			<SearchQueryOptions>
 				<OptionItem
 					label={'Lugar'}
 					title={'¿A dónde vas?'}
-					onClick={() => setShowPlaceList(true)}
+					onClick={() => {
+						dispositive == 'DESKTOP'
+							? setShowPlaceList(true)
+							: setShowPlaceList(true);
+						openCloseModal();
+					}}
 					value={data.place?.name}
 					clearData={() => {
 						setData({ ...data, place: null });
@@ -83,47 +92,57 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 					/>
 				</ButtonContainer>
 			</SearchQueryOptions>
-			{showPlaceList &&
-				(dispositive == 'DESKTOP' ? (
-					<PlaceList
-						places={places}
-						setPlaceData={setData}
-						openCalendar={() =>
-							setShowCalendar(!data.startDate || !data.endDate)
-						}
-						closeList={() => setShowPlaceList(false)}
-						values={data}
-					/>
-				) : (
-					<Modal
-						Children={() => (
-							<>
-								<input type="text" />
-								<PlaceList
-									places={places}
-									setPlaceData={setData}
-									openCalendar={() =>
-										setShowCalendar(!data.startDate || !data.endDate)
-									}
-									closeList={() => setShowPlaceList(false)}
-									values={data}
-								/>
-							</>
-						)}
-					/>
-				))}
-			<CalendarContainer>
-				{showCalendar && (
-					<Calendar
-						dispositive={dispositive}
-						setDates={setData}
-						values={data}
-						setFocused={setCalendarFocusedInput}
-						focused={calendarFocusedInput}
-						closeCalendar={() => setShowCalendar(false)}
-					/>
-				)}
-			</CalendarContainer>
+			{dispositive == 'DESKTOP' && showPlaceList && (
+				<PlaceList
+					places={places}
+					setPlaceData={setData}
+					openCalendar={() => setShowCalendar(!data.startDate || !data.endDate)}
+					closeList={() => setShowPlaceList(false)}
+					values={data}
+				/>
+			)}
+
+			{dispositive != 'DESKTOP' && modal && (
+				<Modal
+					Children={() => (
+						<PlaceListMobile
+							openCloseModal={openCloseModal}
+							showPlaceList={showPlaceList}
+							showCalendar={showCalendar}
+							places={places}
+							setPlaceData={setData}
+							setShowCalendar={setShowCalendar}
+							setShowPlaceList={setShowPlaceList}
+							openCalendar={() =>
+								setShowCalendar(!data.startDate || !data.endDate)
+							}
+							closeList={() => setShowPlaceList(false)}
+							data={data}
+							setCalendarData={setData}
+							dispositive={dispositive}
+							values={data}
+							setFocused={setCalendarFocusedInput}
+							focused={calendarFocusedInput}
+							closeCalendar={() => setShowCalendar(false)}
+						/>
+					)}
+				/>
+			)}
+
+			{dispositive == 'DESKTOP' && (
+				<CalendarContainer>
+					{showCalendar && (
+						<Calendar
+							dispositive={dispositive}
+							setDates={setData}
+							values={data}
+							setFocused={setCalendarFocusedInput}
+							focused={calendarFocusedInput}
+							closeCalendar={() => setShowCalendar(false)}
+						/>
+					)}
+				</CalendarContainer>
+			)}
 		</SearchQueryContainer>
 	);
 };
