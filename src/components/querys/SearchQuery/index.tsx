@@ -52,6 +52,8 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 							? setShowPlaceList(true)
 							: setShowPlaceList(true);
 						openCloseModal();
+						setData({ ...data, startDate: null, endDate: null });
+						setCalendarFocusedInput('startDate');
 					}}
 					value={data.place?.name}
 					clearData={() => {
