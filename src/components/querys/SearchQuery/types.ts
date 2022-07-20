@@ -9,18 +9,20 @@ interface IPlace {
 	country: string;
 }
 
+export type DispositiveType = {
+	dispositive?: string;
+};
+
 export type SearchQueryType = {
 	places: [IPlace];
 	onQuerySubmit: Function;
+	dispositive?: string;
 };
 
 export type StateSearchQueryType = {
 	place?: IPlace | null;
-	startDate?: {
-		name: string;
-		date?: MomentFormatSpecification;
-	} | null;
-	endDate?: { name: string; date?: MomentFormatSpecification } | null;
+	startDate?: { name: string; date?: object } | null;
+	endDate?: { name: string; date?: object } | null;
 };
 
 export type CalendarType = {

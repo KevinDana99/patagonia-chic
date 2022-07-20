@@ -43,7 +43,7 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 
 	return (
 		<SearchQueryContainer>
-			<SearchQueryOptions>
+			<SearchQueryOptions dispositive={dispositive}>
 				<OptionItem
 					label={'Lugar'}
 					title={'¿A dónde vas?'}

@@ -49,16 +49,18 @@ const PlaceListMobile = ({
 						</>
 					)}
 
-					<PlaceList
-						dispositive={dispositive}
-						places={places}
-						setPlaceData={setPlaceData}
-						openCalendar={() =>
-							setShowCalendar(!data.startDate || !data.endDate)
-						}
-						closeList={() => setShowPlaceList(false)}
-						values={data}
-					/>
+					{!showCalendar && (
+						<PlaceList
+							dispositive={dispositive}
+							places={places}
+							setPlaceData={setPlaceData}
+							openCalendar={() =>
+								setShowCalendar(!data.startDate || !data.endDate)
+							}
+							closeList={() => setShowPlaceList(false)}
+							values={data}
+						/>
+					)}
 				</>
 			)}
 

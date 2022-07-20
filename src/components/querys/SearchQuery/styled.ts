@@ -4,7 +4,13 @@ import {
 	IoChevronForwardSharp,
 } from 'react-icons/io5';
 import styled from 'styled-components';
-import { CalendarType, OptionItemType, PlaceListType } from './types';
+import {
+	CalendarType,
+	DispositiveType,
+	OptionItemType,
+	PlaceListType,
+	SearchQueryType,
+} from './types';
 
 const selectedShadow =
 	'12px 0px 15px -5px rgb(0 0 0 / 20%), -12px 0px 15px -5px rgb(0 0 0 / 20%);';
@@ -14,13 +20,18 @@ export const SearchQueryContainer = styled.div`
 	width: 100%;
 	flex-direction: column;
 `;
-export const SearchQueryOptions = styled.div`
+export const SearchQueryOptions = styled.div<DispositiveType>`
 	display: inline-flex;
 	min-width: 350px;
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
 	border-radius: 50px;
 	background: #ffffff;
 	overflow: hidden;
+	${(props) =>
+		props.dispositive != 'DESKTOP' &&
+		`
+	width: 100%;
+	`}
 `;
 
 export const OptionContainer = styled.div<OptionItemType>`
@@ -125,7 +136,7 @@ export const CalendarContainer = styled.div<CalendarType>`
 		`
 	margin-top: 50px;
 	box-shadow: none;
-	
+	flex-direction: column;
 	`}
 
 	.CalendarDay__selected_span {

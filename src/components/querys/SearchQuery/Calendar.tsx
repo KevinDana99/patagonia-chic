@@ -25,7 +25,7 @@ export const Calendar = ({
 			initial
 			endDate={values?.endDate?.date}
 			onDatesChange={({ startDate, endDate }: StateSearchQueryType) => {
-				console.log(moment(startDate).format('MMMM,D'));
+				console.log(typeof startDate);
 				setDates &&
 					setDates({
 						...values,
