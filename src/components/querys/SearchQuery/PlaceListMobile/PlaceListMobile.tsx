@@ -26,12 +26,14 @@ const PlaceListMobile = ({
 	setCalendarData,
 	openCloseModal,
 	filterPlaceList,
+	query,
+	setQuery,
 }) => {
 	const inputReference = useRef();
 
 	useEffect(() => {
-		//inputReference.current && inputReference.current.focus();
-	});
+		inputReference.current && inputReference.current.focus();
+	}, []);
 
 	return (
 		<>
@@ -44,7 +46,11 @@ const PlaceListMobile = ({
 								type="text"
 								placeholder="¿A donde vas?"
 								ref={inputReference}
-								onChange={(e) => filterPlaceList(e.target.value)}
+								onChange={(e) => {
+									setQuery(e.target.value);
+									filterPlaceList(e.target.value);
+								}}
+								value={query}
 							/>
 						</>
 					)}

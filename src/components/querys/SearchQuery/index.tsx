@@ -24,6 +24,8 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 		startDate: null,
 		endDate: null,
 	});
+	const [query, setQuery] = useState('');
+	const [placeList, setPlaceList] = useState(places);
 	const [modal, setModal] = useState(false);
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
@@ -45,6 +47,7 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 		const matchQuery = places.filter(
 			(e) => e.name.match(query) || e.province.match(query)
 		);
+		setPlaceList(matchQuery);
 	};
 
 	return (
@@ -114,6 +117,8 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 				<Modal
 					Children={() => (
 						<PlaceListMobile
+							query={query}
+							setQuery={setQuery}
 							filterPlaceList={filterPlaceList}
 							openCloseModal={openCloseModal}
 							showPlaceList={showPlaceList}
