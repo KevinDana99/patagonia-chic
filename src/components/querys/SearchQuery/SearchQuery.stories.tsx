@@ -44,6 +44,13 @@ Query.args = {
 			province: 'Cordoba',
 			country: 'Argentina',
 		},
+		{
+			name: 'La chaqueña',
+			img: 'image',
+			id: '2',
+			province: 'Misiones',
+			country: 'Argentina',
+		},
 	],
 	onQuerySubmit: (data) => console.log('data', data),
 };

@@ -123,7 +123,7 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 							openCloseModal={openCloseModal}
 							showPlaceList={showPlaceList}
 							showCalendar={showCalendar}
-							places={places}
+							places={placeList}
 							setPlaceData={setData}
 							setShowCalendar={setShowCalendar}
 							setShowPlaceList={setShowPlaceList}
