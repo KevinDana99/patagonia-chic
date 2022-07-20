@@ -42,7 +42,7 @@ export const ContainerButton = styled.div`
 `;
 
 export const SearchButton = styled(PrimaryButton)`
-	margin-top: 50px;
+	margin-top: 20px;
 	min-height: 58px;
 	width: 200px;
 	max-width: 250px;

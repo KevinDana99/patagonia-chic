@@ -24,7 +24,6 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 		startDate: null,
 		endDate: null,
 	});
-	const [placesList, setPlacesList] = useState(places);
 	const [modal, setModal] = useState(false);
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
@@ -42,11 +41,6 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 		setModal(!modal);
 	};
 
-	const filterPlaceList = (search: string) => {
-		const filterList = placesList.filter((e) => e.name == search);
-		console.log(search);
-	};
-
 	return (
 		<SearchQueryContainer>
 			<SearchQueryOptions>
@@ -57,9 +51,9 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 						dispositive == 'DESKTOP'
 							? setShowPlaceList(true)
 							: setShowPlaceList(true);
+						openCloseModal();
 						setData({ ...data, startDate: null, endDate: null });
 						setCalendarFocusedInput('startDate');
-						openCloseModal();
 					}}
 					value={data.place?.name}
 					clearData={() => {
@@ -102,7 +96,7 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 			</SearchQueryOptions>
 			{dispositive == 'DESKTOP' && showPlaceList && (
 				<PlaceList
-					places={placesList}
+					places={places}
 					setPlaceData={setData}
 					openCalendar={() => setShowCalendar(!data.startDate || !data.endDate)}
 					closeList={() => setShowPlaceList(false)}
@@ -114,11 +108,10 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 				<Modal
 					Children={() => (
 						<PlaceListMobile
-							filterPlaceList={filterPlaceList}
 							openCloseModal={openCloseModal}
 							showPlaceList={showPlaceList}
 							showCalendar={showCalendar}
-							places={placesList}
+							places={places}
 							setPlaceData={setData}
 							setShowCalendar={setShowCalendar}
 							setShowPlaceList={setShowPlaceList}

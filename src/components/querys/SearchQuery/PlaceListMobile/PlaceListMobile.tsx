@@ -37,13 +37,17 @@ const PlaceListMobile = ({
 		<>
 			{showPlaceList && (
 				<>
-					<h5>Lugar</h5>
-					<InputMobile
-						type="text"
-						placeholder="¿A donde vas?"
-						ref={inputReference}
-						onChange={(e) => filterPlaceList(e.target.value)}
-					/>
+					{!showCalendar && (
+						<>
+							<h5>Lugar</h5>
+							<InputMobile
+								type="text"
+								placeholder="¿A donde vas?"
+								ref={inputReference}
+								onChange={(e) => filterPlaceList(e.target.value)}
+							/>
+						</>
+					)}
 
 					<PlaceList
 						dispositive={dispositive}
