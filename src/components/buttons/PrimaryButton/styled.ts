@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, ReactFragment } from 'react';
 import styled from 'styled-components';
 import { IconType } from 'react-icons';
 
@@ -62,10 +62,10 @@ export const ButtonPrimaryContent = styled.div`
 	justify-content: center;
 `;
 
-export const ButtonPrimaryText = styled.text``;
+export const ButtonPrimaryText = styled.div``;
 
 export const Icon = styled(
-	({ component, ...props }: { component: ReactElement; props: object }) =>
+	({ component, ...props }: { component: JSX.Element; props?: object }) =>
 		React.cloneElement(component, props)
 )`
 	font-size: 16px;
