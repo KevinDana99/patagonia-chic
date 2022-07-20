@@ -30,7 +30,7 @@ const PlaceListMobile = ({
 	const inputReference = useRef();
 
 	useEffect(() => {
-		inputReference.current && inputReference.current.focus();
+		//inputReference.current && inputReference.current.focus();
 	});
 
 	return (

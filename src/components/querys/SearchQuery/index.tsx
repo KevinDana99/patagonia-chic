@@ -41,6 +41,12 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 		setModal(!modal);
 	};
 
+	const filterPlaceList = (query: string) => {
+		const matchQuery = places.filter(
+			(e) => e.name.match(query) || e.province.match(query)
+		);
+	};
+
 	return (
 		<SearchQueryContainer>
 			<SearchQueryOptions dispositive={dispositive}>
@@ -108,6 +114,7 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 				<Modal
 					Children={() => (
 						<PlaceListMobile
+							filterPlaceList={filterPlaceList}
 							openCloseModal={openCloseModal}
 							showPlaceList={showPlaceList}
 							showCalendar={showCalendar}

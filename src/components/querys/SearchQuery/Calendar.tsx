@@ -22,10 +22,8 @@ export const Calendar = ({
 	return (
 		<DayPickerRangeController
 			startDate={values?.startDate?.date}
-			initial
 			endDate={values?.endDate?.date}
 			onDatesChange={({ startDate, endDate }: StateSearchQueryType) => {
-				console.log(typeof startDate);
 				setDates &&
 					setDates({
 						...values,
