@@ -22,7 +22,6 @@ export const SearchQueryContainer = styled.div`
 `;
 export const SearchQueryOptions = styled.div<DispositiveType>`
 	display: inline-flex;
-	min-width: 350px;
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
 	border-radius: 50px;
 	background: #ffffff;
