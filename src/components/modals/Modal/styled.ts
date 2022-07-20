@@ -51,6 +51,7 @@ export const BoxTop = styled.div`
 	bottom: 0px;
 	padding: ${paddingSpace};
 	box-sizing: border-box;
+	border-bottom: 1px solid #d4d4d4;
 	width: 100%;
 	height: 60px;
 	display: flex;

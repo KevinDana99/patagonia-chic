@@ -77,9 +77,11 @@ const PrimaryModal = ({
 						)}
 					</BoxTop>
 					<BoxScroll>
-						<BoxHeader coverImage={coverImage}>
-							{headerText && <BoxHeaderText>{headerText}</BoxHeaderText>}
-						</BoxHeader>
+						{coverImage && (
+							<BoxHeader coverImage={coverImage}>
+								{headerText && <BoxHeaderText>{headerText}</BoxHeaderText>}
+							</BoxHeader>
+						)}
 						{Children && (
 							<BoxChildren>
 								<Children />
