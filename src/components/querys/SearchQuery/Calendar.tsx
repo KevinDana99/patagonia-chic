@@ -32,7 +32,7 @@ export const Calendar = ({
 							date: startDate,
 						},
 						endDate: {
-							name: moment(endDate).format('MMMM, D'),
+							name: endDate && moment(endDate).format('MMMM, D'),
 							date: endDate,
 						},
 					});

@@ -9,7 +9,6 @@ import {
 	DispositiveType,
 	OptionItemType,
 	PlaceListType,
-	SearchQueryType,
 } from './types';
 
 const selectedShadow =
@@ -117,9 +116,13 @@ export const ButtonContainer = styled.div<CalendarType>`
 	}
 `;
 
-export const CalendarContainer = styled.div<CalendarType>`
+export const CalendarInputContainer = styled.div`
+	display: flex;
+`
+
+export const CalendarContainer = styled.div`
 	margin-top: 20px;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px !important;
 	border-radius: 24px;
 	padding-right: 24px;
 	padding-left: 24px;
@@ -128,8 +131,8 @@ export const CalendarContainer = styled.div<CalendarType>`
 	display: flex;
 	justify-content: space-around;
 	position: absolute;
-	top: 80px;
-	background-color: #ffffff;
+	top: 40px;
+
 	${(props) =>
 		props.dispositive != 'DESKTOP' &&
 		`
@@ -237,6 +240,9 @@ export const PlaceListContainer = styled.div<PlaceListType>`
 	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
 	overflow: hidden;
 	padding: 20px 0px;
+	top: 80px;
+	left: 20px;
+	background-color: #ffffff;
 
 	${(props) =>
 		props.dispositive == 'MOBILE' &&
@@ -281,3 +287,37 @@ export const PlaceSubtitle = styled.p`
 	margin: 0px;
 	color: #666;
 `;
+
+
+export const Input = styled.input`
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+	box-sizing: border-box;
+	font-size: 14px;
+	font-weight: 400;
+	margin-top: 0;
+	margin-bottom: 11px;
+	color: #000000;
+	border: none;
+	outline: none;
+	max-width: 130px;
+`;
+
+export const EmptyListContainer = styled.div`
+	background-color: #ffffff;
+	padding: 0px 30px;
+`
+
+
+export const EmptyMessage = styled.p`
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+	box-sizing: border-box;
+	font-size: 14px;
+	font-weight: 400;
+`
+
+export const PlaceFilter = styled(EmptyMessage)`
+	font-weight: bold;
+	margin: 0px;
+`

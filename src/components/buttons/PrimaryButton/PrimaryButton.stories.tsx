@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import PrimaryButton from '.';
 import { PrimaryButtonType } from './types';
-import { IoSearch } from "react-icons/io5";
+import { IoSearch } from 'react-icons/io5';
 
 export default {
 	title: 'Components/Buttons',

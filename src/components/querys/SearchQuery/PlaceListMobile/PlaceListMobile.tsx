@@ -4,23 +4,18 @@ import { PlaceList } from '../PlaceList';
 import { CalendarContainer } from '../styled';
 import { Calendar } from '../Calendar';
 import FooterCalendar from './FooterCalendar';
-import PrimaryButton from '../../../buttons/PrimaryButton';
 import { IoSearch } from 'react-icons/io5';
+import { PlaceListMobileType } from '../types';
 
 const PlaceListMobile = ({
 	dispositive,
 	places,
-	setData,
 	data,
 	showPlaceList,
 	showCalendar,
 	setShowCalendar,
 	setPlaceData,
 	setShowPlaceList,
-	openCalendar,
-	closeCalendar,
-	closeList,
-	values,
 	setFocused,
 	focused,
 	setCalendarData,
@@ -28,7 +23,7 @@ const PlaceListMobile = ({
 	filterPlaceList,
 	query,
 	setQuery,
-}) => {
+}: PlaceListMobileType) => {
 	const inputReference = useRef();
 
 	useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { Container, BoxModal } from './styled';
 const Modal = ({ Children }: { Children: React.FC }) => {
 	return (

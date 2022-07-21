@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PrimaryButton from '../../buttons/PrimaryButton';
-import { OptionItem } from './OptionItem';
+import { CalendarInput } from './CalendarInput';
 import {
 	ButtonContainer,
 	CalendarContainer,
@@ -17,6 +17,7 @@ import { PlaceList } from './PlaceList';
 import { getViewport } from './viewport.map';
 import Modal from '../../../examples/query/modal';
 import PlaceListMobile from './PlaceListMobile/PlaceListMobile';
+import { PlaceListInput } from './PlaceListInput';
 
 export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 	const [data, setData] = useState<StateSearchQueryType>({
@@ -30,8 +31,10 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
 	const [calendarFocusedInput, setCalendarFocusedInput] = useState('startDate');
-	const [viewport, setViewport] = useState(window.visualViewport.width);
+	const viewport = window.visualViewport.width;
 	const dispositive = getViewport(viewport);
+
+	console.log('view', showPlaceList);
 
 	const clearDates = () => {
 		setData({ ...data, startDate: null, endDate: null });
@@ -44,54 +47,88 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 	};
 
 	const filterPlaceList = (query: string) => {
-		const matchQuery = places.filter(
-			(e) => e.name.match(query) || e.province.match(query)
+		// eslint-disable-next-line security/detect-non-literal-regexp
+		const placeFilter = new RegExp(query, 'i');
+		const matchPlaces = places.filter(
+			(place) =>
+				placeFilter.test(place.name) || placeFilter.test(place.province)
 		);
-		setPlaceList(matchQuery);
+		setPlaceList(matchPlaces);
 	};
 
 	return (
 		<SearchQueryContainer>
 			<SearchQueryOptions dispositive={dispositive}>
-				<OptionItem
+				<PlaceListInput
 					label={'Lugar'}
-					title={'¿A dónde vas?'}
+					placeholder={'¿A dónde vas?'}
 					onClick={() => {
-						dispositive == 'DESKTOP'
-							? setShowPlaceList(true)
-							: setShowPlaceList(true);
+						setShowPlaceList(true);
 						openCloseModal();
-						setData({ ...data, startDate: null, endDate: null });
 						setCalendarFocusedInput('startDate');
 					}}
-					value={data.place?.name}
+					value={data?.place?.name}
 					clearData={() => {
-						setData({ ...data, place: null });
+						setData({ ...data, place: { name: '' } });
 						setShowPlaceList(true);
 						setShowCalendar(false);
+						setPlaceList(places);
 					}}
 					isSelected={showPlaceList}
-				/>
+					inputOnChange={(e) => {
+						const placeName = e.target.value;
+						setData({
+							...data,
+							place: {
+								name: placeName,
+							},
+						});
+						filterPlaceList(placeName);
+					}}
+					outsideClick={() => setShowPlaceList(false)}
+				>
+					<PlaceList
+						places={placeList}
+						setPlaceData={setData}
+						openCalendar={() =>
+							setShowCalendar(!data.startDate || !data.endDate)
+						}
+						closeList={() => setShowPlaceList(false)}
+						values={data}
+						placeFilter={data.place?.name}
+						showList={showPlaceList}
+					/>
+				</PlaceListInput>
 
 				{dispositive == 'DESKTOP' && (
 					<>
-						<Divider />
-						<OptionItem
-							label={'Fecha partida'}
-							title={'Seleccione fecha'}
-							value={data.startDate?.name}
-							isSelected={showCalendar && calendarFocusedInput === 'startDate'}
+						<CalendarInput
+							labels={['Fecha partida', 'Fechar llegada']}
+							titles={['Seleccione fecha', 'Seleccione fecha']}
+							values={data}
 							clearData={clearDates}
-						/>
-
-						<Divider />
-						<OptionItem
-							label={'Fechar llegada'}
-							title={'Seleccione fecha'}
-							value={data.endDate?.name}
-							isSelected={showCalendar && calendarFocusedInput === 'endDate'}
-							clearData={clearDates}
-						/>
+							onClick={() => {
+								setShowCalendar(true);
+								setCalendarFocusedInput('startDate');
+								setData({ ...data, startDate: null, endDate: null });
+							}}
+							outsideClick={() => setShowCalendar(false)}
+							calendarFocusedInput={calendarFocusedInput}
+							showCalendar={showCalendar}
+						>
+							{showCalendar && (
+								<CalendarContainer onClick={(e) => e.stopPropagation()}>
+									<Calendar
+										dispositive={dispositive}
+										setDates={setData}
+										values={data}
+										setFocused={setCalendarFocusedInput}
+										focused={calendarFocusedInput}
+										closeCalendar={() => setShowCalendar(false)}
+									/>
+								</CalendarContainer>
+							)}
+						</CalendarInput>
 					</>
 				)}
 				<Divider />
@@ -103,15 +140,6 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 					/>
 				</ButtonContainer>
 			</SearchQueryOptions>
-			{dispositive == 'DESKTOP' && showPlaceList && (
-				<PlaceList
-					places={places}
-					setPlaceData={setData}
-					openCalendar={() => setShowCalendar(!data.startDate || !data.endDate)}
-					closeList={() => setShowPlaceList(false)}
-					values={data}
-				/>
-			)}
 
 			{dispositive != 'DESKTOP' && modal && (
 				<Modal
@@ -141,21 +169,6 @@ export const SearchQuery = ({ places, onQuerySubmit }: SearchQueryType) => {
 						/>
 					)}
 				/>
-			)}
-
-			{dispositive == 'DESKTOP' && (
-				<CalendarContainer>
-					{showCalendar && (
-						<Calendar
-							dispositive={dispositive}
-							setDates={setData}
-							values={data}
-							setFocused={setCalendarFocusedInput}
-							focused={calendarFocusedInput}
-							closeCalendar={() => setShowCalendar(false)}
-						/>
-					)}
-				</CalendarContainer>
 			)}
 		</SearchQueryContainer>
 	);

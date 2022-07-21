@@ -1,6 +1,5 @@
-import React, { ReactElement, ReactFragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { IconType } from 'react-icons';
 
 export const ButtonPrimaryStyled = styled.button`
 	min-width: 180px;
