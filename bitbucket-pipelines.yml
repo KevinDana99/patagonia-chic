@@ -26,6 +26,16 @@ definitions:
           - apk add git openssh
           - echo "About to execute script"
           - ./src/utils/scripts/merge-spec-editor.sh
+    - step: &publish-npm-package
+        name: Publish NPM package
+        image: node:16-alpine
+        script:
+          - npm i -g yarn
+          - yarn
+          - yarn build
+          - npm config set registry https://registry.npmjs.org/
+          - echo _authToken=$NPM_TOKEN >> ~/.npmrc
+          - npm publish
 
 pipelines:
   branches:
@@ -35,3 +45,5 @@ pipelines:
     develop:
       - step: *push-gcp
       - step: *merge-step
+    add-publish-to-ci:
+      - step: *publish-npm-package
