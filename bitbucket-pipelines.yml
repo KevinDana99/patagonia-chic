@@ -30,7 +30,6 @@ definitions:
         name: Publish NPM package
         image: node:16-alpine
         script:
-          - npm i -g yarn
           - yarn
           - yarn build
           - npm config set registry https://registry.npmjs.org/
