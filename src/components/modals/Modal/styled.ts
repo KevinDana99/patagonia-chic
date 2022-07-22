@@ -113,6 +113,8 @@ export const BoxHeader = styled.div<ModalType>`
 `;
 
 export const BoxHeaderText = styled.div<ModalType>`
+	padding: 3.5%;
+	box-sizing: border-box;
 	width: 100%;
 	height: ${(props) => (props.coverImage ? '100%' : 'auto')};
 	min-height: 150px;
