@@ -112,22 +112,13 @@ export const BoxHeader = styled.div<ModalType>`
 	background-size: cover;
 `;
 
-export const BoxHeaderText = styled.div`
+export const BoxHeaderText = styled.div<ModalType>`
 	width: 100%;
-	height: 100%;
-	font-size: 1.5rem;
+	height: ${(props) => (props.coverImage ? '100%' : 'auto')};
+	min-height: 150px;
 	color: white;
 	background-size: 200% 200% !important;
 	background-color: rgb(35, 132, 229);
-	background-image: radial-gradient(
-		circle,
-		rgba(43, 235, 255, 0.46),
-		rgba(59, 178, 249, 0.15) 27.5%,
-		rgba(35, 132, 229, 0.3),
-		rgb(35, 132, 229) 57.5%,
-		rgba(35, 132, 229, 0.81) 75%,
-		rgba(168, 88, 224, 0.37)
-	) !important;
 	opacity: 0.8;
 	display: flex;
 	justify-content: center;
