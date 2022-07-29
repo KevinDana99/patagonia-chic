@@ -6,6 +6,7 @@ import { PrimaryCalendarType } from './types';
 const PrimaryCalendar = ({
 	onDaySelected,
 	range = false,
+	disabledDates,
 }: PrimaryCalendarType) => {
 	const [state, setState] = useState(new Date());
 
@@ -19,6 +20,14 @@ const PrimaryCalendar = ({
 			onChange={setState}
 			value={state}
 			selectRange={range ? true : false}
+			tileDisabled={({ date }) => {
+				return disabledDates?.some(
+					(disabledDate) =>
+						date.getFullYear() === disabledDate.getFullYear() &&
+						date.getMonth() === disabledDate.getMonth() &&
+						date.getDate() === disabledDate.getDate()
+				);
+			}}
 		/>
 	);
 };

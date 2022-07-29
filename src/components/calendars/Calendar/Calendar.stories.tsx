@@ -19,4 +19,9 @@ calendar.args = {
 		console.log(day);
 	},
 	range: false,
+	disabledDates: [
+		new Date(2022, 6, 23),
+		new Date(2022, 6, 22),
+		new Date(2022, 7, 22),
+	],
 };
