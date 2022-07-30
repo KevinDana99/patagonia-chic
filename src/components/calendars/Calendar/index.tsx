@@ -12,6 +12,20 @@ const PrimaryCalendar = ({
 
 	onDaySelected && onDaySelected(state);
 
+	const disabledPrevStartDate = (date: Date) => {
+		const currentDate = new Date(new Date().setDate(new Date().getDate() - 1));
+		const startDate = date < currentDate ? true : false;
+		return startDate;
+	};
+	const disabledReservedDates = (date: Date) => {
+		const reservedDates = disabledDates.some(
+			(disabledDate) =>
+				date.getFullYear() === disabledDate.getFullYear() &&
+				date.getMonth() === disabledDate.getMonth() &&
+				date.getDate() === disabledDate.getDate()
+		);
+		return reservedDates;
+	};
 	return (
 		<ReactCalendar
 			next2Label={null}
@@ -21,12 +35,7 @@ const PrimaryCalendar = ({
 			value={state}
 			selectRange={range ? true : false}
 			tileDisabled={({ date }) => {
-				return disabledDates?.some(
-					(disabledDate) =>
-						date.getFullYear() === disabledDate.getFullYear() &&
-						date.getMonth() === disabledDate.getMonth() &&
-						date.getDate() === disabledDate.getDate()
-				);
+				return disabledPrevStartDate(date) || disabledReservedDates(date);
 			}}
 		/>
 	);
