@@ -22,6 +22,8 @@ Query.args = {
 			id: '2',
 			province: 'Cordoba',
 			country: 'Argentina',
+			keywords: ['sierras'],
+			featured: false,
 		},
 		{
 			name: 'Cordoba 2',
@@ -29,6 +31,8 @@ Query.args = {
 			id: '2',
 			province: 'Cordoba',
 			country: 'Argentina',
+			keywords: ['monte', 'sierras', 'ciudad'],
+			featured: true,
 		},
 		{
 			name: 'Cordoba 3',
@@ -36,6 +40,8 @@ Query.args = {
 			id: '2',
 			province: 'Cordoba',
 			country: 'Argentina',
+			keywords: ['monte', 'ciudad'],
+			featured: false,
 		},
 		{
 			name: 'Cordoba 4',
@@ -43,6 +49,8 @@ Query.args = {
 			id: '2',
 			province: 'Cordoba',
 			country: 'Argentina',
+			keywords: ['monte', 'sierras'],
+			featured: true,
 		},
 		{
 			name: 'La chaqueña',
@@ -50,6 +58,8 @@ Query.args = {
 			id: '2',
 			province: 'Misiones',
 			country: 'Argentina',
+			keywords: ['ciudad'],
+			featured: true,
 		},
 	],
 	onQuerySubmit: (data) => console.log('data', data),

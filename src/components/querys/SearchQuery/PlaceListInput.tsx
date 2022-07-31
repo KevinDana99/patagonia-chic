@@ -8,19 +8,25 @@ import {
 	OptionContent,
 } from './styled';
 import { PlaceListInputType } from './types';
+import PlaceListMobile from './PlaceListMobile';
+import { PlaceList } from './PlaceList';
 
 export const PlaceListInput = ({
 	label,
 	placeholder,
 	onClick,
-	value,
+	values,
 	clearData,
 	isSelected,
 	inputOnChange,
-	children,
 	outsideClick,
+	placeList,
+	setPlaceData,
+	isMobile,
+	openCalendar,
+	closeList,
+	showPlaceList,
 }: PlaceListInputType) => {
-
 	const containerRef = useRef(null);
 
 	useOutsideClick(containerRef, outsideClick);
@@ -31,17 +37,35 @@ export const PlaceListInput = ({
 			isSelected={isSelected}
 			ref={containerRef}
 		>
+			{isSelected && isMobile && (
+				<PlaceListMobile
+					places={placeList}
+					inputOnChange={inputOnChange}
+					setPlaceData={setPlaceData}
+					placeholder={placeholder}
+					values={values}
+					openCalendar={openCalendar}
+					closeList={closeList}
+				/>
+			)}
 			<OptionContent>
 				<Label>{label}</Label>
 				<Input
 					type="text"
 					placeholder={placeholder}
 					onChange={inputOnChange}
-					value={value}
+					value={values?.place?.name}
 				/>
 			</OptionContent>
-			{value && <CloseIcon onClick={clearData} />}
-			{children}
+			{values?.place?.name && <CloseIcon onClick={clearData} />}
+			{showPlaceList && (
+				<PlaceList
+					places={placeList}
+					setPlaceData={setPlaceData}
+					openCalendar={openCalendar}
+					closeList={closeList}
+				/>
+			)}
 		</OptionContainer>
 	);
 };

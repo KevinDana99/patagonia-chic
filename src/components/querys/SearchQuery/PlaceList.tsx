@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
 	EmptyListContainer,
 	EmptyMessage,
@@ -19,21 +19,86 @@ export const PlaceList = ({
 	openCalendar,
 	closeList,
 	values,
-	dispositive,
 	placeFilter,
-	showList,
-}: PlaceListType) =>
-	showList ? (
-		<PlaceListContainer dispositive={dispositive}>
+}: PlaceListType) => {
+	const [showCurrentPosition, setShowCurrentPosition] =
+		useState<boolean>(false);
+	const [cursorPosition, setCursorPosition] = useState<number>(0);
+
+	const setCurrentPlace = useCallback(
+		(position: number) => {
+			setPlaceData({
+				...values,
+				place: places.at(position),
+			});
+		},
+		[places, setPlaceData, values]
+	);
+
+	const keyHandler = useCallback(
+		({ key }: { key: string }) => {
+			setCursorPosition((prevState) => {
+				const cursorIncrease =
+					prevState < places.length - 1 ? prevState + 1 : 0;
+
+				const cursorDecrease =
+					prevState > 0 ? prevState - 1 : places.length - 1;
+
+				switch (true) {
+					case key === 'Enter':
+						closeList();
+						openCalendar();
+						break;
+
+					case key === 'ArrowDown' && !showCurrentPosition:
+						!showCurrentPosition && setShowCurrentPosition(true);
+						setCurrentPlace(0);
+						return 0;
+
+					case key === 'ArrowDown' && showCurrentPosition:
+						setCurrentPlace(cursorIncrease);
+						return cursorIncrease;
+
+					case key === 'ArrowUp' && !showCurrentPosition:
+						!showCurrentPosition && setShowCurrentPosition(true);
+						setCurrentPlace(places.length - 1);
+						return places.length - 1;
+
+					case key === 'ArrowUp' && showCurrentPosition:
+						setCurrentPlace(cursorDecrease);
+						return cursorDecrease;
+				}
+				return prevState;
+			});
+		},
+		[
+			closeList,
+			openCalendar,
+			places.length,
+			setCurrentPlace,
+			showCurrentPosition,
+		]
+	);
+
+	useEffect(() => {
+		document.addEventListener('keydown', keyHandler);
+		return () => {
+			document.removeEventListener('keydown', keyHandler);
+		};
+	}, [keyHandler]);
+
+	return (
+		<PlaceListContainer>
 			{places.map((place: IPlace, index: React.Key) => (
 				<PlaceContainer
 					key={index}
-					onClick={(e) => {
+					onClick={(e: { stopPropagation: () => void }) => {
 						e.stopPropagation();
 						setPlaceData({ ...values, place: place });
 						closeList();
 						openCalendar();
 					}}
+					selected={showCurrentPosition && index === cursorPosition}
 				>
 					<PlaceImage />
 					<PlaceContent>
@@ -53,4 +118,5 @@ export const PlaceList = ({
 				</EmptyListContainer>
 			)}
 		</PlaceListContainer>
-	) : null;
+	);
+};
