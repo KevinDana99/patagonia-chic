@@ -1,5 +1,11 @@
 import React from 'react';
-import { ButtonPrimaryStyled, BoxLoading } from './styled';
+import {
+	ButtonPrimaryStyled,
+	BoxLoading,
+	ButtonPrimaryContent,
+	ButtonPrimaryText,
+	Icon,
+} from './styled';
 import Spinner from '../../spinners/PrimarySpinner';
 import { PrimaryButtonType } from './types';
 
@@ -8,12 +14,21 @@ const PrimaryButton = ({
 	loading = false,
 	onClick,
 	disabled = false,
+	IconComponent,
+	className,
 }: PrimaryButtonType) => {
 	disabled = disabled || loading;
 	return (
-		<ButtonPrimaryStyled disabled={disabled} onClick={onClick}>
+		<ButtonPrimaryStyled
+			disabled={disabled}
+			onClick={onClick}
+			className={className}
+		>
 			{!loading ? (
-				title
+				<ButtonPrimaryContent>
+					{IconComponent && <Icon component={<IconComponent />} />}
+					<ButtonPrimaryText>{title}</ButtonPrimaryText>
+				</ButtonPrimaryContent>
 			) : (
 				<BoxLoading>
 					<Spinner theme="light" />
