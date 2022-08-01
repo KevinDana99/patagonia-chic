@@ -14,7 +14,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import { PlaceListInput } from './PlaceListInput';
 import Fuse from 'fuse.js';
 import { fuzePlaceListOptions } from '../../../consntants/fuzeOptions';
-import useMediaQuery from '../useMediaQuery';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 
 export const SearchQuery = ({
 	places,
