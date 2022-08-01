@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 export const ButtonPrimaryStyled = styled.button`
@@ -53,4 +54,19 @@ export const BoxLoading = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+`;
+
+export const ButtonPrimaryContent = styled.div`
+	display: flex;
+	justify-content: center;
+`;
+
+export const ButtonPrimaryText = styled.div``;
+
+export const Icon = styled(
+	({ component, ...props }: { component: JSX.Element; props?: object }) =>
+		React.cloneElement(component, props)
+)`
+	font-size: 16px;
+	margin-right: 10px;
 `;

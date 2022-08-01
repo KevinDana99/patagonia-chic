@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import SecondaryButton from '../../buttons/SecondaryButton';
 import {
 	BoxModal,
@@ -42,10 +42,10 @@ const PrimaryModal = ({
 		onClose && onClose();
 	};
 
-	const open = () => {
+	const open = useCallback(() => {
 		setState({ ...state, visible: true, animate: true });
 		onOpen && onOpen();
-	};
+	}, [onOpen, state]);
 
 	const touchOutside = () => {
 		setState({ ...state, closeOnTouchOutside: true });
@@ -54,7 +54,7 @@ const PrimaryModal = ({
 
 	useEffect(() => {
 		state.visible && open();
-	}, []);
+	}, [open, state.visible]);
 
 	return (
 		<>
