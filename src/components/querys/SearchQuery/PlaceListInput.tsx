@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { useOutsideClick } from '../useOutsideClick';
 import {
 	CloseIcon,
 	Input,
@@ -10,6 +9,7 @@ import {
 import { PlaceListInputType } from './types';
 import PlaceListMobile from './PlaceListMobile';
 import { PlaceList } from './PlaceList';
+import { useOutsideClick } from '../../../hooks/useOutsideClick';
 
 export const PlaceListInput = ({
 	label,
