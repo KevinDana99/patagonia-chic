@@ -7,6 +7,7 @@ const PrimaryCalendar = ({
 	onDaySelected,
 	range = false,
 	disabledDates,
+	doubleCalendar,
 }: PrimaryCalendarType) => {
 	const [state, setState] = useState(new Date());
 
@@ -28,12 +29,13 @@ const PrimaryCalendar = ({
 	};
 	return (
 		<ReactCalendar
+			showDoubleView={doubleCalendar ? true : false}
 			next2Label={null}
 			prev2Label={null}
 			locale={'es'}
 			onChange={setState}
 			value={state}
-			selectRange={range ? true : false}
+			selectRange={range || doubleCalendar ? true : false}
 			tileDisabled={({ date }) => {
 				return disabledPrevStartDate(date) || disabledReservedDates(date);
 			}}

@@ -1,3 +1,10 @@
+/*
+
+react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--neighboringMonth
+
+*/
+
+
 .react-calendar {
 	width: 350px;
 	max-width: 100%;
@@ -82,9 +89,7 @@ abbr {
 }
 .react-calendar__month-view__days__day--weekend {
 }
-.react-calendar__month-view__days__day--neighboringMonth {
-	color: #757575;
-}
+
 .react-calendar__year-view .react-calendar__tile,
 .react-calendar__decade-view .react-calendar__tile,
 .react-calendar__century-view .react-calendar__tile {
@@ -150,4 +155,9 @@ abbr {
 	background-color: #ececec;
 	color: black;
 	border-radius: 0px;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+visibility: hidden;
+
 }

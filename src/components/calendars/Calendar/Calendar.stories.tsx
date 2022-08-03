@@ -6,7 +6,9 @@ import PrimaryCalendar from '.';
 export default {
 	title: 'Components/calendars',
 	component: PrimaryCalendar,
-	argTypes: {},
+	argTypes: {
+		onDaySelected: { action: 'clicked' },
+	},
 } as Meta<typeof PrimaryCalendar>;
 
 const Template: Story<PrimaryCalendarType> = (args) => (
@@ -24,4 +26,5 @@ calendar.args = {
 		new Date(2022, 6, 22),
 		new Date(2022, 7, 22),
 	],
+	doubleCalendar: false,
 };
