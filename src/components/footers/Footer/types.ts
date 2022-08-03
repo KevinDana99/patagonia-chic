@@ -2,14 +2,23 @@ import { LogoType } from '../../Logo/types';
 import { IconType } from 'react-icons';
 
 export type LanguageType = {
-	flag: string;
 	label: string;
-	value?: string;
+	symbol?: string;
+	currency?: string;
 };
 
 export type SectionLeftType = {
 	logo: LogoType;
 	language: LanguageType;
+	isMobile: boolean;
+	sections: {
+		title: string;
+		label: (
+			| { label: string; url: string; target?: undefined }
+			| { label: string; url: string; target: string }
+		)[];
+	}[];
+	isTablet: boolean;
 };
 
 export type LabelLinkType = {
@@ -28,6 +37,12 @@ export type SocialNetworks = {
 	Icon: IconType;
 };
 
+export type PlaceType = {
+	label: string;
+	url: string;
+};
+
 export type FooterPropsType = {
 	language: LanguageType;
+	places: [PlaceType];
 };

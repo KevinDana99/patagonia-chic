@@ -1,34 +1,32 @@
+import { TbWorld } from 'react-icons/tb';
 import styled from 'styled-components';
-import { LanguageType } from './types';
+import { deviceSize } from '../../../consntants/devicesSizes';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 export const Container = styled.div`
 	padding-top: 50px;
 	padding-bottom: 40px;
-	height: 388px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	background-color: #f1f4f7;
-	@media screen and (max-width: 1120px) {
-		padding-top: 34px;
-		height: auto;
+	background-color: #ffffff;
+	padding: 50px 10% 0px 10%;
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+
+	@media ${deviceSize.mobileL} {
+		padding: 50px 10px 0px 10px;
 	}
-	@media screen and (max-width: 450px) {
+	@media ${deviceSize.tablet} {
+		padding: 30px 50px;
 	}
 `;
 
 export const ContainerSectionsTop = styled.div`
 	display: flex;
-	width: 1120px;
 	flex-direction: row;
 	justify-content: space-between;
-	position: relative;
-	@media screen and (max-width: 1120px) {
-		width: 720px;
-	}
-	@media screen and (max-width: 450px) {
-		width: 335px;
-		flex-direction: column;
+	@media ${deviceSize.tablet} {
+		flex-direction: row;
 	}
 `;
 
@@ -36,56 +34,37 @@ export const ContainerSectionsCommon = styled.div`
 	display: flex;
 	justify-content: flex-end;
 	width: fit-content;
-	height: 215px;
-	gap: 21px;
-	position: absolute;
-	right: 0;
-	margin-top: 0.9rem;
-	@media screen and (max-width: 1120px) {
-		flex-direction: column;
-		gap: 0;
-		justify-content: flex-start;
-		height: auto;
-		position: relative;
-		margin-top: 50px;
-	}
-	@media screen and (max-width: 450px) {
-		margin-top: 89px;
-		width: 80%;
-	}
 `;
 
 export const ContainerSocial = styled.div`
-	height: 62px;
-	position: relative;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
-	width: 1120px;
-	@media screen and (max-width: 1120px) {
-		width: 720px;
-	}
-	@media screen and (max-width: 450px) {
-		width: 335px;
-	}
+	margin-top: 25px;
+	margin-bottom: 25px;
+	width: 100%;
 `;
 export const Language = styled.div`
 	background-color: #ffffff;
-	width: 6.5rem;
-	border-radius: 3rem;
-	padding: 0.5rem;
+	width: fit-content;
+	border-radius: 25px;
+	padding: 7px 10px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	gap: 10px;
-	margin-top: 55px;
-	margin-bottom: 34px;
-	@media screen and (max-width: 1120px) {
-		margin-top: 34px;
+	margin-top: 50px;
+	margin-bottom: 40px;
+	background-color: #f1f4f7;
+
+	@media ${deviceSize.mobileL} {
+		margin-top: 0px;
+		margin-bottom: 0px;
 	}
-	@media screen and (max-width: 450px) {
-		display: none;
+
+	@media ${deviceSize.tablet} {
+		margin-top: 0px;
+		margin-bottom: 0px;
 	}
 `;
 export const LanguageMovil = styled.div`
@@ -103,40 +82,56 @@ export const LanguageMovil = styled.div`
 	}
 `;
 
-export const ImgStyled = styled.div<Pick<LanguageType, 'flag'>>`
-	background-repeat: no-repeat;
-	background-image: url(${(props) => props.flag});
-	width: 40px;
-	height: 40px;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	border-radius: 50%;
+export const WorldIcon = styled(TbWorld)`
+	color: #3b3b3b;
+	font-size: 25px;
 `;
 
 export const LeftSection = styled.div`
 	width: 350px;
-	@media screen and (max-width: 1120px) {
-		width: 355px;
+	display: flex;
+	flex-direction: column;
+
+	@media ${deviceSize.mobileL} {
+		flex-direction: column;
 	}
-	@media screen and (max-width: 450px) {
-		width: 335px;
-	}
-`;
-export const ContainerSectionCommon = styled.div`
-	width: 202px;
-	padding-bottom: 80px;
-	@media screen and (max-width: 1120px) {
-		width: 350px;
-		padding-bottom: 0;
-	}
-	@media screen and (max-width: 450px) {
-		width: 335px;
+
+	@media ${deviceSize.tablet} {
+		width: initial;
 	}
 `;
 
-export const HrDivStyled = styled.div`
-	width: 1120px;
-	height: 2px;
+export const LeftSideContainer = styled.div`
+	display: flex;
+	width: 100%;
+
+	@media ${deviceSize.mobileL} {
+		flex-direction: column;
+	}
+`;
+
+export const DescriptionContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+
+	@media ${deviceSize.tablet} {
+		width: 50%;
+	}
+`;
+
+export const ContainerSectionCommon = styled.div`
+	width: 200px;
+	@media ${deviceSize.mobileL} {
+		display: none;
+	}
+	@media ${deviceSize.tablet} {
+		display: none;
+
+`;
+
+export const Divider = styled.div`
+	width: 100%;
+	height: 1px;
 	background-color: rgb(35, 132, 229);
 	background-image: radial-gradient(
 		circle,
@@ -147,79 +142,60 @@ export const HrDivStyled = styled.div`
 		rgba(35, 132, 229, 0.81) 75%,
 		rgba(168, 88, 224, 0.37)
 	) !important;
-	@media screen and (max-width: 1120px) {
-		width: 720px;
-	}
-	@media screen and (max-width: 450px) {
-		margin-top: 2rem;
-		width: 335px;
-	}
 `;
 
-export const CopyrightStyled = styled.p`
-	position: absolute;
-	left: 0;
-	margin-block-start: 0;
-	margin-block-end: 0;
-	margin-top: 21px;
-	@media screen and (max-width: 1120px) {
-		margin-top: 34px;
-	}
-	@media screen and (max-width: 450px) {
-	}
-`;
-export const Text = styled.p`
-	margin-block-start: 13px;
-	margin-block-end: 0;
+export const FooterText = styled.p`
+	font-size: 12px;
+	font-weight: 400;
+	color: #383838;
+	margin: 0px;
 `;
 
-export const TextSectionLeft = styled.p`
-	margin-block-start: 21px;
-	margin-block-end: 0;
+export const Description = styled(FooterText)`
+	margin-top: 20px;
 `;
+
+export const Direction = styled(Description)`
+	color: #383838;
+	margin-top: 13px;
+`;
+export const CopyrightText = styled(FooterText)`
+	display: flex;
+	justify-self: flex-start;
+`;
+
+export const SectionLabel = styled(FooterText)`
+	margin: 13px 0px;
+	font-size: 15px;
+`;
+
 export const IconContainer = styled.div`
-	position: absolute;
-	right: 0;
 	width: 100px;
 	display: flex;
 	justify-content: space-between;
-	@media screen and (max-width: 1120px) {
-		margin-top: 34px;
-	}
 	@media screen and (max-width: 450px) {
 		display: none;
 	}
 `;
 
 export const LinkStyled = styled.a`
-	margin-top: 21px;
 	text-decoration: none;
 	color: #000000;
 	:hover {
 		text-decoration: underline;
 	}
-	@media screen and (max-width: 1120px) {
-		margin-top: 0;
-	}
 `;
 
-export const Title = styled.h3`
+export const SectionTitle = styled.h3`
 	margin-top: 2.5rem;
-	font-weight: bold;
-	@media screen and (max-width: 1120px) {
-		position: absolute;
-		margin-top: 0;
-		left: 0;
-		margin-block-start: 0;
-		margin-block-end: 0;
-	}
-	@media screen and (max-width: 450px) {
-	}
+	font-weight: 600;
+	font-size: 15px;
 `;
 
-export const LanguageLabel = styled.label`
-	font-size: 1.3rem;
-	font-weight: bold;
+export const LanguageLabel = styled.p`
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0px;
 `;
 
 export const ContainerIcons = styled.div`
@@ -250,52 +226,45 @@ export const DesktopSectionCommon = styled.div`
 	}
 `;
 
-export const MenuButton = styled.button`
-	display: none;
-	@media screen and (max-width: 1120px) {
-		width: 100%;
-		border: 2px solid transparent;
-		background-color: transparent;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		position: relative;
-		cursor: pointer;
-		margin-top: 3px;
-		margin-bottom: 3px;
+export const SocialMobileContainer = styled.div`
+	margin: 60px 0px;
+	@media ${deviceSize.tablet} {
+		width: 50%;
+		margin: 30px 0px 0px 0px;
 	}
-	@media screen and (max-width: 450px) {
-		width: 335px;
-	}
-`;
-
-export const DropdownMenu = styled.div`
-	display: none;
-	@media screen and (max-width: 1120px) {
+	@media ${deviceSize.mobileL} {
 		display: flex;
-		position: relative;
-		width: 80%;
 		flex-direction: column;
-		justify-content: space-between;
-	}
-	@media screen and (max-width: 450px) {
 	}
 `;
 
-export const ImageOpen = styled.div`
-	font-size: 2rem;
-	position: absolute;
-	right: 0;
+export const SectionContainer = styled.div`
+	display: flex;
+	flex: 1;
+	width: 100%;
+	flex-direction: column;
 `;
 
-export const HrStyled = styled.hr`
-	display: none;
-	@media screen and (max-width: 1120px) {
-		margin-block-start: 21px;
-		margin-block-end: 21px;
-		display: block;
-	}
-	@media screen and (max-width: 450px) {
-		width: 335px;
-	}
+export const SectionTitleContainer = styled.div`
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: space-between;
+`;
+
+export const SectionTitleMobile = styled.h3`
+	font-size: 18px;
+	font-weight: 500;
+	margin: 0px;
+`;
+
+export const ArrowIconDown = styled(IoIosArrowDown)``;
+
+export const ArrowIconUp = styled(IoIosArrowUp)``;
+
+export const SectionDivider = styled.div`
+	height: 1px;
+	border-bottom: 1px solid #d6d6d6;
+	margin-top: 20px;
+	margin-bottom: 20px;
 `;

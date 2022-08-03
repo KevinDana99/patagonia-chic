@@ -3,23 +3,45 @@ import Logo from '../../Logo';
 import {
 	LeftSection,
 	Language,
-	ImgStyled,
 	LanguageLabel,
-	TextSectionLeft,
+	Description,
+	Direction,
+	WorldIcon,
+	SocialMobileContainer,
+	LeftSideContainer,
+	DescriptionContainer,
 } from './styled';
-import { SectionLeftType } from './types';
-import { description } from './utils';
+import { SectionLeftType, SectionType } from './types';
+import { footerTexts } from './footerTexts';
+import { SectionMobile } from './SectionMobile';
 
-const SectionLeft: React.FC<SectionLeftType> = ({ logo, language }) => {
+const SectionLeft = ({
+	logo,
+	language,
+	isMobile,
+	sections,
+	isTablet,
+}: SectionLeftType) => {
 	return (
 		<LeftSection>
-			<Logo {...logo} />
-			{description.map((item, index) => (
-				<TextSectionLeft key={index}>{item}</TextSectionLeft>
-			))}
+			<LeftSideContainer>
+				<DescriptionContainer>
+					<Logo {...logo} />
+					<Description>{footerTexts.description}</Description>
+					<Direction>{footerTexts.direction}</Direction>
+				</DescriptionContainer>
+
+				<SocialMobileContainer>
+					{isTablet || isMobile
+						? sections.map((section: SectionType, index: number) => (
+								<SectionMobile {...section} key={index} />
+						  ))
+						: null}
+				</SocialMobileContainer>
+			</LeftSideContainer>
 			<Language>
-				<ImgStyled flag={language.flag}></ImgStyled>
-				<LanguageLabel>{language.label}</LanguageLabel>
+				<WorldIcon />
+				<LanguageLabel>{`${language.label} - ${language.symbol} ${language.currency}`}</LanguageLabel>
 			</Language>
 		</LeftSection>
 	);

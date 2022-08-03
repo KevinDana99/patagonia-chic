@@ -1,40 +1,42 @@
-import React, { FC } from 'react';
+import React from 'react';
 import SectionCommon from './SectionCommon';
 import SectionLeft from './SectionLeft';
-import SectionSocial from './SectionSocial';
 import { FooterPropsType } from './types';
 import {
 	Container,
 	ContainerSectionsTop,
-	HrDivStyled,
 	LinkStyled,
 	IconsMovil,
 	ContainerIcons,
 	ContainerSectionsCommon,
-	LanguageMovil,
-	ImgStyled,
-	LanguageLabel,
+	Divider,
 } from './styled';
-import { icons, sectionList } from './utils';
+import { getSectionList, icons } from './utils';
+import { deviceSize } from '../../../consntants/devicesSizes';
+import useMediaQuery from '../../../hooks/useMediaQuery';
+import { SectionSocial } from './SectionSocial';
 
-const Footer: FC<FooterPropsType> = ({ language }) => {
+export const Footer = ({ language, places }: FooterPropsType) => {
+	const isMobile = useMediaQuery(deviceSize.mobileL);
+	const isTablet = useMediaQuery(deviceSize.tablet);
+
+	const sections = getSectionList(places);
+
 	return (
 		<Container>
 			<ContainerSectionsTop>
-				<SectionLeft logo={{ size: 220 }} language={language} />
+				<SectionLeft
+					logo={{ size: 220 }}
+					language={language}
+					sections={sections}
+					isMobile={isMobile}
+					isTablet={isTablet}
+				/>
 				<ContainerSectionsCommon>
-					{sectionList?.length &&
-						sectionList.map((item, index) => (
-							<SectionCommon {...item} key={index} />
-						))}
+					{sections.map((item, index) => (
+						<SectionCommon {...item} key={index} />
+					))}
 				</ContainerSectionsCommon>
-
-				{/* version movil */}
-				<LanguageMovil>
-					<ImgStyled flag={language.flag}></ImgStyled>
-					<LanguageLabel>{language.label}</LanguageLabel>
-				</LanguageMovil>
-				{/**/}
 			</ContainerSectionsTop>
 			<ContainerIcons>
 				<IconsMovil>
@@ -45,11 +47,8 @@ const Footer: FC<FooterPropsType> = ({ language }) => {
 					))}
 				</IconsMovil>
 			</ContainerIcons>
-			<HrDivStyled />
-
+			<Divider />
 			<SectionSocial />
 		</Container>
 	);
 };
-
-export default Footer;

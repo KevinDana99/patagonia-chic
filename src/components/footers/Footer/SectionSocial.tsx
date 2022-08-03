@@ -1,18 +1,17 @@
-import React, { FC } from 'react';
+import React from 'react';
+import { footerTexts } from './footerTexts';
 import {
 	ContainerSocial,
-	CopyrightStyled,
+	CopyrightText,
 	IconContainer,
 	LinkStyled,
 } from './styled';
 import { icons } from './utils';
 
-const SectionSocial: FC = () => {
+export const SectionSocial = () => {
 	return (
 		<ContainerSocial>
-			<CopyrightStyled>
-				©Copyrights 2022 - PatagoniaChic.com EVT Leg. 15.528, Disp. 1795/14
-			</CopyrightStyled>
+			<CopyrightText>{footerTexts.copyrightMessage}</CopyrightText>
 			<IconContainer>
 				{icons.map(({ Icon, url }, index) => (
 					<LinkStyled href={url} key={index} target="_blank">
@@ -23,5 +22,3 @@ const SectionSocial: FC = () => {
 		</ContainerSocial>
 	);
 };
-
-export default SectionSocial;
