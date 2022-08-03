@@ -15,8 +15,9 @@ import { PlaceListInput } from './PlaceListInput';
 import Fuse from 'fuse.js';
 import { fuzePlaceListOptions } from '../../../consntants/fuzeOptions';
 import useMediaQuery from '../useMediaQuery';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
-export const SearchQuery = ({
+const SearchQuery = ({
 	places,
 	onQuerySubmit,
 	showLocations = true,
@@ -136,3 +137,5 @@ export const SearchQuery = ({
 		</SearchQueryContainer>
 	);
 };
+
+export default withFontStyles(SearchQuery);

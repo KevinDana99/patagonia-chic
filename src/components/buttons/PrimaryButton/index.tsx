@@ -8,6 +8,7 @@ import {
 } from './styled';
 import Spinner from '../../spinners/PrimarySpinner';
 import { PrimaryButtonType } from './types';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
 const PrimaryButton = ({
 	title,
@@ -38,4 +39,4 @@ const PrimaryButton = ({
 	);
 };
 
-export default PrimaryButton;
+export default withFontStyles(PrimaryButton);
