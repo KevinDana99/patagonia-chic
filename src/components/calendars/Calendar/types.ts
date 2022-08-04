@@ -2,5 +2,15 @@ export type PrimaryCalendarType = {
 	onDaySelected?: (day: Date) => void;
 	range?: boolean;
 	disabledDates: Array<Date>;
-	doubleCalendar: boolean;
+	doubleCalendar?: boolean;
+	defaultMonth?: number;
+	onRangeSelected?: (day: Date) => void;
+	onRangeStartDateSelected?: (day: Date[]) => void;
+	onRangeEndDateSelected?: (day: Date[]) => void;
+};
+
+export type PrimaryCalendarStyleType = {
+	range?: boolean;
+	default?: Date | number;
+	state?: Date | Date[];
 };

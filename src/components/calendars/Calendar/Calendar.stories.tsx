@@ -7,7 +7,10 @@ export default {
 	title: 'Components/calendars',
 	component: PrimaryCalendar,
 	argTypes: {
-		onDaySelected: { action: 'clicked' },
+		onDaySelected: { action: 'onDaySelected' },
+		onRangeSelected: { action: 'onRangeSelected' },
+		onRangeStartDateSelected: { action: 'onRangeStartDateSelected' },
+		onRangeEndDateSelected: { action: 'onRangeEndDateSelected' },
 	},
 } as Meta<typeof PrimaryCalendar>;
 
@@ -17,9 +20,6 @@ const Template: Story<PrimaryCalendarType> = (args) => (
 
 export const calendar = Template.bind({});
 calendar.args = {
-	onDaySelected: (day) => {
-		console.log(day);
-	},
 	range: false,
 	disabledDates: [
 		new Date(2022, 6, 23),
