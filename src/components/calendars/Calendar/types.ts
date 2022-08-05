@@ -11,6 +11,6 @@ export type PrimaryCalendarType = {
 
 export type PrimaryCalendarStyleType = {
 	range?: boolean;
-	default?: Date | number;
-	state?: Date | Date[];
+	disabledBackArrow?: boolean;
+	disableRange?: boolean;
 };
