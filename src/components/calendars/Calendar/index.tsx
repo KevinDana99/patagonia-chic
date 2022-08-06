@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ButtonHTMLAttributes, useEffect, useState } from 'react';
 import ReactCalendar from 'react-calendar';
 import './styles.css';
 import { Container } from './styled';
@@ -23,7 +23,9 @@ const PrimaryCalendar = ({
 
 	const [nav, setNav] = useState({ back: true, next: false });
 
-	const [disableRange, setDisableRange] = useState(false);
+	const [date, setDate] = useState<Array<Date>>([]);
+
+	const [disableRange, setDisableRange] = useState(true);
 
 	const disabledPrevStartDate = (date: Date) => {
 		const currentDate = new Date(new Date().setDate(new Date().getDate() - 1));
@@ -48,10 +50,16 @@ const PrimaryCalendar = ({
 	};
 
 	const testDisableRange = (dayNumber: number) => {
-		state && state != null && state.getDate() > dayNumber
-			? setDisableRange(true)
-			: setDisableRange(false);
-		console.log(state.getDate());
+		if (date && Array.isArray(date) && date != null && date.length > 0) {
+			if (dayNumber < date[0].getDate()) {
+				setDisableRange(true);
+			} else if (date[0] && !date[1]) {
+				range && setDisableRange(false);
+				doubleCalendar && setDisableRange(false);
+			} else {
+				setDisableRange(true);
+			}
+		}
 	};
 
 	const listenDayHover = () => {
@@ -70,7 +78,8 @@ const PrimaryCalendar = ({
 	};
 
 	const handleOnRangeSelected = () => {
-		range || (doubleCalendar && onRangeSelected && onRangeSelected(state));
+		(state && range) ||
+			(doubleCalendar && onRangeSelected && onRangeSelected(state));
 	};
 
 	const handleOnStartDateSelected = () => {
@@ -82,16 +91,28 @@ const PrimaryCalendar = ({
 	};
 
 	useEffect(() => {
+		listenDayHover();
+	}, [date]);
+
+	useEffect(() => {
 		handleOnDaySelected();
 		handleOnRangeSelected();
 
-		if (state != null && state.length) {
+		if (state != null && Array.isArray(state)) {
 			handleOnStartDateSelected();
 			handleOnEndDateSelected();
 		}
-		listenDayHover();
 	}, [state]);
 
+	const addDates = (value: Date, e: React.MouseEvent) => {
+		if (value < date[0]) {
+			alert('menor');
+		} else {
+			alert('mayor');
+		}
+
+		date.length < 2 ? setDate([...date, value]) : setDate([value]);
+	};
 	return (
 		<Container
 			range={range || doubleCalendar ? true : false}
@@ -99,16 +120,17 @@ const PrimaryCalendar = ({
 			disabledBackArrow={nav.back}
 		>
 			<ReactCalendar
+				onClickDay={(value, event) => addDates(value, event)}
 				onActiveStartDateChange={({ activeStartDate }) =>
 					disabledNavigationBackArrow(activeStartDate)
 				}
+				value={state}
 				showDoubleView={doubleCalendar ? true : false}
 				next2Label={null}
 				prev2Label={null}
 				showNeighboringMonth={false}
 				locale={'es'}
 				onChange={setState}
-				value={state}
 				selectRange={range || doubleCalendar ? true : false}
 				tileDisabled={({ date }) => {
 					return disabledPrevStartDate(date) || disabledReservedDates(date);

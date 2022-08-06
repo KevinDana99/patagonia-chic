@@ -17,12 +17,30 @@ export const Container = styled.div<PrimaryCalendarStyleType>`
 
 }
 
+
 `
 			: `
+    .react-calendar__tile--hover {
+         background-color : transparent;
+
+    
+    }
+            
+    .react-calendar__tile--rangeStart {
+
+background: #1087ff;
+
+    }
+            
 .react-calendar__tile:enabled:hover {
     border: 2px solid #1079e3;
+
+
    
 }
+
+
+
 
 `}
 `;
