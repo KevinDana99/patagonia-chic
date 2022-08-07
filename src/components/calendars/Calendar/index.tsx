@@ -3,6 +3,7 @@ import ReactCalendar from 'react-calendar';
 import './styles.css';
 import { Container } from './styled';
 import { PrimaryCalendarType } from './types';
+import { Node } from '@babel/core';
 
 const PrimaryCalendar = ({
 	onDaySelected,
@@ -19,13 +20,17 @@ const PrimaryCalendar = ({
 		return new Date(new Date().getFullYear(), currentMonth, 1);
 	};
 
-	const [state, setState] = useState(defaultMonth ? setDefaultMonth() : null);
+	const [state, setState] = useState<Date | [Date | null, Date | null] | null>(
+		defaultMonth ? setDefaultMonth() : null
+	);
 
-	const [nav, setNav] = useState({ back: true, next: false });
+	const [disableNav, setDisableNav] = useState({ back: true, next: false });
 
 	const [date, setDate] = useState<Array<Date>>([]);
 
 	const [disableRange, setDisableRange] = useState(true);
+
+	const [views, setViews] = useState<[] | NodeList>([]);
 
 	const disabledPrevStartDate = (date: Date) => {
 		const currentDate = new Date(new Date().setDate(new Date().getDate() - 1));
@@ -44,14 +49,17 @@ const PrimaryCalendar = ({
 
 	const disabledNavigationBackArrow = (currentDate: Date) => {
 		const disable =
-			currentDate.getMonth() == setDefaultMonth().getMonth() ? true : false;
+			currentDate.getMonth() == setDefaultMonth().getMonth() &&
+			setDefaultMonth().getFullYear() == currentDate.getFullYear()
+				? true
+				: false;
 
-		setNav({ ...nav, back: disable });
+		setDisableNav({ ...disableNav, back: disable });
 	};
 
-	const testDisableRange = (dayNumber: number) => {
+	const testDisableRange = (dayNumber: number, e: Element) => {
 		if (date && Array.isArray(date) && date != null && date.length > 0) {
-			if (dayNumber < date[0].getDate()) {
+			if (dayNumber < date[0].getDate() && views[0].contains(e)) {
 				setDisableRange(true);
 			} else if (date[0] && !date[1]) {
 				range && setDisableRange(false);
@@ -66,9 +74,14 @@ const PrimaryCalendar = ({
 		const days = document.querySelectorAll(
 			'.react-calendar__tile.react-calendar__month-view__days__day'
 		);
+
+		const monthView = document.querySelectorAll('.react-calendar__month-view');
+
+		setViews(monthView);
+
 		days.forEach((e) => {
 			e.addEventListener('mouseover', () =>
-				testDisableRange(parseInt(e.children[0].innerHTML))
+				testDisableRange(parseInt(e.children[0].innerHTML), e)
 			);
 		});
 	};
@@ -105,25 +118,19 @@ const PrimaryCalendar = ({
 	}, [state]);
 
 	const addDates = (value: Date, e: React.MouseEvent) => {
-		if (value < date[0]) {
-			alert('menor');
-		} else {
-			alert('mayor');
-		}
-
 		date.length < 2 ? setDate([...date, value]) : setDate([value]);
 	};
 	return (
 		<Container
 			range={range || doubleCalendar ? true : false}
 			disableRange={disableRange}
-			disabledBackArrow={nav.back}
+			disabledBackArrow={disableNav.back}
 		>
 			<ReactCalendar
 				onClickDay={(value, event) => addDates(value, event)}
-				onActiveStartDateChange={({ activeStartDate }) =>
-					disabledNavigationBackArrow(activeStartDate)
-				}
+				onActiveStartDateChange={({ activeStartDate }) => {
+					disabledNavigationBackArrow(activeStartDate);
+				}}
 				value={state}
 				showDoubleView={doubleCalendar ? true : false}
 				next2Label={null}
