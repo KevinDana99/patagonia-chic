@@ -91,8 +91,7 @@ const PrimaryCalendar = ({
 	};
 
 	const handleOnRangeSelected = () => {
-		(state && range) ||
-			(doubleCalendar && onRangeSelected && onRangeSelected(state));
+		range || (doubleCalendar && onRangeSelected && onRangeSelected(state));
 	};
 
 	const handleOnStartDateSelected = () => {
