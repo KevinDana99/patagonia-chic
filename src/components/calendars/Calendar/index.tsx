@@ -1,9 +1,13 @@
-import React, { ButtonHTMLAttributes, useEffect, useState } from 'react';
+import React, {
+	ButtonHTMLAttributes,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import ReactCalendar from 'react-calendar';
 import './styles.css';
 import { Container } from './styled';
 import { PrimaryCalendarType } from './types';
-import { Node } from '@babel/core';
 
 const PrimaryCalendar = ({
 	onDaySelected,
@@ -107,8 +111,8 @@ const PrimaryCalendar = ({
 	}, [date]);
 
 	useEffect(() => {
-		handleOnDaySelected();
 		handleOnRangeSelected();
+		handleOnDaySelected();
 
 		if (state != null && Array.isArray(state)) {
 			handleOnStartDateSelected();
@@ -119,6 +123,11 @@ const PrimaryCalendar = ({
 	const addDates = (value: Date, e: React.MouseEvent) => {
 		date.length < 2 ? setDate([...date, value]) : setDate([value]);
 	};
+
+	const resetRange = () => {
+		setState(null);
+	};
+
 	return (
 		<Container
 			range={range || doubleCalendar ? true : false}
@@ -136,7 +145,9 @@ const PrimaryCalendar = ({
 				prev2Label={null}
 				showNeighboringMonth={false}
 				locale={'es'}
-				onChange={setState}
+				onChange={
+					(range || doubleCalendar) && disableRange ? resetRange : setState
+				}
 				selectRange={range || doubleCalendar ? true : false}
 				tileDisabled={({ date }) => {
 					return disabledPrevStartDate(date) || disabledReservedDates(date);
