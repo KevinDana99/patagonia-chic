@@ -6,15 +6,16 @@ import {
 	StyledLabel,
 	IconDiv,
 	TextDiv,
+	CheckIcon,
 } from './styled';
 
-const CheckboxItem: FC<CheckboxItemPropsType> = ({
+const CheckboxItem = ({
 	index,
 	name,
 	value,
 	label,
 	handleChange,
-}) => (
+}: CheckboxItemPropsType) => (
 	<ContainerInput>
 		<StyledInput
 			id={index.toString().concat('checkbox')}
@@ -25,8 +26,9 @@ const CheckboxItem: FC<CheckboxItemPropsType> = ({
 		/>
 
 		<StyledLabel htmlFor={index.toString().concat('checkbox')}>
-			<IconDiv></IconDiv>
-
+			<IconDiv>
+				<CheckIcon />
+			</IconDiv>
 			<TextDiv>{label}</TextDiv>
 		</StyledLabel>
 	</ContainerInput>

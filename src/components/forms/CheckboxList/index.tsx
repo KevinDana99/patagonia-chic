@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import CheckboxItem from './CheckboxItem';
 import {
@@ -7,11 +7,11 @@ import {
 	RestrictedCheckboxListItemType,
 } from './types';
 
-const CheckboxList: FC<CheckboxListPropsType> = ({
+const CheckboxList = ({
 	list,
 	defaultValue = [],
 	onChange,
-}) => {
+}: CheckboxListPropsType) => {
 	const [checkedList, setCheckedList] =
 		React.useState<CheckboxListItemType[]>(defaultValue);
 
@@ -24,26 +24,24 @@ const CheckboxList: FC<CheckboxListPropsType> = ({
 		})
 	);
 
+	useEffect(() => {
+		onChange && onChange(checkedList);
+	}, [checkedList, onChange]);
+
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement>,
-		itemName: string
+		index: number
 	) => {
-		let newList = checkedList;
 		const isChecked = e.target.checked;
-		const currentItem = conditionedList.find((item) => item.name === itemName);
+		const currentItem = conditionedList[index as number];
 
-		if (
-			currentItem &&
-			isChecked &&
-			checkedList.findIndex((item) => item.name === itemName) === -1
-		) {
-			newList = [...checkedList, currentItem];
-		} else {
-			newList = checkedList.filter((item) => item.name !== itemName);
-		}
-
-		setCheckedList(newList);
-		onChange && onChange(newList);
+		isChecked
+			? setCheckedList([...checkedList, currentItem])
+			: setCheckedList(() => {
+					return checkedList.length !== 1
+						? checkedList.filter((item) => item.value !== currentItem.value)
+						: [];
+			  });
 	};
 
 	return (
@@ -56,7 +54,7 @@ const CheckboxList: FC<CheckboxListPropsType> = ({
 						name={item.name}
 						value={item.value}
 						label={item.label}
-						handleChange={(e) => handleChange(e, item.name)}
+						handleChange={(e) => handleChange(e, index)}
 					/>
 				);
 			})}
