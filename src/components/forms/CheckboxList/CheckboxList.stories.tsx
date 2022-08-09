@@ -28,5 +28,17 @@ Checkbox.args = {
 			label: 'Opcion B',
 			value: 2,
 		},
+		{
+			label: 'Opcion C',
+			value: 3,
+		},
+		{
+			label: 'Opcion D',
+			value: 4,
+		},
+		{
+			label: 'Opcion E',
+			value: 5,
+		},
 	],
 };
