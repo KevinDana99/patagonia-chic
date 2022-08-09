@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { SearchQuery } from './index';
+import SearchQuery from '.';
 import { SearchQueryType } from './types';
 
 export default {

@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import CheckboxItem from './CheckboxItem';
 import {
 	CheckboxListItemType,
@@ -63,4 +64,4 @@ const CheckboxList: FC<CheckboxListPropsType> = ({
 	);
 };
 
-export default CheckboxList;
+export default withFontStyles(CheckboxList);

@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import { StyledTextarea, StyledLabel, TextareaContainer } from './styled';
 import { TextareaPropsType } from './types';
 
@@ -24,4 +25,4 @@ const Textarea: FC<TextareaPropsType> = ({
 	);
 };
 
-export default Textarea;
+export default withFontStyles(Textarea);

@@ -2,6 +2,7 @@ import React from 'react';
 import { ButtonSecondaryStyled, SpinnerStyled } from './styled';
 import { SecondaryButtonType } from './types';
 import { IoChevronForwardSharp as ForwardIcon } from 'react-icons/io5';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
 const SecondaryButton = ({
 	title,
@@ -19,4 +20,4 @@ const SecondaryButton = ({
 	);
 };
 
-export default SecondaryButton;
+export default withFontStyles(SecondaryButton);
