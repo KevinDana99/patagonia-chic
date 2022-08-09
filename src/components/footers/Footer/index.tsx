@@ -15,8 +15,9 @@ import { getSectionList, icons } from './utils';
 import { deviceSize } from '../../../consntants/devicesSizes';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { SectionSocial } from './SectionSocial';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
-export const Footer = ({ language, places }: FooterPropsType) => {
+const Footer = ({ language, places }: FooterPropsType) => {
 	const isMobile = useMediaQuery(deviceSize.mobileL);
 	const isTablet = useMediaQuery(deviceSize.tablet);
 
@@ -52,3 +53,5 @@ export const Footer = ({ language, places }: FooterPropsType) => {
 		</Container>
 	);
 };
+
+export default withFontStyles(Footer);

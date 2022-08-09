@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Footer as FooterComponent } from './index';
+import FooterComponent from './index';
 import { FooterPropsType } from './types';
 
 export default {
