@@ -4,7 +4,7 @@ import React, {
 	useRef,
 	useState,
 } from 'react';
-import ReactCalendar from 'react-calendar';
+import ReactCalendar, { Calendar } from 'react-calendar';
 import './styles.css';
 import { Container } from './styled';
 import { PrimaryCalendarType } from './types';
@@ -30,7 +30,7 @@ const PrimaryCalendar = ({
 
 	const [disableNav, setDisableNav] = useState({ back: true, next: false });
 
-	const [date, setDate] = useState<Array<Date>>([]);
+	const [date, setDate] = useState<Array<Date> | []>([]);
 
 	const [disableRange, setDisableRange] = useState(true);
 
@@ -95,28 +95,31 @@ const PrimaryCalendar = ({
 	};
 
 	const handleOnRangeSelected = () => {
-		range || (doubleCalendar && onRangeSelected && onRangeSelected(state));
+		onRangeSelected && onRangeSelected(state);
 	};
 
 	const handleOnStartDateSelected = () => {
-		onRangeStartDateSelected && onRangeStartDateSelected(state[0]);
+		onRangeStartDateSelected && onRangeStartDateSelected(date[0]);
 	};
 
 	const handleOnEndDateSelected = () => {
-		onRangeEndDateSelected && onRangeEndDateSelected(state[1]);
+		onRangeEndDateSelected &&
+			onRangeEndDateSelected(date[1] < date[0] ? null : date[1]);
 	};
 
 	useEffect(() => {
-		listenDayHover();
+		if (doubleCalendar || range) {
+			handleOnStartDateSelected();
+			handleOnEndDateSelected();
+			listenDayHover();
+		}
 	}, [date]);
 
 	useEffect(() => {
-		handleOnRangeSelected();
-		handleOnDaySelected();
-
-		if (state != null && Array.isArray(state)) {
-			handleOnStartDateSelected();
-			handleOnEndDateSelected();
+		if (doubleCalendar || range) {
+			handleOnRangeSelected();
+		} else {
+			handleOnDaySelected();
 		}
 	}, [state]);
 
