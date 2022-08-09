@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useOutsideClick } from '../useOutsideClick';
+import { useOutsideClick } from '../../../hooks/useOutsideClick';
 import { Calendar } from './Calendar';
 import CalendarMobile from './CalendarMobile';
 import {

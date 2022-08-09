@@ -4,24 +4,8 @@ import {
 	IoChevronForwardSharp,
 } from 'react-icons/io5';
 import styled from 'styled-components';
+import { deviceSize } from '../../../consntants/devicesSizes';
 import { OptionContainerType, PlaceContainerType } from './types';
-
-const size = {
-	mobileS: '320px',
-	mobileM: '375px',
-	mobileL: '425px',
-	tablet: '600px',
-	laptop: '1024px',
-	laptopL: '1440px',
-	desktop: '2560px',
-};
-
-export const device = {
-	mobileS: `(max-width: ${size.mobileS})`,
-	mobileM: `(max-width: ${size.mobileM})`,
-	mobileL: `(max-width: ${size.mobileL})`,
-	tablet: `(min-width: ${size.tablet}) and (max-width: 850px)`,
-};
 
 const selectedShadow =
 	'12px 0px 15px -5px rgb(0 0 0 / 20%), -12px 0px 15px -5px rgb(0 0 0 / 20%);';
@@ -38,7 +22,7 @@ export const SearchQueryOptions = styled.div`
 	background: #ffffff;
 	overflow: hidden;
 
-	@media ${device.mobileL} {
+	@media ${deviceSize.mobileL} {
 		text-align: center;
 		width: 100%;
 	}
@@ -82,13 +66,13 @@ export const Label = styled.p`
 	font-weight: 600;
 	margin-bottom: 0;
 	margin-top: 11px;
-	@media ${device.mobileL} {
+	@media ${deviceSize.mobileL} {
 		text-align: start;
 	}
 `;
 
 export const MobileLabel = styled(Label)`
-	@media ${device.mobileL} {
+	@media ${deviceSize.mobileL} {
 		text-align: center;
 	}
 `;
@@ -120,7 +104,7 @@ export const Divider = styled.div`
 	margin-top: 10px;
 	margin-bottom: 10px;
 
-	@media ${device.mobileL} {
+	@media ${deviceSize.mobileL} {
 		border: none;
 	}
 `;
@@ -129,7 +113,7 @@ export const ButtonContainer = styled.div`
 	margin-left: 10px;
 	margin-right: 10px;
 
-	@media ${device.mobileL} {
+	@media ${deviceSize.mobileL} {
 		.bhSbQf {
 			border: none;
 			min-width: 30px;
@@ -142,7 +126,7 @@ export const ButtonContainer = styled.div`
 		}
 	}
 
-	@media ${device.tablet} {
+	@media ${deviceSize.tablet} {
 		.bhSbQf {
 			border: none;
 			min-width: 30px;
@@ -173,7 +157,7 @@ export const PlaceListMobileContainer = styled.div`
 	z-index: 1;
 	border-radius: 15px;
 
-	@media ${device.tablet} {
+	@media ${deviceSize.tablet} {
 		text-align: center;
 		width: 80%;
 		height: 50%;
@@ -183,10 +167,10 @@ export const PlaceListMobileContainer = styled.div`
 
 export const CalendarDesktopContainer = styled.div`
 	display: flex;
-	@media ${device.mobileL} {
+	@media ${deviceSize.mobileL} {
 		display: none;
 	}
-	@media ${device.tablet} {
+	@media ${deviceSize.tablet} {
 		display: none;
 	}
 `;
@@ -205,7 +189,7 @@ export const CalendarContainer = styled.div`
 	top: 40px;
 	margin-top: 50px;
 
-	@media ${device.mobileL} {
+	@media ${deviceSize.mobileL} {
 		margin: 0;
 		box-shadow: none;
 		flex-direction: column;
@@ -213,7 +197,7 @@ export const CalendarContainer = styled.div`
 		box-shadow: none !important;
 	}
 
-	@media ${device.tablet} {
+	@media ${deviceSize.tablet} {
 		margin: 0;
 		box-shadow: none;
 		flex-direction: column;
@@ -222,10 +206,10 @@ export const CalendarContainer = styled.div`
 	}
 
 	.DayPicker_weekHeader_1 {
-		@media ${device.mobileL} {
+		@media ${deviceSize.mobileL} {
 			display: none;
 		}
-		@media ${device.tablet} {
+		@media ${deviceSize.tablet} {
 			display: none;
 		}
 	}
@@ -379,14 +363,14 @@ export const PlaceListContainer = styled.div`
 	left: 20px;
 	background-color: #ffffff;
 
-	@media ${device.mobileL} {
+	@media ${deviceSize.mobileL} {
 		position: inherit;
 		box-shadow: none;
 		width: 100%;
 		border-radius: 0px;
 	}
 
-	@media ${device.tablet} {
+	@media ${deviceSize.tablet} {
 		position: inherit;
 		box-shadow: none;
 		width: 100%;
@@ -465,7 +449,7 @@ export const CloseModalContainer = styled.div`
 	border-bottom: solid 1px #d3d3d3;
 	margin-bottom: 20px;
 
-	@media ${device.tablet} {
+	@media ${deviceSize.tablet} {
 		padding: 10px 0px;
 	}
 `;
