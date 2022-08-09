@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import { DataInputContainer, DataInput, StyledLabel } from './styled';
 import { InputPropsType } from './types';
 
@@ -21,4 +22,4 @@ const Input: FC<InputPropsType> = ({ label, onChange, name, defaulValue }) => {
 	);
 };
 //saque el id --> htmlfor
-export default Input;
+export default withFontStyles(Input);

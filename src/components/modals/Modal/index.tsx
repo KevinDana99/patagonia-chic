@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import SecondaryButton from '../../buttons/SecondaryButton';
 import {
 	BoxModal,
@@ -90,4 +91,4 @@ const PrimaryModal = ({
 	);
 };
 
-export default PrimaryModal;
+export default withFontStyles(PrimaryModal);
