@@ -136,7 +136,7 @@ const PrimaryCalendar = ({
 		>
 			<ReactCalendar
 				defaultActiveStartDate={defaultMonth ? setDefaultMonth() : undefined}
-				onClickDay={(value, event) => addDates(value, event)}
+				onClickDay={(value) => addDates(value)}
 				onActiveStartDateChange={({ activeStartDate }) => {
 					disabledNavigationBackArrow(activeStartDate);
 				}}
