@@ -1,10 +1,5 @@
-import React, {
-	ButtonHTMLAttributes,
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
-import ReactCalendar, { Calendar } from 'react-calendar';
+import React, { useEffect, useState } from 'react';
+import ReactCalendar from 'react-calendar';
 import './styles.css';
 import { Container } from './styled';
 import { PrimaryCalendarType } from './types';
@@ -18,6 +13,7 @@ const PrimaryCalendar = ({
 	onRangeSelected,
 	onRangeStartDateSelected,
 	onRangeEndDateSelected,
+	shadow = false,
 }: PrimaryCalendarType) => {
 	const setDefaultMonth = () => {
 		const currentMonth = defaultMonth || new Date().getMonth();
@@ -25,7 +21,7 @@ const PrimaryCalendar = ({
 	};
 
 	const [state, setState] = useState<Date | [Date | null, Date | null] | null>(
-		defaultMonth ? setDefaultMonth() : null
+		null
 	);
 
 	const [disableNav, setDisableNav] = useState({ back: true, next: false });
@@ -123,7 +119,7 @@ const PrimaryCalendar = ({
 		}
 	}, [state]);
 
-	const addDates = (value: Date, e: React.MouseEvent) => {
+	const addDates = (value: Date) => {
 		date.length < 2 ? setDate([...date, value]) : setDate([value]);
 	};
 
@@ -136,8 +132,10 @@ const PrimaryCalendar = ({
 			range={range || doubleCalendar ? true : false}
 			disableRange={disableRange}
 			disabledBackArrow={disableNav.back}
+			shadow={shadow}
 		>
 			<ReactCalendar
+				defaultActiveStartDate={defaultMonth ? setDefaultMonth() : undefined}
 				onClickDay={(value, event) => addDates(value, event)}
 				onActiveStartDateChange={({ activeStartDate }) => {
 					disabledNavigationBackArrow(activeStartDate);

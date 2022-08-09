@@ -7,10 +7,12 @@ export type PrimaryCalendarType = {
 	onRangeSelected?: (day: Date) => void;
 	onRangeStartDateSelected?: (day: Date[]) => void;
 	onRangeEndDateSelected?: (day: Date[]) => void;
+	shadow?: boolean;
 };
 
 export type PrimaryCalendarStyleType = {
 	range?: boolean;
 	disabledBackArrow?: boolean;
 	disableRange?: boolean;
+	shadow?: boolean;
 };

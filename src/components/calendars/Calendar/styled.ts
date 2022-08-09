@@ -6,6 +6,11 @@ export const Container = styled.div<PrimaryCalendarStyleType>`
 		visibility: ${(props) => props.disabledBackArrow && 'hidden'};
 	}
 
+	.react-calendar {
+		box-shadow: ${(props) =>
+			props.shadow ? '0px 2px 3px rgba(0, 0, 0, 0.276)' : 'none'};
+	}
+
 	${(props) =>
 		!props.disableRange
 			? `

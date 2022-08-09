@@ -20,6 +20,7 @@ const Template: Story<PrimaryCalendarType> = (args) => (
 
 export const calendar = Template.bind({});
 calendar.args = {
+	shadow: true,
 	range: false,
 	disabledDates: [
 		new Date(2022, 6, 23),
@@ -27,4 +28,5 @@ calendar.args = {
 		new Date(2022, 7, 22),
 	],
 	doubleCalendar: false,
+	defaultMonth: 5,
 };
