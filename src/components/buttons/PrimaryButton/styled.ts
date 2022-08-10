@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const ButtonPrimaryStyled = styled.button`
-	min-width: 180px;
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	box-sizing: border-box;
@@ -34,6 +33,9 @@ export const ButtonPrimaryStyled = styled.button`
 		background-size 800ms ease-out, background-position 800ms ease-out;
 	opacity: ${(props) => (props.disabled ? 0.75 : 1)};
 	cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	${(props) =>
 		!props.disabled

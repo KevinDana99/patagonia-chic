@@ -4,71 +4,51 @@
 //TO DO: SET TYPEOF OF CALENDAR
 
 import React, { useState, useEffect } from 'react';
-import { CalendarButtonBack, CalendarButtonNext } from './styled';
 import 'react-dates/initialize';
-import { DayPickerRangeController } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import moment from 'moment';
-import { CalendarType, StateSearchQueryType } from './types';
+import PrimaryCalendar from '../../calendars/Calendar';
 moment.locale('es');
 
 export const Calendar = ({
 	setDates,
 	values,
-	setFocused,
-	focused,
 	closeCalendar,
 	isMobile,
 }: CalendarType) => {
-	const [calendarPreviousButton, setCalendarPreviousButton] = useState(false);
+	const setStartDate = (startDate) => {
+		setDates({
+			...values,
+			startDate: {
+				name: moment(startDate).format('MMMM, D'),
+				date: startDate,
+			},
+		});
+	};
 
-	useEffect(() => {
-		focused === null && setFocused('startDate');
-	}, [focused, setFocused]);
+	const setEndDate = (endDate) => {
+		setDates({
+			...values,
+			endDate: {
+				name: moment(endDate).format('MMMM, D'),
+				date: endDate,
+			},
+		});
+	};
 
-	const currentDate = moment();
 	return (
 		<>
-			<DayPickerRangeController
-				startDate={values?.startDate?.date}
-				endDate={values?.endDate?.date}
-				onDatesChange={({ startDate, endDate }: StateSearchQueryType) => {
-					setDates &&
-						setDates({
-							...values,
-							startDate: {
-								name: moment(startDate).format('MMMM, D'),
-								date: startDate,
-							},
-							endDate: {
-								name: endDate && moment(endDate).format('MMMM, D'),
-								date: endDate,
-							},
-						});
-					focused === 'endDate' && closeCalendar && closeCalendar();
+			<PrimaryCalendar
+				range={isMobile ? true : false}
+				disabledDates={[new Date()]}
+				doubleCalendar={isMobile ? false : true}
+				onRangeStartDateSelected={(e) => {
+					e != undefined && setStartDate(e);
 				}}
-				onFocusChange={(focusedInput: React.SetStateAction<string>) => {
-					setFocused && setFocused(focusedInput);
+				onRangeEndDateSelected={(e) => {
+					e != undefined && setEndDate(e);
+					e != undefined && closeCalendar();
 				}}
-				focusedInput={focused}
-				numberOfMonths={!isMobile ? 2 : 1}
-				isOutsideRange={(dateRange: moment.MomentInput) =>
-					!currentDate.isSameOrAfter(dateRange) ||
-					moment(dateRange).format('MM/DD/YYYY') ===
-						moment().format('MM/DD/YYYY')
-						? false
-						: true
-				}
-				navPrev={calendarPreviousButton ? <CalendarButtonBack /> : <div />}
-				navNext={<CalendarButtonNext />}
-				onNextMonthClick={(month: moment.MomentInput) => {
-					setCalendarPreviousButton(currentDate.isBefore(month, 'month'));
-				}}
-				onPrevMonthClick={(month: moment.MomentInput) => {
-					setCalendarPreviousButton(currentDate.isBefore(month, 'month'));
-				}}
-				transitionDuration={0}
-				hideKeyboardShortcutsPanel={false}
 			/>
 		</>
 	);
