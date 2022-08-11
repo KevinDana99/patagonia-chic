@@ -19,7 +19,7 @@ const Template: Story<RadioButtonListPropsType> = (args) => (
 export const RadioButton: Story<RadioButtonListPropsType> = Template.bind({});
 
 RadioButton.args = {
-	defaultValue: undefined,
+	defaultValue: 2,
 	list: [
 		{
 			label: 'Opcion A',
@@ -29,6 +29,16 @@ RadioButton.args = {
 		{
 			label: 'Opcion B',
 			value: 2,
+			name: 'Matias',
+		},
+		{
+			label: 'Opcion C',
+			value: 3,
+			name: 'Sofia',
+		},
+		{
+			label: 'Opcion D',
+			value: 4,
 			name: 'Matias',
 		},
 	],
