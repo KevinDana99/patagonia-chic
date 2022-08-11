@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { deviceSize } from '../../../consntants/devicesSizes';
+import { TextareaProps } from './types';
 
 export const TextareaContainer = styled.div`
 	width: 375px;
@@ -37,7 +38,7 @@ export const StyledLabel = styled.label`
 	z-index: 1;
 `;
 
-export const StyledTextarea = styled.textarea`
+export const StyledTextarea = styled.textarea<TextareaProps>`
 	font-size: 17px;
 	line-height: 17px;
 	font-weight: 400;
@@ -59,9 +60,14 @@ export const StyledTextarea = styled.textarea`
 	resize: none;
 	padding-top: 30px !important;
 	height: calc(100% - 18px) !important;
+	outline: none !important;
+	border: ${(props) => (!props.error ? 'none' : '2px solid #EA3030')};
+
 	&:focus {
-		border: 2px solid #0077b9;
+		border: ${(props) =>
+			!props.error ? '2px solid #0077B9' : '2px solid #EA3030'};
 		padding: 14px 30px 0 16px;
+		overflow: hidden;
 	}
 	&:not(:placeholder-shown) + ${StyledLabel} {
 		font-size: 12px !important;

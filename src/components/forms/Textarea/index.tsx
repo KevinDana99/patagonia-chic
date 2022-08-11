@@ -8,6 +8,7 @@ const Textarea = ({
 	onChange,
 	name,
 	defaultValue,
+	error,
 }: TextareaPropsType) => {
 	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		onChange && onChange(e.target.value);
@@ -19,7 +20,8 @@ const Textarea = ({
 				onChange={handleChange}
 				name={name}
 				value={defaultValue}
-			></StyledTextarea>
+				error={!!error}
+			/>
 			<StyledLabel>{label}</StyledLabel>
 		</TextareaContainer>
 	);
