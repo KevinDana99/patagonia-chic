@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { deviceSize } from '../../../consntants/devicesSizes';
 
 export const TextareaContainer = styled.div`
 	width: 375px;
@@ -14,6 +15,10 @@ export const TextareaContainer = styled.div`
 			padding-top: 5px;
 			padding-bottom: 3px;
 		}
+	}
+	@media ${deviceSize.mobileL} {
+		text-align: center;
+		width: 100%;
 	}
 `;
 
@@ -44,24 +49,14 @@ export const StyledTextarea = styled.textarea`
 	padding: 15px 30px 0 18px;
 	text-align: left;
 	background: #fff;
-	background-clip: border-box;
-	background-clip: border-box;
-	background-clip: border-box;
-	border-top: none;
-	border-right: none;
-	border-left: none;
+	border: none;
 	border-bottom: 1px solid #ddd;
 	border-radius: 4px;
-	background-clip: padding-box;
 	margin-bottom: 9px;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
 	min-height: 60px;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 40px !important;
 	user-select: auto !important;
 	resize: none;
-	overflow: auto;
 	padding-top: 30px !important;
 	height: calc(100% - 18px) !important;
 	&:focus {
