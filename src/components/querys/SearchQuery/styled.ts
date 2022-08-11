@@ -115,11 +115,20 @@ export const ButtonContainer = styled.div`
 
 	@media ${deviceSize.mobileL} {
 		.bhSbQf {
+			margin-right: 10px;
 			border: none;
-			min-width: 30px;
 			border: 100%;
-			padding-right: 5px;
 			box-sizing: border-box;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.gVkBFL {
+			margin: 0px;
+		}
+		.sc-hKMtZM .cbMybC {
+			width: 20px;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -129,13 +138,16 @@ export const ButtonContainer = styled.div`
 	@media ${deviceSize.tablet} {
 		.bhSbQf {
 			border: none;
-			min-width: 30px;
 			border: 100%;
-			padding-right: 5px;
+			margin-right: 10px;
 			box-sizing: border-box;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+		}
+
+		.gVkBFL {
+			margin: 0px;
 		}
 	}
 `;
