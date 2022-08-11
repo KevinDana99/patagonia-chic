@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { deviceSize } from '../../../consntants/devicesSizes';
+import { InputProps } from './types';
 
 export const DataInputContainer = styled.div`
 	width: 375px;
@@ -14,6 +16,9 @@ export const DataInputContainer = styled.div`
 			padding-top: 5px;
 			padding-bottom: 3px;
 		}
+	}
+	@media ${deviceSize.mobileL} {
+		width: 100%;
 	}
 `;
 
@@ -32,7 +37,7 @@ export const StyledLabel = styled.label`
 	z-index: 1;
 `;
 
-export const DataInput = styled.input`
+export const DataInput = styled.input<InputProps>`
 	font-size: 17px;
 	line-height: 17px;
 	font-weight: 400;
@@ -45,25 +50,22 @@ export const DataInput = styled.input`
 	padding: 15px 30px 0 18px;
 	text-align: left;
 	background: #fff;
-	background-clip: border-box;
-	background-clip: border-box;
-	background-clip: border-box;
-	border-top: none;
-	border-right: none;
-	border-left: none;
+	border: none;
 	border-bottom: 1px solid #ddd;
+	border: ${(props) => (!props.error ? 'none' : '2px solid #EA3030')};
 	border-radius: 4px;
 	background-clip: padding-box;
 	margin-bottom: 9px;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
 	min-height: 60px;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 40px !important;
 	user-select: auto !important;
+	outline: none !important;
+
 	&:focus {
 		border: 2px solid #0077b9;
 		padding: 14px 30px 0 16px;
+		border: ${(props) =>
+			!props.error ? '2px solid #0077B9' : '2px solid #EA3030'};
 	}
 	&:not(:placeholder-shown) + ${StyledLabel} {
 		font-size: 12px !important;
