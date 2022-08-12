@@ -22,9 +22,10 @@ export const Linking = styled.a`
 `;
 
 export const Title = styled.section`
+	margin-top: 24px;
 	color: #222;
 	font-weight: 400;
-	font-size: 15px;
+	font-size: 17px;
 	display: flex;
 	align-items: center;
 `;

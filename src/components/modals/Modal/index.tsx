@@ -14,9 +14,10 @@ import {
 	BoxHeaderText,
 	BoxDownModal,
 } from './styled';
-import { modalType } from './types';
+import { ModalType } from './types';
 
 const PrimaryModal = ({
+	renderOpenButton,
 	width,
 	headerText,
 	Children,
@@ -28,14 +29,12 @@ const PrimaryModal = ({
 	onOpen,
 	title,
 	visible = false,
-}: modalType) => {
-	const [state, setState] = useState<modalType>({
+}: ModalType) => {
+	const [state, setState] = useState<ModalType>({
 		visible,
 		closeOnTouchOutside,
 		animate: false,
 	});
-
-	closeAction && closeAction();
 
 	const close = () => {
 		setState({ ...state, animate: false, visible: false });
@@ -49,8 +48,7 @@ const PrimaryModal = ({
 	}, [onOpen, state]);
 
 	const touchOutside = () => {
-		setState({ ...state, closeOnTouchOutside: true });
-		close();
+		closeOnTouchOutside && close();
 	};
 
 	useEffect(() => {
@@ -59,7 +57,10 @@ const PrimaryModal = ({
 
 	return (
 		<>
-			<SecondaryButton title="Abrir Modal" onClick={open} />
+			{renderOpenButton && (
+				<SecondaryButton title="Abrir Modal" onClick={open} />
+			)}
+
 			<BoxModal visible={state.visible} onClick={touchOutside}>
 				<Container
 					width={width}
@@ -71,13 +72,26 @@ const PrimaryModal = ({
 					<BoxTop>
 						<BoxTitle>{title}</BoxTitle>
 						{!disableClose && (
-							<ButtonClose>{<CloseIcon onClick={close} />}</ButtonClose>
+							<ButtonClose>
+								{<CloseIcon onClick={closeAction ? closeAction : close} />}
+							</ButtonClose>
 						)}
 					</BoxTop>
 					<BoxScroll>
-						<BoxHeader coverImage={coverImage}>
-							{headerText && <BoxHeaderText>{headerText}</BoxHeaderText>}
-						</BoxHeader>
+						{coverImage && (
+							<BoxHeader coverImage={coverImage}>
+								{headerText && (
+									<BoxHeaderText coverImage={coverImage}>
+										{headerText}
+									</BoxHeaderText>
+								)}
+							</BoxHeader>
+						)}
+
+						{!coverImage && headerText && (
+							<BoxHeaderText>{headerText}</BoxHeaderText>
+						)}
+
 						{Children && (
 							<BoxChildren>
 								<Children />
