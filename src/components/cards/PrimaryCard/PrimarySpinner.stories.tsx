@@ -16,4 +16,6 @@ const Template: Story<PrimaryCardType> = (args) => (
 );
 
 export const card = Template.bind({});
-card.args = {};
+card.args = {
+	hover: true,
+};

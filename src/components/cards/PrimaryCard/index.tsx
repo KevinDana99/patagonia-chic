@@ -5,11 +5,10 @@ import { PrimaryCardType } from './types';
 const PrimaryCard = ({
 	children,
 	className,
-	width,
-	height,
+	hover = false,
 }: PrimaryCardType) => {
 	return (
-		<Container width={width} height={height} className={className && className}>
+		<Container hover={hover} className={className && className}>
 			{children}
 		</Container>
 	);

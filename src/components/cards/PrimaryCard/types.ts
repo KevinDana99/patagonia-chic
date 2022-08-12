@@ -1,11 +1,9 @@
 export type PrimaryCardType = {
 	children: JSX.Element | string;
-	width: string;
-	height: string;
+	hover?: boolean;
 	className?: string;
 };
 
 export type PrimaryCardStyleType = {
-	width: string;
-	height: string;
+	hover?: boolean;
 };
