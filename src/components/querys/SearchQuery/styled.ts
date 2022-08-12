@@ -198,6 +198,7 @@ export const CalendarContainer = styled.div`
 	display: flex;
 	justify-content: space-around;
 	position: absolute;
+	left: 60px;
 	top: 40px;
 	margin-top: 50px;
 

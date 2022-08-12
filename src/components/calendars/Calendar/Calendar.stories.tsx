@@ -28,5 +28,4 @@ calendar.args = {
 		new Date(2022, 7, 22),
 	],
 	doubleCalendar: false,
-	defaultMonth: 5,
 };
