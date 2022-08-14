@@ -5,6 +5,7 @@ import {
 	RestrictedRadioButtonItemType,
 } from './types';
 import RadioButtonItem from './RadioButtonItem';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
 const RadioButtonList: FC<RadioButtonListPropsType> = ({
 	list,
@@ -77,4 +78,4 @@ const RadioButtonList: FC<RadioButtonListPropsType> = ({
 	</ContainerInput>
 ); */
 
-export default RadioButtonList;
+export default withFontStyles(RadioButtonList);

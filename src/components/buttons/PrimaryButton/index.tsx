@@ -1,13 +1,21 @@
 import React from 'react';
-import { ButtonPrimaryStyled, BoxLoading } from './styled';
+import {
+	ButtonPrimaryStyled,
+	BoxLoading,
+	ButtonPrimaryContent,
+	ButtonPrimaryText,
+	Icon,
+} from './styled';
 import Spinner from '../../spinners/PrimarySpinner';
 import { PrimaryButtonType } from './types';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
 const PrimaryButton = ({
 	title,
 	loading = false,
 	onClick,
 	disabled = false,
+	IconComponent,
 	className,
 }: PrimaryButtonType) => {
 	disabled = disabled || loading;
@@ -18,7 +26,10 @@ const PrimaryButton = ({
 			className={className}
 		>
 			{!loading ? (
-				title
+				<ButtonPrimaryContent>
+					{IconComponent && <Icon component={<IconComponent />} />}
+					<ButtonPrimaryText>{title}</ButtonPrimaryText>
+				</ButtonPrimaryContent>
 			) : (
 				<BoxLoading>
 					<Spinner theme="light" />
@@ -28,4 +39,4 @@ const PrimaryButton = ({
 	);
 };
 
-export default PrimaryButton;
+export default withFontStyles(PrimaryButton);

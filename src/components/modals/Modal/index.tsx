@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import SecondaryButton from '../../buttons/SecondaryButton';
 import {
 	BoxModal,
@@ -41,10 +42,10 @@ const PrimaryModal = ({
 		onClose && onClose();
 	};
 
-	const open = () => {
+	const open = useCallback(() => {
 		setState({ ...state, visible: true, animate: true });
 		onOpen && onOpen();
-	};
+	}, [onOpen, state]);
 
 	const touchOutside = () => {
 		closeOnTouchOutside && close();
@@ -52,7 +53,7 @@ const PrimaryModal = ({
 
 	useEffect(() => {
 		state.visible && open();
-	}, []);
+	}, [open, state.visible]);
 
 	return (
 		<>
@@ -77,9 +78,20 @@ const PrimaryModal = ({
 						)}
 					</BoxTop>
 					<BoxScroll>
-						<BoxHeader coverImage={coverImage}>
-							{headerText && <BoxHeaderText>{headerText}</BoxHeaderText>}
-						</BoxHeader>
+						{coverImage && (
+							<BoxHeader coverImage={coverImage}>
+								{headerText && (
+									<BoxHeaderText coverImage={coverImage}>
+										{headerText}
+									</BoxHeaderText>
+								)}
+							</BoxHeader>
+						)}
+
+						{!coverImage && headerText && (
+							<BoxHeaderText>{headerText}</BoxHeaderText>
+						)}
+
 						{Children && (
 							<BoxChildren>
 								<Children />
@@ -93,4 +105,4 @@ const PrimaryModal = ({
 	);
 };
 
-export default PrimaryModal;
+export default withFontStyles(PrimaryModal);
