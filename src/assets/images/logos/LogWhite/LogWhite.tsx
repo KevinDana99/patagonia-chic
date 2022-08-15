@@ -13,7 +13,7 @@ const LogWhite: React.FC<LogoType> = ({ size }) => {
 			viewBox="0 0 558.7 149.9"
 			enableBackground="0 0 558.7 149.9"
 			style={{
-				backgroundColor: 'black',
+				backgroundColor: 'transparent',
 				width: `${size}`,
 			}}
 			xmlSpace="preserve"

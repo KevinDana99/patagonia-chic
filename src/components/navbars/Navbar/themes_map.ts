@@ -4,13 +4,11 @@ export const themesMap = (name: string) => {
 			return {
 				background: 'transparent',
 				color: '#FFFFFF',
-				languageBackground: 'none',
 			};
 		default:
 			return {
-				background: 'rgba(255, 255, 255, 1)',
+				background: 'rgba(255, 255, 255, 0.72)',
 				color: '#3B3B3B',
-				languageBackground: 'rgba(241, 244, 247, 1)',
 			};
 	}
 };
