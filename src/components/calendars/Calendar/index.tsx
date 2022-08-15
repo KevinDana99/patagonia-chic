@@ -14,6 +14,7 @@ const PrimaryCalendar = ({
 	onRangeStartDateSelected,
 	onRangeEndDateSelected,
 	shadow = false,
+	markCurrentDay = false,
 }: PrimaryCalendarType) => {
 	const setDefaultMonth = () => {
 		const currentMonth = defaultMonth || new Date().getMonth();
@@ -129,6 +130,7 @@ const PrimaryCalendar = ({
 
 	return (
 		<Container
+			markCurrentDay={markCurrentDay}
 			range={range || doubleCalendar ? true : false}
 			disableRange={disableRange}
 			disabledBackArrow={disableNav.back}

@@ -29,4 +29,5 @@ calendar.args = {
 	],
 	doubleCalendar: false,
 	defaultMonth: 5,
+	markCurrentDay: false,
 };

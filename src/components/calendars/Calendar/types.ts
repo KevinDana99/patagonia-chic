@@ -8,6 +8,7 @@ export type PrimaryCalendarType = {
 	onRangeStartDateSelected?: (day: Date[]) => void;
 	onRangeEndDateSelected?: (day: Date[]) => void;
 	shadow?: boolean;
+	markCurrentDay?: boolean;
 };
 
 export type PrimaryCalendarStyleType = {
@@ -15,4 +16,5 @@ export type PrimaryCalendarStyleType = {
 	disabledBackArrow?: boolean;
 	disableRange?: boolean;
 	shadow?: boolean;
+	markCurrentDay?: boolean;
 };
