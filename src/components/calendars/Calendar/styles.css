@@ -6,7 +6,6 @@ react-calendar__tile react-calendar__month-view__days__day react-calendar__month
 
 .react-calendar {
 	width: 350px;
-	max-width: 100%;
 	background: white;
 	border-radius: 0.5em;
 	font-family: Arial, Helvetica, sans-serif;
@@ -121,6 +120,12 @@ abbr {
 .react-calendar__month-view__days__day--weekend {
 }
 
+.react-calendar__month-view__days{
+
+	width: auto;
+
+}
+
 .react-calendar__year-view .react-calendar__tile,
 .react-calendar__decade-view .react-calendar__tile,
 .react-calendar__century-view .react-calendar__tile {
@@ -128,13 +133,16 @@ abbr {
 }
 
 .react-calendar__tile {
-	max-width: 100%;
+
 	padding: 10px 6.6667px;
+	min-width: 20px;
+	height: 30px;
 	background: none;
 	text-align: center;
 	line-height: 16px;
 	font-size: 12px;
 	color: black;
+
 }
 .react-calendar__tile:disabled {
 	color: #999;
