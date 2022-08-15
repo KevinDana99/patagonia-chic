@@ -67,12 +67,14 @@ react-calendar__tile react-calendar__month-view__days__day react-calendar__month
 }
 
 .react-calendar__navigation__label__labelText {
-	width: 200px;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-weight: 600;
+
 }
+
 
 .react-calendar__navigation__label__divider {
 	display: none;
