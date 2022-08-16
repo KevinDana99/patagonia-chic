@@ -9,6 +9,7 @@ export type PrimaryCalendarType = {
 	onRangeEndDateSelected?: (day: Date[]) => void;
 	shadow?: boolean;
 	markCurrentDay?: boolean;
+	locale?: 'es' | 'en' | 'fr';
 };
 
 export type PrimaryCalendarStyleType = {

@@ -15,6 +15,7 @@ const PrimaryCalendar = ({
 	onRangeEndDateSelected,
 	shadow = false,
 	markCurrentDay = false,
+	locale = 'es',
 }: PrimaryCalendarType) => {
 	const setDefaultMonth = () => {
 		const currentMonth = defaultMonth || new Date().getMonth();
@@ -159,7 +160,7 @@ const PrimaryCalendar = ({
 				next2Label={null}
 				prev2Label={null}
 				showNeighboringMonth={false}
-				locale={'en'}
+				locale={locale}
 				onChange={
 					(range || doubleCalendar) && disableRange ? resetRange : setState
 				}
