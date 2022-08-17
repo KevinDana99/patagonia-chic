@@ -143,11 +143,7 @@ padding: 0px;
 	line-height: 16px;
 	font-size: 12px;
 	color: black;
-	min-width: 47px;
-	min-height: 47px;
-	max-width: 47px;
-	max-height: 47px;
-
+    height: calc(47px - 0.25px);
 
 
 }
