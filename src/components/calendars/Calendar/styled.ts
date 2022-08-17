@@ -48,4 +48,11 @@ background: #1087ff;
 
 
 `}
+
+	${(prop) =>
+		prop.markCurrentDay &&
+		`.react-calendar__tile--now {
+		background-color: rgb(230, 230, 230);
+		color: black;
+		`}
 `;

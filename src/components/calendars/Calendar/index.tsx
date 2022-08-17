@@ -14,6 +14,8 @@ const PrimaryCalendar = ({
 	onRangeStartDateSelected,
 	onRangeEndDateSelected,
 	shadow = false,
+	markCurrentDay = false,
+	locale = 'es',
 }: PrimaryCalendarType) => {
 	const setDefaultMonth = () => {
 		const currentMonth = defaultMonth || new Date().getMonth();
@@ -86,6 +88,15 @@ const PrimaryCalendar = ({
 		});
 	};
 
+	const replaceMonthText = (month: string) => {
+		const substrMonth = month.split(' ');
+		if (substrMonth.length < 3) {
+			return month;
+		} else {
+			return substrMonth[0] + ' ' + substrMonth[2];
+		}
+	};
+
 	const handleOnDaySelected = () => {
 		state && !range && !doubleCalendar && onDaySelected && onDaySelected(state);
 	};
@@ -129,12 +140,16 @@ const PrimaryCalendar = ({
 
 	return (
 		<Container
+			markCurrentDay={markCurrentDay}
 			range={range || doubleCalendar ? true : false}
 			disableRange={disableRange}
 			disabledBackArrow={disableNav.back}
 			shadow={shadow}
 		>
 			<ReactCalendar
+				navigationLabel={({ date, label, locale, view }) =>
+					replaceMonthText(label)
+				}
 				defaultActiveStartDate={defaultMonth ? setDefaultMonth() : undefined}
 				onClickDay={(value) => addDates(value)}
 				onActiveStartDateChange={({ activeStartDate }) => {
@@ -145,7 +160,7 @@ const PrimaryCalendar = ({
 				next2Label={null}
 				prev2Label={null}
 				showNeighboringMonth={false}
-				locale={'es'}
+				locale={locale}
 				onChange={
 					(range || doubleCalendar) && disableRange ? resetRange : setState
 				}
