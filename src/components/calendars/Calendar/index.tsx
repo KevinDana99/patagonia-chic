@@ -140,8 +140,8 @@ const PrimaryCalendar = ({
 	};
 
 	useEffect(() => {
-		setState(selectedRange);
-	}, []);
+		selectedRange && setState(selectedRange);
+	}, [selectedRange]);
 	return (
 		<Container
 			markCurrentDay={markCurrentDay}
