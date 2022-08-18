@@ -188,12 +188,11 @@ export const CalendarDesktopContainer = styled.div`
 `;
 
 export const CalendarContainer = styled.div`
-	width: 780px;
+	width: 825px;
 
 	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px !important;
 	border-radius: 24px;
-	padding: 24px;
-	padding-bottom: 0px;
+	padding: 20px 0;
 	overflow: hidden;
 	background-color: #ffffff;
 	display: flex;
