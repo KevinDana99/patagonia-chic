@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useOutsideClick } from '../../../hooks/useOutsideClick';
+import useToggle from '../../../hooks/useToggle';
 import { Calendar } from './Calendar';
 import CalendarMobile from './CalendarMobile';
 import {
@@ -36,6 +37,29 @@ export const CalendarInput = ({
 	const calendarRef = useRef(null);
 	useOutsideClick(calendarRef, outsideClick);
 
+	const [hover, setHover] = useState({ start: false, end: false });
+
+	const enableHover = (option: string) => {
+		if (option == values?.startDate?.name) {
+			setHover({ ...hover, start: true });
+		} else {
+			setHover({ ...hover, end: true });
+		}
+	};
+
+	const disableHover = (option: string) => {
+		if (option == values?.startDate?.name) {
+			setHover({ ...hover, start: false });
+		} else {
+			setHover({ ...hover, end: false });
+		}
+	};
+
+	useEffect(() => {
+		values?.startDate?.name && disableHover(values?.startDate?.name);
+		values?.endDate?.name && disableHover(values?.endDate?.name);
+	}, [data]);
+
 	return (
 		<CalendarInputContainer ref={calendarRef}>
 			{showCalendar && isMobile && (
@@ -52,6 +76,12 @@ export const CalendarInput = ({
 			<CalendarDesktopContainer>
 				<Divider />
 				<OptionContainer
+					onMouseOver={() =>
+						values?.startDate?.name && enableHover(values?.startDate?.name)
+					}
+					onMouseOut={() =>
+						values?.startDate?.name && disableHover(values?.startDate?.name)
+					}
 					onClick={onClick}
 					isSelected={calendarFocusedInput === 'startDate' && showCalendar}
 				>
@@ -61,11 +91,15 @@ export const CalendarInput = ({
 							{values?.startDate?.name ?? titles[0]}
 						</Title>
 					</OptionContent>
-					{values?.startDate?.name && <CloseIcon onClick={clearData} />}
+					{values?.startDate?.name && hover.start && (
+						<CloseIcon onClick={clearData} />
+					)}
 				</OptionContainer>
 				<Divider />
 				<OptionContainer
 					onClick={onClick}
+					onMouseOver={() => values?.endDate?.name && enableHover('end')}
+					onMouseOut={() => values?.endDate?.name && disableHover('end')}
 					isSelected={calendarFocusedInput === 'endDate' && showCalendar}
 				>
 					<OptionContent>
@@ -74,7 +108,9 @@ export const CalendarInput = ({
 							{values?.endDate?.name ?? titles[1]}
 						</Title>
 					</OptionContent>
-					{values?.endDate?.name && <CloseIcon onClick={clearData} />}
+					{values?.endDate?.name && hover.end && (
+						<CloseIcon onClick={clearData} />
+					)}
 				</OptionContainer>
 				<Divider />
 			</CalendarDesktopContainer>

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import {
 	CloseIcon,
 	Input,
@@ -10,6 +10,7 @@ import { PlaceListInputType } from './types';
 import PlaceListMobile from './PlaceListMobile';
 import { PlaceList } from './PlaceList';
 import { useOutsideClick } from '../../../hooks/useOutsideClick';
+import useToggle from '../../../hooks/useToggle';
 
 export const PlaceListInput = ({
 	label,
@@ -31,10 +32,18 @@ export const PlaceListInput = ({
 }: PlaceListInputType) => {
 	const containerRef = useRef(null);
 
+	const { onToggle, offToggle, toggle } = useToggle(null);
+
 	useOutsideClick(containerRef, outsideClick);
 
 	return (
 		<OptionContainer
+			onMouseOver={() => {
+				values.place?.name && onToggle();
+			}}
+			onMouseOut={() => {
+				values.place?.name && offToggle();
+			}}
 			onClick={onClick}
 			isSelected={isSelected}
 			ref={containerRef}
@@ -60,7 +69,7 @@ export const PlaceListInput = ({
 					value={values?.place?.name}
 				/>
 			</OptionContent>
-			{values?.place?.name && <CloseIcon onClick={clearData} />}
+			{values?.place?.name && toggle && <CloseIcon onClick={clearData} />}
 			{showPlaceList && (
 				<PlaceList
 					places={placeList}
