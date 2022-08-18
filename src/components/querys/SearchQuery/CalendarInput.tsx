@@ -41,17 +41,17 @@ export const CalendarInput = ({
 
 	const enableHover = (option: string) => {
 		if (option == values?.startDate?.name) {
-			setHover({ ...hover, start: true });
+			setHover({ ...hover, start: true, end: false });
 		} else {
-			setHover({ ...hover, end: true });
+			setHover({ ...hover, end: true, start: false });
 		}
 	};
 
 	const disableHover = (option: string) => {
 		if (option == values?.startDate?.name) {
-			setHover({ ...hover, start: false });
+			setHover({ ...hover, start: false, end: false });
 		} else {
-			setHover({ ...hover, end: false });
+			setHover({ ...hover, end: false, start: false });
 		}
 	};
 
