@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
 	CloseIcon,
 	Input,
@@ -35,6 +35,10 @@ export const PlaceListInput = ({
 	const { onToggle, offToggle, toggle } = useToggle(null);
 
 	useOutsideClick(containerRef, outsideClick);
+
+	useEffect(() => {
+		offToggle();
+	}, [values]);
 
 	return (
 		<OptionContainer
