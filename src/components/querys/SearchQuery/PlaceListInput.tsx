@@ -26,6 +26,7 @@ export const PlaceListInput = ({
 	openCalendar,
 	closeList,
 	showPlaceList,
+	disableSearch,
 }: PlaceListInputType) => {
 	const containerRef = useRef(null);
 
@@ -51,6 +52,7 @@ export const PlaceListInput = ({
 			<OptionContent>
 				<Label>{label}</Label>
 				<Input
+					disableSearch={disableSearch}
 					type="text"
 					placeholder={placeholder}
 					onChange={inputOnChange}

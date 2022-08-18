@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PrimaryButton from '../../buttons/PrimaryButton';
 import { CalendarInput } from './CalendarInput';
 import {
@@ -32,6 +32,11 @@ const SearchQuery = ({
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
 	const [calendarFocusedInput, setCalendarFocusedInput] = useState('startDate');
+	const [disableSearch, setDisableSearch] = useState({
+		place: false,
+		startDate: false,
+		endDate: false,
+	});
 
 	const clearDates = () => {
 		setData({ ...data, startDate: null, endDate: null });
@@ -56,11 +61,41 @@ const SearchQuery = ({
 
 	const isMobile = useMediaQuery('(max-width: 850px)');
 
+	const validateSearch = () => {
+		if (!data.place || !data.startDate || !data.endDate) {
+			setDisableSearch({
+				...disableSearch,
+				startDate: true,
+				endDate: true,
+				place: true,
+			});
+		}
+
+		if ((!data.place && data.startDate) || data.endDate) {
+			setDisableSearch({
+				...disableSearch,
+				startDate: false,
+				endDate: false,
+				place: true,
+			});
+		}
+
+		if ((!data.place && data.startDate) || data.endDate) {
+			setDisableSearch({
+				...disableSearch,
+				startDate: false,
+				endDate: false,
+				place: true,
+			});
+		}
+	};
+
 	return (
 		<SearchQueryContainer>
 			<SearchQueryOptions>
 				{showLocations && (
 					<PlaceListInput
+						disableSearch={disableSearch.place}
 						label={'Lugar'}
 						placeholder={'¿A dónde vas?'}
 						onClick={() => {
@@ -103,6 +138,7 @@ const SearchQuery = ({
 				)}
 
 				<CalendarInput
+					disableSearch={disableSearch}
 					labels={['Fecha partida', 'Fechar llegada']}
 					titles={['Seleccione fecha', 'Seleccione fecha']}
 					values={data}
@@ -130,7 +166,10 @@ const SearchQuery = ({
 					<PrimaryButton
 						title={!isMobile ? 'Buscar Excursiones' : ''}
 						IconComponent={IoSearch}
-						onClick={() => onQuerySubmit(data)}
+						onClick={() => {
+							validateSearch();
+							onQuerySubmit(data);
+						}}
 					/>
 				</ButtonContainer>
 			</SearchQueryOptions>

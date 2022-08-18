@@ -28,6 +28,7 @@ export type CalendarType = {
 	focused?: string;
 	closeCalendar?: () => void;
 	isMobile: boolean;
+	disableSearch: { place: boolean; startDate: boolean; endDate: boolean };
 };
 
 export type CalendarInputType = {
@@ -47,9 +48,15 @@ export type CalendarInputType = {
 	setFocused: React.Dispatch<SetStateAction<string>>;
 	closeCalendar: () => void;
 	sendData: () => void;
+	disableSearch: { place: boolean; startDate: boolean; endDate: boolean };
+};
+
+export type DisableSearchType = {
+	disableSearch: boolean;
 };
 
 export type PlaceListInputType = {
+	disableSearch: boolean;
 	label: string;
 	placeholder: string;
 	onClick?: React.MouseEventHandler;

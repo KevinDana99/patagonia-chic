@@ -16,6 +16,7 @@ import {
 import { CalendarInputType } from './types';
 
 export const CalendarInput = ({
+	disableSearch,
 	labels,
 	titles,
 	onClick,
@@ -56,7 +57,9 @@ export const CalendarInput = ({
 				>
 					<OptionContent>
 						<Label>{labels[0]}</Label>
-						<Title>{values?.startDate?.name ?? titles[0]}</Title>
+						<Title disableSearch={disableSearch.startDate}>
+							{values?.startDate?.name ?? titles[0]}
+						</Title>
 					</OptionContent>
 					{values?.startDate?.name && <CloseIcon onClick={clearData} />}
 				</OptionContainer>
@@ -67,7 +70,9 @@ export const CalendarInput = ({
 				>
 					<OptionContent>
 						<Label>{labels[1]}</Label>
-						<Title>{values?.endDate?.name ?? titles[1]}</Title>
+						<Title disableSearch={disableSearch.endDate}>
+							{values?.endDate?.name ?? titles[1]}
+						</Title>
 					</OptionContent>
 					{values?.endDate?.name && <CloseIcon onClick={clearData} />}
 				</OptionContainer>

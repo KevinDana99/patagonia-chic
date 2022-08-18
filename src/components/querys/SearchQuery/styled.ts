@@ -5,7 +5,12 @@ import {
 } from 'react-icons/io5';
 import styled from 'styled-components';
 import { deviceSize } from '../../../consntants/devicesSizes';
-import { OptionContainerType, PlaceContainerType } from './types';
+import {
+	DisableSearchType,
+	OptionContainerType,
+	PlaceContainerType,
+	PlaceListInputType,
+} from './types';
 
 const selectedShadow =
 	'12px 0px 15px -5px rgb(0 0 0 / 20%), -12px 0px 15px -5px rgb(0 0 0 / 20%);';
@@ -77,7 +82,7 @@ export const MobileLabel = styled(Label)`
 	}
 `;
 
-export const Title = styled.p`
+export const Title = styled.p<DisableSearchType>`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	box-sizing: border-box;
@@ -86,6 +91,9 @@ export const Title = styled.p`
 	margin-top: 0;
 	margin-bottom: 11;
 	text-transform: capitalize;
+
+	color: ${(props) => props.disableSearch && 'red'};
+	font-weight: 200;
 `;
 
 export const CloseIcon = styled(IoClose)`
@@ -428,7 +436,7 @@ export const PlaceSubtitle = styled.p`
 	color: #666;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<DisableSearchType>`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	box-sizing: border-box;
@@ -440,6 +448,11 @@ export const Input = styled.input`
 	border: none;
 	outline: none;
 	max-width: 130px;
+
+	&::placeholder {
+		color: ${(props) => props.disableSearch && 'red'};
+		font-weight: 100;
+	}
 `;
 
 export const MobileInput = styled(Input)`
