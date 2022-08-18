@@ -195,6 +195,7 @@ const SearchQuery = ({
 					data={data}
 					setFocused={setCalendarFocusedInput}
 					closeCalendar={() => setShowCalendar(false)}
+					openCalendar={() => setShowCalendar(true)}
 					sendData={() => onQuerySubmit(data)}
 				></CalendarInput>
 				<ButtonContainer>

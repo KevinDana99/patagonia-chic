@@ -33,6 +33,7 @@ export const CalendarInput = ({
 	setFocused,
 	closeCalendar,
 	sendData,
+	openCalendar,
 }: CalendarInputType) => {
 	const calendarRef = useRef(null);
 	useOutsideClick(calendarRef, outsideClick);
@@ -82,7 +83,7 @@ export const CalendarInput = ({
 					onMouseOut={() =>
 						values?.startDate?.name && disableHover(values?.startDate?.name)
 					}
-					onClick={onClick}
+					onClick={openCalendar}
 					isSelected={calendarFocusedInput === 'startDate' && showCalendar}
 				>
 					<OptionContent>
@@ -97,7 +98,7 @@ export const CalendarInput = ({
 				</OptionContainer>
 				<Divider />
 				<OptionContainer
-					onClick={onClick}
+					onClick={openCalendar}
 					onMouseOver={() => values?.endDate?.name && enableHover('end')}
 					onMouseOut={() => values?.endDate?.name && disableHover('end')}
 					isSelected={calendarFocusedInput === 'endDate' && showCalendar}

@@ -32,6 +32,7 @@ export type CalendarType = {
 };
 
 export type CalendarInputType = {
+	openCalendar: () => void;
 	labels: string[];
 	titles: string[];
 	onClick?: React.MouseEventHandler;
