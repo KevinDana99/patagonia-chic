@@ -39,6 +39,7 @@ export const Calendar = ({
 	return (
 		<>
 			<PrimaryCalendar
+				selectedRange={[values?.startDate?.date, values?.endDate?.date]}
 				range={isMobile ? true : false}
 				disabledDates={[new Date()]}
 				doubleCalendar={isMobile ? false : true}

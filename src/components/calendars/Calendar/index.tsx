@@ -16,6 +16,7 @@ const PrimaryCalendar = ({
 	shadow = false,
 	markCurrentDay = false,
 	locale = 'es',
+	selectedRange,
 }: PrimaryCalendarType) => {
 	const setDefaultMonth = () => {
 		const currentMonth = defaultMonth || new Date().getMonth();
@@ -138,6 +139,9 @@ const PrimaryCalendar = ({
 		setState(null);
 	};
 
+	useEffect(() => {
+		setState(selectedRange);
+	}, [selectedRange]);
 	return (
 		<Container
 			markCurrentDay={markCurrentDay}
