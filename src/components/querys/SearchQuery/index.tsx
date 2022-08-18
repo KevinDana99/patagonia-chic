@@ -88,13 +88,48 @@ const SearchQuery = ({
 				place: true,
 			});
 		}
+
+		if (
+			data.place != null &&
+			data.place != '' &&
+			data.startDate != null &&
+			data.startDate != '' &&
+			data.endDate != null &&
+			data.endDate != ''
+		) {
+			return true;
+		} else {
+			return false;
+		}
 	};
+
+	useEffect(() => {
+		setDisableSearch({
+			...disableSearch,
+			startDate: false,
+		});
+	}, [data.startDate]);
+
+	useEffect(() => {
+		setDisableSearch({
+			...disableSearch,
+			endDate: false,
+		});
+	}, [data.endDate]);
+
+	useEffect(() => {
+		setDisableSearch({
+			...disableSearch,
+			place: false,
+		});
+	}, [data.place]);
 
 	return (
 		<SearchQueryContainer>
 			<SearchQueryOptions>
 				{showLocations && (
 					<PlaceListInput
+						setDisableSearch={setDisableSearch}
 						disableSearch={disableSearch.place}
 						label={'Lugar'}
 						placeholder={'¿A dónde vas?'}
@@ -167,8 +202,8 @@ const SearchQuery = ({
 						title={!isMobile ? 'Buscar Excursiones' : ''}
 						IconComponent={IoSearch}
 						onClick={() => {
-							validateSearch();
-							onQuerySubmit(data);
+							const validate = validateSearch();
+							validate && onQuerySubmit(data);
 						}}
 					/>
 				</ButtonContainer>

@@ -57,6 +57,13 @@ export type DisableSearchType = {
 
 export type PlaceListInputType = {
 	disableSearch: boolean;
+	setDisableSearch: React.Dispatch<
+		React.SetStateAction<{
+			place: boolean;
+			startDate: boolean;
+			endDate: boolean;
+		}>
+	>;
 	label: string;
 	placeholder: string;
 	onClick?: React.MouseEventHandler;

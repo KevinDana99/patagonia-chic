@@ -27,6 +27,7 @@ export const PlaceListInput = ({
 	closeList,
 	showPlaceList,
 	disableSearch,
+	setDisableSearch,
 }: PlaceListInputType) => {
 	const containerRef = useRef(null);
 
