@@ -80,22 +80,13 @@ const SearchQuery = ({
 			});
 		}
 
-		if ((!data.place && data.startDate) || data.endDate) {
-			setDisableSearch({
-				...disableSearch,
-				startDate: false,
-				endDate: false,
-				place: true,
-			});
-		}
-
 		if (
-			data.place != null &&
-			data.place != '' &&
-			data.startDate != null &&
-			data.startDate != '' &&
-			data.endDate != null &&
-			data.endDate != ''
+			data?.place?.name != null &&
+			data?.place?.name != '' &&
+			data?.startDate?.name != null &&
+			data?.startDate?.name != '' &&
+			data?.endDate?.name != null &&
+			data?.endDate?.name != ''
 		) {
 			return true;
 		} else {
