@@ -30,6 +30,7 @@ export const Container = styled.div<PrimaryCalendarStyleType>`
 
     
     }
+
             
     .react-calendar__tile--rangeStart {
 

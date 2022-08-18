@@ -24,7 +24,7 @@ const PrimaryCalendar = ({
 	};
 
 	const [state, setState] = useState<Date | [Date | null, Date | null] | null>(
-		null
+		selectedRange ? selectedRange : null
 	);
 
 	const [disableNav, setDisableNav] = useState({ back: true, next: false });
@@ -139,9 +139,6 @@ const PrimaryCalendar = ({
 		setState(null);
 	};
 
-	useEffect(() => {
-		selectedRange && setState(selectedRange);
-	}, [selectedRange]);
 	return (
 		<Container
 			markCurrentDay={markCurrentDay}
