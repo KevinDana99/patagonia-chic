@@ -24,7 +24,7 @@ const PrimaryCalendar = ({
 	};
 
 	const [state, setState] = useState<Date | [Date | null, Date | null] | null>(
-		selectedRange ? selectedRange : null
+		selectedRange
 	);
 
 	const [disableNav, setDisableNav] = useState({ back: true, next: false });
@@ -138,6 +138,10 @@ const PrimaryCalendar = ({
 	const resetRange = () => {
 		setState(null);
 	};
+
+	useEffect(() => {
+		setState(selectedRange);
+	}, [state, selectedRange]);
 
 	return (
 		<Container
