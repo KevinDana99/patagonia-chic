@@ -62,35 +62,24 @@ const SearchQuery = ({
 	const isMobile = useMediaQuery('(max-width: 850px)');
 
 	const validateSearch = () => {
-		if (!data.place || !data.startDate || !data.endDate) {
-			setDisableSearch({
-				...disableSearch,
-				startDate: true,
-				endDate: true,
-				place: true,
-			});
-		}
-
-		if ((!data.place && data.startDate) || data.endDate) {
-			setDisableSearch({
-				...disableSearch,
-				startDate: false,
-				endDate: false,
-				place: true,
-			});
-		}
-
 		if (
-			data?.place?.name != null &&
-			data?.place?.name != '' &&
-			data?.startDate?.name != null &&
-			data?.startDate?.name != '' &&
-			data?.endDate?.name != null &&
-			data?.endDate?.name != ''
+			data?.place?.name == null ||
+			data?.place?.name == '' ||
+			data?.startDate?.name == null ||
+			data?.startDate?.name == '' ||
+			data?.endDate?.name == null ||
+			data?.endDate?.name == ''
 		) {
-			return true;
-		} else {
+			setDisableSearch({
+				...disableSearch,
+				place: !data.place?.name ? true : false,
+				startDate: !data.startDate?.name ? true : false,
+				endDate: !data.endDate?.name ? true : false,
+			});
+
 			return false;
+		} else {
+			return true;
 		}
 	};
 

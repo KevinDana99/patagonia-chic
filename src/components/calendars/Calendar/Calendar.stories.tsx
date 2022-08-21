@@ -28,7 +28,6 @@ calendar.args = {
 		new Date(2022, 7, 22),
 	],
 	doubleCalendar: false,
-
+	locale: 'en',
 	markCurrentDay: false,
-	selectedRange: [new Date(2022, 7, 22), new Date(2022, 7, 28)],
 };
