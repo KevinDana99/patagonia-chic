@@ -154,7 +154,7 @@ const SearchQuery = ({
 
 				<CalendarInput
 					disableSearch={disableSearch}
-					labels={['Fecha partida', 'Fechar llegada']}
+					labels={['Fecha llegada', 'Fecha partida']}
 					titles={['Seleccione fecha', 'Seleccione fecha']}
 					values={data}
 					clearData={clearDates}
