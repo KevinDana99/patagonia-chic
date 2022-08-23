@@ -34,6 +34,7 @@ definitions:
           - yarn build
           - npm config set registry https://registry.npmjs.org/
           - echo _authToken=$NPM_TOKEN >> ~/.npmrc
+          - npm version minor
           - npm publish --access public
 
 pipelines:
