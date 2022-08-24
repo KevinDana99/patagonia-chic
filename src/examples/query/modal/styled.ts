@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-	position: fixed;
+	position: absolute;
 	top: 0px;
 	left: 0px;
 	width: 100%;
@@ -10,4 +10,6 @@ export const Container = styled.div`
 	background-color: #11111162;
 `;
 
-export const BoxModal = styled.div``;
+export const BoxModal = styled.div`
+	background-color: white;
+`;

@@ -91,4 +91,4 @@ const PrimaryModal = ({
 	);
 };
 
-export default withFontStyles(PrimaryModal);
+export default PrimaryModal;

@@ -21,7 +21,6 @@ import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import { CalendarContainer } from './inputs/CalendarInput/styled';
 import { Calendar } from 'react-calendar';
 import PrimaryCalendar from '../../calendars/Calendar';
-
 const SearchQuery = ({
 	places,
 	onQuerySubmit,
@@ -111,89 +110,91 @@ const SearchQuery = ({
 	}, [data.place]);
 
 	return (
-		<SearchQueryContainer>
-			{showLocations && (
-				<PlaceListInput
-					setDisableSearch={setDisableSearch}
-					disableSearch={disableSearch.place}
-					label={'Lugar'}
-					placeholder={'¿A dónde vas?'}
-					onClick={() => {
-						setShowPlaceList(true);
-						openCloseModal();
-						setCalendarFocusedInput('startDate');
-					}}
+		<>
+			<SearchQueryContainer>
+				{showLocations && (
+					<PlaceListInput
+						setDisableSearch={setDisableSearch}
+						disableSearch={disableSearch.place}
+						label={'Lugar'}
+						placeholder={'¿A dónde vas?'}
+						onClick={() => {
+							setShowPlaceList(true);
+							openCloseModal();
+							setCalendarFocusedInput('startDate');
+						}}
+						values={data}
+						clearData={() => {
+							setData({ ...data, place: { name: '' } });
+							setShowPlaceList(true);
+							setShowCalendar(false);
+							setPlaceList(places);
+						}}
+						isSelected={showPlaceList}
+						inputOnChange={(e) => {
+							const placeName = e.target.value;
+							setData({
+								...data,
+								place: {
+									name: placeName,
+								},
+							});
+							filterPlaceList(placeName);
+						}}
+						outsideClick={() => setShowPlaceList(false)}
+						placeFilter={data.place?.name}
+						placeList={placeList}
+						setPlaceData={setData}
+						isMobile={isMobile}
+						openCalendar={() => {
+							setShowCalendar(true);
+							setCalendarFocusedInput('startDate');
+						}}
+						closeList={() => {
+							setShowPlaceList(false);
+						}}
+						showPlaceList={showPlaceList}
+					/>
+				)}
+
+				<CalendarInput
+					disableSearch={disableSearch}
+					labels={['Fecha llegada', 'Fecha partida']}
+					titles={['Seleccione fecha', 'Seleccione fecha']}
 					values={data}
-					clearData={() => {
-						setData({ ...data, place: { name: '' } });
-						setShowPlaceList(true);
-						setShowCalendar(false);
-						setPlaceList(places);
-					}}
-					isSelected={showPlaceList}
-					inputOnChange={(e) => {
-						const placeName = e.target.value;
-						setData({
-							...data,
-							place: {
-								name: placeName,
-							},
-						});
-						filterPlaceList(placeName);
-					}}
-					outsideClick={() => setShowPlaceList(false)}
-					placeFilter={data.place?.name}
-					placeList={placeList}
-					setPlaceData={setData}
-					isMobile={isMobile}
-					openCalendar={() => {
+					clearData={clearDates}
+					onClick={() => {
 						setShowCalendar(true);
 						setCalendarFocusedInput('startDate');
+						setData({ ...data, startDate: null, endDate: null });
 					}}
+					outsideClick={() => setShowCalendar(false)}
+					calendarFocusedInput={calendarFocusedInput}
+					showCalendar={showCalendar}
+					isMobile={isMobile}
 					closeList={() => {
-						setShowPlaceList(false);
+						setShowCalendar(false);
+						setData({ ...data, place: { name: '' } });
 					}}
-					showPlaceList={showPlaceList}
-				/>
-			)}
-
-			<CalendarInput
-				disableSearch={disableSearch}
-				labels={['Fecha llegada', 'Fecha partida']}
-				titles={['Seleccione fecha', 'Seleccione fecha']}
-				values={data}
-				clearData={clearDates}
-				onClick={() => {
-					setShowCalendar(true);
-					setCalendarFocusedInput('startDate');
-					setData({ ...data, startDate: null, endDate: null });
-				}}
-				outsideClick={() => setShowCalendar(false)}
-				calendarFocusedInput={calendarFocusedInput}
-				showCalendar={showCalendar}
-				isMobile={isMobile}
-				closeList={() => {
-					setShowCalendar(false);
-					setData({ ...data, place: { name: '' } });
-				}}
-				setDates={setData}
-				data={data}
-				setFocused={setCalendarFocusedInput}
-				closeCalendar={() => setShowCalendar(false)}
-				openCalendar={() => setShowCalendar(true)}
-				sendData={() => onQuerySubmit(data)}
-			></CalendarInput>
-			<ButtonContainer>
-				<ButtonSearch
-					title={!isTablet ? 'Buscar Excursiones' : ''}
-					IconComponent={SearchIcon}
-					onClick={() => {
-						const validate = validateSearch();
-						validate && onQuerySubmit(data);
-					}}
-				/>
-			</ButtonContainer>
-		</SearchQueryContainer>
+					setDates={setData}
+					data={data}
+					setFocused={setCalendarFocusedInput}
+					closeCalendar={() => setShowCalendar(false)}
+					openCalendar={() => setShowCalendar(true)}
+					sendData={() => onQuerySubmit(data)}
+				></CalendarInput>
+				<ButtonContainer>
+					<ButtonSearch
+						title={!isTablet ? 'Buscar Excursiones' : ''}
+						IconComponent={SearchIcon}
+						onClick={() => {
+							const validate = validateSearch();
+							validate && onQuerySubmit(data);
+						}}
+					/>
+				</ButtonContainer>
+			</SearchQueryContainer>
+		</>
 	);
 };
 
