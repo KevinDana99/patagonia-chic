@@ -34,4 +34,9 @@ export const sidebar: Story<SideBarType> = template.bind({});
 sidebar.args = {
 	activeSidebar: false,
 	mapToViews: mapToViews,
+	language: {
+		label: 'Portugués',
+		symbol: '$',
+		currency: 'ARS',
+	},
 };

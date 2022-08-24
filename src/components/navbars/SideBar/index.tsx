@@ -1,114 +1,128 @@
 import React, { useState } from 'react';
-import Logo from '../../../examples/navbar/logo';
 import { SideBarType, ViewType } from './types';
 
 import {
-	Container,
-	BoxControls,
-	Content,
-	BoxClose,
-	BoxLogo,
 	IconClose,
 	ItemContent,
-	Hr,
-	BtnItemContent,
-	BtnItemContentNormal,
 	BoxBackground,
 	ButtonBack,
 	IconBack,
+	SidebarContainer,
+	SidebarContent,
+	LogoContainer,
+	CloseIconContainer,
+	SidebarHeader,
+	SidebarHeaderDivider,
+	SidebarHeaderContent,
+	ItemButton,
+	SidebarMenuTitle,
+	Language,
+	WorldIcon,
 } from './styled';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
+import Logo from '../../Logo';
+import { sidebarTexts } from './sidebarTexts';
+import { LanguageLabel } from '../../footers/Footer/styled';
 
-const Sidebar = ({ closeAction, activeSidebar, mapToViews }: SideBarType) => {
-	const [state, setState] = useState<ViewType>({
+const Sidebar = ({
+	closeAction,
+	activeSidebar,
+	mapToViews,
+	language,
+}: SideBarType) => {
+	const [viewStack, setViewStack] = useState<ViewType>({
 		views: [],
 		props: [],
 	});
 
 	const next = (view: React.FC, props: Object) => {
-		const newViews = state.views;
+		const newViews = viewStack.views;
 		newViews.push(view);
-		const newProps = state.props;
+		const newProps = viewStack.props;
 		newProps.push(props);
-		console.log(state.props);
-		setState({ ...state, views: newViews, props: newProps });
+		setViewStack({ ...viewStack, views: newViews, props: newProps });
 	};
 
 	const back = () => {
-		const backView = state.views;
+		const backView = viewStack.views;
 		backView.pop();
-
-		const backProp = state.props;
+		const backProp = viewStack.props;
 		backProp.pop();
-
-		setState({ ...state, views: backView, props: backProp });
+		setViewStack({ ...viewStack, views: backView, props: backProp });
 	};
+
 	return (
 		<>
-			<BoxBackground
-				activeSidebar={activeSidebar}
-				onClick={closeAction}
-			></BoxBackground>
-			<Container activeSidebar={activeSidebar}>
-				<BoxControls>
-					{state.views.length == 0 ? (
-						<BoxLogo>
-							<Logo />
-						</BoxLogo>
-					) : (
-						<ButtonBack onClick={back}>
-							<IconBack />
-							Atrás
-						</ButtonBack>
-					)}
-					<BoxClose>
-						<IconClose onClick={closeAction} />
-					</BoxClose>
-				</BoxControls>
-				<Hr />
+			<BoxBackground activeSidebar={activeSidebar} onClick={closeAction}>
+				<SidebarContainer activeSidebar={activeSidebar}>
+					<SidebarHeader>
+						<SidebarHeaderContent>
+							{viewStack.views.length == 0 ? (
+								<LogoContainer>
+									<Logo size={125} />
+								</LogoContainer>
+							) : (
+								<ButtonBack onClick={back}>
+									<IconBack />
+									{sidebarTexts.goBack}
+								</ButtonBack>
+							)}
+							<CloseIconContainer>
+								<IconClose onClick={closeAction} />
+							</CloseIconContainer>
+						</SidebarHeaderContent>
+						<SidebarHeaderDivider />
+						{viewStack.views.length === 1 && (
+							<SidebarMenuTitle>{viewStack.props[0]?.title}</SidebarMenuTitle>
+						)}
+					</SidebarHeader>
+					<SidebarContent>
+						{viewStack.views.length === 0 ? (
+							<>
+								{mapToViews?.map((menuItem, index) => {
+									const { onClick, name, content, navigationNode, RenderView } =
+										menuItem;
 
-				<Content>
-					{state.views.length == 0 ? (
-						<>
-							<ItemContent>
-								<BtnItemContentNormal onClick={closeAction}>
-									Home
-								</BtnItemContentNormal>
-							</ItemContent>
-
-							{mapToViews?.map((e, index) => {
-								return (
-									<ItemContent key={index}>
-										<BtnItemContent
-											title={e.name}
+									return (
+										<ItemContent
+											key={index}
 											onClick={() =>
-												next(e.content, {
-													next,
-													title: e.name,
-													navigationNode: e.navigationNode,
-													RenderView: e.RenderView,
-												})
+												onClick
+													? onClick()
+													: next(content, {
+															next,
+															title: name,
+															navigationNode: navigationNode,
+															RenderView: RenderView,
+													  })
 											}
+										>
+											<ItemButton title={name} />
+										</ItemContent>
+									);
+								})}
+							</>
+						) : (
+							viewStack.views.map((CurrentView, index) => {
+								return (
+									index == viewStack.views.length - 1 && (
+										<CurrentView
+											key={index}
+											{...viewStack.props[viewStack.props.length - 1]}
 										/>
-									</ItemContent>
+									)
 								);
-							})}
-						</>
-					) : (
-						state.views.map((CurrentView, index) => {
-							return (
-								index == state.views.length - 1 && (
-									<CurrentView
-										key={index}
-										{...state.props[state.props.length - 1]}
-									/>
-								)
-							);
-						})
-					)}
-				</Content>
-			</Container>
+							})
+						)}
+					</SidebarContent>
+					<Language>
+						<WorldIcon />
+						<LanguageLabel>{`${language.label} - ${language.symbol} ${language.currency}`}</LanguageLabel>
+					</Language>
+				</SidebarContainer>
+			</BoxBackground>
 		</>
 	);
 };
 
-export default Sidebar;
+export default withFontStyles(Sidebar);

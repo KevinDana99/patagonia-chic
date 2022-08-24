@@ -11,4 +11,7 @@ module.exports = {
 		'@storybook/addon-actions',
 	],
 	framework: '@storybook/react',
+	features: {
+		previewMdx2: true,
+	},
 };
