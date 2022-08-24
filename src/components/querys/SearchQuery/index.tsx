@@ -63,8 +63,7 @@ const SearchQuery = ({
 		setPlaceList(filteredList as [IPlace]);
 	};
 
-	const isMobile = useMediaQuery('(max-width: 730px)');
-	const isTablet = useMediaQuery('(max-width: 850px)');
+	const isMobile = useMediaQuery('(max-width: 850px)');
 
 	const validateSearch = () => {
 		if (
@@ -185,7 +184,7 @@ const SearchQuery = ({
 				></CalendarInput>
 				<ButtonContainer>
 					<ButtonSearch
-						title={!isTablet ? 'Buscar Excursiones' : ''}
+						title={!isMobile ? 'Buscar Excursiones' : ''}
 						IconComponent={SearchIcon}
 						onClick={() => {
 							const validate = validateSearch();

@@ -41,7 +41,7 @@ export const PlaceListContainer = styled.div`
 	left: 20px;
 	background-color: #ffffff;
 
-	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tablet})) {
+	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
 		display: none;
 	}
 `;

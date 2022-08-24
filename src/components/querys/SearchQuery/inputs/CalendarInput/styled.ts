@@ -14,17 +14,9 @@ export const CalendarContainer = styled.div`
 	left: 16px;
 	top: 40px;
 	margin-top: 50px;
-	max-width: 875px;
+	width: 875px;
 
-	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tablet})) {
-		width: 95%;
-	}
-
-	@media ((min-width: ${size.tablet}) and (max-width: ${size.desktop})) {
-		width: 95%;
-	}
-
-	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tablet})) {
+	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
 		display: none;
 	}
 `;
