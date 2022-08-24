@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import moment from 'moment';
-import PrimaryCalendar from '../../calendars/Calendar';
+import PrimaryCalendar from '../../../../calendars/Calendar';
 moment.locale('es');
 
 export const Calendar = ({

@@ -11,7 +11,7 @@ import {
 	PlaceSubtitle,
 	PlaceTitle,
 } from './styled';
-import { PlaceListType, IPlace } from './types';
+import { PlaceListType, IPlace } from '../../types';
 
 export const PlaceList = ({
 	places,

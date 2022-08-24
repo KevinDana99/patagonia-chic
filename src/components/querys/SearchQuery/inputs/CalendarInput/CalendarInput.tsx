@@ -1,20 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useOutsideClick } from '../../../hooks/useOutsideClick';
-import useToggle from '../../../hooks/useToggle';
+import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
+
 import { Calendar } from './Calendar';
-import CalendarMobile from './CalendarMobile';
 import {
-	CalendarContainer,
-	CalendarDesktopContainer,
-	CalendarInputContainer,
 	CloseIcon,
 	Divider,
 	Label,
 	OptionContainer,
 	OptionContent,
 	Title,
+} from '../../styled';
+
+import {
+	CalendarContainer,
+	CalendarDesktopContainer,
+	CalendarInputContainer,
 } from './styled';
-import { CalendarInputType } from './types';
+
+import { CalendarInputType } from '../../types';
 
 export const CalendarInput = ({
 	disableSearch,
@@ -37,7 +40,6 @@ export const CalendarInput = ({
 }: CalendarInputType) => {
 	const calendarRef = useRef(null);
 	useOutsideClick(calendarRef, outsideClick);
-
 	const [hover, setHover] = useState({ start: false, end: false });
 
 	const enableHover = (option: string) => {
@@ -63,17 +65,6 @@ export const CalendarInput = ({
 
 	return (
 		<CalendarInputContainer ref={calendarRef}>
-			{showCalendar && isMobile && (
-				<CalendarMobile
-					closeList={closeList}
-					setDates={setDates}
-					data={data}
-					setCalendarFocusedInput={setFocused}
-					isMobile={isMobile}
-					calendarFocusedInput={calendarFocusedInput}
-					sendData={sendData}
-				/>
-			)}
 			<CalendarDesktopContainer>
 				<Divider />
 				<OptionContainer
@@ -123,7 +114,7 @@ export const CalendarInput = ({
 						setFocused={setFocused}
 						focused={calendarFocusedInput}
 						closeCalendar={closeCalendar}
-						isMobile={false}
+						isMobile={isMobile}
 					/>
 				</CalendarContainer>
 			)}

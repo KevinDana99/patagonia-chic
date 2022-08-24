@@ -1,21 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PrimaryButton from '../../buttons/PrimaryButton';
-import { CalendarInput } from './CalendarInput';
+import { CalendarInput } from './inputs/CalendarInput/CalendarInput';
 import {
 	ButtonContainer,
+	ButtonSearch,
+	SearchIcon,
+	Container,
 	SearchQueryContainer,
-	SearchQueryOptions,
 } from './styled';
 import { IPlace, SearchQueryType, StateSearchQueryType } from './types';
 import { IoSearch } from 'react-icons/io5';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
-import { PlaceListInput } from './PlaceListInput';
+import { PlaceListInput } from './inputs/PlaceListInput/PlaceListInput';
 import Fuse from 'fuse.js';
 import { fuzePlaceListOptions } from '../../../consntants/fuzeOptions';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
+import { CalendarContainer } from './inputs/CalendarInput/styled';
+import { Calendar } from 'react-calendar';
+import PrimaryCalendar from '../../calendars/Calendar';
 
 const SearchQuery = ({
 	places,
@@ -59,7 +64,8 @@ const SearchQuery = ({
 		setPlaceList(filteredList as [IPlace]);
 	};
 
-	const isMobile = useMediaQuery('(max-width: 850px)');
+	const isMobile = useMediaQuery('(max-width: 730px)');
+	const isTablet = useMediaQuery('(max-width: 850px)');
 
 	const validateSearch = () => {
 		if (
@@ -106,89 +112,87 @@ const SearchQuery = ({
 
 	return (
 		<SearchQueryContainer>
-			<SearchQueryOptions>
-				{showLocations && (
-					<PlaceListInput
-						setDisableSearch={setDisableSearch}
-						disableSearch={disableSearch.place}
-						label={'Lugar'}
-						placeholder={'¿A dónde vas?'}
-						onClick={() => {
-							setShowPlaceList(true);
-							openCloseModal();
-							setCalendarFocusedInput('startDate');
-						}}
-						values={data}
-						clearData={() => {
-							setData({ ...data, place: { name: '' } });
-							setShowPlaceList(true);
-							setShowCalendar(false);
-							setPlaceList(places);
-						}}
-						isSelected={showPlaceList}
-						inputOnChange={(e) => {
-							const placeName = e.target.value;
-							setData({
-								...data,
-								place: {
-									name: placeName,
-								},
-							});
-							filterPlaceList(placeName);
-						}}
-						outsideClick={() => setShowPlaceList(false)}
-						placeFilter={data.place?.name}
-						placeList={placeList}
-						setPlaceData={setData}
-						isMobile={isMobile}
-						openCalendar={() => {
-							setShowCalendar(true);
-							setCalendarFocusedInput('startDate');
-						}}
-						closeList={() => {
-							setShowPlaceList(false);
-						}}
-						showPlaceList={showPlaceList}
-					/>
-				)}
-
-				<CalendarInput
-					disableSearch={disableSearch}
-					labels={['Fecha llegada', 'Fecha partida']}
-					titles={['Seleccione fecha', 'Seleccione fecha']}
-					values={data}
-					clearData={clearDates}
+			{showLocations && (
+				<PlaceListInput
+					setDisableSearch={setDisableSearch}
+					disableSearch={disableSearch.place}
+					label={'Lugar'}
+					placeholder={'¿A dónde vas?'}
 					onClick={() => {
+						setShowPlaceList(true);
+						openCloseModal();
+						setCalendarFocusedInput('startDate');
+					}}
+					values={data}
+					clearData={() => {
+						setData({ ...data, place: { name: '' } });
+						setShowPlaceList(true);
+						setShowCalendar(false);
+						setPlaceList(places);
+					}}
+					isSelected={showPlaceList}
+					inputOnChange={(e) => {
+						const placeName = e.target.value;
+						setData({
+							...data,
+							place: {
+								name: placeName,
+							},
+						});
+						filterPlaceList(placeName);
+					}}
+					outsideClick={() => setShowPlaceList(false)}
+					placeFilter={data.place?.name}
+					placeList={placeList}
+					setPlaceData={setData}
+					isMobile={isMobile}
+					openCalendar={() => {
 						setShowCalendar(true);
 						setCalendarFocusedInput('startDate');
-						setData({ ...data, startDate: null, endDate: null });
 					}}
-					outsideClick={() => setShowCalendar(false)}
-					calendarFocusedInput={calendarFocusedInput}
-					showCalendar={showCalendar}
-					isMobile={isMobile}
 					closeList={() => {
-						setShowCalendar(false);
-						setData({ ...data, place: { name: '' } });
+						setShowPlaceList(false);
 					}}
-					setDates={setData}
-					data={data}
-					setFocused={setCalendarFocusedInput}
-					closeCalendar={() => setShowCalendar(false)}
-					openCalendar={() => setShowCalendar(true)}
-					sendData={() => onQuerySubmit(data)}
-				></CalendarInput>
-				<ButtonContainer>
-					<PrimaryButton
-						title={!isMobile ? 'Buscar Excursiones' : ''}
-						IconComponent={IoSearch}
-						onClick={() => {
-							const validate = validateSearch();
-							validate && onQuerySubmit(data);
-						}}
-					/>
-				</ButtonContainer>
-			</SearchQueryOptions>
+					showPlaceList={showPlaceList}
+				/>
+			)}
+
+			<CalendarInput
+				disableSearch={disableSearch}
+				labels={['Fecha llegada', 'Fecha partida']}
+				titles={['Seleccione fecha', 'Seleccione fecha']}
+				values={data}
+				clearData={clearDates}
+				onClick={() => {
+					setShowCalendar(true);
+					setCalendarFocusedInput('startDate');
+					setData({ ...data, startDate: null, endDate: null });
+				}}
+				outsideClick={() => setShowCalendar(false)}
+				calendarFocusedInput={calendarFocusedInput}
+				showCalendar={showCalendar}
+				isMobile={isMobile}
+				closeList={() => {
+					setShowCalendar(false);
+					setData({ ...data, place: { name: '' } });
+				}}
+				setDates={setData}
+				data={data}
+				setFocused={setCalendarFocusedInput}
+				closeCalendar={() => setShowCalendar(false)}
+				openCalendar={() => setShowCalendar(true)}
+				sendData={() => onQuerySubmit(data)}
+			></CalendarInput>
+			<ButtonContainer>
+				<ButtonSearch
+					title={!isTablet ? 'Buscar Excursiones' : ''}
+					IconComponent={SearchIcon}
+					onClick={() => {
+						const validate = validateSearch();
+						validate && onQuerySubmit(data);
+					}}
+				/>
+			</ButtonContainer>
 		</SearchQueryContainer>
 	);
 };

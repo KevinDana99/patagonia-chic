@@ -1,16 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {
-	CloseIcon,
-	Input,
-	Label,
-	OptionContainer,
-	OptionContent,
-} from './styled';
-import { PlaceListInputType } from './types';
-import PlaceListMobile from './PlaceListMobile';
+import { CloseIcon, Divider, Input, Label, OptionContent } from '../../styled';
+import { PlaceListInputType } from '../../types';
 import { PlaceList } from './PlaceList';
-import { useOutsideClick } from '../../../hooks/useOutsideClick';
-import useToggle from '../../../hooks/useToggle';
+import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
+import useToggle from '../../../../../hooks/useToggle';
+import { OptionContainerPlaceList } from './styled';
 
 export const PlaceListInput = ({
 	label,
@@ -41,7 +35,7 @@ export const PlaceListInput = ({
 	}, [values]);
 
 	return (
-		<OptionContainer
+		<OptionContainerPlaceList
 			onMouseOver={() => {
 				values.place?.name && onToggle();
 			}}
@@ -52,17 +46,6 @@ export const PlaceListInput = ({
 			isSelected={isSelected}
 			ref={containerRef}
 		>
-			{isSelected && isMobile && (
-				<PlaceListMobile
-					places={placeList}
-					inputOnChange={inputOnChange}
-					setPlaceData={setPlaceData}
-					placeholder={placeholder}
-					values={values}
-					openCalendar={openCalendar}
-					closeList={closeList}
-				/>
-			)}
 			<OptionContent>
 				<Label>{label}</Label>
 				<Input
@@ -82,6 +65,8 @@ export const PlaceListInput = ({
 					closeList={closeList}
 				/>
 			)}
-		</OptionContainer>
+
+			<Divider />
+		</OptionContainerPlaceList>
 	);
 };

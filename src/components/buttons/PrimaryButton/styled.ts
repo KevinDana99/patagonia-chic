@@ -9,6 +9,7 @@ export const ButtonPrimaryStyled = styled.button`
 	position: relative;
 	display: inline-block;
 	padding: 0 16px;
+	width: 180px;
 	height: 48px;
 	outline: none;
 	border: none;
@@ -28,7 +29,6 @@ export const ButtonPrimaryStyled = styled.button`
 	margin: 8px 0;
 	background-repeat: no-repeat;
 	font-weight: 600;
-	overflow: hidden !important;
 	transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95),
 		background-size 800ms ease-out, background-position 800ms ease-out;
 	opacity: ${(props) => (props.disabled ? 0.75 : 1)};
