@@ -125,8 +125,9 @@ export type CalendarMobileType = {
 };
 
 export type ListModalType = {
-	children: React.ReactNode;
+	children: JSX.Element;
 	closeModal: () => void;
+	visible: boolean;
 };
 
 export interface OptionContainerType {

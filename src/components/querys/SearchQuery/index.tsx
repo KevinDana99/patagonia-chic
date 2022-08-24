@@ -1,26 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react';
-import PrimaryButton from '../../buttons/PrimaryButton';
+import React, { useEffect, useState } from 'react';
+
 import { CalendarInput } from './inputs/CalendarInput/CalendarInput';
 import {
 	ButtonContainer,
 	ButtonSearch,
 	SearchIcon,
-	Container,
 	SearchQueryContainer,
 } from './styled';
 import { IPlace, SearchQueryType, StateSearchQueryType } from './types';
-import { IoSearch } from 'react-icons/io5';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-
 import { PlaceListInput } from './inputs/PlaceListInput/PlaceListInput';
 import Fuse from 'fuse.js';
 import { fuzePlaceListOptions } from '../../../consntants/fuzeOptions';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
-import { CalendarContainer } from './inputs/CalendarInput/styled';
-import { Calendar } from 'react-calendar';
+import Modal from '../../../examples/query/modal/Modal';
+import PlaceListMobile from './mobile/wrappers/PlaceListMobile';
 import PrimaryCalendar from '../../calendars/Calendar';
+
 const SearchQuery = ({
 	places,
 	onQuerySubmit,
@@ -46,10 +44,6 @@ const SearchQuery = ({
 		setData({ ...data, startDate: null, endDate: null });
 		setShowCalendar(true);
 		setCalendarFocusedInput('startDate');
-	};
-
-	const openCloseModal = () => {
-		setModal(!modal);
 	};
 
 	const filterPlaceList = (query: string) => {
@@ -119,7 +113,7 @@ const SearchQuery = ({
 						placeholder={'¿A dónde vas?'}
 						onClick={() => {
 							setShowPlaceList(true);
-							openCloseModal();
+							isMobile ? setModal(true) : setModal(false);
 							setCalendarFocusedInput('startDate');
 						}}
 						values={data}
@@ -193,6 +187,27 @@ const SearchQuery = ({
 					/>
 				</ButtonContainer>
 			</SearchQueryContainer>
+
+			<Modal visible={modal} closeModal={() => setModal(false)}>
+				<PlaceListMobile
+					placeholder={'Busca algo'}
+					inputOnChange={(e) => {
+						const placeName = e.target.value;
+						setData({
+							...data,
+							place: {
+								name: placeName,
+							},
+						});
+						filterPlaceList(placeName);
+					}}
+					values={data}
+					places={places}
+					setPlaceData={setData}
+					openCalendar={() => setShowCalendar(true)}
+					closeList={() => setShowPlaceList(false)}
+				/>
+			</Modal>
 		</>
 	);
 };
