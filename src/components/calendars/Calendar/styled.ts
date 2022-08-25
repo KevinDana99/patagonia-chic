@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { size } from '../../../consntants/devicesSizes';
 import { PrimaryCalendarStyleType } from './types';
 
 export const Container = styled.div<PrimaryCalendarStyleType>`
@@ -20,6 +21,11 @@ export const Container = styled.div<PrimaryCalendarStyleType>`
     border-left: none;
     border-radius: 0px 28px 28px 0px;
 
+@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})){
+
+	border: none;
+
+}
 }
 
 

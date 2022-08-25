@@ -151,12 +151,14 @@ abbr {
 .react-calendar__tile--now:enabled:focus {
 }
 .react-calendar__tile--hasActive {
-	background: #76baff;
+	background: #1087ff;
 }
 .react-calendar__tile--hasActive:enabled:hover,
 .react-calendar__tile--hasActive:enabled:focus {
-	background: #a9d4ff;
+	background: #1087ff;
+	border: none;
 }
+
 .react-calendar__tile--active {
 	color: rgb(45, 45, 45);
 	background: #ebf4f8;
