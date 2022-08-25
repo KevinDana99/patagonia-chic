@@ -107,6 +107,7 @@ const SearchQuery = ({
 			<SearchQueryContainer>
 				{showLocations && (
 					<PlaceListInput
+						closeModal={() => setModal(false)}
 						setDisableSearch={setDisableSearch}
 						disableSearch={disableSearch.place}
 						label={'Lugar'}
@@ -188,28 +189,6 @@ const SearchQuery = ({
 				</ButtonContainer>
 			</SearchQueryContainer>
 
-			{showPlaceList && (
-				<Modal visible={modal} closeModal={() => setModal(false)}>
-					<PlaceListMobile
-						placeholder={'Busca algo'}
-						inputOnChange={(e) => {
-							const placeName = e.target.value;
-							setData({
-								...data,
-								place: {
-									name: placeName,
-								},
-							});
-							filterPlaceList(placeName);
-						}}
-						values={data}
-						places={placeList}
-						setPlaceData={setData}
-						openCalendar={() => setShowCalendar(true)}
-						closeList={() => setShowPlaceList(false)}
-					/>
-				</Modal>
-			)}
 			{!showPlaceList && (
 				<Modal visible={modal} closeModal={() => setModal(false)}>
 					<CalendarMobile

@@ -5,6 +5,8 @@ import { PlaceList } from './PlaceList';
 import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
 import useToggle from '../../../../../hooks/useToggle';
 import { OptionContainerPlaceList } from './styled';
+import PlaceListMobile from '../../mobile/wrappers/PlaceListMobile';
+import Modal from '../../../../../examples/query/modal/Modal';
 
 export const PlaceListInput = ({
 	label,
@@ -23,6 +25,7 @@ export const PlaceListInput = ({
 	showPlaceList,
 	disableSearch,
 	setDisableSearch,
+	closeModal,
 }: PlaceListInputType) => {
 	const containerRef = useRef(null);
 
@@ -46,6 +49,20 @@ export const PlaceListInput = ({
 			isSelected={isSelected}
 			ref={containerRef}
 		>
+			{showPlaceList && (
+				<Modal visible={true} closeModal={closeModal}>
+					<PlaceListMobile
+						placeholder={'Busca algo'}
+						inputOnChange={inputOnChange}
+						values={values}
+						places={placeList}
+						setPlaceData={setPlaceData}
+						openCalendar={openCalendar}
+						closeList={closeList}
+					/>
+				</Modal>
+			)}
+
 			<OptionContent>
 				<Label>{label}</Label>
 				<Input
