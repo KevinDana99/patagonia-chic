@@ -26,6 +26,7 @@ export const PlaceListInput = ({
 	disableSearch,
 	setDisableSearch,
 	closeModal,
+	modal,
 }: PlaceListInputType) => {
 	const containerRef = useRef(null);
 
@@ -49,19 +50,20 @@ export const PlaceListInput = ({
 			isSelected={isSelected}
 			ref={containerRef}
 		>
-			{showPlaceList && isMobile && (
-				<Modal visible={true} closeModal={closeModal}>
-					<PlaceListMobile
-						placeholder={'Busca algo'}
-						inputOnChange={inputOnChange}
-						values={values}
-						places={placeList}
-						setPlaceData={setPlaceData}
-						openCalendar={openCalendar}
-						closeList={closeList}
-					/>
-				</Modal>
-			)}
+			<Modal
+				visible={showPlaceList && isMobile && modal ? true : false}
+				closeModal={closeModal}
+			>
+				<PlaceListMobile
+					placeholder={'Busca algo'}
+					inputOnChange={inputOnChange}
+					values={values}
+					places={placeList}
+					setPlaceData={setPlaceData}
+					openCalendar={openCalendar}
+					closeList={closeList}
+				/>
+			</Modal>
 
 			<OptionContent>
 				<Label>{label}</Label>

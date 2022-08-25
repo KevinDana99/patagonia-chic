@@ -107,6 +107,7 @@ const SearchQuery = ({
 			<SearchQueryContainer>
 				{showLocations && (
 					<PlaceListInput
+						modal={modal}
 						closeModal={() => setModal(false)}
 						setDisableSearch={setDisableSearch}
 						disableSearch={disableSearch.place}
