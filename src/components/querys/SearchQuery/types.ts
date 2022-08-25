@@ -120,7 +120,7 @@ export type CalendarMobileType = {
 	data: StateSearchQueryType;
 	setCalendarFocusedInput: React.Dispatch<React.SetStateAction<string>>;
 	calendarFocusedInput: string;
-	isMobile: boolean;
+	isMobile?: boolean;
 	sendData: () => void;
 };
 

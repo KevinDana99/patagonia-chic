@@ -66,45 +66,52 @@ export const CalendarInput = ({
 	return (
 		<CalendarInputContainer ref={calendarRef}>
 			<CalendarDesktopContainer>
-				<Divider />
-				<OptionContainer
-					onMouseOver={() =>
-						values?.startDate?.name && enableHover(values?.startDate?.name)
-					}
-					onMouseOut={() =>
-						values?.startDate?.name && disableHover(values?.startDate?.name)
-					}
-					onClick={openCalendar}
-					isSelected={calendarFocusedInput === 'startDate' && showCalendar}
-				>
-					<OptionContent>
-						<Label>{labels[0]}</Label>
-						<Title disableSearch={disableSearch.startDate}>
-							{values?.startDate?.name ?? titles[0]}
-						</Title>
-					</OptionContent>
-					{values?.startDate?.name && hover.start && (
-						<CloseIcon onClick={clearData} />
-					)}
-				</OptionContainer>
-				<Divider />
-				<OptionContainer
-					onClick={openCalendar}
-					onMouseOver={() => values?.endDate?.name && enableHover('end')}
-					onMouseOut={() => values?.endDate?.name && disableHover('end')}
-					isSelected={calendarFocusedInput === 'endDate' && showCalendar}
-				>
-					<OptionContent>
-						<Label>{labels[1]}</Label>
-						<Title disableSearch={disableSearch.endDate}>
-							{values?.endDate?.name ?? titles[1]}
-						</Title>
-					</OptionContent>
-					{values?.endDate?.name && hover.end && (
-						<CloseIcon onClick={clearData} />
-					)}
-				</OptionContainer>
-				<Divider />
+				{isMobile ? (
+					<Divider />
+				) : (
+					<>
+						{' '}
+						<Divider />
+						<OptionContainer
+							onMouseOver={() =>
+								values?.startDate?.name && enableHover(values?.startDate?.name)
+							}
+							onMouseOut={() =>
+								values?.startDate?.name && disableHover(values?.startDate?.name)
+							}
+							onClick={openCalendar}
+							isSelected={calendarFocusedInput === 'startDate' && showCalendar}
+						>
+							<OptionContent>
+								<Label>{labels[0]}</Label>
+								<Title disableSearch={disableSearch.startDate}>
+									{values?.startDate?.name ?? titles[0]}
+								</Title>
+							</OptionContent>
+							{values?.startDate?.name && hover.start && (
+								<CloseIcon onClick={clearData} />
+							)}
+						</OptionContainer>
+						<Divider />
+						<OptionContainer
+							onClick={openCalendar}
+							onMouseOver={() => values?.endDate?.name && enableHover('end')}
+							onMouseOut={() => values?.endDate?.name && disableHover('end')}
+							isSelected={calendarFocusedInput === 'endDate' && showCalendar}
+						>
+							<OptionContent>
+								<Label>{labels[1]}</Label>
+								<Title disableSearch={disableSearch.endDate}>
+									{values?.endDate?.name ?? titles[1]}
+								</Title>
+							</OptionContent>
+							{values?.endDate?.name && hover.end && (
+								<CloseIcon onClick={clearData} />
+							)}
+						</OptionContainer>
+						<Divider />
+					</>
+				)}
 			</CalendarDesktopContainer>
 			{showCalendar && (
 				<CalendarContainer onClick={(e) => e.stopPropagation()}>

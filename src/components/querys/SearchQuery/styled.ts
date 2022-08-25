@@ -40,18 +40,6 @@ export const OptionContainer = styled.div<
 		box-shadow: ${selectedShadow};
 		cursor: pointer;
 	}
-
-	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tablet})) {
-		display: none;
-	}
-
-	@media ((min-width: ${size.tablet}) and (max-width: ${size.desktop})) {
-		display: flex;
-	}
-
-	@media ((min-width: ${size.tablet}) and (max-width: ${size.tabletL})) {
-		width: 130px;
-	}
 `;
 
 export const OptionContent = styled.div`

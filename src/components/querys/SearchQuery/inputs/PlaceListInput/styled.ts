@@ -20,6 +20,7 @@ export const EmptyMessage = styled.p`
 export const PlaceContainer = styled.div<Pick<PlaceContainerType, 'selected'>>`
 	display: flex;
 	align-items: center;
+	height: auto;
 	background-color: ${(props) => (props.selected ? '#f7f8f8' : '#ffffff')};
 	padding: 10px 30px;
 
@@ -42,7 +43,13 @@ export const PlaceListContainer = styled.div`
 	background-color: #ffffff;
 
 	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
-		display: none;
+		margin-top: 50px;
+		width: 100%;
+		position: relative;
+		top: 0px;
+		left: 0px;
+		box-shadow: none;
+		overflow-y: scroll;
 	}
 `;
 
@@ -58,10 +65,6 @@ export const OptionContainerPlaceList = styled.div<
 	&:hover {
 		box-shadow: ${selectedShadow};
 		cursor: pointer;
-	}
-
-	@media ((min-width: ${size.tablet}) and (max-width: ${size.tabletL})) {
-		max-width: 150px;
 	}
 `;
 

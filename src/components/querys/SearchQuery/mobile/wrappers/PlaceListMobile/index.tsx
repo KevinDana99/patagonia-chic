@@ -1,7 +1,7 @@
 import React from 'react';
 import { PlaceList } from '../../../inputs/PlaceListInput/PlaceList';
 import { PlaceListMobileType } from '../../../types';
-import { MobileLabel, MobileInput } from './styled';
+import { MobileLabel, MobileInput, Container } from './styled';
 
 const PlaceListMobile = ({
 	placeholder,

@@ -17,7 +17,7 @@ import useMediaQuery from '../../../hooks/useMediaQuery';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Modal from '../../../examples/query/modal/Modal';
 import PlaceListMobile from './mobile/wrappers/PlaceListMobile';
-import PrimaryCalendar from '../../calendars/Calendar';
+import CalendarMobile from './mobile/wrappers/CalendarMobile';
 
 const SearchQuery = ({
 	places,
@@ -187,27 +187,44 @@ const SearchQuery = ({
 					/>
 				</ButtonContainer>
 			</SearchQueryContainer>
-
-			<Modal visible={modal} closeModal={() => setModal(false)}>
-				<PlaceListMobile
-					placeholder={'Busca algo'}
-					inputOnChange={(e) => {
-						const placeName = e.target.value;
-						setData({
-							...data,
-							place: {
-								name: placeName,
-							},
-						});
-						filterPlaceList(placeName);
-					}}
-					values={data}
-					places={places}
-					setPlaceData={setData}
-					openCalendar={() => setShowCalendar(true)}
-					closeList={() => setShowPlaceList(false)}
-				/>
-			</Modal>
+			{!showCalendar && (
+				<Modal visible={modal} closeModal={() => setModal(false)}>
+					<PlaceListMobile
+						placeholder={'Busca algo'}
+						inputOnChange={(e) => {
+							const placeName = e.target.value;
+							setData({
+								...data,
+								place: {
+									name: placeName,
+								},
+							});
+							filterPlaceList(placeName);
+						}}
+						values={data}
+						places={placeList}
+						setPlaceData={setData}
+						openCalendar={() => setShowCalendar(true)}
+						closeList={() => setShowPlaceList(false)}
+					/>
+				</Modal>
+			)}
+			{showCalendar && (
+				<Modal visible={modal} closeModal={() => setModal(false)}>
+					<CalendarMobile
+						closeList={() => setShowPlaceList(false)}
+						setDates={setData}
+						data={data}
+						setCalendarFocusedInput={setCalendarFocusedInput}
+						calendarFocusedInput={calendarFocusedInput}
+						isMobile={isMobile}
+						sendData={() => {
+							const validate = validateSearch();
+							validate && onQuerySubmit(data);
+						}}
+					/>
+				</Modal>
+			)}
 		</>
 	);
 };

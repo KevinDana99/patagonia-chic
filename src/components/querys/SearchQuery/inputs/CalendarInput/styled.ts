@@ -23,9 +23,6 @@ export const CalendarContainer = styled.div`
 
 export const CalendarDesktopContainer = styled.div`
 	display: flex;
-	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tablet})) {
-		display: none;
-	}
 `;
 
 export const CalendarInputContainer = styled.div`

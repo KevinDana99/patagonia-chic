@@ -35,7 +35,7 @@ const CalendarMobile = ({
 	);
 
 	return (
-		<ListModal closeModal={closeList}>
+		<>
 			<CalendarContainer onClick={(e) => e.stopPropagation()}>
 				<Calendar
 					setDates={setDates}
@@ -64,7 +64,7 @@ const CalendarMobile = ({
 				IconComponent={IoSearch}
 				onClick={sendData}
 			/>
-		</ListModal>
+		</>
 	);
 };
 
