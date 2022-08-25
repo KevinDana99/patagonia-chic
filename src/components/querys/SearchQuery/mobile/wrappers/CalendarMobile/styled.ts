@@ -1,9 +1,11 @@
+import { IoSearch } from 'react-icons/io5';
 import styled from 'styled-components';
+import { size } from '../../../../../../consntants/devicesSizes';
+import PrimaryButton from '../../../../../buttons/PrimaryButton';
 
 export const Container = styled.div``;
 
 export const CalendarContainer = styled.div`
-	padding-top: 15px;
 	border-radius: 24px;
 	box-sizing: border-box;
 	display: flex;
@@ -12,9 +14,12 @@ export const CalendarContainer = styled.div`
 	align-items: center;
 	position: relative;
 	width: 100%;
-
 	overflow-y: scroll;
 	overflow-x: hidden;
+
+	@media (min-width: ${size.tablet}) and ((max-width: ${size.tabletL})) {
+		padding-top: 80px;
+	}
 `;
 
 export const CalendarDataContainer = styled.div`
@@ -43,4 +48,17 @@ export const CalendarDataTitle = styled.p`
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	margin: 0;
 	text-transform: capitalize;
+`;
+
+export const SearchIcon = styled(IoSearch)`
+	padding: 0px;
+	margin: 0px;
+	margin-right: 5px;
+`;
+
+export const ButtonSearch = styled(PrimaryButton)`
+	min-width: 180px;
+	min-height: 48px;
+	display: flex;
+	justify-content: space-around;
 `;

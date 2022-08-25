@@ -94,6 +94,7 @@ export const PlaceList = ({
 					key={index}
 					onClick={(e: { stopPropagation: () => void }) => {
 						e.stopPropagation();
+						console.log(e);
 						setPlaceData({ ...values, place: place });
 						closeList();
 						openCalendar();

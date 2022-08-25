@@ -1,6 +1,5 @@
 import React from 'react';
-import { IoSearch } from 'react-icons/io5';
-import PrimaryButton from '../../../../../buttons/PrimaryButton';
+
 import { Calendar } from '../../../inputs/CalendarInput/Calendar';
 
 import {
@@ -9,6 +8,8 @@ import {
 	CalendarDataItem,
 	CalendarDataLabel,
 	CalendarDataTitle,
+	ButtonSearch,
+	SearchIcon,
 } from './styled';
 import { CalendarMobileType } from '../../../types';
 
@@ -60,9 +61,9 @@ const CalendarMobile = ({
 					title={data.endDate ? data.endDate.name : '-'}
 				/>
 			</CalendarDataContainer>
-			<PrimaryButton
+			<ButtonSearch
 				title={'Buscar Excursiones'}
-				IconComponent={IoSearch}
+				IconComponent={SearchIcon}
 				onClick={sendData}
 			/>
 		</>

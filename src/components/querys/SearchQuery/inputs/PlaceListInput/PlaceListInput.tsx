@@ -57,7 +57,7 @@ export const PlaceListInput = ({
 				/>
 			</OptionContent>
 			{values?.place?.name && toggle && <CloseIcon onClick={clearData} />}
-			{showPlaceList && (
+			{!isMobile && showPlaceList && (
 				<PlaceList
 					places={placeList}
 					setPlaceData={setPlaceData}

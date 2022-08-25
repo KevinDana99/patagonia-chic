@@ -10,7 +10,6 @@ const selectedShadow =
 export const Container = styled.div`
 	width: 100%;
 	max-width: 875px;
-	height: auto;
 `;
 
 export const SearchQueryContainer = styled.div`
@@ -113,6 +112,11 @@ export const ButtonSearch = styled(PrimaryButton)`
 export const SearchIcon = styled(IoSearch)`
 	padding: 0px;
 	margin: 0px;
+	margin-right: 5px;
+
+	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
+		margin: 0px;
+	}
 `;
 
 export const Input = styled.input<DisableSearchType>`

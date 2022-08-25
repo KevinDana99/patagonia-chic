@@ -187,7 +187,8 @@ const SearchQuery = ({
 					/>
 				</ButtonContainer>
 			</SearchQueryContainer>
-			{!showCalendar && (
+
+			{showPlaceList && (
 				<Modal visible={modal} closeModal={() => setModal(false)}>
 					<PlaceListMobile
 						placeholder={'Busca algo'}
@@ -209,7 +210,7 @@ const SearchQuery = ({
 					/>
 				</Modal>
 			)}
-			{showCalendar && (
+			{!showPlaceList && (
 				<Modal visible={modal} closeModal={() => setModal(false)}>
 					<CalendarMobile
 						closeList={() => setShowPlaceList(false)}
