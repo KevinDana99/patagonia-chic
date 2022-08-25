@@ -49,7 +49,7 @@ export const PlaceListInput = ({
 			isSelected={isSelected}
 			ref={containerRef}
 		>
-			{showPlaceList && (
+			{showPlaceList && isMobile && (
 				<Modal visible={true} closeModal={closeModal}>
 					<PlaceListMobile
 						placeholder={'Busca algo'}

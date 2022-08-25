@@ -65,6 +65,7 @@ export type PlaceListInputType = {
 			endDate: boolean;
 		}>
 	>;
+	closeModal: () => void;
 	label: string;
 	placeholder: string;
 	onClick?: React.MouseEventHandler;
