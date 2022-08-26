@@ -51,10 +51,6 @@ const PrimaryModal = ({
 		closeOnTouchOutside && close();
 	};
 
-	useEffect(() => {
-		state.visible && open();
-	}, [open, state.visible]);
-
 	return (
 		<>
 			{renderOpenButton && (
