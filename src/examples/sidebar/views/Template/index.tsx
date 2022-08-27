@@ -1,25 +1,27 @@
 import React from 'react';
 import { SecondaryButton } from '../../../../components';
 import { SidebarPropsType } from '../../../../components/navbars/SideBar/types';
-import { Title } from './styled';
+import { ItemButton, ItemContent } from './styled';
 
 const Template = ({ next, navigationNode, RenderView }: SidebarPropsType) => {
 	return (
 		<>
 			{navigationNode?.map((e, index) => {
 				return (
-					<SecondaryButton
+					<ItemContent
 						key={index}
-						title={e.name}
 						onClick={() =>
 							next &&
 							next(e.content, {
-								title: e.name,
 								next,
+								title: e.name,
 								navigationNode: e.navigationNode,
+								RenderView: e.RenderView,
 							})
 						}
-					/>
+					>
+						<ItemButton title={e.name} />
+					</ItemContent>
 				);
 			})}
 
