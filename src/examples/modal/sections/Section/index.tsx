@@ -1,8 +1,8 @@
 import React from 'react';
-import dataPrimary from './../PrimarySection/db';
-import dataSecondary from './../SecondarySection/db';
-import dataTertiary from './../TertiarySection/db';
-import PrimarySection from './../PrimarySection';
+import dataPrimary from '../PrimarySection/db';
+import dataSecondary from '../SecondarySection/db';
+import dataTertiary from '../TertiarySection/db';
+import PrimarySection from '../PrimarySection';
 import SecondarySection from '../SecondarySection';
 import TertiarySection from '../TertiarySection';
 

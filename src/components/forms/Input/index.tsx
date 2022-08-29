@@ -1,9 +1,15 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import { DataInputContainer, DataInput, StyledLabel } from './styled';
 import { InputPropsType } from './types';
 
-const Input: FC<InputPropsType> = ({ label, onChange, name, defaulValue }) => {
+const Input = ({
+	label,
+	onChange,
+	name,
+	defaultValue,
+	error,
+}: InputPropsType) => {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange && onChange(e.target.value);
 	};
@@ -15,11 +21,12 @@ const Input: FC<InputPropsType> = ({ label, onChange, name, defaulValue }) => {
 				placeholder=" "
 				onChange={handleChange}
 				name={name}
-				value={defaulValue}
+				value={defaultValue}
+				error={!!error}
 			/>
 			<StyledLabel>{label}</StyledLabel>
 		</DataInputContainer>
 	);
 };
-//saque el id --> htmlfor
+
 export default withFontStyles(Input);

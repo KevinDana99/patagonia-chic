@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const ButtonPrimaryStyled = styled.button`
-	min-width: 180px;
+	min-width: 100px;
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	box-sizing: border-box;

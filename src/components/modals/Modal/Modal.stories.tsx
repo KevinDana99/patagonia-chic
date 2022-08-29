@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import PrimaryModal from '.';
-import { modalType } from './types';
-import Section from './sections/Section';
+import { ModalType } from './types';
+import Section from '../../../examples/modal/sections/Section';
 
 export default {
 	title: 'components/modals',
@@ -10,9 +10,9 @@ export default {
 	argTypes: {},
 } as Meta<typeof PrimaryModal>;
 
-const template: Story<modalType> = (args) => <PrimaryModal {...args} />;
+const template: Story<ModalType> = (args) => <PrimaryModal {...args} />;
 
-export const Modals: Story<modalType> = template.bind({});
+export const Modals: Story<ModalType> = template.bind({});
 
 Modals.args = {
 	width: '570px',
@@ -21,13 +21,13 @@ Modals.args = {
 	visible: false,
 	closeOnTouchOutside: false,
 	title: 'Menu del almuerzo o cena en cueva',
+	renderOpenButton: false,
 	onClose: () => {
 		console.log('Cerrado');
 	},
 	onOpen: () => {
 		console.log('Abierto');
 	},
-	closeAction: Date.now,
 	coverImage:
 		'https://s3-sa-east-1.amazonaws.com/patagoniachic.com/assets/menu/img/Nativo.jpg',
 	Children: () => (
