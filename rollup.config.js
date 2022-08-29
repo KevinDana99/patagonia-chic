@@ -6,6 +6,7 @@ import dts from 'rollup-plugin-dts';
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import packageJson from './package.json';
+import css from 'rollup-plugin-import-css';
 
 const styledComponentsTransformer = createStyledComponentsTransformer({
 	displayName: true,
@@ -39,6 +40,7 @@ export default [
 				],
 			}),
 			terser(),
+			css(),
 		],
 		external: ['react', 'react-dom', 'styled-components'],
 	},
