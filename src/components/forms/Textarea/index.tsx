@@ -1,14 +1,15 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import { StyledTextarea, StyledLabel, TextareaContainer } from './styled';
 import { TextareaPropsType } from './types';
 
-const Textarea: FC<TextareaPropsType> = ({
+const Textarea = ({
 	label,
 	onChange,
 	name,
-	defaulValue,
-}) => {
+	defaultValue,
+	error,
+}: TextareaPropsType) => {
 	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		onChange && onChange(e.target.value);
 	};
@@ -18,8 +19,9 @@ const Textarea: FC<TextareaPropsType> = ({
 				placeholder=" "
 				onChange={handleChange}
 				name={name}
-				value={defaulValue}
-			></StyledTextarea>
+				value={defaultValue}
+				error={!!error}
+			/>
 			<StyledLabel>{label}</StyledLabel>
 		</TextareaContainer>
 	);

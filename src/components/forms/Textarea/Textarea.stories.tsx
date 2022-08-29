@@ -20,4 +20,5 @@ export const Textarea: Story<TextareaPropsType> = Template.bind({});
 
 Textarea.args = {
 	label: 'Agregar mensaje',
+	error: true,
 };
