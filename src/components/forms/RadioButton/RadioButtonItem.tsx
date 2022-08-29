@@ -6,30 +6,35 @@ import {
 	StyledLabel,
 	IconDiv,
 	TextDiv,
+	CheckIcon,
 } from './styled';
 
-const RadioButtonItem: FC<RadioButtonItemPropsType> = ({
+const RadioButtonItem = ({
 	index,
-	name,
-	value,
-	label,
+	item,
 	handleChange,
 	checkedItem,
-}) => (
-	<ContainerInput key={index}>
-		<StyledInput
-			id={index.toString().concat('radio')}
-			name={name}
-			type="radio"
-			value={value}
-			onChange={handleChange}
-			checked={checkedItem?.name === name}
-		/>
-		<StyledLabel htmlFor={index.toString().concat('radio')}>
-			<IconDiv></IconDiv>
-			<TextDiv>{label ? label : `Opcion ${index + 1}`}</TextDiv>
-		</StyledLabel>
-	</ContainerInput>
-);
+}: RadioButtonItemPropsType) => {
+	const checkedInput = JSON.stringify(checkedItem) === JSON.stringify(item);
+
+	return (
+		<ContainerInput key={index}>
+			<StyledInput
+				id={index.toString().concat('radio')}
+				name={item.name}
+				type="radio"
+				value={item.value}
+				onChange={handleChange}
+				checked={checkedInput}
+			/>
+			<StyledLabel htmlFor={index.toString().concat('radio')}>
+				<IconDiv>
+					<CheckIcon />
+				</IconDiv>
+				<TextDiv>{item.label ? item.label : `Opcion ${index + 1}`}</TextDiv>
+			</StyledLabel>
+		</ContainerInput>
+	);
+};
 
 export default RadioButtonItem;
