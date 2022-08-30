@@ -1,7 +1,7 @@
 import React from 'react';
-import { CustomStyleIconType } from '../../../components/icons/CustomIcon/types';
+import { CustomStyleIconType } from '../types';
 
-const IconCheck = ({ color, size }: CustomStyleIconType) => {
+const CheckCircleIcon = ({ color, size }: CustomStyleIconType) => {
 	return (
 		<svg
 			width={size}
@@ -33,4 +33,4 @@ const IconCheck = ({ color, size }: CustomStyleIconType) => {
 	);
 };
 
-export default IconCheck;
+export default CheckCircleIcon;
