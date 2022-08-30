@@ -1,3 +1,15 @@
+export type DetailsType = {
+	status: boolean;
+	details?: {
+		title: string;
+		target: string;
+	};
+};
+
 export type IncludedItemsType = {
-	items: Array<{ title: string; included: boolean; requirements?: string }>;
+	items: Array<{
+		title: string;
+		included: DetailsType;
+		requirements?: string;
+	}>;
 };

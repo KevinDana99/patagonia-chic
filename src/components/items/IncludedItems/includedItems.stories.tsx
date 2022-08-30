@@ -19,18 +19,21 @@ includedItems.args = {
 		{
 			title: 'Inicio en su hotel de El Calafate',
 			requirements: 'Segun turno',
-			included: true,
+			included: { status: true },
 		},
 
 		{
 			title: 'Almuerzo en cueva',
 			requirements: 'Segun turno',
-			included: true,
+			included: { status: true },
 		},
 
 		{
 			title: 'Ticket de acceso al Parque Nacional ',
-			included: false,
+			included: {
+				status: false,
+				details: { title: 'Ver detalles', target: 'https://www.google.com.ar' },
+			},
 		},
 	],
 };

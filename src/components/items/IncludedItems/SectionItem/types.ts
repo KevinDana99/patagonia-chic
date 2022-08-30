@@ -1,5 +1,7 @@
+import { DetailsType } from '../types';
+
 export type SectionItemType = {
 	title: string;
-	included: boolean;
+	included: DetailsType;
 	requirements?: string;
 };

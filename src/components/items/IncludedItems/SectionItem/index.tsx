@@ -14,7 +14,7 @@ import { SectionItemType } from './types';
 const SectionItem = ({ title, requirements, included }: SectionItemType) => {
 	return (
 		<Container>
-			{included ? (
+			{included.status ? (
 				<IconContainer>
 					<IconCheck icon="IconCheck" color="#3BC053" size={15} />
 				</IconContainer>
@@ -24,7 +24,7 @@ const SectionItem = ({ title, requirements, included }: SectionItemType) => {
 				</IconContainer>
 			)}
 
-			{included ? (
+			{included.status ? (
 				<SectionTitle>
 					<Title>{title}</Title>
 					{requirements && <div>-</div>}
@@ -33,7 +33,12 @@ const SectionItem = ({ title, requirements, included }: SectionItemType) => {
 			) : (
 				<NotIncludeContainer>
 					<Title>{title}</Title>
-					<ButtonItem title="Ver detalle" />
+
+					{included.details && (
+						<a href={included.details.target}>
+							<ButtonItem title={included.details.title} />
+						</a>
+					)}
 				</NotIncludeContainer>
 			)}
 		</Container>
