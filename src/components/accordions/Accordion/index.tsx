@@ -1,12 +1,21 @@
 import React from 'react';
 import SectionAccordion from './SectionAccordion';
+import { Container } from './styled';
+import { AccordionType } from './types';
 
-const Accordion = () => {
+const Accordion = ({ sections }: AccordionType) => {
 	return (
-		<SectionAccordion
-			label={[{ label: 'Titulo1', url: 'https://www.google.com.ar' }]}
-			title={'Esta es una seccion'}
-		/>
+		<Container>
+			{sections.map((section, index) => {
+				return (
+					<SectionAccordion
+						key={index}
+						label={section.label}
+						title={section.title}
+					/>
+				);
+			})}
+		</Container>
 	);
 };
 

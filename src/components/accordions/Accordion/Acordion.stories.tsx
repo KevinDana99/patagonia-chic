@@ -1,12 +1,42 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Accordion from './index';
+import { AccordionType } from './types';
 
 export default {
-	title: 'Components/Acordions',
+	title: 'Components/accordions',
 	component: Accordion,
 } as Meta<typeof Accordion>;
 
-const Template: Story = (args) => <Accordion {...args} />;
+const Template: Story<AccordionType> = (args) => <Accordion {...args} />;
 
-export const primaryAccordion: Story = Template.bind({});
+export const accodion: Story<AccordionType> = Template.bind({});
+
+accodion.args = {
+	sections: [
+		{
+			label: [
+				{ label: 'Titulo 1', url: 'https://www.google.com.ar' },
+				{ label: 'Titulo 2', url: 'https://www.google.com.ar' },
+				{ label: 'Titulo 3', url: 'https://www.google.com.ar' },
+				{ label: 'Titulo 4', url: 'https://www.google.com.ar' },
+			],
+			title: 'Esta es una seccion',
+		},
+		{
+			label: [
+				{ label: 'Titulo 1', url: 'https://www.google.com.ar' },
+				{ label: 'Titulo 2', url: 'https://www.google.com.ar' },
+				{ label: 'Titulo 3', url: 'https://www.google.com.ar' },
+			],
+			title: 'Esta es una seccion',
+		},
+		{
+			label: [
+				{ label: 'Titulo 1', url: 'https://www.google.com.ar' },
+				{ label: 'Titulo 2', url: 'https://www.google.com.ar' },
+			],
+			title: 'Esta es una seccion',
+		},
+	],
+};
