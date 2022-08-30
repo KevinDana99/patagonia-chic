@@ -126,7 +126,7 @@ export const ContainerSectionCommon = styled.div`
 	}
 	@media ${deviceSize.tablet} {
 		display: none;
-
+	}
 `;
 
 export const Divider = styled.div`
