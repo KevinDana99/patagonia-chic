@@ -1,7 +1,7 @@
-import IconCheck from '../../../assets/images/icons/IconCheck';
+import { IconCheck, IconCheckType } from '../../../assets/images/icons';
 export const selectedIcon = (icon: string, color: string, size: number) => {
 	switch (icon) {
-		case 'IconCheck':
+		case IconCheckType:
 			return IconCheck({ color, size });
 
 		default:
