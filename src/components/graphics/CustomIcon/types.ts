@@ -1,5 +1,8 @@
+import icons from './icons';
+
 export type CustomIconType = {
-	icon: string;
+	name: keyof typeof icons;
+	className?: string;
 	color?: string;
 	size?: number;
 };
