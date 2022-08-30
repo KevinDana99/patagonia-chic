@@ -1,13 +1,41 @@
 import React from 'react';
-import CustomIcon from '../../../icons/CustomIcon';
-import { Container, Requirements, Title } from './styled';
+import {
+	Container,
+	Requirements,
+	Title,
+	IconContainer,
+	IconCheck,
+	IconClose,
+	SectionTitle,
+	NotIncludeContainer,
+	ButtonItem,
+} from './styled';
 import { SectionItemType } from './types';
 const SectionItem = ({ title, requirements, included }: SectionItemType) => {
 	return (
 		<Container>
-			<CustomIcon icon="IconCheck" color="red" size={20} />
-			<Title>{title}</Title>
-			<Requirements>{requirements}</Requirements>
+			{included ? (
+				<IconContainer>
+					<IconCheck icon="IconCheck" color="#3BC053" size={15} />
+				</IconContainer>
+			) : (
+				<IconContainer>
+					<IconClose size={20} />
+				</IconContainer>
+			)}
+
+			{included ? (
+				<SectionTitle>
+					<Title>{title}</Title>
+					{requirements && <div>-</div>}
+					{requirements && <Requirements>{requirements}</Requirements>}
+				</SectionTitle>
+			) : (
+				<NotIncludeContainer>
+					<Title>{title}</Title>
+					<ButtonItem title="Ver detalle" />
+				</NotIncludeContainer>
+			)}
 		</Container>
 	);
 };

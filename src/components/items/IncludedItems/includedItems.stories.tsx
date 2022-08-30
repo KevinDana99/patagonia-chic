@@ -4,7 +4,7 @@ import { IncludedItemsType } from './types';
 import IncludedItems from '.';
 
 export default {
-	title: 'Components/IncludedItems',
+	title: 'Components/items',
 	component: IncludedItems,
 } as Meta<typeof IncludedItems>;
 
@@ -17,20 +17,19 @@ export const includedItems: Story<IncludedItemsType> = Template.bind({});
 includedItems.args = {
 	items: [
 		{
-			title: 'titulo',
-			requirements: 'Sacar turno',
+			title: 'Inicio en su hotel de El Calafate',
+			requirements: 'Segun turno',
 			included: true,
 		},
 
 		{
-			title: 'titulo',
-			requirements: 'Sacar turno',
+			title: 'Almuerzo en cueva',
+			requirements: 'Segun turno',
 			included: true,
 		},
 
 		{
-			title: 'titulo',
-			requirements: 'Sacar turno',
+			title: 'Ticket de acceso al Parque Nacional ',
 			included: false,
 		},
 	],
