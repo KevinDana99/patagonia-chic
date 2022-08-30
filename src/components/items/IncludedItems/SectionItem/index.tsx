@@ -1,7 +1,14 @@
 import React from 'react';
-
-const SectionItem = () => {
-	return <div>SectionItem</div>;
+import { IncludedItemsType } from '../types';
+import { Container } from './styled';
+import { SectionItemType } from './types';
+const SectionItem = ({ title, requirements, included }: SectionItemType) => {
+	return (
+		<Container>
+			<div>{title}</div>
+			<div>{requirements}</div>
+		</Container>
+	);
 };
 
 export default SectionItem;

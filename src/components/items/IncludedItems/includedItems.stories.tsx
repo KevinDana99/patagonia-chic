@@ -14,4 +14,24 @@ const Template: Story<IncludedItemsType> = (args) => (
 
 export const includedItems: Story<IncludedItemsType> = Template.bind({});
 
-includedItems.args = {};
+includedItems.args = {
+	items: [
+		{
+			title: 'titulo',
+			requirements: 'Sacar turno',
+			included: true,
+		},
+
+		{
+			title: 'titulo',
+			requirements: 'Sacar turno',
+			included: true,
+		},
+
+		{
+			title: 'titulo',
+			requirements: 'Sacar turno',
+			included: false,
+		},
+	],
+};
