@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type LabelLinkType = {
 	label: string;
 	url: string;
@@ -6,5 +8,6 @@ export type LabelLinkType = {
 
 export type SectionType = {
 	title: string;
-	label: LabelLinkType[];
+	label?: LabelLinkType[];
+	content?: JSX.Element;
 };

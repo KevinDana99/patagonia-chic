@@ -12,6 +12,7 @@ const Accordion = ({ sections }: AccordionType) => {
 						key={index}
 						label={section.label}
 						title={section.title}
+						content={section.content}
 					/>
 				);
 			})}

@@ -15,12 +15,7 @@ export const accodion: Story<AccordionType> = Template.bind({});
 accodion.args = {
 	sections: [
 		{
-			label: [
-				{ label: 'Titulo 1', url: 'https://www.google.com.ar' },
-				{ label: 'Titulo 2', url: 'https://www.google.com.ar' },
-				{ label: 'Titulo 3', url: 'https://www.google.com.ar' },
-				{ label: 'Titulo 4', url: 'https://www.google.com.ar' },
-			],
+			content: <div>Hello world</div>,
 			title: 'Esta es una seccion',
 		},
 		{

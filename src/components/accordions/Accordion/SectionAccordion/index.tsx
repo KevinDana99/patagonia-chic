@@ -13,7 +13,7 @@ import {
 } from './styled';
 import { SectionType } from './types';
 
-export const Section = ({ title, label }: SectionType) => {
+export const Section = ({ title, label, content }: SectionType) => {
 	const [openSection, setOpenSection] = useState(false);
 
 	return (
@@ -23,6 +23,7 @@ export const Section = ({ title, label }: SectionType) => {
 				{openSection ? <ArrowIconUp /> : <ArrowIconDown />}
 			</SectionTitleContainer>
 			{openSection &&
+				label &&
 				label.map((labelItem, index) => (
 					<LinkStyled
 						href={labelItem.url}
@@ -32,6 +33,8 @@ export const Section = ({ title, label }: SectionType) => {
 						<SectionLabel>{labelItem.label}</SectionLabel>
 					</LinkStyled>
 				))}
+
+			{openSection && content && content}
 			<SectionDivider />
 		</SectionContainer>
 	);
