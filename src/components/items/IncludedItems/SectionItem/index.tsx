@@ -3,32 +3,30 @@ import {
 	Container,
 	Requirements,
 	Title,
-	IconContainer,
-	IconCheck,
+	StyledCustomIcon,
 	IconClose,
 	SectionTitle,
 	NotIncludeContainer,
 	ButtonItem,
 } from './styled';
 import { SectionItemType } from './types';
-const SectionItem = ({ title, requirements, included }: SectionItemType) => {
+const SectionItem = ({ title, subTitle, included }: SectionItemType) => {
+	{
+		console.log(subTitle);
+	}
 	return (
 		<Container>
 			{included.status ? (
-				<IconContainer>
-					<IconCheck icon="IconCheck" color="#3BC053" size={15} />
-				</IconContainer>
+				<StyledCustomIcon name="check-circle" color="#3BC053" size={15} />
 			) : (
-				<IconContainer>
-					<IconClose size={20} />
-				</IconContainer>
+				<IconClose size={20} />
 			)}
 
 			{included.status ? (
 				<SectionTitle>
 					<Title>{title}</Title>
-					{requirements && <div>-</div>}
-					{requirements && <Requirements>{requirements}</Requirements>}
+					{subTitle && <div>-</div>}
+					{subTitle && <Requirements>{subTitle}</Requirements>}
 				</SectionTitle>
 			) : (
 				<NotIncludeContainer>

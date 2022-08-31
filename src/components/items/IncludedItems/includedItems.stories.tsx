@@ -18,13 +18,13 @@ includedItems.args = {
 	items: [
 		{
 			title: 'Inicio en su hotel de El Calafate',
-			requirements: 'Segun turno',
+			subTitle: 'Segun turno',
 			included: { status: true },
 		},
 
 		{
 			title: 'Almuerzo en cueva',
-			requirements: 'Segun turno',
+			subTitle: 'Segun turno',
 			included: { status: true },
 		},
 

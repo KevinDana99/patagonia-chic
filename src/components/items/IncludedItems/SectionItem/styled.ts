@@ -1,7 +1,7 @@
 import { IoCloseOutline } from 'react-icons/io5';
 import styled from 'styled-components';
 import TertiaryButton from '../../../buttons/TertiaryButton';
-import CustomIcon from '../../../icons/CustomIcon';
+import CustomIcon from '../../../graphics/CustomIcon';
 
 export const Container = styled.div`
 	margin-top: 5px;
@@ -41,18 +41,16 @@ export const NotIncludeContainer = styled.div`
 	align-items: flex-start;
 `;
 
-export const IconContainer = styled.div`
+export const ButtonItem = styled(TertiaryButton)`
+	padding: 0px;
+`;
+
+export const StyledCustomIcon = styled(CustomIcon)`
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
 	width: 20px;
 `;
-
-export const ButtonItem = styled(TertiaryButton)`
-	padding: 0px;
-`;
-
-export const IconCheck = styled(CustomIcon)``;
 export const IconClose = styled(IoCloseOutline)`
 	padding: 0px;
 	font-size: 15px;

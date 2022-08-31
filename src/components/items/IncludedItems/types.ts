@@ -10,6 +10,6 @@ export type IncludedItemsType = {
 	items: Array<{
 		title: string;
 		included: DetailsType;
-		requirements?: string;
+		subTitle?: string;
 	}>;
 };

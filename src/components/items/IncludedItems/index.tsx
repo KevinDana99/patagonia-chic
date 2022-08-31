@@ -13,7 +13,7 @@ const Included = ({ items }: IncludedItemsType) => {
 						key={index}
 						title={item.title}
 						included={item.included}
-						requirements={item.requirements}
+						subTitle={item.subTitle}
 					/>
 				);
 			})}
