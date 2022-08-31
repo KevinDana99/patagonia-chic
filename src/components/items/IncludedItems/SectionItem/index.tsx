@@ -11,9 +11,6 @@ import {
 } from './styled';
 import { SectionItemType } from './types';
 const SectionItem = ({ title, subTitle, included }: SectionItemType) => {
-	{
-		console.log(subTitle);
-	}
 	return (
 		<Container>
 			{included.status ? (
