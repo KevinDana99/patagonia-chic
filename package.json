@@ -7,7 +7,7 @@
 		"dist"
 	],
 	"types": "dist/index.d.ts",
-	"repository": "https://KevinDana99@bitbucket.org/patagoniachic/patagoniachic-react-ui.git",
+	"repository": "https://bitbucket.org/patagoniachic/patagoniachic-react-ui.git",
 	"resolutions": {
 		"@types/react": "17.0.43"
 	},
