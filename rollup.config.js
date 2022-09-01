@@ -33,6 +33,10 @@ export default [
 			commonjs(),
 			typescript({
 				tsconfig: './tsconfig.json',
+				compilerOptions: {
+					declaration: true,
+					declarationDir: 'types',
+				},
 				transformers: [
 					() => ({
 						before: [styledComponentsTransformer],
