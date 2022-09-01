@@ -23,7 +23,7 @@ export default [
 			},
 			{
 				file: packageJson.module,
-				format: 'esm',
+				format: 'es',
 				sourcemap: true,
 			},
 		],
@@ -45,7 +45,7 @@ export default [
 		external: ['react', 'react-dom', 'styled-components'],
 	},
 	{
-		input: 'dist/esm/types/index.d.ts',
+		input: 'dist/esm/index.js',
 		output: [{ file: 'dist/index.d.ts', format: 'esm' }],
 		plugins: [dts()],
 	},
