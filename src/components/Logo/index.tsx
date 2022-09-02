@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Container } from './styled';
 import { LogoType } from './types';
-import Log from '../../assets/images/logos/LogCommon/LogCommon';
-import LogWhite from '../../assets/images/logos/LogWhite/LogWhite';
+import LogoColor from './components/LogoColor';
+import LogoWhite from './components/LogoWhite';
 
 const Logo: FC<LogoType> = ({
 	size,
@@ -12,7 +12,11 @@ const Logo: FC<LogoType> = ({
 }) => {
 	return (
 		<Container containerFullWidth={containerFullWidth} align={align}>
-			{theme === 'light' ? <Log size={size} /> : <LogWhite size={size} />}
+			{theme === 'light' ? (
+				<LogoColor size={size} />
+			) : (
+				<LogoWhite size={size} />
+			)}
 		</Container>
 	);
 };

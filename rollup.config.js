@@ -6,6 +6,7 @@ import dts from 'rollup-plugin-dts';
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import packageJson from './package.json';
+import css from 'rollup-plugin-import-css';
 
 const styledComponentsTransformer = createStyledComponentsTransformer({
 	displayName: true,
@@ -32,6 +33,10 @@ export default [
 			commonjs(),
 			typescript({
 				tsconfig: './tsconfig.json',
+				compilerOptions: {
+					declaration: true,
+					declarationDir: 'types',
+				},
 				transformers: [
 					() => ({
 						before: [styledComponentsTransformer],
@@ -39,11 +44,12 @@ export default [
 				],
 			}),
 			terser(),
+			css(),
 		],
 		external: ['react', 'react-dom', 'styled-components'],
 	},
 	{
-		input: 'dist/esm/types/index.d.ts',
+		input: 'dist/esm/types/src/index.d.ts',
 		output: [{ file: 'dist/index.d.ts', format: 'esm' }],
 		plugins: [dts()],
 	},
