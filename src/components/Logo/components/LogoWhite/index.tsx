@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 import { LogoType } from './types';
 
-const LogWhite: React.FC<LogoType> = ({ size }) => {
+const LogoWhite: React.FC<LogoType> = ({ size }) => {
 	return (
 		<svg
 			version="1.1"
@@ -100,4 +100,4 @@ const LogWhite: React.FC<LogoType> = ({ size }) => {
 	);
 };
 
-export default LogWhite;
+export default LogoWhite;

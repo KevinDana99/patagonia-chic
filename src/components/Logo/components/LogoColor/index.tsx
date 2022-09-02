@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 import { LogoType } from './types';
 
-const LogCommon: React.FC<LogoType> = ({ size }) => {
+const LogoCommon: React.FC<LogoType> = ({ size }) => {
 	return (
 		<svg
 			version="1.1"
@@ -151,4 +151,4 @@ const LogCommon: React.FC<LogoType> = ({ size }) => {
 	);
 };
 
-export default LogCommon;
+export default LogoCommon;
