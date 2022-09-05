@@ -21,7 +21,7 @@ export { default as Modal } from './modals/Modal';
 
 // NAVBARS
 export { default as Navbar } from './navbars/Navbar';
-export { default as Sidebar } from './navbars/Sidebar';
+export { default as Sidebar } from './navbars/SideBar';
 
 // QUERIES
 export { default as SearchQuery } from './queries/SearchQuery';
