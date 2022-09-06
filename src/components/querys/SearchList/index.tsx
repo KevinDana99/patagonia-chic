@@ -29,6 +29,7 @@ const ListSearch = ({
 	onSearchChange,
 	search = false,
 	loading,
+	engine,
 }: ListType) => {
 	const [allPlaces, setAllPlaces] = useState(places);
 
@@ -53,7 +54,7 @@ const ListSearch = ({
 							<InputSearch
 								placeholder="Buscar excursiones"
 								onChange={(e) => {
-									onSearchChange
+									engine == 'server' && onSearchChange
 										? onSearchChange(e.target.value)
 										: filterPlaceList(e.target.value);
 								}}

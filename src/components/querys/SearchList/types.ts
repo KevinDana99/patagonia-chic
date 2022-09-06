@@ -17,4 +17,5 @@ export type ListType = {
 	loadingComponent?: JSX.Element;
 	emptyStateComponent?: JSX.Element;
 	errorComponent?: JSX.Element;
+	engine?: 'fuse' | 'server';
 };

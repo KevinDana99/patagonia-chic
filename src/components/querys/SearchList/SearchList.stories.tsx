@@ -6,7 +6,10 @@ import SearchList from '.';
 export default {
 	title: 'Components/SearchList',
 	component: SearchList,
-	argTypes: {},
+	argTypes: {
+		onSearchChange: { action: 'onSearchChange' },
+		engine: { control: 'select', options: ['fuse', 'server'] },
+	},
 } as Meta<typeof SearchList>;
 
 const Template: Story<ListType> = (args) => <SearchList {...args} />;
@@ -64,4 +67,5 @@ list.args = {
 	],
 	search: true,
 	loading: false,
+	engine: 'fuse',
 };
