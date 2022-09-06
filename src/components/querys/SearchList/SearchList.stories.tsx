@@ -7,7 +7,9 @@ export default {
 	title: 'Components/SearchList',
 	component: SearchList,
 	argTypes: {
-		onSearchChange: { action: 'onSearchChange' },
+		onSearchChange: {
+			action: 'onSearchChange',
+		},
 		engine: { control: 'select', options: ['fuse', 'server'] },
 	},
 } as Meta<typeof SearchList>;
