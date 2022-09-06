@@ -7,6 +7,7 @@ export const Container = styled.div`
 `;
 
 export const BoxSearch = styled.div`
+	padding-bottom: 10px;
 	width: 100%;
 	max-width: 280px;
 	height: 29.02px;
@@ -64,4 +65,9 @@ export const BoxSubtitle = styled.div`
 export const SubTitle = styled.div`
 	font-weight: 300;
 	font-size: 14px;
+`;
+
+export const Hr = styled.hr`
+	height: 0.5px;
+	color: #9f9d9d;
 `;

@@ -16,16 +16,24 @@ list.args = {
 	places: [
 		{
 			name: 'Cordoba',
-			img: 'image',
 			id: '2',
 			province: 'Cordoba',
 			country: 'Argentina',
 			keywords: ['sierras'],
 			featured: false,
 		},
+
+		{
+			name: 'La chaqueña',
+			id: '2',
+			province: 'Misiones',
+			country: 'Argentina',
+			keywords: ['ciudad'],
+			featured: true,
+		},
 		{
 			name: 'Cordoba 2',
-			img: 'image',
+			img: './examples/searchList/images/image.png',
 			id: '2',
 			province: 'Cordoba',
 			country: 'Argentina',
@@ -48,15 +56,6 @@ list.args = {
 			province: 'Cordoba',
 			country: 'Argentina',
 			keywords: ['monte', 'sierras'],
-			featured: true,
-		},
-		{
-			name: 'La chaqueña',
-			img: 'image',
-			id: '2',
-			province: 'Misiones',
-			country: 'Argentina',
-			keywords: ['ciudad'],
 			featured: true,
 		},
 	],

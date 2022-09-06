@@ -11,6 +11,7 @@ import {
 	ItemList,
 	SubTitle,
 	Title,
+	Hr,
 } from './styled';
 
 import Fuse from 'fuse.js';
@@ -22,30 +23,42 @@ import { IPlace, PlaceListType } from './types';
 import CustomIcon from '../../graphics/CustomIcon';
 
 const ListSearch = ({ places }: PlaceListType) => {
-	/*	const filterPlaceList = (query: string) => {
+	const [query, setQuery] = useState(null);
+	const [allPlaces, setAllPlaces] = useState(places);
+
+	const filterPlaceList = (query: string) => {
 		const fusePlaceList = new Fuse(places, fuzePlaceListOptions);
 		const filteredResult = fusePlaceList.search(query);
 		const filteredList =
 			filteredResult.length > 0
 				? filteredResult.map((filteredPlace) => filteredPlace.item)
-				: placeList.filter((place) => place.featured);
+				: allPlaces.filter((place) => place.featured);
 
-		setPlaceList(filteredList as [IPlace]);
-	};*/
+		setAllPlaces(filteredList as [IPlace]);
+	};
 
 	return (
 		<Container>
 			<BoxSearch>
 				<IoSearch />
-				<InputSearch placeholder="Buscar excursiones" />
+				<InputSearch
+					placeholder="Buscar excursiones"
+					onChange={(e) => {
+						filterPlaceList(e.target.value);
+					}}
+				/>
 			</BoxSearch>
 
 			<BoxItemList>
-				{places.map((place, index) => {
+				{allPlaces.map((place, index) => {
 					return (
 						<ItemList key={index}>
 							<BoxImage>
-								<CustomIcon name="island" size={25} />
+								{place.img ? (
+									<img src={place.img} />
+								) : (
+									<CustomIcon name="island" size={25} />
+								)}
 							</BoxImage>
 							<Description>
 								<Title>{place.name}</Title>
