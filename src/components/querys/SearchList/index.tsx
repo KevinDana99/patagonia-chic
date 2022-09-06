@@ -11,7 +11,7 @@ import {
 	ItemList,
 	SubTitle,
 	Title,
-	Hr,
+	Divisor,
 } from './styled';
 
 import Fuse from 'fuse.js';
@@ -63,7 +63,8 @@ const ListSearch = ({ places }: PlaceListType) => {
 							<Description>
 								<Title>{place.name}</Title>
 								<BoxSubtitle>
-									<SubTitle>{place.province}</SubTitle>-
+									<SubTitle>{place.province}</SubTitle>
+									<Divisor>-</Divisor>
 									<SubTitle>{place.country}</SubTitle>
 								</BoxSubtitle>
 							</Description>

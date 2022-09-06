@@ -67,7 +67,6 @@ export const SubTitle = styled.div`
 	font-size: 14px;
 `;
 
-export const Hr = styled.hr`
-	height: 0.5px;
-	color: #9f9d9d;
+export const Divisor = styled.div`
+	margin: 0px 3px;
 `;
