@@ -2,14 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 	width: 100%;
-	max-width: 280px;
-	height: 500px;
 `;
 
 export const BoxSearch = styled.div`
 	padding-bottom: 10px;
 	width: 100%;
-	max-width: 280px;
 	height: 29.02px;
 	background-color: white;
 	display: flex;
