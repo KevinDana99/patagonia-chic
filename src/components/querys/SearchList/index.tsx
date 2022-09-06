@@ -19,11 +19,10 @@ import { fuzePlaceListOptions } from '../../../consntants/fuzeOptions';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import { IoSearch } from 'react-icons/io5';
 
-import { IPlace, PlaceListType } from './types';
+import { ListItemType, ListType } from './types';
 import CustomIcon from '../../graphics/CustomIcon';
 
-const ListSearch = ({ places }: PlaceListType) => {
-	const [query, setQuery] = useState(null);
+const ListSearch = ({ places }: ListType) => {
 	const [allPlaces, setAllPlaces] = useState(places);
 
 	const filterPlaceList = (query: string) => {
@@ -34,7 +33,7 @@ const ListSearch = ({ places }: PlaceListType) => {
 				? filteredResult.map((filteredPlace) => filteredPlace.item)
 				: allPlaces.filter((place) => place.featured);
 
-		setAllPlaces(filteredList as [IPlace]);
+		setAllPlaces(filteredList as [ListItemType]);
 	};
 
 	return (

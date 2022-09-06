@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { PlaceListType } from './types';
+import { ListType } from './types';
 import SearchList from '.';
 
 export default {
@@ -9,7 +9,7 @@ export default {
 	argTypes: {},
 } as Meta<typeof SearchList>;
 
-const Template: Story<PlaceListType> = (args) => <SearchList {...args} />;
+const Template: Story<ListType> = (args) => <SearchList {...args} />;
 
 export const list = Template.bind({});
 list.args = {

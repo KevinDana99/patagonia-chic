@@ -1,4 +1,4 @@
-export interface IPlace {
+export interface ListItemType {
 	name: string;
 	id?: string;
 	img?: string;
@@ -9,6 +9,12 @@ export interface IPlace {
 	featured?: boolean;
 }
 
-export type PlaceListType = {
-	places: Array<IPlace>;
+export type ListType = {
+	places: Array<ListItemType>;
+	search?: boolean;
+	onSearchChange?: (text: string) => undefined;
+	loading?: boolean;
+	loadingComponent?: JSX.Element;
+	emptyStateComponent?: JSX.Element;
+	errorComponent?: JSX.Element;
 };
