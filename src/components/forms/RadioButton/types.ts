@@ -5,12 +5,10 @@ export type RadioButtonItemType = {
 };
 
 export type RadioButtonItemPropsType = {
-	label: string;
-	value: string | number;
-	name: string;
-	index: number;
+	item: RadioButtonItemType;
 	handleChange: React.ChangeEventHandler<HTMLInputElement>;
-	checkedItem?: RadioButtonItemType;
+	checkedItem?: RadioButtonItemType | null;
+	index: number;
 };
 
 export type RestrictedRadioButtonItemType = {
@@ -21,6 +19,6 @@ export type RestrictedRadioButtonItemType = {
 
 export type RadioButtonListPropsType = {
 	list: RadioButtonItemType[];
-	onChange: (newValue?: RadioButtonItemType) => void;
-	defaultValue?: RadioButtonItemType;
+	onChange: (newValue?: RadioButtonItemType | null) => void;
+	defaultValue?: RadioButtonItemType | null | (() => RadioButtonItemType);
 };

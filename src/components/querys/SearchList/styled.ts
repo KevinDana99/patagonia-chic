@@ -25,11 +25,12 @@ export const InputSearch = styled.input`
 `;
 
 export const BoxItemList = styled.div`
+	margin-top: 35px;
 	width: 100%;
 `;
 
 export const ItemList = styled.div`
-	margin-top: 10px;
+	margin-top: 21px;
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -38,14 +39,18 @@ export const ItemList = styled.div`
 export const BoxImage = styled.div`
 	width: 50px;
 	height: 50px;
-	background-color: #6b6b6b;
+	background-color: #f1f4f7;
+	border-radius: 8px;
 `;
 
 export const Description = styled.div`
-	margin-left: 10px;
+	margin-left: 13px;
 `;
 
-export const Title = styled.div``;
+export const Title = styled.div`
+	font-weight: 500;
+	font-size: 17px;
+`;
 
 export const BoxSubtitle = styled.div`
 	display: flex;
@@ -54,5 +59,6 @@ export const BoxSubtitle = styled.div`
 `;
 
 export const SubTitle = styled.div`
-	font-size: 10px;
+	font-weight: 300;
+	font-size: 14px;
 `;
