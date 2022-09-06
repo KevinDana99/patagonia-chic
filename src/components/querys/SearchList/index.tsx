@@ -63,9 +63,15 @@ const ListSearch = ({ places }: PlaceListType) => {
 							<Description>
 								<Title>{place.name}</Title>
 								<BoxSubtitle>
-									<SubTitle>{place.province}</SubTitle>
-									<Divisor>-</Divisor>
-									<SubTitle>{place.country}</SubTitle>
+									{place.category ? (
+										<SubTitle>{place.category}</SubTitle>
+									) : (
+										<>
+											<SubTitle>{place.province}</SubTitle>
+											<Divisor>-</Divisor>
+											<SubTitle>{place.country}</SubTitle>
+										</>
+									)}
 								</BoxSubtitle>
 							</Description>
 						</ItemList>
