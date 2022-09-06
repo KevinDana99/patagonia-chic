@@ -19,6 +19,7 @@ import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import { IoSearch } from 'react-icons/io5';
 
 import { IPlace, PlaceListType } from './types';
+import CustomIcon from '../../graphics/CustomIcon';
 
 const ListSearch = ({ places }: PlaceListType) => {
 	/*	const filterPlaceList = (query: string) => {
@@ -43,7 +44,9 @@ const ListSearch = ({ places }: PlaceListType) => {
 				{places.map((place, index) => {
 					return (
 						<ItemList key={index}>
-							<BoxImage></BoxImage>
+							<BoxImage>
+								<CustomIcon name="island" size={25} />
+							</BoxImage>
 							<Description>
 								<Title>{place.name}</Title>
 								<BoxSubtitle>

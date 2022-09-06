@@ -41,6 +41,9 @@ export const BoxImage = styled.div`
 	height: 50px;
 	background-color: #f1f4f7;
 	border-radius: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
 
 export const Description = styled.div`
