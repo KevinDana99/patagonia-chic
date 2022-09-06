@@ -12,7 +12,7 @@ export interface ListItemType {
 export type ListType = {
 	places: Array<ListItemType>;
 	search?: boolean;
-	onSearchChange?: (text: string) => undefined;
+	onSearchChange?: (query: string) => void;
 	loading?: boolean;
 	loadingComponent?: JSX.Element;
 	emptyStateComponent?: JSX.Element;

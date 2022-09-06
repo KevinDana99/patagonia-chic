@@ -12,6 +12,7 @@ import {
 	SubTitle,
 	Title,
 	Divisor,
+	LoadingContainer,
 } from './styled';
 
 import Fuse from 'fuse.js';
@@ -21,8 +22,14 @@ import { IoSearch } from 'react-icons/io5';
 
 import { ListItemType, ListType } from './types';
 import CustomIcon from '../../graphics/CustomIcon';
+import PrimarySpinner from '../../spinners/PrimarySpinner';
 
-const ListSearch = ({ places }: ListType) => {
+const ListSearch = ({
+	places,
+	onSearchChange,
+	search = false,
+	loading,
+}: ListType) => {
 	const [allPlaces, setAllPlaces] = useState(places);
 
 	const filterPlaceList = (query: string) => {
@@ -37,47 +44,59 @@ const ListSearch = ({ places }: ListType) => {
 	};
 
 	return (
-		<Container>
-			<BoxSearch>
-				<IoSearch />
-				<InputSearch
-					placeholder="Buscar excursiones"
-					onChange={(e) => {
-						filterPlaceList(e.target.value);
-					}}
-				/>
-			</BoxSearch>
+		<>
+			{!loading ? (
+				<Container>
+					{search && (
+						<BoxSearch>
+							<IoSearch />
+							<InputSearch
+								placeholder="Buscar excursiones"
+								onChange={(e) => {
+									onSearchChange
+										? onSearchChange(e.target.value)
+										: filterPlaceList(e.target.value);
+								}}
+							/>
+						</BoxSearch>
+					)}
 
-			<BoxItemList>
-				{allPlaces.map((place, index) => {
-					return (
-						<ItemList key={index}>
-							<BoxImage>
-								{place.img ? (
-									<img src={place.img} />
-								) : (
-									<CustomIcon name="island" size={25} />
-								)}
-							</BoxImage>
-							<Description>
-								<Title>{place.name}</Title>
-								<BoxSubtitle>
-									{place.category ? (
-										<SubTitle>{place.category}</SubTitle>
-									) : (
-										<>
-											<SubTitle>{place.province}</SubTitle>
-											<Divisor>-</Divisor>
-											<SubTitle>{place.country}</SubTitle>
-										</>
-									)}
-								</BoxSubtitle>
-							</Description>
-						</ItemList>
-					);
-				})}
-			</BoxItemList>
-		</Container>
+					<BoxItemList>
+						{allPlaces.map((place, index) => {
+							return (
+								<ItemList key={index}>
+									<BoxImage>
+										{place.img ? (
+											<img src={place.img} />
+										) : (
+											<CustomIcon name="island" size={25} />
+										)}
+									</BoxImage>
+									<Description>
+										<Title>{place.name}</Title>
+										<BoxSubtitle>
+											{place.category ? (
+												<SubTitle>{place.category}</SubTitle>
+											) : (
+												<>
+													<SubTitle>{place.province}</SubTitle>
+													<Divisor>-</Divisor>
+													<SubTitle>{place.country}</SubTitle>
+												</>
+											)}
+										</BoxSubtitle>
+									</Description>
+								</ItemList>
+							);
+						})}
+					</BoxItemList>
+				</Container>
+			) : (
+				<LoadingContainer>
+					<PrimarySpinner theme="light" size={40} />
+				</LoadingContainer>
+			)}
+		</>
 	);
 };
 

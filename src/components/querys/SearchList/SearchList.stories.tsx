@@ -62,4 +62,6 @@ list.args = {
 			featured: true,
 		},
 	],
+	search: true,
+	loading: false,
 };

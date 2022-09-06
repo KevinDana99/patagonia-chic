@@ -18,6 +18,7 @@ export const InputSearch = styled.input`
 	margin-left: 21px;
 	max-width: 180px;
 	height: 21.02px;
+	font-size: 15px;
 	border: none;
 	outline: none;
 `;
@@ -66,4 +67,12 @@ export const SubTitle = styled.div`
 
 export const Divisor = styled.div`
 	margin: 0px 3px;
+`;
+
+export const LoadingContainer = styled.div`
+	width: 100%;
+	height: 500px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
