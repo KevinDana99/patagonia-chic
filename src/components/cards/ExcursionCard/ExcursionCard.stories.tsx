@@ -14,4 +14,6 @@ const Template: Story<ExcursionCardType> = (args) => (
 );
 
 export const excursionCard = Template.bind({});
-excursionCard.args = {};
+excursionCard.args = {
+	coverImage: 'https://i.ibb.co/VMbg2QC/roi-dimor-wpje5h-Mf-Jj0-unsplash-1.png',
+};
