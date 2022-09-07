@@ -31,17 +31,37 @@ export const Description = styled.div`
 
 export const BoxTitle = styled.div``;
 
-export const Title = styled.div``;
+export const Title = styled.div`
+	font-weight: bold;
+	font-size: 15.34px;
+	display: flex;
+`;
 
-export const SubTitle = styled.div``;
+export const SubTitle = styled.div`
+	color: #888888;
+	font-size: 12.27px;
+	font-weight: 400;
+	display: flex;
+`;
 
-export const BoxReserve = styled.div``;
+export const BoxReserve = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
 
 export const BoxPrice = styled.div``;
 
-export const Price = styled.div``;
+export const Price = Title;
 
-export const SubPrice = styled.div``;
+export const Currency = styled.div`
+	margin-left: 2px;
+	text-transform: uppercase;
+	font-size: 10px;
+`;
+
+export const SubPrice = styled(SubTitle)`
+	text-decoration: line-through;
+`;
 
 export const ButtonReserve = styled(PrimaryButton)`
 	height: 38px;

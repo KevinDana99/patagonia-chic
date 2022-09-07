@@ -13,10 +13,18 @@ import {
 	Price,
 	SubPrice,
 	ButtonReserve,
+	Currency,
 } from './styled';
 import { ExcursionCardType } from './types';
 
-const Excursion = ({ coverImage }: ExcursionCardType) => {
+const Excursion = ({
+	coverImage,
+	title,
+	subPrice,
+	price,
+	subTitle,
+	currency,
+}: ExcursionCardType) => {
 	return (
 		<Card hover={true}>
 			<>
@@ -31,14 +39,19 @@ const Excursion = ({ coverImage }: ExcursionCardType) => {
 				)}
 				<Description>
 					<BoxTitle>
-						<Title></Title>
-						<SubTitle></SubTitle>
+						<SubTitle>{subTitle}</SubTitle>
+						<Title>{title}</Title>
 					</BoxTitle>
 					<hr color="#D7D5D5" />
 					<BoxReserve>
 						<BoxPrice>
-							<Price></Price>
-							<SubPrice></SubPrice>
+							<Price>
+								{price} <Currency>{currency}</Currency>
+							</Price>
+							<SubPrice>
+								{subPrice}
+								<Currency>{currency}</Currency>
+							</SubPrice>
 						</BoxPrice>
 						<ButtonReserve title="Reservar" />
 					</BoxReserve>

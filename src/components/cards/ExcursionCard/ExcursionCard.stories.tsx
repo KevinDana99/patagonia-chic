@@ -16,4 +16,9 @@ const Template: Story<ExcursionCardType> = (args) => (
 export const excursionCard = Template.bind({});
 excursionCard.args = {
 	coverImage: 'https://i.ibb.co/VMbg2QC/roi-dimor-wpje5h-Mf-Jj0-unsplash-1.png',
+	subTitle: 'El Calafate',
+	title: 'Perito Moreno: Pasarelas',
+	price: '$20.600',
+	currency: 'ars',
+	subPrice: '$27.800',
 };
