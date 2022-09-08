@@ -15,7 +15,7 @@ function useMediaQuery(query: string): boolean {
 	}, [query]);
 
 	useEffect(() => {
-		const matchMedia = window.matchMedia(query);
+		const matchMedia = window?.matchMedia(query);
 		handleChange();
 		if (matchMedia.addListener) {
 			matchMedia.addListener(handleChange);

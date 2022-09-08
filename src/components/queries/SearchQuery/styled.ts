@@ -4,7 +4,7 @@ import {
 	IoChevronForwardSharp,
 } from 'react-icons/io5';
 import styled from 'styled-components';
-import { deviceSize } from '../../../consntants/devicesSizes';
+import { deviceSize } from '../../../constants/devicesSizes';
 import { OptionContainerType, PlaceContainerType } from './types';
 
 const selectedShadow =
