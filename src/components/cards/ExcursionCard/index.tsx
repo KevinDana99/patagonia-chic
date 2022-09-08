@@ -114,7 +114,7 @@ const Excursion = ({
 			<OptionContainer>
 				{options?.countReservesWeek && (
 					<BoxOption>
-						<CustomIcon name="check-circle" />
+						<CustomIcon name="group-circle" />
 						<Option>
 							{<b>{options.countReservesWeek}</b>} veces reservado la ultima
 							semana
@@ -124,7 +124,7 @@ const Excursion = ({
 
 				{options?.timeLatestReserve && (
 					<BoxOption>
-						<CustomIcon name="check-circle" />
+						<CustomIcon name="ray-circle" />
 						<Option>
 							Reservado hace{' '}
 							{reserveTime.time +
