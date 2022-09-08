@@ -5,7 +5,7 @@ import Sidebar from '.';
 import mapToViews from '../../../examples/sidebar/views.map';
 
 export default {
-	title: 'components/navbars',
+	title: 'components/template-parts',
 	component: Sidebar,
 	argTypes: {},
 } as Meta<typeof Sidebar>;

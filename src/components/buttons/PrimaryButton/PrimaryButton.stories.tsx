@@ -5,7 +5,7 @@ import { PrimaryButtonType } from './types';
 import { IoSearch } from 'react-icons/io5';
 
 export default {
-	title: 'Components/Buttons',
+	title: 'Components/buttons',
 	component: PrimaryButton,
 	argTypes: {
 		onClick: { action: 'clicked' },

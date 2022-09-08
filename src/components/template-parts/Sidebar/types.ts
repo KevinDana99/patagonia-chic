@@ -1,5 +1,5 @@
 import React from 'react';
-import { LanguageType } from '../../footers/Footer/types';
+import { LanguageType } from '../Footer/types';
 
 export type SideBarType = {
 	closeAction?: () => void;

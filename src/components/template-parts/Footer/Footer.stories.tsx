@@ -4,7 +4,7 @@ import FooterComponent from './index';
 import { FooterPropsType } from './types';
 
 export default {
-	title: 'Components',
+	title: 'Components/template-parts',
 	component: FooterComponent,
 } as Meta<typeof Footer>;
 

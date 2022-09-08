@@ -22,7 +22,7 @@ import {
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Logo from '../../logos/Logo';
 import { sidebarTexts } from './sidebarTexts';
-import { LanguageLabel } from '../../footers/Footer/styled';
+import { LanguageLabel } from '../Footer/styled';
 
 const Sidebar = ({
 	closeAction,

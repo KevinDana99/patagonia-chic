@@ -1,20 +1,20 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { IncludedItemsType } from './types';
-import IncludedItems from '.';
+import IncludedItemsComponent from '.';
 
 export default {
-	title: 'Components/items',
-	component: IncludedItems,
-} as Meta<typeof IncludedItems>;
+	title: 'Components/lists',
+	component: IncludedItemsComponent,
+} as Meta<typeof IncludedItemsComponent>;
 
 const Template: Story<IncludedItemsType> = (args) => (
-	<IncludedItems {...args} />
+	<IncludedItemsComponent {...args} />
 );
 
-export const includedItems: Story<IncludedItemsType> = Template.bind({});
+export const IncludedItems: Story<IncludedItemsType> = Template.bind({});
 
-includedItems.args = {
+IncludedItems.args = {
 	items: [
 		{
 			title: 'Inicio en su hotel de El Calafate',

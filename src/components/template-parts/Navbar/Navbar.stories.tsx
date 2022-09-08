@@ -4,7 +4,7 @@ import { NavbarType } from './types';
 import Navbar from '.';
 
 export default {
-	title: 'components/navbars',
+	title: 'components/template-parts',
 	component: Navbar,
 	argTypes: {
 		onClickMenu: { action: 'clicked menu' },

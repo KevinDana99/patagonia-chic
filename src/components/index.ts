@@ -9,9 +9,6 @@ export { default as TertiaryButton } from './buttons/TertiaryButton';
 // CARDS
 export { default as Card } from './cards/PrimaryCard';
 
-//FOOTERS
-export { default as Footer } from './footers/Footer';
-
 // FORMS
 export { default as CheckboxList } from './forms/CheckboxList';
 export { default as Input } from './forms/Input';
@@ -22,9 +19,10 @@ export { default as Textarea } from './forms/Textarea';
 // MODALS
 export { default as Modal } from './modals/Modal';
 
-// NAVBARS
-export { default as Navbar } from './navbars/Navbar';
-export { default as Sidebar } from './navbars/Sidebar';
+// TEMPLATE-PARTS
+export { default as Navbar } from './template-parts/Navbar';
+export { default as Sidebar } from './template-parts/Sidebar';
+export { default as Footer } from './template-parts/Footer';
 
 // QUERIES
 export { default as SearchQuery } from './queries/SearchQuery';
