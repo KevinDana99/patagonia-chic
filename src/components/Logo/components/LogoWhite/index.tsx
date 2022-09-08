@@ -1,8 +1,8 @@
 import React from 'react';
-import './style.css';
+import { GlobalStyle } from './styled';
 import { LogoType } from './types';
 
-const LogoWhite: React.FC<LogoType> = ({ size }) => {
+const LogoWhite = ({ size }: LogoType) => {
 	return (
 		<svg
 			version="1.1"
@@ -18,6 +18,7 @@ const LogoWhite: React.FC<LogoType> = ({ size }) => {
 			}}
 			xmlSpace="preserve"
 		>
+			<GlobalStyle />
 			<g id="Capa_1">
 				<path
 					className="st0"
