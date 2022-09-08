@@ -8,7 +8,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import packageJson from './package.json';
 import css from 'rollup-plugin-import-css';
 import json from '@rollup/plugin-json';
-import url from 'rollup-plugin-url';
+import url from '@rollup/plugin-url';
 
 const styledComponentsTransformer = createStyledComponentsTransformer({
 	displayName: true,
