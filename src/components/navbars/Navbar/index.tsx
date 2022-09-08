@@ -26,14 +26,14 @@ const Navbar = ({
 }: NavbarType) => {
 	const [scrollStatus, setScrollStatus] = useState({
 		activeNavBar: false,
-		scrolling: window.scrollY,
+		scrolling: window?.scrollY ?? 0,
 		theme: 'transparent',
 	});
 
 	const isMobile = useMediaQuery(deviceSize.mobileL);
 
 	const listenScroll = useCallback(() => {
-		const scroll = window.scrollY;
+		const scroll = window?.scrollY;
 
 		setScrollStatus({
 			...scrollStatus,
@@ -43,8 +43,8 @@ const Navbar = ({
 	}, [scrollStatus]);
 
 	useEffect(() => {
-		window.addEventListener('scroll', listenScroll);
-		return () => window.removeEventListener('scroll', listenScroll);
+		window?.addEventListener('scroll', listenScroll);
+		return () => window?.removeEventListener('scroll', listenScroll);
 	}, [listenScroll]);
 
 	const { background, color } = themesMap(scrollStatus.theme);
