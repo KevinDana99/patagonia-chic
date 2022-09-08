@@ -21,10 +21,13 @@ export { default as Modal } from './modals/Modal';
 
 // NAVBARS
 export { default as Navbar } from './navbars/Navbar';
-export { default as Sidebar } from './navbars/SideBar';
+export { default as Sidebar } from './navbars/Sidebar';
 
 // QUERIES
 export { default as SearchQuery } from './queries/SearchQuery';
 
 // SPINNERS
 export { default as Spinner } from './spinners/PrimarySpinner';
+
+// TEXTS
+export { default as Text } from './texts/Text';
