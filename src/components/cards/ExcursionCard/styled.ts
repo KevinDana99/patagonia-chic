@@ -3,7 +3,7 @@ import PrimaryButton from '../../buttons/PrimaryButton';
 import PrimaryCard from '../PrimaryCard';
 import { PrimaryCardStyleType } from '../PrimaryCard/types';
 import { ExcursionCardStyleType } from './types';
-import VectorBlue from './vectors/VectorBlue';
+import StainVector from './vectors/StainVector';
 
 export const Card = styled(PrimaryCard)<PrimaryCardStyleType>`
 	width: 335px;
@@ -20,7 +20,7 @@ export const ContainerImage = styled.div<ExcursionCardStyleType>`
 	background-repeat: ${(props) => props.coverImage && 'no-repeat'};
 `;
 
-export const VectorBlueTop = styled(VectorBlue)`
+export const VectorBlueTop = styled(StainVector)`
 	position: relative;
 	transform: translateX(200px);
 `;

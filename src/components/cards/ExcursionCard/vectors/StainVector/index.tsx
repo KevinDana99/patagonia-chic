@@ -1,6 +1,7 @@
 import React from 'react';
+import { StainVectorType } from './types';
 
-const VectorBlue = ({ className }: { className?: string }) => {
+const StainVector = ({ className, color }: StainVectorType) => {
 	return (
 		<svg
 			className={className}
@@ -18,4 +19,4 @@ const VectorBlue = ({ className }: { className?: string }) => {
 	);
 };
 
-export default VectorBlue;
+export default StainVector;
