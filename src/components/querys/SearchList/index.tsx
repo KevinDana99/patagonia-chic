@@ -42,6 +42,7 @@ const ListSearch = ({
 				: allPlaces.filter((place) => place.featured);
 
 		setAllPlaces(filteredList as [ListItemType]);
+		query.length == 0 && setAllPlaces(places);
 	};
 
 	return (
