@@ -23,7 +23,7 @@ export const ButtonPrimaryStyled = styled.button`
 		rgb(35, 132, 229) 57.5%,
 		rgba(35, 132, 229, 0.81) 75%,
 		rgba(168, 88, 224, 0.37)
-	) !important;
+	);
 	color: #fff;
 	border-radius: 28px;
 	margin: 8px 0;
