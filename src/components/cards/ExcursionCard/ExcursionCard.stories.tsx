@@ -23,4 +23,5 @@ excursionCard.args = {
 	subPrice: '$27.800',
 	date: '04 septiembre',
 	active: false,
+	options: { countReservesWeek: 800, timeLatestReserve: new Date(2022, 8, 8) },
 };

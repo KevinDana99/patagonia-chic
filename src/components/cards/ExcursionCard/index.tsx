@@ -32,7 +32,21 @@ const Excursion = ({
 	currency,
 	active = false,
 	date,
+	options,
 }: ExcursionCardType) => {
+	const getTimeLatestReserve = () => {
+		const date = new Date().getTime();
+		const latestReserve = options?.timeLatestReserve
+			? options?.timeLatestReserve.getTime()
+			: date;
+		const diff = date - latestReserve;
+		const hours = Math.round(diff / (1000 * 60 * 60));
+		const min = Math.round(diff / (1000 * 60));
+
+		return min > 60 ? { time: hours, unit: 'H' } : { time: min, unit: 'M' };
+	};
+
+	console.log(getTimeLatestReserve());
 	return (
 		<Card hover={true}>
 			<>
