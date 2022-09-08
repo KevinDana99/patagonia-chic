@@ -1,5 +1,5 @@
-// LOGO
-export { default as Logo } from './logos/Logo';
+// ACCORDION
+export { default as Accordion } from './accordions/Accordion';
 
 // BUTTONS
 export { default as PrimaryButton } from './buttons/PrimaryButton';
@@ -16,19 +16,28 @@ export { default as RadioButton } from './forms/RadioButton';
 export { default as Select } from './forms/Select';
 export { default as Textarea } from './forms/Textarea';
 
+// GRAPHICS
+export { default as CustomIcon } from './graphics/CustomIcon';
+
+// LISTS
+export { default as IncludedItems } from './lists/IncludedItems';
+
+// LOGO
+export { default as Logo } from './logos/Logo';
+
 // MODALS
 export { default as Modal } from './modals/Modal';
-
-// TEMPLATE-PARTS
-export { default as Navbar } from './template-parts/Navbar';
-export { default as Sidebar } from './template-parts/Sidebar';
-export { default as Footer } from './template-parts/Footer';
 
 // QUERIES
 export { default as SearchQuery } from './queries/SearchQuery';
 
 // SPINNERS
 export { default as Spinner } from './spinners/PrimarySpinner';
+
+// TEMPLATE-PARTS
+export { default as Navbar } from './template-parts/Navbar';
+export { default as Sidebar } from './template-parts/Sidebar';
+export { default as Footer } from './template-parts/Footer';
 
 // TEXTS
 export { default as Text } from './texts/Text';
