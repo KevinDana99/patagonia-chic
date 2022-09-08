@@ -15,7 +15,7 @@ export const Logo: Story<LogoType> = Template.bind({});
 
 Logo.args = {
 	size: 1500,
-	theme: 'dark',
+	theme: 'color',
 	containerFullWidth: true,
 	align: 'center',
 };

@@ -6,16 +6,16 @@ import LogoWhite from './components/LogoWhite';
 
 const Logo = ({
 	size,
-	theme = 'light',
+	theme = 'color',
 	containerFullWidth = false,
 	align = 'left',
 }: LogoType) => {
 	return (
 		<Container containerFullWidth={containerFullWidth} align={align}>
 			{theme === 'light' ? (
-				<LogoColor size={size} />
-			) : (
 				<LogoWhite size={size} />
+			) : (
+				<LogoColor size={size} />
 			)}
 		</Container>
 	);

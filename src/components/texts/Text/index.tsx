@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextPropsType } from './types';
-import fontsConstants from '../../../consntants/fonts.json';
+import fontsConstants from '../../../constants/fonts.json';
 import { StyledText } from './styled';
 import SFProTextGlobalStyle from './fontGlobalStyles/SFProText';
 

@@ -1,6 +1,6 @@
 export type AlignLogoType = 'left' | 'center' | 'right';
 
-export type ThemeLogoType = 'light' | 'dark';
+export type ThemeLogoType = 'light' | 'color';
 
 export type LogoType = {
 	size: number;

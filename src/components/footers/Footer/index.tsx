@@ -12,7 +12,7 @@ import {
 	Divider,
 } from './styled';
 import { getSectionList, icons } from './utils';
-import { deviceSize } from '../../../consntants/devicesSizes';
+import { deviceSize } from '../../../constants/devicesSizes';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { SectionSocial } from './SectionSocial';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';

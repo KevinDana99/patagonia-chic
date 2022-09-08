@@ -1,6 +1,6 @@
 import { TbWorld } from 'react-icons/tb';
 import styled from 'styled-components';
-import { deviceSize } from '../../../consntants/devicesSizes';
+import { deviceSize } from '../../../constants/devicesSizes';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 export const Container = styled.div`

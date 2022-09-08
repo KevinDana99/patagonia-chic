@@ -14,8 +14,8 @@ import {
 import { themesMap } from './themes_map';
 import { NavbarType } from './types';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
-import Logo from '../../Logo';
-import { deviceSize } from '../../../consntants/devicesSizes';
+import Logo from '../../logos/Logo';
+import { deviceSize } from '../../../constants/devicesSizes';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 
 const Navbar = ({
@@ -54,7 +54,7 @@ const Navbar = ({
 			<LogoContainer>
 				<Logo
 					size={125}
-					theme={scrollStatus.theme === 'transparent' ? 'dark' : 'light'}
+					theme={scrollStatus.theme === 'transparent' ? 'color' : 'light'}
 				/>
 			</LogoContainer>
 			<MenuContainer>

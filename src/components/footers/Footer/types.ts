@@ -1,4 +1,4 @@
-import { LogoType } from '../../Logo/types';
+import { LogoType } from '../../logos/Logo/types';
 import { IconType } from 'react-icons';
 
 export type LanguageType = {

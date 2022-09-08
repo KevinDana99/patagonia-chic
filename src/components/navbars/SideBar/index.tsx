@@ -20,7 +20,7 @@ import {
 	WorldIcon,
 } from './styled';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
-import Logo from '../../Logo';
+import Logo from '../../logos/Logo';
 import { sidebarTexts } from './sidebarTexts';
 import { LanguageLabel } from '../../footers/Footer/styled';
 

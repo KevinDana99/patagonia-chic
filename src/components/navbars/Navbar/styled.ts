@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ItemMenuType, NavbarContainerType, NavbarIconType } from './types';
 import { HiOutlineShoppingBag, HiMenu } from 'react-icons/hi';
-import { deviceSize } from '../../../consntants/devicesSizes';
+import { deviceSize } from '../../../constants/devicesSizes';
 
 export const NavBarContainer = styled.div<NavbarContainerType>`
 	width: 100%;

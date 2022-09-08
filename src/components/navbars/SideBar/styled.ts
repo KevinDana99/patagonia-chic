@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { IoCloseOutline, IoChevronBackOutline } from 'react-icons/io5';
 import TertiaryButton from '../../buttons/TertiaryButton';
 import { SidebarComponentType } from './types';
-import { deviceSize } from '../../../consntants/devicesSizes';
+import { deviceSize } from '../../../constants/devicesSizes';
 import { TbWorld } from 'react-icons/tb';
 
 export const BoxBackground = styled.div<SidebarComponentType>`

@@ -1,5 +1,5 @@
 // LOGO
-export { default as Logo } from './Logo';
+export { default as Logo } from './logos/Logo';
 
 // BUTTONS
 export { default as PrimaryButton } from './buttons/PrimaryButton';
