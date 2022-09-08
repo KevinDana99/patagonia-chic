@@ -5,6 +5,8 @@ import { PrimaryCardStyleType } from '../PrimaryCard/types';
 import { ExcursionCardStyleType } from './types';
 import StainVector from './vectors/StainVector';
 
+export const Container = styled.div``;
+
 export const Card = styled(PrimaryCard)<PrimaryCardStyleType>`
 	width: 335px;
 	height: 365px;
@@ -95,4 +97,17 @@ export const DescriptionActive = styled.div`
 export const Details = styled(SubTitle)`
 	text-align: left;
 	margin-left: 5px;
+`;
+
+export const OptionContainer = styled.div`
+	margin-top: 28px;
+`;
+export const BoxOption = styled.div`
+	margin-top: 8px;
+	display: flex;
+	align-items: center;
+`;
+export const Option = styled.div`
+	margin-left: 4px;
+	font-size: 12px;
 `;

@@ -20,6 +20,10 @@ import {
 	ActiveButton,
 	DescriptionActive,
 	Details,
+	Container,
+	OptionContainer,
+	Option,
+	BoxOption,
 } from './styled';
 import { ExcursionCardType } from './types';
 
@@ -46,59 +50,91 @@ const Excursion = ({
 		return min > 60 ? { time: hours, unit: 'H' } : { time: min, unit: 'M' };
 	};
 
-	console.log(getTimeLatestReserve());
+	const reserveTime = getTimeLatestReserve();
 	return (
-		<Card hover={true}>
-			<>
-				{coverImage && (
-					<ContainerImage
-						coverImage={typeof coverImage === 'string' ? coverImage : undefined}
-					>
-						{typeof coverImage !== 'string' && coverImage}
+		<Container>
+			<Card hover={true}>
+				<>
+					{coverImage && (
+						<ContainerImage
+							coverImage={
+								typeof coverImage === 'string' ? coverImage : undefined
+							}
+						>
+							{typeof coverImage !== 'string' && coverImage}
 
-						{
-							<ContainerVector>
-								<VectorCard
-									text={date}
-									color={active ? ActiveTheme : '#1079E3'}
-								/>
-							</ContainerVector>
-						}
-					</ContainerImage>
+							{
+								<ContainerVector>
+									<VectorCard
+										text={date}
+										color={active ? ActiveTheme : '#1079E3'}
+									/>
+								</ContainerVector>
+							}
+						</ContainerImage>
+					)}
+					<Description>
+						<BoxTitle>
+							<SubTitle>{subTitle}</SubTitle>
+							<Title>{title}</Title>
+						</BoxTitle>
+						<hr color="#D7D5D5" />
+						<BoxReserve>
+							{active ? (
+								<DescriptionActive>
+									<CustomIcon
+										name="check-circle"
+										color={ActiveTheme}
+										size={20}
+									/>
+									<Details>Agregaste esta excursion a tu carrito</Details>
+								</DescriptionActive>
+							) : (
+								<BoxPrice>
+									<Price>
+										{price} <Currency>{currency}</Currency>
+									</Price>
+									<SubPrice>
+										{subPrice}
+										<Currency>{currency}</Currency>
+									</SubPrice>
+								</BoxPrice>
+							)}
+
+							{active ? (
+								<ActiveButton title="Ver carrito" />
+							) : (
+								<ButtonReserve title="Reservar" />
+							)}
+						</BoxReserve>
+					</Description>
+				</>
+			</Card>
+
+			<OptionContainer>
+				{options?.countReservesWeek && (
+					<BoxOption>
+						<CustomIcon name="check-circle" />
+						<Option>
+							{<b>{options.countReservesWeek}</b>} veces reservado la ultima
+							semana
+						</Option>
+					</BoxOption>
 				)}
-				<Description>
-					<BoxTitle>
-						<SubTitle>{subTitle}</SubTitle>
-						<Title>{title}</Title>
-					</BoxTitle>
-					<hr color="#D7D5D5" />
-					<BoxReserve>
-						{active ? (
-							<DescriptionActive>
-								<CustomIcon name="check-circle" color={ActiveTheme} size={20} />
-								<Details>Agregaste esta excursion a tu carrito</Details>
-							</DescriptionActive>
-						) : (
-							<BoxPrice>
-								<Price>
-									{price} <Currency>{currency}</Currency>
-								</Price>
-								<SubPrice>
-									{subPrice}
-									<Currency>{currency}</Currency>
-								</SubPrice>
-							</BoxPrice>
-						)}
 
-						{active ? (
-							<ActiveButton title="Ver carrito" />
-						) : (
-							<ButtonReserve title="Reservar" />
-						)}
-					</BoxReserve>
-				</Description>
-			</>
-		</Card>
+				{options?.timeLatestReserve && (
+					<BoxOption>
+						<CustomIcon name="check-circle" />
+						<Option>
+							Reservado hace{' '}
+							{reserveTime.time +
+								(reserveTime.unit == 'H' ? ' horas ' : ' minutos ')}
+							atras
+						</Option>
+					</BoxOption>
+				)}
+			</OptionContainer>
+		</Container>
 	);
 };
 
