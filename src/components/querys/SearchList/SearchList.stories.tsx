@@ -26,6 +26,9 @@ list.args = {
 			country: 'Argentina',
 			keywords: ['sierras'],
 			featured: false,
+			onClick: () => {
+				console.log('clicked');
+			},
 		},
 
 		{
@@ -35,6 +38,9 @@ list.args = {
 			country: 'Argentina',
 			keywords: ['ciudad'],
 			featured: true,
+			onClick: () => {
+				console.log('clicked');
+			},
 		},
 		{
 			name: 'El Calafate',
@@ -45,6 +51,9 @@ list.args = {
 			country: 'Argentina',
 			keywords: ['monte', 'sierras', 'ciudad'],
 			featured: true,
+			onClick: () => {
+				console.log('clicked');
+			},
 		},
 		{
 			name: 'El Chalten',
@@ -55,6 +64,9 @@ list.args = {
 			country: 'Argentina',
 			keywords: ['monte', 'ciudad'],
 			featured: false,
+			onClick: () => {
+				console.log('clicked');
+			},
 		},
 		{
 			name: 'El Faro',
@@ -65,6 +77,9 @@ list.args = {
 			country: 'Argentina',
 			keywords: ['monte', 'sierras'],
 			featured: true,
+			onClick: () => {
+				console.log('clicked');
+			},
 		},
 	],
 	search: true,

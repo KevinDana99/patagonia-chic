@@ -65,7 +65,7 @@ const ListSearch = ({
 					<BoxItemList>
 						{allPlaces.map((place, index) => {
 							return (
-								<ItemList key={index}>
+								<ItemList key={index} onClick={place.onClick}>
 									<BoxImage>
 										{place.img ? (
 											<img src={place.img} />

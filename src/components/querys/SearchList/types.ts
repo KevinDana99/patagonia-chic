@@ -1,5 +1,8 @@
+import React from 'react';
+
 export interface ListItemType {
 	name: string;
+	onClick: React.MouseEventHandler;
 	id?: string;
 	img?: string;
 	province?: string;
