@@ -58,7 +58,7 @@ const Navbar = ({
 			<LogoContainer>
 				<Logo
 					size={125}
-					theme={scrollStatus.theme === 'transparent' ? 'color' : 'light'}
+					theme={scrollStatus.theme === 'transparent' ? 'light' : 'color'}
 				/>
 			</LogoContainer>
 			<MenuContainer>
