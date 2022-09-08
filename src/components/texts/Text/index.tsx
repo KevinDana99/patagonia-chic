@@ -4,7 +4,7 @@ import fontsConstants from '../../../consntants/fonts.json';
 import { StyledText } from './styled';
 import SFProTextGlobalStyle from './fontGlobalStyles/SFProText';
 
-const Text: React.FunctionComponent<TextPropsType> = ({
+const Text = ({
 	className,
 	children,
 	fontFamily = fontsConstants.defaultFontName,
@@ -12,7 +12,7 @@ const Text: React.FunctionComponent<TextPropsType> = ({
 	color = '#000',
 	weight = 'regular',
 	italic = false,
-}) => {
+}: TextPropsType) => {
 	return (
 		<>
 			<SFProTextGlobalStyle />
