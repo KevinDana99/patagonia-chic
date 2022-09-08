@@ -18,6 +18,7 @@ export const ContainerImage = styled.div<ExcursionCardStyleType>`
 	background-image: url(${(props) => props.coverImage && props.coverImage});
 	object-fit: ${(props) => props.coverImage && 'cover'};
 	background-repeat: ${(props) => props.coverImage && 'no-repeat'};
+	background-position: center;
 `;
 
 export const ContainerVector = styled.div`
@@ -30,7 +31,9 @@ export const VectorCard = styled(StainVector)`
 `;
 
 export const Description = styled.div`
+	min-height: 110px;
 	padding: 21.48px;
+	padding-bottom: 14.33px;
 `;
 
 export const BoxTitle = styled.div``;
@@ -74,8 +77,22 @@ export const ButtonReserve = styled(PrimaryButton)`
 export const ActiveTheme = '#3BC053';
 
 export const ActiveButton = styled(ButtonReserve)`
+	width: 116px;
+	height: 42px;
 	background-image: none;
 	background-color: transparent;
-	color: grey;
-	border: solid 1px grey;
+	color: #3b3b3b;
+	border: solid 3px #3b3b3b;
+`;
+
+export const DescriptionActive = styled.div`
+	width: 155px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+`;
+
+export const Details = styled(SubTitle)`
+	text-align: left;
+	margin-left: 5px;
 `;

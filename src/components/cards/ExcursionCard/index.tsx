@@ -18,6 +18,8 @@ import {
 	ContainerVector,
 	ActiveTheme,
 	ActiveButton,
+	DescriptionActive,
+	Details,
 } from './styled';
 import { ExcursionCardType } from './types';
 
@@ -58,7 +60,10 @@ const Excursion = ({
 					<hr color="#D7D5D5" />
 					<BoxReserve>
 						{active ? (
-							<CustomIcon name="check-circle" color={ActiveTheme} size={20} />
+							<DescriptionActive>
+								<CustomIcon name="check-circle" color={ActiveTheme} size={20} />
+								<Details>Agregaste esta excursion a tu carrito</Details>
+							</DescriptionActive>
 						) : (
 							<BoxPrice>
 								<Price>
