@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import fontsConstants from '../../../consntants/fonts.json';
+import fontsConstants from '../../../constants/fonts.json';
 import { StyledTextPropsType } from './types';
 
 const fontWeightsMap = {

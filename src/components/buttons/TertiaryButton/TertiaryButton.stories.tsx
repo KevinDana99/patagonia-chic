@@ -5,7 +5,7 @@ import TertiaryButton from '.';
 import { TertiaryButtonType } from './types';
 
 export default {
-	title: 'Components/Buttons',
+	title: 'Components/buttons',
 	component: TertiaryButton,
 	argTypes: {
 		onClick: { action: 'clicked' },

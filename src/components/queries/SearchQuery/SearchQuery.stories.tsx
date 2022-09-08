@@ -1,20 +1,22 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import SearchQuery from '.';
+import SearchQueryComponent from '.';
 import { SearchQueryType } from './types';
 
 export default {
-	title: 'Components/SearchQuery',
-	component: SearchQuery,
+	title: 'Components/queries',
+	component: SearchQueryComponent,
 	argTypes: {
 		onClick: { action: 'clicked' },
 	},
-} as Meta<typeof SearchQuery>;
+} as Meta<typeof SearchQueryComponent>;
 
-const Template: Story<SearchQueryType> = (args) => <SearchQuery {...args} />;
+const Template: Story<SearchQueryType> = (args) => (
+	<SearchQueryComponent {...args} />
+);
 
-export const Query = Template.bind({});
-Query.args = {
+export const SearchQuery = Template.bind({});
+SearchQuery.args = {
 	places: [
 		{
 			name: 'Cordoba',

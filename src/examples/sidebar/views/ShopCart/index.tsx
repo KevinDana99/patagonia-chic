@@ -1,6 +1,6 @@
 import React from 'react';
 import { SecondaryButton } from '../../../../components';
-import { SidebarPropsType } from '../../../../components/navbars/Sidebar/types';
+import { SidebarPropsType } from '../../../../components/template-parts/Sidebar/types';
 
 const ShopCart = ({ next, navigationNode }: SidebarPropsType) => {
 	return (
