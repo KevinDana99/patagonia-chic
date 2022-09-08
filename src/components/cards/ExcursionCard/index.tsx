@@ -1,9 +1,9 @@
 import React from 'react';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
+import CustomIcon from '../../graphics/CustomIcon';
 import {
 	Card,
 	ContainerImage,
-	VectorBlueTop,
 	Description,
 	BoxTitle,
 	Title,
@@ -14,6 +14,10 @@ import {
 	SubPrice,
 	ButtonReserve,
 	Currency,
+	VectorCard,
+	ContainerVector,
+	ActiveTheme,
+	ActiveButton,
 } from './styled';
 import { ExcursionCardType } from './types';
 
@@ -24,6 +28,8 @@ const Excursion = ({
 	price,
 	subTitle,
 	currency,
+	active = false,
+	date,
 }: ExcursionCardType) => {
 	return (
 		<Card hover={true}>
@@ -34,7 +40,14 @@ const Excursion = ({
 					>
 						{typeof coverImage !== 'string' && coverImage}
 
-						{<VectorBlueTop />}
+						{
+							<ContainerVector>
+								<VectorCard
+									text={date}
+									color={active ? ActiveTheme : '#1079E3'}
+								/>
+							</ContainerVector>
+						}
 					</ContainerImage>
 				)}
 				<Description>
@@ -44,16 +57,25 @@ const Excursion = ({
 					</BoxTitle>
 					<hr color="#D7D5D5" />
 					<BoxReserve>
-						<BoxPrice>
-							<Price>
-								{price} <Currency>{currency}</Currency>
-							</Price>
-							<SubPrice>
-								{subPrice}
-								<Currency>{currency}</Currency>
-							</SubPrice>
-						</BoxPrice>
-						<ButtonReserve title="Reservar" />
+						{active ? (
+							<CustomIcon name="check-circle" color={ActiveTheme} size={20} />
+						) : (
+							<BoxPrice>
+								<Price>
+									{price} <Currency>{currency}</Currency>
+								</Price>
+								<SubPrice>
+									{subPrice}
+									<Currency>{currency}</Currency>
+								</SubPrice>
+							</BoxPrice>
+						)}
+
+						{active ? (
+							<ActiveButton title="Ver carrito" />
+						) : (
+							<ButtonReserve title="Reservar" />
+						)}
 					</BoxReserve>
 				</Description>
 			</>

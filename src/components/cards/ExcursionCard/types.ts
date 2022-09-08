@@ -1,6 +1,6 @@
 export type ExcursionCardType = {
 	coverImage?: string | JSX.Element;
-	date?: string | Date;
+	date?: string;
 	subTitle?: string;
 	title?: string;
 	price?: string;

@@ -21,5 +21,6 @@ excursionCard.args = {
 	price: '$20.600',
 	currency: 'ars',
 	subPrice: '$27.800',
-	date: '04 de septiembre',
+	date: '04 septiembre',
+	active: false,
 };

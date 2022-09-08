@@ -20,9 +20,13 @@ export const ContainerImage = styled.div<ExcursionCardStyleType>`
 	background-repeat: ${(props) => props.coverImage && 'no-repeat'};
 `;
 
-export const VectorBlueTop = styled(StainVector)`
+export const ContainerVector = styled.div`
+	display: flex;
+	justify-content: flex-end;
+`;
+
+export const VectorCard = styled(StainVector)`
 	position: relative;
-	transform: translateX(200px);
 `;
 
 export const Description = styled.div`
@@ -65,4 +69,13 @@ export const SubPrice = styled(SubTitle)`
 
 export const ButtonReserve = styled(PrimaryButton)`
 	height: 38px;
+`;
+
+export const ActiveTheme = '#3BC053';
+
+export const ActiveButton = styled(ButtonReserve)`
+	background-image: none;
+	background-color: transparent;
+	color: grey;
+	border: solid 1px grey;
 `;
