@@ -20,6 +20,7 @@ import useMediaQuery from '../../../hooks/useMediaQuery';
 
 const Navbar = ({
 	cartProductCount,
+	onClickLogo,
 	onClickMenu,
 	onClickCart,
 	onClickHelp,
@@ -32,26 +33,26 @@ const Navbar = ({
 
 	const isMobile = useMediaQuery(deviceSize.mobileL);
 
-	const listenScroll = useCallback(() => {
-		const scroll = window.scrollY;
-
-		setScrollStatus({
-			...scrollStatus,
-			scrolling: scroll,
-			theme: scroll > 0 ? 'light' : 'transparent',
-		});
-	}, [scrollStatus]);
-
 	useEffect(() => {
+		const listenScroll = () => {
+			const scroll = window.scrollY;
+
+			setScrollStatus({
+				...scrollStatus,
+				scrolling: scroll,
+				theme: scroll > 0 ? 'light' : 'transparent',
+			});
+		};
+
 		window.addEventListener('scroll', listenScroll);
 		return () => window.removeEventListener('scroll', listenScroll);
-	}, [listenScroll]);
+	}, []);
 
 	const { background, color } = themesMap(scrollStatus.theme);
 
 	return (
 		<NavBarContainer backgroundTheme={background} colorTheme={color}>
-			<LogoContainer>
+			<LogoContainer onClick={onClickLogo}>
 				<Logo
 					size={125}
 					theme={scrollStatus.theme === 'transparent' ? 'dark' : 'light'}
@@ -65,9 +66,11 @@ const Navbar = ({
 				)}
 				<ItemMenuContainer onClick={onClickCart}>
 					<CartIcon size={25} colorTheme={color} />
-					<CartStatus>
-						<CartCount>{cartProductCount}</CartCount>
-					</CartStatus>
+					{cartProductCount && cartProductCount > 0 ? (
+						<CartStatus>
+							<CartCount>{cartProductCount}</CartCount>
+						</CartStatus>
+					) : null}
 				</ItemMenuContainer>
 				<ItemMenuContainer onClick={onClickMenu}>
 					<SidebarMenuIcon size={25} colorTheme={color} />

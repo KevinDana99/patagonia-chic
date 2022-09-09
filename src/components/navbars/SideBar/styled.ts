@@ -7,22 +7,22 @@ import { TbWorld } from 'react-icons/tb';
 
 export const BoxBackground = styled.div<SidebarComponentType>`
 	position: absolute;
-	width: 100vw;
+	width: 100%;
 	min-height: 100vh;
 	left: 0px;
 	top: 0px;
 	background: rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(3px);
 	display: ${(props) => (props.activeSidebar ? 'flex' : 'none')};
+	justify-content: flex-end;
 `;
 
 export const SidebarContainer = styled.div<SidebarComponentType>`
-	position: fixed;
 	right: 0px;
 	padding: 0px 20px;
 	box-sizing: border-box;
 	width: 375px;
-	height: 100vh;
+	min-height: 100vh;
 	background-color: rgba(255, 255, 255, 1);
 	transform: ${(props) =>
 		props.activeSidebar ? 'translateX(0px)' : 'translateX(360px);'};

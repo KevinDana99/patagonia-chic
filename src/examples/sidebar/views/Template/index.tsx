@@ -1,5 +1,5 @@
 import React from 'react';
-import { SidebarPropsType } from '../../../../components/navbars/Sidebar/types';
+import { SidebarPropsType } from '../../../../components/navbars/SideBar/types';
 import { ItemButton, ItemContent } from './styled';
 
 const Template = ({ next, navigationNode, RenderView }: SidebarPropsType) => {
