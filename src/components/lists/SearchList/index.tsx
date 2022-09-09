@@ -16,7 +16,7 @@ import {
 } from './styled';
 
 import Fuse from 'fuse.js';
-import fuzePlaceListOptions from '../../../constants/fuseOptions.json';
+import defaultFuseOptions from '../../../constants/fuseOptions.json';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import { IoSearch } from 'react-icons/io5';
 
@@ -31,17 +31,16 @@ const ListSearch = ({
 	search = false,
 	loading,
 	onItemClick,
+	fuseConfigs = defaultFuseOptions,
 }: ListType) => {
 	const [allPlaces, setAllPlaces] = useState(places);
-
-	console.log('onSearchChange', onSearchChange);
 
 	useEffect(() => {
 		setAllPlaces(places);
 	}, [places]);
 
 	const filterPlaceList = (query: string) => {
-		const fusePlaceList = new Fuse(places, fuzePlaceListOptions);
+		const fusePlaceList = new Fuse(places, fuseConfigs);
 		const filteredResult = fusePlaceList.search(query);
 		const filteredList =
 			filteredResult.length > 0

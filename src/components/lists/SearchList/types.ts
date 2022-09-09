@@ -1,4 +1,5 @@
 import React from 'react';
+import Fuse from 'fuse.js';
 
 export interface ListItemType {
 	name: string;
@@ -22,4 +23,5 @@ export type ListType = {
 	errorComponent?: JSX.Element;
 	engine?: 'fuse' | 'custom';
 	onItemClick?: (itemId: string) => void;
+	fuseConfigs?: Fuse.IFuseOptions<ListItemType>;
 };
