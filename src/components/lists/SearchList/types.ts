@@ -1,4 +1,3 @@
-import React from 'react';
 import Fuse from 'fuse.js';
 
 export interface ListItemType {
@@ -14,7 +13,7 @@ export interface ListItemType {
 }
 
 export type ListType = {
-	places: Array<ListItemType>;
+	list: Array<ListItemType>;
 	search?: boolean;
 	onSearchChange?: (query: string) => ListItemType[];
 	loading?: boolean;
@@ -24,4 +23,5 @@ export type ListType = {
 	engine?: 'fuse' | 'custom';
 	onItemClick?: (itemId: string) => void;
 	fuseConfigs?: Fuse.IFuseOptions<ListItemType>;
+	featuredElements?: ListItemType[];
 };

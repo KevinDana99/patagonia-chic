@@ -25,30 +25,31 @@ import CustomIcon from '../../graphics/CustomIcon';
 import PrimarySpinner from '../../spinners/PrimarySpinner';
 
 const ListSearch = ({
-	places,
+	list,
 	onSearchChange,
 	engine = 'fuse',
 	search = false,
 	loading,
 	onItemClick,
 	fuseConfigs = defaultFuseOptions,
+	featuredElements = [],
 }: ListType) => {
-	const [allPlaces, setAllPlaces] = useState(places);
+	const [listValue, setListValue] = useState(list);
 
 	useEffect(() => {
-		setAllPlaces(places);
-	}, [places]);
+		setListValue(list);
+	}, [list]);
 
 	const filterPlaceList = (query: string) => {
-		const fusePlaceList = new Fuse(places, fuseConfigs);
+		const fusePlaceList = new Fuse(list, fuseConfigs);
 		const filteredResult = fusePlaceList.search(query);
 		const filteredList =
 			filteredResult.length > 0
 				? filteredResult.map((filteredPlace) => filteredPlace.item)
-				: allPlaces.filter((place) => place.featured);
+				: featuredElements;
 
-		setAllPlaces(filteredList as [ListItemType]);
-		query.length == 0 && setAllPlaces(places);
+		setListValue(filteredList as ListItemType[]);
+		query.length == 0 && setListValue(list);
 	};
 
 	return (
@@ -70,26 +71,26 @@ const ListSearch = ({
 					)}
 
 					<BoxItemList>
-						{allPlaces.map((place, index) => {
+						{listValue.map((item, index) => {
 							return (
-								<ItemList key={index} onClick={() => onItemClick?.(place.id)}>
+								<ItemList key={index} onClick={() => onItemClick?.(item.id)}>
 									<BoxImage>
-										{place.img ? (
-											<img src={place.img} />
+										{item.img ? (
+											<img src={item.img} />
 										) : (
 											<CustomIcon name="island" size={25} />
 										)}
 									</BoxImage>
 									<Description>
-										<Title>{place.name}</Title>
+										<Title>{item.name}</Title>
 										<BoxSubtitle>
-											{place.category ? (
-												<SubTitle>{place.category}</SubTitle>
+											{item.category ? (
+												<SubTitle>{item.category}</SubTitle>
 											) : (
 												<>
-													<SubTitle>{place.province}</SubTitle>
+													<SubTitle>{item.province}</SubTitle>
 													<Divisor>-</Divisor>
-													<SubTitle>{place.country}</SubTitle>
+													<SubTitle>{item.country}</SubTitle>
 												</>
 											)}
 										</BoxSubtitle>

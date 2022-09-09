@@ -19,7 +19,7 @@ const Template: Story<ListType> = (args) => <SearchListComponent {...args} />;
 
 export const SearchList = Template.bind({});
 SearchList.args = {
-	places,
+	list: places,
 	search: true,
 	loading: false,
 };
