@@ -1,6 +1,5 @@
 import React from 'react';
-import { SecondaryButton } from '../../../../components';
-import { SidebarPropsType } from '../../../../components/navbars/SideBar/types';
+import { SidebarPropsType } from '../../../../components/template-parts/Sidebar/types';
 import { ItemButton, ItemContent } from './styled';
 
 const Template = ({ next, navigationNode, RenderView }: SidebarPropsType) => {

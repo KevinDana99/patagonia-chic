@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { size } from '../../../consntants/devicesSizes';
+import { size } from '../../../constants/devicesSizes';
 import { PrimaryCalendarStyleType } from './types';
 
 export const Container = styled.div<PrimaryCalendarStyleType>`

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { deviceSize } from '../../../consntants/devicesSizes';
+import { deviceSize } from '../../../constants/devicesSizes';
 import { InputProps } from './types';
 
 export const DataInputContainer = styled.div`
