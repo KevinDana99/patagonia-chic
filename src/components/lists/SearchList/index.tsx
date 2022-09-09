@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
 	BoxImage,
@@ -27,11 +27,18 @@ import PrimarySpinner from '../../spinners/PrimarySpinner';
 const ListSearch = ({
 	places,
 	onSearchChange,
+	engine = 'fuse',
 	search = false,
 	loading,
-	engine,
+	onItemClick,
 }: ListType) => {
 	const [allPlaces, setAllPlaces] = useState(places);
+
+	console.log('onSearchChange', onSearchChange);
+
+	useEffect(() => {
+		setAllPlaces(places);
+	}, [places]);
 
 	const filterPlaceList = (query: string) => {
 		const fusePlaceList = new Fuse(places, fuzePlaceListOptions);
@@ -55,9 +62,9 @@ const ListSearch = ({
 							<InputSearch
 								placeholder="Buscar excursiones"
 								onChange={(e) => {
-									engine == 'server' && onSearchChange
-										? onSearchChange(e.target.value)
-										: filterPlaceList(e.target.value);
+									engine === 'fuse'
+										? filterPlaceList(e.target.value)
+										: onSearchChange?.(e.target.value);
 								}}
 							/>
 						</BoxSearch>
@@ -66,7 +73,7 @@ const ListSearch = ({
 					<BoxItemList>
 						{allPlaces.map((place, index) => {
 							return (
-								<ItemList key={index} onClick={place.onClick}>
+								<ItemList key={index} onClick={() => onItemClick?.(place.id)}>
 									<BoxImage>
 										{place.img ? (
 											<img src={place.img} />

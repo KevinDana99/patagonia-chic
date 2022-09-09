@@ -2,8 +2,8 @@ import React from 'react';
 
 export interface ListItemType {
 	name: string;
-	onClick: React.MouseEventHandler;
-	id?: string;
+	onClick: () => void;
+	id: string;
 	img?: string;
 	province?: string;
 	category?: string;
@@ -20,5 +20,6 @@ export type ListType = {
 	loadingComponent?: JSX.Element;
 	emptyStateComponent?: JSX.Element;
 	errorComponent?: JSX.Element;
-	engine?: 'fuse' | 'server';
+	engine?: 'fuse' | 'custom';
+	onItemClick?: (itemId: string) => void;
 };
