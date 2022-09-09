@@ -13,7 +13,7 @@ import 'react-dates/lib/css/_datepicker.css';
 
 import { PlaceListInput } from './PlaceListInput';
 import Fuse from 'fuse.js';
-import { fuzePlaceListOptions } from '../../../consntants/fuzeOptions';
+import fusePlaceListOptions from '../../../constants/fuseOptions.json';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
@@ -44,7 +44,7 @@ const SearchQuery = ({
 	};
 
 	const filterPlaceList = (query: string) => {
-		const fusePlaceList = new Fuse(places, fuzePlaceListOptions);
+		const fusePlaceList = new Fuse(places, fusePlaceListOptions);
 		const filteredResult = fusePlaceList.search(query);
 		const filteredList =
 			filteredResult.length > 0
