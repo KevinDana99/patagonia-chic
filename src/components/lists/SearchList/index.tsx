@@ -13,6 +13,7 @@ import {
 	Title,
 	Divisor,
 	LoadingContainer,
+	OptionalTitle,
 } from './styled';
 
 import Fuse from 'fuse.js';
@@ -22,12 +23,13 @@ import { IoSearch } from 'react-icons/io5';
 
 import { ListItemType, ListType } from './types';
 import CustomIcon from '../../graphics/CustomIcon';
-import PrimarySpinner from '../../spinners/PrimarySpinner';
+import Skeleton from '../../skeletons/Skeleton';
 
 const ListSearch = ({
 	list,
+	title,
 	onSearchChange,
-	engine = 'fuse',
+	engine,
 	search = false,
 	loading,
 	onItemClick,
@@ -54,22 +56,22 @@ const ListSearch = ({
 
 	return (
 		<>
-			{!loading ? (
-				<Container>
-					{search && (
-						<BoxSearch>
-							<IoSearch />
-							<InputSearch
-								placeholder="Buscar excursiones"
-								onChange={(e) => {
-									engine === 'fuse'
-										? filterPlaceList(e.target.value)
-										: onSearchChange?.(e.target.value);
-								}}
-							/>
-						</BoxSearch>
-					)}
-
+			<Container>
+				{title && <OptionalTitle>{title}</OptionalTitle>}
+				{search && (
+					<BoxSearch>
+						<IoSearch />
+						<InputSearch
+							placeholder="Buscar excursiones"
+							onChange={(e) => {
+								engine === 'fuse'
+									? filterPlaceList(e.target.value)
+									: onSearchChange?.(e.target.value);
+							}}
+						/>
+					</BoxSearch>
+				)}
+				{!loading ? (
 					<BoxItemList>
 						{listValue.map((item, index) => {
 							return (
@@ -99,12 +101,12 @@ const ListSearch = ({
 							);
 						})}
 					</BoxItemList>
-				</Container>
-			) : (
-				<LoadingContainer>
-					<PrimarySpinner theme="light" size={40} />
-				</LoadingContainer>
-			)}
+				) : (
+					<LoadingContainer>
+						<Skeleton />
+					</LoadingContainer>
+				)}
+			</Container>
 		</>
 	);
 };

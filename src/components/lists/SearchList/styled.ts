@@ -70,9 +70,15 @@ export const Divisor = styled.div`
 `;
 
 export const LoadingContainer = styled.div`
+	margin-top: 35px;
 	width: 100%;
 	height: 500px;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	justify-content: flex-start;
+	align-items: flex;
+`;
+
+export const OptionalTitle = styled(Title)`
+	font-size: 20px;
+	margin-bottom: 18px;
 `;

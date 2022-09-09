@@ -14,6 +14,7 @@ export interface ListItemType {
 
 export type ListType = {
 	list: Array<ListItemType>;
+	title?: string;
 	search?: boolean;
 	onSearchChange?: (query: string) => ListItemType[];
 	loading?: boolean;

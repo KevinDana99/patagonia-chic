@@ -28,12 +28,13 @@
 		"prepare": "husky install"
 	},
 	"dependencies": {
+		"@types/react-calendar": "^3.5.1",
 		"fuse.js": "^6.6.2",
 		"moment": "^2.29.4",
-		"react-dates": "^21.8.0",
-		"@types/react-calendar": "^3.5.1",
 		"react": "^18.2.0",
 		"react-calendar": "^3.7.0",
+		"react-content-loader": "^6.2.0",
+		"react-dates": "^21.8.0",
 		"react-dom": "^18.2.0",
 		"react-icons": "^4.4.0"
 	},

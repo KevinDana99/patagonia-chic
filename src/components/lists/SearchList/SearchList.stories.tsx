@@ -22,4 +22,6 @@ SearchList.args = {
 	list: places,
 	search: true,
 	loading: false,
+	engine: 'fuse',
+	title: 'Hello world',
 };
