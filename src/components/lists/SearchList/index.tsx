@@ -35,6 +35,9 @@ const ListSearch = ({
 	onItemClick,
 	fuseConfigs = defaultFuseOptions,
 	featuredElements = [],
+	loadingComponent,
+	emptyStateComponent,
+	errorComponent,
 }: ListType) => {
 	const [listValue, setListValue] = useState(list);
 
@@ -71,7 +74,7 @@ const ListSearch = ({
 						/>
 					</BoxSearch>
 				)}
-				{!loading ? (
+				{!loading || loadingComponent ? (
 					<BoxItemList>
 						{listValue.map((item, index) => {
 							return (

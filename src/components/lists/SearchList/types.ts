@@ -18,6 +18,8 @@ export type ListType = {
 	search?: boolean;
 	onSearchChange?: (query: string) => ListItemType[];
 	loading?: boolean;
+	error?: boolean;
+	emptyStateText?: string;
 	loadingComponent?: JSX.Element;
 	emptyStateComponent?: JSX.Element;
 	errorComponent?: JSX.Element;
