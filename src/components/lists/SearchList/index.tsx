@@ -36,8 +36,10 @@ const ListSearch = ({
 	fuseConfigs = defaultFuseOptions,
 	featuredElements = [],
 	loadingComponent,
+	emptyStateText,
 	emptyStateComponent,
 	errorComponent,
+	error,
 }: ListType) => {
 	const [listValue, setListValue] = useState(list);
 
@@ -74,36 +76,45 @@ const ListSearch = ({
 						/>
 					</BoxSearch>
 				)}
-				{!loading || loadingComponent ? (
-					<BoxItemList>
-						{listValue.map((item, index) => {
-							return (
-								<ItemList key={index} onClick={() => onItemClick?.(item.id)}>
-									<BoxImage>
-										{item.img ? (
-											<img src={item.img} />
-										) : (
-											<CustomIcon name="island" size={25} />
-										)}
-									</BoxImage>
-									<Description>
-										<Title>{item.name}</Title>
-										<BoxSubtitle>
-											{item.category ? (
-												<SubTitle>{item.category}</SubTitle>
+
+				{error && errorComponent ? (
+					errorComponent
+				) : !loading ? (
+					emptyStateText && emptyStateComponent ? (
+						emptyStateComponent
+					) : (
+						<BoxItemList>
+							{listValue.map((item, index) => {
+								return (
+									<ItemList key={index} onClick={() => onItemClick?.(item.id)}>
+										<BoxImage>
+											{item.img ? (
+												<img src={item.img} />
 											) : (
-												<>
-													<SubTitle>{item.province}</SubTitle>
-													<Divisor>-</Divisor>
-													<SubTitle>{item.country}</SubTitle>
-												</>
+												<CustomIcon name="island" size={25} />
 											)}
-										</BoxSubtitle>
-									</Description>
-								</ItemList>
-							);
-						})}
-					</BoxItemList>
+										</BoxImage>
+										<Description>
+											<Title>{item.name}</Title>
+											<BoxSubtitle>
+												{item.category ? (
+													<SubTitle>{item.category}</SubTitle>
+												) : (
+													<>
+														<SubTitle>{item.province}</SubTitle>
+														<Divisor>-</Divisor>
+														<SubTitle>{item.country}</SubTitle>
+													</>
+												)}
+											</BoxSubtitle>
+										</Description>
+									</ItemList>
+								);
+							})}
+						</BoxItemList>
+					)
+				) : loadingComponent ? (
+					loadingComponent
 				) : (
 					<LoadingContainer>
 						<Skeleton />
