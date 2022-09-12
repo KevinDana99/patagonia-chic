@@ -10,6 +10,7 @@ export default {
 		onClickMenu: { action: 'clicked menu' },
 		onClickCart: { action: 'clicked cart' },
 		onClickHelp: { action: 'clicked help' },
+		onClickLogo: { action: 'clicked logo' },
 	},
 } as Meta<typeof Navbar>;
 

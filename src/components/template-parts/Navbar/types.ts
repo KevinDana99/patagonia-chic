@@ -1,5 +1,6 @@
 export type NavbarType = {
 	cartProductCount?: number | string;
+	onClickLogo: React.MouseEventHandler<HTMLDivElement>;
 	onClickMenu: React.MouseEventHandler<HTMLLIElement>;
 	onClickCart: React.MouseEventHandler<HTMLLIElement>;
 	onClickHelp: React.MouseEventHandler<HTMLLIElement>;
@@ -16,4 +17,8 @@ export type NavbarIconType = {
 
 export type ItemMenuType = {
 	onClick: React.MouseEventHandler<HTMLLIElement>;
+};
+
+export type LogoClickType = {
+	onClick: React.MouseEventHandler<HTMLDivElement>;
 };

@@ -53,7 +53,7 @@ const Sidebar = ({
 
 	return (
 		<>
-			<BoxBackground activeSidebar={activeSidebar} onClick={closeAction}>
+			<BoxBackground activeSidebar={activeSidebar} onClick={() => closeAction}>
 				<SidebarContainer activeSidebar={activeSidebar}>
 					<SidebarHeader>
 						<SidebarHeaderContent>
