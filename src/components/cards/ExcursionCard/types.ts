@@ -7,6 +7,7 @@ export type ExcursionCardType = {
 	currency?: string;
 	subPrice?: string;
 	isAddedToCart?: boolean;
+	isAvaiable?: boolean;
 	options?: { countReservesWeek: number; timeLatestReserve: Date };
 };
 
