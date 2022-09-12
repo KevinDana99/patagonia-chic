@@ -40,7 +40,7 @@ export const Container = styled.div<ModalType>`
 	@media (max-width: 500px) {
 		margin-top: 120px;
 		transform: ${(props) =>
-			props.animate ? 'translateY(20px)' : 'translateY(600px)'};
+			props.animate ? 'translateY(0px)' : 'translateY(600px)'};
 		transition: all 400ms ease;
 	}
 `;
