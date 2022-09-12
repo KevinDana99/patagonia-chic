@@ -72,6 +72,12 @@ export const SubPrice = styled(SubTitle)`
 	text-decoration: line-through;
 `;
 
+export const ButtonContainer = styled.div`
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+`;
+
 export const ButtonReserve = styled(PrimaryButton)`
 	height: 38px;
 `;
@@ -88,7 +94,7 @@ export const ActiveButton = styled(ButtonReserve)`
 `;
 
 export const DescriptionActive = styled.div`
-	width: 155px;
+	min-width: 155px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -104,6 +110,7 @@ export const OptionContainer = styled.div`
 `;
 export const BoxOption = styled.div`
 	margin-top: 8px;
+	margin-left: 22px;
 	display: flex;
 	align-items: center;
 `;

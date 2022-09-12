@@ -24,6 +24,7 @@ import {
 	OptionContainer,
 	Option,
 	BoxOption,
+	ButtonContainer,
 } from './styled';
 import { ExcursionCardType } from './types';
 
@@ -35,6 +36,7 @@ const Excursion = ({
 	subTitle,
 	currency,
 	isAddedToCart = false,
+	isAvaiable,
 	date,
 	options,
 }: ExcursionCardType) => {
@@ -63,14 +65,23 @@ const Excursion = ({
 						>
 							{typeof coverImage !== 'string' && coverImage}
 
-							{
+							{isAvaiable && isAddedToCart && (
 								<ContainerVector>
 									<VectorCard
 										text={date}
 										color={isAddedToCart ? ActiveTheme : '#1079E3'}
 									/>
 								</ContainerVector>
-							}
+							)}
+
+							{!isAvaiable && (
+								<ContainerVector>
+									<VectorCard
+										text={date}
+										color={isAddedToCart ? ActiveTheme : '#1079E3'}
+									/>
+								</ContainerVector>
+							)}
 						</ContainerImage>
 					)}
 					<Description>
@@ -90,22 +101,28 @@ const Excursion = ({
 									<Details>Agregaste esta excursion a tu carrito</Details>
 								</DescriptionActive>
 							) : (
-								<BoxPrice>
-									<Price>
-										{price} <Currency>{currency}</Currency>
-									</Price>
-									<SubPrice>
-										{subPrice}
-										<Currency>{currency}</Currency>
-									</SubPrice>
-								</BoxPrice>
+								!isAvaiable && (
+									<BoxPrice>
+										<Price>
+											{price} <Currency>{currency}</Currency>
+										</Price>
+										<SubPrice>
+											{subPrice}
+											<Currency>{currency}</Currency>
+										</SubPrice>
+									</BoxPrice>
+								)
 							)}
 
-							{isAddedToCart ? (
-								<ActiveButton title="Ver carrito" />
-							) : (
-								<ButtonReserve title="Reservar" />
-							)}
+							<ButtonContainer>
+								{isAddedToCart && <ActiveButton title="Ver carrito" />}
+								{!isAddedToCart && !isAvaiable && (
+									<ButtonReserve title="Reservar" />
+								)}
+								{!isAddedToCart && isAvaiable && (
+									<ActiveButton title="Ver detalle" />
+								)}
+							</ButtonContainer>
 						</BoxReserve>
 					</Description>
 				</>
