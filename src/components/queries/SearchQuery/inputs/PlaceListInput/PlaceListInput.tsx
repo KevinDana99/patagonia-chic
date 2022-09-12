@@ -7,6 +7,7 @@ import useToggle from '../../../../../hooks/useToggle';
 import { OptionContainerPlaceList } from './styled';
 import PlaceListMobile from '../../mobile/wrappers/PlaceListMobile';
 import Modal from '../../../../modals/Modal';
+import SearchList from '../../../../lists/SearchList';
 
 export const PlaceListInput = ({
 	label,
@@ -50,19 +51,8 @@ export const PlaceListInput = ({
 			isSelected={isSelected}
 			ref={containerRef}
 		>
-			<Modal
-				visible={showPlaceList && isMobile && modal ? true : false}
-				closeModal={closeModal}
-			>
-				<PlaceListMobile
-					placeholder={'Busca algo'}
-					inputOnChange={inputOnChange}
-					values={values}
-					places={placeList}
-					setPlaceData={setPlaceData}
-					openCalendar={openCalendar}
-					closeList={closeList}
-				/>
+			<Modal visible={showPlaceList && isMobile && modal ? true : false}>
+				<SearchList />
 			</Modal>
 
 			<OptionContent>
