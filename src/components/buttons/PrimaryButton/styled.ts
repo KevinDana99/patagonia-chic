@@ -1,7 +1,8 @@
+import React from 'react';
 import styled from 'styled-components';
 
 export const ButtonPrimaryStyled = styled.button`
-	min-width: 180px;
+	min-width: 100px;
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	box-sizing: border-box;
@@ -53,4 +54,19 @@ export const BoxLoading = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+`;
+
+export const ButtonPrimaryContent = styled.div`
+	display: flex;
+	justify-content: center;
+`;
+
+export const ButtonPrimaryText = styled.div``;
+
+export const Icon = styled(
+	({ component, ...props }: { component: JSX.Element; props?: object }) =>
+		React.cloneElement(component, props)
+)`
+	font-size: 16px;
+	margin-right: 10px;
 `;

@@ -1,22 +1,23 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
 	RadioButtonItemType,
 	RadioButtonListPropsType,
 	RestrictedRadioButtonItemType,
 } from './types';
 import RadioButtonItem from './RadioButtonItem';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
-const RadioButtonList: FC<RadioButtonListPropsType> = ({
+const RadioButtonList = ({
 	list,
 	onChange,
 	defaultValue,
-}) => {
-	// esta bien?
-	const [checkedItem, setCheckedItem] = useState<
-		RadioButtonItemType | undefined
-	>(defaultValue);
+}: RadioButtonListPropsType) => {
+	const defaultItem = list.find((item) => item.value === defaultValue) ?? null;
 
-	// condition list items
+	const [checkedItem, setCheckedItem] = useState<RadioButtonItemType | null>(
+		defaultItem
+	);
+
 	const conditionedList: RestrictedRadioButtonItemType[] = list.map(
 		({ label, value, name }, index) => ({
 			label,
@@ -25,18 +26,13 @@ const RadioButtonList: FC<RadioButtonListPropsType> = ({
 		})
 	);
 
+	useEffect(() => onChange && onChange(checkedItem), [checkedItem, onChange]);
+
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement>,
-		itemName: string
+		selectedItem: RadioButtonItemType
 	) => {
-		let newCheckedItem = checkedItem;
-		const isChecked = e.target.checked;
-		const currentItem = conditionedList.find((item) => item.name === itemName);
-		if (currentItem && isChecked) {
-			newCheckedItem = currentItem;
-		}
-		setCheckedItem(newCheckedItem);
-		onChange && onChange(newCheckedItem);
+		setCheckedItem(selectedItem);
 	};
 
 	return (
@@ -46,10 +42,8 @@ const RadioButtonList: FC<RadioButtonListPropsType> = ({
 					<RadioButtonItem
 						key={`key-${index}`}
 						index={index}
-						name={item.name}
-						value={item.value}
-						label={item.label}
-						handleChange={(e) => handleChange(e, item.name)}
+						item={item}
+						handleChange={(e) => handleChange(e, item)}
 						checkedItem={checkedItem}
 					/>
 				);
@@ -58,23 +52,4 @@ const RadioButtonList: FC<RadioButtonListPropsType> = ({
 	);
 };
 
-/* return (
-	<ContainerInput key={index}>
-		<StyledInput
-			id={index.toString().concat('radio')}
-			name={item.name}
-			type="radio"
-			value={item.value}
-			onChange={e => handleChange(e, item.name)}
-			checked={state === item.name ? true : false}
-		/>
-		<StyledLabel htmlFor={index.toString().concat('radio')}>
-			<IconDiv></IconDiv>
-			<TextDiv>
-				{item.label ? item.label : `Opcion ${index + 1}`}
-			</TextDiv>
-		</StyledLabel>
-	</ContainerInput>
-); */
-
-export default RadioButtonList;
+export default withFontStyles(RadioButtonList);

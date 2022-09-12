@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import {
 	Container,
 	SelectStyled,
@@ -53,4 +54,4 @@ const Select: FC<SelectPropsType> = ({
 	);
 };
 
-export default Select;
+export default withFontStyles(Select);

@@ -1,3 +1,4 @@
+import { BsCheck2 } from 'react-icons/bs';
 import styled from 'styled-components';
 
 export const IconDiv = styled.div`
@@ -7,7 +8,6 @@ export const IconDiv = styled.div`
 	margin: 16px 24px;
 	text-align: center;
 	display: inline-block;
-	content: '' !important;
 	border: 2px solid #0077b9;
 	background-color: #fff;
 	border-radius: 10px;
@@ -33,6 +33,11 @@ export const StyledLabel = styled.label`
 	}
 `;
 
+export const CheckIcon = styled(BsCheck2)`
+	display: none;
+	color: #ffffff;
+`;
+
 export const ContainerInput = styled.div`
 	position: relative;
 	-webkit-box-align: center;
@@ -48,10 +53,10 @@ export const ContainerInput = styled.div`
 		${IconDiv} {
 			background-color: #0077b9 !important;
 			border-color: #0077b9 !important;
-			background-color: #fff;
-			background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
-			background-repeat: no-repeat;
-			background-position: -2px -2px;
+			display: flex;
+		}
+		${CheckIcon} {
+			display: initial;
 		}
 	}
 `;
