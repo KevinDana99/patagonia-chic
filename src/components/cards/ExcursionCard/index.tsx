@@ -34,7 +34,7 @@ const Excursion = ({
 	price,
 	subTitle,
 	currency,
-	active = false,
+	isAddedToCart = false,
 	date,
 	options,
 }: ExcursionCardType) => {
@@ -67,7 +67,7 @@ const Excursion = ({
 								<ContainerVector>
 									<VectorCard
 										text={date}
-										color={active ? ActiveTheme : '#1079E3'}
+										color={isAddedToCart ? ActiveTheme : '#1079E3'}
 									/>
 								</ContainerVector>
 							}
@@ -80,7 +80,7 @@ const Excursion = ({
 						</BoxTitle>
 						<hr color="#D7D5D5" />
 						<BoxReserve>
-							{active ? (
+							{isAddedToCart ? (
 								<DescriptionActive>
 									<CustomIcon
 										name="check-circle"
@@ -101,7 +101,7 @@ const Excursion = ({
 								</BoxPrice>
 							)}
 
-							{active ? (
+							{isAddedToCart ? (
 								<ActiveButton title="Ver carrito" />
 							) : (
 								<ButtonReserve title="Reservar" />
