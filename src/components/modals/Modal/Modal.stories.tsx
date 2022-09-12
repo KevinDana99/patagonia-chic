@@ -30,9 +30,4 @@ Modals.args = {
 	},
 	coverImage:
 		'https://s3-sa-east-1.amazonaws.com/patagoniachic.com/assets/menu/img/Nativo.jpg',
-	Children: () => (
-		<>
-			<Section />
-		</>
-	),
 };

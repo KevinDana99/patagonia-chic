@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ModalType } from './types';
+import { ModalStyleType, ModalType } from './types';
 import { IoCloseOutline as CloseI } from 'react-icons/io5';
 
 const paddingSpace = '3.5%';
@@ -24,7 +24,7 @@ export const BoxModal = styled.div<ModalType>`
 	z-index: 5;
 `;
 
-export const Container = styled.div<ModalType>`
+export const Container = styled.div<ModalStyleType>`
 	width: 100%;
 	min-width: 350px;
 	max-width: ${(props) => (props.width ? props.width : '570px')};

@@ -20,7 +20,7 @@ const PrimaryModal = ({
 	renderOpenButton,
 	width,
 	headerText,
-	Children,
+	children,
 	closeAction,
 	closeOnTouchOutside,
 	coverImage,
@@ -93,9 +93,9 @@ const PrimaryModal = ({
 							<BoxHeaderText>{headerText}</BoxHeaderText>
 						)}
 
-						{Children && (
+						{children && (
 							<BoxChildren>
-								<Children />
+								{children}
 								<BoxDownModal />
 							</BoxChildren>
 						)}
