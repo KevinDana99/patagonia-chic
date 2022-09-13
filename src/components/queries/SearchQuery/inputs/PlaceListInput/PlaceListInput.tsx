@@ -50,15 +50,6 @@ export const PlaceListInput = ({
 			isSelected={isSelected}
 			ref={containerRef}
 		>
-			<Modal visible={showPlaceList && isMobile && modal ? true : false}>
-				<SearchList
-					list={placeList}
-					search={true}
-					title={'Excursiones'}
-					engine={'fuse'}
-				/>
-			</Modal>
-
 			<OptionContent>
 				<Label>{label}</Label>
 				<Input

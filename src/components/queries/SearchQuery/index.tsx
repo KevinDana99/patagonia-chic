@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { CalendarInput } from './inputs/CalendarInput/CalendarInput';
 import {
@@ -18,6 +18,8 @@ import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Modal from '../../modals/Modal';
 import PlaceListMobile from './mobile/wrappers/PlaceListMobile';
 import CalendarMobile from './mobile/wrappers/CalendarMobile';
+import SearchList from '../../lists/SearchList';
+import { useOutsideClick } from '../../../hooks/useOutsideClick';
 
 const SearchQuery = ({
 	list,
@@ -101,7 +103,9 @@ const SearchQuery = ({
 			place: false,
 		});
 	}, [data.place]);
-	console.log(placeList);
+
+	const containerRef = useRef(null);
+	useOutsideClick(containerRef, () => {});
 	return (
 		<>
 			<SearchQueryContainer>
@@ -190,22 +194,26 @@ const SearchQuery = ({
 				</ButtonContainer>
 			</SearchQueryContainer>
 
-			{!showPlaceList && (
-				<Modal visible={modal} closeModal={() => setModal(false)}>
-					<CalendarMobile
-						closeList={() => setShowPlaceList(false)}
-						setDates={setData}
-						data={data}
-						setCalendarFocusedInput={setCalendarFocusedInput}
-						calendarFocusedInput={calendarFocusedInput}
-						isMobile={isMobile}
-						sendData={() => {
-							const validate = validateSearch();
-							validate && onQuerySubmit(data);
-						}}
-					/>
-				</Modal>
-			)}
+			<Modal visible={isMobile && modal ? true : false}>
+				<>
+					{showCalendar && (
+						<CalendarMobile
+							closeList={() => setShowPlaceList(false)}
+							setDates={setData}
+							data={data}
+							setCalendarFocusedInput={setCalendarFocusedInput}
+							calendarFocusedInput={calendarFocusedInput}
+							isMobile={isMobile}
+							sendData={() => {
+								const validate = validateSearch();
+								validate && onQuerySubmit(data);
+							}}
+						/>
+					)}
+
+					{showPlaceList && <SearchList list={placeList} engine={'fuse'} />}
+				</>
+			</Modal>
 		</>
 	);
 };
