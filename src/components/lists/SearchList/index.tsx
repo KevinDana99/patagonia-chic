@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import {
 	BoxImage,
@@ -42,6 +42,11 @@ const ListSearch = ({
 	error,
 }: ListType) => {
 	const [listValue, setListValue] = useState(list);
+	const [data, setData] = useState({
+		place: null,
+		startDate: null,
+		endDate: null,
+	});
 
 	useEffect(() => {
 		setListValue(list);
@@ -58,6 +63,66 @@ const ListSearch = ({
 		setListValue(filteredList as ListItemType[]);
 		query.length == 0 && setListValue(list);
 	};
+
+	const [showCurrentPosition, setShowCurrentPosition] =
+		useState<boolean>(false);
+	const [cursorPosition, setCursorPosition] = useState<number>(0);
+
+	const setCurrentPlace = useCallback(
+		(position: number) => {
+			setData({
+				...data,
+				place: list.at(position),
+			});
+		},
+		[list, setData, data]
+	);
+
+	const keyHandler = useCallback(
+		({ key }: { key: string }) => {
+			setCursorPosition((prevState) => {
+				const cursorIncrease = prevState < list.length - 1 ? prevState + 1 : 0;
+
+				const cursorDecrease = prevState > 0 ? prevState - 1 : list.length - 1;
+
+				switch (true) {
+					case key === 'Enter':
+						/*closeList();
+						openCalendar();*/
+						break;
+
+					case key === 'ArrowDown' && !showCurrentPosition:
+						!showCurrentPosition && setShowCurrentPosition(true);
+						setCurrentPlace(0);
+						return 0;
+
+					case key === 'ArrowDown' && showCurrentPosition:
+						setCurrentPlace(cursorIncrease);
+						return cursorIncrease;
+
+					case key === 'ArrowUp' && !showCurrentPosition:
+						!showCurrentPosition && setShowCurrentPosition(true);
+						setCurrentPlace(list.length - 1);
+						return list.length - 1;
+
+					case key === 'ArrowUp' && showCurrentPosition:
+						setCurrentPlace(cursorDecrease);
+						return cursorDecrease;
+				}
+				return prevState;
+			});
+		},
+		[list.length, setCurrentPlace, showCurrentPosition]
+
+		//[OPENCALENDAR, CLOSELIST ...],
+	);
+
+	useEffect(() => {
+		document.addEventListener('keydown', keyHandler);
+		return () => {
+			document.removeEventListener('keydown', keyHandler);
+		};
+	}, [keyHandler]);
 
 	return (
 		<>
@@ -86,7 +151,11 @@ const ListSearch = ({
 						<BoxItemList>
 							{listValue.map((item, index) => {
 								return (
-									<ItemList key={index} onClick={() => onItemClick?.(item.id)}>
+									<ItemList
+										key={index}
+										onClick={() => onItemClick?.(item.id)}
+										selected={showCurrentPosition && index === cursorPosition}
+									>
 										<BoxImage>
 											{item.img ? (
 												<img src={item.img} />

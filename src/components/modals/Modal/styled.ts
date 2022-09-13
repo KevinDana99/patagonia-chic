@@ -28,11 +28,13 @@ export const Container = styled.div<ModalStyleType>`
 	width: 100%;
 	min-width: 350px;
 	max-width: ${(props) => (props.width ? props.width : '570px')};
-	min-height: 500px;
+	height: 500px;
 	height: calc(100% - 120px);
 	border-radius: 12px;
 	position: absolute;
+	overflow: hidden;
 	background-color: #fff;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -63,6 +65,7 @@ export const BoxTop = styled.div`
 export const BoxScroll = styled.div`
 	overflow-y: scroll;
 	scroll-behavior: smooth;
+	height: 600px;
 
 	&::-webkit-scrollbar {
 		width: 9px;
@@ -103,7 +106,7 @@ export const CloseIcon = styled(CloseI)`
 
 export const BoxHeader = styled.div<ModalType>`
 	width: 100%;
-	height: 100%;
+	min-height: 280px;
 	max-height: 280px;
 	background-image: ${({ coverImage }) =>
 		coverImage ? `url(${coverImage})` : 'none'};
@@ -145,4 +148,5 @@ export const BoxDownModal = styled.div`
 	bottom: 0px;
 	right: 0.05%;
 	border-radius: 0em 0em 12px 12px;
+	overflow: hidden;
 `;

@@ -33,6 +33,7 @@ export const ItemList = styled.div`
 	width: 100%;
 	display: flex;
 	align-items: center;
+	background-color: ${(props) => (props.selected ? '#f7f8f8' : '#ffffff')};
 `;
 
 export const BoxImage = styled.div`

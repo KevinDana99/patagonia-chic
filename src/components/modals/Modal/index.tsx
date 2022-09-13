@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import Section from '../../../examples/modal/sections/Section';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import SecondaryButton from '../../buttons/SecondaryButton';
 import {
@@ -78,6 +79,7 @@ const PrimaryModal = ({
 							</ButtonClose>
 						)}
 					</BoxTop>
+
 					<BoxScroll>
 						{coverImage && (
 							<BoxHeader coverImage={coverImage}>
@@ -96,6 +98,7 @@ const PrimaryModal = ({
 						{children && (
 							<BoxChildren>
 								{children}
+
 								<BoxDownModal />
 							</BoxChildren>
 						)}

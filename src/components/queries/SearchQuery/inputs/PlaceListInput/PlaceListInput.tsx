@@ -30,10 +30,9 @@ export const PlaceListInput = ({
 	modal,
 }: PlaceListInputType) => {
 	const containerRef = useRef(null);
+	useOutsideClick(containerRef, outsideClick);
 
 	const { onToggle, offToggle, toggle } = useToggle(null);
-
-	useOutsideClick(containerRef, outsideClick);
 
 	useEffect(() => {
 		offToggle();
@@ -52,7 +51,12 @@ export const PlaceListInput = ({
 			ref={containerRef}
 		>
 			<Modal visible={showPlaceList && isMobile && modal ? true : false}>
-				<SearchList list={placeList} />
+				<SearchList
+					list={placeList}
+					search={true}
+					title={'Excursiones'}
+					engine={'fuse'}
+				/>
 			</Modal>
 
 			<OptionContent>
