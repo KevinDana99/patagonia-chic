@@ -52,7 +52,7 @@ export const PlaceListInput = ({
 			ref={containerRef}
 		>
 			<Modal visible={showPlaceList && isMobile && modal ? true : false}>
-				<SearchList />
+				<SearchList list={placeList} />
 			</Modal>
 
 			<OptionContent>

@@ -91,7 +91,7 @@ const ListSearch = ({
 											{item.img ? (
 												<img src={item.img} />
 											) : (
-												<CustomIcon name="island" size={25} />
+												<></> //	<CustomIcon name="island" size={25} />
 											)}
 										</BoxImage>
 										<Description>

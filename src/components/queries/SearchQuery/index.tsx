@@ -20,7 +20,7 @@ import PlaceListMobile from './mobile/wrappers/PlaceListMobile';
 import CalendarMobile from './mobile/wrappers/CalendarMobile';
 
 const SearchQuery = ({
-	places,
+	list,
 	onQuerySubmit,
 	showLocations = true,
 }: SearchQueryType) => {
@@ -29,7 +29,7 @@ const SearchQuery = ({
 		startDate: null,
 		endDate: null,
 	});
-	const [placeList, setPlaceList] = useState(places);
+	const [placeList, setPlaceList] = useState(list);
 	const [modal, setModal] = useState(false);
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
@@ -47,7 +47,7 @@ const SearchQuery = ({
 	};
 
 	const filterPlaceList = (query: string) => {
-		const fusePlaceList = new Fuse(places, fusePlaceListOptions);
+		const fusePlaceList = new Fuse(list, fusePlaceListOptions);
 		const filteredResult = fusePlaceList.search(query);
 		const filteredList =
 			filteredResult.length > 0
@@ -101,7 +101,7 @@ const SearchQuery = ({
 			place: false,
 		});
 	}, [data.place]);
-
+	console.log(placeList);
 	return (
 		<>
 			<SearchQueryContainer>
@@ -123,7 +123,7 @@ const SearchQuery = ({
 							setData({ ...data, place: { name: '' } });
 							setShowPlaceList(true);
 							setShowCalendar(false);
-							setPlaceList(places);
+							setPlaceList(list);
 						}}
 						isSelected={showPlaceList}
 						inputOnChange={(e) => {

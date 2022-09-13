@@ -2,10 +2,13 @@ import React, { SetStateAction } from 'react';
 
 export interface IPlace {
 	name: string;
-	id?: string;
+	onClick: () => void;
+	id: string;
 	img?: string;
 	province?: string;
+	category?: string;
 	country?: string;
+	keywords?: Array<string>;
 	featured?: boolean;
 }
 
