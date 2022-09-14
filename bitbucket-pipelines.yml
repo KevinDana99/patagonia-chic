@@ -30,7 +30,7 @@ definitions:
         name: Publish NPM package
         image: node:16-alpine
         script:
-          - .src/utils/scripts/npm-publish.sh
+          - ./src/utils/scripts/npm-publish.sh
 
 pipelines:
   branches:

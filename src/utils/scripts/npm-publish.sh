@@ -10,3 +10,8 @@ npm config set registry https://registry.npmjs.org/
 echo _authToken=$NPM_TOKEN >> ~/.npmrc
 npm version $NPM_VERSION
 npm publish --access public
+
+## commit updated package.json with version bump
+git add package.json
+git commit -m  `echo Bump version $NPM_VERSION` 
+git push
