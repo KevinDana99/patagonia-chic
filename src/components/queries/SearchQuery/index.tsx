@@ -35,6 +35,8 @@ const SearchQuery = ({
 	const [modal, setModal] = useState(false);
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
+	const [showMobilePlaceList, setShowMobilePlaceList] = useState(false);
+	const [showMobileCalendar, setShowMobileCalendar] = useState(false);
 	const [calendarFocusedInput, setCalendarFocusedInput] = useState('startDate');
 	const [disableSearch, setDisableSearch] = useState({
 		place: false,
@@ -117,6 +119,7 @@ const SearchQuery = ({
 						placeholder={'¿A dónde vas?'}
 						onClick={() => {
 							setShowPlaceList(true);
+							setShowMobilePlaceList(true);
 							isMobile ? setModal(true) : setModal(false);
 							setCalendarFocusedInput('startDate');
 						}}
@@ -196,35 +199,32 @@ const SearchQuery = ({
 				visible={isMobile && modal ? true : false}
 				closeAction={() => setModal(false)}
 			>
-				<>
-					{showCalendar && (
-						<CalendarMobile
-							closeList={() => {
-								setShowPlaceList(false);
-							}}
-							setDates={setData}
-							data={data}
-							setCalendarFocusedInput={setCalendarFocusedInput}
-							calendarFocusedInput={calendarFocusedInput}
-							isMobile={isMobile}
-							sendData={() => {
-								const validate = validateSearch();
-								validate && onQuerySubmit(data);
-							}}
-						/>
-					)}
-
-					{showPlaceList && (
-						<SearchList
-							list={placeList}
-							onChangeSelect={setData}
-							selectedAction={() => {
-								setShowPlaceList(false);
-								setShowCalendar(true);
-							}}
-						/>
-					)}
-				</>
+				{showMobilePlaceList ? (
+					<SearchList
+						list={placeList}
+						onChangeSelect={setData}
+						selectedAction={(item) => {
+							setData({ ...data, place: item });
+							setShowMobilePlaceList(false);
+							setShowMobileCalendar(true);
+						}}
+					/>
+				) : (
+					<CalendarMobile
+						closeList={() => {
+							setShowMobilePlaceList(false);
+						}}
+						setDates={setData}
+						data={data}
+						setCalendarFocusedInput={setCalendarFocusedInput}
+						calendarFocusedInput={calendarFocusedInput}
+						isMobile={isMobile}
+						sendData={() => {
+							const validate = validateSearch();
+							validate && onQuerySubmit(data);
+						}}
+					/>
+				)}
 			</Modal>
 		</>
 	);

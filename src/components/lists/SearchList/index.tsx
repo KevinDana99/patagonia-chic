@@ -42,6 +42,7 @@ const ListSearch = ({
 	error,
 	onChangeSelect,
 	selectedAction,
+	visible,
 }: ListType) => {
 	const [listValue, setListValue] = useState(list);
 	const [data, setData] = useState({
@@ -168,7 +169,7 @@ const ListSearch = ({
 										onClick={(e) => {
 											selectItem(item);
 											onItemClick?.(item.id);
-											selectedAction && selectedAction();
+											selectedAction && selectedAction(item);
 										}}
 										selected={showCurrentPosition && index === cursorPosition}
 									>

@@ -28,7 +28,7 @@ export type ListType = {
 	fuseConfigs?: Fuse.IFuseOptions<ListItemType>;
 	featuredElements?: ListItemType[];
 	onChangeSelect?: React.Dispatch<{}>;
-	selectedAction?: () => void;
+	selectedAction?: (item?: Object) => void;
 };
 
 export type ItemListStyleType = {
