@@ -87,13 +87,7 @@ export type PlaceListInputType = {
 };
 
 export type PlaceListType = {
-	places: Array<IPlace>;
-	setPlaceData: React.Dispatch<StateSearchQueryType>;
-	openCalendar: () => void;
-	closeList: () => void;
-	values?: StateSearchQueryType;
-	placeFilter?: () => void;
-	showList?: boolean;
+	children: JSX.Element;
 };
 
 export interface PlaceContainerType {

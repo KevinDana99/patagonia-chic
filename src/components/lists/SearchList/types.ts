@@ -30,3 +30,7 @@ export type ListType = {
 	onChangeSelect?: React.Dispatch<{}>;
 	selectedAction?: () => void;
 };
+
+export type ItemListStyleType = {
+	selected: boolean;
+};

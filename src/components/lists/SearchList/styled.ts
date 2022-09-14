@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ItemListStyleType } from './types';
 
 export const Container = styled.div`
 	width: 100%;
@@ -28,12 +29,16 @@ export const BoxItemList = styled.div`
 	width: 100%;
 `;
 
-export const ItemList = styled.div`
+export const ItemList = styled.div<ItemListStyleType>`
 	margin-top: 21px;
 	width: 100%;
 	display: flex;
 	align-items: center;
 	background-color: ${(props) => (props.selected ? '#f7f8f8' : '#ffffff')};
+
+	&:hover {
+		background: #f7f8f8;
+	}
 `;
 
 export const BoxImage = styled.div`

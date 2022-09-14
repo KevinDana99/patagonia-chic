@@ -27,7 +27,6 @@ export const PlaceListInput = ({
 	disableSearch,
 	setDisableSearch,
 	closeModal,
-	modal,
 }: PlaceListInputType) => {
 	const containerRef = useRef(null);
 	useOutsideClick(containerRef, outsideClick);

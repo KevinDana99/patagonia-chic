@@ -114,7 +114,7 @@ export const CalendarInput = ({
 				)}
 			</CalendarDesktopContainer>
 			{showCalendar && (
-				<CalendarContainer onClick={(e) => e.stopPropagation()}>
+				<CalendarContainer>
 					<Calendar
 						setDates={setDates}
 						values={data}

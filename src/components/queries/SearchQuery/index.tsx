@@ -104,8 +104,6 @@ const SearchQuery = ({
 		});
 	}, [data.place]);
 
-	const containerRef = useRef(null);
-	useOutsideClick(containerRef, () => {});
 	return (
 		<>
 			<SearchQueryContainer>
@@ -194,11 +192,16 @@ const SearchQuery = ({
 				</ButtonContainer>
 			</SearchQueryContainer>
 
-			<Modal visible={isMobile && modal ? true : false} ref={containerRef}>
+			<Modal
+				visible={isMobile && modal ? true : false}
+				closeAction={() => setModal(false)}
+			>
 				<>
 					{showCalendar && (
 						<CalendarMobile
-							closeList={() => setShowPlaceList(false)}
+							closeList={() => {
+								setShowPlaceList(false);
+							}}
 							setDates={setData}
 							data={data}
 							setCalendarFocusedInput={setCalendarFocusedInput}

@@ -50,6 +50,8 @@ const ListSearch = ({
 		endDate: null,
 	});
 
+	console.log(data);
+
 	useEffect(() => {
 		setListValue(list);
 	}, [list]);
@@ -58,6 +60,10 @@ const ListSearch = ({
 		console.log(data);
 		onChangeSelect && onChangeSelect(data);
 	}, [data]);
+
+	const selectItem = (item: ListItemType) => {
+		setData({ ...data, place: item });
+	};
 
 	const filterPlaceList = (query: string) => {
 		const fusePlaceList = new Fuse(list, fuseConfigs);
@@ -160,7 +166,7 @@ const ListSearch = ({
 									<ItemList
 										key={index}
 										onClick={(e) => {
-											e.stopPropagation();
+											selectItem(item);
 											onItemClick?.(item.id);
 											selectedAction && selectedAction();
 										}}
