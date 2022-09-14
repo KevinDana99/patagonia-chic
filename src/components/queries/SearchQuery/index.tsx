@@ -214,7 +214,6 @@ const SearchQuery = ({
 					{showPlaceList && (
 						<SearchList
 							list={placeList}
-							engine={'fuse'}
 							onChangeSelect={setData}
 							selectedAction={() => {
 								setShowPlaceList(false);

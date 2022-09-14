@@ -37,7 +37,7 @@ export const PlaceListContainer = styled.div`
 	margin-top: 10px;
 	border-radius: 30px;
 	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
-	padding: 20px 0px;
+	padding: 20px;
 	top: 80px;
 	left: 20px;
 	background-color: #ffffff;

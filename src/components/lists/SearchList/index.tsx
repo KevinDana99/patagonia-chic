@@ -29,7 +29,7 @@ const ListSearch = ({
 	list,
 	title,
 	onSearchChange,
-	engine,
+	engine = 'fuse',
 	search = false,
 	loading,
 	onItemClick,
@@ -162,7 +162,7 @@ const ListSearch = ({
 										onClick={(e) => {
 											e.stopPropagation();
 											onItemClick?.(item.id);
-											alert('propagacion evitada');
+											selectedAction && selectedAction();
 										}}
 										selected={showCurrentPosition && index === cursorPosition}
 									>

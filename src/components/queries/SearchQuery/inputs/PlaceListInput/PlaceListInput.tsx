@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { CloseIcon, Divider, Input, Label, OptionContent } from '../../styled';
 import { PlaceListInputType } from '../../types';
-import { PlaceList } from './PlaceList';
+import PlaceList from './PlaceList';
 import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
 import useToggle from '../../../../../hooks/useToggle';
 import { OptionContainerPlaceList } from './styled';
@@ -62,12 +62,16 @@ export const PlaceListInput = ({
 			</OptionContent>
 			{values?.place?.name && toggle && <CloseIcon onClick={clearData} />}
 			{!isMobile && showPlaceList && (
-				<PlaceList
-					places={placeList}
-					setPlaceData={setPlaceData}
-					openCalendar={openCalendar}
-					closeList={closeList}
-				/>
+				<PlaceList>
+					<SearchList
+						list={placeList}
+						onChangeSelect={setPlaceData}
+						selectedAction={() => {
+							closeList();
+							openCalendar();
+						}}
+					/>
+				</PlaceList>
 			)}
 
 			<Divider />
