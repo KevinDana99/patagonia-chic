@@ -30,18 +30,14 @@ definitions:
         name: Publish NPM package
         image: node:16-alpine
         script:
-          - yarn
-          - yarn build
-          - npm config set registry https://registry.npmjs.org/
-          - echo _authToken=$NPM_TOKEN >> ~/.npmrc
-          - npm version minor
-          - npm publish --access public
+          - .src/utils/scripts/npm-publish.sh
 
 pipelines:
   branches:
     master:
       - step: *push-gcp
       - step: *merge-step
+      - step: *publish-npm-package
     develop:
       - step: *push-gcp
       - step: *merge-step
