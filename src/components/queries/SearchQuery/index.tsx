@@ -194,7 +194,7 @@ const SearchQuery = ({
 				</ButtonContainer>
 			</SearchQueryContainer>
 
-			<Modal visible={isMobile && modal ? true : false}>
+			<Modal visible={isMobile && modal ? true : false} ref={containerRef}>
 				<>
 					{showCalendar && (
 						<CalendarMobile
@@ -211,7 +211,17 @@ const SearchQuery = ({
 						/>
 					)}
 
-					{showPlaceList && <SearchList list={placeList} engine={'fuse'} />}
+					{showPlaceList && (
+						<SearchList
+							list={placeList}
+							engine={'fuse'}
+							onChangeSelect={setData}
+							selectedAction={() => {
+								setShowPlaceList(false);
+								setShowCalendar(true);
+							}}
+						/>
+					)}
 				</>
 			</Modal>
 		</>

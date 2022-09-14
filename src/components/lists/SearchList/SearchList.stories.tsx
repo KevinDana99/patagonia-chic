@@ -24,8 +24,8 @@ SearchList.args = {
 	loading: false,
 	engine: 'fuse',
 	title: 'Hello world',
-	error: true,
+	error: false,
 	errorComponent: <>error</>,
-	emptyStateText: 'El campo de busqueda se encuentra vacio',
+	emptyStateText: '',
 	emptyStateComponent: <>El campo esta vacio</>,
 };

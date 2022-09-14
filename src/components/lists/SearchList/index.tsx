@@ -40,6 +40,8 @@ const ListSearch = ({
 	emptyStateComponent,
 	errorComponent,
 	error,
+	onChangeSelect,
+	selectedAction,
 }: ListType) => {
 	const [listValue, setListValue] = useState(list);
 	const [data, setData] = useState({
@@ -51,6 +53,11 @@ const ListSearch = ({
 	useEffect(() => {
 		setListValue(list);
 	}, [list]);
+
+	useEffect(() => {
+		console.log(data);
+		onChangeSelect && onChangeSelect(data);
+	}, [data]);
 
 	const filterPlaceList = (query: string) => {
 		const fusePlaceList = new Fuse(list, fuseConfigs);
@@ -87,8 +94,7 @@ const ListSearch = ({
 
 				switch (true) {
 					case key === 'Enter':
-						/*closeList();
-						openCalendar();*/
+						selectedAction && selectedAction();
 						break;
 
 					case key === 'ArrowDown' && !showCurrentPosition:
@@ -153,7 +159,11 @@ const ListSearch = ({
 								return (
 									<ItemList
 										key={index}
-										onClick={() => onItemClick?.(item.id)}
+										onClick={(e) => {
+											e.stopPropagation();
+											onItemClick?.(item.id);
+											alert('propagacion evitada');
+										}}
 										selected={showCurrentPosition && index === cursorPosition}
 									>
 										<BoxImage>
