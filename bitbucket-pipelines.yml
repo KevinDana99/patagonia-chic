@@ -30,6 +30,9 @@ definitions:
         name: Publish NPM package
         image: node:16-alpine
         script:
+          - apk add --update alpine-sdk
+          - apk add yq --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+          - apk add git
           - ./src/utils/scripts/npm-publish.sh
 
 pipelines:
