@@ -198,6 +198,7 @@ const SearchQuery = ({
 			<Modal
 				visible={isMobile && modal ? true : false}
 				closeAction={() => setModal(false)}
+				closeOnTouchOutside={true}
 			>
 				{showMobilePlaceList ? (
 					<SearchList

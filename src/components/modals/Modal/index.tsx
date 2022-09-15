@@ -49,6 +49,7 @@ const PrimaryModal = ({
 	}, [onOpen, state]);
 
 	const touchOutside = () => {
+		closeOnTouchOutside && closeAction && closeAction();
 		closeOnTouchOutside && close();
 	};
 
