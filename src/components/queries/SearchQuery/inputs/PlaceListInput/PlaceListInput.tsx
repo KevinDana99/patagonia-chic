@@ -27,6 +27,7 @@ export const PlaceListInput = ({
 	disableSearch,
 	setDisableSearch,
 	closeModal,
+	showCalendar,
 }: PlaceListInputType) => {
 	const containerRef = useRef(null);
 	useOutsideClick(containerRef, outsideClick);
@@ -60,12 +61,13 @@ export const PlaceListInput = ({
 				/>
 			</OptionContent>
 			{values?.place?.name && toggle && <CloseIcon onClick={clearData} />}
-			{!isMobile && showPlaceList && (
+			{!isMobile && showPlaceList && !showCalendar && (
 				<PlaceList>
 					<SearchList
 						list={placeList}
 						onChangeSelect={setPlaceData}
-						selectedAction={() => {
+						selectedAction={(item) => {
+							setPlaceData({ ...values, place: item });
 							closeList();
 							openCalendar();
 						}}

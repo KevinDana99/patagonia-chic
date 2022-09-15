@@ -110,7 +110,7 @@ const SearchQuery = ({
 			<SearchQueryContainer>
 				{showLocations && (
 					<PlaceListInput
-						modal={modal}
+						showCalendar={showCalendar}
 						closeModal={() => setModal(false)}
 						setDisableSearch={setDisableSearch}
 						disableSearch={disableSearch.place}
@@ -179,7 +179,10 @@ const SearchQuery = ({
 					data={data}
 					setFocused={setCalendarFocusedInput}
 					closeCalendar={() => setShowCalendar(false)}
-					openCalendar={() => setShowCalendar(true)}
+					openCalendar={() => {
+						setShowPlaceList(false);
+						setShowCalendar(true);
+					}}
 					sendData={() => onQuerySubmit(data)}
 				></CalendarInput>
 				<ButtonContainer>
