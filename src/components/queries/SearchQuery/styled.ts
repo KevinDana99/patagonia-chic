@@ -139,7 +139,8 @@ export const Input = styled.input<DisableSearchType>`
 `;
 
 export const ContainerModal = styled.div`
-	padding-top: 20px;
+	padding: 15px 5px;
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
