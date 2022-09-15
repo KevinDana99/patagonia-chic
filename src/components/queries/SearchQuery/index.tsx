@@ -201,6 +201,7 @@ const SearchQuery = ({
 			>
 				{showMobilePlaceList ? (
 					<SearchList
+						search={true}
 						list={placeList}
 						onChangeSelect={setData}
 						selectedAction={(item) => {
