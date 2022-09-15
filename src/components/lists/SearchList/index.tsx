@@ -153,8 +153,8 @@ const ListSearch = ({
 				{error && errorComponent ? (
 					errorComponent
 				) : !loading ? (
-					emptyStateText && emptyStateComponent ? (
-						emptyStateComponent
+					emptyStateText || emptyStateComponent ? (
+						emptyStateComponent || emptyStateText
 					) : (
 						<BoxItemList>
 							{listValue.map((item, index) => {
