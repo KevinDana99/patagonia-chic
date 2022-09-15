@@ -51,14 +51,11 @@ const ListSearch = ({
 		endDate: null,
 	});
 
-	console.log(data);
-
 	useEffect(() => {
 		setListValue(list);
 	}, [list]);
 
 	useEffect(() => {
-		console.log(data);
 		onChangeSelect && onChangeSelect(data);
 	}, [data]);
 
@@ -126,8 +123,6 @@ const ListSearch = ({
 			});
 		},
 		[list.length, setCurrentPlace, showCurrentPosition]
-
-		//[OPENCALENDAR, CLOSELIST ...],
 	);
 
 	useEffect(() => {

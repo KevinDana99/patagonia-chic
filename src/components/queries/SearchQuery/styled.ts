@@ -137,3 +137,11 @@ export const Input = styled.input<DisableSearchType>`
 		font-weight: 100;
 	}
 `;
+
+export const ContainerModal = styled.div`
+	padding-top: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;

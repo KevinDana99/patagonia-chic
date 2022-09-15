@@ -14,7 +14,7 @@ export const CalendarContainer = styled.div`
 	align-items: center;
 	position: relative;
 	width: 100%;
-	overflow-y: scroll;
+	overflow-y: hidden;
 	overflow-x: hidden;
 
 	@media (min-width: ${size.tablet}) and ((max-width: ${size.tabletL})) {

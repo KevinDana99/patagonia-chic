@@ -6,6 +6,7 @@ import {
 	ButtonSearch,
 	SearchIcon,
 	SearchQueryContainer,
+	ContainerModal,
 } from './styled';
 import { IPlace, SearchQueryType, StateSearchQueryType } from './types';
 import 'react-dates/initialize';
@@ -16,10 +17,8 @@ import fusePlaceListOptions from '../../../constants/fuseOptions.json';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Modal from '../../modals/Modal';
-import PlaceListMobile from './mobile/wrappers/PlaceListMobile';
 import CalendarMobile from './mobile/wrappers/CalendarMobile';
 import SearchList from '../../lists/SearchList';
-import { useOutsideClick } from '../../../hooks/useOutsideClick';
 
 const SearchQuery = ({
 	list,
@@ -200,33 +199,35 @@ const SearchQuery = ({
 				closeAction={() => setModal(false)}
 				closeOnTouchOutside={true}
 			>
-				{showMobilePlaceList ? (
-					<SearchList
-						search={true}
-						list={placeList}
-						onChangeSelect={setData}
-						selectedAction={(item) => {
-							setData({ ...data, place: item });
-							setShowMobilePlaceList(false);
-							setShowMobileCalendar(true);
-						}}
-					/>
-				) : (
-					<CalendarMobile
-						closeList={() => {
-							setShowMobilePlaceList(false);
-						}}
-						setDates={setData}
-						data={data}
-						setCalendarFocusedInput={setCalendarFocusedInput}
-						calendarFocusedInput={calendarFocusedInput}
-						isMobile={isMobile}
-						sendData={() => {
-							const validate = validateSearch();
-							validate && onQuerySubmit(data);
-						}}
-					/>
-				)}
+				<ContainerModal>
+					{showMobilePlaceList ? (
+						<SearchList
+							search={true}
+							list={placeList}
+							onChangeSelect={setData}
+							selectedAction={(item) => {
+								setData({ ...data, place: item });
+								setShowMobilePlaceList(false);
+								setShowMobileCalendar(true);
+							}}
+						/>
+					) : (
+						<CalendarMobile
+							closeList={() => {
+								setShowMobilePlaceList(false);
+							}}
+							setDates={setData}
+							data={data}
+							setCalendarFocusedInput={setCalendarFocusedInput}
+							calendarFocusedInput={calendarFocusedInput}
+							isMobile={isMobile}
+							sendData={() => {
+								const validate = validateSearch();
+								validate && onQuerySubmit(data);
+							}}
+						/>
+					)}
+				</ContainerModal>
 			</Modal>
 		</>
 	);

@@ -18,4 +18,5 @@ const Template: Story<SearchQueryType> = (args) => (
 export const SearchQuery = Template.bind({});
 SearchQuery.args = {
 	list: places,
+	onQuerySubmit: (query) => console.log(query),
 };
