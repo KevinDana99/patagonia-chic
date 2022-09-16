@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withFontStyles } from '../../../../helpers/hocs/withFontStyles';
+import Text from '../../../texts/Text';
 
 import {
 	ArrowIconDown,
@@ -13,13 +13,15 @@ import {
 } from './styled';
 import { SectionType } from './types';
 
-export const Section = ({ title, label, content }: SectionType) => {
+export const SectionAccordion = ({ title, label, content }: SectionType) => {
 	const [openSection, setOpenSection] = useState(false);
 
 	return (
 		<SectionContainer onClick={() => setOpenSection(!openSection)}>
 			<SectionTitleContainer>
-				<SectionTitle>{title}</SectionTitle>
+				<SectionTitle>
+					<Text>{title}</Text>
+				</SectionTitle>
 				{openSection ? <ArrowIconUp /> : <ArrowIconDown />}
 			</SectionTitleContainer>
 			{openSection &&
@@ -30,7 +32,9 @@ export const Section = ({ title, label, content }: SectionType) => {
 						key={index}
 						target={labelItem.target}
 					>
-						<SectionLabel>{labelItem.label}</SectionLabel>
+						<SectionLabel>
+							<Text>{labelItem.label}</Text>
+						</SectionLabel>
 					</LinkStyled>
 				))}
 
@@ -39,7 +43,5 @@ export const Section = ({ title, label, content }: SectionType) => {
 		</SectionContainer>
 	);
 };
-
-const SectionAccordion = withFontStyles(Section);
 
 export default SectionAccordion;
