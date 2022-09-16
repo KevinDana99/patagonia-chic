@@ -1,5 +1,6 @@
 import React from 'react';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
+import Text from '../../texts/Text';
 import { DataInputContainer, DataInput, StyledLabel } from './styled';
 import { InputPropsType } from './types';
 
@@ -24,7 +25,11 @@ const Input = ({
 				value={defaultValue}
 				error={!!error}
 			/>
-			<StyledLabel>{label}</StyledLabel>
+			<StyledLabel>
+				<Text size={15} weight={'regular'} color={'#777'}>
+					{label}
+				</Text>
+			</StyledLabel>
 		</DataInputContainer>
 	);
 };
