@@ -18,7 +18,7 @@ const TertiaryButton = ({
 			onClick={onClick}
 			className={className}
 		>
-			<Text color="#888" size={14} weight={300}>
+			<Text color="#888" size={14} weight={'regular'}>
 				{title}
 			</Text>
 

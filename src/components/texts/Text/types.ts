@@ -22,6 +22,6 @@ export type TextPropsType = {
 	fontFamily?: FontFamilyType;
 	size?: number;
 	color?: string;
-	weight?: TextWeightsType | number;
+	weight?: TextWeightsType;
 	italic?: boolean;
 };

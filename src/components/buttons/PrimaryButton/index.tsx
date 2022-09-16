@@ -30,7 +30,7 @@ const PrimaryButton = ({
 				<ButtonPrimaryContent>
 					{IconComponent && <Icon component={<IconComponent />} />}
 					<ButtonPrimaryText>
-						<Text weight={600} color="#fff">
+						<Text weight={'semi-bold'} color="#fff">
 							{title}
 						</Text>
 					</ButtonPrimaryText>

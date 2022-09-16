@@ -13,7 +13,7 @@ const SecondaryButton = ({
 	disabled = disabled || loading;
 	return (
 		<ButtonSecondaryStyled disabled={disabled} onClick={onClick}>
-			<Text color="#0090e0" size={14} weight={400}>
+			<Text color="#0090e0" size={14} weight={'regular'}>
 				{title}
 			</Text>
 
