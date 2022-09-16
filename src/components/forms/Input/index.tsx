@@ -34,4 +34,4 @@ const Input = ({
 	);
 };
 
-export default withFontStyles(Input);
+export default Input;
