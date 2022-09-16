@@ -20,7 +20,7 @@ export const SectionAccordion = ({ title, label, content }: SectionType) => {
 		<SectionContainer onClick={() => setOpenSection(!openSection)}>
 			<SectionTitleContainer>
 				<SectionTitle>
-					<Text>{title}</Text>
+					<Text size={18}>{title}</Text>
 				</SectionTitle>
 				{openSection ? <ArrowIconUp /> : <ArrowIconDown />}
 			</SectionTitleContainer>
@@ -33,7 +33,7 @@ export const SectionAccordion = ({ title, label, content }: SectionType) => {
 						target={labelItem.target}
 					>
 						<SectionLabel>
-							<Text>{labelItem.label}</Text>
+							<Text size={15}>{labelItem.label}</Text>
 						</SectionLabel>
 					</LinkStyled>
 				))}
