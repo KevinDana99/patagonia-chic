@@ -29,6 +29,7 @@ export type ListType = {
 	featuredElements?: ListItemType[];
 	onChangeSelect?: React.Dispatch<{}>;
 	selectedAction?: (item?: Object) => void;
+	searchPlaceHolder?: string;
 };
 
 export type ItemListStyleType = {

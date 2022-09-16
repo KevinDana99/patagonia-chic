@@ -16,8 +16,8 @@ export const BoxSearch = styled.div`
 `;
 
 export const InputSearch = styled.input`
+	width: 100%;
 	margin-left: 21px;
-	max-width: 180px;
 	height: 21.02px;
 	font-size: 15px;
 	border: none;

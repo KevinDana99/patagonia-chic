@@ -27,4 +27,5 @@ SearchList.args = {
 	error: false,
 	errorComponent: <>error</>,
 	emptyStateText: 'El campo esta vacio',
+	searchPlaceHolder: 'Placeholder desde prop en storybook',
 };

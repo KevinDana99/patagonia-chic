@@ -24,8 +24,9 @@ import { IoSearch } from 'react-icons/io5';
 import { ListItemType, ListType } from './types';
 import CustomIcon from '../../graphics/CustomIcon';
 import Skeleton from '../../skeletons/Skeleton';
+import Text from '../../texts/Text';
 
-const ListSearch = ({
+const SearchList = ({
 	list,
 	title,
 	onSearchChange,
@@ -42,7 +43,7 @@ const ListSearch = ({
 	error,
 	onChangeSelect,
 	selectedAction,
-	visible,
+	searchPlaceHolder,
 }: ListType) => {
 	const [listValue, setListValue] = useState(list);
 	const [data, setData] = useState({
@@ -135,12 +136,16 @@ const ListSearch = ({
 	return (
 		<>
 			<Container>
-				{title && <OptionalTitle>{title}</OptionalTitle>}
+				{title && (
+					<OptionalTitle>
+						<Text size={20}>{title}</Text>
+					</OptionalTitle>
+				)}
 				{search && (
 					<BoxSearch>
 						<IoSearch />
 						<InputSearch
-							placeholder="Buscar excursiones"
+							placeholder={searchPlaceHolder}
 							onChange={(e) => {
 								engine === 'fuse'
 									? filterPlaceList(e.target.value)
@@ -176,15 +181,43 @@ const ListSearch = ({
 											)}
 										</BoxImage>
 										<Description>
-											<Title>{item.name}</Title>
+											<Title>
+												<Text size={17} weight={'medium'}>
+													{item.name}
+												</Text>
+											</Title>
 											<BoxSubtitle>
 												{item.category ? (
-													<SubTitle>{item.category}</SubTitle>
+													<SubTitle>
+														<Text
+															size={14}
+															weight={'regular'}
+															color={'#888888'}
+														>
+															{item.category}
+														</Text>
+													</SubTitle>
 												) : (
 													<>
-														<SubTitle>{item.province}</SubTitle>
+														<SubTitle>
+															<Text
+																size={14}
+																weight={'regular'}
+																color={'#888888'}
+															>
+																{item.province}
+															</Text>
+														</SubTitle>
 														<Divisor>-</Divisor>
-														<SubTitle>{item.country}</SubTitle>
+														<SubTitle>
+															<Text
+																size={14}
+																weight={'regular'}
+																color={'#888888'}
+															>
+																{item.country}
+															</Text>
+														</SubTitle>
 													</>
 												)}
 											</BoxSubtitle>
@@ -206,6 +239,4 @@ const ListSearch = ({
 	);
 };
 
-const SearchList = withFontStyles(ListSearch);
-
-export default withFontStyles(SearchList);
+export default SearchList;
