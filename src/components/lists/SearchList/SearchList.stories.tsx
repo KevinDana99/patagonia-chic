@@ -26,4 +26,5 @@ SearchList.args = {
 	title: 'Hello world',
 	error: false,
 	errorComponent: <>error</>,
+	emptyStateText: 'El campo esta vacio',
 };
