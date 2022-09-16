@@ -8,6 +8,7 @@ import { OptionContainerPlaceList } from './styled';
 import PlaceListMobile from '../../mobile/wrappers/PlaceListMobile';
 import Modal from '../../../../modals/Modal';
 import SearchList from '../../../../lists/SearchList';
+import Text from '../../../../texts/Text';
 
 export const PlaceListInput = ({
 	label,
@@ -51,7 +52,11 @@ export const PlaceListInput = ({
 			ref={containerRef}
 		>
 			<OptionContent>
-				<Label>{label}</Label>
+				<Label>
+					<Text size={12} weight={'semi-bold'}>
+						{label}
+					</Text>
+				</Label>
 				<Input
 					disableSearch={disableSearch}
 					type="text"

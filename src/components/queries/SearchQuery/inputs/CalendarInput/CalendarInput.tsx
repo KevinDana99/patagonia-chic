@@ -18,6 +18,7 @@ import {
 } from './styled';
 
 import { CalendarInputType } from '../../types';
+import Text from '../../../../texts/Text';
 
 export const CalendarInput = ({
 	disableSearch,
@@ -83,9 +84,19 @@ export const CalendarInput = ({
 							isSelected={calendarFocusedInput === 'startDate' && showCalendar}
 						>
 							<OptionContent>
-								<Label>{labels[0]}</Label>
+								<Label>
+									<Text size={12} weight={'semi-bold'}>
+										{labels[0]}
+									</Text>
+								</Label>
 								<Title disableSearch={disableSearch.startDate}>
-									{values?.startDate?.name ?? titles[0]}
+									<Text
+										size={14}
+										weight={'regular'}
+										color={disableSearch.startDate && 'red'}
+									>
+										{values?.startDate?.name ?? titles[0]}
+									</Text>
 								</Title>
 							</OptionContent>
 							{values?.startDate?.name && hover.start && (
@@ -100,9 +111,19 @@ export const CalendarInput = ({
 							isSelected={calendarFocusedInput === 'endDate' && showCalendar}
 						>
 							<OptionContent>
-								<Label>{labels[1]}</Label>
+								<Label>
+									<Text size={12} weight={'semi-bold'}>
+										{labels[1]}
+									</Text>
+								</Label>
 								<Title disableSearch={disableSearch.endDate}>
-									{values?.endDate?.name ?? titles[1]}
+									<Text
+										size={14}
+										weight={'regular'}
+										color={disableSearch.endDate && 'red'}
+									>
+										{values?.endDate?.name ?? titles[1]}
+									</Text>
 								</Title>
 							</OptionContent>
 							{values?.endDate?.name && hover.end && (
