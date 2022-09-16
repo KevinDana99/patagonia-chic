@@ -62,4 +62,4 @@ const CheckboxList = ({
 	);
 };
 
-export default withFontStyles(CheckboxList);
+export default CheckboxList;
