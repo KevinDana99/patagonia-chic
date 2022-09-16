@@ -24,6 +24,11 @@ const SearchQuery = ({
 	list,
 	onQuerySubmit,
 	showLocations = true,
+	labelEndDate,
+	labelPlace,
+	labelStartDate,
+	placeholderDate,
+	placeholderPlace,
 }: SearchQueryType) => {
 	const [data, setData] = useState<StateSearchQueryType>({
 		place: null,
@@ -114,8 +119,8 @@ const SearchQuery = ({
 						closeModal={() => setModal(false)}
 						setDisableSearch={setDisableSearch}
 						disableSearch={disableSearch.place}
-						label={'Lugar'}
-						placeholder={'¿A dónde vas?'}
+						label={labelPlace}
+						placeholder={placeholderPlace}
 						onClick={() => {
 							setShowPlaceList(true);
 							setShowMobilePlaceList(true);
@@ -158,8 +163,8 @@ const SearchQuery = ({
 
 				<CalendarInput
 					disableSearch={disableSearch}
-					labels={['Fecha llegada', 'Fecha partida']}
-					titles={['Seleccione fecha', 'Seleccione fecha']}
+					labels={[labelStartDate, labelEndDate]}
+					titles={[placeholderDate, placeholderDate]}
 					values={data}
 					clearData={clearDates}
 					onClick={() => {

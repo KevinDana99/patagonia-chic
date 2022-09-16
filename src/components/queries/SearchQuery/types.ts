@@ -13,7 +13,12 @@ export interface IPlace {
 }
 
 export type SearchQueryType = {
-	places: [IPlace];
+	list: [IPlace];
+	placeholderPlace: string;
+	labelPlace: string;
+	placeholderDate: string;
+	labelStartDate: string;
+	labelEndDate: string;
 	onQuerySubmit: Function;
 	showLocations: boolean;
 };

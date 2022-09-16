@@ -18,5 +18,10 @@ const Template: Story<SearchQueryType> = (args) => (
 export const SearchQuery = Template.bind({});
 SearchQuery.args = {
 	list: places,
+	placeholderPlace: '¿A dónde vas?',
+	labelPlace: 'Lugar',
+	placeholderDate: 'Seleccione fecha',
+	labelStartDate: 'Fecha de llegada',
+	labelEndDate: 'Fecha de partida',
 	onQuerySubmit: (query) => console.log(query),
 };
