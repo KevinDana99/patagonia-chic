@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Section from '../../../examples/modal/sections/Section';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import SecondaryButton from '../../buttons/SecondaryButton';
+import Text from '../../texts/Text';
 import {
 	BoxModal,
 	BoxTitle,
@@ -61,7 +62,7 @@ const PrimaryModal = ({
 	return (
 		<>
 			{renderOpenButton && (
-				<SecondaryButton title="Abrir Modal" onClick={open} />
+				<SecondaryButton title={renderOpenButton.title} onClick={open} />
 			)}
 
 			<BoxModal visible={state.visible} onClick={touchOutside}>
@@ -73,7 +74,9 @@ const PrimaryModal = ({
 					}}
 				>
 					<BoxTop>
-						<BoxTitle>{title}</BoxTitle>
+						<BoxTitle>
+							<Text size={17}>{title}</Text>
+						</BoxTitle>
 						{!disableClose && (
 							<ButtonClose>
 								{<CloseIcon onClick={closeAction ? closeAction : close} />}
@@ -86,14 +89,16 @@ const PrimaryModal = ({
 							<BoxHeader coverImage={coverImage}>
 								{headerText && (
 									<BoxHeaderText coverImage={coverImage}>
-										{headerText}
+										<Text color="white">{headerText}</Text>
 									</BoxHeaderText>
 								)}
 							</BoxHeader>
 						)}
 
 						{!coverImage && headerText && (
-							<BoxHeaderText>{headerText}</BoxHeaderText>
+							<BoxHeaderText>
+								<Text color="white">{headerText}</Text>
+							</BoxHeaderText>
 						)}
 
 						{children && (

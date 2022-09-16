@@ -21,7 +21,7 @@ Modals.args = {
 	visible: false,
 	closeOnTouchOutside: false,
 	title: 'Menu del almuerzo o cena en cueva',
-	renderOpenButton: false,
+	renderOpenButton: { title: 'Abrir modal' },
 	onClose: () => {
 		console.log('Cerrado');
 	},

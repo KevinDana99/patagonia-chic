@@ -1,5 +1,5 @@
 export type ModalType = {
-	renderOpenButton?: boolean;
+	renderOpenButton?: { title: string };
 	children?: JSX.Element | string;
 	width?: string;
 	visible?: boolean;
