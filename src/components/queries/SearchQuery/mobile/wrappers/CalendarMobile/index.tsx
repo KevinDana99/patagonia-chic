@@ -12,6 +12,7 @@ import {
 	SearchIcon,
 } from './styled';
 import { CalendarMobileType } from '../../../types';
+import Text from '../../../../../texts/Text';
 
 const CalendarMobile = ({
 	closeList,
@@ -21,6 +22,12 @@ const CalendarMobile = ({
 	calendarFocusedInput,
 	isMobile,
 	sendData,
+	labelEndDate,
+	labelPlace,
+	labelStartDate,
+	placeholderDate,
+	placeholderPlace,
+	titleSearchButton,
 }: CalendarMobileType) => {
 	const CalendarData = ({
 		title,
@@ -30,8 +37,16 @@ const CalendarMobile = ({
 		label: string;
 	}) => (
 		<CalendarDataItem>
-			<CalendarDataLabel>{label}</CalendarDataLabel>
-			<CalendarDataTitle>{title}</CalendarDataTitle>
+			<CalendarDataLabel>
+				<Text size={13} weight={'regular'} color={'#666'}>
+					{label}
+				</Text>
+			</CalendarDataLabel>
+			<CalendarDataTitle>
+				<Text size={14} weight={'medium'} color={'#222'}>
+					{title}
+				</Text>
+			</CalendarDataTitle>
 		</CalendarDataItem>
 	);
 
@@ -49,20 +64,20 @@ const CalendarMobile = ({
 			</CalendarContainer>
 			<CalendarDataContainer>
 				<CalendarData
-					label={'Lugar'}
+					label={labelPlace}
 					title={data.place?.name ? data.place.name : '-'}
 				/>
 				<CalendarData
-					label={'Llegada'}
+					label={labelStartDate}
 					title={data.startDate ? data.startDate.name : '-'}
 				/>
 				<CalendarData
-					label={'Partida'}
+					label={labelEndDate}
 					title={data.endDate ? data.endDate.name : '-'}
 				/>
 			</CalendarDataContainer>
 			<ButtonSearch
-				title={'Buscar Excursiones'}
+				title={titleSearchButton}
 				IconComponent={SearchIcon}
 				onClick={sendData}
 			/>

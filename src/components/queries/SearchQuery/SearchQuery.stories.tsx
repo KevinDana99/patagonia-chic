@@ -23,5 +23,6 @@ SearchQuery.args = {
 	placeholderDate: 'Seleccione fecha',
 	labelStartDate: 'Fecha de llegada',
 	labelEndDate: 'Fecha de partida',
+	titleSearchButton: 'Buscar Excursiones',
 	onQuerySubmit: (query) => console.log(query),
 };

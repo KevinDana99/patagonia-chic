@@ -29,6 +29,7 @@ const SearchQuery = ({
 	labelStartDate,
 	placeholderDate,
 	placeholderPlace,
+	titleSearchButton,
 }: SearchQueryType) => {
 	const [data, setData] = useState<StateSearchQueryType>({
 		place: null,
@@ -192,7 +193,7 @@ const SearchQuery = ({
 				></CalendarInput>
 				<ButtonContainer>
 					<ButtonSearch
-						title={!isMobile ? 'Buscar Excursiones' : ''}
+						title={!isMobile ? titleSearchButton : ''}
 						IconComponent={SearchIcon}
 						onClick={() => {
 							const validate = validateSearch();
@@ -218,6 +219,7 @@ const SearchQuery = ({
 								setShowMobilePlaceList(false);
 								setShowMobileCalendar(true);
 							}}
+							searchPlaceHolder={placeholderPlace}
 						/>
 					) : (
 						<CalendarMobile
@@ -233,6 +235,12 @@ const SearchQuery = ({
 								const validate = validateSearch();
 								validate && onQuerySubmit(data);
 							}}
+							labelEndDate={labelEndDate}
+							labelPlace={labelPlace}
+							labelStartDate={labelStartDate}
+							placeholderDate={placeholderDate}
+							placeholderPlace={placeholderPlace}
+							titleSearchButton={titleSearchButton}
 						/>
 					)}
 				</ContainerModal>

@@ -19,6 +19,7 @@ export type SearchQueryType = {
 	placeholderDate: string;
 	labelStartDate: string;
 	labelEndDate: string;
+	titleSearchButton: string;
 	onQuerySubmit: Function;
 	showLocations: boolean;
 };
@@ -125,6 +126,12 @@ export type CalendarMobileType = {
 	calendarFocusedInput: string;
 	isMobile?: boolean;
 	sendData: () => void;
+	labelEndDate: string;
+	labelPlace: string;
+	labelStartDate: string;
+	placeholderDate: string;
+	placeholderPlace: string;
+	titleSearchButton: string;
 };
 
 export type ListModalType = {
