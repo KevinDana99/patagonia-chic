@@ -19,10 +19,10 @@ import {
 	Language,
 	WorldIcon,
 } from './styled';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Logo from '../../logos/Logo';
 import { sidebarTexts } from './sidebarTexts';
 import { LanguageLabel } from '../Footer/styled';
+import Text from '../../texts/Text';
 
 const Sidebar = ({
 	closeAction,
@@ -117,7 +117,12 @@ const Sidebar = ({
 					</SidebarContent>
 					<Language>
 						<WorldIcon />
-						<LanguageLabel>{`${language.label} - ${language.symbol} ${language.currency}`}</LanguageLabel>
+						<LanguageLabel>
+							<Text
+								size={14}
+								weight={'semi-bold'}
+							>{`${language.label} - ${language.symbol} ${language.currency}`}</Text>
+						</LanguageLabel>
 					</Language>
 				</SidebarContainer>
 			</BoxBackground>
@@ -125,4 +130,4 @@ const Sidebar = ({
 	);
 };
 
-export default withFontStyles(Sidebar);
+export default Sidebar;
