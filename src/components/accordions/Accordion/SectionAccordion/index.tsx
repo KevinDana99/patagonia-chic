@@ -20,7 +20,9 @@ export const SectionAccordion = ({ title, label, content }: SectionType) => {
 		<SectionContainer onClick={() => setOpenSection(!openSection)}>
 			<SectionTitleContainer>
 				<SectionTitle>
-					<Text size={18}>{title}</Text>
+					<Text weight={'medium'} size={18}>
+						{title}
+					</Text>
 				</SectionTitle>
 				{openSection ? <ArrowIconUp /> : <ArrowIconDown />}
 			</SectionTitleContainer>

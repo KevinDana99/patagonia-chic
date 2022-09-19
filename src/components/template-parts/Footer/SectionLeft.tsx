@@ -11,9 +11,9 @@ import {
 	LeftSideContainer,
 	DescriptionContainer,
 } from './styled';
-import { SectionLeftType, SectionType } from './types';
-import { footerTexts } from './footerTexts';
+import { SectionLeftType } from './types';
 import { SectionMobile } from './SectionMobile';
+import Text from '../../texts/Text';
 
 const SectionLeft = ({
 	logo,
@@ -21,27 +21,37 @@ const SectionLeft = ({
 	isMobile,
 	sections,
 	isTablet,
+	footerTexts,
 }: SectionLeftType) => {
 	return (
 		<LeftSection>
 			<LeftSideContainer>
 				<DescriptionContainer>
 					<Logo {...logo} />
-					<Description>{footerTexts.description}</Description>
-					<Direction>{footerTexts.direction}</Direction>
+
+					<Description>
+						<Text size={12} weight={'regular'} color={'#383838'}>
+							{footerTexts.description}
+						</Text>
+					</Description>
+					<Direction>
+						<Text size={12} weight={'regular'} color={'#383838'}>
+							{footerTexts.direction}
+						</Text>
+					</Direction>
 				</DescriptionContainer>
 
 				<SocialMobileContainer>
-					{isTablet || isMobile
-						? sections.map((section: SectionType, index: number) => (
-								<SectionMobile {...section} key={index} />
-						  ))
-						: null}
+					{isTablet || isMobile ? <SectionMobile sections={sections} /> : null}
 				</SocialMobileContainer>
 			</LeftSideContainer>
 			<Language>
 				<WorldIcon />
-				<LanguageLabel>{`${language.label} - ${language.symbol} ${language.currency}`}</LanguageLabel>
+				<LanguageLabel>
+					<Text size={14} weight={'semi-bold'}>
+						{`${language.label} - ${language.symbol} ${language.currency}`}
+					</Text>
+				</LanguageLabel>
 			</Language>
 		</LeftSection>
 	);

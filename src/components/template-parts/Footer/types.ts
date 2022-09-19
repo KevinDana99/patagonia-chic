@@ -19,6 +19,17 @@ export type SectionLeftType = {
 		)[];
 	}[];
 	isTablet: boolean;
+	footerTexts: FooterTextInterface;
+};
+
+export type SectionMobileType = {
+	sections: {
+		title: string;
+		label: (
+			| { label: string; url: string; target?: undefined }
+			| { label: string; url: string; target: string }
+		)[];
+	}[];
 };
 
 export type LabelLinkType = {
@@ -42,15 +53,28 @@ export type PlaceType = {
 	url: string;
 };
 
+export interface FooterTextInterface {
+	description: string;
+	direction: string;
+	copyrightMessage: string;
+	helpCenterLabel: string;
+	cancellationPolicesLabel: string;
+	termsAndConditionsLabel: string;
+}
+
+export type FooterSectionSocialType = {
+	footerTexts: FooterTextInterface;
+};
+
 export type FooterPropsType = {
 	language: LanguageType;
 	places: [PlaceType];
-	footerTexts: {
-		description: string;
-		direction: string;
-		copyrightMessage: string;
-		helpCenterLabel: string;
-		cancellationPolicesLabel: string;
-		termsAndConditionsLabel: string;
-	};
+	footerTexts: FooterTextInterface;
+	sections: {
+		title: string;
+		label: (
+			| { label: string; url: string; target?: undefined }
+			| { label: string; url: string; target: string }
+		)[];
+	}[];
 };
