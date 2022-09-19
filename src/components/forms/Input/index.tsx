@@ -1,5 +1,4 @@
 import React from 'react';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Text from '../../texts/Text';
 import { DataInputContainer, DataInput, StyledLabel } from './styled';
 import { InputPropsType } from './types';

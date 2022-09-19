@@ -8,7 +8,6 @@ import {
 } from './styled';
 import Spinner from '../../spinners/PrimarySpinner';
 import { PrimaryButtonType } from './types';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Text from '../../texts/Text';
 
 const PrimaryButton = ({

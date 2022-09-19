@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from 'react';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Text from '../../texts/Text';
 import {
 	Container,

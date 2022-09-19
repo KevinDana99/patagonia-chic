@@ -1,5 +1,4 @@
 import React from 'react';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Text from '../../texts/Text';
 import { StyledTextarea, StyledLabel, TextareaContainer } from './styled';
 import { TextareaPropsType } from './types';

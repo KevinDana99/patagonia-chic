@@ -15,7 +15,6 @@ import { PlaceListInput } from './inputs/PlaceListInput/PlaceListInput';
 import Fuse from 'fuse.js';
 import fusePlaceListOptions from '../../../constants/fuseOptions.json';
 import useMediaQuery from '../../../hooks/useMediaQuery';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Modal from '../../modals/Modal';
 import CalendarMobile from './mobile/wrappers/CalendarMobile';
 import SearchList from '../../lists/SearchList';
@@ -249,4 +248,4 @@ const SearchQuery = ({
 	);
 };
 
-export default withFontStyles(SearchQuery);
+export default SearchQuery;

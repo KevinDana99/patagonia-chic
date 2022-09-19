@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Section from '../../../examples/modal/sections/Section';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import SecondaryButton from '../../buttons/SecondaryButton';
 import Text from '../../texts/Text';
 import {
