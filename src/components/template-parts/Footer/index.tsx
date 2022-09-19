@@ -54,4 +54,4 @@ const Footer = ({ language, places }: FooterPropsType) => {
 	);
 };
 
-export default withFontStyles(Footer);
+export default Footer;

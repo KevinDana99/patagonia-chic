@@ -3,6 +3,7 @@ export type NavbarType = {
 	onClickMenu: React.MouseEventHandler<HTMLLIElement>;
 	onClickCart: React.MouseEventHandler<HTMLLIElement>;
 	onClickHelp: React.MouseEventHandler<HTMLLIElement>;
+	linkHelpText: string;
 };
 
 export type NavbarContainerType = {

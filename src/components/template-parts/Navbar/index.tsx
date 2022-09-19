@@ -13,16 +13,17 @@ import {
 } from './styled';
 import { themesMap } from './themes_map';
 import { NavbarType } from './types';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Logo from '../../logos/Logo';
 import { deviceSize } from '../../../constants/devicesSizes';
 import useMediaQuery from '../../../hooks/useMediaQuery';
+import Text from '../../texts/Text';
 
 const Navbar = ({
 	cartProductCount,
 	onClickMenu,
 	onClickCart,
 	onClickHelp,
+	linkHelpText,
 }: NavbarType) => {
 	const [scrollStatus, setScrollStatus] = useState({
 		activeNavBar: false,
@@ -64,7 +65,11 @@ const Navbar = ({
 			<MenuContainer>
 				{!isMobile && (
 					<ItemMenuContainer onClick={onClickHelp}>
-						<MenuItemText colorTheme={color}>Ayuda</MenuItemText>
+						<MenuItemText colorTheme={color}>
+							<Text size={15} weight={'semi-bold'} color={color}>
+								{linkHelpText}
+							</Text>
+						</MenuItemText>
 					</ItemMenuContainer>
 				)}
 				<ItemMenuContainer onClick={onClickCart}>
@@ -81,4 +86,4 @@ const Navbar = ({
 	);
 };
 
-export default withFontStyles(Navbar);
+export default Navbar;
