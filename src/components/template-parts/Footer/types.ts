@@ -45,4 +45,12 @@ export type PlaceType = {
 export type FooterPropsType = {
 	language: LanguageType;
 	places: [PlaceType];
+	footerTexts: {
+		description: string;
+		direction: string;
+		copyrightMessage: string;
+		helpCenterLabel: string;
+		cancellationPolicesLabel: string;
+		termsAndConditionsLabel: string;
+	};
 };

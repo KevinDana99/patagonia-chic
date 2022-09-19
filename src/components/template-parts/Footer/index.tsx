@@ -15,12 +15,10 @@ import { getSectionList, icons } from './utils';
 import { deviceSize } from '../../../constants/devicesSizes';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { SectionSocial } from './SectionSocial';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
 const Footer = ({ language, places }: FooterPropsType) => {
 	const isMobile = useMediaQuery(deviceSize.mobileL);
 	const isTablet = useMediaQuery(deviceSize.tablet);
-
 	const sections = getSectionList(places);
 
 	return (
