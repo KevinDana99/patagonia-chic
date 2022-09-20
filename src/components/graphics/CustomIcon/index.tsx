@@ -8,7 +8,7 @@ const CustomIcon = ({
 	size = 12,
 	className,
 }: CustomIconType) => {
-	const SelectedIcon = icons[name];
+	const SelectedIcon = icons[`${name}`];
 
 	return (
 		<div className={className}>

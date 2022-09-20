@@ -12,6 +12,7 @@ export type SideBarType = {
 		onClick?: () => void;
 	}>;
 	language: LanguageType; //TO DO: Move to independent component
+	texts: SidebarTexts;
 };
 
 export type SidebarComponentType = {
@@ -41,4 +42,8 @@ export type SidebarPropsType = {
 		RenderView?: React.FC;
 	}>;
 	RenderView?: React.FC;
+};
+
+export type SidebarTexts = {
+	goBack: string;
 };

@@ -20,6 +20,7 @@ const CalendarMobile = ({
 	calendarFocusedInput,
 	isMobile,
 	sendData,
+	texts,
 }: CalendarMobileType) => {
 	const CalendarData = ({
 		title,
@@ -49,18 +50,21 @@ const CalendarMobile = ({
 				/>
 			</CalendarContainer>
 			<CalendarDataContainer>
-				<CalendarData label={'Lugar'} title={data.place?.name} />
 				<CalendarData
-					label={'Llegada'}
+					label={texts.mobileCalendarInputDateLabel}
+					title={data.place?.name}
+				/>
+				<CalendarData
+					label={texts.mobileCalendarInputEndDateLabel}
 					title={data.startDate ? data.startDate.name : '-'}
 				/>
 				<CalendarData
-					label={'Partida'}
+					label={texts.mobileCalendarInputStartDateLabel}
 					title={data.endDate ? data.endDate.name : '-'}
 				/>
 			</CalendarDataContainer>
 			<PrimaryButton
-				title={'Buscar Excursiones'}
+				title={texts.calendarInputButtonTitle}
 				IconComponent={IoSearch}
 				onClick={sendData}
 			/>

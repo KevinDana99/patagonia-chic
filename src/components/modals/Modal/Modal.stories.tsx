@@ -35,4 +35,7 @@ Modals.args = {
 			<Section />
 		</>
 	),
+	texts: {
+		buttonTitle: 'Abrir Modal',
+	},
 };

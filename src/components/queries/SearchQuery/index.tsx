@@ -21,6 +21,7 @@ const SearchQuery = ({
 	places,
 	onQuerySubmit,
 	showLocations = true,
+	texts,
 }: SearchQueryType) => {
 	const [data, setData] = useState<StateSearchQueryType>({
 		place: null,
@@ -61,8 +62,8 @@ const SearchQuery = ({
 			<SearchQueryOptions>
 				{showLocations && (
 					<PlaceListInput
-						label={'Lugar'}
-						placeholder={'¿A dónde vas?'}
+						label={texts.placeListInputLabel}
+						placeholder={texts.placeListInputPlaceholder}
 						onClick={() => {
 							setShowPlaceList(true);
 							openCloseModal();
@@ -99,12 +100,19 @@ const SearchQuery = ({
 							setShowPlaceList(false);
 						}}
 						showPlaceList={showPlaceList}
+						texts={texts}
 					/>
 				)}
 
 				<CalendarInput
-					labels={['Fecha partida', 'Fechar llegada']}
-					titles={['Seleccione fecha', 'Seleccione fecha']}
+					labels={[
+						texts.calendarInputStartDateLabel,
+						texts.calendarInputEndDateLabel,
+					]}
+					titles={[
+						texts.calendarInputSelectDate,
+						texts.calendarInputSelectDate,
+					]}
 					values={data}
 					clearData={clearDates}
 					onClick={() => {
@@ -125,10 +133,11 @@ const SearchQuery = ({
 					setFocused={setCalendarFocusedInput}
 					closeCalendar={() => setShowCalendar(false)}
 					sendData={() => onQuerySubmit(data)}
+					texts={texts}
 				></CalendarInput>
 				<ButtonContainer>
 					<PrimaryButton
-						title={!isMobile ? 'Buscar Excursiones' : ''}
+						title={!isMobile ? texts.calendarInputButtonTitle : ''}
 						IconComponent={IoSearch}
 						onClick={() => onQuerySubmit(data)}
 					/>

@@ -26,6 +26,7 @@ export const PlaceListInput = ({
 	openCalendar,
 	closeList,
 	showPlaceList,
+	texts,
 }: PlaceListInputType) => {
 	const containerRef = useRef(null);
 
@@ -46,6 +47,7 @@ export const PlaceListInput = ({
 					values={values}
 					openCalendar={openCalendar}
 					closeList={closeList}
+					texts={texts}
 				/>
 			)}
 			<OptionContent>
@@ -64,6 +66,7 @@ export const PlaceListInput = ({
 					setPlaceData={setPlaceData}
 					openCalendar={openCalendar}
 					closeList={closeList}
+					texts={texts}
 				/>
 			)}
 		</OptionContainer>

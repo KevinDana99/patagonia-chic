@@ -13,6 +13,7 @@ export type SearchQueryType = {
 	places: [IPlace];
 	onQuerySubmit: Function;
 	showLocations: boolean;
+	texts: SearchQueryTextsType;
 };
 
 export type StateSearchQueryType = {
@@ -47,6 +48,7 @@ export type CalendarInputType = {
 	setFocused: React.Dispatch<SetStateAction<string>>;
 	closeCalendar: () => void;
 	sendData: () => void;
+	texts: SearchQueryTextsType;
 };
 
 export type PlaceListInputType = {
@@ -65,6 +67,7 @@ export type PlaceListInputType = {
 	closeList: () => void;
 	showPlaceList: boolean;
 	placeFilter?: string | undefined;
+	texts: SearchQueryTextsType;
 };
 
 export type PlaceListType = {
@@ -75,6 +78,7 @@ export type PlaceListType = {
 	values?: StateSearchQueryType;
 	placeFilter?: () => void;
 	showList?: boolean;
+	texts: SearchQueryTextsType;
 };
 
 export interface PlaceContainerType {
@@ -97,6 +101,7 @@ export type PlaceListMobileType = {
 	placeholder: string;
 	openCalendar: () => void;
 	closeList: () => void;
+	texts: SearchQueryTextsType;
 };
 
 export type CalendarMobileType = {
@@ -107,6 +112,7 @@ export type CalendarMobileType = {
 	calendarFocusedInput: string;
 	isMobile: boolean;
 	sendData: () => void;
+	texts: SearchQueryTextsType;
 };
 
 export type ListModalType = {
@@ -117,3 +123,16 @@ export type ListModalType = {
 export interface OptionContainerType {
 	isSelected: boolean;
 }
+
+type SearchQueryTextsType = {
+	placeListInputLabel: string;
+	placeListInputPlaceholder: string;
+	calendarInputStartDateLabel: string;
+	calendarInputEndDateLabel: string;
+	calendarInputSelectDate: string;
+	calendarInputButtonTitle: string;
+	mobileCalendarInputDateLabel: string;
+	mobileCalendarInputEndDateLabel: string;
+	mobileCalendarInputStartDateLabel: string;
+	placeListEmptyList: string;
+};
