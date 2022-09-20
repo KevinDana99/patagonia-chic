@@ -21,8 +21,11 @@ excursionCard.args = {
 	price: '$20.600',
 	currency: 'ars',
 	subPrice: '$27.800',
-	date: '04 septiembre',
+	date: '04 Septiembre',
 	isAddedToCart: false,
 	isAvaiable: false,
-	options: { countReservesWeek: 800, timeLatestReserve: new Date(2022, 8, 8) },
+	options: {
+		countReservesWeek: '800 veces reservado la ultima semana',
+		timeLatestReserve: 'Reservado hace 30 horas atras',
+	},
 };

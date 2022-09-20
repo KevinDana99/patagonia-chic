@@ -8,7 +8,7 @@ export type ExcursionCardType = {
 	subPrice?: string;
 	isAddedToCart?: boolean;
 	isAvaiable?: boolean;
-	options?: { countReservesWeek: number; timeLatestReserve: Date };
+	options?: { countReservesWeek: string; timeLatestReserve: string };
 };
 
 export type ExcursionCardStyleType = {

@@ -39,19 +39,6 @@ const ExcursionCard = ({
 	date,
 	options,
 }: ExcursionCardType) => {
-	const getTimeLatestReserve = () => {
-		const date = new Date().getTime();
-		const latestReserve = options?.timeLatestReserve
-			? options?.timeLatestReserve.getTime()
-			: date;
-		const diff = date - latestReserve;
-		const hours = Math.round(diff / (1000 * 60 * 60));
-		const min = Math.round(diff / (1000 * 60));
-
-		return min > 60 ? { time: hours, unit: 'H' } : { time: min, unit: 'M' };
-	};
-
-	const reserveTime = getTimeLatestReserve();
 	return (
 		<Container>
 			<Card hover={true}>
@@ -131,22 +118,14 @@ const ExcursionCard = ({
 				{options?.countReservesWeek && (
 					<BoxOption>
 						<CustomIcon name="group-circle" />
-						<Option>
-							{<b>{options.countReservesWeek}</b>} veces reservado la ultima
-							semana
-						</Option>
+						<Option> {options.countReservesWeek}</Option>
 					</BoxOption>
 				)}
 
 				{options?.timeLatestReserve && (
 					<BoxOption>
 						<CustomIcon name="ray-circle" />
-						<Option>
-							Reservado hace{' '}
-							{reserveTime.time +
-								(reserveTime.unit == 'H' ? ' horas ' : ' minutos ')}
-							atras
-						</Option>
+						<Option>{options.timeLatestReserve}</Option>
 					</BoxOption>
 				)}
 			</OptionContainer>
