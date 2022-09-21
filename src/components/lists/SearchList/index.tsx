@@ -34,7 +34,7 @@ const SearchList = ({
 	loading,
 	onItemClick,
 	fuseConfigs = defaultFuseOptions,
-	featuredElements = [],
+	featuredElements,
 	loadingComponent,
 	emptyStateText,
 	emptyStateComponent,
@@ -69,7 +69,7 @@ const SearchList = ({
 		const filteredList =
 			filteredResult.length > 0
 				? filteredResult.map((filteredPlace) => filteredPlace.item)
-				: featuredElements;
+				: featuredElements?.filter((item) => item.featured == true);
 
 		setListValue(filteredList as ListItemType[]);
 		query.length == 0 && setListValue(list);
