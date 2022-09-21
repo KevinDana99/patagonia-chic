@@ -17,6 +17,7 @@ const PrimaryButton = ({
 	disabled = false,
 	IconComponent,
 	className,
+	color,
 }: PrimaryButtonType) => {
 	disabled = disabled || loading;
 	return (
@@ -29,7 +30,7 @@ const PrimaryButton = ({
 				<ButtonPrimaryContent>
 					{IconComponent && <Icon component={<IconComponent />} />}
 					<ButtonPrimaryText>
-						<Text weight={'semi-bold'} color="#fff">
+						<Text weight={'semi-bold'} color={color || '#fff'}>
 							{title}
 						</Text>
 					</ButtonPrimaryText>
