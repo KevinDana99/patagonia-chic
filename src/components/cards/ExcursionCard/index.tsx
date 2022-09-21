@@ -1,5 +1,6 @@
 import React from 'react';
 import CustomIcon from '../../graphics/CustomIcon';
+import Text from '../../texts/Text';
 import {
 	Card,
 	ContainerImage,
@@ -72,8 +73,16 @@ const ExcursionCard = ({
 					)}
 					<Description>
 						<BoxTitle>
-							<SubTitle>{subTitle}</SubTitle>
-							<Title>{title}</Title>
+							<SubTitle>
+								<Text size={12.27} weight={'regular'} color={'#888888'}>
+									{subTitle}
+								</Text>
+							</SubTitle>
+							<Title>
+								<Text size={15.34} weight={'bold'}>
+									{title}
+								</Text>
+							</Title>
 						</BoxTitle>
 						<hr color="#D7D5D5" />
 						<BoxReserve>
@@ -90,23 +99,39 @@ const ExcursionCard = ({
 								!isAvaiable && (
 									<BoxPrice>
 										<Price>
-											{price} <Currency>{currency}</Currency>
+											<Text size={15.34} weight={'bold'}>
+												{price}
+											</Text>
+											<Currency>
+												<Text size={10} weight={'bold'}>
+													{currency}
+												</Text>
+											</Currency>
 										</Price>
 										<SubPrice>
-											{subPrice}
-											<Currency>{currency}</Currency>
+											<Text color="#888888" size={12.27} weight={'regular'}>
+												{subPrice}
+											</Text>
+
+											<Currency>
+												<Text color="#888888" size={10}>
+													{currency}
+												</Text>
+											</Currency>
 										</SubPrice>
 									</BoxPrice>
 								)
 							)}
 
 							<ButtonContainer>
-								{isAddedToCart && <ActiveButton title="Ver carrito" />}
+								{isAddedToCart && (
+									<ActiveButton title="Ver carrito" color={'#3b3b3b'} />
+								)}
 								{!isAddedToCart && !isAvaiable && (
 									<ButtonReserve title="Reservar" />
 								)}
 								{!isAddedToCart && isAvaiable && (
-									<ActiveButton title="Ver detalle" />
+									<ActiveButton title="Ver detalle" color={'#3b3b3b'} />
 								)}
 							</ButtonContainer>
 						</BoxReserve>
@@ -118,14 +143,18 @@ const ExcursionCard = ({
 				{options?.countReservesWeek && (
 					<BoxOption>
 						<CustomIcon name="group-circle" />
-						<Option> {options.countReservesWeek}</Option>
+						<Option>
+							<Text size={12}>{options.countReservesWeek}</Text>
+						</Option>
 					</BoxOption>
 				)}
 
 				{options?.timeLatestReserve && (
 					<BoxOption>
 						<CustomIcon name="ray-circle" />
-						<Option>{options.timeLatestReserve}</Option>
+						<Option>
+							<Text size={12}>{options.timeLatestReserve}</Text>
+						</Option>
 					</BoxOption>
 				)}
 			</OptionContainer>

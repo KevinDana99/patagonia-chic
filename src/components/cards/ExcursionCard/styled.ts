@@ -80,6 +80,7 @@ export const ButtonContainer = styled.div`
 
 export const ButtonReserve = styled(PrimaryButton)`
 	height: 38px;
+	max-width: 116px;
 `;
 
 export const ActiveTheme = '#3BC053';

@@ -24,6 +24,9 @@ excursionCard.args = {
 	date: '04 Septiembre',
 	isAddedToCart: false,
 	isAvaiable: false,
+	buttonDefaultText: 'Reservar',
+	buttonAddedToCartText: 'Ver carrito',
+	buttonAvaiableText: 'Ver detalle',
 	options: {
 		countReservesWeek: '800 veces reservado la ultima semana',
 		timeLatestReserve: 'Reservado hace 30 horas atras',
