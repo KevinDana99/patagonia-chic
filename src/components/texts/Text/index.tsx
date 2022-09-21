@@ -2,7 +2,6 @@ import React from 'react';
 import { TextPropsType } from './types';
 import fontsConstants from '../../../constants/fonts.json';
 import { StyledText } from './styled';
-import SFProTextGlobalStyle from './fontGlobalStyles/SFProText';
 
 const Text = ({
 	className,
@@ -12,22 +11,17 @@ const Text = ({
 	color = '#000',
 	weight = 'regular',
 	italic = false,
-}: TextPropsType) => {
-	return (
-		<>
-			<SFProTextGlobalStyle />
-			<StyledText
-				className={className}
-				fontFamily={fontFamily}
-				size={size}
-				color={color}
-				weight={weight}
-				italic={italic}
-			>
-				{children}
-			</StyledText>
-		</>
-	);
-};
+}: TextPropsType) => (
+	<StyledText
+		className={className}
+		fontFamily={fontFamily}
+		size={size}
+		color={color}
+		weight={weight}
+		italic={italic}
+	>
+		{children}
+	</StyledText>
+);
 
 export default Text;
