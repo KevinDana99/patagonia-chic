@@ -9,6 +9,10 @@ export type ExcursionCardType = {
 	isAddedToCart?: boolean;
 	isAvaiable?: boolean;
 	options?: { countReservesWeek: string; timeLatestReserve: string };
+	buttonDefaultText?: string;
+	buttonAddedToCartText?: string;
+	buttonAvaiableText?: string;
+	detailsAddedText?: string;
 };
 
 export type ExcursionCardStyleType = {

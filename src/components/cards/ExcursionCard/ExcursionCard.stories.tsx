@@ -27,6 +27,7 @@ excursionCard.args = {
 	buttonDefaultText: 'Reservar',
 	buttonAddedToCartText: 'Ver carrito',
 	buttonAvaiableText: 'Ver detalle',
+	detailsAddedText: 'Agregaste esta excursion a tu carrito',
 	options: {
 		countReservesWeek: '800 veces reservado la ultima semana',
 		timeLatestReserve: 'Reservado hace 30 horas atras',
