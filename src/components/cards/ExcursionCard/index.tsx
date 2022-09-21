@@ -39,6 +39,10 @@ const ExcursionCard = ({
 	isAvaiable,
 	date,
 	options,
+	buttonDefaultText,
+	buttonAddedToCartText,
+	buttonAvaiableText,
+	detailsAddedText,
 }: ExcursionCardType) => {
 	return (
 		<Container>
@@ -93,7 +97,11 @@ const ExcursionCard = ({
 										color={ActiveTheme}
 										size={20}
 									/>
-									<Details>Agregaste esta excursion a tu carrito</Details>
+									<Details>
+										<Text size={12.27} weight={'regular'} color={'#888888'}>
+											{detailsAddedText}
+										</Text>
+									</Details>
 								</DescriptionActive>
 							) : (
 								!isAvaiable && (
@@ -125,13 +133,16 @@ const ExcursionCard = ({
 
 							<ButtonContainer>
 								{isAddedToCart && (
-									<ActiveButton title="Ver carrito" color={'#3b3b3b'} />
+									<ActiveButton
+										title={buttonAddedToCartText}
+										color={'#3b3b3b'}
+									/>
 								)}
 								{!isAddedToCart && !isAvaiable && (
-									<ButtonReserve title="Reservar" />
+									<ButtonReserve title={buttonDefaultText} />
 								)}
 								{!isAddedToCart && isAvaiable && (
-									<ActiveButton title="Ver detalle" color={'#3b3b3b'} />
+									<ActiveButton title={buttonAvaiableText} color={'#3b3b3b'} />
 								)}
 							</ButtonContainer>
 						</BoxReserve>
