@@ -1,10 +1,11 @@
 import React from 'react';
 import SFProTextGlobalStyle from './fontGlobalStyles/SFProText'
+import './fontGlobalStyles/sfprotext.css';
 
 export const decorators = [
   (Story) => (
     <>
-			<SFProTextGlobalStyle />
+			{/* <SFProTextGlobalStyle /> */}
       <Story />
     </>
   ),

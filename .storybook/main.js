@@ -14,4 +14,5 @@ module.exports = {
 	features: {
 		previewMdx2: true,
 	},
+	staticDirs: ['./assets', './fontGlobalStyles'],
 };

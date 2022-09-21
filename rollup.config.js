@@ -8,7 +8,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import packageJson from './package.json';
 import css from 'rollup-plugin-import-css';
 import json from '@rollup/plugin-json';
-import url from '@rollup/plugin-url';
+import babel from '@rollup/plugin-babel';
 
 const styledComponentsTransformer = createStyledComponentsTransformer({
 	displayName: true,
@@ -30,6 +30,9 @@ export default [
 			},
 		],
 		plugins: [
+			babel({
+				exclude: 'node_modules/**',
+			}),
 			peerDepsExternal(),
 			resolve(),
 			commonjs(),
@@ -38,6 +41,7 @@ export default [
 				compilerOptions: {
 					declaration: true,
 					declarationDir: 'types',
+					outDir: './',
 				},
 				transformers: [
 					() => ({
@@ -48,10 +52,6 @@ export default [
 			terser(),
 			css(),
 			json(),
-			url({
-				include: ['**/*.otf'],
-				limit: Infinity,
-			}),
 		],
 		external: ['react', 'react-dom', 'styled-components'],
 	},
