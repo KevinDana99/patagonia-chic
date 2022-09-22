@@ -1,5 +1,7 @@
+import React from 'react';
+
 export type PrimaryCardType = {
-	children: JSX.Element | string;
+	children?: JSX.Element | string;
 	hover?: boolean;
 	className?: string;
 };

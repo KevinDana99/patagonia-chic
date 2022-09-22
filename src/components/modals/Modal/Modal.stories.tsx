@@ -21,7 +21,7 @@ Modals.args = {
 	visible: false,
 	closeOnTouchOutside: false,
 	title: 'Menu del almuerzo o cena en cueva',
-	renderOpenButton: false,
+	renderOpenButton: { title: 'Abrir modal' },
 	onClose: () => {
 		console.log('Cerrado');
 	},
@@ -30,7 +30,7 @@ Modals.args = {
 	},
 	coverImage:
 		'https://s3-sa-east-1.amazonaws.com/patagoniachic.com/assets/menu/img/Nativo.jpg',
-	Children: () => (
+	children: (
 		<>
 			<Section />
 		</>

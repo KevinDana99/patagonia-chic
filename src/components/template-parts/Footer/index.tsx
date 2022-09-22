@@ -11,11 +11,10 @@ import {
 	ContainerSectionsCommon,
 	Divider,
 } from './styled';
-import { getSectionList, icons } from './utils';
+import { icons } from './utils';
 import { deviceSize } from '../../../constants/devicesSizes';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { SectionSocial } from './SectionSocial';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
 const Footer = ({ language, places, texts }: FooterPropsType) => {
 	const isMobile = useMediaQuery(deviceSize.mobileL);
@@ -55,4 +54,4 @@ const Footer = ({ language, places, texts }: FooterPropsType) => {
 	);
 };
 
-export default withFontStyles(Footer);
+export default Footer;

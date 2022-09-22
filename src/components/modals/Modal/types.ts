@@ -1,13 +1,11 @@
-import React from 'react';
-
 export type ModalType = {
-	renderOpenButton?: boolean;
+	renderOpenButton?: { title: string };
+	children?: JSX.Element | string;
 	width?: string;
 	visible?: boolean;
 	title?: string;
 	coverImage?: string;
 	headerText?: string;
-	Children?: React.FC;
 	onClose?: () => void;
 	onOpen?: () => void;
 	closeOnTouchOutside?: boolean;
@@ -42,4 +40,9 @@ export type BoxModalTextType = {
 
 type ModalTextsType = {
 	buttonTitle: string;
+};
+
+export type ModalStyleType = {
+	width?: string;
+	animate?: boolean;
 };

@@ -8,6 +8,7 @@ import {
 	TextDiv,
 	CheckIcon,
 } from './styled';
+import Text from '../../texts/Text';
 
 const RadioButtonItem = ({
 	index,
@@ -31,7 +32,11 @@ const RadioButtonItem = ({
 				<IconDiv>
 					<CheckIcon />
 				</IconDiv>
-				<TextDiv>{item.label ? item.label : `Opcion ${index + 1}`}</TextDiv>
+				<TextDiv>
+					<Text size={17} weight={'regular'} color={'#333'}>
+						{item.label ? item.label : `Opcion ${index + 1}`}
+					</Text>
+				</TextDiv>
 			</StyledLabel>
 		</ContainerInput>
 	);

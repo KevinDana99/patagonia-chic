@@ -13,6 +13,7 @@ import {
 } from './styled';
 import { SectionLeftType, SectionType } from './types';
 import { SectionMobile } from './SectionMobile';
+import Text from '../../texts/Text';
 
 const SectionLeft = ({
 	logo,
@@ -32,16 +33,16 @@ const SectionLeft = ({
 				</DescriptionContainer>
 
 				<SocialMobileContainer>
-					{isTablet || isMobile
-						? sections.map((section: SectionType, index: number) => (
-								<SectionMobile {...section} key={index} />
-						  ))
-						: null}
+					{isTablet || isMobile ? <SectionMobile sections={sections} /> : null}
 				</SocialMobileContainer>
 			</LeftSideContainer>
 			<Language>
 				<WorldIcon />
-				<LanguageLabel>{`${language.label} - ${language.symbol} ${language.currency}`}</LanguageLabel>
+				<LanguageLabel>
+					<Text size={14} weight={'semi-bold'}>
+						{`${language.label} - ${language.symbol} ${language.currency}`}
+					</Text>
+				</LanguageLabel>
 			</Language>
 		</LeftSection>
 	);

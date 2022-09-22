@@ -8,6 +8,7 @@ import {
 	TextDiv,
 	CheckIcon,
 } from './styled';
+import Text from '../../texts/Text';
 
 const CheckboxItem = ({
 	index,
@@ -29,7 +30,11 @@ const CheckboxItem = ({
 			<IconDiv>
 				<CheckIcon />
 			</IconDiv>
-			<TextDiv>{label}</TextDiv>
+			<TextDiv>
+				<Text size={17} weight={'regular'} color={'#333'}>
+					{label}
+				</Text>
+			</TextDiv>
 		</StyledLabel>
 	</ContainerInput>
 );

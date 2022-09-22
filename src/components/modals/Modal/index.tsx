@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
+import Section from '../../../examples/modal/sections/Section';
 import SecondaryButton from '../../buttons/SecondaryButton';
+import Text from '../../texts/Text';
 import {
 	BoxModal,
 	BoxTitle,
@@ -20,7 +21,7 @@ const PrimaryModal = ({
 	renderOpenButton,
 	width,
 	headerText,
-	Children,
+	children,
 	closeAction,
 	closeOnTouchOutside,
 	coverImage,
@@ -49,12 +50,14 @@ const PrimaryModal = ({
 	}, [onOpen, state]);
 
 	const touchOutside = () => {
+		closeOnTouchOutside && closeAction && closeAction();
 		closeOnTouchOutside && close();
 	};
 
 	useEffect(() => {
-		setState({ ...state, visible });
-	}, [state, visible]);
+		setState({ ...state, visible, animate: visible });
+		visible && open();
+	}, [visible]);
 
 	return (
 		<>
@@ -71,31 +74,37 @@ const PrimaryModal = ({
 					}}
 				>
 					<BoxTop>
-						<BoxTitle>{title}</BoxTitle>
+						<BoxTitle>
+							<Text size={17}>{title}</Text>
+						</BoxTitle>
 						{!disableClose && (
 							<ButtonClose>
 								{<CloseIcon onClick={closeAction ? closeAction : close} />}
 							</ButtonClose>
 						)}
 					</BoxTop>
+
 					<BoxScroll>
 						{coverImage && (
 							<BoxHeader coverImage={coverImage}>
 								{headerText && (
 									<BoxHeaderText coverImage={coverImage}>
-										{headerText}
+										<Text color="white">{headerText}</Text>
 									</BoxHeaderText>
 								)}
 							</BoxHeader>
 						)}
 
 						{!coverImage && headerText && (
-							<BoxHeaderText>{headerText}</BoxHeaderText>
+							<BoxHeaderText>
+								<Text color="white">{headerText}</Text>
+							</BoxHeaderText>
 						)}
 
-						{Children && (
+						{children && (
 							<BoxChildren>
-								<Children />
+								{children}
+
 								<BoxDownModal />
 							</BoxChildren>
 						)}
@@ -106,4 +115,4 @@ const PrimaryModal = ({
 	);
 };
 
-export default withFontStyles(PrimaryModal);
+export default PrimaryModal;

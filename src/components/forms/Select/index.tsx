@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
+import Text from '../../texts/Text';
 import {
 	Container,
 	SelectStyled,
@@ -49,9 +49,13 @@ const Select: FC<SelectPropsType> = ({
 
 			<IconStyled aria-hidden="true">&nbsp;</IconStyled>
 
-			<SpanTitleStyled>{label}</SpanTitleStyled>
+			<SpanTitleStyled>
+				<Text size={15} color={'#777'} weight={'regular'}>
+					{label}
+				</Text>
+			</SpanTitleStyled>
 		</Container>
 	);
 };
 
-export default withFontStyles(Select);
+export default Select;

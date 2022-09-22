@@ -10,8 +10,6 @@ import { IoCloseOutline as CloseI } from 'react-icons/io5';
 const paddingSpace = '3.5%';
 
 export const BoxModal = styled.div<BoxModalType>`
-	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -33,11 +31,13 @@ export const Container = styled.div<ModalContainerType>`
 	width: 100%;
 	min-width: 350px;
 	max-width: ${(props) => (props.width ? props.width : '570px')};
-	min-height: 500px;
+	height: 500px;
 	height: calc(100% - 120px);
 	border-radius: 12px;
 	position: absolute;
+	overflow: hidden;
 	background-color: #fff;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -45,7 +45,7 @@ export const Container = styled.div<ModalContainerType>`
 	@media (max-width: 500px) {
 		margin-top: 120px;
 		transform: ${(props) =>
-			props.animate ? 'translateY(20px)' : 'translateY(600px)'};
+			props.animate ? 'translateY(0px)' : 'translateY(600px)'};
 		transition: all 400ms ease;
 	}
 `;
@@ -68,6 +68,7 @@ export const BoxTop = styled.div`
 export const BoxScroll = styled.div`
 	overflow-y: scroll;
 	scroll-behavior: smooth;
+	height: 600px;
 
 	&::-webkit-scrollbar {
 		width: 9px;
@@ -108,7 +109,7 @@ export const CloseIcon = styled(CloseI)`
 
 export const BoxHeader = styled.div<BoxHeaderType>`
 	width: 100%;
-	height: 100%;
+	min-height: 280px;
 	max-height: 280px;
 	background-image: ${({ coverImage }) =>
 		coverImage ? `url(${coverImage})` : 'none'};
@@ -150,4 +151,5 @@ export const BoxDownModal = styled.div`
 	bottom: 0px;
 	right: 0.05%;
 	border-radius: 0em 0em 12px 12px;
+	overflow: hidden;
 `;

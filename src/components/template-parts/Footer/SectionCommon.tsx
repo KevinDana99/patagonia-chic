@@ -1,4 +1,5 @@
 import React from 'react';
+import Text from '../../texts/Text';
 import {
 	ContainerSectionCommon,
 	LinkStyled,
@@ -12,10 +13,16 @@ const SectionCommon = ({ title, label }: SectionType) => {
 	return (
 		<ContainerSectionCommon>
 			<DesktopSectionCommon>
-				<SectionTitle>{title}</SectionTitle>
+				<SectionTitle>
+					<Text size={15} weight={'semi-bold'}>
+						{title}
+					</Text>
+				</SectionTitle>
 				{label.map((item, index) => (
 					<LinkStyled href={item.url} key={index} target={item.target}>
-						<SectionLabel>{item.label}</SectionLabel>
+						<SectionLabel>
+							<Text size={15}>{item.label}</Text>
+						</SectionLabel>
 					</LinkStyled>
 				))}
 			</DesktopSectionCommon>

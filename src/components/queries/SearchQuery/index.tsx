@@ -1,38 +1,52 @@
-import React, { useState } from 'react';
-import PrimaryButton from '../../buttons/PrimaryButton';
-import { CalendarInput } from './CalendarInput';
+import React, { useEffect, useRef, useState } from 'react';
+
+import { CalendarInput } from './inputs/CalendarInput/CalendarInput';
 import {
 	ButtonContainer,
+	ButtonSearch,
+	SearchIcon,
 	SearchQueryContainer,
-	SearchQueryOptions,
+	ContainerModal,
 } from './styled';
 import { IPlace, SearchQueryType, StateSearchQueryType } from './types';
-import { IoSearch } from 'react-icons/io5';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-
-import { PlaceListInput } from './PlaceListInput';
+import { PlaceListInput } from './inputs/PlaceListInput/PlaceListInput';
 import Fuse from 'fuse.js';
 import fusePlaceListOptions from '../../../constants/fuseOptions.json';
 import useMediaQuery from '../../../hooks/useMediaQuery';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
+import Modal from '../../modals/Modal';
+import CalendarMobile from './mobile/wrappers/CalendarMobile';
+import SearchList from '../../lists/SearchList';
 
 const SearchQuery = ({
-	places,
+	list,
 	onQuerySubmit,
 	showLocations = true,
-	texts,
+	labelEndDate,
+	labelPlace,
+	labelStartDate,
+	placeholderDate,
+	placeholderPlace,
+	titleSearchButton,
 }: SearchQueryType) => {
 	const [data, setData] = useState<StateSearchQueryType>({
 		place: null,
 		startDate: null,
 		endDate: null,
 	});
-	const [placeList, setPlaceList] = useState(places);
+	const [placeList, setPlaceList] = useState(list);
 	const [modal, setModal] = useState(false);
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
+	const [showMobilePlaceList, setShowMobilePlaceList] = useState(false);
+	const [showMobileCalendar, setShowMobileCalendar] = useState(false);
 	const [calendarFocusedInput, setCalendarFocusedInput] = useState('startDate');
+	const [disableSearch, setDisableSearch] = useState({
+		place: false,
+		startDate: false,
+		endDate: false,
+	});
 
 	const clearDates = () => {
 		setData({ ...data, startDate: null, endDate: null });
@@ -40,12 +54,8 @@ const SearchQuery = ({
 		setCalendarFocusedInput('startDate');
 	};
 
-	const openCloseModal = () => {
-		setModal(!modal);
-	};
-
 	const filterPlaceList = (query: string) => {
-		const fusePlaceList = new Fuse(places, fusePlaceListOptions);
+		const fusePlaceList = new Fuse(list, fusePlaceListOptions);
 		const filteredResult = fusePlaceList.search(query);
 		const filteredList =
 			filteredResult.length > 0
@@ -57,16 +67,64 @@ const SearchQuery = ({
 
 	const isMobile = useMediaQuery('(max-width: 850px)');
 
+	const validateSearch = () => {
+		if (
+			data?.place?.name == null ||
+			data?.place?.name == '' ||
+			data?.startDate?.name == null ||
+			data?.startDate?.name == '' ||
+			data?.endDate?.name == null ||
+			data?.endDate?.name == ''
+		) {
+			setDisableSearch({
+				...disableSearch,
+				place: !data.place?.name ? true : false,
+				startDate: !data.startDate?.name ? true : false,
+				endDate: !data.endDate?.name ? true : false,
+			});
+
+			return false;
+		} else {
+			return true;
+		}
+	};
+
+	useEffect(() => {
+		setDisableSearch({
+			...disableSearch,
+			startDate: false,
+		});
+	}, [data.startDate]);
+
+	useEffect(() => {
+		setDisableSearch({
+			...disableSearch,
+			endDate: false,
+		});
+	}, [data.endDate]);
+
+	useEffect(() => {
+		setDisableSearch({
+			...disableSearch,
+			place: false,
+		});
+	}, [data.place]);
+
 	return (
-		<SearchQueryContainer>
-			<SearchQueryOptions>
+		<>
+			<SearchQueryContainer>
 				{showLocations && (
 					<PlaceListInput
-						label={texts.placeListInputLabel}
-						placeholder={texts.placeListInputPlaceholder}
+						showCalendar={showCalendar}
+						closeModal={() => setModal(false)}
+						setDisableSearch={setDisableSearch}
+						disableSearch={disableSearch.place}
+						label={labelPlace}
+						placeholder={placeholderPlace}
 						onClick={() => {
 							setShowPlaceList(true);
-							openCloseModal();
+							setShowMobilePlaceList(true);
+							isMobile ? setModal(true) : setModal(false);
 							setCalendarFocusedInput('startDate');
 						}}
 						values={data}
@@ -74,7 +132,7 @@ const SearchQuery = ({
 							setData({ ...data, place: { name: '' } });
 							setShowPlaceList(true);
 							setShowCalendar(false);
-							setPlaceList(places);
+							setPlaceList(list);
 						}}
 						isSelected={showPlaceList}
 						inputOnChange={(e) => {
@@ -100,19 +158,13 @@ const SearchQuery = ({
 							setShowPlaceList(false);
 						}}
 						showPlaceList={showPlaceList}
-						texts={texts}
 					/>
 				)}
 
 				<CalendarInput
-					labels={[
-						texts.calendarInputStartDateLabel,
-						texts.calendarInputEndDateLabel,
-					]}
-					titles={[
-						texts.calendarInputSelectDate,
-						texts.calendarInputSelectDate,
-					]}
+					disableSearch={disableSearch}
+					labels={[labelStartDate, labelEndDate]}
+					titles={[placeholderDate, placeholderDate]}
 					values={data}
 					clearData={clearDates}
 					onClick={() => {
@@ -132,19 +184,68 @@ const SearchQuery = ({
 					data={data}
 					setFocused={setCalendarFocusedInput}
 					closeCalendar={() => setShowCalendar(false)}
+					openCalendar={() => {
+						setShowPlaceList(false);
+						setShowCalendar(true);
+					}}
 					sendData={() => onQuerySubmit(data)}
-					texts={texts}
 				></CalendarInput>
 				<ButtonContainer>
-					<PrimaryButton
-						title={!isMobile ? texts.calendarInputButtonTitle : ''}
-						IconComponent={IoSearch}
-						onClick={() => onQuerySubmit(data)}
+					<ButtonSearch
+						title={!isMobile ? titleSearchButton : ''}
+						IconComponent={SearchIcon}
+						onClick={() => {
+							const validate = validateSearch();
+							validate && onQuerySubmit(data);
+						}}
 					/>
 				</ButtonContainer>
-			</SearchQueryOptions>
-		</SearchQueryContainer>
+			</SearchQueryContainer>
+
+			<Modal
+				visible={isMobile && modal ? true : false}
+				closeAction={() => setModal(false)}
+				closeOnTouchOutside={true}
+			>
+				<ContainerModal>
+					{showMobilePlaceList ? (
+						<SearchList
+							search={true}
+							list={placeList}
+							onChangeSelect={setData}
+							selectedAction={(item) => {
+								setData({ ...data, place: item });
+								setShowMobilePlaceList(false);
+								setShowMobileCalendar(true);
+							}}
+							searchPlaceHolder={placeholderPlace}
+						/>
+					) : (
+						<CalendarMobile
+							closeList={() => {
+								setShowMobilePlaceList(false);
+							}}
+							setDates={setData}
+							data={data}
+							setCalendarFocusedInput={setCalendarFocusedInput}
+							calendarFocusedInput={calendarFocusedInput}
+							isMobile={isMobile}
+							sendData={() => {
+								const validate = validateSearch();
+								validate && onQuerySubmit(data);
+							}}
+							labelEndDate={labelEndDate}
+							labelPlace={labelPlace}
+							labelStartDate={labelStartDate}
+							placeholderDate={placeholderDate}
+							placeholderPlace={placeholderPlace}
+							titleSearchButton={titleSearchButton}
+						/>
+					)}
+				</ContainerModal>
+			</Modal>
+		</>
 	);
 };
 
-export default withFontStyles(SearchQuery);
+export default SearchQuery;

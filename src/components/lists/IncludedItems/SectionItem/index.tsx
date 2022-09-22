@@ -1,4 +1,5 @@
 import React from 'react';
+import Text from '../../../texts/Text';
 import {
 	Container,
 	Requirements,
@@ -21,13 +22,27 @@ const SectionItem = ({ title, subTitle, included }: SectionItemType) => {
 
 			{included.status ? (
 				<SectionTitle>
-					<Title>{title}</Title>
+					<Title>
+						<Text size={12} weight={'regular'} color={'#000'}>
+							{title}
+						</Text>
+					</Title>
 					{subTitle && <div>-</div>}
-					{subTitle && <Requirements>{subTitle}</Requirements>}
+					{subTitle && (
+						<Requirements>
+							<Text size={12} weight={'regular'} color="#888">
+								{subTitle}
+							</Text>
+						</Requirements>
+					)}
 				</SectionTitle>
 			) : (
 				<NotIncludeContainer>
-					<Title>{title}</Title>
+					<Title>
+						<Text size={12} color={'#000000'} weight={'regular'}>
+							{title}
+						</Text>
+					</Title>
 
 					{included.details && (
 						<a href={included.details.target}>

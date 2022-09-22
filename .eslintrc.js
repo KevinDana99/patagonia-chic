@@ -28,6 +28,7 @@ module.exports = {
 	},
 	rules: {
 		'no-use-before-define': 'off',
+		'no-extra-boolean-cast': 'off',
 		'@typescript-eslint/ban-types': 'off',
 		'@typescript-eslint/prefer-as-const': 'off',
 		'@typescript-eslint/no-use-before-define': 'error',
