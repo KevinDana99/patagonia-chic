@@ -65,4 +65,16 @@ SearchQuery.args = {
 		},
 	],
 	onQuerySubmit: (data) => console.log('data', data),
+	texts: {
+		placeListInputLabel: 'Lugar',
+		placeListInputPlaceholder: '¿A dónde vas?',
+		calendarInputStartDateLabel: 'Fecha partida',
+		calendarInputEndDateLabel: 'Fechar llegada',
+		calendarInputSelectDate: 'Seleccione fecha',
+		calendarInputButtonTitle: 'Buscar Excursiones',
+		mobileCalendarInputDateLabel: 'Lugar',
+		mobileCalendarInputEndDateLabel: 'Llegada',
+		mobileCalendarInputStartDateLabel: 'Partida',
+		placeListEmptyList: 'No se encontraron resultados para',
+	},
 };

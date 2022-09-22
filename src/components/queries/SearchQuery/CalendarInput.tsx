@@ -31,6 +31,7 @@ export const CalendarInput = ({
 	setFocused,
 	closeCalendar,
 	sendData,
+	texts,
 }: CalendarInputType) => {
 	const calendarRef = useRef(null);
 	useOutsideClick(calendarRef, outsideClick);
@@ -46,6 +47,7 @@ export const CalendarInput = ({
 					isMobile={isMobile}
 					calendarFocusedInput={calendarFocusedInput}
 					sendData={sendData}
+					texts={texts}
 				/>
 			)}
 			<CalendarDesktopContainer>

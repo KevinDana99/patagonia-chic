@@ -12,10 +12,11 @@ const PlaceListMobile = ({
 	placeholder,
 	openCalendar,
 	closeList,
+	texts,
 }: PlaceListMobileType) => {
 	return (
 		<ListModal closeModal={closeList}>
-			<MobileLabel>{'Lugar'}</MobileLabel>
+			<MobileLabel>{texts.placeListInputLabel}</MobileLabel>
 			<MobileInput
 				type="text"
 				placeholder={placeholder}
@@ -27,6 +28,7 @@ const PlaceListMobile = ({
 				setPlaceData={setPlaceData}
 				openCalendar={openCalendar}
 				closeList={closeList}
+				texts={texts}
 			/>
 		</ListModal>
 	);

@@ -15,7 +15,7 @@ export const StyledText = styled.span<StyledTextPropsType>`
 	font-family: ${({ fontFamily }) => fontFamily},
 		${fontsConstants.defaultFontName};
 	font-size: ${({ size }) => size}px;
-	font-weight: ${({ weight }) => fontWeightsMap[weight]};
+	font-weight: ${({ weight }) => fontWeightsMap[`${weight}`]};
 	color: ${({ color }) => color};
 	font-style: ${({ italic }) => (italic ? 'italic' : 'normal')};
 `;

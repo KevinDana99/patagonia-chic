@@ -20,6 +20,7 @@ export const PlaceList = ({
 	closeList,
 	values,
 	placeFilter,
+	texts,
 }: PlaceListType) => {
 	const [showCurrentPosition, setShowCurrentPosition] =
 		useState<boolean>(false);
@@ -112,7 +113,7 @@ export const PlaceList = ({
 			{places.length === 0 && (
 				<EmptyListContainer>
 					<EmptyMessage>
-						{'No se encontraron resultados para'}
+						{texts.placeListEmptyList}
 						<PlaceFilter>{`"${placeFilter}"`}</PlaceFilter>
 					</EmptyMessage>
 				</EmptyListContainer>

@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import CheckboxItem from './CheckboxItem';
 import {

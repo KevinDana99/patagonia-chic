@@ -21,7 +21,6 @@ import {
 } from './styled';
 import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Logo from '../../logos/Logo';
-import { sidebarTexts } from './sidebarTexts';
 import { LanguageLabel } from '../Footer/styled';
 
 const Sidebar = ({
@@ -29,6 +28,7 @@ const Sidebar = ({
 	activeSidebar,
 	mapToViews,
 	language,
+	texts,
 }: SideBarType) => {
 	const [viewStack, setViewStack] = useState<ViewType>({
 		views: [],
@@ -64,7 +64,7 @@ const Sidebar = ({
 							) : (
 								<ButtonBack onClick={back}>
 									<IconBack />
-									{sidebarTexts.goBack}
+									{texts.goBack}
 								</ButtonBack>
 							)}
 							<CloseIconContainer>

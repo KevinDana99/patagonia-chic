@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
 	NavBarContainer,
@@ -24,6 +24,7 @@ const Navbar = ({
 	onClickMenu,
 	onClickCart,
 	onClickHelp,
+	texts,
 }: NavbarType) => {
 	const [scrollStatus, setScrollStatus] = useState({
 		activeNavBar: false,
@@ -46,7 +47,7 @@ const Navbar = ({
 
 		window.addEventListener('scroll', listenScroll);
 		return () => window.removeEventListener('scroll', listenScroll);
-	}, []);
+	}, [scrollStatus]);
 
 	const { background, color } = themesMap(scrollStatus.theme);
 
@@ -61,7 +62,7 @@ const Navbar = ({
 			<MenuContainer>
 				{!isMobile && (
 					<ItemMenuContainer onClick={onClickHelp}>
-						<MenuItemText colorTheme={color}>Ayuda</MenuItemText>
+						<MenuItemText colorTheme={color}>{texts.helpOption}</MenuItemText>
 					</ItemMenuContainer>
 				)}
 				<ItemMenuContainer onClick={onClickCart}>

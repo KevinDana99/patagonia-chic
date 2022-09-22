@@ -12,7 +12,6 @@ import {
 	DescriptionContainer,
 } from './styled';
 import { SectionLeftType, SectionType } from './types';
-import { footerTexts } from './footerTexts';
 import { SectionMobile } from './SectionMobile';
 
 const SectionLeft = ({
@@ -21,14 +20,15 @@ const SectionLeft = ({
 	isMobile,
 	sections,
 	isTablet,
+	texts,
 }: SectionLeftType) => {
 	return (
 		<LeftSection>
 			<LeftSideContainer>
 				<DescriptionContainer>
 					<Logo {...logo} />
-					<Description>{footerTexts.description}</Description>
-					<Direction>{footerTexts.direction}</Direction>
+					<Description>{texts.description}</Description>
+					<Direction>{texts.direction}</Direction>
 				</DescriptionContainer>
 
 				<SocialMobileContainer>

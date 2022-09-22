@@ -41,4 +41,7 @@ sidebar.args = {
 		symbol: '$',
 		currency: 'ARS',
 	},
+	texts: {
+		goBack: 'Atrás',
+	},
 };
