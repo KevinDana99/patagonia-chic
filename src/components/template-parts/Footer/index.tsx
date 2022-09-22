@@ -16,9 +16,11 @@ import { deviceSize } from '../../../constants/devicesSizes';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { SectionSocial } from './SectionSocial';
 
-const Footer = ({ language, footerTexts, sections }: FooterPropsType) => {
+const Footer = ({ language, places, texts }: FooterPropsType) => {
 	const isMobile = useMediaQuery(deviceSize.mobileL);
 	const isTablet = useMediaQuery(deviceSize.tablet);
+
+	const sections = getSectionList(places, texts);
 
 	return (
 		<Container>
@@ -29,7 +31,7 @@ const Footer = ({ language, footerTexts, sections }: FooterPropsType) => {
 					sections={sections}
 					isMobile={isMobile}
 					isTablet={isTablet}
-					footerTexts={footerTexts}
+					texts={texts}
 				/>
 				<ContainerSectionsCommon>
 					{sections.map((item, index) => (
@@ -47,7 +49,7 @@ const Footer = ({ language, footerTexts, sections }: FooterPropsType) => {
 				</IconsMovil>
 			</ContainerIcons>
 			<Divider />
-			<SectionSocial footerTexts={footerTexts} />
+			<SectionSocial texts={texts} />
 		</Container>
 	);
 };

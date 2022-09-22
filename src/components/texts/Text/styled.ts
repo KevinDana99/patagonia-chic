@@ -17,7 +17,7 @@ export const StyledText = styled.span<StyledTextPropsType>`
 		BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue',
 		'Lucida Grande', sans-serif;
 	font-size: ${({ size }) => size}px;
-	font-weight: ${({ weight }) => fontWeightsMap[weight]};
+	font-weight: ${({ weight }) => fontWeightsMap[`${weight}`]};
 	color: ${({ color }) => color};
 	font-style: ${({ italic }) => (italic ? 'italic' : 'normal')};
 `;

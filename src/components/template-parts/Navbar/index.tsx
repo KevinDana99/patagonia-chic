@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
 	NavBarContainer,
@@ -20,10 +20,11 @@ import Text from '../../texts/Text';
 
 const Navbar = ({
 	cartProductCount,
+	onClickLogo,
 	onClickMenu,
 	onClickCart,
 	onClickHelp,
-	linkHelpText,
+	texts,
 }: NavbarType) => {
 	const [scrollStatus, setScrollStatus] = useState({
 		activeNavBar: false,
@@ -33,30 +34,26 @@ const Navbar = ({
 
 	const isMobile = useMediaQuery(deviceSize.mobileL);
 
-	const listenScroll = useCallback(() => {
-		if (typeof window === 'undefined') return;
-
-		const scroll = window?.scrollY;
-
-		setScrollStatus({
-			...scrollStatus,
-			scrolling: scroll,
-			theme: scroll > 0 ? 'light' : 'transparent',
-		});
-	}, [scrollStatus]);
-
 	useEffect(() => {
-		if (typeof window === 'undefined') return;
+		const listenScroll = () => {
+			const scroll = window.scrollY;
+
+			setScrollStatus({
+				...scrollStatus,
+				scrolling: scroll,
+				theme: scroll > 0 ? 'light' : 'transparent',
+			});
+		};
 
 		window.addEventListener('scroll', listenScroll);
 		return () => window.removeEventListener('scroll', listenScroll);
-	}, [listenScroll]);
+	}, [scrollStatus]);
 
 	const { background, color } = themesMap(scrollStatus.theme);
 
 	return (
 		<NavBarContainer backgroundTheme={background} colorTheme={color}>
-			<LogoContainer>
+			<LogoContainer onClick={onClickLogo}>
 				<Logo
 					size={125}
 					theme={scrollStatus.theme === 'transparent' ? 'light' : 'color'}
@@ -67,16 +64,18 @@ const Navbar = ({
 					<ItemMenuContainer onClick={onClickHelp}>
 						<MenuItemText colorTheme={color}>
 							<Text size={15} weight={'semi-bold'} color={color}>
-								{linkHelpText}
+								{texts.helpOption}
 							</Text>
 						</MenuItemText>
 					</ItemMenuContainer>
 				)}
 				<ItemMenuContainer onClick={onClickCart}>
 					<CartIcon size={25} colorTheme={color} />
-					<CartStatus>
-						<CartCount>{cartProductCount}</CartCount>
-					</CartStatus>
+					{cartProductCount && cartProductCount > 0 ? (
+						<CartStatus>
+							<CartCount>{cartProductCount}</CartCount>
+						</CartStatus>
+					) : null}
 				</ItemMenuContainer>
 				<ItemMenuContainer onClick={onClickMenu}>
 					<SidebarMenuIcon size={25} colorTheme={color} />

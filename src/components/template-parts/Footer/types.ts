@@ -19,17 +19,7 @@ export type SectionLeftType = {
 		)[];
 	}[];
 	isTablet: boolean;
-	footerTexts: FooterTextInterface;
-};
-
-export type SectionMobileType = {
-	sections: {
-		title: string;
-		label: (
-			| { label: string; url: string; target?: undefined }
-			| { label: string; url: string; target: string }
-		)[];
-	}[];
+	texts: FooterTextsType;
 };
 
 export type LabelLinkType = {
@@ -53,28 +43,28 @@ export type PlaceType = {
 	url: string;
 };
 
-export interface FooterTextInterface {
+export type FooterPropsType = {
+	language: LanguageType;
+	places: [PlaceType];
+	texts: FooterTextsType;
+};
+
+export type FooterTextsType = {
 	description: string;
 	direction: string;
 	copyrightMessage: string;
 	helpCenterLabel: string;
 	cancellationPolicesLabel: string;
 	termsAndConditionsLabel: string;
-}
-
-export type FooterSectionSocialType = {
-	footerTexts: FooterTextInterface;
+	helpTitle: string;
+	destinyTitle: string;
+	usefulLinks: string;
+	paymentMethodsAndPromotions: string;
+	excursionMap: string;
+	about: string;
+	downloadExcursionCatalog: string;
 };
 
-export type FooterPropsType = {
-	language: LanguageType;
-	places: [PlaceType];
-	footerTexts: FooterTextInterface;
-	sections: {
-		title: string;
-		label: (
-			| { label: string; url: string; target?: undefined }
-			| { label: string; url: string; target: string }
-		)[];
-	}[];
+export type SectionSocialType = {
+	texts: FooterTextsType;
 };

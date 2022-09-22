@@ -15,7 +15,7 @@ import {
 	BoxHeaderText,
 	BoxDownModal,
 } from './styled';
-import { ModalType } from './types';
+import { ModalStateType, ModalType } from './types';
 
 const PrimaryModal = ({
 	renderOpenButton,
@@ -30,8 +30,9 @@ const PrimaryModal = ({
 	onOpen,
 	title,
 	visible = false,
+	texts,
 }: ModalType) => {
-	const [state, setState] = useState<ModalType>({
+	const [state, setState] = useState<ModalStateType>({
 		visible,
 		closeOnTouchOutside,
 		animate: false,
@@ -61,7 +62,7 @@ const PrimaryModal = ({
 	return (
 		<>
 			{renderOpenButton && (
-				<SecondaryButton title={renderOpenButton.title} onClick={open} />
+				<SecondaryButton title={texts.buttonTitle} onClick={open} />
 			)}
 
 			<BoxModal visible={state.visible} onClick={touchOutside}>

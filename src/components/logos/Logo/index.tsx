@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Container } from './styled';
 import { LogoType } from './types';
 import LogoColor from './components/LogoColor';

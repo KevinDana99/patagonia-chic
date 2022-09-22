@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { ItemMenuType, NavbarContainerType, NavbarIconType } from './types';
+import {
+	ItemMenuType,
+	LogoClickType,
+	NavbarContainerType,
+	NavbarIconType,
+} from './types';
 import { HiOutlineShoppingBag, HiMenu } from 'react-icons/hi';
 import { deviceSize } from '../../../constants/devicesSizes';
 
@@ -21,7 +26,7 @@ export const NavBarContainer = styled.div<NavbarContainerType>`
 	}
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.div<LogoClickType>`
 	cursor: pointer;
 	@media ${deviceSize.mobileL} {
 		margin-left: 20px;

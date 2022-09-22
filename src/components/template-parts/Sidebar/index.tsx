@@ -20,7 +20,6 @@ import {
 	WorldIcon,
 } from './styled';
 import Logo from '../../logos/Logo';
-import { sidebarTexts } from './sidebarTexts';
 import { LanguageLabel } from '../Footer/styled';
 import Text from '../../texts/Text';
 
@@ -29,6 +28,7 @@ const Sidebar = ({
 	activeSidebar,
 	mapToViews,
 	language,
+	texts,
 }: SideBarType) => {
 	const [viewStack, setViewStack] = useState<ViewType>({
 		views: [],
@@ -53,7 +53,7 @@ const Sidebar = ({
 
 	return (
 		<>
-			<BoxBackground activeSidebar={activeSidebar} onClick={closeAction}>
+			<BoxBackground activeSidebar={activeSidebar} onClick={() => closeAction}>
 				<SidebarContainer activeSidebar={activeSidebar}>
 					<SidebarHeader>
 						<SidebarHeaderContent>
@@ -64,7 +64,7 @@ const Sidebar = ({
 							) : (
 								<ButtonBack onClick={back}>
 									<IconBack />
-									{sidebarTexts.goBack}
+									{texts.goBack}
 								</ButtonBack>
 							)}
 							<CloseIconContainer>

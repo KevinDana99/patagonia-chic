@@ -27,7 +27,7 @@ Footer.args = {
 			url: 'https://www.patagoniachic.com/el-calafate.html',
 		},
 	],
-	footerTexts: {
+	texts: {
 		description:
 			'Tenemos la excursion perfecta para vos en El Calafate. Reserva al mejor precio y de forma fácil',
 		direction: 'Av. del Libertador 932, Z9405 El Calafate, Santa Cruz',
@@ -35,55 +35,12 @@ Footer.args = {
 		helpCenterLabel: 'Centro de ayuda',
 		cancellationPolicesLabel: 'Política de cancelación',
 		termsAndConditionsLabel: 'Términos y condiciones',
+		helpTitle: 'Ayuda',
+		destinyTitle: 'Destino',
+		usefulLinks: 'Enlaces útiles',
+		paymentMethodsAndPromotions: 'Medios de pago y promociones',
+		excursionMap: 'Mapa de excursiones',
+		about: 'Quienes somos',
+		downloadExcursionCatalog: 'Descargue gratis catalogo de excursiones',
 	},
-	sections: [
-		{
-			title: 'Ayuda',
-			label: [
-				{
-					label: 'Centro de ayuda',
-					url: 'https://www.patagoniachic.com/contacto/',
-				},
-				{
-					label: 'Politicas de cancelacion',
-					url: '',
-				},
-				{
-					label: 'Terminos y condiciones',
-					url: 'https://www.patagoniachic.com/terminos-y-condiciones/',
-					target: '_blank',
-				},
-			],
-		},
-		{
-			title: 'Destinos',
-			label: [
-				{
-					label: 'El Calafate',
-					url: '',
-				},
-			],
-		},
-		{
-			title: 'Enlaces útiles',
-			label: [
-				{
-					label: 'Medios de pago y promociones',
-					url: 'https://www.patagoniachic.com/medios-de-pago/',
-				},
-				{
-					label: 'Mapa de excursiones',
-					url: 'https://www.patagoniachic.com/mapa-excursiones/',
-				},
-				{
-					label: 'Quienes somos',
-					url: 'https://www.patagoniachic.com/quienes-somos/',
-				},
-				{
-					label: 'Descargue gratis catalogo de excursiones',
-					url: 'https://www.patagoniachic.com/el-calafate/excursiones/catalogo-de-excursiones/',
-				},
-			],
-		},
-	],
 };

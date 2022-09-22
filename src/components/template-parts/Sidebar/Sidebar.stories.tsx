@@ -7,7 +7,9 @@ import mapToViews from '../../../examples/sidebar/views.map';
 export default {
 	title: 'components/template-parts',
 	component: Sidebar,
-	argTypes: {},
+	argTypes: {
+		closeAction: { action: 'closed sidebar' },
+	},
 } as Meta<typeof Sidebar>;
 
 const template: Story<SideBarType> = (args) => (
@@ -38,5 +40,8 @@ sidebar.args = {
 		label: 'Portugués',
 		symbol: '$',
 		currency: 'ARS',
+	},
+	texts: {
+		goBack: 'Atrás',
 	},
 };
