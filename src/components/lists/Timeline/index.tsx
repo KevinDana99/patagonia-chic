@@ -1,10 +1,9 @@
 import React from 'react';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import ItemTimeline from './ItemTimeline';
 import { Container } from './styled';
 import { TimelineType } from './types';
 
-const PrimaryTimeline = ({ steps }: TimelineType) => {
+const Timeline = ({ steps }: TimelineType) => {
 	return (
 		<Container>
 			{steps.map((step, index) => {
@@ -21,7 +20,5 @@ const PrimaryTimeline = ({ steps }: TimelineType) => {
 		</Container>
 	);
 };
-
-const Timeline = withFontStyles(PrimaryTimeline);
 
 export default Timeline;

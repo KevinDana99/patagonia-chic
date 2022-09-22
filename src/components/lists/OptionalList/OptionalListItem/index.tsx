@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { withFontStyles } from '../../../../helpers/hocs/withFontStyles';
 import CounterSelect from '../../../forms/CounterSelect';
 import {
 	CheckIcon,
@@ -115,4 +114,4 @@ const OptionalListItem = ({
 	);
 };
 
-export default withFontStyles(OptionalListItem);
+export default OptionalListItem;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import {
 	CounterButton,
 	CounterButtons,
@@ -35,4 +34,4 @@ const CounterSelect = ({ onChange, texts, value }: CounterSelectType) => (
 	</CounterSelectContainer>
 );
 
-export default withFontStyles(CounterSelect);
+export default CounterSelect;
