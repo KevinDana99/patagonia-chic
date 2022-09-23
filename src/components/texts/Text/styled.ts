@@ -18,8 +18,8 @@ export const StyledText = styled.span<StyledTextPropsType>`
 		${fontsConstants.defaultFontName}, -apple-system, system-ui,
 		BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue',
 		'Lucida Grande', sans-serif;
-	font-size: ${({ size }) => size}px;
-	font-weight: ${({ weight }) => fontWeightsMap[`${weight}`]};
-	color: ${({ color }) => color};
+	${({ size }) => (size ? `font-size: ${size};` : '')}
+	${({ weight }) => (weight ? `weight: ${fontWeightsMap[weight]};` : '')}
+	${({ color }) => (color ? `color: ${color};` : '')}
 	font-style: ${({ italic }) => (italic ? 'italic' : 'normal')};
 `;
