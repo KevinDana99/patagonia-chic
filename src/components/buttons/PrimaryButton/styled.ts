@@ -25,7 +25,7 @@ export const ButtonPrimaryStyled = styled.button`
 		rgba(168, 88, 224, 0.37)
 	);
 	color: #fff;
-	width: 185px;
+	width: 190px;
 	border-radius: 28px;
 	margin: 8px 0;
 	background-repeat: no-repeat;
@@ -65,7 +65,9 @@ export const ButtonPrimaryContent = styled.div`
 `;
 
 export const ButtonPrimaryText = styled.div`
-	text-align: center;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 	width: 100%;
 `;
 
