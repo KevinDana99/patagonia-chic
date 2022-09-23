@@ -1,4 +1,5 @@
 import React from 'react';
+import Text from '../../texts/Text';
 import {
 	CounterButton,
 	CounterButtons,
@@ -10,7 +11,11 @@ import { CounterSelectType } from './types';
 
 const CounterSelect = ({ onChange, texts, value }: CounterSelectType) => (
 	<CounterSelectContainer>
-		<CounterTitle>{texts.selectQuantity}</CounterTitle>
+		<CounterTitle>
+			<Text size={13} weight={'regular'}>
+				{texts.selectQuantity}
+			</Text>
+		</CounterTitle>
 		<CounterButtons>
 			<CounterButton
 				onClick={(e) => {
@@ -19,16 +24,18 @@ const CounterSelect = ({ onChange, texts, value }: CounterSelectType) => (
 				}}
 				disabled={value === 0}
 			>
-				-
+				<Text>-</Text>
 			</CounterButton>
-			<CounterText>{value}</CounterText>
+			<CounterText>
+				<Text>{value?.toString()}</Text>
+			</CounterText>
 			<CounterButton
 				onClick={(e) => {
 					e.stopPropagation();
 					value !== null && onChange(value + 1);
 				}}
 			>
-				+
+				<Text>+</Text>
 			</CounterButton>
 		</CounterButtons>
 	</CounterSelectContainer>
