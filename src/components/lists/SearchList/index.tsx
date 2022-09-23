@@ -158,7 +158,7 @@ const SearchList = ({
 					errorComponent
 				) : !loading ? (
 					emptyStateText || emptyStateComponent ? (
-						emptyStateComponent || emptyStateText
+						emptyStateComponent || <Text>{emptyStateText}</Text>
 					) : (
 						<BoxItemList>
 							{listValue.map((item, index) => {
