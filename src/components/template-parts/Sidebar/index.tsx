@@ -64,7 +64,7 @@ const Sidebar = ({
 							) : (
 								<ButtonBack onClick={back}>
 									<IconBack />
-									{texts.goBack}
+									<Text weight="regular">{texts.goBack}</Text>
 								</ButtonBack>
 							)}
 							<CloseIconContainer>
