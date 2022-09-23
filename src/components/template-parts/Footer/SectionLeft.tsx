@@ -28,8 +28,12 @@ const SectionLeft = ({
 			<LeftSideContainer>
 				<DescriptionContainer>
 					<Logo {...logo} />
-					<Description>{texts.description}</Description>
-					<Direction>{texts.direction}</Direction>
+					<Description>
+						<Text>{texts.description}</Text>
+					</Description>
+					<Direction>
+						<Text>{texts.direction}</Text>
+					</Direction>
 				</DescriptionContainer>
 
 				<SocialMobileContainer>
