@@ -1,5 +1,7 @@
 export type TextWeightsType =
 	| 'ultra-light'
+	| 'medium-light'
+	| 'light'
 	| 'regular'
 	| 'medium'
 	| 'semi-bold'

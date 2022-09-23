@@ -8,7 +8,7 @@ const Text = ({
 	children,
 	fontFamily = fontsConstants.defaultFontName,
 	size = 14,
-	color = '#000',
+	color,
 	weight = 'regular',
 	italic = false,
 }: TextPropsType) => (

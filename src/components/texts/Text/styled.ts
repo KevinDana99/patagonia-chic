@@ -4,6 +4,8 @@ import { StyledTextPropsType } from './types';
 
 const fontWeightsMap = {
 	'ultra-light': 100,
+	'medium-light': 200,
+	light: 300,
 	regular: 400,
 	medium: 500,
 	'semi-bold': 600,
