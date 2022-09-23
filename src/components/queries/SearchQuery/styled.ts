@@ -94,7 +94,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const ButtonSearch = styled(PrimaryButton)`
-	min-width: 180px;
+	min-width: 185px;
 	height: 48px;
 	display: flex;
 	justify-content: space-around;
