@@ -37,6 +37,7 @@ export const ContentButton = styled.div`
 	align-items: flex-end;
 	min-height: 20px;
 	box-sizing: border-box;
+	border-bottom: solid 1px transparent;
 	&:hover {
 		text-decoration: none;
 	}
