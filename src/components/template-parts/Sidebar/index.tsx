@@ -73,7 +73,9 @@ const Sidebar = ({
 						</SidebarHeaderContent>
 						<SidebarHeaderDivider />
 						{viewStack.views.length === 1 && (
-							<SidebarMenuTitle>{viewStack.props[0]?.title}</SidebarMenuTitle>
+							<SidebarMenuTitle>
+								<Text>{viewStack.props[0]?.title}</Text>
+							</SidebarMenuTitle>
 						)}
 					</SidebarHeader>
 					<SidebarContent>
