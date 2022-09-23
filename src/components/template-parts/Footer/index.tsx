@@ -11,7 +11,7 @@ import {
 	ContainerSectionsCommon,
 	Divider,
 } from './styled';
-import { icons } from './utils';
+import { getSectionList, icons } from './utils';
 import { deviceSize } from '../../../constants/devicesSizes';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { SectionSocial } from './SectionSocial';
@@ -19,6 +19,8 @@ import { SectionSocial } from './SectionSocial';
 const Footer = ({ language, places, texts }: FooterPropsType) => {
 	const isMobile = useMediaQuery(deviceSize.mobileL);
 	const isTablet = useMediaQuery(deviceSize.tablet);
+
+	const sections = getSectionList(places, texts);
 
 	return (
 		<Container>
