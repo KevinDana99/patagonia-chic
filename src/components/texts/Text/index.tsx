@@ -7,7 +7,7 @@ const Text = ({
 	className,
 	children,
 	fontFamily = fontsConstants.defaultFontName,
-	size = 14,
+	size,
 	color,
 	weight = 'regular',
 	italic = false,
