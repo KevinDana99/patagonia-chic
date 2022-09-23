@@ -10,6 +10,7 @@ const TertiaryButton = ({
 	onClick,
 	disabled = false,
 	className,
+	children,
 }: TertiaryButtonType) => {
 	disabled = disabled || loading;
 	return (
@@ -18,9 +19,13 @@ const TertiaryButton = ({
 			onClick={onClick}
 			className={className}
 		>
-			<Text color="#888" size={14} weight={'regular'}>
-				{title}
-			</Text>
+			{title && (
+				<Text color="#888" size={14} weight={'regular'}>
+					{title}
+				</Text>
+			)}
+
+			{children && children}
 
 			{loading ? <SpinnerStyled size={14} /> : <ForwardIcon />}
 		</ButtonTertiaryStyled>
