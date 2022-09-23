@@ -9,7 +9,7 @@ const Text = ({
 	fontFamily = fontsConstants.defaultFontName,
 	size,
 	color,
-	weight = 'regular',
+	weight,
 	italic = false,
 }: TextPropsType) => (
 	<StyledText

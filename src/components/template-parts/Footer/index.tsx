@@ -20,8 +20,6 @@ const Footer = ({ language, places, texts }: FooterPropsType) => {
 	const isMobile = useMediaQuery(deviceSize.mobileL);
 	const isTablet = useMediaQuery(deviceSize.tablet);
 
-	const sections = getSectionList(places, texts);
-
 	return (
 		<Container>
 			<ContainerSectionsTop>
