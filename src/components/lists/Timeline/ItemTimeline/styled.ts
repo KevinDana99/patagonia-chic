@@ -1,7 +1,6 @@
 import { IoCheckmarkCircle, IoClose, IoCloseOutline } from 'react-icons/io5';
 import styled from 'styled-components';
 import TertiaryButton from '../../../buttons/TertiaryButton';
-import { ForwardIcon } from '../../../buttons/TertiaryButton/styled';
 
 export const Container = styled.div`
 	display: flex;
