@@ -1,15 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Accordion from '../../accordions/Accordion';
-import {
-	ArrowIconDown,
-	SectionContainer,
-	SectionTitleContainer,
-	SectionTitleMobile,
-	SectionDivider,
-	LinkStyled,
-	SectionLabel,
-	ArrowIconUp,
-} from './styled';
+import { SectionContainer } from './styled';
 import { SectionMobileType } from './types';
 
 export const SectionMobile = ({ sections }: SectionMobileType) => {
