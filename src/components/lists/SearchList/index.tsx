@@ -157,7 +157,7 @@ const SearchList = ({
 				{error && errorComponent ? (
 					errorComponent
 				) : !loading ? (
-					emptyStateText || emptyStateComponent ? (
+					(listValue.length == 0 && emptyStateText) || emptyStateComponent ? (
 						emptyStateComponent || <Text>{emptyStateText}</Text>
 					) : (
 						<BoxItemList>
