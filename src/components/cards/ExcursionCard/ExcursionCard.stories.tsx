@@ -1,20 +1,18 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ExcursionCardType } from './types';
-import ExcursionCard from '.';
+import TourCard from '.';
 
 export default {
 	title: 'Components/cards',
-	component: ExcursionCard,
+	component: TourCard,
 	argTypes: {},
-} as Meta<typeof ExcursionCard>;
+} as Meta<typeof TourCard>;
 
-const Template: Story<ExcursionCardType> = (args) => (
-	<ExcursionCard {...args} />
-);
+const Template: Story<ExcursionCardType> = (args) => <TourCard {...args} />;
 
-export const excursionCard = Template.bind({});
-excursionCard.args = {
+export const tourCard = Template.bind({});
+tourCard.args = {
 	coverImage: 'https://i.ibb.co/VMbg2QC/roi-dimor-wpje5h-Mf-Jj0-unsplash-1.png',
 	subTitle: 'El Calafate',
 	title: 'Perito Moreno: Pasarelas',

@@ -32,7 +32,7 @@ import {
 } from './styled';
 import { ExcursionCardType } from './types';
 
-const ExcursionCard = ({
+const TourCard = ({
 	coverImage,
 	title,
 	subPrice,
@@ -199,4 +199,4 @@ const ExcursionCard = ({
 	);
 };
 
-export default ExcursionCard;
+export default TourCard;
