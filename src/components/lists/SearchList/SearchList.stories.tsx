@@ -11,6 +11,9 @@ export default {
 		onSearchChange: {
 			action: 'onSearchChange',
 		},
+		onSearchItem: {
+			action: 'onSearchItem',
+		},
 		engine: { control: 'select', options: ['fuse', 'custom'] },
 	},
 } as Meta<typeof SearchListComponent>;

@@ -42,6 +42,7 @@ const SearchList = ({
 	onChangeSelect,
 	selectedAction,
 	searchPlaceHolder,
+	onSearchItem,
 }: ListType) => {
 	const [listValue, setListValue] = useState(list);
 	const [data, setData] = useState({
@@ -63,6 +64,7 @@ const SearchList = ({
 	};
 
 	const filterPlaceList = (query: string) => {
+		onSearchItem(query);
 		const fusePlaceList = new Fuse(list, fuseConfigs);
 		const filteredResult = fusePlaceList.search(query);
 		const filteredList =

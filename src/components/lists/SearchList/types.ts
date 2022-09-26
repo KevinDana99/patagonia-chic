@@ -30,6 +30,7 @@ export type ListType = {
 	onChangeSelect?: React.Dispatch<{}>;
 	selectedAction?: (item?: Object) => void;
 	searchPlaceHolder?: string;
+	onSearchItem: (query: string) => void;
 };
 
 export type ItemListStyleType = {
