@@ -5,7 +5,7 @@ export const ButtonTertiaryStyled = styled.button`
 	min-height: 20px;
 	font-size: 12px;
 	color: #888;
-	font-weight: 300;
+	font-weight: 400; //300
 	background-color: transparent;
 	border: none;
 	display: flex;
@@ -19,7 +19,7 @@ export const ButtonTertiaryStyled = styled.button`
 			? `&:hover {
 				font-size: 12px;
 				color: #0090e0;
-				font-weight: 300;
+				font-weight: 400; //300
 				text-decoration: underline;
 	}`
 			: `&:hover`}

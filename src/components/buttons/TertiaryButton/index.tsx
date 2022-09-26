@@ -19,11 +19,7 @@ const TertiaryButton = ({
 			onClick={onClick}
 			className={className}
 		>
-			{title && (
-				<Text color="#888" size={14} weight={'regular'}>
-					{title}
-				</Text>
-			)}
+			{title && <Text>{title}</Text>}
 
 			{children && children}
 
