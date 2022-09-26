@@ -22,6 +22,8 @@ const ItemTimeline = ({
 	secondaryTitle,
 	tertiaryTitle,
 	active,
+	clear,
+	id,
 }: ItemTimelineType) => {
 	return (
 		<Container>
@@ -54,7 +56,7 @@ const ItemTimeline = ({
 
 			{active && tertiaryTitle && (
 				<BoxClear>
-					<IconClear size={28} onClick={tertiaryTitle?.options?.clear} />
+					<IconClear size={28} onClick={() => clear(id)} />
 				</BoxClear>
 			)}
 		</Container>
