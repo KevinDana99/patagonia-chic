@@ -32,10 +32,12 @@ export const Link = styled.a`
 `;
 
 export const ContentButton = styled.div`
+	margin-top: 1px;
 	display: flex;
 	align-items: flex-end;
 	min-height: 20px;
 	box-sizing: border-box;
+
 	border-bottom: solid 1px transparent;
 	&:hover {
 		text-decoration: none;
