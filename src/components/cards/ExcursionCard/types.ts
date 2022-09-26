@@ -9,6 +9,9 @@ export type ExcursionCardType = {
 	isAddedToCart?: boolean;
 	isAvaiable?: boolean;
 	bookingsThisWeekCount?: number;
+	onViewCart?: () => void;
+	onViewDetails?: () => void;
+	onAddedToCart?: () => void;
 	texts: {
 		buttonDefaultText?: string;
 		buttonAddedToCartText?: string;

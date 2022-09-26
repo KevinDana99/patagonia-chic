@@ -6,7 +6,11 @@ import TourCard from '.';
 export default {
 	title: 'Components/cards',
 	component: TourCard,
-	argTypes: {},
+	argTypes: {
+		onViewCart: { action: 'onViewCart' },
+		onAddedToCart: { action: 'onAddedToCart' },
+		onViewDetails: { action: 'onViewDetails' },
+	},
 } as Meta<typeof TourCard>;
 
 const Template: Story<ExcursionCardType> = (args) => <TourCard {...args} />;

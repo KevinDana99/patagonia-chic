@@ -44,6 +44,9 @@ const TourCard = ({
 	date,
 	texts,
 	bookingsThisWeekCount,
+	onViewCart,
+	onAddedToCart,
+	onViewDetails,
 }: ExcursionCardType) => {
 	return (
 		<Container>
@@ -151,6 +154,7 @@ const TourCard = ({
 												: ''
 										}
 										color={'#3b3b3b'}
+										onClick={onViewCart}
 									/>
 								)}
 								{!isAddedToCart && !isAvaiable && (
@@ -158,6 +162,7 @@ const TourCard = ({
 										title={
 											texts.buttonDefaultText ? texts.buttonDefaultText : ''
 										}
+										onClick={onAddedToCart}
 									/>
 								)}
 								{!isAddedToCart && isAvaiable && (
@@ -165,6 +170,7 @@ const TourCard = ({
 										title={
 											texts.buttonAvaiableText ? texts.buttonAvaiableText : ''
 										}
+										onClick={onViewDetails}
 									/>
 								)}
 							</ButtonContainer>
