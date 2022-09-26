@@ -21,15 +21,19 @@ excursionCard.args = {
 	price: '$20.600',
 	currency: 'ars',
 	subPrice: '$27.800',
-	date: '04 Septiembre',
+	date: {
+		month: 'septiembre',
+		day: '04',
+	},
 	isAddedToCart: false,
 	isAvaiable: false,
-	buttonDefaultText: 'Reservar',
-	buttonAddedToCartText: 'Ver carrito',
-	buttonAvaiableText: 'Ver detalle',
-	detailsAddedText: 'Agregaste esta excursion a tu carrito',
-	options: {
-		countReservesWeek: '800 veces reservado la ultima semana',
-		timeLatestReserve: 'Reservado hace 30 horas atras',
+	bookingsThisWeekCount: 800,
+	texts: {
+		buttonDefaultText: 'Reservar',
+		buttonAddedToCartText: 'Ver carrito',
+		buttonAvaiableText: 'Ver detalle',
+		detailsAddedText: 'Agregaste esta excursion a tu carrito',
+		bookingsThisWeekText: 'veces reservado la ultima semana',
+		lastBookingTimeText: 'Reservado hace 30 horas atras',
 	},
 };

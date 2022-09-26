@@ -12,6 +12,7 @@ export const Card = styled(PrimaryCard)<PrimaryCardStyleType>`
 	height: 365px;
 	padding: 0px;
 	overflow: hidden;
+	position: relative;
 `;
 
 export const ContainerImage = styled.div<ExcursionCardStyleType>`
@@ -30,6 +31,26 @@ export const ContainerVector = styled.div`
 
 export const VectorCard = styled(StainVector)`
 	position: relative;
+`;
+export const TextVector = styled.div`
+	text-transform: capitalize;
+	font-size: 15px;
+	width: 105px;
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+	position: absolute;
+`;
+
+export const TextVectorMonth = styled.div`
+	position: relative;
+	right: 20px;
+`;
+export const TextVectorDay = styled.div`
+	position: relative;
+	right: 25px;
 `;
 
 export const Description = styled.div`
@@ -118,4 +139,8 @@ export const BoxOption = styled.div`
 export const Option = styled.div`
 	margin-left: 4px;
 	font-size: 12px;
+`;
+
+export const NumberReserveWeek = styled.b`
+	margin-right: 3px;
 `;

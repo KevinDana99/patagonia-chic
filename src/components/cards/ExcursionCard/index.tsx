@@ -25,6 +25,10 @@ import {
 	Option,
 	BoxOption,
 	ButtonContainer,
+	NumberReserveWeek,
+	TextVector,
+	TextVectorDay,
+	TextVectorMonth,
 } from './styled';
 import { ExcursionCardType } from './types';
 
@@ -38,11 +42,8 @@ const ExcursionCard = ({
 	isAddedToCart = false,
 	isAvaiable,
 	date,
-	options,
-	buttonDefaultText,
-	buttonAddedToCartText,
-	buttonAvaiableText,
-	detailsAddedText,
+	texts,
+	bookingsThisWeekCount,
 }: ExcursionCardType) => {
 	return (
 		<Container>
@@ -58,19 +59,29 @@ const ExcursionCard = ({
 
 							{isAvaiable && isAddedToCart && (
 								<ContainerVector>
-									<VectorCard
-										text={date}
-										color={isAddedToCart ? ActiveTheme : '#1079E3'}
-									/>
+									<VectorCard color={isAddedToCart ? ActiveTheme : '#1079E3'} />
+									<TextVector>
+										<TextVectorDay>
+											<Text color="white">{date?.day}</Text>
+										</TextVectorDay>
+										<TextVectorMonth>
+											<Text color="white">{date?.month}</Text>
+										</TextVectorMonth>
+									</TextVector>
 								</ContainerVector>
 							)}
 
 							{!isAvaiable && (
 								<ContainerVector>
-									<VectorCard
-										text={date}
-										color={isAddedToCart ? ActiveTheme : '#1079E3'}
-									/>
+									<VectorCard color={isAddedToCart ? ActiveTheme : '#1079E3'} />
+									<TextVector>
+										<TextVectorDay>
+											<Text color="white">{date?.day}</Text>
+										</TextVectorDay>
+										<TextVectorMonth>
+											<Text color="white">{date?.month}</Text>
+										</TextVectorMonth>
+									</TextVector>
 								</ContainerVector>
 							)}
 						</ContainerImage>
@@ -99,7 +110,7 @@ const ExcursionCard = ({
 									/>
 									<Details>
 										<Text size={12.27} weight={'regular'} color={'#888888'}>
-											{detailsAddedText}
+											{texts.detailsAddedText}
 										</Text>
 									</Details>
 								</DescriptionActive>
@@ -134,15 +145,28 @@ const ExcursionCard = ({
 							<ButtonContainer>
 								{isAddedToCart && (
 									<ActiveButton
-										title={buttonAddedToCartText}
+										title={
+											texts.buttonAddedToCartText
+												? texts.buttonAddedToCartText
+												: ''
+										}
 										color={'#3b3b3b'}
 									/>
 								)}
 								{!isAddedToCart && !isAvaiable && (
-									<ButtonReserve title={buttonDefaultText} />
+									<ButtonReserve
+										title={
+											texts.buttonDefaultText ? texts.buttonDefaultText : ''
+										}
+									/>
 								)}
 								{!isAddedToCart && isAvaiable && (
-									<ActiveButton title={buttonAvaiableText} color={'#3b3b3b'} />
+									<ActiveButton
+										title={
+											texts.buttonAvaiableText ? texts.buttonAvaiableText : ''
+										}
+										color={'#3b3b3b'}
+									/>
 								)}
 							</ButtonContainer>
 						</BoxReserve>
@@ -151,20 +175,23 @@ const ExcursionCard = ({
 			</Card>
 
 			<OptionContainer>
-				{options?.countReservesWeek && (
+				{bookingsThisWeekCount && texts.bookingsThisWeekText && (
 					<BoxOption>
 						<CustomIcon name="group-circle" />
 						<Option>
-							<Text size={12}>{options.countReservesWeek}</Text>
+							<NumberReserveWeek>
+								<Text weight={'bold'}>{bookingsThisWeekCount.toString()}</Text>
+							</NumberReserveWeek>
+							<Text>{texts.bookingsThisWeekText}</Text>
 						</Option>
 					</BoxOption>
 				)}
 
-				{options?.timeLatestReserve && (
+				{texts.lastBookingTimeText && (
 					<BoxOption>
 						<CustomIcon name="ray-circle" />
 						<Option>
-							<Text size={12}>{options.timeLatestReserve}</Text>
+							<Text size={12}>{texts.lastBookingTimeText}</Text>
 						</Option>
 					</BoxOption>
 				)}
