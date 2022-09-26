@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import PrimaryButton from '../../buttons/PrimaryButton';
+import { PrimaryButtonLight } from '../../buttons/PrimaryButton/themes/styled';
 import PrimaryCard from '../PrimaryCard';
 import { PrimaryCardStyleType } from '../PrimaryCard/types';
 import { ExcursionCardStyleType } from './types';
@@ -106,7 +107,7 @@ export const ButtonReserve = styled(PrimaryButton)`
 
 export const ActiveTheme = '#3BC053';
 
-export const ActiveButton = styled(ButtonReserve)`
+export const ActiveButton = styled(PrimaryButtonLight)`
 	width: 116px;
 	height: 42px;
 	background-image: none;

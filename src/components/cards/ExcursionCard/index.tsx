@@ -165,7 +165,6 @@ const ExcursionCard = ({
 										title={
 											texts.buttonAvaiableText ? texts.buttonAvaiableText : ''
 										}
-										color={'#3b3b3b'}
 									/>
 								)}
 							</ButtonContainer>
