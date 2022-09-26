@@ -19,7 +19,6 @@ import {
 import Fuse from 'fuse.js';
 import defaultFuseOptions from '../../../constants/fuseOptions.json';
 import { IoSearch } from 'react-icons/io5';
-
 import { ListItemType, ListType } from './types';
 import CustomIcon from '../../graphics/CustomIcon';
 import Skeleton from '../../skeletons/Skeleton';
