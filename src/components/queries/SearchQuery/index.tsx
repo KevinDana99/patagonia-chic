@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { CalendarInput } from './inputs/CalendarInput/CalendarInput';
 import {
@@ -23,12 +23,7 @@ const SearchQuery = ({
 	list,
 	onQuerySubmit,
 	showLocations = true,
-	labelEndDate,
-	labelPlace,
-	labelStartDate,
-	placeholderDate,
-	placeholderPlace,
-	titleSearchButton,
+	texts,
 }: SearchQueryType) => {
 	const [data, setData] = useState<StateSearchQueryType>({
 		place: null,
@@ -40,7 +35,6 @@ const SearchQuery = ({
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
 	const [showMobilePlaceList, setShowMobilePlaceList] = useState(false);
-	const [showMobileCalendar, setShowMobileCalendar] = useState(false);
 	const [calendarFocusedInput, setCalendarFocusedInput] = useState('startDate');
 	const [disableSearch, setDisableSearch] = useState({
 		place: false,
@@ -94,21 +88,21 @@ const SearchQuery = ({
 			...disableSearch,
 			startDate: false,
 		});
-	}, [data.startDate]);
+	}, [data.startDate, disableSearch]);
 
 	useEffect(() => {
 		setDisableSearch({
 			...disableSearch,
 			endDate: false,
 		});
-	}, [data.endDate]);
+	}, [data.endDate, disableSearch]);
 
 	useEffect(() => {
 		setDisableSearch({
 			...disableSearch,
 			place: false,
 		});
-	}, [data.place]);
+	}, [data.place, disableSearch]);
 
 	return (
 		<>
@@ -119,8 +113,8 @@ const SearchQuery = ({
 						closeModal={() => setModal(false)}
 						setDisableSearch={setDisableSearch}
 						disableSearch={disableSearch.place}
-						label={labelPlace}
-						placeholder={placeholderPlace}
+						label={texts.labelPlace}
+						placeholder={texts.placeholderPlace}
 						onClick={() => {
 							setShowPlaceList(true);
 							setShowMobilePlaceList(true);
@@ -163,8 +157,8 @@ const SearchQuery = ({
 
 				<CalendarInput
 					disableSearch={disableSearch}
-					labels={[labelStartDate, labelEndDate]}
-					titles={[placeholderDate, placeholderDate]}
+					labels={[texts.labelStartDate, texts.labelEndDate]}
+					titles={[texts.placeholderDate, texts.placeholderDate]}
 					values={data}
 					clearData={clearDates}
 					onClick={() => {
@@ -192,7 +186,7 @@ const SearchQuery = ({
 				></CalendarInput>
 				<ButtonContainer>
 					<ButtonSearch
-						title={!isMobile ? titleSearchButton : ''}
+						title={!isMobile ? texts.titleSearchButton : ''}
 						IconComponent={SearchIcon}
 						onClick={() => {
 							const validate = validateSearch();
@@ -216,9 +210,8 @@ const SearchQuery = ({
 							selectedAction={(item) => {
 								setData({ ...data, place: item });
 								setShowMobilePlaceList(false);
-								setShowMobileCalendar(true);
 							}}
-							searchPlaceHolder={placeholderPlace}
+							searchPlaceHolder={texts.placeholderPlace}
 						/>
 					) : (
 						<CalendarMobile
@@ -234,12 +227,12 @@ const SearchQuery = ({
 								const validate = validateSearch();
 								validate && onQuerySubmit(data);
 							}}
-							labelEndDate={labelEndDate}
-							labelPlace={labelPlace}
-							labelStartDate={labelStartDate}
-							placeholderDate={placeholderDate}
-							placeholderPlace={placeholderPlace}
-							titleSearchButton={titleSearchButton}
+							labelEndDate={texts.labelEndDate}
+							labelPlace={texts.labelPlace}
+							labelStartDate={texts.labelStartDate}
+							placeholderDate={texts.placeholderDate}
+							placeholderPlace={texts.placeholderPlace}
+							titleSearchButton={texts.titleSearchButton}
 						/>
 					)}
 				</ContainerModal>
