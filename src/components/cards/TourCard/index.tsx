@@ -38,9 +38,10 @@ const TourCard = ({
 	subPrice,
 	price,
 	subTitle,
-	currency,
+	currencySymbol,
+	currencyCode,
 	isAddedToCart = false,
-	isAvaiable,
+	isAvailable,
 	date,
 	texts,
 	bookingsThisWeekCount,
@@ -60,7 +61,7 @@ const TourCard = ({
 						>
 							{typeof coverImage !== 'string' && coverImage}
 
-							{isAvaiable && isAddedToCart && (
+							{isAvailable && isAddedToCart && (
 								<ContainerVector>
 									<VectorCard color={isAddedToCart ? ActiveTheme : '#1079E3'} />
 									<TextVector>
@@ -74,7 +75,7 @@ const TourCard = ({
 								</ContainerVector>
 							)}
 
-							{!isAvaiable && (
+							{!isAvailable && (
 								<ContainerVector>
 									<VectorCard color={isAddedToCart ? ActiveTheme : '#1079E3'} />
 									<TextVector>
@@ -118,26 +119,26 @@ const TourCard = ({
 									</Details>
 								</DescriptionActive>
 							) : (
-								!isAvaiable && (
+								!isAvailable && (
 									<BoxPrice>
 										<Price>
 											<Text size={15.34} weight={'bold'}>
-												{price}
+												{currencySymbol + price}
 											</Text>
 											<Currency>
 												<Text size={10} weight={'bold'}>
-													{currency}
+													{currencyCode}
 												</Text>
 											</Currency>
 										</Price>
 										<SubPrice>
 											<Text color="#888888" size={12.27} weight={'regular'}>
-												{subPrice}
+												{currencySymbol + subPrice}
 											</Text>
 
 											<Currency>
 												<Text color="#888888" size={10}>
-													{currency}
+													{currencyCode}
 												</Text>
 											</Currency>
 										</SubPrice>
@@ -157,7 +158,7 @@ const TourCard = ({
 										onClick={onViewCart}
 									/>
 								)}
-								{!isAddedToCart && !isAvaiable && (
+								{!isAddedToCart && !isAvailable && (
 									<ButtonReserve
 										title={
 											texts.buttonDefaultText ? texts.buttonDefaultText : ''
@@ -165,7 +166,7 @@ const TourCard = ({
 										onClick={onAddedToCart}
 									/>
 								)}
-								{!isAddedToCart && isAvaiable && (
+								{!isAddedToCart && isAvailable && (
 									<ActiveButton
 										title={
 											texts.buttonAvaiableText ? texts.buttonAvaiableText : ''

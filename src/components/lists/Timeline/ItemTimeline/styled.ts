@@ -52,7 +52,7 @@ export const ButtonItem = styled(TertiaryButton)`
 	box-sizing: border-box;
 
 	svg {
-		margin-left: 3px;
+		margin-left: 2px;
 		box-sizing: border-box;
 	}
 	&:hover {

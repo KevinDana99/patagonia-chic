@@ -4,10 +4,11 @@ export type ExcursionCardType = {
 	subTitle?: string;
 	title?: string;
 	price?: string;
-	currency?: string;
+	currencySymbol: string;
+	currencyCode: string;
 	subPrice?: string;
 	isAddedToCart?: boolean;
-	isAvaiable?: boolean;
+	isAvailable?: boolean;
 	bookingsThisWeekCount?: number;
 	onViewCart?: () => void;
 	onViewDetails?: () => void;

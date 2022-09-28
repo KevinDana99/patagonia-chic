@@ -1,8 +1,7 @@
 import React from 'react';
-import { ButtonTertiaryStyled, SpinnerStyled } from './styled';
+import { ButtonTertiaryStyled, SpinnerStyled, StyledText } from './styled';
 import { TertiaryButtonType } from './types';
 import { IoChevronForwardSharp as ForwardIcon } from 'react-icons/io5';
-import Text from '../../texts/Text';
 
 const TertiaryButton = ({
 	title,
@@ -19,10 +18,8 @@ const TertiaryButton = ({
 			onClick={onClick}
 			className={className}
 		>
-			{title && <Text>{title}</Text>}
-
-			{children && children}
-
+			{title && <StyledText>{title}</StyledText>}
+			{children}
 			{loading ? <SpinnerStyled size={14} /> : <ForwardIcon />}
 		</ButtonTertiaryStyled>
 	);

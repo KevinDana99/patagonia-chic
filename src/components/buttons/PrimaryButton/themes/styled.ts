@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import PrimaryButton from '..';
-import { PrimaryButtonType } from '../types';
+import { ButtonPrimaryStyled } from '../styled';
+import { PrimaryButtonLightType } from '../types';
 
-export const PrimaryButtonLight = styled(PrimaryButton)<PrimaryButtonType>`
-	width: 195px;
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const PrimaryButtonLight: any = styled(
+	ButtonPrimaryStyled
+)<PrimaryButtonLightType>`
 	background-image: none;
 	background-color: transparent;
-	color: #3b3b3b;
-	border: solid 3px #3b3b3b;
+	color: ${({ color }) => color};
+	border: solid 3px ${({ color }) => color};
 `;

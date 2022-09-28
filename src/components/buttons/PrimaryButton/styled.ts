@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const ButtonPrimaryStyled = styled.button`
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const ButtonPrimaryStyled: any = styled.button`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	box-sizing: border-box;
@@ -25,7 +26,7 @@ export const ButtonPrimaryStyled = styled.button`
 		rgba(168, 88, 224, 0.37)
 	);
 	color: #fff;
-	width: 190px;
+	width: 200px;
 	border-radius: 28px;
 	margin: 8px 0;
 	background-repeat: no-repeat;

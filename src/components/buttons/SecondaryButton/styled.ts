@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import PrimarySpinner from '../../spinners/PrimarySpinner';
+import Text from '../../texts/Text';
 
 export const ButtonSecondaryStyled = styled.button`
 	min-width: 100px;
@@ -27,4 +28,8 @@ export const ButtonSecondaryStyled = styled.button`
 
 export const SpinnerStyled = styled(PrimarySpinner)`
 	margin-left: 5px;
+`;
+
+export const StyledText = styled(Text)`
+	margin-top: -2px;
 `;

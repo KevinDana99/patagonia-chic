@@ -1,8 +1,7 @@
 import React from 'react';
-import { ButtonSecondaryStyled, SpinnerStyled } from './styled';
+import { ButtonSecondaryStyled, SpinnerStyled, StyledText } from './styled';
 import { SecondaryButtonType } from './types';
 import { IoChevronForwardSharp as ForwardIcon } from 'react-icons/io5';
-import Text from '../../texts/Text';
 
 const SecondaryButton = ({
 	title,
@@ -13,7 +12,7 @@ const SecondaryButton = ({
 	disabled = disabled || loading;
 	return (
 		<ButtonSecondaryStyled disabled={disabled} onClick={onClick}>
-			<Text>{title}</Text>
+			<StyledText>{title}</StyledText>
 
 			{loading ? <SpinnerStyled size={17} /> : <ForwardIcon />}
 		</ButtonSecondaryStyled>

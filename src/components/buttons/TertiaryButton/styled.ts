@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import Spinner from '../../spinners/PrimarySpinner';
+import Text from '../../texts/Text';
 
 export const ButtonTertiaryStyled = styled.button`
 	min-height: 20px;
 	font-size: 12px;
 	color: #888;
-	font-weight: 400; //300
+	font-weight: 400;
 	background-color: transparent;
 	border: none;
 	display: flex;
@@ -17,12 +18,14 @@ export const ButtonTertiaryStyled = styled.button`
 	${(props) =>
 		!props.disabled
 			? `&:hover {
-				font-size: 12px;
 				color: #0090e0;
-				font-weight: 400; //300
 				text-decoration: underline;
 	}`
 			: `&:hover`}
+`;
+
+export const StyledText = styled(Text)`
+	margin-top: -1.5px;
 `;
 
 export const SpinnerStyled = styled(Spinner)`

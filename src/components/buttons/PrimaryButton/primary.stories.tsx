@@ -16,10 +16,6 @@ const PrimaryStory: Story<PrimaryButtonType> = (args) => (
 	<PrimaryButton {...args} />
 );
 
-const SecondaryStory: Story<PrimaryButtonType> = (args) => (
-	<PrimaryButtonLight {...args} />
-);
-
 export const color = PrimaryStory.bind({});
 color.args = {
 	title: 'Buscar excursiones',
@@ -28,10 +24,11 @@ color.args = {
 	IconComponent: IoSearch,
 };
 
-export const light = SecondaryStory.bind({});
+export const light = PrimaryStory.bind({});
 light.args = {
 	title: 'Buscar excursiones',
 	loading: false,
 	disabled: false,
 	IconComponent: IoSearch,
+	theme: 'mono',
 };
