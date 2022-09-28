@@ -1,5 +1,6 @@
 export type TimelineType = {
 	steps: Array<{
+		id: number;
 		title?: string;
 		secondaryTitle?: string;
 		tertiaryTitle?: {
@@ -7,10 +8,10 @@ export type TimelineType = {
 				title?: string;
 				price?: string;
 				currency?: string;
-				clear: () => void;
 			};
 			link?: string;
 		};
 		active: boolean;
 	}>;
+	clearReserve: () => void;
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const ButtonPrimaryStyled = styled.button`
-	min-width: 100px;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const ButtonPrimaryStyled: any = styled.button`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	box-sizing: border-box;
@@ -10,7 +10,7 @@ export const ButtonPrimaryStyled = styled.button`
 	position: relative;
 	display: inline-block;
 	padding: 0 16px;
-	width: 180px;
+	padding-right: 17px;
 	height: 48px;
 	outline: none;
 	border: none;
@@ -26,6 +26,7 @@ export const ButtonPrimaryStyled = styled.button`
 		rgba(168, 88, 224, 0.37)
 	);
 	color: #fff;
+	width: 200px;
 	border-radius: 28px;
 	margin: 8px 0;
 	background-repeat: no-repeat;
@@ -37,7 +38,7 @@ export const ButtonPrimaryStyled = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
+	box-sizing: border-box;
 	${(props) =>
 		!props.disabled
 			? `&:hover {
@@ -64,7 +65,12 @@ export const ButtonPrimaryContent = styled.div`
 	justify-content: center;
 `;
 
-export const ButtonPrimaryText = styled.div``;
+export const ButtonPrimaryText = styled.div`
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+`;
 
 export const Icon = styled(
 	({ component, ...props }: { component: JSX.Element; props?: object }) =>

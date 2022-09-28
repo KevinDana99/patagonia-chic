@@ -7,7 +7,7 @@ import allSteps from '../../../examples/timeline/example';
 export default {
 	title: 'Components/lists',
 	component: Timeline,
-	argTypes: {},
+	argTypes: { clearReserve: { action: 'clearReserve' } },
 } as Meta<typeof Timeline>;
 
 const Template: Story<TimelineType> = (args) => <Timeline {...args} />;

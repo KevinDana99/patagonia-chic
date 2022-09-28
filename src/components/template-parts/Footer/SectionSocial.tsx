@@ -1,4 +1,5 @@
 import React from 'react';
+import Text from '../../texts/Text';
 import {
 	ContainerSocial,
 	CopyrightText,
@@ -11,7 +12,9 @@ import { icons } from './utils';
 export const SectionSocial = ({ texts }: SectionSocialType) => {
 	return (
 		<ContainerSocial>
-			<CopyrightText>{texts.copyrightMessage}</CopyrightText>
+			<CopyrightText>
+				<Text>{texts.copyrightMessage}</Text>
+			</CopyrightText>
 			<IconContainer>
 				{icons.map(({ Icon, url }, index) => (
 					<LinkStyled href={url} key={index} target="_blank">

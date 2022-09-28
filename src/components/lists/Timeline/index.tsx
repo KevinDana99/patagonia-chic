@@ -3,7 +3,7 @@ import ItemTimeline from './ItemTimeline';
 import { Container } from './styled';
 import { TimelineType } from './types';
 
-const Timeline = ({ steps }: TimelineType) => {
+const Timeline = ({ steps, clearReserve }: TimelineType) => {
 	return (
 		<Container>
 			{steps.map((step, index) => {
@@ -14,6 +14,8 @@ const Timeline = ({ steps }: TimelineType) => {
 						secondaryTitle={step?.secondaryTitle}
 						tertiaryTitle={step?.tertiaryTitle}
 						active={step.active}
+						clear={clearReserve}
+						id={step.id}
 					/>
 				);
 			})}

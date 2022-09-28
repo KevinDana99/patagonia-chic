@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CounterSelect from '../../../forms/CounterSelect';
+import Text from '../../../texts/Text';
 import {
 	CheckIcon,
 	Container,
@@ -69,8 +70,18 @@ const OptionalListItem = ({
 					{selectedItem && <CheckIcon size={20} selected={selectedItem} />}
 				</InputContainer>
 				<Label>
-					<Title>{title}</Title>
-					{description && <Description>{description}</Description>}
+					<Title>
+						<Text size={16} weight={'medium'}>
+							{title}
+						</Text>
+					</Title>
+					{description && (
+						<Description>
+							<Text weight={'regular'} size={12}>
+								{description}
+							</Text>
+						</Description>
+					)}
 					{texts && moreInformationContent && (
 						<InformationButtonContainer>
 							<InformationButton
@@ -88,9 +99,19 @@ const OptionalListItem = ({
 					)}
 				</Label>
 				<PriceContainer>
-					{price && <Price>{price}</Price>}
+					{price && (
+						<Price>
+							<Text size={14} weight={'medium'}>
+								{price}
+							</Text>
+						</Price>
+					)}
 					{priceDescription && (
-						<PriceDescription>{priceDescription}</PriceDescription>
+						<PriceDescription>
+							<Text size={9} weight={'light'}>
+								{priceDescription}
+							</Text>
+						</PriceDescription>
 					)}
 				</PriceContainer>
 			</ItemContent>

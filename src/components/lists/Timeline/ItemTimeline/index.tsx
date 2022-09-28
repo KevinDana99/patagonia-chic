@@ -1,5 +1,6 @@
 import React from 'react';
 import TertiaryButton from '../../../buttons/TertiaryButton';
+import Text from '../../../texts/Text';
 import ProgressBar from '../ProgressBar';
 import {
 	Container,
@@ -21,21 +22,31 @@ const ItemTimeline = ({
 	secondaryTitle,
 	tertiaryTitle,
 	active,
+	clear,
+	id,
 }: ItemTimelineType) => {
 	return (
 		<Container>
 			<ProgressBar Icon={CheckIcon} active={active} />
 			<BoxItem>
-				<SubTitle>{secondaryTitle}</SubTitle>
-				<Title>{title}</Title>
+				<SubTitle>
+					<Text>{secondaryTitle}</Text>
+				</SubTitle>
+				<Title>
+					<Text size={17} weight={'semi-bold'}>
+						{title}
+					</Text>
+				</Title>
 
 				{active && tertiaryTitle && typeof tertiaryTitle != 'string' && (
 					<SubTitle>
 						<Link href={tertiaryTitle.link}>
 							<ButtonItem>
 								<ContentButton>
-									{tertiaryTitle?.options?.price}
-									<BoxCurrency>{tertiaryTitle?.options?.currency}</BoxCurrency>
+									<Text>{tertiaryTitle?.options?.price}</Text>
+									<BoxCurrency>
+										<Text>{tertiaryTitle?.options?.currency}</Text>
+									</BoxCurrency>
 								</ContentButton>
 							</ButtonItem>
 						</Link>
@@ -45,7 +56,7 @@ const ItemTimeline = ({
 
 			{active && tertiaryTitle && (
 				<BoxClear>
-					<IconClear size={28} onClick={tertiaryTitle?.options?.clear} />
+					<IconClear size={28} onClick={() => clear(id)} />
 				</BoxClear>
 			)}
 		</Container>

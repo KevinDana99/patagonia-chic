@@ -1,7 +1,6 @@
 import { IoCheckmarkCircle, IoClose, IoCloseOutline } from 'react-icons/io5';
 import styled from 'styled-components';
 import TertiaryButton from '../../../buttons/TertiaryButton';
-import { ForwardIcon } from '../../../buttons/TertiaryButton/styled';
 
 export const Container = styled.div`
 	display: flex;
@@ -33,10 +32,13 @@ export const Link = styled.a`
 `;
 
 export const ContentButton = styled.div`
+	margin-top: 1px;
 	display: flex;
 	align-items: flex-end;
 	min-height: 20px;
 	box-sizing: border-box;
+
+	border-bottom: solid 1px transparent;
 	&:hover {
 		text-decoration: none;
 	}
@@ -50,7 +52,7 @@ export const ButtonItem = styled(TertiaryButton)`
 	box-sizing: border-box;
 
 	svg {
-		margin-left: 3px;
+		margin-left: 2px;
 		box-sizing: border-box;
 	}
 	&:hover {

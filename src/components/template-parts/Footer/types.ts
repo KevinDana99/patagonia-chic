@@ -68,6 +68,15 @@ export type FooterTextsType = {
 export type SectionSocialType = {
 	texts: FooterTextsType;
 };
+export interface SectionInterface {
+	sections: {
+		title: string;
+		label: (
+			| { label: string; url: string; target?: undefined }
+			| { label: string; url: string; target: string }
+		)[];
+	}[];
+}
 
 export type SectionMobileType = {
 	sections: {

@@ -2,6 +2,7 @@ import React from 'react';
 import { IconType } from 'react-icons';
 
 export type ItemTimelineType = {
+	id: number;
 	Icon?: IconType;
 	secondaryTitle?: string;
 	tertiaryTitle?: {
@@ -9,11 +10,11 @@ export type ItemTimelineType = {
 			title?: string;
 			price?: string;
 			currency?: string;
-			clear: () => void;
 		};
 		link?: string;
 	};
 	color?: string;
 	title?: string;
 	active: boolean;
+	clear: (id: number) => void;
 };

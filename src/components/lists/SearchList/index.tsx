@@ -19,7 +19,6 @@ import {
 import Fuse from 'fuse.js';
 import defaultFuseOptions from '../../../constants/fuseOptions.json';
 import { IoSearch } from 'react-icons/io5';
-
 import { ListItemType, ListType } from './types';
 import CustomIcon from '../../graphics/CustomIcon';
 import Skeleton from '../../skeletons/Skeleton';
@@ -43,6 +42,7 @@ const SearchList = ({
 	onChangeSelect,
 	selectedAction,
 	searchPlaceHolder,
+	onSearchItem,
 }: ListType) => {
 	const [listValue, setListValue] = useState(list);
 	const [data, setData] = useState({
@@ -64,6 +64,7 @@ const SearchList = ({
 	};
 
 	const filterPlaceList = (query: string) => {
+		onSearchItem(query);
 		const fusePlaceList = new Fuse(list, fuseConfigs);
 		const filteredResult = fusePlaceList.search(query);
 		const filteredList =
@@ -157,8 +158,8 @@ const SearchList = ({
 				{error && errorComponent ? (
 					errorComponent
 				) : !loading ? (
-					emptyStateText || emptyStateComponent ? (
-						emptyStateComponent || emptyStateText
+					(listValue.length == 0 && emptyStateText) || emptyStateComponent ? (
+						emptyStateComponent || <Text>{emptyStateText}</Text>
 					) : (
 						<BoxItemList>
 							{listValue.map((item, index) => {

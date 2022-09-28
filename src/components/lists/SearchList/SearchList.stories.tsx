@@ -11,6 +11,9 @@ export default {
 		onSearchChange: {
 			action: 'onSearchChange',
 		},
+		onSearchItem: {
+			action: 'onSearchItem',
+		},
 		engine: { control: 'select', options: ['fuse', 'custom'] },
 	},
 } as Meta<typeof SearchListComponent>;
@@ -26,7 +29,7 @@ SearchList.args = {
 	title: 'Hello world',
 	error: false,
 	errorComponent: <>error</>,
-	emptyStateText: 'El campo esta vacio',
+	emptyStateText: 'No se encontraron resultados para tu busqueda :(',
 	searchPlaceHolder: 'Placeholder desde prop en storybook',
 	featuredElements: [
 		{
@@ -44,7 +47,7 @@ SearchList.args = {
 			province: 'Misiones',
 			country: 'Argentina',
 			keywords: ['ciudad'],
-			featured: true,
+			featured: false,
 		},
 		{
 			name: 'El Calafate',
@@ -54,7 +57,7 @@ SearchList.args = {
 			category: 'Navegacion',
 			country: 'Argentina',
 			keywords: ['monte', 'sierras', 'ciudad'],
-			featured: true,
+			featured: false,
 		},
 		{
 			name: 'El Chalten',
@@ -74,7 +77,7 @@ SearchList.args = {
 			category: 'Navegacion y Aventura',
 			country: 'Argentina',
 			keywords: ['monte', 'sierras'],
-			featured: true,
+			featured: false,
 		},
 	],
 };
