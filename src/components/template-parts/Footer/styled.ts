@@ -4,7 +4,7 @@ import { deviceSize } from '../../../constants/devicesSizes';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 export const Container = styled.div`
-	width: 100%;
+	width: -webkit-fill-available;
 	padding-top: 50px;
 	padding-bottom: 40px;
 	display: flex;

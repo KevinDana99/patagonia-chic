@@ -2,8 +2,8 @@ import React, { SetStateAction } from 'react';
 
 export interface IPlace {
 	name: string;
-	onClick: () => void;
-	id: string;
+	onClick?: () => void;
+	id?: string;
 	img?: string;
 	province?: string;
 	category?: string;
@@ -14,14 +14,18 @@ export interface IPlace {
 
 export type SearchQueryType = {
 	list: [IPlace];
+	texts: SearchQueryTexts;
+	onQuerySubmit: Function;
+	showLocations: boolean;
+};
+
+export type SearchQueryTexts = {
 	placeholderPlace: string;
 	labelPlace: string;
 	placeholderDate: string;
 	labelStartDate: string;
 	labelEndDate: string;
 	titleSearchButton: string;
-	onQuerySubmit: Function;
-	showLocations: boolean;
 };
 
 export type StateSearchQueryType = {

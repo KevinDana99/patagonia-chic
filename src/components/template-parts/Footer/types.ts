@@ -68,3 +68,13 @@ export type FooterTextsType = {
 export type SectionSocialType = {
 	texts: FooterTextsType;
 };
+
+export type SectionMobileType = {
+	sections: {
+		title: string;
+		label: (
+			| { label: string; url: string; target?: undefined }
+			| { label: string; url: string; target: string }
+		)[];
+	}[];
+};

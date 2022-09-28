@@ -11,7 +11,7 @@ import {
 	ContainerSectionsCommon,
 	Divider,
 } from './styled';
-import { icons } from './utils';
+import { getSectionList, icons } from './utils';
 import { deviceSize } from '../../../constants/devicesSizes';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { SectionSocial } from './SectionSocial';

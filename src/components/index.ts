@@ -21,6 +21,9 @@ export { default as CustomIcon } from './graphics/CustomIcon';
 
 // LISTS
 export { default as IncludedItems } from './lists/IncludedItems';
+export { default as OptionalList } from './lists/OptionalList';
+export { default as SearchList } from './lists/SearchList';
+export { default as Timeline } from './lists/Timeline';
 
 // LOGO
 export { default as Logo } from './logos/Logo';
