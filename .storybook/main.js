@@ -16,5 +16,5 @@ module.exports = {
 	features: {
 		previewMdx2: true,
 	},
-	staticDirs: [{from: './assets/fonts', to: '/fonts'}],
+	staticDirs: [{ from: './assets/fonts', to: '/fonts' }],
 };

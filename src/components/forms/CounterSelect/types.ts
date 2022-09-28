@@ -6,4 +6,4 @@ export type CounterSelectType = {
 
 export type CounterSelectTextsType = {
 	selectQuantity: string;
-}
+};
