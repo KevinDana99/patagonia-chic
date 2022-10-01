@@ -11,6 +11,8 @@ const Text = ({
 	color,
 	weight,
 	italic = false,
+	center = false,
+	right = false,
 }: TextPropsType) => (
 	<StyledText
 		className={className}
@@ -19,6 +21,8 @@ const Text = ({
 		color={color}
 		weight={weight}
 		italic={italic}
+		center={center}
+		right={right}
 	>
 		{children}
 	</StyledText>

@@ -4,6 +4,7 @@ import IslandParadise from './IslandParadise';
 import GroupCardIcon from './GroupCardIcon';
 import RayCardIcon from './RayCardIcon';
 import { CustomIconsComponentPropsType } from './types';
+import ShipIcon from './ShipIcon';
 
 const icons = {
 	'check-circle': (props: CustomIconsComponentPropsType) => (
@@ -18,6 +19,7 @@ const icons = {
 	'ray-circle': (props: CustomIconsComponentPropsType) => (
 		<RayCardIcon {...props} />
 	),
+	ship: (props: CustomIconsComponentPropsType) => <ShipIcon {...props} />,
 } as const;
 
 export default icons;
