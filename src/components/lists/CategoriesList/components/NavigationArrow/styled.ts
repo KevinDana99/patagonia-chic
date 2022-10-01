@@ -7,7 +7,11 @@ export const GradientContainer = styled.div<NavigationArrowType>`
 	${({ right }) => (right ? 'right: 0;' : '')}
 	${({ left }) =>
 		left
-			? 'left: 0; -webkit-transform: scaleX(-1); transform: scaleX(-1);'
+			? `
+					left: 0;
+					-webkit-transform: scaleX(-1);
+					transform: scaleX(-1);
+				`
 			: ''}
 
 	position: absolute;
@@ -22,13 +26,14 @@ export const GradientContainer = styled.div<NavigationArrowType>`
 	background: linear-gradient(
 		270deg,
 		#ffffff ${({ mobile }) => (mobile ? '0%' : '38.54%')},
-		rgba(255, 255, 255, 0) 100%
+		rgba(255, 255, 255, 0) ${({ mobile }) => (mobile ? '70%' : '100%')}
 	);
 `;
 
 export const ArrowContainer = styled.div`
 	width: 28px;
 	height: 28px;
+	margin: 0 10px;
 	border-radius: 20px;
 	display: flex;
 	justify-content: center;

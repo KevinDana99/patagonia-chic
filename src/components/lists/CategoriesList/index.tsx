@@ -18,6 +18,8 @@ import useMediaQuery from '../../../hooks/useMediaQuery';
 import { deviceSize } from '../../../constants/devicesSizes';
 import CategoriesListSkeleton from './components/Skeleton';
 
+export const ITEM_TARGET_SIZE = 90;
+
 const CategoriesList = ({
 	list,
 	loading,
@@ -29,6 +31,7 @@ const CategoriesList = ({
 	const [selectedItemId, setSelectedItemId] = React.useState(selected);
 	const prevRef = React.useRef(null);
 	const nextRef = React.useRef(null);
+	const [swiperSize, setSwiperSize] = React.useState(0);
 
 	React.useEffect(() => {
 		onSelectedChange(selectedItemId);
@@ -39,10 +42,17 @@ const CategoriesList = ({
 		(swiper.params.navigation as NavigationOptions).nextEl = nextRef.current;
 		swiper.navigation.init();
 		swiper.navigation.update();
+		setSwiperSize(swiper.width);
 	};
+
+	const slidesPerView = Math.round(swiperSize / ITEM_TARGET_SIZE);
 
 	if (loading) {
 		return <CategoriesListSkeleton />;
+	}
+
+	if (error) {
+		return <span>Categorías no disponibles</span>; // Revisar error handler
 	}
 
 	return (
@@ -50,14 +60,16 @@ const CategoriesList = ({
 			<CategoriesListGlobalStyle />
 			<Swiper
 				slidesPerView={'auto'}
+				slidesPerGroup={slidesPerView}
 				spaceBetween={10}
 				freeMode
 				mousewheel
 				modules={[FreeMode, Navigation, Mousewheel]}
 				onInit={handleSwiperInit}
+				onResize={(swiper) => setSwiperSize(swiper.width)}
 			>
 				{list.map((item, index) => (
-					<StyledSwiperSlide key={`key-${index}`}>
+					<StyledSwiperSlide key={`key-${index}`} width={ITEM_TARGET_SIZE}>
 						<CategoryItem
 							{...item}
 							selected={item.id === selectedItemId}

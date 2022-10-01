@@ -1,14 +1,23 @@
 import styled from 'styled-components';
 import { ItemCategoryContainerType } from './types';
 
+export const TextContainer = styled.div`
+	flex: 1;
+	/* background-color: red; */
+	border-bottom: solid 2px rgba(0, 0, 0, 0);
+	text-align: center;
+
+	&:hover {
+		border-bottom: solid 2px #717171;
+	}
+`;
+
 export const Container = styled.div<ItemCategoryContainerType>`
-	padding-bottom: 10px;
 	width: 90px;
-	height: 58px;
+	height: 70px;
 	cursor: pointer;
 	color: #717171;
-	border-bottom: solid 2px rgba(0, 0, 0, 0);
-	${({ selected }) => (selected ? 'border-bottom: solid 5px #383838;' : '')}
+
 	${({ disabled }) =>
 		disabled ? 'opacity: 0.5; pointer-events: none; cursor: not-allowed;' : ''}
 	display: flex;
@@ -23,18 +32,11 @@ export const Container = styled.div<ItemCategoryContainerType>`
 	user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 
-	&:hover {
-		border-bottom: solid 2px #717171;
-	}
-
-	${({ selected }) =>
-		selected
-			? `border-bottom: solid 2px #000 !important;
+	${TextContainer} {
+		${({ selected }) =>
+			selected
+				? `border-bottom: solid 2px #000 !important;
 			color: #000; !important`
-			: ''}
-`;
-
-export const ItemText = styled.div`
-	font-size: 14px;
-	text-align: center;
+				: ''}
+	}
 `;

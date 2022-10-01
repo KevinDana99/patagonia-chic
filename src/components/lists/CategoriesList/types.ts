@@ -15,3 +15,7 @@ export type CategoriesListType = {
 	selected: string; //id
 	onSelectedChange: (itemId: string) => void;
 };
+
+export type StyledSwiperSlideType = {
+	width?: number;
+};

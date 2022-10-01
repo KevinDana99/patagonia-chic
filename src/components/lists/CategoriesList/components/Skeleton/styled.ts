@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 	width: 100%;
-	height: 58px;
+	height: 70px;
 	overflow: hidden;
 	position: relative;
 `;

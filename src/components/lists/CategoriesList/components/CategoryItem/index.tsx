@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomIcon from '../../../../graphics/CustomIcon';
 import Text from '../../../../texts/Text';
-import { Container, ItemText } from './styled';
+import { Container, TextContainer } from './styled';
 import { ItemCategoryType } from './types';
 
 const categoryItem = ({
@@ -22,9 +22,9 @@ const categoryItem = ({
 				size={23}
 				color={selected ? '#000' : '#717171'}
 			/>
-			<ItemText>
-				<Text size={8}>{name}</Text>
-			</ItemText>
+			<TextContainer>
+				<Text size={12}>{name}</Text>
+			</TextContainer>
 		</Container>
 	);
 };
