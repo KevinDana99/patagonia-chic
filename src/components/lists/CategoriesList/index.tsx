@@ -35,7 +35,7 @@ const CategoriesList = ({
 
 	React.useEffect(() => {
 		onSelectedChange(selectedItemId);
-	}, [selectedItemId]);
+	}, [onSelectedChange, selectedItemId]);
 
 	const handleSwiperInit = (swiper: SwiperType) => {
 		(swiper.params.navigation as NavigationOptions).prevEl = prevRef.current;

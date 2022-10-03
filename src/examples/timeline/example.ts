@@ -1,8 +1,3 @@
-import { IoCheckmarkCircle } from 'react-icons/io5';
-import { TbPlayerEject } from 'react-icons/tb';
-
-const theme = '#3BC053';
-
 export default [
 	{
 		id: 1,

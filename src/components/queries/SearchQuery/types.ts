@@ -48,7 +48,6 @@ export type CalendarInputType = {
 	openCalendar: () => void;
 	labels: string[];
 	titles: string[];
-	onClick?: React.MouseEventHandler;
 	values?: StateSearchQueryType;
 	clearData?: () => void;
 	isSelected?: boolean | string;
@@ -56,12 +55,10 @@ export type CalendarInputType = {
 	calendarFocusedInput: string;
 	showCalendar: boolean;
 	isMobile: boolean;
-	closeList: () => void;
 	setDates: React.Dispatch<StateSearchQueryType>;
 	data: StateSearchQueryType;
 	setFocused: React.Dispatch<SetStateAction<string>>;
 	closeCalendar: () => void;
-	sendData: () => void;
 	disableSearch: { place: boolean; startDate: boolean; endDate: boolean };
 };
 

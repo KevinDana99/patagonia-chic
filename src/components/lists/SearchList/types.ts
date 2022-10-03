@@ -36,3 +36,9 @@ export type ListType = {
 export type ItemListStyleType = {
 	selected: boolean;
 };
+
+export type ItemListDataType = {
+	place: ListItemType | null | undefined;
+	startDate: unknown;
+	endDate: unknown;
+};

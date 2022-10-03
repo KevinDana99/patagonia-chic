@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { deviceSize, size } from '../../../../../constants/devicesSizes';
-import { Container } from '../../styled';
+import { size } from '../../../../../constants/devicesSizes';
 
 export const CalendarContainer = styled.div`
 	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px !important;

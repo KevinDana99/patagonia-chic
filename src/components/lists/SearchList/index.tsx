@@ -19,7 +19,7 @@ import {
 import Fuse from 'fuse.js';
 import defaultFuseOptions from '../../../constants/fuseOptions.json';
 import { IoSearch } from 'react-icons/io5';
-import { ListItemType, ListType } from './types';
+import { ItemListDataType, ListItemType, ListType } from './types';
 import CustomIcon from '../../graphics/CustomIcon';
 import Skeleton from '../../skeletons/Skeleton';
 import Text from '../../texts/Text';
@@ -45,7 +45,7 @@ const SearchList = ({
 	onSearchItem,
 }: ListType) => {
 	const [listValue, setListValue] = useState(list);
-	const [data, setData] = useState({
+	const [data, setData] = useState<ItemListDataType>({
 		place: null,
 		startDate: null,
 		endDate: null,
@@ -57,7 +57,7 @@ const SearchList = ({
 
 	useEffect(() => {
 		onChangeSelect && onChangeSelect(data);
-	}, [data]);
+	}, [data, onChangeSelect]);
 
 	const selectItem = (item: ListItemType) => {
 		setData({ ...data, place: item });
@@ -123,7 +123,7 @@ const SearchList = ({
 				return prevState;
 			});
 		},
-		[list.length, setCurrentPlace, showCurrentPosition]
+		[list.length, selectedAction, setCurrentPlace, showCurrentPosition]
 	);
 
 	useEffect(() => {
@@ -166,7 +166,7 @@ const SearchList = ({
 								return (
 									<ItemList
 										key={index}
-										onClick={(e) => {
+										onClick={() => {
 											selectItem(item);
 											onItemClick?.(item.id);
 											selectedAction && selectedAction(item);

@@ -28,7 +28,7 @@ const PrimaryButton = (props: PrimaryButtonType) => {
 		color = '#3b3b3b',
 	} = props;
 
-	const ButtonComponent = components[theme];
+	const ButtonComponent = components[`${theme}`];
 
 	return (
 		<ButtonComponent

@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import Section from '../../../examples/modal/sections/Section';
 import SecondaryButton from '../../buttons/SecondaryButton';
 import Text from '../../texts/Text';
 import {
@@ -54,10 +53,16 @@ const PrimaryModal = ({
 		closeOnTouchOutside && close();
 	};
 
-	useEffect(() => {
+	const updateAnimation = useCallback(() => {
 		setState({ ...state, visible, animate: visible });
-		visible && open();
-	}, [visible]);
+	}, [state, visible]);
+
+	useEffect(() => {
+		if (visible) {
+			updateAnimation();
+			open();
+		}
+	}, [open, updateAnimation, visible]);
 
 	return (
 		<>

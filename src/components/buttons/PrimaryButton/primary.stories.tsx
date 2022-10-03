@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import PrimaryButton from '.';
 import { PrimaryButtonType } from './types';
 import { IoSearch } from 'react-icons/io5';
-import { PrimaryButtonLight } from './themes/styled';
+
 export default {
 	title: 'Components/buttons/PrimaryButton',
 	component: PrimaryButton,
