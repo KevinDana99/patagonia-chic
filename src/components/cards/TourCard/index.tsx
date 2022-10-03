@@ -75,7 +75,7 @@ const TourCard = ({
 								</ContainerVector>
 							)}
 
-							{!isAvailable && (
+							{!isAvailable && date && (
 								<ContainerVector>
 									<VectorCard color={isAddedToCart ? ActiveTheme : '#1079E3'} />
 									<TextVector>
