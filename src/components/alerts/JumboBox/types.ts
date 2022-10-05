@@ -2,6 +2,6 @@ import React from 'react';
 
 export type JumboBoxType = {
 	texts?: { title?: string; buttonTitle?: string };
-	renderButton?: React.FC;
+	renderButton?: JSX.Element;
 	background?: string;
 };

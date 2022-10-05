@@ -12,7 +12,7 @@ import { JumboBoxType } from './types';
 
 const JumboBox = ({ texts, renderButton, background }: JumboBoxType) => {
 	return (
-		<Container>
+		<Container background={background}>
 			<ContentContainer>
 				<BoxTitle>
 					<TextTitle color="#3B3B3B" weight="semi-bold" size={36}>

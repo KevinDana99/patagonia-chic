@@ -3,7 +3,7 @@ import React from 'react';
 const Background = () => {
 	return (
 		<svg
-			width="1118"
+			width="100%"
 			height="425"
 			viewBox="0 0 1118 425"
 			fill="none"

@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 import Text from '../../texts/Text';
 import Background from './background';
+import { JumboBoxType } from './types';
 
-export const Container = styled.div`
+export const Container = styled.div<JumboBoxType>`
 	width: 100%;
 	height: 425px;
 	padding: 20px;
 	box-sizing: border-box;
 	border-radius: 15px;
-	background: radial-gradient(
+	background: ${({ background }) =>
+		background
+			? background
+			: `radial-gradient(
 		139.76% 1671.53% at 119.88% 50%,
 		rgba(43, 235, 255, 0.1) 0%,
 		rgba(59, 178, 249, 0.1) 20.31%,
@@ -16,7 +20,7 @@ export const Container = styled.div`
 		rgba(35, 132, 229, 0.1) 61.98%,
 		rgba(35, 132, 229, 0.1) 80.21%,
 		rgba(168, 88, 224, 0.1) 98.44%
-	);
+	)`};
 `;
 
 export const ContentContainer = styled.div`

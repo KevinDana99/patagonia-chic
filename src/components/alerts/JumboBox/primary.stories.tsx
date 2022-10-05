@@ -11,7 +11,7 @@ export default {
 
 const Template: Story<JumboBoxType> = (args) => <JumboBox {...args} />;
 
-export const jumboBox = Template.bind({});
+export const jumboBox: Story<JumboBoxType> = Template.bind({});
 jumboBox.args = {
 	texts: {
 		title: '¿Muchas excursiones? Te ayudamos a elegir',
