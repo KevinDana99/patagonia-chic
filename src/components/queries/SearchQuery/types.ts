@@ -78,7 +78,6 @@ export type PlaceListInputType = {
 	closeModal: () => void;
 	label: string;
 	placeholder: string;
-	onClick?: React.MouseEventHandler;
 	values: StateSearchQueryType;
 	clearData: () => void;
 	isSelected: boolean;
@@ -88,9 +87,11 @@ export type PlaceListInputType = {
 	setPlaceData: React.Dispatch<SetStateAction<StateSearchQueryType>>;
 	isMobile: boolean;
 	openCalendar: () => void;
-	closeList: () => void;
 	showPlaceList: boolean;
 	placeFilter?: string | undefined;
+	showCalendar: boolean;
+	onClick: () => void;
+	closeList?: () => void;
 };
 
 export type PlaceListType = {
@@ -126,13 +127,11 @@ export type CalendarMobileType = {
 	setCalendarFocusedInput: React.Dispatch<React.SetStateAction<string>>;
 	calendarFocusedInput: string;
 	isMobile?: boolean;
-	sendData: () => void;
 	labelEndDate: string;
 	labelPlace: string;
 	labelStartDate: string;
-	placeholderDate: string;
-	placeholderPlace: string;
 	titleSearchButton: string;
+	sendData: () => void;
 };
 
 export type ListModalType = {

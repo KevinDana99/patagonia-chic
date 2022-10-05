@@ -30,44 +30,42 @@ const PrimaryModal = ({
 	title,
 	visible = false,
 	texts,
+	animated,
 }: ModalType) => {
 	const [state, setState] = useState<ModalStateType>({
-		visible,
-		closeOnTouchOutside,
+		visible: visible,
 		animate: false,
 	});
 
 	const close = () => {
-		setState({ ...state, animate: false, visible: false });
-
+		setState({ animate: false, visible: false });
 		onClose && onClose();
 	};
 
 	const open = useCallback(() => {
-		setState({ ...state, visible: true, animate: true });
+		setState((prevState) => ({ ...prevState, visible: true }));
 		onOpen && onOpen();
-	}, [onOpen, state]);
+	}, [onOpen]);
+
+	const openWithAnimation = useCallback(() => {
+		setState((prevState) => ({ ...prevState, animate: true }));
+		open();
+	}, [open]);
+
+	useEffect(() => {
+		!animated && visible && open();
+		animated && visible && openWithAnimation();
+	}, [animated, open, openWithAnimation, visible]);
 
 	const touchOutside = () => {
 		closeOnTouchOutside && closeAction && closeAction();
 		closeOnTouchOutside && close();
 	};
 
-	const updateAnimation = useCallback(() => {
-		setState({ ...state, visible, animate: visible });
-	}, [state, visible]);
-
-	useEffect(() => {
-		if (visible) {
-			updateAnimation();
-			open();
-		}
-	}, [open, updateAnimation, visible]);
-
 	return (
 		<>
 			{renderOpenButton && (
-				<SecondaryButton title={texts.buttonTitle} onClick={open} />
+				<SecondaryButton title={texts?.buttonTitle ?? ''} onClick={open} />
 			)}
 
 			<BoxModal visible={state.visible} onClick={touchOutside}>
@@ -84,7 +82,7 @@ const PrimaryModal = ({
 						</BoxTitle>
 						{!disableClose && (
 							<ButtonClose>
-								{<CloseIcon onClick={closeAction ? closeAction : close} />}
+								{<CloseIcon onClick={closeAction ? touchOutside : close} />}
 							</ButtonClose>
 						)}
 					</BoxTop>

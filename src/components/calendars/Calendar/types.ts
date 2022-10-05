@@ -10,7 +10,7 @@ export type PrimaryCalendarType = {
 	shadow?: boolean;
 	markCurrentDay?: boolean;
 	locale?: 'es' | 'en' | 'fr';
-	selectedRange?: Array<Date>;
+	selectedRange?: Array<Date> | null;
 };
 
 export type PrimaryCalendarStyleType = {

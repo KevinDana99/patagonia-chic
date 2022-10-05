@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
 
 import { Calendar } from './Calendar';
@@ -40,26 +40,27 @@ export const CalendarInput = ({
 	useOutsideClick(calendarRef, outsideClick);
 	const [hover, setHover] = useState({ start: false, end: false });
 
-	const enableHover = (option: string) => {
-		if (option == values?.startDate?.name) {
-			setHover({ ...hover, start: true, end: false });
-		} else {
-			setHover({ ...hover, end: true, start: false });
-		}
-	};
+	const enableHover = useCallback(
+		(option: string) => {
+			if (option == values?.startDate?.name) {
+				setHover({ start: true, end: false });
+			} else {
+				setHover({ end: true, start: false });
+			}
+		},
+		[values?.startDate?.name]
+	);
 
-	const disableHover = (option: string) => {
-		if (option == values?.startDate?.name) {
-			setHover({ ...hover, start: false, end: false });
-		} else {
-			setHover({ ...hover, end: false, start: false });
-		}
-	};
-
-	useEffect(() => {
-		values?.startDate?.name && disableHover(values?.startDate?.name);
-		values?.endDate?.name && disableHover(values?.endDate?.name);
-	}, [data]);
+	const disableHover = useCallback(
+		(option: string) => {
+			if (option == values?.startDate?.name) {
+				setHover({ start: false, end: false });
+			} else {
+				setHover({ end: false, start: false });
+			}
+		},
+		[values?.startDate?.name]
+	);
 
 	return (
 		<CalendarInputContainer ref={calendarRef}>

@@ -33,7 +33,7 @@ export const PlaceListInput = ({
 
 	useEffect(() => {
 		offToggle();
-	}, [values]);
+	}, [offToggle, values]);
 
 	return (
 		<OptionContainerPlaceList
@@ -69,7 +69,7 @@ export const PlaceListInput = ({
 						onChangeSelect={setPlaceData}
 						selectedAction={(item) => {
 							setPlaceData({ ...values, place: item });
-							closeList();
+							closeList && closeList();
 							openCalendar();
 						}}
 					/>

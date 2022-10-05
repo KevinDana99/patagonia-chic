@@ -44,7 +44,7 @@ const SearchList = ({
 	searchPlaceHolder,
 	onSearchItem,
 }: ListType) => {
-	const [listValue, setListValue] = useState(list);
+	const [listValue, setListValue] = useState<Array<ListItemType>>(list);
 	const [data, setData] = useState<ItemListDataType>({
 		place: null,
 		startDate: null,
@@ -64,7 +64,7 @@ const SearchList = ({
 	};
 
 	const filterPlaceList = (query: string) => {
-		onSearchItem(query);
+		onSearchItem && onSearchItem(query);
 		const fusePlaceList = new Fuse(list, fuseConfigs);
 		const filteredResult = fusePlaceList.search(query);
 		const filteredList =
@@ -72,7 +72,9 @@ const SearchList = ({
 				? filteredResult.map((filteredPlace) => filteredPlace.item)
 				: featuredElements.filter((item) => item.featured == true);
 
-		setListValue(filteredList as ListItemType[]);
+		console.log(filteredList, 'list');
+
+		setListValue(filteredList);
 		query.length == 0 && setListValue(list);
 	};
 
@@ -166,7 +168,7 @@ const SearchList = ({
 								return (
 									<ItemList
 										key={index}
-										onClick={() => {
+										onClick={(e) => {
 											selectItem(item);
 											onItemClick?.(item.id);
 											selectedAction && selectedAction(item);

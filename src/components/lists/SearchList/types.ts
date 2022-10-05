@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js';
 
-export interface ListItemType {
+export type ListItemType = {
 	name: string;
 	onClick: () => void;
 	id: string;
@@ -10,10 +10,10 @@ export interface ListItemType {
 	country?: string;
 	keywords?: Array<string>;
 	featured?: boolean;
-}
+};
 
 export type ListType = {
-	list: Array<ListItemType>;
+	list: [ListItemType];
 	title?: string;
 	search?: boolean;
 	onSearchChange?: (query: string) => ListItemType[];

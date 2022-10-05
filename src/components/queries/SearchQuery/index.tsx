@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 
 import { CalendarInput } from './inputs/CalendarInput/CalendarInput';
 import {
@@ -83,26 +83,26 @@ const SearchQuery = ({
 		}
 	};
 
-	useEffect(() => {
-		setDisableSearch({
-			...disableSearch,
-			startDate: false,
-		});
-	}, [data.startDate, disableSearch]);
+	const resetSearchStatus = useCallback(
+		(disableSearchKey: string) => {
+			disableSearch[`${disableSearchKey}` as keyof typeof data] !== false &&
+				setDisableSearch({
+					...disableSearch,
+					[disableSearchKey]: false,
+				});
+		},
+		[disableSearch]
+	);
 
 	useEffect(() => {
-		setDisableSearch({
-			...disableSearch,
-			endDate: false,
-		});
-	}, [data.endDate, disableSearch]);
-
+		resetSearchStatus('startDate');
+	}, [data.startDate, resetSearchStatus]);
 	useEffect(() => {
-		setDisableSearch({
-			...disableSearch,
-			place: false,
-		});
-	}, [data.place, disableSearch]);
+		resetSearchStatus('endDate');
+	}, [data.endDate, resetSearchStatus]);
+	useEffect(() => {
+		resetSearchStatus('place');
+	}, [data.place, resetSearchStatus]);
 
 	return (
 		<>
@@ -161,19 +161,10 @@ const SearchQuery = ({
 					titles={[texts.placeholderDate, texts.placeholderDate]}
 					values={data}
 					clearData={clearDates}
-					onClick={() => {
-						setShowCalendar(true);
-						setCalendarFocusedInput('startDate');
-						setData({ ...data, startDate: null, endDate: null });
-					}}
 					outsideClick={() => setShowCalendar(false)}
 					calendarFocusedInput={calendarFocusedInput}
 					showCalendar={showCalendar}
 					isMobile={isMobile}
-					closeList={() => {
-						setShowCalendar(false);
-						setData({ ...data, place: { name: '' } });
-					}}
 					setDates={setData}
 					data={data}
 					setFocused={setCalendarFocusedInput}
@@ -182,7 +173,6 @@ const SearchQuery = ({
 						setShowPlaceList(false);
 						setShowCalendar(true);
 					}}
-					sendData={() => onQuerySubmit(data)}
 				></CalendarInput>
 				<ButtonContainer>
 					<ButtonSearch
@@ -200,6 +190,7 @@ const SearchQuery = ({
 				visible={isMobile && modal ? true : false}
 				closeAction={() => setModal(false)}
 				closeOnTouchOutside={true}
+				animated={true}
 			>
 				<ContainerModal>
 					{showMobilePlaceList ? (
@@ -230,8 +221,6 @@ const SearchQuery = ({
 							labelEndDate={texts.labelEndDate}
 							labelPlace={texts.labelPlace}
 							labelStartDate={texts.labelStartDate}
-							placeholderDate={texts.placeholderDate}
-							placeholderPlace={texts.placeholderPlace}
 							titleSearchButton={texts.titleSearchButton}
 						/>
 					)}
