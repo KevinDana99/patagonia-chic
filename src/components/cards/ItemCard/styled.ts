@@ -18,15 +18,19 @@ export const BoxContent = styled.div`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
 `;
 
 export const BoxTitle = styled.div`
+	width: 237px;
+	height: 131px;
 	display: flex;
 	flex-wrap: wrap;
 `;
 
-export const BoxIcon = styled.div``;
+export const BoxIcon = styled.div`
+	margin-top: 22px;
+`;
 
 export const TextItem = styled(Text)`
 	margin-left: 4px;
