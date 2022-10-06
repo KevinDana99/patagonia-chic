@@ -17,5 +17,5 @@ jumboBox.args = {
 		title: '¿Muchas excursiones? Te ayudamos a elegir',
 		buttonTitle: 'Organizar mi viaje',
 	},
-	//renderButton: <PrimaryButton title="titulo del boton" theme="color" />,
+	//renderButton: <><PrimaryButton title="titulo del boton" theme="color" /></>,
 };
