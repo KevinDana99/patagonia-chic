@@ -14,15 +14,25 @@ import { ItemCardType } from './types';
 
 const ItemCard = ({ title, icon, keywordColor, keywords }: ItemCardType) => {
 	const words = title.split(' ');
-	console.log(words);
+
+	const searchWordsAndFixPoints = (word: string) => {
+		if (word.includes('.')) {
+			return word.substring(0, word.length - 1);
+		} else if (word.includes(',')) {
+			return word.substring(0, word.length - 1);
+		} else {
+			return word;
+		}
+	};
 
 	return (
 		<Container>
 			<Card hover={true}>
 				<BoxContent>
 					<BoxTitle>
-						{words?.map((word) => {
-							return keywords?.includes(word) ? (
+						{words?.map((word, index) => {
+							return keywords?.includes(searchWordsAndFixPoints(word)) &&
+								index == words.indexOf(word) ? (
 								<TextColorItem
 									size={20}
 									weight={'semi-bold'}
