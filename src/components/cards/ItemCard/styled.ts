@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Text from '../../texts/Text';
 import PrimaryCard from '../PrimaryCard';
 import { PrimaryCardStyleType } from '../PrimaryCard/types';
 
@@ -20,6 +21,19 @@ export const BoxContent = styled.div`
 	justify-content: space-around;
 `;
 
-export const BoxTitle = styled.div``;
+export const BoxTitle = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+`;
 
 export const BoxIcon = styled.div``;
+
+export const TextItem = styled(Text)`
+	margin-left: 4px;
+	color: '#444444';
+`;
+
+export const TextColorItem = styled(Text)`
+	color: ${({ color }) => (color ? color : '')};
+	margin-left: 4px;
+`;

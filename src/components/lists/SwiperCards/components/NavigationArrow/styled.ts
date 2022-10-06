@@ -18,23 +18,19 @@ export const GradientContainer = styled.div<NavigationArrowType>`
 	position: absolute;
 	top: 0;
 	z-index: 2;
-
+	margin: 0% 20%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-end;
 
-	background: linear-gradient(
-		270deg,
-		#ffffff ${({ mobile }) => (mobile ? '0%' : '38.54%')},
-		rgba(255, 255, 255, 0) ${({ mobile }) => (mobile ? '70%' : '100%')}
-	);
+	background: transparent;
 `;
 
 export const ArrowContainer = styled.div`
 	width: 80px;
 	height: 80px;
-	margin: 0 10px;
+	margin: 0% 10%;
 	border-radius: 100%;
 	display: flex;
 	justify-content: center;
@@ -42,6 +38,7 @@ export const ArrowContainer = styled.div`
 	color: #3b3b3b;
 	padding-left: 2px;
 	box-sizing: border-box;
+	background-color: white;
 	cursor: pointer;
 	box-shadow: 0px 1px 1px 2px rgba(0, 0, 0, 0.073);
 `;
