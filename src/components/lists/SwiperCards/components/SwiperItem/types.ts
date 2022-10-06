@@ -1,10 +1,14 @@
 import { CustomIconType } from '../../../../graphics/CustomIcon/types';
 
-export type ItemCategoryType = {
-	name: string;
-	iconName: CustomIconType['name'];
-	selected?: boolean;
+export type SwiperItemType = {
+	id: string;
+	title: string;
+	keywordColor?: string;
+	keywords?: string[];
+	icon?: CustomIconType['name'];
+	isSelected?: boolean;
 	disabled?: boolean;
+	selected?: boolean;
 	onClick?: React.MouseEventHandler<HTMLDivElement>;
 };
 

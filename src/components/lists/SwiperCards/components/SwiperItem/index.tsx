@@ -1,27 +1,31 @@
 import React from 'react';
-import PrimaryCard from '../../../../cards/PrimaryCard';
-import TourCard from '../../../../cards/TourCard';
-import CustomIcon from '../../../../graphics/CustomIcon';
-import Text from '../../../../texts/Text';
-import { Container, TextContainer } from './styled';
-import { ItemCategoryType } from './types';
+import ItemCard from '../../../../cards/ItemCard';
+import { Container } from './styled';
+import { SwiperItemType } from './types';
 
-const categoryItem = ({
-	iconName,
-	name,
+const SwiperItem = ({
 	selected,
 	disabled,
 	onClick,
-}: ItemCategoryType) => {
+	title,
+	icon,
+	keywordColor,
+	keywords,
+}: SwiperItemType) => {
 	return (
 		<Container
 			onClick={!disabled ? onClick : undefined}
 			selected={selected}
 			disabled={disabled}
 		>
-			<PrimaryCard hover={true} />
+			<ItemCard
+				title={title}
+				icon={icon}
+				keywordColor={keywordColor}
+				keywords={keywords}
+			></ItemCard>
 		</Container>
 	);
 };
 
-export default categoryItem;
+export default SwiperItem;

@@ -9,14 +9,14 @@ import { Swiper } from 'swiper/react';
 import { Navigation, FreeMode, Mousewheel } from 'swiper';
 import { NavigationOptions, Swiper as SwiperType } from 'swiper/types';
 
-import { CategoriesListType } from './types';
 import CategoriesListGlobalStyle, { StyledSwiperSlide } from './styled';
-import CategoryItem from './components/SwiperItem';
 import NavigationArrow from './components/NavigationArrow';
 
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { deviceSize } from '../../../constants/devicesSizes';
 import CategoriesListSkeleton from './components/Skeleton';
+import SwiperItem from './components/SwiperItem';
+import { SwiperCardsType } from './types';
 
 export const ITEM_TARGET_SIZE = 350;
 
@@ -26,7 +26,7 @@ const SwiperCards = ({
 	error,
 	selected,
 	onSelectedChange,
-}: CategoriesListType) => {
+}: SwiperCardsType) => {
 	const isMobile = useMediaQuery(deviceSize.mobileL);
 	const [selectedItemId, setSelectedItemId] = React.useState(selected);
 	const prevRef = React.useRef(null);
@@ -70,7 +70,7 @@ const SwiperCards = ({
 			>
 				{list.map((item, index) => (
 					<StyledSwiperSlide key={`key-${index}`} width={ITEM_TARGET_SIZE}>
-						<CategoryItem
+						<SwiperItem
 							{...item}
 							selected={item.id === selectedItemId}
 							onClick={() => setSelectedItemId(item.id)}

@@ -1,15 +1,17 @@
 import { CustomIconType } from '../../graphics/CustomIcon/types';
 
-export type CategoriesListItemType = {
+export type SwiperListCardType = {
 	id: string;
-	name: string;
-	iconName: CustomIconType['name'];
+	title: string;
+	keywordColor?: string;
+	keywords?: string[];
+	icon?: CustomIconType['name'];
 	isSelected?: boolean;
 	disabled?: boolean;
 };
 
-export type CategoriesListType = {
-	list: Array<CategoriesListItemType>;
+export type SwiperCardsType = {
+	list: Array<SwiperListCardType>;
 	loading?: boolean; // muestra un skeleton
 	error?: null; //este despues lo vemos
 	selected: string; //id

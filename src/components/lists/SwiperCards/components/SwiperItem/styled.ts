@@ -14,7 +14,6 @@ export const TextContainer = styled.div`
 
 export const Container = styled.div<ItemCategoryContainerType>`
 	cursor: pointer;
-	color: #717171;
 
 	${({ disabled }) =>
 		disabled ? 'opacity: 0.5; pointer-events: none; cursor: not-allowed;' : ''}
