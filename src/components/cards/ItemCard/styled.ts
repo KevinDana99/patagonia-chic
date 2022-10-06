@@ -5,10 +5,21 @@ import { PrimaryCardStyleType } from '../PrimaryCard/types';
 export const Container = styled.div``;
 
 export const Card = styled(PrimaryCard)<PrimaryCardStyleType>`
-	width: 335px;
-	height: 365px;
-	padding: 0px;
+	padding: 36px;
+	box-sizing: border-box;
 	overflow: hidden;
 	position: relative;
 	background-color: white;
 `;
+
+export const BoxContent = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+`;
+
+export const BoxTitle = styled.div``;
+
+export const BoxIcon = styled.div``;

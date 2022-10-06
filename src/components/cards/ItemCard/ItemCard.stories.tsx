@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { ExcursionCardType } from './types';
+import { ItemCardType } from './types';
 import ItemCard from '.';
 
 export default {
@@ -9,7 +9,12 @@ export default {
 	argTypes: {},
 } as Meta<typeof ItemCard>;
 
-const Template: Story<ExcursionCardType> = (args) => <ItemCard {...args} />;
+const Template: Story<ItemCardType> = (args) => <ItemCard {...args} />;
 
-export const itemCard = Template.bind({});
-itemCard.args = {};
+export const itemCard: Story<ItemCardType> = Template.bind({});
+itemCard.args = {
+	title: 'Este es el titulo de la card.',
+	icon: 'island',
+	keywords: ['titulo', 'card'],
+	keywordColor: 'violet',
+};
