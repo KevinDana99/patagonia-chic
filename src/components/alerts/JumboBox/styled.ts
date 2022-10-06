@@ -38,7 +38,8 @@ export const TextTitle = styled(Text)`
 `;
 
 export const BoxTitle = styled.div`
-	width: 400px;
+	width: 100%;
+	max-width: 400px;
 	display: flex;
 	justify-content: center;
 `;
