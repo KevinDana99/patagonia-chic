@@ -9,7 +9,6 @@ export type ListItemType = {
 	category?: string;
 	country?: string;
 	keywords?: Array<string>;
-	featured?: boolean;
 };
 
 export type SearchListPropsType = {

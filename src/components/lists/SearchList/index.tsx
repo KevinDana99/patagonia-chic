@@ -60,7 +60,7 @@ const SearchList = ({
 		const filteredList =
 			filteredResult.length > 0
 				? filteredResult.map((filteredPlace) => filteredPlace.item)
-				: featuredElements.filter((item) => item.featured == true);
+				: featuredElements;
 
 		setListValue(filteredList);
 		query.length == 0 && setListValue(list);
