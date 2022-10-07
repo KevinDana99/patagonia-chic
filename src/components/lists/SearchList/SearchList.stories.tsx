@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { ListType } from './types';
+import { SearchListPropsType } from './types';
 import SearchListComponent from '.';
 import places from '../../../examples/values/places.json';
 
@@ -18,7 +18,9 @@ export default {
 	},
 } as Meta<typeof SearchListComponent>;
 
-const Template: Story<ListType> = (args) => <SearchListComponent {...args} />;
+const Template: Story<SearchListPropsType> = (args) => (
+	<SearchListComponent {...args} />
+);
 
 export const SearchList = Template.bind({});
 SearchList.args = {
@@ -30,7 +32,7 @@ SearchList.args = {
 	error: false,
 	errorComponent: <>error</>,
 	emptyStateText: 'No se encontraron resultados para tu busqueda :(',
-	searchPlaceHolder: 'Placeholder desde prop en storybook',
+	searchPlaceholder: 'Placeholder desde prop en storybook',
 	featuredElements: [
 		{
 			name: 'Cordoba',

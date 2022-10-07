@@ -13,10 +13,11 @@ export type ListItemType = {
 };
 
 export type SearchListPropsType = {
-	list: [ListItemType];
+	list: ListItemType[];
 	title?: string;
-	search?: boolean;
+	searchBar?: boolean;
 	onSearchChange?: (query: string) => ListItemType[];
+	onItemSelected?: (selectedItem: ListItemType) => void;
 	loading?: boolean;
 	error?: boolean;
 	emptyStateText?: string;
@@ -24,13 +25,9 @@ export type SearchListPropsType = {
 	emptyStateComponent?: JSX.Element;
 	errorComponent?: JSX.Element;
 	engine?: 'fuse' | 'custom';
-	onItemClick?: (itemId: string) => void;
 	fuseConfigs?: Fuse.IFuseOptions<ListItemType>;
 	featuredElements?: ListItemType[];
-	onChangeSelect?: React.Dispatch<{}>;
-	selectedAction?: (item?: Object) => void;
-	searchPlaceHolder?: string;
-	onSearchItem: (query: string) => void;
+	searchPlaceholder?: string;
 	horizontalPadding?: number;
 };
 

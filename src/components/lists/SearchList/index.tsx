@@ -29,26 +29,26 @@ import useKeyboardNavigation from './hooks/useKeyboardNavigation';
 const SearchList = ({
 	list,
 	title,
+	searchBar = true,
 	onSearchChange,
-	engine = 'fuse',
-	search = false,
+	onItemSelected,
 	loading,
-	onItemClick,
-	fuseConfigs = defaultFuseOptions,
-	featuredElements = [],
-	loadingComponent,
+	error,
 	emptyStateText,
+	loadingComponent,
 	emptyStateComponent,
 	errorComponent,
-	error,
-	onChangeSelect,
-	selectedAction,
-	searchPlaceHolder,
+	engine = 'fuse',
+	fuseConfigs = defaultFuseOptions,
+	featuredElements = [],
+	searchPlaceholder,
 	horizontalPadding = 20,
 }: SearchListPropsType) => {
 	const [listValue, setListValue] = useState<Array<ListItemType>>(list);
 	const [keyboardSelectedIndex, setKeyboardSelectedIndex] =
-		useKeyboardNavigation(list.length, console.log);
+		useKeyboardNavigation(list.length, (index) =>
+			onItemSelected?.(listValue[index])
+		);
 
 	useEffect(() => {
 		setListValue(list);
@@ -75,11 +75,11 @@ const SearchList = ({
 							<Text size={20}>{title}</Text>
 						</OptionalTitle>
 					)}
-					{search && (
+					{searchBar && (
 						<BoxSearch>
 							<IoSearch />
 							<InputSearch
-								placeholder={searchPlaceHolder}
+								placeholder={searchPlaceholder}
 								onChange={(e) => {
 									engine === 'fuse'
 										? filterPlaceList(e.target.value)
@@ -104,10 +104,7 @@ const SearchList = ({
 										onMouseOver={() => setKeyboardSelectedIndex(index)}
 										onMouseMove={() => setKeyboardSelectedIndex(index)}
 										onMouseOut={() => setKeyboardSelectedIndex(-1)}
-										onClick={(e) => {
-											onItemClick?.(item.id);
-											selectedAction && selectedAction(item);
-										}}
+										onClick={() => onItemSelected?.(item)}
 										selected={index === keyboardSelectedIndex}
 										horizontalPadding={horizontalPadding}
 									>
@@ -125,39 +122,12 @@ const SearchList = ({
 												</Text>
 											</Title>
 											<BoxSubtitle>
-												{item.category ? (
-													<SubTitle>
-														<Text
-															size={14}
-															weight={'regular'}
-															color={'#888888'}
-														>
-															{item.category}
-														</Text>
-													</SubTitle>
-												) : (
-													<>
-														<SubTitle>
-															<Text
-																size={14}
-																weight={'regular'}
-																color={'#888888'}
-															>
-																{item.province}
-															</Text>
-														</SubTitle>
-														<Divisor>-</Divisor>
-														<SubTitle>
-															<Text
-																size={14}
-																weight={'regular'}
-																color={'#888888'}
-															>
-																{item.country}
-															</Text>
-														</SubTitle>
-													</>
-												)}
+												<SubTitle>
+													<Text size={14} weight={'regular'} color={'#888888'}>
+														{item.category ||
+															`${item.province} - ${item.country}`}
+													</Text>
+												</SubTitle>
 											</BoxSubtitle>
 										</Description>
 									</ItemList>
