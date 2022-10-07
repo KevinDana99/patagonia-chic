@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const HeaderContainer = styled.div<{ horizontalPadding: number }>`
-	padding: 0 ${({ horizontalPadding }) => horizontalPadding}px;
+	padding: 15px ${({ horizontalPadding }) => horizontalPadding}px 19px;
 	box-sizing: border-box;
 `;
 
@@ -30,7 +30,6 @@ export const InputSearch = styled.input`
 `;
 
 export const BoxItemList = styled.div`
-	margin-top: 19px;
 	width: 100%;
 `;
 
@@ -42,6 +41,16 @@ export const ItemList = styled.div<ItemListStyleType>`
 	background-color: ${(props) => (props.selected ? '#f7f8f8' : '#ffffff')};
 	padding: 10px ${({ horizontalPadding }) => horizontalPadding}px;
 	box-sizing: border-box;
+
+	&:first-child {
+		padding-top: ${({ edgesItemsAddedPadding }) =>
+			10 + edgesItemsAddedPadding}px;
+	}
+
+	&:last-child {
+		padding-bottom: ${({ edgesItemsAddedPadding }) =>
+			10 + edgesItemsAddedPadding}px;
+	}
 `;
 
 export const BoxImage = styled.div`
@@ -72,10 +81,6 @@ export const BoxSubtitle = styled.div`
 export const SubTitle = styled.div`
 	font-weight: 300;
 	font-size: 14px;
-`;
-
-export const Divisor = styled.div`
-	margin: 0px 3px;
 `;
 
 export const LoadingContainer = styled.div<{ horizontalPadding: number }>`

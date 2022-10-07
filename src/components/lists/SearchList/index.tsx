@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import {
 	BoxImage,
@@ -29,6 +29,7 @@ const SearchList = ({
 	list,
 	title,
 	searchBar = true,
+	searchText = '',
 	onSearchChange,
 	onItemSelected,
 	loading,
@@ -42,8 +43,10 @@ const SearchList = ({
 	featuredElements = [],
 	searchPlaceholder,
 	horizontalPadding = 20,
+	edgesItemsAddedPadding = 0,
 }: SearchListPropsType) => {
 	const [listValue, setListValue] = useState<Array<ListItemType>>(list);
+	const [searchTextValue, setSearchTextValue] = useState(searchText);
 	const [keyboardSelectedIndex, setKeyboardSelectedIndex] =
 		useKeyboardNavigation(list.length, (index) =>
 			onItemSelected?.(listValue[index])
@@ -53,41 +56,58 @@ const SearchList = ({
 		setListValue(list);
 	}, [list]);
 
-	const filterPlaceList = (query: string) => {
-		const fusePlaceList = new Fuse(list, fuseConfigs);
-		const filteredResult = fusePlaceList.search(query);
-		const filteredList =
-			filteredResult.length > 0
-				? filteredResult.map((filteredPlace) => filteredPlace.item)
-				: featuredElements;
+	const filterPlaceList = useCallback(
+		(query: string) => {
+			const fusePlaceList = new Fuse(list, fuseConfigs);
+			const filteredResult = fusePlaceList.search(query);
+			const filteredList =
+				filteredResult.length > 0
+					? filteredResult.map((filteredPlace) => filteredPlace.item)
+					: featuredElements;
 
-		setListValue(filteredList);
-		query.length == 0 && setListValue(list);
-	};
+			setListValue(filteredList);
+			query.length == 0 && setListValue(list);
+		},
+		[featuredElements, fuseConfigs, list]
+	);
+
+	const handleSearchTextChange = useCallback(
+		(newText: string) => {
+			setSearchTextValue(newText);
+			if (engine === 'fuse') filterPlaceList(newText);
+			onSearchChange?.(newText);
+		},
+		[engine, filterPlaceList, onSearchChange]
+	);
+
+	useEffect(() => {
+		handleSearchTextChange(searchText);
+	}, [searchText, handleSearchTextChange]);
 
 	return (
 		<>
 			<Container>
-				<HeaderContainer horizontalPadding={horizontalPadding}>
-					{title && (
-						<OptionalTitle>
-							<Text size={20}>{title}</Text>
-						</OptionalTitle>
-					)}
-					{searchBar && (
-						<BoxSearch>
-							<IoSearch />
-							<InputSearch
-								placeholder={searchPlaceholder}
-								onChange={(e) => {
-									engine === 'fuse'
-										? filterPlaceList(e.target.value)
-										: onSearchChange?.(e.target.value);
-								}}
-							/>
-						</BoxSearch>
-					)}
-				</HeaderContainer>
+				{(title || searchBar) && (
+					<HeaderContainer horizontalPadding={horizontalPadding}>
+						{title && (
+							<OptionalTitle>
+								<Text size={20}>{title}</Text>
+							</OptionalTitle>
+						)}
+						{searchBar && (
+							<BoxSearch>
+								<IoSearch />
+								<InputSearch
+									value={searchTextValue}
+									placeholder={searchPlaceholder}
+									onChange={(e) => {
+										handleSearchTextChange(e.target.value);
+									}}
+								/>
+							</BoxSearch>
+						)}
+					</HeaderContainer>
+				)}
 
 				{error && errorComponent ? (
 					errorComponent
@@ -106,6 +126,7 @@ const SearchList = ({
 										onClick={() => onItemSelected?.(item)}
 										selected={index === keyboardSelectedIndex}
 										horizontalPadding={horizontalPadding}
+										edgesItemsAddedPadding={edgesItemsAddedPadding}
 									>
 										<BoxImage>
 											{item.img ? (

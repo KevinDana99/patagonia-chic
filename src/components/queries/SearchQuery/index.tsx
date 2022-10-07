@@ -145,6 +145,9 @@ const SearchQuery = ({
 					searchBar={false}
 					list={placeList}
 					searchPlaceholder={texts.placeholderPlace}
+					searchText={locationSearchText}
+					onSearchChange={setLocationSearchText}
+					edgesItemsAddedPadding={10}
 				/>
 			</PlacesListContainer>
 

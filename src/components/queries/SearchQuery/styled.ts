@@ -108,7 +108,6 @@ export const PlacesListContainer = styled.div`
 	width: 350px;
 	border-radius: 30px;
 	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
-	padding-bottom: 15px;
 	overflow: hidden;
 	top: 75px;
 	left: 0px;

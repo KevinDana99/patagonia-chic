@@ -14,7 +14,8 @@ export type SearchListPropsType = {
 	list: ListItemType[];
 	title?: string;
 	searchBar?: boolean;
-	onSearchChange?: (query: string) => ListItemType[];
+	searchText?: string;
+	onSearchChange?: (query: string) => void;
 	onItemSelected?: (selectedItem: ListItemType) => void;
 	loading?: boolean;
 	error?: boolean;
@@ -27,9 +28,11 @@ export type SearchListPropsType = {
 	featuredElements?: ListItemType[];
 	searchPlaceholder?: string;
 	horizontalPadding?: number;
+	edgesItemsAddedPadding?: number;
 };
 
 export type ItemListStyleType = {
 	selected: boolean;
 	horizontalPadding: number;
+	edgesItemsAddedPadding: number;
 };
