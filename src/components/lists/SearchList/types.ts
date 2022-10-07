@@ -12,7 +12,7 @@ export type ListItemType = {
 	featured?: boolean;
 };
 
-export type ListType = {
+export type SearchListPropsType = {
 	list: [ListItemType];
 	title?: string;
 	search?: boolean;
@@ -31,10 +31,12 @@ export type ListType = {
 	selectedAction?: (item?: Object) => void;
 	searchPlaceHolder?: string;
 	onSearchItem: (query: string) => void;
+	horizontalPadding?: number;
 };
 
 export type ItemListStyleType = {
 	selected: boolean;
+	horizontalPadding: number;
 };
 
 export type ItemListDataType = {

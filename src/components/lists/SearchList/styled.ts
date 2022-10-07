@@ -5,6 +5,11 @@ export const Container = styled.div`
 	width: 100%;
 `;
 
+export const HeaderContainer = styled.div<{ horizontalPadding: number }>`
+	padding: 0 ${({ horizontalPadding }) => horizontalPadding}px;
+	box-sizing: border-box;
+`;
+
 export const BoxSearch = styled.div`
 	padding-bottom: 10px;
 	width: 100%;
@@ -25,20 +30,18 @@ export const InputSearch = styled.input`
 `;
 
 export const BoxItemList = styled.div`
-	margin-top: 35px;
+	margin-top: 19px;
 	width: 100%;
 `;
 
 export const ItemList = styled.div<ItemListStyleType>`
-	margin-top: 21px;
 	width: 100%;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 	background-color: ${(props) => (props.selected ? '#f7f8f8' : '#ffffff')};
-
-	&:hover {
-		background: #f7f8f8;
-	}
+	padding: 10px ${({ horizontalPadding }) => horizontalPadding}px;
+	box-sizing: border-box;
 `;
 
 export const BoxImage = styled.div`

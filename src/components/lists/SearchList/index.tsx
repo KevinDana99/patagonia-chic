@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
 	BoxImage,
@@ -6,6 +6,7 @@ import {
 	BoxSearch,
 	BoxSubtitle,
 	Container,
+	HeaderContainer,
 	Description,
 	InputSearch,
 	ItemList,
@@ -19,10 +20,11 @@ import {
 import Fuse from 'fuse.js';
 import defaultFuseOptions from '../../../constants/fuseOptions.json';
 import { IoSearch } from 'react-icons/io5';
-import { ItemListDataType, ListItemType, ListType } from './types';
+import { ItemListDataType, ListItemType, SearchListPropsType } from './types';
 import CustomIcon from '../../graphics/CustomIcon';
 import Skeleton from '../../skeletons/Skeleton';
 import Text from '../../texts/Text';
+import useKeyboardNavigation from './hooks/useKeyboardNavigation';
 
 const SearchList = ({
 	list,
@@ -42,29 +44,17 @@ const SearchList = ({
 	onChangeSelect,
 	selectedAction,
 	searchPlaceHolder,
-	onSearchItem,
-}: ListType) => {
+	horizontalPadding = 20,
+}: SearchListPropsType) => {
 	const [listValue, setListValue] = useState<Array<ListItemType>>(list);
-	const [data, setData] = useState<ItemListDataType>({
-		place: null,
-		startDate: null,
-		endDate: null,
-	});
+	const [keyboardSelectedIndex, setKeyboardSelectedIndex] =
+		useKeyboardNavigation(list.length, console.log);
 
 	useEffect(() => {
 		setListValue(list);
 	}, [list]);
 
-	useEffect(() => {
-		onChangeSelect && onChangeSelect(data);
-	}, [data, onChangeSelect]);
-
-	const selectItem = (item: ListItemType) => {
-		setData({ ...data, place: item });
-	};
-
 	const filterPlaceList = (query: string) => {
-		onSearchItem && onSearchItem(query);
 		const fusePlaceList = new Fuse(list, fuseConfigs);
 		const filteredResult = fusePlaceList.search(query);
 		const filteredList =
@@ -72,90 +62,33 @@ const SearchList = ({
 				? filteredResult.map((filteredPlace) => filteredPlace.item)
 				: featuredElements.filter((item) => item.featured == true);
 
-		console.log(filteredList, 'list');
-
 		setListValue(filteredList);
 		query.length == 0 && setListValue(list);
 	};
 
-	const [showCurrentPosition, setShowCurrentPosition] =
-		useState<boolean>(false);
-	const [cursorPosition, setCursorPosition] = useState<number>(0);
-
-	const setCurrentPlace = useCallback(
-		(position: number) => {
-			setData({
-				...data,
-				place: list.at(position),
-			});
-		},
-		[list, setData, data]
-	);
-
-	const keyHandler = useCallback(
-		({ key }: { key: string }) => {
-			setCursorPosition((prevState) => {
-				const cursorIncrease = prevState < list.length - 1 ? prevState + 1 : 0;
-
-				const cursorDecrease = prevState > 0 ? prevState - 1 : list.length - 1;
-
-				switch (true) {
-					case key === 'Enter':
-						selectedAction && selectedAction();
-						break;
-
-					case key === 'ArrowDown' && !showCurrentPosition:
-						!showCurrentPosition && setShowCurrentPosition(true);
-						setCurrentPlace(0);
-						return 0;
-
-					case key === 'ArrowDown' && showCurrentPosition:
-						setCurrentPlace(cursorIncrease);
-						return cursorIncrease;
-
-					case key === 'ArrowUp' && !showCurrentPosition:
-						!showCurrentPosition && setShowCurrentPosition(true);
-						setCurrentPlace(list.length - 1);
-						return list.length - 1;
-
-					case key === 'ArrowUp' && showCurrentPosition:
-						setCurrentPlace(cursorDecrease);
-						return cursorDecrease;
-				}
-				return prevState;
-			});
-		},
-		[list.length, selectedAction, setCurrentPlace, showCurrentPosition]
-	);
-
-	useEffect(() => {
-		document.addEventListener('keydown', keyHandler);
-		return () => {
-			document.removeEventListener('keydown', keyHandler);
-		};
-	}, [keyHandler]);
-
 	return (
 		<>
 			<Container>
-				{title && (
-					<OptionalTitle>
-						<Text size={20}>{title}</Text>
-					</OptionalTitle>
-				)}
-				{search && (
-					<BoxSearch>
-						<IoSearch />
-						<InputSearch
-							placeholder={searchPlaceHolder}
-							onChange={(e) => {
-								engine === 'fuse'
-									? filterPlaceList(e.target.value)
-									: onSearchChange?.(e.target.value);
-							}}
-						/>
-					</BoxSearch>
-				)}
+				<HeaderContainer horizontalPadding={horizontalPadding}>
+					{title && (
+						<OptionalTitle>
+							<Text size={20}>{title}</Text>
+						</OptionalTitle>
+					)}
+					{search && (
+						<BoxSearch>
+							<IoSearch />
+							<InputSearch
+								placeholder={searchPlaceHolder}
+								onChange={(e) => {
+									engine === 'fuse'
+										? filterPlaceList(e.target.value)
+										: onSearchChange?.(e.target.value);
+								}}
+							/>
+						</BoxSearch>
+					)}
+				</HeaderContainer>
 
 				{error && errorComponent ? (
 					errorComponent
@@ -168,12 +101,15 @@ const SearchList = ({
 								return (
 									<ItemList
 										key={index}
+										onMouseOver={() => setKeyboardSelectedIndex(index)}
+										onMouseMove={() => setKeyboardSelectedIndex(index)}
+										onMouseOut={() => setKeyboardSelectedIndex(-1)}
 										onClick={(e) => {
-											selectItem(item);
 											onItemClick?.(item.id);
 											selectedAction && selectedAction(item);
 										}}
-										selected={showCurrentPosition && index === cursorPosition}
+										selected={index === keyboardSelectedIndex}
+										horizontalPadding={horizontalPadding}
 									>
 										<BoxImage>
 											{item.img ? (

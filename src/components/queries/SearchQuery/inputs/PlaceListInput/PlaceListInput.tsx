@@ -14,7 +14,7 @@ export const PlaceListInput = ({
 	onClick,
 	values,
 	clearData,
-	isSelected,
+	isFocused,
 	inputOnChange,
 	outsideClick,
 	placeList,
@@ -29,27 +29,15 @@ export const PlaceListInput = ({
 	const containerRef = useRef(null);
 	useOutsideClick(containerRef, outsideClick);
 
-	const { onToggle, offToggle, toggle } = useToggle(null);
-
-	useEffect(() => {
-		offToggle();
-	}, [offToggle, values]);
-
 	return (
 		<OptionContainerPlaceList
-			onMouseOver={() => {
-				values.place?.name && onToggle();
-			}}
-			onMouseOut={() => {
-				values.place?.name && offToggle();
-			}}
 			onClick={onClick}
-			isSelected={isSelected}
+			isFocused={isFocused}
 			ref={containerRef}
 		>
 			<OptionContent>
 				<Label>
-					<Text size={12} weight={'semi-bold'}>
+					<Text size={12} weight="semi-bold">
 						{label}
 					</Text>
 				</Label>
@@ -61,7 +49,7 @@ export const PlaceListInput = ({
 					value={values?.place?.name}
 				/>
 			</OptionContent>
-			{values?.place?.name && toggle && <CloseIcon onClick={clearData} />}
+			{values?.place?.name && <CloseIcon onClick={clearData} />}
 			{!isMobile && showPlaceList && !showCalendar && (
 				<PlaceList>
 					<SearchList

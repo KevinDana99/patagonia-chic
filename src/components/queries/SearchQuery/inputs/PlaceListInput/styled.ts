@@ -53,14 +53,12 @@ export const PlaceListContainer = styled.div`
 	}
 `;
 
-export const OptionContainerPlaceList = styled.div<
-	Pick<OptionContainerType, 'isSelected'>
->`
+export const OptionContainerPlaceList = styled.div<{ isFocused: boolean }>`
 	display: flex;
 	align-items: center;
 	flex: 1;
 	padding-left: 30px;
-	box-shadow: ${({ isSelected }) => (isSelected ? selectedShadow : 'none')};
+	box-shadow: ${({ isFocused }) => (isFocused ? selectedShadow : 'none')};
 
 	&:hover {
 		box-shadow: ${selectedShadow};
