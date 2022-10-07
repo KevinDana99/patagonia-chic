@@ -8,6 +8,7 @@ import {
 	ButtonSearch,
 	SearchIcon,
 	ContainerModal,
+	PlacesListContainer,
 } from './styled';
 import { SearchQueryType, StateSearchQueryType } from './types';
 import 'react-dates/initialize';
@@ -97,19 +98,18 @@ const SearchQuery = ({
 	}, [data.place, resetSearchStatus]);
 
 	return (
-		<>
-			<SearchQueryContainer>
-				<SearchQueryBarContainer>
-					{showLocations && (
-						<PlacesSearchBarInput
-							label={texts.labelPlace}
-							placeholder={texts.placeholderPlace}
-							inputTextValue={locationSearchText}
-							onInputTextChange={setLocationSearchText}
-						/>
-					)}
+		<SearchQueryContainer>
+			<SearchQueryBarContainer>
+				{showLocations && (
+					<PlacesSearchBarInput
+						label={texts.labelPlace}
+						placeholder={texts.placeholderPlace}
+						inputTextValue={locationSearchText}
+						onInputTextChange={setLocationSearchText}
+					/>
+				)}
 
-					{/* <CalendarInput
+				{/* <CalendarInput
 					disableSearch={disableSearch}
 					labels={[texts.labelStartDate, texts.labelEndDate]}
 					titles={[texts.placeholderDate, texts.placeholderDate]}
@@ -128,18 +128,25 @@ const SearchQuery = ({
 						setShowCalendar(true);
 					}}
 				></CalendarInput> */}
-					<ButtonContainer>
-						<ButtonSearch
-							title={!isMobile ? texts.titleSearchButton : ''}
-							IconComponent={SearchIcon}
-							onClick={() => {
-								const validate = validateSearch();
-								validate && onQuerySubmit(data);
-							}}
-						/>
-					</ButtonContainer>
-				</SearchQueryBarContainer>
-			</SearchQueryContainer>
+				<ButtonContainer>
+					<ButtonSearch
+						title={!isMobile ? texts.titleSearchButton : ''}
+						IconComponent={SearchIcon}
+						onClick={() => {
+							const validate = validateSearch();
+							validate && onQuerySubmit(data);
+						}}
+					/>
+				</ButtonContainer>
+			</SearchQueryBarContainer>
+
+			<PlacesListContainer>
+				<SearchList
+					searchBar={false}
+					list={placeList}
+					searchPlaceholder={texts.placeholderPlace}
+				/>
+			</PlacesListContainer>
 
 			{/* <Modal
 				visible={isMobile && modal ? true : false}
@@ -181,7 +188,7 @@ const SearchQuery = ({
 					)}
 				</ContainerModal>
 			</Modal> */}
-		</>
+		</SearchQueryContainer>
 	);
 };
 

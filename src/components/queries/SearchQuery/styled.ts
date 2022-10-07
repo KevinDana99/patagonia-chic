@@ -7,12 +7,10 @@ import { DisableSearchType, OptionContainerType } from './types';
 const selectedShadow =
 	'12px 0px 15px -5px rgb(0 0 0 / 20%), -12px 0px 15px -5px rgb(0 0 0 / 20%);';
 
-export const Container = styled.div`
-	width: 100%;
-	max-width: 875px;
+export const SearchQueryContainer = styled.div`
+	position: relative;
+	overflow: visible;
 `;
-
-export const SearchQueryContainer = styled.div``;
 
 export const SearchQueryBarContainer = styled.div`
 	overflow: hidden;
@@ -103,4 +101,80 @@ export const ContainerModal = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+`;
+
+export const PlacesListContainer = styled.div`
+	position: absolute;
+	width: 350px;
+	border-radius: 30px;
+	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
+	padding-bottom: 15px;
+	overflow: hidden;
+	top: 75px;
+	left: 0px;
+	background-color: #ffffff;
+	z-index: 20;
+
+	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
+		width: 100%;
+		height: 100%;
+		padding: 30px 40px 50px 10px;
+		box-shadow: none;
+	}
+`;
+
+export const EmptyListContainer = styled.div`
+	background-color: #ffffff;
+	padding: 0px 30px;
+`;
+
+export const EmptyMessage = styled.p`
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+	box-sizing: border-box;
+	font-size: 14px;
+	font-weight: 400;
+`;
+
+export const PlaceContainer = styled.div<PlacesListContainerType>`
+	display: flex;
+	align-items: center;
+	height: auto;
+	background-color: ${(props) => (props.selected ? '#f7f8f8' : '#ffffff')};
+	padding: 10px 30px;
+
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+	&:hover {
+		cursor: pointer;
+		background-color: #f7f8f8;
+	}
+`;
+
+export const PlaceContent = styled.div`
+	margin-left: 20px;
+`;
+
+export const PlaceFilter = styled(EmptyMessage)`
+	font-weight: bold;
+	margin: 0px;
+`;
+
+export const PlaceImage = styled.img`
+	height: 45px;
+	width: 45px;
+	border-radius: 8px;
+	background-color: red;
+`;
+
+export const PlaceSubtitle = styled.p`
+	font-size: 12px;
+	margin: 0px;
+	color: #666;
+`;
+
+export const PlaceTitle = styled.p`
+	font-size: 14px;
+	margin: 0px;
+	font-weight: 500;
 `;

@@ -12,7 +12,9 @@ export default {
 } as Meta<typeof SearchQueryComponent>;
 
 const Template: Story<SearchQueryType> = (args) => (
-	<SearchQueryComponent {...args} />
+	<>
+		<SearchQueryComponent {...args} />
+	</>
 );
 
 export const SearchQuery = Template.bind({});
