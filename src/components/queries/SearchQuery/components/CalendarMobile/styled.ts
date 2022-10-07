@@ -1,7 +1,7 @@
 import { IoSearch } from 'react-icons/io5';
 import styled from 'styled-components';
-import { size } from '../../../../../../constants/devicesSizes';
-import PrimaryButton from '../../../../../buttons/PrimaryButton';
+import { size } from '../../../../../constants/devicesSizes';
+import PrimaryButton from '../../../../buttons/PrimaryButton';
 
 export const Container = styled.div``;
 

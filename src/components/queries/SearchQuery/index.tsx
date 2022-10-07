@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState } from 'react';
 
-import { CalendarInput } from './inputs/CalendarInput/CalendarInput';
+import { CalendarInput } from './components/CalendarInput/CalendarInput';
 import {
 	ButtonContainer,
 	ButtonSearch,
@@ -11,12 +11,12 @@ import {
 import { IPlace, SearchQueryType, StateSearchQueryType } from './types';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { PlaceListInput } from './inputs/PlaceListInput/PlaceListInput';
+import PlacesListInput from './components/PlacesListInput';
 import Fuse from 'fuse.js';
 import fusePlaceListOptions from '../../../constants/fuseOptions.json';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import Modal from '../../modals/Modal';
-import CalendarMobile from './mobile/wrappers/CalendarMobile';
+import CalendarMobile from './components/CalendarMobile';
 import SearchList from '../../lists/SearchList';
 
 const SearchQuery = ({
@@ -108,7 +108,7 @@ const SearchQuery = ({
 		<>
 			<SearchQueryContainer>
 				{showLocations && (
-					<PlaceListInput
+					<PlacesListInput
 						showCalendar={showCalendar}
 						closeModal={() => setModal(false)}
 						setDisableSearch={setDisableSearch}

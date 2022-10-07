@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Calendar } from '../../../inputs/CalendarInput/Calendar';
+import { Calendar } from '../CalendarInput/Calendar';
 
 import {
 	CalendarContainer,
@@ -11,8 +11,8 @@ import {
 	ButtonSearch,
 	SearchIcon,
 } from './styled';
-import { CalendarMobileType } from '../../../types';
-import Text from '../../../../../texts/Text';
+import { CalendarMobileType } from '../../types';
+import Text from '../../../../texts/Text';
 
 const CalendarMobile = ({
 	closeList,
