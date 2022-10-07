@@ -83,14 +83,14 @@ export const SubTitle = styled.div`
 	font-size: 14px;
 `;
 
-export const LoadingContainer = styled.div<{ horizontalPadding: number }>`
-	margin-top: 29px;
+export const LoadingContainer = styled.div<ItemListStyleType>`
 	width: 100%;
-	height: 500px;
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex;
-	padding: 0 ${({ horizontalPadding }) => horizontalPadding}px;
+	padding: ${({ edgesItemsAddedPadding }) => 10 + edgesItemsAddedPadding}px
+		${({ horizontalPadding }) => horizontalPadding}px;
+	box-sizing: border-box;
 `;
 
 export const OptionalTitle = styled(Title)`

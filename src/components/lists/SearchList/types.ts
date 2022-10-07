@@ -32,7 +32,7 @@ export type SearchListPropsType = {
 };
 
 export type ItemListStyleType = {
-	selected: boolean;
+	selected?: boolean;
 	horizontalPadding: number;
 	edgesItemsAddedPadding: number;
 };

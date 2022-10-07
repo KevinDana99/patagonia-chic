@@ -1,7 +1,18 @@
 import React, { SetStateAction } from 'react';
 
-export type SearchQueryType = {
-	list: [IPlace];
+export type locationsListItemType = {
+	id: string;
+	name: string;
+	img?: string;
+	province?: string;
+	category?: string;
+	country?: string;
+	keywords?: Array<string>;
+	featured?: boolean;
+};
+
+export type SearchQueryPropsType = {
+	locationsList: locationsListItemType[];
 	texts: SearchQueryTexts;
 	onQuerySubmit: Function;
 	showLocations: boolean;
@@ -16,10 +27,10 @@ export type SearchQueryTexts = {
 	titleSearchButton: string;
 };
 
-export type StateSearchQueryType = {
-	place?: IPlace | null;
-	startDate?: { name: string; date?: object } | null;
-	endDate?: { name: string; date?: object } | null;
+export type QuerySelectedDataType = {
+	location: locationsListItemType | null;
+	startDate: { name: string; date?: object } | null;
+	endDate: { name: string; date?: object } | null;
 };
 
 export type CalendarType = {

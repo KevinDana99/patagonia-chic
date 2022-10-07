@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import SearchQueryComponent from '.';
-import { SearchQueryType } from './types';
+import { SearchQueryPropsType } from './types';
 import places from '../../../examples/values/places.json';
 export default {
 	title: 'Components/queries',
@@ -11,7 +11,7 @@ export default {
 	},
 } as Meta<typeof SearchQueryComponent>;
 
-const Template: Story<SearchQueryType> = (args) => (
+const Template: Story<SearchQueryPropsType> = (args) => (
 	<>
 		<SearchQueryComponent {...args} />
 	</>
@@ -19,7 +19,7 @@ const Template: Story<SearchQueryType> = (args) => (
 
 export const SearchQuery = Template.bind({});
 SearchQuery.args = {
-	list: places,
+	locationsList: places,
 	onQuerySubmit: (query) => console.log(query),
 	texts: {
 		placeholderPlace: '¿A dónde vas?',

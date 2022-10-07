@@ -7,9 +7,15 @@ const SearchQueryInput = ({
 	placeholder,
 	inputTextValue = '',
 	onInputTextChange,
+	onClearFieldClicked,
 }: SearchQueryInputPropsType) => {
 	const [isFocused, setIsFocused] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
+
+	const handleClearClicked = () => {
+		onClearFieldClicked?.();
+		onInputTextChange?.('');
+	};
 
 	return (
 		<Container
@@ -26,7 +32,7 @@ const SearchQueryInput = ({
 				onBlur={() => setIsFocused(false)}
 			/>
 			{inputTextValue.length > 0 && (isFocused || isHovered) && (
-				<CloseIcon onClick={() => onInputTextChange?.('')} />
+				<CloseIcon onClick={handleClearClicked} />
 			)}
 		</Container>
 	);

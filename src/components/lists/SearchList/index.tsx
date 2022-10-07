@@ -48,7 +48,7 @@ const SearchList = ({
 	const [listValue, setListValue] = useState<Array<ListItemType>>(list);
 	const [searchTextValue, setSearchTextValue] = useState(searchText);
 	const [keyboardSelectedIndex, setKeyboardSelectedIndex] =
-		useKeyboardNavigation(list.length, (index) =>
+		useKeyboardNavigation(listValue.length, (index) =>
 			onItemSelected?.(listValue[index])
 		);
 
@@ -60,15 +60,14 @@ const SearchList = ({
 		(query: string) => {
 			const fusePlaceList = new Fuse(list, fuseConfigs);
 			const filteredResult = fusePlaceList.search(query);
-			const filteredList =
-				filteredResult.length > 0
-					? filteredResult.map((filteredPlace) => filteredPlace.item)
-					: featuredElements;
+			const filteredList = filteredResult.map(
+				(filteredPlace) => filteredPlace.item
+			);
 
 			setListValue(filteredList);
 			query.length == 0 && setListValue(list);
 		},
-		[featuredElements, fuseConfigs, list]
+		[fuseConfigs, list]
 	);
 
 	const handleSearchTextChange = useCallback(
@@ -112,53 +111,63 @@ const SearchList = ({
 				{error && errorComponent ? (
 					errorComponent
 				) : !loading ? (
-					(listValue.length == 0 && emptyStateText) || emptyStateComponent ? (
+					(listValue.length === 0 && !featuredElements && emptyStateText) ||
+					emptyStateComponent ? (
 						emptyStateComponent || <Text>{emptyStateText}</Text>
 					) : (
 						<BoxItemList>
-							{listValue.map((item, index) => {
-								return (
-									<ItemList
-										key={index}
-										onMouseOver={() => setKeyboardSelectedIndex(index)}
-										onMouseMove={() => setKeyboardSelectedIndex(index)}
-										onMouseOut={() => setKeyboardSelectedIndex(-1)}
-										onClick={() => onItemSelected?.(item)}
-										selected={index === keyboardSelectedIndex}
-										horizontalPadding={horizontalPadding}
-										edgesItemsAddedPadding={edgesItemsAddedPadding}
-									>
-										<BoxImage>
-											{item.img ? (
-												<img src={item.img} />
-											) : (
-												<CustomIcon name="island" size={25} />
-											)}
-										</BoxImage>
-										<Description>
-											<Title>
-												<Text size={17} weight={'medium'}>
-													{item.name}
-												</Text>
-											</Title>
-											<BoxSubtitle>
-												<SubTitle>
-													<Text size={14} weight={'regular'} color={'#888888'}>
-														{item.category ||
-															`${item.province} - ${item.country}`}
+							{(listValue.length > 0 ? listValue : featuredElements).map(
+								(item, index) => {
+									return (
+										<ItemList
+											key={index}
+											onMouseOver={() => setKeyboardSelectedIndex(index)}
+											onMouseMove={() => setKeyboardSelectedIndex(index)}
+											onMouseOut={() => setKeyboardSelectedIndex(-1)}
+											onClick={() => onItemSelected?.(item)}
+											selected={index === keyboardSelectedIndex}
+											horizontalPadding={horizontalPadding}
+											edgesItemsAddedPadding={edgesItemsAddedPadding}
+										>
+											<BoxImage>
+												{item.img ? (
+													<img src={item.img} />
+												) : (
+													<CustomIcon name="island" size={25} />
+												)}
+											</BoxImage>
+											<Description>
+												<Title>
+													<Text size={17} weight={'medium'}>
+														{item.name}
 													</Text>
-												</SubTitle>
-											</BoxSubtitle>
-										</Description>
-									</ItemList>
-								);
-							})}
+												</Title>
+												<BoxSubtitle>
+													<SubTitle>
+														<Text
+															size={14}
+															weight={'regular'}
+															color={'#888888'}
+														>
+															{item.category ||
+																`${item.province} - ${item.country}`}
+														</Text>
+													</SubTitle>
+												</BoxSubtitle>
+											</Description>
+										</ItemList>
+									);
+								}
+							)}
 						</BoxItemList>
 					)
 				) : loadingComponent ? (
 					loadingComponent
 				) : (
-					<LoadingContainer horizontalPadding={horizontalPadding}>
+					<LoadingContainer
+						horizontalPadding={horizontalPadding}
+						edgesItemsAddedPadding={edgesItemsAddedPadding}
+					>
 						<SearchListSkeleton />
 					</LoadingContainer>
 				)}

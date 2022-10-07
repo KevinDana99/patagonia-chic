@@ -10,7 +10,7 @@ import {
 	ContainerModal,
 	PlacesListContainer,
 } from './styled';
-import { SearchQueryType, StateSearchQueryType } from './types';
+import { SearchQueryPropsType, QuerySelectedDataType } from './types';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import PlacesSearchBarInput from './components/SearchQueryInput';
@@ -22,80 +22,38 @@ import CalendarMobile from './components/CalendarMobile';
 import SearchList from '../../lists/SearchList';
 
 const SearchQuery = ({
-	list,
+	locationsList,
 	onQuerySubmit,
 	showLocations = true,
 	texts,
-}: SearchQueryType) => {
-	const [data, setData] = useState<StateSearchQueryType>({
-		place: null,
-		startDate: null,
-		endDate: null,
-	});
-	const [placeList, setPlaceList] = useState(list);
+}: SearchQueryPropsType) => {
+	const [querySelectedData, setQuerySelectedData] =
+		useState<QuerySelectedDataType>({
+			location: null,
+			startDate: null,
+			endDate: null,
+		});
+
 	const [modal, setModal] = useState(false);
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
 	const [showMobilePlaceList, setShowMobilePlaceList] = useState(false);
 	const [calendarFocusedInput, setCalendarFocusedInput] = useState('startDate');
-	const [disableSearch, setDisableSearch] = useState({
-		place: false,
-		startDate: false,
-		endDate: false,
-	});
 
 	const [locationSearchText, setLocationSearchText] = useState('');
 
-	const clearDates = () => {
-		setData({ ...data, startDate: null, endDate: null });
-		setShowCalendar(true);
-		setCalendarFocusedInput('startDate');
+	const handleLocationSelect = (selectedItemId: string) => {
+		const selectedLocationItem = locationsList.find(
+			(item) => item.id === selectedItemId
+		);
+		setQuerySelectedData({
+			...querySelectedData,
+			location: selectedLocationItem ?? null,
+		});
+		setLocationSearchText(selectedLocationItem?.name ?? '');
 	};
 
 	const isMobile = useMediaQuery('(max-width: 850px)');
-
-	const validateSearch = () => {
-		if (
-			data?.place?.name == null ||
-			data?.place?.name == '' ||
-			data?.startDate?.name == null ||
-			data?.startDate?.name == '' ||
-			data?.endDate?.name == null ||
-			data?.endDate?.name == ''
-		) {
-			setDisableSearch({
-				...disableSearch,
-				place: !data.place?.name ? true : false,
-				startDate: !data.startDate?.name ? true : false,
-				endDate: !data.endDate?.name ? true : false,
-			});
-
-			return false;
-		} else {
-			return true;
-		}
-	};
-
-	const resetSearchStatus = useCallback(
-		(disableSearchKey: string) => {
-			disableSearch[`${disableSearchKey}` as keyof typeof data] !== false &&
-				setDisableSearch({
-					...disableSearch,
-					[disableSearchKey]: false,
-				});
-		},
-		[disableSearch]
-	);
-
-	useEffect(() => {
-		resetSearchStatus('startDate');
-	}, [data.startDate, resetSearchStatus]);
-	useEffect(() => {
-		resetSearchStatus('endDate');
-	}, [data.endDate, resetSearchStatus]);
-	useEffect(() => {
-		resetSearchStatus('place');
-	}, [data.place, resetSearchStatus]);
 
 	return (
 		<SearchQueryContainer>
@@ -106,6 +64,12 @@ const SearchQuery = ({
 						placeholder={texts.placeholderPlace}
 						inputTextValue={locationSearchText}
 						onInputTextChange={setLocationSearchText}
+						onClearFieldClicked={() =>
+							setQuerySelectedData({
+								...querySelectedData,
+								location: null,
+							})
+						}
 					/>
 				)}
 
@@ -132,10 +96,7 @@ const SearchQuery = ({
 					<ButtonSearch
 						title={!isMobile ? texts.titleSearchButton : ''}
 						IconComponent={SearchIcon}
-						onClick={() => {
-							const validate = validateSearch();
-							validate && onQuerySubmit(data);
-						}}
+						onClick={() => {}}
 					/>
 				</ButtonContainer>
 			</SearchQueryBarContainer>
@@ -143,7 +104,10 @@ const SearchQuery = ({
 			<PlacesListContainer>
 				<SearchList
 					searchBar={false}
-					list={placeList}
+					list={locationsList}
+					onItemSelected={(selectedItem) =>
+						handleLocationSelect(selectedItem.id)
+					}
 					searchPlaceholder={texts.placeholderPlace}
 					searchText={locationSearchText}
 					onSearchChange={setLocationSearchText}
