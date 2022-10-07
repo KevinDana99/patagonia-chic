@@ -78,13 +78,14 @@ export const Divisor = styled.div`
 	margin: 0px 3px;
 `;
 
-export const LoadingContainer = styled.div`
-	margin-top: 35px;
+export const LoadingContainer = styled.div<{ horizontalPadding: number }>`
+	margin-top: 29px;
 	width: 100%;
 	height: 500px;
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex;
+	padding: 0 ${({ horizontalPadding }) => horizontalPadding}px;
 `;
 
 export const OptionalTitle = styled(Title)`

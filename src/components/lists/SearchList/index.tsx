@@ -12,7 +12,6 @@ import {
 	ItemList,
 	SubTitle,
 	Title,
-	Divisor,
 	LoadingContainer,
 	OptionalTitle,
 } from './styled';
@@ -22,7 +21,7 @@ import defaultFuseOptions from '../../../constants/fuseOptions.json';
 import { IoSearch } from 'react-icons/io5';
 import { ItemListDataType, ListItemType, SearchListPropsType } from './types';
 import CustomIcon from '../../graphics/CustomIcon';
-import Skeleton from '../../skeletons/Skeleton';
+import SearchListSkeleton from './components/SearchListSkeleton';
 import Text from '../../texts/Text';
 import useKeyboardNavigation from './hooks/useKeyboardNavigation';
 
@@ -138,8 +137,8 @@ const SearchList = ({
 				) : loadingComponent ? (
 					loadingComponent
 				) : (
-					<LoadingContainer>
-						<Skeleton />
+					<LoadingContainer horizontalPadding={horizontalPadding}>
+						<SearchListSkeleton />
 					</LoadingContainer>
 				)}
 			</Container>
