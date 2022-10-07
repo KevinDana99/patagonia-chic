@@ -34,9 +34,3 @@ export type ItemListStyleType = {
 	selected: boolean;
 	horizontalPadding: number;
 };
-
-export type ItemListDataType = {
-	place: ListItemType | null | undefined;
-	startDate: unknown;
-	endDate: unknown;
-};

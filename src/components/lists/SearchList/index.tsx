@@ -19,9 +19,9 @@ import {
 import Fuse from 'fuse.js';
 import defaultFuseOptions from '../../../constants/fuseOptions.json';
 import { IoSearch } from 'react-icons/io5';
-import { ItemListDataType, ListItemType, SearchListPropsType } from './types';
+import { ListItemType, SearchListPropsType } from './types';
 import CustomIcon from '../../graphics/CustomIcon';
-import SearchListSkeleton from './components/SearchListSkeleton';
+import SearchListSkeleton from './components/SearchListLoaderSkeleton';
 import Text from '../../texts/Text';
 import useKeyboardNavigation from './hooks/useKeyboardNavigation';
 
