@@ -1,17 +1,5 @@
 import React, { SetStateAction } from 'react';
 
-export interface IPlace {
-	name: string;
-	onClick?: () => void;
-	id?: string;
-	img?: string;
-	province?: string;
-	category?: string;
-	country?: string;
-	keywords?: Array<string>;
-	featured?: boolean;
-}
-
 export type SearchQueryType = {
 	list: [IPlace];
 	texts: SearchQueryTexts;
@@ -66,58 +54,10 @@ export type DisableSearchType = {
 	disableSearch: boolean;
 };
 
-export type PlaceListInputType = {
-	disableSearch: boolean;
-	setDisableSearch: React.Dispatch<
-		React.SetStateAction<{
-			place: boolean;
-			startDate: boolean;
-			endDate: boolean;
-		}>
-	>;
-	closeModal: () => void;
-	label: string;
-	placeholder: string;
-	values: StateSearchQueryType;
-	clearData: () => void;
-	isSelected: boolean;
-	inputOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	outsideClick: () => void;
-	placeList: [IPlace];
-	setPlaceData: React.Dispatch<SetStateAction<StateSearchQueryType>>;
-	isMobile: boolean;
-	openCalendar: () => void;
-	showPlaceList: boolean;
-	placeFilter?: string | undefined;
-	showCalendar: boolean;
-	onClick: () => void;
-	closeList?: () => void;
-};
-
-export type PlaceListType = {
-	children: JSX.Element;
-};
-
-export interface PlaceContainerType {
-	onClick: React.MouseEventHandler<HTMLDivElement>;
-	selected: boolean;
-	index: React.Key;
-}
-
 export type FooterCalendarType = {
 	place: IPlace;
 	startDate?: { name: string; date?: object } | null;
 	endDate?: { name: string; date?: object } | null;
-};
-
-export type PlaceListMobileType = {
-	places: Array<IPlace>;
-	setPlaceData: React.Dispatch<SetStateAction<StateSearchQueryType>>;
-	values: StateSearchQueryType;
-	inputOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	placeholder: string;
-	openCalendar: () => void;
-	closeList: () => void;
 };
 
 export type CalendarMobileType = {

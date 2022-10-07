@@ -1,4 +1,4 @@
-import { IoClose, IoSearch } from 'react-icons/io5';
+import { IoSearch } from 'react-icons/io5';
 import styled from 'styled-components';
 import { size } from '../../../constants/devicesSizes';
 import PrimaryButton from '../../buttons/PrimaryButton';
@@ -12,8 +12,11 @@ export const Container = styled.div`
 	max-width: 875px;
 `;
 
-export const SearchQueryContainer = styled.div`
+export const SearchQueryContainer = styled.div``;
+
+export const SearchQueryBarContainer = styled.div`
 	overflow: hidden;
+	height: 64px;
 	width: 100%;
 	max-width: 875px;
 	display: flex;
@@ -41,22 +44,6 @@ export const OptionContainer = styled.div<
 	}
 `;
 
-export const OptionContent = styled.div`
-	display: flex;
-	flex-direction: column;
-	flex: 1;
-`;
-
-export const Label = styled.p`
-	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
-	box-sizing: border-box;
-	font-size: 12px;
-	font-weight: 600;
-	margin-bottom: 0;
-	margin-top: 11px;
-`;
-
 export const Title = styled.p<DisableSearchType>`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
@@ -69,16 +56,6 @@ export const Title = styled.p<DisableSearchType>`
 
 	color: ${(props) => props.disableSearch && 'red'};
 	font-weight: 200;
-`;
-
-export const CloseIcon = styled(IoClose)`
-	font-size: 9;
-	background-color: #e6e7e7;
-	border-radius: 100px;
-	height: 20px;
-	width: 20px;
-	color: #a9a9a9;
-	margin-right: 20px;
 `;
 
 export const Divider = styled.div`
@@ -116,25 +93,6 @@ export const SearchIcon = styled(IoSearch)`
 
 	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
 		margin: 0px;
-	}
-`;
-
-export const Input = styled.input<DisableSearchType>`
-	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
-	box-sizing: border-box;
-	font-size: 14px;
-	font-weight: 600;
-	margin-top: 0;
-	margin-bottom: 11px;
-	color: #000000;
-	border: none;
-	outline: none;
-	max-width: 130px;
-
-	&::placeholder {
-		color: ${(props) => props.disableSearch && 'red'};
-		font-weight: 100;
 	}
 `;
 

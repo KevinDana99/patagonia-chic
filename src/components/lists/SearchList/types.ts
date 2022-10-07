@@ -1,9 +1,8 @@
 import Fuse from 'fuse.js';
 
 export type ListItemType = {
-	name: string;
-	onClick: () => void;
 	id: string;
+	name: string;
 	img?: string;
 	province?: string;
 	category?: string;
