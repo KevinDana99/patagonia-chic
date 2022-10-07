@@ -1,4 +1,5 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useCallback, useState, useRef } from 'react';
+import { useOutsideClick } from '../../../hooks/useOutsideClick';
 
 import { CalendarInput } from './components/CalendarInput/CalendarInput';
 import {
@@ -13,7 +14,7 @@ import {
 import { SearchQueryPropsType, QuerySelectedDataType } from './types';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import PlacesSearchBarInput from './components/SearchQueryInput';
+import SearchQueryInput from './components/SearchQueryInput';
 import Fuse from 'fuse.js';
 import fusePlaceListOptions from '../../../constants/fuseOptions.json';
 import useMediaQuery from '../../../hooks/useMediaQuery';
@@ -34,6 +35,16 @@ const SearchQuery = ({
 			endDate: null,
 		});
 
+	const [showLocationsListContainer, setShowLocationsListContainer] =
+		useState(false);
+
+	const locationInputRef = useRef<HTMLInputElement>(null);
+	const locationListContainerRef = useRef(null);
+
+	useOutsideClick([locationInputRef, locationListContainerRef], () =>
+		setShowLocationsListContainer(false)
+	);
+
 	const [modal, setModal] = useState(false);
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
@@ -51,6 +62,8 @@ const SearchQuery = ({
 			location: selectedLocationItem ?? null,
 		});
 		setLocationSearchText(selectedLocationItem?.name ?? '');
+		setShowLocationsListContainer(false);
+		locationInputRef?.current?.blur();
 	};
 
 	const isMobile = useMediaQuery('(max-width: 850px)');
@@ -59,7 +72,8 @@ const SearchQuery = ({
 		<SearchQueryContainer>
 			<SearchQueryBarContainer>
 				{showLocations && (
-					<PlacesSearchBarInput
+					<SearchQueryInput
+						ref={locationInputRef}
 						label={texts.labelPlace}
 						placeholder={texts.placeholderPlace}
 						inputTextValue={locationSearchText}
@@ -69,6 +83,9 @@ const SearchQuery = ({
 								...querySelectedData,
 								location: null,
 							})
+						}
+						onFocusChange={(isFocused) =>
+							isFocused && setShowLocationsListContainer(true)
 						}
 					/>
 				)}
@@ -96,12 +113,17 @@ const SearchQuery = ({
 					<ButtonSearch
 						title={!isMobile ? texts.titleSearchButton : ''}
 						IconComponent={SearchIcon}
-						onClick={() => {}}
+						onClick={() => {
+							console.log('btn clicked');
+						}}
 					/>
 				</ButtonContainer>
 			</SearchQueryBarContainer>
 
-			<PlacesListContainer>
+			<PlacesListContainer
+				ref={locationListContainerRef}
+				visible={showLocationsListContainer}
+			>
 				<SearchList
 					searchBar={false}
 					list={locationsList}
@@ -112,6 +134,7 @@ const SearchQuery = ({
 					searchText={locationSearchText}
 					onSearchChange={setLocationSearchText}
 					edgesItemsAddedPadding={10}
+					emptyStateText="No encontramos este destino, pero te recomendamos..."
 				/>
 			</PlacesListContainer>
 

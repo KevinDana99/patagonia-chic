@@ -103,7 +103,8 @@ export const ContainerModal = styled.div`
 	align-items: center;
 `;
 
-export const PlacesListContainer = styled.div`
+export const PlacesListContainer = styled.div<{ visible: boolean }>`
+	display: ${({ visible }) => (visible ? 'block' : 'none')};
 	position: absolute;
 	width: 350px;
 	border-radius: 30px;

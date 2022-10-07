@@ -24,6 +24,7 @@ import CustomIcon from '../../graphics/CustomIcon';
 import SearchListSkeleton from './components/SearchListLoaderSkeleton';
 import Text from '../../texts/Text';
 import useKeyboardNavigation from './hooks/useKeyboardNavigation';
+import { useForceReRender } from '../../../hooks/useForceReRender';
 
 const SearchList = ({
 	list,
@@ -111,7 +112,9 @@ const SearchList = ({
 				{error && errorComponent ? (
 					errorComponent
 				) : !loading ? (
-					(listValue.length === 0 && !featuredElements && emptyStateText) ||
+					(listValue.length === 0 &&
+						!(featuredElements?.length > 0) &&
+						emptyStateText) ||
 					emptyStateComponent ? (
 						emptyStateComponent || <Text>{emptyStateText}</Text>
 					) : (
