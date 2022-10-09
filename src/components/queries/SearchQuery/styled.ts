@@ -21,8 +21,12 @@ export const SearchQueryBarContainer = styled.div`
 	justify-content: space-between;
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
 	border-radius: 50px;
-	background: #ffffff;
+	background-color: #fff;
 	box-sizing: border-box;
+
+	&:hover {
+		background-color: #f8f8f8;
+	}
 `;
 
 export const OptionContainer = styled.div<

@@ -5,4 +5,11 @@ export type SearchQueryInputPropsType = {
 	onInputTextChange?: (newText: string) => void;
 	onClearFieldClicked?: () => void;
 	onFocusChange?: (isFocused: boolean) => void;
+	onlyClick?: boolean;
+	onClick?: React.MouseEventHandler<HTMLDivElement>;
+};
+
+export type InputContainerType = {
+	onlyClick: boolean;
+	isFocused: boolean;
 };

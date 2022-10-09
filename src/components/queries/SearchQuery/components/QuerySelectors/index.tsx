@@ -19,7 +19,8 @@ const QuerySelectorsContext = createContext<QuerySelectorsContextType>(
 
 export default function QuerySelectors({
 	renderAsModal: renderAsModalProp,
-	showLocation: showLocationProp,
+	showLocations: showLocationProp,
+	setShowLocations,
 	showDates: showDateProp,
 	children,
 }: QuerySelectorsPropsType) {
@@ -41,7 +42,7 @@ export default function QuerySelectors({
 	}, [renderAsModalProp]);
 
 	const handleModalClose = () => {
-		setShowLocationSelector(false);
+		setShowLocations(false);
 		setShowDatesSelector(false);
 	};
 
@@ -54,7 +55,7 @@ export default function QuerySelectors({
 				showLocationSelector,
 				showDatesSelector,
 				renderAsModal,
-				setShowLocationSelector,
+				setShowLocationSelector: setShowLocations,
 				setShowDatesSelector,
 			}}
 		>

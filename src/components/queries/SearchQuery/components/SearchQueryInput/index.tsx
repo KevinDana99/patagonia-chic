@@ -10,6 +10,8 @@ const SearchQueryInput = (
 		onInputTextChange,
 		onClearFieldClicked,
 		onFocusChange,
+		onlyClick = true,
+		onClick,
 	}: SearchQueryInputPropsType,
 	ref: ForwardedRef<HTMLInputElement>
 ) => {
@@ -29,9 +31,11 @@ const SearchQueryInput = (
 
 	return (
 		<Container
-			isFocused={isFocused || isHovered}
+			isFocused={isFocused}
 			onMouseOver={() => setIsHovered(true)}
 			onMouseOut={() => setIsHovered(false)}
+			onlyClick={onlyClick}
+			onClick={onClick}
 		>
 			<Label>{label}</Label>
 			<TextInput
@@ -41,6 +45,7 @@ const SearchQueryInput = (
 				value={inputTextValue}
 				onFocus={() => handleFocusChange(true)}
 				onBlur={() => handleFocusChange(false)}
+				onlyClick={onlyClick}
 			/>
 			{inputTextValue.length > 0 && (isFocused || isHovered) && (
 				<CloseIcon onClick={handleClearClicked} />

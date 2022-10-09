@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
 	BoxImage,
@@ -24,6 +24,7 @@ import CustomIcon from '../../graphics/CustomIcon';
 import SearchListSkeleton from './components/SearchListLoaderSkeleton';
 import Text from '../../texts/Text';
 import useKeyboardNavigation from './hooks/useKeyboardNavigation';
+import NotFoundState from './components/NotFoundState';
 
 const SearchList = ({
 	list,
@@ -47,6 +48,7 @@ const SearchList = ({
 		featuredElements = [],
 		horizontalPadding = 20,
 		edgesItemsAddedPadding = 0,
+		focusOnRender = false,
 		onItemSelectedConfigs: {
 			updateSearchTextValue = true,
 			itemKeySearchText = defaultFuseOptions.keys[0] as keyof ListItemType,
@@ -56,6 +58,16 @@ const SearchList = ({
 
 	const [listValue, setListValue] = useState<Array<ListItemType>>(list);
 	const [searchTextValue, setSearchTextValue] = useState(searchText);
+
+	const inputSearchRef = useRef<HTMLInputElement>(null);
+
+	console.log('inputSearchRef.current', inputSearchRef.current);
+
+	useEffect(() => {
+		if (focusOnRender && inputSearchRef.current) {
+			inputSearchRef.current.focus();
+		}
+	}, [inputSearchRef, focusOnRender]);
 
 	useEffect(() => {
 		setListValue(list);
@@ -116,6 +128,7 @@ const SearchList = ({
 							<BoxSearch>
 								<IoSearch />
 								<InputSearch
+									ref={inputSearchRef}
 									value={searchTextValue}
 									placeholder={searchPlaceholder}
 									onChange={(e) => {
@@ -134,7 +147,9 @@ const SearchList = ({
 						!(featuredElements?.length > 0) &&
 						emptyStateText) ||
 					emptyStateComponent ? (
-						emptyStateComponent || <Text>{emptyStateText}</Text>
+						emptyStateComponent || (
+							<NotFoundState values={{ queryText: searchTextValue }} />
+						)
 					) : (
 						<BoxItemList>
 							{(listValue.length > 0 ? listValue : featuredElements).map(

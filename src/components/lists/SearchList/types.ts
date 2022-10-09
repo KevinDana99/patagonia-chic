@@ -16,6 +16,7 @@ export type SearchListConfigsType = {
 	fuseConfigs?: Fuse.IFuseOptions<ListItemType>;
 	featuredElements?: ListItemType[];
 	horizontalPadding?: number;
+	focusOnRender?: boolean;
 	edgesItemsAddedPadding?: number;
 	onItemSelectedConfigs?: {
 		updateSearchTextValue?: boolean;

@@ -20,6 +20,7 @@ import Modal from '../../modals/Modal';
 import CalendarMobile from './components/CalendarMobile';
 import SearchList from '../../lists/SearchList';
 import QuerySelectors from './components/QuerySelectors';
+import { size } from '../../../constants/devicesSizes';
 
 const SearchQuery = ({
 	locationsList,
@@ -40,21 +41,24 @@ const SearchQuery = ({
 	const locationInputRef = useRef<HTMLInputElement>(null);
 	const locationListContainerRef = useRef(null);
 
-	useOutsideClick([locationInputRef, locationListContainerRef], () =>
-		setShowLocationsListContainer(false)
-	);
-
-	const isTablet = useMediaQuery('(max-width: 850px)');
-	const isMobile = useMediaQuery('(max-width: 500px)');
-
-	const [modal, setModal] = useState(false);
-	const [showPlaceList, setShowPlaceList] = useState(false);
-	const [showCalendar, setShowCalendar] = useState(false);
-	const [showMobilePlaceList, setShowMobilePlaceList] = useState(false);
-	const [calendarFocusedInput, setCalendarFocusedInput] = useState('startDate');
-
 	const [locationSearchText, setLocationSearchText] = useState('');
 	const [locationShowFullList, setLocationShowFullList] = useState(false);
+
+	const isTablet = useMediaQuery(`(max-width: ${size.tabletL})`);
+	const isMobile = useMediaQuery(`(max-width: ${size.tablet})`);
+
+	useOutsideClick([locationInputRef, locationListContainerRef], () => {
+		if (!isTablet || !isMobile) {
+			setShowLocationsListContainer(false);
+			if (locationSearchText.length === 0) {
+				setQuerySelectedData({
+					...querySelectedData,
+					location: null,
+				});
+			}
+			setLocationSearchText(querySelectedData.location?.name ?? '');
+		}
+	});
 
 	const handleLocationSelect = (selectedItemId: string) => {
 		const selectedLocationItem = locationsList.find(
@@ -94,7 +98,21 @@ const SearchQuery = ({
 						onFocusChange={(isFocused) =>
 							isFocused && setShowLocationsListContainer(true)
 						}
+						onlyClick={isTablet}
+						onClick={() => isTablet && setShowLocationsListContainer(true)}
 					/>
+				)}
+				{!isMobile && (
+					<>
+						<SearchQueryInput
+							label={texts.labelStartDate}
+							placeholder={texts.placeholderDate}
+						/>
+						<SearchQueryInput
+							label={texts.labelEndDate}
+							placeholder={texts.placeholderDate}
+						/>
+					</>
 				)}
 
 				{/* <CalendarInput
@@ -129,7 +147,8 @@ const SearchQuery = ({
 
 			<QuerySelectors
 				renderAsModal={isTablet}
-				showLocation={showLocationsListContainer}
+				showLocations={showLocationsListContainer}
+				setShowLocations={setShowLocationsListContainer}
 				showDates={false}
 			>
 				<QuerySelectors.Location ref={locationListContainerRef}>
@@ -140,6 +159,7 @@ const SearchQuery = ({
 						}
 						configs={{
 							showSearchBar: isTablet,
+							focusOnRender: isTablet,
 							edgesItemsAddedPadding: 10,
 							horizontalPadding: isTablet && !isMobile ? 40 : 20,
 						}}

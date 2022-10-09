@@ -10,8 +10,9 @@ export type QuerySelectorsContextType = {
 
 export type QuerySelectorsPropsType = {
 	renderAsModal: boolean;
-	showLocation: boolean;
+	showLocations: boolean;
 	showDates: boolean;
+	setShowLocations: (show: boolean) => void;
 	children?: React.ReactNode;
 };
 
