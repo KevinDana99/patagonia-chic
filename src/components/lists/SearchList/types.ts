@@ -10,12 +10,26 @@ export type ListItemType = {
 	keywords?: Array<string>;
 };
 
+export type SearchListConfigsType = {
+	showSearchBar?: boolean;
+	engine?: 'fuse' | 'custom';
+	fuseConfigs?: Fuse.IFuseOptions<ListItemType>;
+	featuredElements?: ListItemType[];
+	horizontalPadding?: number;
+	edgesItemsAddedPadding?: number;
+	onItemSelectedConfigs?: {
+		updateSearchTextValue?: boolean;
+		itemKeySearchText?: keyof ListItemType;
+		resetListValue?: boolean;
+	};
+};
+
 export type SearchListPropsType = {
 	list: ListItemType[];
 	title?: string;
-	searchBar?: boolean;
 	searchText?: string;
-	onSearchChange?: (query: string) => void;
+	searchPlaceholder?: string;
+	onSearchTextChange?: (query: string) => void;
 	onItemSelected?: (selectedItem: ListItemType) => void;
 	loading?: boolean;
 	error?: boolean;
@@ -23,12 +37,7 @@ export type SearchListPropsType = {
 	loadingComponent?: JSX.Element;
 	emptyStateComponent?: JSX.Element;
 	errorComponent?: JSX.Element;
-	engine?: 'fuse' | 'custom';
-	fuseConfigs?: Fuse.IFuseOptions<ListItemType>;
-	featuredElements?: ListItemType[];
-	searchPlaceholder?: string;
-	horizontalPadding?: number;
-	edgesItemsAddedPadding?: number;
+	configs?: SearchListConfigsType;
 };
 
 export type ItemListStyleType = {

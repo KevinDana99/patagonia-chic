@@ -8,8 +8,6 @@ import {
 	ButtonContainer,
 	ButtonSearch,
 	SearchIcon,
-	ContainerModal,
-	PlacesListContainer,
 } from './styled';
 import { SearchQueryPropsType, QuerySelectedDataType } from './types';
 import 'react-dates/initialize';
@@ -21,6 +19,7 @@ import useMediaQuery from '../../../hooks/useMediaQuery';
 import Modal from '../../modals/Modal';
 import CalendarMobile from './components/CalendarMobile';
 import SearchList from '../../lists/SearchList';
+import QuerySelectors from './components/QuerySelectors';
 
 const SearchQuery = ({
 	locationsList,
@@ -45,6 +44,8 @@ const SearchQuery = ({
 		setShowLocationsListContainer(false)
 	);
 
+	const isMobile = useMediaQuery('(max-width: 850px)');
+
 	const [modal, setModal] = useState(false);
 	const [showPlaceList, setShowPlaceList] = useState(false);
 	const [showCalendar, setShowCalendar] = useState(false);
@@ -52,6 +53,7 @@ const SearchQuery = ({
 	const [calendarFocusedInput, setCalendarFocusedInput] = useState('startDate');
 
 	const [locationSearchText, setLocationSearchText] = useState('');
+	const [locationShowFullList, setLocationShowFullList] = useState(false);
 
 	const handleLocationSelect = (selectedItemId: string) => {
 		const selectedLocationItem = locationsList.find(
@@ -61,12 +63,16 @@ const SearchQuery = ({
 			...querySelectedData,
 			location: selectedLocationItem ?? null,
 		});
-		setLocationSearchText(selectedLocationItem?.name ?? '');
 		setShowLocationsListContainer(false);
 		locationInputRef?.current?.blur();
+		setLocationSearchText(selectedLocationItem?.name ?? '');
+		setLocationShowFullList(true);
 	};
 
-	const isMobile = useMediaQuery('(max-width: 850px)');
+	const handleLocationInputChange = (newText: string) => {
+		setLocationSearchText(newText);
+		setLocationShowFullList(false);
+	};
 
 	return (
 		<SearchQueryContainer>
@@ -77,7 +83,7 @@ const SearchQuery = ({
 						label={texts.labelPlace}
 						placeholder={texts.placeholderPlace}
 						inputTextValue={locationSearchText}
-						onInputTextChange={setLocationSearchText}
+						onInputTextChange={handleLocationInputChange}
 						onClearFieldClicked={() =>
 							setQuerySelectedData({
 								...querySelectedData,
@@ -120,23 +126,27 @@ const SearchQuery = ({
 				</ButtonContainer>
 			</SearchQueryBarContainer>
 
-			<PlacesListContainer
-				ref={locationListContainerRef}
-				visible={showLocationsListContainer}
+			<QuerySelectors
+				isMobile={isMobile}
+				showLocation={showLocationsListContainer}
+				showDates={false}
 			>
-				<SearchList
-					searchBar={false}
-					list={locationsList}
-					onItemSelected={(selectedItem) =>
-						handleLocationSelect(selectedItem.id)
-					}
-					searchPlaceholder={texts.placeholderPlace}
-					searchText={locationSearchText}
-					onSearchChange={setLocationSearchText}
-					edgesItemsAddedPadding={10}
-					emptyStateText="No encontramos este destino, pero te recomendamos..."
-				/>
-			</PlacesListContainer>
+				<QuerySelectors.Location ref={locationListContainerRef}>
+					<SearchList
+						list={locationsList}
+						onItemSelected={(selectedItem) =>
+							handleLocationSelect(selectedItem.id)
+						}
+						configs={{
+							showSearchBar: isMobile,
+							edgesItemsAddedPadding: 10,
+						}}
+						searchPlaceholder={texts.placeholderPlace}
+						searchText={locationShowFullList ? '' : locationSearchText}
+						emptyStateText="No encontramos este destino, pero te recomendamos..."
+					/>
+				</QuerySelectors.Location>
+			</QuerySelectors>
 
 			{/* <Modal
 				visible={isMobile && modal ? true : false}

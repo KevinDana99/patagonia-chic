@@ -24,14 +24,12 @@ import CustomIcon from '../../graphics/CustomIcon';
 import SearchListSkeleton from './components/SearchListLoaderSkeleton';
 import Text from '../../texts/Text';
 import useKeyboardNavigation from './hooks/useKeyboardNavigation';
-import { useForceReRender } from '../../../hooks/useForceReRender';
 
 const SearchList = ({
 	list,
 	title,
-	searchBar = true,
 	searchText = '',
-	onSearchChange,
+	onSearchTextChange,
 	onItemSelected,
 	loading,
 	error,
@@ -39,19 +37,25 @@ const SearchList = ({
 	loadingComponent,
 	emptyStateComponent,
 	errorComponent,
-	engine = 'fuse',
-	fuseConfigs = defaultFuseOptions,
-	featuredElements = [],
 	searchPlaceholder,
-	horizontalPadding = 20,
-	edgesItemsAddedPadding = 0,
+	configs = {},
 }: SearchListPropsType) => {
+	const {
+		showSearchBar = true,
+		engine = 'fuse',
+		fuseConfigs = defaultFuseOptions,
+		featuredElements = [],
+		horizontalPadding = 20,
+		edgesItemsAddedPadding = 0,
+		onItemSelectedConfigs: {
+			updateSearchTextValue = true,
+			itemKeySearchText = defaultFuseOptions.keys[0] as keyof ListItemType,
+			resetListValue = true,
+		} = {},
+	} = configs;
+
 	const [listValue, setListValue] = useState<Array<ListItemType>>(list);
 	const [searchTextValue, setSearchTextValue] = useState(searchText);
-	const [keyboardSelectedIndex, setKeyboardSelectedIndex] =
-		useKeyboardNavigation(listValue.length, (index) =>
-			onItemSelected?.(listValue[index])
-		);
 
 	useEffect(() => {
 		setListValue(list);
@@ -64,20 +68,34 @@ const SearchList = ({
 			const filteredList = filteredResult.map(
 				(filteredPlace) => filteredPlace.item
 			);
-
-			setListValue(filteredList);
-			query.length == 0 && setListValue(list);
+			setListValue(query.length === 0 ? list : filteredList);
 		},
 		[fuseConfigs, list]
 	);
+
+	const handleItemSelected = (selectedItem: ListItemType) => {
+		onItemSelected?.(selectedItem);
+		if (updateSearchTextValue) {
+			setSearchTextValue(selectedItem[itemKeySearchText] as string);
+			onSearchTextChange?.(selectedItem[itemKeySearchText] as string);
+		}
+		if (resetListValue) {
+			setListValue(list);
+		}
+	};
+
+	const [keyboardSelectedIndex, setKeyboardSelectedIndex] =
+		useKeyboardNavigation(listValue.length, (index) =>
+			handleItemSelected(listValue[index])
+		);
 
 	const handleSearchTextChange = useCallback(
 		(newText: string) => {
 			setSearchTextValue(newText);
 			if (engine === 'fuse') filterPlaceList(newText);
-			onSearchChange?.(newText);
+			onSearchTextChange?.(newText);
 		},
-		[engine, filterPlaceList, onSearchChange]
+		[engine, filterPlaceList, onSearchTextChange]
 	);
 
 	useEffect(() => {
@@ -87,14 +105,14 @@ const SearchList = ({
 	return (
 		<>
 			<Container>
-				{(title || searchBar) && (
+				{(title || showSearchBar) && (
 					<HeaderContainer horizontalPadding={horizontalPadding}>
 						{title && (
 							<OptionalTitle>
 								<Text size={20}>{title}</Text>
 							</OptionalTitle>
 						)}
-						{searchBar && (
+						{showSearchBar && (
 							<BoxSearch>
 								<IoSearch />
 								<InputSearch
@@ -127,7 +145,7 @@ const SearchList = ({
 											onMouseOver={() => setKeyboardSelectedIndex(index)}
 											onMouseMove={() => setKeyboardSelectedIndex(index)}
 											onMouseOut={() => setKeyboardSelectedIndex(-1)}
-											onClick={() => onItemSelected?.(item)}
+											onClick={() => handleItemSelected(item)}
 											selected={index === keyboardSelectedIndex}
 											horizontalPadding={horizontalPadding}
 											edgesItemsAddedPadding={edgesItemsAddedPadding}

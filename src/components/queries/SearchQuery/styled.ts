@@ -103,26 +103,6 @@ export const ContainerModal = styled.div`
 	align-items: center;
 `;
 
-export const PlacesListContainer = styled.div<{ visible: boolean }>`
-	display: ${({ visible }) => (visible ? 'block' : 'none')};
-	position: absolute;
-	width: 350px;
-	border-radius: 30px;
-	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
-	overflow: hidden;
-	top: 75px;
-	left: 0px;
-	background-color: #ffffff;
-	z-index: 20;
-
-	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
-		width: 100%;
-		height: 100%;
-		padding: 30px 40px 50px 10px;
-		box-shadow: none;
-	}
-`;
-
 export const EmptyListContainer = styled.div`
 	background-color: #ffffff;
 	padding: 0px 30px;

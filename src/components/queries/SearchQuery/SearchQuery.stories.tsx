@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import SearchQueryComponent from '.';
 import { SearchQueryPropsType } from './types';
 import places from '../../../examples/values/places.json';
+
 export default {
 	title: 'Components/queries',
 	component: SearchQueryComponent,
