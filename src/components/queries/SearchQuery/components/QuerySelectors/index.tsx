@@ -18,7 +18,7 @@ const QuerySelectorsContext = createContext<QuerySelectorsContextType>(
 );
 
 export default function QuerySelectors({
-	isMobile: isMobileProp,
+	renderAsModal: renderAsModalProp,
 	showLocation: showLocationProp,
 	showDates: showDateProp,
 	children,
@@ -26,7 +26,7 @@ export default function QuerySelectors({
 	const [showLocationSelector, setShowLocationSelector] =
 		useState(showLocationProp);
 	const [showDatesSelector, setShowDatesSelector] = useState(showDateProp);
-	const [isMobile, setIsMobile] = useState(isMobileProp);
+	const [renderAsModal, setRenderAsModal] = useState(renderAsModalProp);
 
 	useEffect(() => {
 		setShowLocationSelector(showLocationProp);
@@ -37,8 +37,8 @@ export default function QuerySelectors({
 	}, [showDateProp]);
 
 	useEffect(() => {
-		setIsMobile(isMobileProp);
-	}, [isMobileProp]);
+		setRenderAsModal(renderAsModalProp);
+	}, [renderAsModalProp]);
 
 	const handleModalClose = () => {
 		setShowLocationSelector(false);
@@ -53,19 +53,19 @@ export default function QuerySelectors({
 			value={{
 				showLocationSelector,
 				showDatesSelector,
-				isMobile,
+				renderAsModal,
 				setShowLocationSelector,
 				setShowDatesSelector,
 			}}
 		>
-			{isMobile ? (
+			{renderAsModal ? (
 				<Modal
 					visible={showLocationSelector}
 					closeAction={handleModalClose}
 					closeOnTouchOutside
 					animated
 				>
-					<ContainerModal>{children}</ContainerModal>
+					{children}
 				</Modal>
 			) : (
 				children
@@ -78,13 +78,15 @@ function Location(
 	{ children }: LocationPropsType,
 	ref: ForwardedRef<HTMLDivElement>
 ) {
-	const { showLocationSelector, isMobile } = useContext(QuerySelectorsContext);
+	const { showLocationSelector, renderAsModal } = useContext(
+		QuerySelectorsContext
+	);
 
 	if (!showLocationSelector) return <></>;
 
 	return (
 		<div ref={ref}>
-			{isMobile ? (
+			{renderAsModal ? (
 				children
 			) : (
 				<>

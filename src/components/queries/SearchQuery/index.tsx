@@ -44,7 +44,8 @@ const SearchQuery = ({
 		setShowLocationsListContainer(false)
 	);
 
-	const isMobile = useMediaQuery('(max-width: 850px)');
+	const isTablet = useMediaQuery('(max-width: 850px)');
+	const isMobile = useMediaQuery('(max-width: 500px)');
 
 	const [modal, setModal] = useState(false);
 	const [showPlaceList, setShowPlaceList] = useState(false);
@@ -117,7 +118,7 @@ const SearchQuery = ({
 				></CalendarInput> */}
 				<ButtonContainer>
 					<ButtonSearch
-						title={!isMobile ? texts.titleSearchButton : ''}
+						title={!isTablet ? texts.titleSearchButton : ''}
 						IconComponent={SearchIcon}
 						onClick={() => {
 							console.log('btn clicked');
@@ -127,7 +128,7 @@ const SearchQuery = ({
 			</SearchQueryBarContainer>
 
 			<QuerySelectors
-				isMobile={isMobile}
+				renderAsModal={isTablet}
 				showLocation={showLocationsListContainer}
 				showDates={false}
 			>
@@ -138,8 +139,9 @@ const SearchQuery = ({
 							handleLocationSelect(selectedItem.id)
 						}
 						configs={{
-							showSearchBar: isMobile,
+							showSearchBar: isTablet,
 							edgesItemsAddedPadding: 10,
+							horizontalPadding: isTablet && !isMobile ? 40 : 20,
 						}}
 						searchPlaceholder={texts.placeholderPlace}
 						searchText={locationShowFullList ? '' : locationSearchText}

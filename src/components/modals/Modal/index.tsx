@@ -16,6 +16,8 @@ import {
 } from './styled';
 import { ModalStateType, ModalType } from './types';
 
+const ANIMATION_TIME_MILLIS = 400;
+
 const PrimaryModal = ({
 	renderOpenButton,
 	width,
@@ -33,19 +35,27 @@ const PrimaryModal = ({
 	animated,
 }: ModalType) => {
 	const [state, setState] = useState<ModalStateType>({
-		visible: visible,
+		visible,
 		animate: false,
 	});
 
-	const close = () => {
-		setState({ animate: false, visible: false });
-		onClose && onClose();
-	};
+	const close = useCallback(() => {
+		setState({ animate: false, visible: true });
+		setTimeout(
+			() => setState({ animate: false, visible: false }),
+			ANIMATION_TIME_MILLIS
+		);
+		onClose?.();
+	}, [onClose]);
 
 	const open = useCallback(() => {
 		setState((prevState) => ({ ...prevState, visible: true }));
-		onOpen && onOpen();
+		onOpen?.();
 	}, [onOpen]);
+
+	useEffect(() => {
+		(visible ? open : close)();
+	}, [close, open, visible]);
 
 	const openWithAnimation = useCallback(() => {
 		setState((prevState) => ({ ...prevState, animate: true }));
@@ -68,10 +78,16 @@ const PrimaryModal = ({
 				<SecondaryButton title={texts?.buttonTitle ?? ''} onClick={open} />
 			)}
 
-			<BoxModal visible={state.visible} onClick={touchOutside}>
+			<BoxModal
+				visible={state.visible}
+				transitionTime={ANIMATION_TIME_MILLIS}
+				animate={state.animate}
+				onClick={touchOutside}
+			>
 				<Container
 					width={width}
 					animate={state.animate}
+					transitionTime={ANIMATION_TIME_MILLIS}
 					onClick={(e) => {
 						e.stopPropagation();
 					}}

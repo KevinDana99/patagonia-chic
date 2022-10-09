@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { size } from '../../../../../constants/devicesSizes';
 
 export const ContainerModal = styled.div`
-	padding: 15px 5px;
+	width: 100%;
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;

@@ -7,8 +7,6 @@ import {
 } from './types';
 import { IoCloseOutline as CloseI } from 'react-icons/io5';
 
-const paddingSpace = '3.5%';
-
 export const BoxModal = styled.div<BoxModalType>`
 	position: fixed;
 	top: 0;
@@ -21,40 +19,50 @@ export const BoxModal = styled.div<BoxModalType>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: rgba(35, 37, 38, 0.7);
-	-webkit-backdrop-filter: blur(3px);
-	backdrop-filter: blur(3px);
-	z-index: 5;
+	transition: all ${({ transitionTime }) => transitionTime / 2}ms ease;
+	${(props) =>
+		props.animate
+			? `background-color: rgba(35, 37, 38, 0.7);
+			-webkit-backdrop-filter: blur(3px);
+			backdrop-filter: blur(3px);
+			`
+			: `background-color: rgba(35, 37, 38, 0);
+			-webkit-backdrop-filter: blur(0px);
+			backdrop-filter: blur(0px);`};
+	z-index: 100;
 `;
 
 export const Container = styled.div<ModalContainerType>`
 	width: 100%;
 	min-width: 350px;
 	max-width: ${(props) => (props.width ? props.width : '570px')};
-	height: 500px;
-	height: calc(100% - 120px);
 	border-radius: 12px;
 	position: absolute;
 	overflow: hidden;
 	background-color: #fff;
+	visibility: ${(props) => (props.animate ? 'visible' : 'hidden')};
 
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 
 	@media (max-width: 500px) {
-		margin-top: 120px;
+		bottom: 0;
+		max-height: 90vh;
+		visibility: visible;
+		min-width: auto;
 		transform: ${(props) =>
-			props.animate ? 'translateY(0px)' : 'translateY(600px)'};
-		transition: all 400ms ease;
+			props.animate ? 'translateY(0vh)' : 'translateY(90vh)'};
+		border-radius: 12px 12px 0 0;
+		transition: all ${({ transitionTime }) => transitionTime}ms ease;
 	}
 `;
 
 export const BoxTop = styled.div`
 	position: sticky;
+	padding: 15px;
 	top: 0;
 	bottom: 0px;
-	padding: ${paddingSpace};
 	box-sizing: border-box;
 	border-bottom: 1px solid #d4d4d4;
 	width: 100%;
@@ -68,7 +76,8 @@ export const BoxTop = styled.div`
 export const BoxScroll = styled.div`
 	overflow-y: scroll;
 	scroll-behavior: smooth;
-	height: 600px;
+	min-height: 200px;
+	max-height: 70vh;
 
 	&::-webkit-scrollbar {
 		width: 9px;
@@ -119,7 +128,7 @@ export const BoxHeader = styled.div<BoxHeaderType>`
 `;
 
 export const BoxHeaderText = styled.div<BoxModalTextType>`
-	padding: 3.5%;
+	padding: 20px;
 	box-sizing: border-box;
 	width: 100%;
 	height: ${(props) => (props.coverImage ? '100%' : 'auto')};
@@ -134,7 +143,6 @@ export const BoxHeaderText = styled.div<BoxModalTextType>`
 `;
 
 export const BoxChildren = styled.div`
-	padding: 0% ${paddingSpace};
 	box-sizing: border-box;
 `;
 
