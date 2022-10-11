@@ -83,12 +83,15 @@ const PaginationButton = styled.div<{ show: boolean }>`
 	width: 20px;
 	padding: 6px;
 	border-radius: 100%;
-	background-color: #ffffff;
+	background-color: rgba(255, 255, 255, 0.8);
 	z-index: 1;
 	display: ${(props) => (props.show ? 'flex' : 'none')};
 	align-items: center;
 	justify-content: center;
 	animation: ${fadeIn} 300ms ease;
+	cursor: pointer;
+	box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px,
+		rgba(0, 0, 0, 0.18) 0px 2px 4px !important;
 `;
 
 export const PaginationLeftButton = styled(PaginationButton)`
@@ -97,6 +100,14 @@ export const PaginationLeftButton = styled(PaginationButton)`
 	transform: translateY(-50%);
 	left: 0%;
 	margin-left: 20px;
+
+	&:hover {
+		background-color: #ffffff;
+		transition: all 250ms ease;
+		margin-left: 19px;
+		height: 21px;
+		width: 21px;
+	}
 `;
 
 export const PaginationRightButton = styled(PaginationButton)`
@@ -105,4 +116,12 @@ export const PaginationRightButton = styled(PaginationButton)`
 	transform: translateY(-50%);
 	right: 0%;
 	margin-right: 20px;
+
+	&:hover {
+		background-color: #ffffff;
+		transition: all 300ms ease-in-out;
+		margin-left: 19px;
+		height: 21px;
+		width: 21px;
+	}
 `;

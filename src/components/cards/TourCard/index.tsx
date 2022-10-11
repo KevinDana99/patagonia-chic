@@ -8,6 +8,7 @@ import { ExcursionCardType } from './types';
 
 const TourCard = ({
 	coverImage,
+	imageList,
 	title,
 	subPrice,
 	price,
@@ -28,6 +29,7 @@ const TourCard = ({
 			<Card hover={true}>
 				<CardImage
 					coverImage={coverImage}
+					imageList={imageList}
 					date={date}
 					isAvailable={isAvailable}
 					isAddedToCart={isAddedToCart}

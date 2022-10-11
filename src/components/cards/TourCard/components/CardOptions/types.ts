@@ -1,6 +1,6 @@
-import { ExcursionCardTexts } from "../../types";
+import { ExcursionCardTexts } from '../../types';
 
 export type CardOptionsType = {
-    bookingsThisWeekCount?: number;
-    texts: ExcursionCardTexts;
-}
+	bookingsThisWeekCount?: number;
+	texts: ExcursionCardTexts;
+};

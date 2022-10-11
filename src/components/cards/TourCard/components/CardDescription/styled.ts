@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import PrimaryButton from '../../../../buttons/PrimaryButton';
 
-export const ActiveTheme = '#3BC053';
-
-
 export const Description = styled.div`
 	min-height: 110px;
 	padding: 21.48px;

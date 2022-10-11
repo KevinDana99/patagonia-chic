@@ -3,6 +3,30 @@ import { Story, Meta } from '@storybook/react';
 import { ExcursionCardType } from './types';
 import TourCard from '.';
 
+
+const exampleList = [
+	{
+		alt: 'image1',
+		uri: 'https://i.ibb.co/VMbg2QC/roi-dimor-wpje5h-Mf-Jj0-unsplash-1.png',
+	},
+	{
+		alt: 'image2',
+		uri: 'https://i.ibb.co/VMbg2QC/roi-dimor-wpje5h-Mf-Jj0-unsplash-1.png',
+	},
+	{
+		alt: 'image3',
+		uri: 'https://i.ibb.co/VMbg2QC/roi-dimor-wpje5h-Mf-Jj0-unsplash-1.png',
+	},
+	{
+		alt: 'image4',
+		uri: 'https://i.ibb.co/VMbg2QC/roi-dimor-wpje5h-Mf-Jj0-unsplash-1.png',
+	},
+	{
+		alt: 'image5',
+		uri: 'https://i.ibb.co/VMbg2QC/roi-dimor-wpje5h-Mf-Jj0-unsplash-1.png',
+	},
+];
+
 export default {
 	title: 'Components/cards',
 	component: TourCard,
@@ -17,7 +41,7 @@ const Template: Story<ExcursionCardType> = (args) => <TourCard {...args} />;
 
 export const tourCard = Template.bind({});
 tourCard.args = {
-	coverImage: 'https://i.ibb.co/VMbg2QC/roi-dimor-wpje5h-Mf-Jj0-unsplash-1.png',
+	imageList: exampleList,
 	subTitle: 'El Calafate',
 	title: 'Perito Moreno: Pasarelas',
 	price: '20.600',

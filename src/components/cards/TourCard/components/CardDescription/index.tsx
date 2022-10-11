@@ -100,7 +100,7 @@ const CardDescription = ({
 				)}
 				{!isAddedToCart && isAvailable && (
 					<ActiveButton
-						title={texts.buttonAvaiableText ?? ''}
+						title={texts.buttonAvailableText ?? ''}
 						onClick={onViewDetails}
 					/>
 				)}
