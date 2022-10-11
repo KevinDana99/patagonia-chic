@@ -53,8 +53,6 @@ const CardImage = ({
 				)}
 			</ContainerImage>
 		);
-	} else {
-		return null;
 	}
 };
 

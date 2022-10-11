@@ -13,14 +13,16 @@ export type ExcursionCardType = {
 	onViewCart?: () => void;
 	onViewDetails?: () => void;
 	onAddedToCart?: () => void;
-	texts: {
-		buttonDefaultText?: string;
-		buttonAddedToCartText?: string;
-		buttonAvaiableText?: string;
-		detailsAddedText?: string;
-		bookingsThisWeekText?: string;
-		lastBookingTimeText?: string;
-	};
+	texts: ExcursionCardTexts;
+};
+
+export type ExcursionCardTexts = {
+	buttonDefaultText?: string;
+	buttonAddedToCartText?: string;
+	buttonAvaiableText?: string;
+	detailsAddedText?: string;
+	bookingsThisWeekText?: string;
+	lastBookingTimeText?: string;
 };
 
 export type ExcursionCardStyleType = {

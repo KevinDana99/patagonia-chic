@@ -1,30 +1,9 @@
 import React from 'react';
-import CustomIcon from '../../graphics/CustomIcon';
-import Text from '../../texts/Text';
+
+import CardDescription from './components/CardDescription';
 import CardImage from './components/CardImage';
-import {
-	Card,
-	Description,
-	BoxTitle,
-	Title,
-	SubTitle,
-	BoxReserve,
-	BoxPrice,
-	Price,
-	SubPrice,
-	ButtonReserve,
-	Currency,
-	ActiveTheme,
-	ActiveButton,
-	DescriptionActive,
-	Details,
-	Container,
-	OptionContainer,
-	Option,
-	BoxOption,
-	ButtonContainer,
-	NumberReserveWeek,
-} from './styled';
+import CardOptions from './components/CardOptions';
+import { Card, Container } from './styled';
 import { ExcursionCardType } from './types';
 
 const TourCard = ({
@@ -47,124 +26,31 @@ const TourCard = ({
 	return (
 		<Container>
 			<Card hover={true}>
-				<>
-					<CardImage
-						coverImage={coverImage}
-						date={date}
-						isAvailable={isAvailable}
-						isAddedToCart={isAddedToCart}
-					/>
-					<Description>
-						<BoxTitle>
-							<SubTitle>
-								<Text size={12.27} weight={'regular'} color={'#888888'}>
-									{subTitle}
-								</Text>
-							</SubTitle>
-							<Title>
-								<Text size={15.34} weight={'bold'}>
-									{title}
-								</Text>
-							</Title>
-						</BoxTitle>
-						<hr color="#D7D5D5" />
-						<BoxReserve>
-							{isAddedToCart ? (
-								<DescriptionActive>
-									<CustomIcon
-										name="check-circle"
-										color={ActiveTheme}
-										size={20}
-									/>
-									<Details>
-										<Text size={12.27} weight={'regular'} color={'#888888'}>
-											{texts.detailsAddedText}
-										</Text>
-									</Details>
-								</DescriptionActive>
-							) : (
-								!isAvailable && (
-									<BoxPrice>
-										<Price>
-											<Text size={15.34} weight={'bold'}>
-												{currencySymbol + price}
-											</Text>
-											<Currency>
-												<Text size={10} weight={'bold'}>
-													{currencyCode}
-												</Text>
-											</Currency>
-										</Price>
-										<SubPrice>
-											<Text color="#888888" size={12.27} weight={'regular'}>
-												{currencySymbol + subPrice}
-											</Text>
-
-											<Currency>
-												<Text color="#888888" size={10}>
-													{currencyCode}
-												</Text>
-											</Currency>
-										</SubPrice>
-									</BoxPrice>
-								)
-							)}
-							<ButtonContainer>
-								{isAddedToCart && (
-									<ActiveButton
-										title={
-											texts.buttonAddedToCartText
-												? texts.buttonAddedToCartText
-												: ''
-										}
-										color={'#3b3b3b'}
-										onClick={onViewCart}
-									/>
-								)}
-								{!isAddedToCart && !isAvailable && (
-									<ButtonReserve
-										title={
-											texts.buttonDefaultText ? texts.buttonDefaultText : ''
-										}
-										onClick={onAddedToCart}
-									/>
-								)}
-								{!isAddedToCart && isAvailable && (
-									<ActiveButton
-										title={
-											texts.buttonAvaiableText ? texts.buttonAvaiableText : ''
-										}
-										onClick={onViewDetails}
-									/>
-								)}
-							</ButtonContainer>
-						</BoxReserve>
-					</Description>
-				</>
+				<CardImage
+					coverImage={coverImage}
+					date={date}
+					isAvailable={isAvailable}
+					isAddedToCart={isAddedToCart}
+				/>
+				<CardDescription
+					title={title}
+					subTitle={subTitle}
+					isAddedToCart={isAddedToCart}
+					isAvailable={isAvailable}
+					currencySymbol={currencySymbol}
+					currencyCode={currencyCode}
+					price={price}
+					subPrice={subPrice}
+					texts={texts}
+					onViewCart={onViewCart}
+					onViewDetails={onViewDetails}
+					onAddedToCart={onAddedToCart}
+				/>
 			</Card>
-
-			<OptionContainer>
-				{bookingsThisWeekCount && texts.bookingsThisWeekText && (
-					<BoxOption>
-						<CustomIcon name="group-circle" />
-						<Option>
-							<NumberReserveWeek>
-								<Text weight={'bold'}>{bookingsThisWeekCount.toString()}</Text>
-							</NumberReserveWeek>
-							<Text>{texts.bookingsThisWeekText}</Text>
-						</Option>
-					</BoxOption>
-				)}
-
-				{texts.lastBookingTimeText && (
-					<BoxOption>
-						<CustomIcon name="ray-circle" />
-						<Option>
-							<Text size={12}>{texts.lastBookingTimeText}</Text>
-						</Option>
-					</BoxOption>
-				)}
-			</OptionContainer>
+			<CardOptions
+				bookingsThisWeekCount={bookingsThisWeekCount}
+				texts={texts}
+			/>
 		</Container>
 	);
 };
