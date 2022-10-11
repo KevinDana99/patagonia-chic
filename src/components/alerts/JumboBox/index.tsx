@@ -1,40 +1,9 @@
 import React from 'react';
-import PrimaryButton from '../../buttons/PrimaryButton';
-import Background from './background';
-import {
-	Container,
-	BoxTitle,
-	BoxButton,
-	ContentContainer,
-	TextTitle,
-} from './styled';
+import { Container } from './styled';
 import { JumboBoxType } from './types';
 
-const JumboBox = ({ texts, renderButton, background }: JumboBoxType) => {
-	return (
-		<Container background={background}>
-			<ContentContainer>
-				<BoxTitle>
-					<TextTitle color="#3B3B3B" weight="semi-bold" size={36}>
-						{texts?.title}
-					</TextTitle>
-				</BoxTitle>
-
-				<BoxButton>
-					<>
-						{renderButton ? (
-							renderButton
-						) : (
-							<PrimaryButton
-								title={texts?.buttonTitle ? texts.buttonTitle : ''}
-								theme="mono"
-							/>
-						)}
-					</>
-				</BoxButton>
-			</ContentContainer>
-		</Container>
-	);
+const JumboBox = ({ background, children }: JumboBoxType) => {
+	return <Container background={background}>{children}</Container>;
 };
 
 export default JumboBox;

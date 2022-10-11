@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import Text from '../../texts/Text';
-import Background from './background';
 import { JumboBoxType } from './types';
+import { size } from './../../../constants/devicesSizes';
 
 export const Container = styled.div<JumboBoxType>`
-	width: 100%;
-	height: 425px;
 	padding: 20px;
 	box-sizing: border-box;
 	border-radius: 15px;
@@ -21,6 +19,11 @@ export const Container = styled.div<JumboBoxType>`
 		rgba(35, 132, 229, 0.1) 80.21%,
 		rgba(168, 88, 224, 0.1) 98.44%
 	)`};
+
+	@media (max-width: ${size.mobileL}) {
+		width: 100%;
+		border-radius: 0px;
+	}
 `;
 
 export const ContentContainer = styled.div`
