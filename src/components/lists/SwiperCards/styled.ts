@@ -5,6 +5,9 @@ import { StyledSwiperSlideType } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CategoriesListGlobalStyle: any = createGlobalStyle`
+html{
+  --color-text: black;
+}
 .swiper-button-disabled {
   display: none;
 }
@@ -18,6 +21,7 @@ const CategoriesListGlobalStyle: any = createGlobalStyle`
 
 export const StyledSwiperSlide = styled(SwiperSlide)<StyledSwiperSlideType>`
 	height: 320px;
+	background-color: red;
 	padding: 5px;
 	${({ width }) => (width ? `width: ${width}px` : '')};
 `;

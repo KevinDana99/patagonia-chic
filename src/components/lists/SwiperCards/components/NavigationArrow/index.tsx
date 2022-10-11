@@ -8,8 +8,10 @@ const NavigationArrow = ({
 	left,
 	className,
 	mobile,
+	itemWidth,
 }: NavigationArrowType) => (
 	<GradientContainer
+		itemWidth={itemWidth}
 		className={className}
 		right={right}
 		left={left}

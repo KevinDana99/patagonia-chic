@@ -78,10 +78,18 @@ const SwiperCards = ({
 					</StyledSwiperSlide>
 				))}
 				<div ref={prevRef} className="navigation-buttons">
-					<NavigationArrow left mobile={isMobile} />
+					<NavigationArrow
+						itemWidth={ITEM_TARGET_SIZE}
+						left
+						mobile={isMobile}
+					/>
 				</div>
 				<div ref={nextRef} className="navigation-buttons">
-					<NavigationArrow right mobile={isMobile} />
+					<NavigationArrow
+						itemWidth={ITEM_TARGET_SIZE}
+						right
+						mobile={isMobile}
+					/>
 				</div>
 			</Swiper>
 		</>
