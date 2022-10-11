@@ -18,7 +18,8 @@ export const GradientContainer = styled.div<NavigationArrowType>`
 	position: absolute;
 	top: 0;
 	z-index: 2;
-	margin: 0% calc(100vh / ${({ itemWidth }) => itemWidth && itemWidth / 10});
+	margin: 0%
+		calc(var(--container) / ${({ itemWidth }) => itemWidth && itemWidth}) px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
