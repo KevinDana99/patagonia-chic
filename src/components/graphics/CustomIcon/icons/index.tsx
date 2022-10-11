@@ -3,6 +3,8 @@ import CheckCircleIcon from './CheckCircleIcon';
 import IslandParadise from './IslandParadise';
 import GroupCardIcon from './GroupCardIcon';
 import RayCardIcon from './RayCardIcon';
+import CloseIcon from './CloseIcon';
+
 import { CustomIconsComponentPropsType } from './types';
 import ShipIcon from './ShipIcon';
 
@@ -18,6 +20,9 @@ const icons = {
 	),
 	'ray-circle': (props: CustomIconsComponentPropsType) => (
 		<RayCardIcon {...props} />
+	),
+	'close-icon': (props: CustomIconsComponentPropsType) => (
+		<CloseIcon {...props} />
 	),
 	ship: (props: CustomIconsComponentPropsType) => <ShipIcon {...props} />,
 } as const;

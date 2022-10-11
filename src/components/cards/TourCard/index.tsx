@@ -1,9 +1,9 @@
 import React from 'react';
 import CustomIcon from '../../graphics/CustomIcon';
 import Text from '../../texts/Text';
+import CardImage from './components/CardImage';
 import {
 	Card,
-	ContainerImage,
 	Description,
 	BoxTitle,
 	Title,
@@ -14,8 +14,6 @@ import {
 	SubPrice,
 	ButtonReserve,
 	Currency,
-	VectorCard,
-	ContainerVector,
 	ActiveTheme,
 	ActiveButton,
 	DescriptionActive,
@@ -26,9 +24,6 @@ import {
 	BoxOption,
 	ButtonContainer,
 	NumberReserveWeek,
-	TextVector,
-	TextVectorDay,
-	TextVectorMonth,
 } from './styled';
 import { ExcursionCardType } from './types';
 
@@ -53,43 +48,12 @@ const TourCard = ({
 		<Container>
 			<Card hover={true}>
 				<>
-					{coverImage && (
-						<ContainerImage
-							coverImage={
-								typeof coverImage === 'string' ? coverImage : undefined
-							}
-						>
-							{typeof coverImage !== 'string' && coverImage}
-
-							{isAvailable && isAddedToCart && (
-								<ContainerVector>
-									<VectorCard color={isAddedToCart ? ActiveTheme : '#1079E3'} />
-									<TextVector>
-										<TextVectorDay>
-											<Text color="white">{date?.day}</Text>
-										</TextVectorDay>
-										<TextVectorMonth>
-											<Text color="white">{date?.month}</Text>
-										</TextVectorMonth>
-									</TextVector>
-								</ContainerVector>
-							)}
-
-							{!isAvailable && (
-								<ContainerVector>
-									<VectorCard color={isAddedToCart ? ActiveTheme : '#1079E3'} />
-									<TextVector>
-										<TextVectorDay>
-											<Text color="white">{date?.day}</Text>
-										</TextVectorDay>
-										<TextVectorMonth>
-											<Text color="white">{date?.month}</Text>
-										</TextVectorMonth>
-									</TextVector>
-								</ContainerVector>
-							)}
-						</ContainerImage>
-					)}
+					<CardImage
+						coverImage={coverImage}
+						date={date}
+						isAvailable={isAvailable}
+						isAddedToCart={isAddedToCart}
+					/>
 					<Description>
 						<BoxTitle>
 							<SubTitle>
@@ -145,7 +109,6 @@ const TourCard = ({
 									</BoxPrice>
 								)
 							)}
-
 							<ButtonContainer>
 								{isAddedToCart && (
 									<ActiveButton
