@@ -3,7 +3,6 @@ import { Story, Meta } from '@storybook/react';
 import { ExcursionCardType } from './types';
 import TourCard from '.';
 
-
 const exampleList = [
 	{
 		alt: 'image1',

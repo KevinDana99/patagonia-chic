@@ -46,7 +46,6 @@ export const Currency = styled.div`
 	font-size: 10px;
 `;
 
-
 export const ActiveButton = styled(PrimaryButton).attrs({
 	theme: 'mono',
 })`
@@ -60,7 +59,6 @@ export const DescriptionActive = styled.div`
 	justify-content: space-around;
 	align-items: center;
 `;
-
 
 export const Details = styled(SubTitle)`
 	text-align: left;

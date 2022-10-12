@@ -29,8 +29,33 @@ export const SwiperContainer = styled(Swiper)<
 		--swiper-pagination-color: #fff;
 		--swiper-pagination-bullet-inactive-color: #fff;
 		--swiper-pagination-bullet-inactive-opacity: 0.6;
-		--swiper-pagination-bullet-size: 6px;
-		--swiper-pagination-bullet-width: 6px;
+		--swiper-pagination-bullet-size: 5px;
+		--swiper-pagination-bullet-width: 5px;
+	}
+	.swiper-pagination-bullet-active-next {
+		height: 5px !important;
+		width: 5px !important;
+		transform: scale(1) !important;
+	}
+	.swiper-pagination-bullet-active-prev {
+		height: 5px !important;
+		width: 5px !important;
+		transform: scale(1) !important;
+	}
+	.swiper-pagination-bullet-active-next-next {
+		height: 4px !important;
+		width: 4px !important;
+		transform: scale(1) !important;
+	}
+	.swiper-pagination-bullet-active-prev-prev {
+		height: 4px !important;
+		width: 4px !important;
+		transform: scale(1) !important;
+	}
+	.swiper-pagination-bullet-active {
+		height: 6px !important;
+		width: 6px !important;
+		transform: scale(1) !important;
 	}
 `;
 

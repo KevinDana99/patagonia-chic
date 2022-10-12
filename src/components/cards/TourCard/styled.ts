@@ -11,4 +11,3 @@ export const Card = styled(PrimaryCard)<PrimaryCardStyleType>`
 	overflow: hidden;
 	position: relative;
 `;
-
