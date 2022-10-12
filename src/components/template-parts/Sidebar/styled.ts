@@ -17,6 +17,7 @@ export const BoxBackground = styled.div<SidebarComponentType>`
 	backdrop-filter: blur(3px);
 	display: ${(props) => (props.activeSidebar ? 'flex' : 'none')};
 	justify-content: flex-end;
+	z-index: 2;
 `;
 
 export const SidebarContainer = styled.div<SidebarComponentType>`
