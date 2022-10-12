@@ -23,10 +23,11 @@ const TourCard = ({
 	onViewCart,
 	onAddedToCart,
 	onViewDetails,
+	className,
 }: ExcursionCardType) => {
 	return (
 		<Container>
-			<Card hover={true}>
+			<Card hover={true} className={className}>
 				<CardImage
 					coverImage={coverImage}
 					imageList={imageList}

@@ -2,6 +2,8 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ExcursionCardType } from './types';
 import TourCard from '.';
+import Text from '../../texts/Text';
+import styled from 'styled-components';
 
 const exampleList = [
 	{
@@ -26,6 +28,14 @@ const exampleList = [
 	},
 ];
 
+const StyledCard = styled(TourCard)`
+	background-color: #90bfb1;
+	width: 500px;
+	height: 500px;
+	align-items: center;
+	margin: 25px;
+`
+
 export default {
 	title: 'Components/cards',
 	component: TourCard,
@@ -36,7 +46,14 @@ export default {
 	},
 } as Meta<typeof TourCard>;
 
-const Template: Story<ExcursionCardType> = (args) => <TourCard {...args} />;
+const Template: Story<ExcursionCardType> = (args) => (
+	<div>
+		<Text>Normal Card</Text>
+		<TourCard {...args} />
+		<Text>Styled Card</Text>
+		<StyledCard {...args} />
+	</div>
+);
 
 export const tourCard = Template.bind({});
 tourCard.args = {

@@ -15,6 +15,7 @@ export type ExcursionCardType = {
 	onViewDetails?: () => void;
 	onAddedToCart?: () => void;
 	texts: ExcursionCardTexts;
+	className?: string;
 };
 
 export type ExcursionCardTexts = {
