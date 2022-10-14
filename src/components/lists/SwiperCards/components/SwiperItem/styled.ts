@@ -14,13 +14,14 @@ export const TextContainer = styled.div`
 
 export const Container = styled.div<ItemCategoryContainerType>`
 	cursor: pointer;
-
+	z-index: 1;
 	${({ disabled }) =>
 		disabled ? 'opacity: 0.5; pointer-events: none; cursor: not-allowed;' : ''}
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
+
 	-webkit-touch-callout: none; /* iOS Safari */
 	-webkit-user-select: none; /* Safari */
 	-khtml-user-select: none; /* Konqueror HTML */

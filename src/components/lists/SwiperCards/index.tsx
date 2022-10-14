@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 // Import Swiper styles
 import 'swiper/swiper.min.css';
@@ -13,7 +13,7 @@ import CategoriesListGlobalStyle, { StyledSwiperSlide } from './styled';
 import NavigationArrow from './components/NavigationArrow';
 
 import useMediaQuery from '../../../hooks/useMediaQuery';
-import { deviceSize } from '../../../constants/devicesSizes';
+import { deviceSize, size } from '../../../constants/devicesSizes';
 import CategoriesListSkeleton from './components/Skeleton';
 import SwiperItem from './components/SwiperItem';
 import { SwiperCardsType } from './types';
@@ -32,6 +32,8 @@ const SwiperCards = ({
 	const prevRef = React.useRef(null);
 	const nextRef = React.useRef(null);
 	const [swiperSize, setSwiperSize] = React.useState(0);
+	const slidesPerView = Math.round(swiperSize / ITEM_TARGET_SIZE);
+	const [arrowPosition, setArrowPosition] = useState({ left: 0, right: 3 });
 
 	React.useEffect(() => {
 		onSelectedChange(selectedItemId);
@@ -45,20 +47,37 @@ const SwiperCards = ({
 		setSwiperSize(swiper.width);
 	};
 
-	const slidesPerView = Math.round(swiperSize / ITEM_TARGET_SIZE);
-
 	if (loading) {
 		return <CategoriesListSkeleton />;
 	}
 
 	if (error) {
-		return <span>Items no disponibles</span>; // Revisar error handler
+		return <span>Items no disponibles</span>;
 	}
+
+	const nextSlide = () => {
+		setArrowPosition({
+			...arrowPosition,
+			left: arrowPosition.left + 1,
+			right: arrowPosition.right + 1,
+		});
+	};
+
+	const backSlide = () => {
+		setArrowPosition({
+			...arrowPosition,
+			left: arrowPosition.left - 1,
+			right: arrowPosition.right - 1,
+		});
+	};
 
 	return (
 		<>
 			<CategoriesListGlobalStyle />
+
 			<Swiper
+				onSlideNextTransitionStart={nextSlide}
+				onSlidePrevTransitionStart={backSlide}
 				slidesPerView={'auto'}
 				slidesPerGroup={slidesPerView}
 				spaceBetween={10}
@@ -70,27 +89,23 @@ const SwiperCards = ({
 			>
 				{list.map((item, index) => (
 					<StyledSwiperSlide key={`key-${index}`} width={ITEM_TARGET_SIZE}>
+						{index == arrowPosition.left && (
+							<div ref={prevRef} className="navigation-buttons">
+								<NavigationArrow left mobile={isMobile} position={70} />
+							</div>
+						)}
 						<SwiperItem
 							{...item}
 							selected={item.id === selectedItemId}
 							onClick={() => setSelectedItemId(item.id)}
 						/>
+						{index == arrowPosition.right && (
+							<div ref={nextRef} className="navigation-buttons">
+								<NavigationArrow right mobile={isMobile} position={-40} />
+							</div>
+						)}
 					</StyledSwiperSlide>
 				))}
-				<div ref={prevRef} className="navigation-buttons">
-					<NavigationArrow
-						itemWidth={ITEM_TARGET_SIZE}
-						left
-						mobile={isMobile}
-					/>
-				</div>
-				<div ref={nextRef} className="navigation-buttons">
-					<NavigationArrow
-						itemWidth={ITEM_TARGET_SIZE}
-						right
-						mobile={isMobile}
-					/>
-				</div>
 			</Swiper>
 		</>
 	);

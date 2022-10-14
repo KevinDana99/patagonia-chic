@@ -21,7 +21,6 @@ html{
 
 export const StyledSwiperSlide = styled(SwiperSlide)<StyledSwiperSlideType>`
 	height: 320px;
-	background-color: red;
 	padding: 5px;
 	${({ width }) => (width ? `width: ${width}px` : '')};
 `;
