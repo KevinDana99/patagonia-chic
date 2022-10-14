@@ -1,4 +1,4 @@
-import resolve from '@rollup/plugin-node-resolve';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import createStyledComponentsTransformer from 'typescript-plugin-styled-components';
@@ -9,6 +9,9 @@ import packageJson from './package.json';
 import css from 'rollup-plugin-import-css';
 import json from '@rollup/plugin-json';
 import babel from '@rollup/plugin-babel';
+import postcss from 'rollup-plugin-postcss';
+import styles from 'rollup-plugin-styles';
+import autoprefixer from 'autoprefixer';
 
 const styledComponentsTransformer = createStyledComponentsTransformer({
 	displayName: true,
@@ -34,7 +37,10 @@ export default [
 				exclude: 'node_modules/**',
 			}),
 			peerDepsExternal(),
-			resolve(),
+			nodeResolve({
+				extensions: ['.css'],
+			}),
+			styles(),
 			commonjs(),
 			typescript({
 				tsconfig: './tsconfig.json',

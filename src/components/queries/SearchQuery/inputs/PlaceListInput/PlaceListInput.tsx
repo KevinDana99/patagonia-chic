@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { CloseIcon, Divider, Input, Label, OptionContent } from '../../styled';
 import { PlaceListInputType } from '../../types';
 import PlaceList from './PlaceList';
-import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
+import  useOutsideClick from '../../../../../hooks/useOutsideClick';
 import useToggle from '../../../../../hooks/useToggle';
 import { OptionContainerPlaceList } from './styled';
 import SearchList from '../../../../lists/SearchList';

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
+import useOutsideClick from '../../../../../hooks/useOutsideClick';
 
 import { Calendar } from './Calendar';
 import {

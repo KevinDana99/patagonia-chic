@@ -3,4 +3,5 @@ export type SecondaryButtonType = {
 	loading?: boolean;
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 	disabled?: boolean;
+	className?: string;
 };

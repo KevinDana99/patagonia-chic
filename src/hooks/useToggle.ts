@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useToggle = () => {
+function useToggle() {
 	const [toggle, setToggle] = useState(false);
 
 	const onToggle = () => {
@@ -12,6 +12,6 @@ const useToggle = () => {
 	};
 
 	return { onToggle, offToggle, toggle };
-};
+}
 
 export default useToggle;
