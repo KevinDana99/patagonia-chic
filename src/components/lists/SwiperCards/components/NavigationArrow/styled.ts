@@ -18,8 +18,8 @@ export const GradientContainer = styled.div<NavigationArrowType>`
 	position: absolute;
 	top: 0;
 	z-index: 3;
-	${({ position, right }) => right && 'left:' + position && position + 'px'};
-	${({ position, left }) => left && 'left:' + position && position + 'px'};
+	right: ${({ position, right }) => right && position && position + 'px'};
+	left: ${({ position, left }) => left && position && position + 'px'};
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

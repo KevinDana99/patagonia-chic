@@ -25,4 +25,6 @@ export const StyledSwiperSlide = styled(SwiperSlide)<StyledSwiperSlideType>`
 	${({ width }) => (width ? `width: ${width}px` : '')};
 `;
 
+export const ContainerArrow = styled.div``;
+
 export default CategoriesListGlobalStyle;

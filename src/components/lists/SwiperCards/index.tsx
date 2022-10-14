@@ -9,7 +9,10 @@ import { Swiper } from 'swiper/react';
 import { Navigation, FreeMode, Mousewheel } from 'swiper';
 import { NavigationOptions, Swiper as SwiperType } from 'swiper/types';
 
-import CategoriesListGlobalStyle, { StyledSwiperSlide } from './styled';
+import CategoriesListGlobalStyle, {
+	StyledSwiperSlide,
+	ContainerArrow,
+} from './styled';
 import NavigationArrow from './components/NavigationArrow';
 
 import useMediaQuery from '../../../hooks/useMediaQuery';
@@ -33,7 +36,15 @@ const SwiperCards = ({
 	const nextRef = React.useRef(null);
 	const [swiperSize, setSwiperSize] = React.useState(0);
 	const slidesPerView = Math.round(swiperSize / ITEM_TARGET_SIZE);
-	const [arrowPosition, setArrowPosition] = useState({ left: 0, right: 3 });
+
+	const [arrowPosition, setArrowPosition] = useState({
+		left: 0,
+		right: 0,
+	});
+
+	useEffect(() => {
+		setArrowPosition({ ...arrowPosition, right: slidesPerView - 1 });
+	}, [swiperSize, ITEM_TARGET_SIZE, slidesPerView]);
 
 	React.useEffect(() => {
 		onSelectedChange(selectedItemId);
@@ -90,9 +101,9 @@ const SwiperCards = ({
 				{list.map((item, index) => (
 					<StyledSwiperSlide key={`key-${index}`} width={ITEM_TARGET_SIZE}>
 						{index == arrowPosition.left && (
-							<div ref={prevRef} className="navigation-buttons">
-								<NavigationArrow left mobile={isMobile} position={70} />
-							</div>
+							<ContainerArrow ref={prevRef} className="navigation-buttons">
+								<NavigationArrow left mobile={isMobile} position={-50} />
+							</ContainerArrow>
 						)}
 						<SwiperItem
 							{...item}
@@ -100,9 +111,9 @@ const SwiperCards = ({
 							onClick={() => setSelectedItemId(item.id)}
 						/>
 						{index == arrowPosition.right && (
-							<div ref={nextRef} className="navigation-buttons">
+							<ContainerArrow ref={nextRef} className="navigation-buttons">
 								<NavigationArrow right mobile={isMobile} position={-40} />
-							</div>
+							</ContainerArrow>
 						)}
 					</StyledSwiperSlide>
 				))}
