@@ -11,6 +11,7 @@ export const ButtonTertiaryStyled = styled.button`
 	border: none;
 	display: flex;
 	justify-content: center;
+	letter-spacing: -0.016em;
 	align-items: center;
 	opacity: ${({ disabled }) => (disabled ? 0.7 : 1)};
 	cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
