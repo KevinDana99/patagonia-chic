@@ -37,15 +37,6 @@ const SwiperCards = ({
 	const [swiperSize, setSwiperSize] = React.useState(0);
 	const slidesPerView = Math.round(swiperSize / ITEM_TARGET_SIZE);
 
-	const [arrowPosition, setArrowPosition] = useState({
-		left: 0,
-		right: 0,
-	});
-
-	useEffect(() => {
-		setArrowPosition({ ...arrowPosition, right: slidesPerView - 1 });
-	}, [swiperSize, ITEM_TARGET_SIZE, slidesPerView]);
-
 	React.useEffect(() => {
 		onSelectedChange(selectedItemId);
 	}, [selectedItemId]);
@@ -66,29 +57,11 @@ const SwiperCards = ({
 		return <span>Items no disponibles</span>;
 	}
 
-	const nextSlide = () => {
-		setArrowPosition({
-			...arrowPosition,
-			left: arrowPosition.left + 1,
-			right: arrowPosition.right + 1,
-		});
-	};
-
-	const backSlide = () => {
-		setArrowPosition({
-			...arrowPosition,
-			left: arrowPosition.left - 1,
-			right: arrowPosition.right - 1,
-		});
-	};
-
 	return (
 		<>
 			<CategoriesListGlobalStyle />
 
 			<Swiper
-				onSlideNextTransitionStart={nextSlide}
-				onSlidePrevTransitionStart={backSlide}
 				slidesPerView={'auto'}
 				slidesPerGroup={slidesPerView}
 				spaceBetween={10}
@@ -100,23 +73,19 @@ const SwiperCards = ({
 			>
 				{list.map((item, index) => (
 					<StyledSwiperSlide key={`key-${index}`} width={ITEM_TARGET_SIZE}>
-						{index == arrowPosition.left && (
-							<ContainerArrow ref={prevRef} className="navigation-buttons">
-								<NavigationArrow left mobile={isMobile} position={-50} />
-							</ContainerArrow>
-						)}
 						<SwiperItem
 							{...item}
 							selected={item.id === selectedItemId}
 							onClick={() => setSelectedItemId(item.id)}
 						/>
-						{index == arrowPosition.right && (
-							<ContainerArrow ref={nextRef} className="navigation-buttons">
-								<NavigationArrow right mobile={isMobile} position={-40} />
-							</ContainerArrow>
-						)}
 					</StyledSwiperSlide>
 				))}
+				<ContainerArrow ref={prevRef} className="navigation-buttons">
+					<NavigationArrow left mobile={isMobile} position={-50} />
+				</ContainerArrow>
+				<ContainerArrow ref={nextRef} className="navigation-buttons">
+					<NavigationArrow right mobile={isMobile} position={-40} />
+				</ContainerArrow>
 			</Swiper>
 		</>
 	);
