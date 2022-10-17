@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { SwiperSlide } from 'swiper/react';
 import { deviceSize } from '../../../constants/devicesSizes';
 import { StyledSwiperSlideType } from './types';
+import NavigationArrow from './components/NavigationArrow';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CategoriesListGlobalStyle: any = createGlobalStyle`
@@ -25,6 +26,16 @@ export const StyledSwiperSlide = styled(SwiperSlide)<StyledSwiperSlideType>`
 	${({ width }) => (width ? `width: ${width}px` : '')};
 `;
 
-export const ContainerArrow = styled.div``;
+export const NavigationArrowRight = styled(NavigationArrow).attrs({
+	right: true,
+})`
+	left: ${({ right, position }) => right && position && position + 15 + 'px'};
+`;
+
+export const NavigationArrowLeft = styled(NavigationArrow).attrs({
+	left: true,
+})`
+	left: ${({ left, position }) => left && position && position - 20 + 'px'};
+`;
 
 export default CategoriesListGlobalStyle;

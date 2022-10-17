@@ -11,9 +11,9 @@ import { NavigationOptions, Swiper as SwiperType } from 'swiper/types';
 
 import CategoriesListGlobalStyle, {
 	StyledSwiperSlide,
-	ContainerArrow,
+	NavigationArrowLeft,
+	NavigationArrowRight,
 } from './styled';
-import NavigationArrow from './components/NavigationArrow';
 
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { deviceSize, size } from '../../../constants/devicesSizes';
@@ -22,6 +22,11 @@ import SwiperItem from './components/SwiperItem';
 import { SwiperCardsType } from './types';
 
 export const ITEM_TARGET_SIZE = 350;
+
+//Constantes involucradas
+//widths:
+//primera card
+//ultima card de la ronda
 
 const SwiperCards = ({
 	list,
@@ -80,13 +85,23 @@ const SwiperCards = ({
 						/>
 					</StyledSwiperSlide>
 				))}
-				<ContainerArrow ref={prevRef} className="navigation-buttons">
-					<NavigationArrow left mobile={isMobile} position={-50} />
-				</ContainerArrow>
-				<ContainerArrow ref={nextRef} className="navigation-buttons">
-					<NavigationArrow right mobile={isMobile} position={-40} />
-				</ContainerArrow>
+				<div ref={prevRef} className="navigation-buttons">
+					<NavigationArrowLeft
+						left
+						mobile={isMobile}
+						position={ITEM_TARGET_SIZE}
+					/>
+				</div>
+				<div ref={nextRef} className="navigation-buttons">
+					<NavigationArrowRight
+						right
+						mobile={isMobile}
+						position={ITEM_TARGET_SIZE * (slidesPerView - 1)}
+					/>
+				</div>
 			</Swiper>
+
+			{console.log(slidesPerView)}
 		</>
 	);
 };

@@ -5,20 +5,15 @@ export const GradientContainer = styled.div<NavigationArrowType>`
 	height: 76%;
 	width: 84px;
 
-	${({ right }) => (right ? 'right: 0;' : '')}
 	${({ left }) =>
-		left
-			? `
-					left: 0;
-					-webkit-transform: scaleX(-1);
+		left &&
+		`	-webkit-transform: scaleX(-1);
 					transform: scaleX(-1);
-				`
-			: ''}
+				`}
 
 	position: absolute;
 	top: 0;
 	z-index: 3;
-	margin: 0% 5%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -28,7 +23,6 @@ export const GradientContainer = styled.div<NavigationArrowType>`
 export const ArrowContainer = styled.div`
 	width: 80px;
 	height: 80px;
-	margin: 0% 10%;
 	border-radius: 100%;
 	display: flex;
 	justify-content: center;
