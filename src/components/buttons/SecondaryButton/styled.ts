@@ -45,6 +45,10 @@ export const ArrowRightIcon = styled(IoChevronForwardSharp)``;
 
 export const ArrowLeftIcon = styled(IoChevronBackSharp)``;
 
-export const ArrowDownIcon = styled(IoChevronDownSharp)``;
+export const ArrowDownIcon = styled(IoChevronDownSharp)`
+	margin-left: 7.5px;
+`;
 
-export const ArrowUpIcon = styled(IoChevronUpSharp)``;
+export const ArrowUpIcon = styled(IoChevronUpSharp)`
+	margin-left: 7.5px;
+`;
