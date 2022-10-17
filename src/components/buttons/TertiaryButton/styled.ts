@@ -31,4 +31,5 @@ export const StyledText = styled(Text)`
 
 export const SpinnerStyled = styled(Spinner)`
 	margin-left: 3px;
+	margin-top: -4px;
 `;
