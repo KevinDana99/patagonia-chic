@@ -12,6 +12,8 @@ const Input = ({
 	className,
 	inputProps,
 	disabled,
+	labelTextWeight = 'regular',
+	labelTextColor = '#777',
 }: InputPropsType) => {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange && onChange(e.target.value);
@@ -29,7 +31,7 @@ const Input = ({
 				disabled={disabled}
 			/>
 			<StyledLabel>
-				<Text size={15} weight={'regular'} color={'#777'}>
+				<Text weight={labelTextWeight} color={labelTextColor}>
 					{label}
 				</Text>
 			</StyledLabel>

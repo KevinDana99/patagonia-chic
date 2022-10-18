@@ -1,4 +1,5 @@
 import { InputHTMLAttributes } from 'react';
+import { TextWeightsType } from '../../texts/Text/types';
 
 export type InputPropsType =  {
 	label: string;
@@ -9,6 +10,8 @@ export type InputPropsType =  {
 	className?: string;
 	inputProps?: InputHTMLAttributes<HTMLInputElement>;
 	disabled: boolean;
+	labelTextWeight: TextWeightsType;
+	labelTextColor: `#${string}`;
 };
 
 export interface InputProps {

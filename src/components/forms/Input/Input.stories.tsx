@@ -20,7 +20,6 @@ Input.args = {
 	label: 'Apellido',
 	inputProps: {
 		type: 'text',
-		autoFocus: true,
 	},
 	disabled: true,
 };
