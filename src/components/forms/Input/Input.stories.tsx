@@ -18,4 +18,9 @@ export const Input: Story<InputPropsType> = Template.bind({});
 
 Input.args = {
 	label: 'Apellido',
+	inputProps: {
+		type: 'text',
+		autoFocus: true,
+	},
+	disabled: true,
 };
