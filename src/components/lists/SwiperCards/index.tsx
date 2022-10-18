@@ -20,13 +20,7 @@ import { deviceSize, size } from '../../../constants/devicesSizes';
 import CategoriesListSkeleton from './components/Skeleton';
 import SwiperItem from './components/SwiperItem';
 import { SwiperCardsType } from './types';
-
 export const ITEM_TARGET_SIZE = 350;
-
-//Constantes involucradas
-//widths:
-//primera card
-//ultima card de la ronda
 
 const SwiperCards = ({
 	list,
@@ -40,7 +34,8 @@ const SwiperCards = ({
 	const prevRef = React.useRef(null);
 	const nextRef = React.useRef(null);
 	const [swiperSize, setSwiperSize] = React.useState(0);
-	const slidesPerView = Math.round(swiperSize / ITEM_TARGET_SIZE);
+	const exactSlidesPerView = swiperSize / ITEM_TARGET_SIZE;
+	const slidesPerView = Math.round(exactSlidesPerView);
 
 	React.useEffect(() => {
 		onSelectedChange(selectedItemId);
@@ -53,6 +48,13 @@ const SwiperCards = ({
 		swiper.navigation.update();
 		setSwiperSize(swiper.width);
 	};
+
+	const calculateMargin = () => {
+		const margin = swiperSize / exactSlidesPerView;
+		console.log(margin);
+	};
+
+	calculateMargin();
 
 	if (loading) {
 		return <CategoriesListSkeleton />;
@@ -69,7 +71,7 @@ const SwiperCards = ({
 			<Swiper
 				slidesPerView={'auto'}
 				slidesPerGroup={slidesPerView}
-				spaceBetween={10}
+				spaceBetween={1}
 				freeMode
 				mousewheel
 				modules={[FreeMode, Navigation, Mousewheel]}
@@ -90,6 +92,7 @@ const SwiperCards = ({
 						left
 						mobile={isMobile}
 						position={ITEM_TARGET_SIZE}
+						margin={calculateMargin}
 					/>
 				</div>
 				<div ref={nextRef} className="navigation-buttons">
@@ -97,11 +100,10 @@ const SwiperCards = ({
 						right
 						mobile={isMobile}
 						position={ITEM_TARGET_SIZE * (slidesPerView - 1)}
+						margin={calculateMargin}
 					/>
 				</div>
 			</Swiper>
-
-			{console.log(slidesPerView)}
 		</>
 	);
 };
