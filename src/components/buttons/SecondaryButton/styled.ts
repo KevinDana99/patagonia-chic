@@ -5,7 +5,7 @@ import {
 	IoChevronForwardSharp,
 	IoChevronBackSharp,
 	IoChevronDownSharp,
-	IoChevronUpSharp
+	IoChevronUpSharp,
 } from 'react-icons/io5';
 
 export const ButtonSecondaryStyled = styled.button`
@@ -22,7 +22,7 @@ export const ButtonSecondaryStyled = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	opacity: ${(props) => (props.disabled ? 0.7 : 1)};
+	opacity: 1;
 	cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
 	${(props) =>
 		!props.disabled
