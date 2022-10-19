@@ -6,20 +6,23 @@ import dts from 'rollup-plugin-dts';
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import packageJson from './package.json';
-import css from 'rollup-plugin-import-css';
+// import css from 'rollup-plugin-import-css';
 import json from '@rollup/plugin-json';
 import babel from '@rollup/plugin-babel';
 import postcss from 'rollup-plugin-postcss';
 import styles from 'rollup-plugin-styles';
 import autoprefixer from 'autoprefixer';
+import css from 'rollup-plugin-css-only';
+// import css from 'rollup-plugin-import-css';
 
 const styledComponentsTransformer = createStyledComponentsTransformer({
-	displayName: true,
+	displayName: false,
 });
 
 export default [
 	{
 		input: 'src/index.ts',
+		// preserveModules: true,
 		output: [
 			{
 				file: packageJson.main,
@@ -33,15 +36,11 @@ export default [
 			},
 		],
 		plugins: [
-			babel({
-				exclude: 'node_modules/**',
-			}),
 			peerDepsExternal(),
-			nodeResolve({
-				extensions: ['.css'],
-			}),
-			styles(),
 			commonjs(),
+			babel({
+				configFile: './babel.config.js',
+			}),
 			typescript({
 				tsconfig: './tsconfig.json',
 				compilerOptions: {
@@ -49,21 +48,19 @@ export default [
 					declarationDir: 'types',
 					outDir: './',
 				},
-				transformers: [
-					() => ({
-						before: [styledComponentsTransformer],
-					}),
-				],
 			}),
+			nodeResolve(),
+			styles(),
 			terser(),
-			css(),
 			json(),
 		],
 		external: ['react', 'react-dom', 'styled-components'],
+		globals: { 'styled-components': 'styled' },
 	},
 	{
 		input: 'dist/esm/types/index.d.ts',
 		output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+		external: [/\.css$/, /\.min.css$/],
 		plugins: [dts()],
 	},
 ];

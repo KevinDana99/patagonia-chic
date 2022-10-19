@@ -1,5 +1,4 @@
 import React, { useEffect, useCallback, useState } from 'react';
-
 import { CalendarInput } from './inputs/CalendarInput/CalendarInput';
 import {
 	ButtonContainer,
@@ -105,7 +104,7 @@ const SearchQuery = ({
 	}, [data.place, resetSearchStatus]);
 
 	return (
-		<>
+		<div className="test-style">
 			<SearchQueryContainer>
 				{showLocations && (
 					<PlaceListInput
@@ -226,7 +225,7 @@ const SearchQuery = ({
 					)}
 				</ContainerModal>
 			</Modal>
-		</>
+		</div>
 	);
 };
 
