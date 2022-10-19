@@ -12,7 +12,6 @@ import styles from 'rollup-plugin-styles';
 export default [
 	{
 		input: 'src/index.ts',
-		// preserveModules: true,
 		output: [
 			{
 				file: packageJson.main,
@@ -27,8 +26,13 @@ export default [
 			peerDepsExternal(),
 			commonjs(),
 			babel({
+				babelHelpers: 'bundled',
 				configFile: './babel.config.js',
 			}),
+			nodeResolve(),
+			styles(),
+			terser(),
+			json(),
 			typescript({
 				tsconfig: './tsconfig.json',
 				compilerOptions: {
@@ -38,13 +42,8 @@ export default [
 					outDir: './',
 				},
 			}),
-			nodeResolve(),
-			styles(),
-			terser(),
-			json(),
 		],
 		external: ['react', 'react-dom', 'styled-components'],
-		globals: { 'styled-components': 'styled' },
 	},
 	{
 		input: 'dist/esm/types/index.d.ts',
