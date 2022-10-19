@@ -6,12 +6,10 @@ export const SectionContainer = styled.div`
 	width: 100%;
 	min-width: 180px;
 	flex-direction: column;
-	background-color: red;
 `;
 
 export const SectionTitleContainer = styled.div`
 	height: 41px;
-	background-color: blue;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
