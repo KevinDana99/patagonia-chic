@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import fontsConstants from '../../../constants/fonts.json';
 import { StyledTextPropsType } from './types';
 
 const fontWeightsMap = {
@@ -14,8 +13,7 @@ const fontWeightsMap = {
 };
 
 export const StyledText = styled.span<StyledTextPropsType>`
-	font-family: ${({ fontFamily }) => fontFamily},
-		${fontsConstants.defaultFontName}, -apple-system, system-ui,
+	font-family: ${({ fontFamily }) => fontFamily}, -apple-system, system-ui,
 		BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue',
 		'Lucida Grande', sans-serif;
 	${({ size }) => (size ? `font-size: ${size}px;` : '')}
