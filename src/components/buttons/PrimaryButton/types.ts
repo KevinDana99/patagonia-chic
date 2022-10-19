@@ -12,8 +12,8 @@ export type PrimaryButtonType = {
 	color?: string;
 	textLoadingButton?: string;
 	icon?: boolean;
-	width?: number;
-	height?: number;
+	width?: number | string;
+	height?: number | string;
 };
 
 export type PrimaryButtonStyledType = {

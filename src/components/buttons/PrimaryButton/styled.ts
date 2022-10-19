@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { PrimaryButtonStyledType } from './types';
 
+export const Container = styled.div`
+	height: 800px;
+`;
+
 export const ButtonPrimaryStyled = styled.button<PrimaryButtonStyledType>`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;

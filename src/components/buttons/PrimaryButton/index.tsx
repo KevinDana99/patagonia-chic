@@ -6,7 +6,6 @@ import {
 	ButtonPrimaryText,
 	Icon,
 } from './styled';
-import Spinner from '../../spinners/PrimarySpinner';
 import { PrimaryButtonType } from './types';
 import Text from '../../texts/Text';
 import { PrimaryButtonLight } from './themes/styled';
