@@ -27,12 +27,10 @@ export default [
 			{
 				file: packageJson.main,
 				format: 'cjs',
-				sourcemap: true,
 			},
 			{
 				file: packageJson.module,
 				format: 'esm',
-				sourcemap: true,
 			},
 		],
 		plugins: [
@@ -46,12 +44,13 @@ export default [
 				compilerOptions: {
 					declaration: true,
 					declarationDir: 'types',
+					sourceMap: true,
 					outDir: './',
 				},
 			}),
 			nodeResolve(),
 			styles(),
-			terser(),
+			// terser(),
 			json(),
 		],
 		external: ['react', 'react-dom', 'styled-components'],
