@@ -51,5 +51,3 @@ export { default as Text } from './texts/Text';
 export { default as JumboBox } from './alerts/JumboBox';
 
 export { default as useMediaQuery } from '../hooks/useMediaQuery';
-
-//export { default as useLog } from './useLog';
