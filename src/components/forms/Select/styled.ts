@@ -64,7 +64,7 @@ export const SelectStyled = styled.select`
 	width: 100%;
 	height: 44px;
 	color: #333;
-	padding: 15px 30px 0 18px;
+	padding: 15px 30px 0 18.5px;
 	text-align: left;
 	background: #fff;
 	background-clip: border-box;
@@ -107,5 +107,8 @@ export const SelectStyled = styled.select`
 	&:-moz-focusring * {
 		color: #333;
 		text-shadow: none;
+	}
+	&:disabled {
+		cursor: default;
 	}
 `;
