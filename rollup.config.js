@@ -1,23 +1,13 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
-import createStyledComponentsTransformer from 'typescript-plugin-styled-components';
 import dts from 'rollup-plugin-dts';
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import packageJson from './package.json';
-// import css from 'rollup-plugin-import-css';
 import json from '@rollup/plugin-json';
 import babel from '@rollup/plugin-babel';
-import postcss from 'rollup-plugin-postcss';
 import styles from 'rollup-plugin-styles';
-import autoprefixer from 'autoprefixer';
-import css from 'rollup-plugin-css-only';
-// import css from 'rollup-plugin-import-css';
-
-const styledComponentsTransformer = createStyledComponentsTransformer({
-	displayName: false,
-});
 
 export default [
 	{
@@ -50,7 +40,7 @@ export default [
 			}),
 			nodeResolve(),
 			styles(),
-			// terser(),
+			terser(),
 			json(),
 		],
 		external: ['react', 'react-dom', 'styled-components'],
