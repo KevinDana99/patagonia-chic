@@ -3,15 +3,16 @@ import styled from 'styled-components';
 
 export const SectionContainer = styled.div`
 	display: flex;
-	flex: 1;
 	width: 100%;
 	min-width: 180px;
 	flex-direction: column;
+	background-color: red;
 `;
 
 export const SectionTitleContainer = styled.div`
+	height: 41px;
+	background-color: blue;
 	display: flex;
-	flex: 1;
 	align-items: center;
 	justify-content: space-between;
 `;
@@ -19,15 +20,11 @@ export const SectionTitleContainer = styled.div`
 export const SectionTitle = styled.h3`
 	font-size: 18px;
 	font-weight: 500;
+	height: 100%;
 	margin: 0px;
 `;
 
-export const SectionDivider = styled.div`
-	height: 1px;
-	border-bottom: 1px solid #d6d6d6;
-	margin-top: 20px;
-	margin-bottom: 20px;
-`;
+export const SectionDivider = styled.div``;
 
 export const SectionText = styled.p`
 	font-size: 12px;

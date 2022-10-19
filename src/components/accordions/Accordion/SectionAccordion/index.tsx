@@ -17,8 +17,8 @@ export const SectionAccordion = ({ title, label, content }: SectionType) => {
 	const [openSection, setOpenSection] = useState(false);
 
 	return (
-		<SectionContainer onClick={() => setOpenSection(!openSection)}>
-			<SectionTitleContainer>
+		<SectionContainer>
+			<SectionTitleContainer onClick={() => setOpenSection(!openSection)}>
 				<SectionTitle>
 					<Text weight={'medium'} size={18}>
 						{title}
