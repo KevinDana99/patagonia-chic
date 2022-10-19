@@ -10,6 +10,7 @@ import {
 	LinkStyled,
 	SectionLabel,
 	ArrowIconUp,
+	ContainerLinkStyled,
 } from './styled';
 import { SectionType } from './types';
 
@@ -19,28 +20,32 @@ export const SectionAccordion = ({ title, label, content }: SectionType) => {
 	return (
 		<SectionContainer>
 			<SectionTitleContainer onClick={() => setOpenSection(!openSection)}>
-				<SectionTitle>
-					<Text weight={'medium'} size={18}>
-						{title}
-					</Text>
-				</SectionTitle>
+				<div>
+					<SectionTitle>
+						<Text weight={'medium'} size={18}>
+							{title}
+						</Text>
+					</SectionTitle>
+				</div>
 				{openSection ? <ArrowIconUp /> : <ArrowIconDown />}
 			</SectionTitleContainer>
-			{openSection &&
-				label &&
-				label.map((labelItem, index) => (
-					<LinkStyled
-						href={labelItem.url}
-						key={index}
-						target={labelItem.target}
-					>
-						<SectionLabel>
-							<Text size={15}>{labelItem.label}</Text>
-						</SectionLabel>
-					</LinkStyled>
-				))}
+			<ContainerLinkStyled>
+				{openSection &&
+					label &&
+					label.map((labelItem, index) => (
+						<LinkStyled
+							href={labelItem.url}
+							key={index}
+							target={labelItem.target}
+						>
+							<SectionLabel>
+								<Text size={15}>{labelItem.label}</Text>
+							</SectionLabel>
+						</LinkStyled>
+					))}
 
-			{openSection && content && content}
+				{openSection && content && content}
+			</ContainerLinkStyled>
 			<SectionDivider />
 		</SectionContainer>
 	);

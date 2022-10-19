@@ -9,10 +9,12 @@ export const SectionContainer = styled.div`
 `;
 
 export const SectionTitleContainer = styled.div`
-	height: 41px;
+	padding: 20px;
+	padding-left: 11.46px;
+	cursor: pointer;
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
+	align-items: center;
 `;
 
 export const SectionTitle = styled.h3`
@@ -22,13 +24,22 @@ export const SectionTitle = styled.h3`
 	margin: 0px;
 `;
 
-export const SectionDivider = styled.div``;
+export const SectionDivider = styled.div`
+	height: 1px;
+	background-color: #d6d6d6;
+`;
 
 export const SectionText = styled.p`
 	font-size: 12px;
 	font-weight: 400;
 	color: #383838;
 	margin: 0px;
+`;
+
+export const ContainerLinkStyled = styled.div`
+	padding: 0px;
+
+	padding-left: 11.46px;
 `;
 
 export const LinkStyled = styled.a`
@@ -40,7 +51,7 @@ export const LinkStyled = styled.a`
 `;
 
 export const SectionLabel = styled(SectionText)`
-	margin: 13px 0px;
+	margin-bottom: 13px;
 	font-size: 15px;
 `;
 
