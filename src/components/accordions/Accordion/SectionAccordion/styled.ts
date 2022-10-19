@@ -20,6 +20,7 @@ export const SectionTitleContainer = styled.div`
 export const SectionTitle = styled.h3`
 	font-size: 18px;
 	font-weight: 500;
+	letter-spacing: -0.016em;
 	height: 100%;
 	margin: 0px;
 `;
