@@ -16,15 +16,19 @@ const PrimaryStory: Story<PrimaryButtonType> = (args) => (
 	<PrimaryButton {...args} />
 );
 
-export const color = PrimaryStory.bind({});
+export const color: Story<PrimaryButtonType> = PrimaryStory.bind({});
 color.args = {
 	title: 'Buscar excursiones',
 	loading: false,
 	disabled: false,
 	IconComponent: IoSearch,
+	textLoadingButton: 'Cargando...',
+	icon: false,
+	width: 200,
+	height: 80,
 };
 
-export const light = PrimaryStory.bind({});
+export const light: Story<PrimaryButtonType> = PrimaryStory.bind({});
 light.args = {
 	title: 'Buscar excursiones',
 	loading: false,
