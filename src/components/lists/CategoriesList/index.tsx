@@ -1,9 +1,7 @@
 import React from 'react';
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/free-mode';
+import 'swiper/swiper.min.css';
 
 import { Swiper } from 'swiper/react';
 import { Navigation, FreeMode, Mousewheel } from 'swiper';

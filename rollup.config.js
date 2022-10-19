@@ -24,24 +24,23 @@ export default [
 		],
 		plugins: [
 			peerDepsExternal(),
-			commonjs(),
 			babel({
 				babelHelpers: 'bundled',
 				configFile: './babel.config.js',
 			}),
 			nodeResolve(),
 			styles(),
-			terser(),
+			commonjs(),
 			json(),
 			typescript({
 				tsconfig: './tsconfig.json',
 				compilerOptions: {
 					declaration: true,
 					declarationDir: 'types',
-					sourceMap: true,
 					outDir: './',
 				},
 			}),
+			terser(),
 		],
 		external: ['react', 'react-dom', 'styled-components'],
 	},
