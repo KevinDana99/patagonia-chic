@@ -7,7 +7,7 @@ export default {
 	title: 'Components/calendars',
 	component: PrimaryCalendar,
 	argTypes: {
-		onDaySelected: { action: 'onDaySelected' },
+		onDateSelected: { action: 'onDateSelected' },
 		onRangeSelected: { action: 'onRangeSelected' },
 		onRangeStartDateSelected: { action: 'onRangeStartDateSelected' },
 		onRangeEndDateSelected: { action: 'onRangeEndDateSelected' },
@@ -29,5 +29,5 @@ calendar.args = {
 	],
 	doubleCalendar: false,
 	locale: 'en',
-	markCurrentDay: false,
+	highlightToday: false,
 };

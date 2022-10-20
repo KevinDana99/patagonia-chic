@@ -36,8 +36,8 @@ export const Container = styled.div<PrimaryCalendarStyleType>`
 			}
 	`}
 
-	${(prop) =>
-		prop.markCurrentDay &&
+	${({ highlightToday }) =>
+		highlightToday &&
 		`.react-calendar__tile--now {
 		background-color: rgb(230, 230, 230);
 		color: black;

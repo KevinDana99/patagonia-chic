@@ -1,16 +1,18 @@
+export type SelectedRangeType = null | [Date, null] | [Date, Date];
+
 export type PrimaryCalendarType = {
-	onDaySelected?: (day: Date) => void;
+	onDateSelected?: (date: Date) => void;
 	range?: boolean;
 	disabledDates: Array<Date>;
 	doubleCalendar?: boolean;
 	defaultMonth?: number;
-	onRangeSelected?: (day: Date) => void;
-	onRangeStartDateSelected?: (day: Date[]) => void;
-	onRangeEndDateSelected?: (day: Date[]) => void;
+	onRangeSelected?: (selectedRange: [Date, Date]) => void;
+	onRangeStartDateSelected?: (date: Date) => void;
+	onRangeEndDateSelected?: (date: Date) => void;
 	shadow?: boolean;
-	markCurrentDay?: boolean;
+	highlightToday?: boolean;
 	locale?: 'es' | 'en' | 'fr';
-	selectedRange?: Array<Date> | null;
+	selectedRange?: SelectedRangeType;
 };
 
 export type PrimaryCalendarStyleType = {
@@ -18,5 +20,5 @@ export type PrimaryCalendarStyleType = {
 	disabledBackArrow?: boolean;
 	disableRange?: boolean;
 	shadow?: boolean;
-	markCurrentDay?: boolean;
+	highlightToday: boolean;
 };
