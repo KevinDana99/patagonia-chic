@@ -16,26 +16,41 @@ html{
 @media ${deviceSize.mobileL} {
   .navigation-buttons {
     pointer-events: none;
+
   }
+
+
 }
 `;
 
 export const StyledSwiperSlide = styled(SwiperSlide)<StyledSwiperSlideType>`
 	height: 320px;
-	padding: 5px;
 	${({ width }) => (width ? `width: ${width}px` : '')};
 `;
 
 export const NavigationArrowRight = styled(NavigationArrow).attrs({
 	right: true,
 })`
-	left: ${({ right, position }) => right && position && position + 15 + 'px'};
+	left: ${({ right, position, offSet }) =>
+		right && position && offSet && position - offSet + 'px'};
 `;
 
 export const NavigationArrowLeft = styled(NavigationArrow).attrs({
 	left: true,
 })`
-	left: ${({ left, position }) => left && position && position - 20 + 'px'};
+	${({ left, position, lastPosition, offSet }) =>
+		!lastPosition &&
+		left &&
+		position &&
+		offSet &&
+		`left: ${position - offSet}px`}
+
+	${({ left, position, lastPosition, offSet }) =>
+		lastPosition &&
+		left &&
+		position &&
+		offSet &&
+		`right: ${position - offSet}px`}
 `;
 
 export default CategoriesListGlobalStyle;

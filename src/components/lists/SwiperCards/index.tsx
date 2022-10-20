@@ -17,30 +17,27 @@ import CategoriesListGlobalStyle, {
 
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { deviceSize, size } from '../../../constants/devicesSizes';
-import CategoriesListSkeleton from './components/Skeleton';
 import SwiperItem from './components/SwiperItem';
 import { SwiperCardsType } from './types';
 
-export const ITEM_TARGET_SIZE = 350;
-
-//Constantes involucradas
-//widths:
-//primera card
-//ultima card de la ronda
-
 const SwiperCards = ({
 	list,
-	loading,
 	error,
 	selected,
+	ITEM_TARGET_SIZE = 350,
+	OFFSET = 36,
+	MARGIN = 1,
 	onSelectedChange,
 }: SwiperCardsType) => {
-	const isMobile = useMediaQuery(deviceSize.mobileL);
+	const isTablet = useMediaQuery(deviceSize.tablet);
+	const isMobile = useMediaQuery(deviceSize.mobile);
 	const [selectedItemId, setSelectedItemId] = React.useState(selected);
 	const prevRef = React.useRef(null);
 	const nextRef = React.useRef(null);
 	const [swiperSize, setSwiperSize] = React.useState(0);
-	const slidesPerView = Math.round(swiperSize / ITEM_TARGET_SIZE);
+	const exactSlidesPerView = swiperSize / ITEM_TARGET_SIZE;
+	const slidesPerView = Math.round(exactSlidesPerView);
+	const [lastPosition, setLastPosition] = useState(false);
 
 	React.useEffect(() => {
 		onSelectedChange(selectedItemId);
@@ -54,9 +51,9 @@ const SwiperCards = ({
 		setSwiperSize(swiper.width);
 	};
 
-	if (loading) {
-		return <CategoriesListSkeleton />;
-	}
+	const calculatePositionArrow = () => {
+		return ITEM_TARGET_SIZE * (slidesPerView - 1);
+	};
 
 	if (error) {
 		return <span>Items no disponibles</span>;
@@ -67,9 +64,11 @@ const SwiperCards = ({
 			<CategoriesListGlobalStyle />
 
 			<Swiper
+				allowTouchMove={true}
+				onSlideChange={(swiper) => setLastPosition(swiper.isEnd)}
 				slidesPerView={'auto'}
 				slidesPerGroup={slidesPerView}
-				spaceBetween={10}
+				spaceBetween={MARGIN}
 				freeMode
 				mousewheel
 				modules={[FreeMode, Navigation, Mousewheel]}
@@ -85,23 +84,27 @@ const SwiperCards = ({
 						/>
 					</StyledSwiperSlide>
 				))}
+
 				<div ref={prevRef} className="navigation-buttons">
 					<NavigationArrowLeft
 						left
-						mobile={isMobile}
-						position={ITEM_TARGET_SIZE}
+						mobile={isMobile || isTablet}
+						lastPosition={lastPosition}
+						offSet={OFFSET}
+						position={
+							lastPosition ? calculatePositionArrow() : ITEM_TARGET_SIZE
+						}
 					/>
 				</div>
 				<div ref={nextRef} className="navigation-buttons">
 					<NavigationArrowRight
 						right
-						mobile={isMobile}
-						position={ITEM_TARGET_SIZE * (slidesPerView - 1)}
+						mobile={isMobile || isTablet}
+						offSet={OFFSET}
+						position={calculatePositionArrow()}
 					/>
 				</div>
 			</Swiper>
-
-			{console.log(slidesPerView)}
 		</>
 	);
 };

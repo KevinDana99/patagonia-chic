@@ -4,15 +4,21 @@ import { IoIosArrowForward as ArrowIcon } from 'react-icons/io';
 import { NavigationArrowType } from './types';
 
 const NavigationArrow = ({
+	lastPosition,
 	right,
 	left,
 	className,
 	mobile,
+	offSet,
+	onClick,
 }: NavigationArrowType) => (
 	<GradientContainer
+		onClick={onClick}
 		className={className}
 		right={right}
 		left={left}
+		offSet={offSet}
+		lastPosition={lastPosition}
 		mobile={mobile}
 	>
 		{!mobile && (

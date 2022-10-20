@@ -12,10 +12,13 @@ export type SwiperListCardType = {
 
 export type SwiperCardsType = {
 	list: Array<SwiperListCardType>;
-	loading?: boolean; // muestra un skeleton
-	error?: null; //este despues lo vemos
-	selected: string; //id
+	selected: string;
 	onSelectedChange: (itemId: string) => void;
+	loading?: boolean;
+	error?: null;
+	ITEM_TARGET_SIZE?: number;
+	OFFSET?: number;
+	MARGIN?: number;
 };
 
 export type StyledSwiperSlideType = {
