@@ -28,6 +28,6 @@ calendar.args = {
 		new Date(2022, 7, 22),
 	],
 	doubleCalendar: false,
-	locale: 'en',
-	highlightToday: false,
+	locale: 'es',
+	highlightToday: true,
 };

@@ -4,13 +4,14 @@ import './styles.css';
 // import 'react-calendar/dist/Calendar.css';
 import { Container } from './styled';
 import { PrimaryCalendarType } from './types';
+import { IoChevronForward, IoChevronBack } from 'react-icons/io5';
 
 const PrimaryCalendar = ({
 	onDateSelected,
 	range = false,
 	disabledDates,
 	doubleCalendar,
-	defaultMonth = new Date().getMonth(),
+	defaultActiveStartDate = new Date(),
 	onRangeSelected,
 	onRangeStartDateSelected,
 	onRangeEndDateSelected,
@@ -42,31 +43,32 @@ const PrimaryCalendar = ({
 		onDateSelected?.(date);
 	};
 
+	const replaceMonthText = (month: string) => {
+		const substrMonth = month.split(' ');
+		if (substrMonth.length < 3) {
+			return month;
+		} else {
+			return substrMonth[0] + ' ' + substrMonth[2];
+		}
+	};
+
 	return (
-		// <Container
-		// 	highlightToday={highlightToday}
-		// 	disableRange={false}
-		// 	disabledBackArrow={disableNav.back}
-		// 	shadow={shadow}
-		// >
-		<ReactCalendar
-			// navigationLabel={({ label }) => replaceMonthText(label)}
-			// defaultActiveStartDate={defaultMonth}
-			// onClickDay={console.log}
-			// onActiveStartDateChange={({ activeStartDate }) => {
-			// 	disabledNavigationBackArrow(activeStartDate);
-			// }}
-			// value={selectedDates}
-			showDoubleView={doubleCalendar}
-			next2Label={null}
-			prev2Label={null}
-			showNeighboringMonth={false}
-			locale={locale}
-			onChange={handleOnChange}
-			minDate={new Date()}
-			selectRange={range}
-		/>
-		// </Container>
+		<Container highlightToday={highlightToday} range={range} shadow={shadow}>
+			<ReactCalendar
+				navigationLabel={({ label }) => replaceMonthText(label)}
+				defaultActiveStartDate={defaultActiveStartDate}
+				showDoubleView={doubleCalendar}
+				nextLabel={<IoChevronForward size={15} />}
+				prevLabel={<IoChevronBack size={15} />}
+				next2Label={null}
+				prev2Label={null}
+				showNeighboringMonth={false}
+				locale={locale}
+				onChange={handleOnChange}
+				minDate={new Date()}
+				selectRange={range}
+			/>
+		</Container>
 	);
 };
 

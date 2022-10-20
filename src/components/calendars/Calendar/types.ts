@@ -5,7 +5,7 @@ export type PrimaryCalendarType = {
 	range?: boolean;
 	disabledDates: Array<Date>;
 	doubleCalendar?: boolean;
-	defaultMonth?: number;
+	defaultActiveStartDate?: Date;
 	onRangeSelected?: (selectedRange: [Date, Date]) => void;
 	onRangeStartDateSelected?: (date: Date) => void;
 	onRangeEndDateSelected?: (date: Date) => void;
