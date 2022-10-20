@@ -125,7 +125,7 @@ abbr {
 button.react-calendar__tile {
 	font-family: 'SF Pro Text' !important;
 	position: relative;
-	height: 50px !important;
+	height: 48px !important;
 	/* width: 45.75px !important; */
 }
 
@@ -155,6 +155,7 @@ button.react-calendar__tile {
 
 .react-calendar__tile:disabled {
 	color: #999;
+	pointer-events: none;
 }
 
 .react-calendar__tile:enabled:hover:not(.react-calendar__tile--rangeStart, .react-calendar__tile--rangeEnd, .react-calendar__tile--active) {
