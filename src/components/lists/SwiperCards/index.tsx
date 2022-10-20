@@ -19,16 +19,18 @@ import useMediaQuery from '../../../hooks/useMediaQuery';
 import { deviceSize, size } from '../../../constants/devicesSizes';
 import SwiperItem from './components/SwiperItem';
 import { SwiperCardsType } from './types';
-export const ITEM_TARGET_SIZE = 350;
 
 const SwiperCards = ({
 	list,
-	loading,
 	error,
 	selected,
+	ITEM_TARGET_SIZE = 350,
+	OFFSET = 36,
+	MARGIN = 1,
 	onSelectedChange,
 }: SwiperCardsType) => {
-	const isMobile = useMediaQuery(deviceSize.tablet);
+	const isTablet = useMediaQuery(deviceSize.tablet);
+	const isMobile = useMediaQuery(deviceSize.mobile);
 	const [selectedItemId, setSelectedItemId] = React.useState(selected);
 	const prevRef = React.useRef(null);
 	const nextRef = React.useRef(null);
@@ -49,6 +51,10 @@ const SwiperCards = ({
 		setSwiperSize(swiper.width);
 	};
 
+	const calculatePositionArrow = () => {
+		return ITEM_TARGET_SIZE * (slidesPerView - 1);
+	};
+
 	if (error) {
 		return <span>Items no disponibles</span>;
 	}
@@ -62,7 +68,7 @@ const SwiperCards = ({
 				onSlideChange={(swiper) => setLastPosition(swiper.isEnd)}
 				slidesPerView={'auto'}
 				slidesPerGroup={slidesPerView}
-				spaceBetween={20}
+				spaceBetween={MARGIN}
 				freeMode
 				mousewheel
 				modules={[FreeMode, Navigation, Mousewheel]}
@@ -78,23 +84,24 @@ const SwiperCards = ({
 						/>
 					</StyledSwiperSlide>
 				))}
+
 				<div ref={prevRef} className="navigation-buttons">
 					<NavigationArrowLeft
 						left
-						mobile={isMobile}
+						mobile={isMobile || isTablet}
 						lastPosition={lastPosition}
+						offSet={OFFSET}
 						position={
-							lastPosition
-								? ITEM_TARGET_SIZE * (slidesPerView - 1)
-								: ITEM_TARGET_SIZE
+							lastPosition ? calculatePositionArrow() : ITEM_TARGET_SIZE
 						}
 					/>
 				</div>
 				<div ref={nextRef} className="navigation-buttons">
 					<NavigationArrowRight
 						right
-						mobile={isMobile}
-						position={ITEM_TARGET_SIZE * (slidesPerView - 1)}
+						mobile={isMobile || isTablet}
+						offSet={OFFSET}
+						position={calculatePositionArrow()}
 					/>
 				</div>
 			</Swiper>

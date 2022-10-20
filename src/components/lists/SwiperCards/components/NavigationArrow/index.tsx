@@ -9,6 +9,7 @@ const NavigationArrow = ({
 	left,
 	className,
 	mobile,
+	offSet,
 	onClick,
 }: NavigationArrowType) => (
 	<GradientContainer
@@ -16,7 +17,8 @@ const NavigationArrow = ({
 		className={className}
 		right={right}
 		left={left}
-		lastPosition
+		offSet={offSet}
+		lastPosition={lastPosition}
 		mobile={mobile}
 	>
 		{!mobile && (

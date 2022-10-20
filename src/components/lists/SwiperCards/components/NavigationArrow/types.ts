@@ -8,4 +8,5 @@ export type NavigationArrowType = {
 	mobile?: boolean;
 	position?: number;
 	lastPosition?: boolean;
+	offSet?: number;
 };

@@ -16,7 +16,10 @@ html{
 @media ${deviceSize.mobileL} {
   .navigation-buttons {
     pointer-events: none;
+
   }
+
+
 }
 `;
 
@@ -28,17 +31,26 @@ export const StyledSwiperSlide = styled(SwiperSlide)<StyledSwiperSlideType>`
 export const NavigationArrowRight = styled(NavigationArrow).attrs({
 	right: true,
 })`
-	left: ${({ right, position }) => right && position && position + 'px'};
+	left: ${({ right, position, offSet }) =>
+		right && position && offSet && position - offSet + 'px'};
 `;
 
 export const NavigationArrowLeft = styled(NavigationArrow).attrs({
 	left: true,
 })`
-	${({ left, position, lastPosition }) =>
-		!lastPosition && left && position && `left: ${position - 25}px`}
+	${({ left, position, lastPosition, offSet }) =>
+		!lastPosition &&
+		left &&
+		position &&
+		offSet &&
+		`left: ${position - offSet}px`}
 
-	${({ left, position, lastPosition }) =>
-		lastPosition && left && position && `right: ${position + 10}px`}
+	${({ left, position, lastPosition, offSet }) =>
+		lastPosition &&
+		left &&
+		position &&
+		offSet &&
+		`right: ${position - offSet}px`}
 `;
 
 export default CategoriesListGlobalStyle;
