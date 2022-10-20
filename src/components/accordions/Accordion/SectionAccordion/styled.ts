@@ -1,5 +1,6 @@
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import styled from 'styled-components';
+import { SectionType } from './types';
 
 export const SectionContainer = styled.div`
 	display: flex;
@@ -17,7 +18,7 @@ export const SectionTitleContainer = styled.div`
 	align-items: center;
 `;
 
-export const SectionTitle = styled.h3`
+export const SectionTitle = styled.div`
 	font-size: 18px;
 	font-weight: 500;
 	letter-spacing: -0.016em;
@@ -25,7 +26,7 @@ export const SectionTitle = styled.h3`
 	margin: 0px;
 `;
 
-export const SectionDivider = styled.div`
+export const Divider = styled.div`
 	height: 1px;
 	background-color: #d6d6d6;
 `;
