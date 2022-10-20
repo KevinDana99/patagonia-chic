@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { size } from '../../../constants/devicesSizes';
-import { PrimaryCalendarStyleType } from './types';
+import { CalendarStyleType } from './types';
 
-export const Container = styled.div<PrimaryCalendarStyleType>`
+export const Container = styled.div<CalendarStyleType>`
 	width: min-content;
 	box-shadow: ${({ shadow }) =>
 		shadow ? '0px 2px 15px rgba(0, 0, 0, 0.15)' : 'none'};

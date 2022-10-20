@@ -1,6 +1,6 @@
 export type SelectedRangeType = null | [Date, null] | [Date, Date];
 
-export type PrimaryCalendarType = {
+export type CalendarType = {
 	onDateSelected?: (date: Date) => void;
 	range?: boolean;
 	doubleCalendar?: boolean;
@@ -21,7 +21,7 @@ export type PrimaryCalendarType = {
 	};
 };
 
-export type PrimaryCalendarStyleType = {
+export type CalendarStyleType = {
 	range?: boolean;
 	shadow?: boolean;
 	highlightToday: boolean;
@@ -33,3 +33,8 @@ export type isDateAvailableType = (
 	availableDatesList?: Date[],
 	defaultValue?: boolean
 ) => boolean;
+
+export type getPrevAndNextUnavailableDatesType = (
+	currentDate: Date,
+	availableDatesList?: Date[]
+) => Date[] | null;

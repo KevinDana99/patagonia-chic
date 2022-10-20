@@ -1,15 +1,19 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ReactCalendar, { CalendarTileProperties } from 'react-calendar';
 import './styles.css';
 // import 'react-calendar/dist/Calendar.css';
 import { AvailabilityReferenceContainer, Container } from './styled';
-import { PrimaryCalendarType, isDateAvailableType } from './types';
+import {
+	CalendarType,
+	isDateAvailableType,
+	getPrevAndNextUnavailableDatesType,
+} from './types';
 import { IoChevronForward, IoChevronBack } from 'react-icons/io5';
 import DateAvailability, {
 	AvailabilityReference,
 } from './components/DateAvailability';
 
-const PrimaryCalendar = ({
+const Calendar = ({
 	onDateSelected,
 	range = false,
 	availableDates,
@@ -26,8 +30,49 @@ const PrimaryCalendar = ({
 	selectedRange = null,
 	texts,
 	calendarWidth = 400,
-}: PrimaryCalendarType) => {
+}: CalendarType) => {
 	const [selectedDates, setSelectedDates] = useState(selectedRange);
+	const [prevAndNextUnavailableDate, setPrevAndNextUnavailableDate] = useState<
+		Date[] | null
+	>(null);
+
+	const getPrevAndNextUnavailableDates: getPrevAndNextUnavailableDatesType = (
+		currentDate,
+		availableDates
+	) => {
+		if (!currentDate) return null;
+
+		currentDate = new Date(
+			Date.UTC(
+				currentDate.getFullYear(),
+				currentDate.getMonth(),
+				currentDate.getDate(),
+				0,
+				0,
+				0
+			)
+		);
+
+		const nextUnavailableDate = new Date(currentDate);
+		const prevUnavailableDate = new Date(currentDate);
+		while (
+			!!availableDates?.find(
+				(item) => item.getTime() === nextUnavailableDate.getTime()
+			)
+		) {
+			nextUnavailableDate.setDate(nextUnavailableDate.getDate() + 1);
+		}
+		console.log('nextUnavailableDate', nextUnavailableDate);
+		while (
+			!!availableDates?.find(
+				(item) => item.getTime() === prevUnavailableDate.getTime()
+			)
+		) {
+			prevUnavailableDate.setDate(prevUnavailableDate.getDate() - 1);
+		}
+
+		return [prevUnavailableDate, nextUnavailableDate];
+	};
 
 	const isDateAvailable: isDateAvailableType = (
 		date,
@@ -40,6 +85,14 @@ const PrimaryCalendar = ({
 		const isAvailable = availableDatesList
 			? !!availableDatesList.find((item) => item.getTime() === date.getTime())
 			: defaultValue;
+
+		if (prevAndNextUnavailableDate) {
+			// console.log('prevAndNextUnavailableDate', prevAndNextUnavailableDate);
+			return (
+				date.getTime() > prevAndNextUnavailableDate[0].getTime() &&
+				date.getTime() < prevAndNextUnavailableDate[1].getTime()
+			);
+		}
 
 		return isAvailable;
 	};
@@ -54,6 +107,12 @@ const PrimaryCalendar = ({
 			if (selectedDates === null || selectedDates[1] !== null) {
 				setSelectedDates([date, null]);
 				onRangeStartDateSelected?.(date);
+
+				if (availableDates) {
+					setPrevAndNextUnavailableDate(
+						getPrevAndNextUnavailableDates(date, availableDates)
+					);
+				}
 			} else {
 				const currSelectedRange = [selectedDates[0], date] as [Date, Date];
 
@@ -63,6 +122,10 @@ const PrimaryCalendar = ({
 				setSelectedDates(currSelectedRange);
 				onRangeSelected?.(currSelectedRange);
 				onRangeEndDateSelected?.(date);
+
+				if (availableDates) {
+					setPrevAndNextUnavailableDate(null);
+				}
 			}
 		} else {
 			setSelectedDates([date, null]);
@@ -96,7 +159,8 @@ const PrimaryCalendar = ({
 				prev2Label={null}
 				showNeighboringMonth={false}
 				locale={locale}
-				onChange={handleOnChange}
+				onClickDay={handleOnChange}
+				// onChange={handleOnChange}
 				minDate={minDate}
 				maxDate={maxDate}
 				selectRange={range}
@@ -104,6 +168,7 @@ const PrimaryCalendar = ({
 				tileDisabled={({ date }) =>
 					!isDateAvailable(date, availableDates, true)
 				}
+				returnValue="start"
 			/>
 			{availableDates && (
 				<AvailabilityReferenceContainer>
@@ -117,4 +182,4 @@ const PrimaryCalendar = ({
 	);
 };
 
-export default PrimaryCalendar;
+export default Calendar;

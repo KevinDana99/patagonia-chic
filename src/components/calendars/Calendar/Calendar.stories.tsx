@@ -1,22 +1,20 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { PrimaryCalendarType } from './types';
-import PrimaryCalendar from '.';
+import { CalendarType } from './types';
+import Calendar from '.';
 
 export default {
 	title: 'Components/calendars',
-	component: PrimaryCalendar,
+	component: Calendar,
 	argTypes: {
 		onDateSelected: { action: 'onDateSelected' },
 		onRangeSelected: { action: 'onRangeSelected' },
 		onRangeStartDateSelected: { action: 'onRangeStartDateSelected' },
 		onRangeEndDateSelected: { action: 'onRangeEndDateSelected' },
 	},
-} as Meta<typeof PrimaryCalendar>;
+} as Meta<typeof Calendar>;
 
-const Template: Story<PrimaryCalendarType> = (args) => (
-	<PrimaryCalendar {...args} />
-);
+const Template: Story<CalendarType> = (args) => <Calendar {...args} />;
 
 export const calendar = Template.bind({});
 calendar.args = {
