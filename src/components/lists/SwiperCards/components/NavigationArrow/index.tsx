@@ -4,6 +4,7 @@ import { IoIosArrowForward as ArrowIcon } from 'react-icons/io';
 import { NavigationArrowType } from './types';
 
 const NavigationArrow = ({
+	lastPosition,
 	right,
 	left,
 	className,
@@ -15,6 +16,7 @@ const NavigationArrow = ({
 		className={className}
 		right={right}
 		left={left}
+		lastPosition
 		mobile={mobile}
 	>
 		{!mobile && (

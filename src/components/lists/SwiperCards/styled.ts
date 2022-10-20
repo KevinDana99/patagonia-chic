@@ -22,20 +22,23 @@ html{
 
 export const StyledSwiperSlide = styled(SwiperSlide)<StyledSwiperSlideType>`
 	height: 320px;
-	padding: 5px;
 	${({ width }) => (width ? `width: ${width}px` : '')};
 `;
 
 export const NavigationArrowRight = styled(NavigationArrow).attrs({
 	right: true,
 })`
-	left: ${({ right, position }) => right && position && position + 15 + 'px'};
+	left: ${({ right, position }) => right && position && position + 'px'};
 `;
 
 export const NavigationArrowLeft = styled(NavigationArrow).attrs({
 	left: true,
 })`
-	left: ${({ left, position }) => left && position && position - 20 + 'px'};
+	${({ left, position, lastPosition }) =>
+		!lastPosition && left && position && `left: ${position - 25}px`}
+
+	${({ left, position, lastPosition }) =>
+		lastPosition && left && position && `right: ${position + 10}px`}
 `;
 
 export default CategoriesListGlobalStyle;

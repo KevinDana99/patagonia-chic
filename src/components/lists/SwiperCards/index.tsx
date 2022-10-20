@@ -17,7 +17,6 @@ import CategoriesListGlobalStyle, {
 
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { deviceSize, size } from '../../../constants/devicesSizes';
-import CategoriesListSkeleton from './components/Skeleton';
 import SwiperItem from './components/SwiperItem';
 import { SwiperCardsType } from './types';
 export const ITEM_TARGET_SIZE = 350;
@@ -29,13 +28,14 @@ const SwiperCards = ({
 	selected,
 	onSelectedChange,
 }: SwiperCardsType) => {
-	const isMobile = useMediaQuery(deviceSize.mobileL);
+	const isMobile = useMediaQuery(deviceSize.tablet);
 	const [selectedItemId, setSelectedItemId] = React.useState(selected);
 	const prevRef = React.useRef(null);
 	const nextRef = React.useRef(null);
 	const [swiperSize, setSwiperSize] = React.useState(0);
 	const exactSlidesPerView = swiperSize / ITEM_TARGET_SIZE;
 	const slidesPerView = Math.round(exactSlidesPerView);
+	const [lastPosition, setLastPosition] = useState(false);
 
 	React.useEffect(() => {
 		onSelectedChange(selectedItemId);
@@ -49,17 +49,6 @@ const SwiperCards = ({
 		setSwiperSize(swiper.width);
 	};
 
-	const calculateMargin = () => {
-		const margin = swiperSize / exactSlidesPerView;
-		console.log(margin);
-	};
-
-	calculateMargin();
-
-	if (loading) {
-		return <CategoriesListSkeleton />;
-	}
-
 	if (error) {
 		return <span>Items no disponibles</span>;
 	}
@@ -69,9 +58,11 @@ const SwiperCards = ({
 			<CategoriesListGlobalStyle />
 
 			<Swiper
+				allowTouchMove={true}
+				onSlideChange={(swiper) => setLastPosition(swiper.isEnd)}
 				slidesPerView={'auto'}
 				slidesPerGroup={slidesPerView}
-				spaceBetween={1}
+				spaceBetween={20}
 				freeMode
 				mousewheel
 				modules={[FreeMode, Navigation, Mousewheel]}
@@ -91,8 +82,12 @@ const SwiperCards = ({
 					<NavigationArrowLeft
 						left
 						mobile={isMobile}
-						position={ITEM_TARGET_SIZE}
-						margin={calculateMargin}
+						lastPosition={lastPosition}
+						position={
+							lastPosition
+								? ITEM_TARGET_SIZE * (slidesPerView - 1)
+								: ITEM_TARGET_SIZE
+						}
 					/>
 				</div>
 				<div ref={nextRef} className="navigation-buttons">
@@ -100,7 +95,6 @@ const SwiperCards = ({
 						right
 						mobile={isMobile}
 						position={ITEM_TARGET_SIZE * (slidesPerView - 1)}
-						margin={calculateMargin}
 					/>
 				</div>
 			</Swiper>

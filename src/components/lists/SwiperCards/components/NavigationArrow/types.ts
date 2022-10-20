@@ -7,4 +7,5 @@ export type NavigationArrowType = {
 	onClick?: React.MouseEventHandler<HTMLDivElement>;
 	mobile?: boolean;
 	position?: number;
+	lastPosition?: boolean;
 };
