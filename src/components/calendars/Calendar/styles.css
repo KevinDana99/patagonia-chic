@@ -1,15 +1,19 @@
 .react-calendar {
-	width: 350px;
 	background: white;
-	border-radius: 0.5em;
 	font-family: 'SF Pro Text' !important;
 	line-height: 1.125em;
-	padding: 15px;
+	padding: 0;
 
 	box-sizing: border-box;
 }
-.react-calendar--doubleView {
-	width: 700px;
+
+.react-calendar__navigation {
+	padding: 0 30px;
+	box-sizing: border-box;
+}
+
+.react-calendar__month-view {
+	margin: 0 30px !important;
 }
 .react-calendar--doubleView .react-calendar__viewContainer {
 	display: flex;
@@ -67,7 +71,7 @@
 }
 
 .react-calendar__navigation__label__divider {
-	display: none;
+	opacity: 0;
 }
 
 .react-calendar__navigation__arrow {
@@ -120,8 +124,9 @@ abbr {
 
 button.react-calendar__tile {
 	font-family: 'SF Pro Text' !important;
-	/* height: 45.75px !important;
-	width: 45.75px !important; */
+	position: relative;
+	height: 50px !important;
+	/* width: 45.75px !important; */
 }
 
 .react-calendar__month-view__days {

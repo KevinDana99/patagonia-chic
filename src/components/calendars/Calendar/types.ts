@@ -3,7 +3,6 @@ export type SelectedRangeType = null | [Date, null] | [Date, Date];
 export type PrimaryCalendarType = {
 	onDateSelected?: (date: Date) => void;
 	range?: boolean;
-	disabledDates: Array<Date>;
 	doubleCalendar?: boolean;
 	defaultActiveStartDate?: Date;
 	onRangeSelected?: (selectedRange: [Date, Date]) => void;
@@ -13,12 +12,24 @@ export type PrimaryCalendarType = {
 	highlightToday?: boolean;
 	locale?: 'es' | 'en' | 'fr';
 	selectedRange?: SelectedRangeType;
+	availableDates?: Date[];
+	minDate?: Date;
+	maxDate?: Date;
+	calendarWidth?: number;
+	texts: {
+		availableReference: string;
+	};
 };
 
 export type PrimaryCalendarStyleType = {
 	range?: boolean;
-	disabledBackArrow?: boolean;
-	disableRange?: boolean;
 	shadow?: boolean;
 	highlightToday: boolean;
+	calendarWidth: number;
 };
+
+export type isDateAvailableType = (
+	date: Date,
+	availableDatesList?: Date[],
+	defaultValue?: boolean
+) => boolean;

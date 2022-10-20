@@ -3,13 +3,22 @@ import { size } from '../../../constants/devicesSizes';
 import { PrimaryCalendarStyleType } from './types';
 
 export const Container = styled.div<PrimaryCalendarStyleType>`
-	.react-calendar__navigation__prev-button {
-		visibility: ${(props) => props.disabledBackArrow && 'hidden'};
-	}
+	width: min-content;
+	box-shadow: ${({ shadow }) =>
+		shadow ? '0px 2px 15px rgba(0, 0, 0, 0.15)' : 'none'};
+
+	overflow: hidden;
+
+	border-radius: 15px;
+	padding: 15px 0;
 
 	.react-calendar {
-		box-shadow: ${(props) =>
-			props.shadow ? '0px 2px 3px rgba(0, 0, 0, 0.276)' : 'none'};
+		width: ${({ calendarWidth }) => calendarWidth}px;
+
+		box-sizing: border-box;
+	}
+	.react-calendar--doubleView {
+		width: ${({ calendarWidth }) => calendarWidth * 2}px;
 	}
 
 	${({ range }) =>
@@ -25,7 +34,7 @@ export const Container = styled.div<PrimaryCalendarStyleType>`
 
 					.react-calendar__tile--hoverEnd {
 						background: rgb(235,244,248);
-						background: linear-gradient(90deg, rgba(235,244,248,1) 0%, rgba(235,244,248,0) 30%);
+						background: linear-gradient(90deg, rgba(235,244,248,1) 0%, rgba(235,244,248,0) 25%);
 						border: 2px solid #1079e3;
 						border-radius: 0 28px 28px 0 !important;
 						border-left: 2px solid #ebf4f8 !important;
@@ -39,7 +48,7 @@ export const Container = styled.div<PrimaryCalendarStyleType>`
 
 					.react-calendar__tile--hoverStart {
 						background: rgb(235,244,248);
-						background: linear-gradient(-90deg, rgba(235,244,248,1) 0%, rgba(235,244,248,0) 30%);
+						background: linear-gradient(-90deg, rgba(235,244,248,1) 0%, rgba(235,244,248,0) 25%);
 						border: 2px solid #1087ff;
 						border-radius: 28px 0 0 28px !important;
 						border-right: 2px solid #ebf4f8 !important;
@@ -81,4 +90,12 @@ export const Container = styled.div<PrimaryCalendarStyleType>`
 			font-weight: 800;
 			color: #1079e3;
 		`}
+`;
+
+export const AvailabilityReferenceContainer = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 `;

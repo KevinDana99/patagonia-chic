@@ -1,15 +1,20 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import ReactCalendar from 'react-calendar';
+import ReactCalendar, { CalendarTileProperties } from 'react-calendar';
 import './styles.css';
 // import 'react-calendar/dist/Calendar.css';
-import { Container } from './styled';
-import { PrimaryCalendarType } from './types';
+import { AvailabilityReferenceContainer, Container } from './styled';
+import { PrimaryCalendarType, isDateAvailableType } from './types';
 import { IoChevronForward, IoChevronBack } from 'react-icons/io5';
+import DateAvailability, {
+	AvailabilityReference,
+} from './components/DateAvailability';
 
 const PrimaryCalendar = ({
 	onDateSelected,
 	range = false,
-	disabledDates,
+	availableDates,
+	minDate = new Date(),
+	maxDate,
 	doubleCalendar,
 	defaultActiveStartDate = new Date(),
 	onRangeSelected,
@@ -19,9 +24,31 @@ const PrimaryCalendar = ({
 	highlightToday = false,
 	locale = 'es',
 	selectedRange = null,
+	texts,
+	calendarWidth = 400,
 }: PrimaryCalendarType) => {
 	const [selectedDates, setSelectedDates] = useState(selectedRange);
 
+	const isDateAvailable: isDateAvailableType = (
+		date,
+		availableDatesList,
+		defaultValue = false
+	) => {
+		date = new Date(
+			Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0)
+		);
+		const isAvailable = availableDatesList
+			? !!availableDatesList.find((item) => item.getTime() === date.getTime())
+			: defaultValue;
+
+		return isAvailable;
+	};
+
+	const TileElement = ({ date }: CalendarTileProperties) => {
+		return (
+			<DateAvailability isAvailable={isDateAvailable(date, availableDates)} />
+		);
+	};
 	const handleOnChange = (date: Date) => {
 		if (range) {
 			if (selectedDates === null || selectedDates[1] !== null) {
@@ -53,7 +80,12 @@ const PrimaryCalendar = ({
 	};
 
 	return (
-		<Container highlightToday={highlightToday} range={range} shadow={shadow}>
+		<Container
+			calendarWidth={calendarWidth}
+			highlightToday={highlightToday}
+			range={range}
+			shadow={shadow}
+		>
 			<ReactCalendar
 				navigationLabel={({ label }) => replaceMonthText(label)}
 				defaultActiveStartDate={defaultActiveStartDate}
@@ -65,9 +97,22 @@ const PrimaryCalendar = ({
 				showNeighboringMonth={false}
 				locale={locale}
 				onChange={handleOnChange}
-				minDate={new Date()}
+				minDate={minDate}
+				maxDate={maxDate}
 				selectRange={range}
+				tileContent={availableDates ? TileElement : undefined}
+				tileDisabled={({ date }) =>
+					!isDateAvailable(date, availableDates, true)
+				}
 			/>
+			{availableDates && (
+				<AvailabilityReferenceContainer>
+					<div style={{ display: 'flex', flex: '1' }}>
+						<AvailabilityReference text={texts.availableReference} />
+					</div>
+					{doubleCalendar && <div style={{ display: 'flex', flex: '1' }} />}
+				</AvailabilityReferenceContainer>
+			)}
 		</Container>
 	);
 };
