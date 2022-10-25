@@ -27,14 +27,3 @@ export type CalendarStyleType = {
 	highlightToday: boolean;
 	calendarWidth: number;
 };
-
-export type isDateAvailableType = (
-	date: Date,
-	availableDatesList?: Date[],
-	defaultValue?: boolean
-) => boolean;
-
-export type getPrevAndNextUnavailableDatesType = (
-	currentDate: Date,
-	availableDatesList?: Date[]
-) => Date[] | null;
