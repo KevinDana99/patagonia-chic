@@ -10,6 +10,7 @@ import {
 	QuerySelectorsPropsType,
 	LocationPropsType,
 	QuerySelectorsContextType,
+	DatesPropsType,
 } from './types';
 import Modal from '../../../../modals/Modal';
 
@@ -98,8 +99,8 @@ function Location(
 	);
 }
 
-function Dates() {
-	return <div></div>;
+function Dates({ children }: DatesPropsType) {
+	return <>{children}</>;
 }
 
 QuerySelectors.Location = React.forwardRef<HTMLDivElement, LocationPropsType>(

@@ -16,8 +16,8 @@ export type CalendarType = {
 	minDate?: Date;
 	maxDate?: Date;
 	calendarWidth?: number;
-	texts: {
-		availableReference: string;
+	texts?: {
+		availableReference?: string;
 	};
 };
 

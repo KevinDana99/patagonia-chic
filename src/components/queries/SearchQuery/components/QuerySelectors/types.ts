@@ -19,3 +19,7 @@ export type QuerySelectorsPropsType = {
 export type LocationPropsType = {
 	children?: React.ReactNode;
 };
+
+export type DatesPropsType = {
+	children?: React.ReactNode;
+};

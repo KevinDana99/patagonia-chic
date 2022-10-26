@@ -29,5 +29,6 @@ SearchQuery.args = {
 		labelStartDate: 'Fecha de llegada',
 		labelEndDate: 'Fecha de partida',
 		titleSearchButton: 'Buscar Excursiones',
+		dateAvailableReference: 'disponible',
 	},
 };

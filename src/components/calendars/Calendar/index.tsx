@@ -92,7 +92,7 @@ const Calendar = ({
 			{availableDates && (
 				<AvailabilityReferenceContainer>
 					<div style={{ display: 'flex', flex: '1' }}>
-						<AvailabilityReference text={texts.availableReference} />
+						<AvailabilityReference text={texts?.availableReference} />
 					</div>
 					{doubleCalendar && <div style={{ display: 'flex', flex: '1' }} />}
 				</AvailabilityReferenceContainer>

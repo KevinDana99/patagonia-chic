@@ -3,5 +3,5 @@ export type DateAvailabilityPropsType = {
 };
 
 export type AvailabilityReferencePropsType = {
-	text: string;
+	text?: string;
 };

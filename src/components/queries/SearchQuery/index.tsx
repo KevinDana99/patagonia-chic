@@ -21,6 +21,7 @@ import CalendarMobile from './components/CalendarMobile';
 import SearchList from '../../lists/SearchList';
 import QuerySelectors from './components/QuerySelectors';
 import { size } from '../../../constants/devicesSizes';
+import Calendar from '../../calendars/Calendar';
 
 const SearchQuery = ({
 	locationsList,
@@ -114,26 +115,6 @@ const SearchQuery = ({
 						/>
 					</>
 				)}
-
-				{/* <CalendarInput
-					disableSearch={disableSearch}
-					labels={[texts.labelStartDate, texts.labelEndDate]}
-					titles={[texts.placeholderDate, texts.placeholderDate]}
-					values={data}
-					clearData={clearDates}
-					outsideClick={() => setShowCalendar(false)}
-					calendarFocusedInput={calendarFocusedInput}
-					showCalendar={showCalendar}
-					isMobile={isMobile}
-					setDates={setData}
-					data={data}
-					setFocused={setCalendarFocusedInput}
-					closeCalendar={() => setShowCalendar(false)}
-					openCalendar={() => {
-						setShowPlaceList(false);
-						setShowCalendar(true);
-					}}
-				></CalendarInput> */}
 				<ButtonContainer>
 					<ButtonSearch
 						title={!isTablet ? texts.titleSearchButton : ''}
@@ -168,6 +149,9 @@ const SearchQuery = ({
 						emptyStateText="No encontramos este destino, pero te recomendamos..."
 					/>
 				</QuerySelectors.Location>
+				<QuerySelectors.Dates>
+					<Calendar />
+				</QuerySelectors.Dates>
 			</QuerySelectors>
 
 			{/* <Modal

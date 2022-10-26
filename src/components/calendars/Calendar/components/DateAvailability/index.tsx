@@ -25,13 +25,16 @@ const DateAvailability = ({
 
 export const AvailabilityReference = ({
 	text,
-}: AvailabilityReferencePropsType) => (
-	<AvailabilityReferenceContainer>
-		<AvailableElement style={{ margin: 0 }} />
-		<Text style={{ marginLeft: 7 }} size={12} weight="medium">
-			{text}
-		</Text>
-	</AvailabilityReferenceContainer>
-);
+}: AvailabilityReferencePropsType) => {
+	if (!text) return <></>;
+	return (
+		<AvailabilityReferenceContainer>
+			<AvailableElement style={{ margin: 0 }} />
+			<Text style={{ marginLeft: 7 }} size={12} weight="medium">
+				{text}
+			</Text>
+		</AvailabilityReferenceContainer>
+	);
+};
 
 export default DateAvailability;
