@@ -1,7 +1,7 @@
 import { getPrevAndNextUnavailableDates } from '../../../../utils/dates';
-import { useEventHandlersType } from './types';
+import { useComponentLogicArgsType } from './types';
 
-export const useEventHandlers: useEventHandlersType = ({
+export const useComponentLogic = ({
 	range,
 	selectedDates,
 	setSelectedDates,
@@ -11,7 +11,7 @@ export const useEventHandlers: useEventHandlersType = ({
 	onDateSelected,
 	onRangeSelected,
 	availableDates,
-}) => {
+}: useComponentLogicArgsType) => {
 	const handleOnChange = (date: Date) => {
 		if (range) {
 			if (selectedDates === null || selectedDates[1] !== null) {

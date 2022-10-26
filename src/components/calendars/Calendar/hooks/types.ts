@@ -1,6 +1,8 @@
 import { SelectedRangeType } from '../types';
 
-export type useEventHandlersType = (params: {
+export type useComponentLogicArgsType = {
+	minDate?: Date;
+	maxDate?: Date;
 	range?: boolean;
 	selectedDates: SelectedRangeType;
 	setSelectedDates: React.Dispatch<React.SetStateAction<SelectedRangeType>>;
@@ -12,6 +14,4 @@ export type useEventHandlersType = (params: {
 	onRangeStartDateSelected?: (date: Date) => void;
 	onRangeEndDateSelected?: (date: Date) => void;
 	availableDates?: Date[];
-}) => {
-	handleOnChange: (date: Date) => void;
 };

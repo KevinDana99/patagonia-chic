@@ -7,8 +7,12 @@ import { IoChevronForward, IoChevronBack } from 'react-icons/io5';
 import DateAvailability, {
 	AvailabilityReference,
 } from './components/DateAvailability';
-import { isDateAvailable, replaceMonthText } from '../../../utils/dates';
-import { useEventHandlers } from './hooks/useHandlers';
+import {
+	getMinDateOfArray,
+	isDateAvailable,
+	replaceMonthText,
+} from '../../../utils/dates';
+import { useComponentLogic } from './hooks/useComponentLogic';
 
 const Calendar = ({
 	onDateSelected,
@@ -17,7 +21,7 @@ const Calendar = ({
 	minDate = new Date(),
 	maxDate,
 	doubleCalendar,
-	defaultActiveStartDate = new Date(),
+	defaultActiveStartDate,
 	onRangeSelected,
 	onRangeStartDateSelected,
 	onRangeEndDateSelected,
@@ -33,7 +37,7 @@ const Calendar = ({
 		[Date, Date] | null
 	>(null);
 
-	const { handleOnChange } = useEventHandlers({
+	const { handleOnChange } = useComponentLogic({
 		range,
 		availableDates,
 		onDateSelected,
@@ -60,7 +64,9 @@ const Calendar = ({
 		>
 			<ReactCalendar
 				navigationLabel={({ label }) => replaceMonthText(label)}
-				defaultActiveStartDate={defaultActiveStartDate}
+				defaultActiveStartDate={
+					defaultActiveStartDate || getMinDateOfArray(availableDates)
+				}
 				showDoubleView={doubleCalendar}
 				nextLabel={<IoChevronForward size={15} />}
 				prevLabel={<IoChevronBack size={15} />}
@@ -77,8 +83,8 @@ const Calendar = ({
 					!isDateAvailable(
 						date,
 						availableDates,
-						true,
-						prevAndNextUnavailableDate
+						prevAndNextUnavailableDate,
+						true
 					)
 				}
 				returnValue="start"

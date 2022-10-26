@@ -8,14 +8,12 @@ export const getPrevAndNextUnavailableDates: getPrevAndNextUnavailableDatesType 
 		if (!currentDate) return null;
 
 		currentDate = new Date(
-			Date.UTC(
-				currentDate.getFullYear(),
-				currentDate.getMonth(),
-				currentDate.getDate(),
-				0,
-				0,
-				0
-			)
+			currentDate.getFullYear(),
+			currentDate.getMonth(),
+			currentDate.getDate(),
+			0,
+			0,
+			0
 		);
 
 		const nextUnavailableDate = new Date(currentDate);
@@ -42,12 +40,10 @@ export const getPrevAndNextUnavailableDates: getPrevAndNextUnavailableDatesType 
 export const isDateAvailable: isDateAvailableType = (
 	date,
 	availableDatesList,
-	defaultValue = false,
-	prevAndNextUnavailableDate
+	prevAndNextUnavailableDate,
+	defaultValue = false
 ) => {
-	date = new Date(
-		Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0)
-	);
+	date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
 	let isAvailable = availableDatesList
 		? !!availableDatesList.find((item) => item.getTime() === date.getTime())
 		: defaultValue;
@@ -69,3 +65,9 @@ export const replaceMonthText = (month: string) => {
 		return substrMonth[0] + ' ' + substrMonth[2];
 	}
 };
+
+export const getMinDateOfArray = (dates?: Date[]) =>
+	dates?.sort((a, b) => (a < b ? -1 : 1))?.[0];
+
+export const getMaxDateOfArray = (dates?: Date[]) =>
+	dates?.sort((a, b) => (a < b ? -1 : 1))?.[dates?.length - 1];

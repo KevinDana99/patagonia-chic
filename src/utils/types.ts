@@ -1,8 +1,8 @@
 export type isDateAvailableType = (
 	date: Date,
 	availableDatesList?: Date[],
-	defaultValue?: boolean,
-	prevAndNextUnavailableDate?: [Date, Date] | null
+	prevAndNextUnavailableDate?: [Date, Date] | null,
+	defaultValue?: boolean
 ) => boolean;
 
 export type getPrevAndNextUnavailableDatesType = (
