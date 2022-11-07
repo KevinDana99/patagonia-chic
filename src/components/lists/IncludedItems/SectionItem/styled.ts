@@ -41,6 +41,10 @@ export const NotIncludeContainer = styled.div`
 	align-items: flex-start;
 `;
 
+export const Linked = styled.a`
+	text-decoration: none;
+`;
+
 export const ButtonItem = styled(TertiaryButton)`
 	padding: 0px;
 `;
@@ -51,11 +55,13 @@ export const StyledCustomIcon = styled(CustomIcon)`
 	align-items: flex-start;
 	width: 20px;
 `;
-export const IconClose = styled(IoCloseOutline)`
-	padding: 0px;
-	font-size: 15px;
-	display: inline-block;
+export const IconClose = styled.div`
+	width: 15px;
+	height: 10px;
+	min-width: 15px;
+	margin-left: 2.2px;
+
+	display: flex;
 	justify-content: center;
-	align-items: center;
-	color: rgb(203, 203, 203);
+	align-items: flex-start;
 `;

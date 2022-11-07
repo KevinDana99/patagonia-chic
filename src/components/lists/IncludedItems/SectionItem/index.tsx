@@ -1,14 +1,16 @@
 import React from 'react';
+import CustomIcon from '../../../graphics/CustomIcon';
 import Text from '../../../texts/Text';
 import {
 	Container,
 	Requirements,
 	Title,
 	StyledCustomIcon,
-	IconClose,
 	SectionTitle,
 	NotIncludeContainer,
 	ButtonItem,
+	IconClose,
+	Linked,
 } from './styled';
 import { SectionItemType } from './types';
 const SectionItem = ({ title, subTitle, included }: SectionItemType) => {
@@ -17,7 +19,9 @@ const SectionItem = ({ title, subTitle, included }: SectionItemType) => {
 			{included.status ? (
 				<StyledCustomIcon name="check-circle" color="#3BC053" size={15} />
 			) : (
-				<IconClose size={20} />
+				<IconClose>
+					<CustomIcon name={'close-icon'} size={10} />
+				</IconClose>
 			)}
 
 			{included.status ? (
@@ -45,9 +49,9 @@ const SectionItem = ({ title, subTitle, included }: SectionItemType) => {
 					</Title>
 
 					{included.details && (
-						<a href={included.details.target}>
+						<Linked href={included.details.target}>
 							<ButtonItem title={included.details.title} />
-						</a>
+						</Linked>
 					)}
 				</NotIncludeContainer>
 			)}
