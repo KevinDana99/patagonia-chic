@@ -17,7 +17,7 @@ const SectionItem = ({ title, subTitle, included }: SectionItemType) => {
 	return (
 		<Container>
 			{included.status ? (
-				<StyledCustomIcon name="check-circle" color="#3BC053" size={15} />
+				<StyledCustomIcon name="check-circle" color="#00cf57" size={15} />
 			) : (
 				<IconClose>
 					<CustomIcon name={'close-icon'} size={10} />
