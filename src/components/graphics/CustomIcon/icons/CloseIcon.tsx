@@ -1,7 +1,7 @@
 import React from 'react';
 import { CustomStyleIconType } from '../types';
 
-const CloseIcon = ({ color = '#888888', size }: CustomStyleIconType) => {
+const CloseIcon = ({ color = '#888', size }: CustomStyleIconType) => {
 	return (
 		<svg
 			width={size}
