@@ -1,8 +1,11 @@
 import { IoCheckmarkCircle, IoClose, IoCloseOutline } from 'react-icons/io5';
 import styled from 'styled-components';
 import TertiaryButton from '../../../buttons/TertiaryButton';
+import CustomIcon from '../../../graphics/CustomIcon';
 
 export const Container = styled.div`
+	position: relative;
+	width: 100%;
 	display: flex;
 	align-items: center;
 `;
@@ -79,17 +82,14 @@ export const CheckIcon = styled(IoCheckmarkCircle)`
 `;
 
 export const BoxClear = styled.div`
+	position: absolute;
+	right: 0px;
 	margin-left: 8px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 `;
 
-export const IconClear = styled(IoCloseOutline)`
-	color: #888888;
-
-	&:hover {
-		color: black;
-		cursor: pointer;
-	}
+export const IconClear = styled(CustomIcon)`
+	cursor: pointer;
 `;

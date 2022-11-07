@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TertiaryButton from '../../../buttons/TertiaryButton';
 import Text from '../../../texts/Text';
 import ProgressBar from '../ProgressBar';
@@ -25,6 +25,7 @@ const ItemTimeline = ({
 	clear,
 	id,
 }: ItemTimelineType) => {
+	const [hoverClose, setHoverClose] = useState(false);
 	return (
 		<Container>
 			<ProgressBar Icon={CheckIcon} active={active} />
@@ -55,8 +56,16 @@ const ItemTimeline = ({
 			</BoxItem>
 
 			{active && tertiaryTitle && (
-				<BoxClear>
-					<IconClear size={28} onClick={() => clear(id)} />
+				<BoxClear
+					onClick={() => clear(id)}
+					onMouseOver={() => setHoverClose(true)}
+					onMouseOut={() => setHoverClose(false)}
+				>
+					<IconClear
+						name="close-icon"
+						size={15}
+						color={hoverClose ? 'black' : '#888'}
+					/>
 				</BoxClear>
 			)}
 		</Container>
