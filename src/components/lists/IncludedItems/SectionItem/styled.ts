@@ -6,6 +6,7 @@ import CustomIcon from '../../../graphics/CustomIcon';
 export const Container = styled.div`
 	margin-top: 5px;
 	display: flex;
+	justify-content: flex-start;
 `;
 
 export const Title = styled.div`
@@ -14,23 +15,24 @@ export const Title = styled.div`
 	line-height: 1.3;
 	font-weight: 400;
 	color: #000;
+
 	letter-spacing: -0em;
 `;
 
 export const Requirements = styled.div`
-	margin-left: 5px;
 	font-size: 12px;
 	min-width: 74px;
 	color: #888;
 	font-weight: 200;
-	white-space: nowrap;
 	letter-spacing: -0.01em;
 	display: flex;
 	justify-content: space-between;
 `;
 
 export const SectionTitle = styled(Requirements)`
+	margin-left: 5px;
 	display: flex;
+	flex-wrap: wrap;
 `;
 
 export const NotIncludeContainer = styled.div`
@@ -51,17 +53,16 @@ export const ButtonItem = styled(TertiaryButton)`
 
 export const StyledCustomIcon = styled(CustomIcon)`
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: flex-start;
-	width: 20px;
+	width: 15px;
 `;
 export const IconClose = styled.div`
-	width: 15px;
 	height: 10px;
-	min-width: 15px;
+
 	margin-left: 2.2px;
 
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: flex-start;
 `;

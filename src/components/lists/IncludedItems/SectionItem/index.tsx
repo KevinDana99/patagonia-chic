@@ -31,11 +31,11 @@ const SectionItem = ({ title, subTitle, included }: SectionItemType) => {
 							{title}
 						</Text>
 					</Title>
-					{subTitle && <div>-</div>}
+
 					{subTitle && (
 						<Requirements>
 							<Text size={12} weight={'regular'} color="#888">
-								{subTitle}
+								{'- ' + subTitle}
 							</Text>
 						</Requirements>
 					)}
