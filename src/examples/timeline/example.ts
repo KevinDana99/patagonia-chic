@@ -5,7 +5,7 @@ export default [
 	{
 		id: 1,
 		title: 'Reserva obtenida',
-		dateTime: new Date(2022, 9, 31),
+		dateTime: new Date('2022/10/1 23:30:14'),
 		secondaryTitle: '28 Junio - 10:00 a.m.',
 		tertiaryTitle: {
 			options: { price: '$ 22.000', currency: 'Ars' },
@@ -16,7 +16,7 @@ export default [
 	{
 		id: 2,
 		title: 'Reserva obtenida',
-		dateTime: new Date(2022, 11, 5),
+		dateTime: new Date('2022/12/31 23:30:14'),
 		secondaryTitle: '28 Junio - 10:00 a.m.',
 		tertiaryTitle: {
 			options: { price: '$ 22.000', currency: 'Ars' },

@@ -13,19 +13,27 @@ const Timeline = ({
 	moment.locale(momentConfig.locale);
 
 	const convertDateToString = (date: Date) => {
-		const monthsToString = moment.months();
-		const currentMonthToString = monthsToString[date.getMonth()];
-		const currentDayToString = date.getDate();
+		//llega mal
 
-		return `${currentDayToString} ${currentMonthToString}`;
+		const currentDate = new Date(date);
+		const monthsToString = moment.months();
+		const currentMonthToString = monthsToString[currentDate.getMonth()];
+		const currentDayToString = currentDate.getDate();
+		const currentTimeToString =
+			currentDate.getHours().toString() +
+			':' +
+			currentDate.getMinutes().toString();
+
+		return `${currentDayToString} ${currentMonthToString} - ${currentTimeToString}`;
 	};
 
 	const subtractDays = (date: Date, days: number) => {
-		return new Date().setDate(date.getDate() - days);
+		console.log(date);
+		return new Date(date).setDate(date.getDate() - days);
 	};
 
 	const addDays = (date: Date, days: number) => {
-		return new Date().setDate(date.getDate() + days);
+		return new Date(date).setDate(date.getDate() + days);
 	};
 
 	return (
@@ -38,9 +46,7 @@ const Timeline = ({
 							title={texts.textAvaiableDay}
 							secondaryTitle={
 								step.dateTime
-									? convertDateToString(
-											new Date(subtractDays(step?.dateTime, 1))
-									  )
+									? convertDateToString(subtractDays(step?.dateTime, 1))
 									: step.secondaryTitle
 							}
 							active={false}
@@ -65,7 +71,7 @@ const Timeline = ({
 							title={texts.textAvaiableDay}
 							secondaryTitle={
 								step.dateTime
-									? convertDateToString(new Date(addDays(step?.dateTime, 1)))
+									? convertDateToString(addDays(step?.dateTime, 1))
 									: step.secondaryTitle
 							}
 							active={false}
@@ -81,9 +87,7 @@ const Timeline = ({
 								title={texts.textAvaiableDay}
 								secondaryTitle={
 									step.dateTime
-										? convertDateToString(
-												new Date(subtractDays(step?.dateTime, 1))
-										  )
+										? convertDateToString(subtractDays(step?.dateTime, 1))
 										: step.secondaryTitle
 								}
 								active={false}
@@ -110,7 +114,7 @@ const Timeline = ({
 								title={texts.textAvaiableDay}
 								secondaryTitle={
 									step.dateTime
-										? convertDateToString(new Date(addDays(step?.dateTime, 1)))
+										? convertDateToString(addDays(step?.dateTime, 1))
 										: step.secondaryTitle
 								}
 								active={false}
