@@ -6,9 +6,9 @@ import {
 	StyledLabel,
 	IconDiv,
 	TextDiv,
-	CheckIcon,
 } from './styled';
 import Text from '../../texts/Text';
+import CustomIcon from '../../graphics/CustomIcon';
 
 const CheckboxItem = ({
 	index,
@@ -28,7 +28,7 @@ const CheckboxItem = ({
 
 		<StyledLabel htmlFor={index.toString().concat('checkbox')}>
 			<IconDiv>
-				<CheckIcon />
+				<CustomIcon name="check" color="#fff" />
 			</IconDiv>
 			<TextDiv>
 				<Text size={17} weight={'regular'} color={'#333'}>
