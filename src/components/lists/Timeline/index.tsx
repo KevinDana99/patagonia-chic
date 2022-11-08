@@ -12,7 +12,7 @@ const Timeline = ({
 }: TimelineType) => {
 	moment.locale(momentConfig.locale);
 
-	const convertDateToString = (date: Date) => {
+	const convertDateToString = (date: number | Date) => {
 		//llega mal
 
 		const currentDate = new Date(date);
