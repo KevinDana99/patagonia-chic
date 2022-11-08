@@ -28,7 +28,7 @@ const CheckboxItem = ({
 
 		<StyledLabel htmlFor={index.toString().concat('checkbox')}>
 			<IconDiv>
-				<CheckIcon name="check" color="#fff" size={10.5} />
+				<CheckIcon name="check" color="#fff" size={11.5} />
 			</IconDiv>
 			<TextDiv>
 				<Text size={17} weight={'regular'} color={'#333'}>

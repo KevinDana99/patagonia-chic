@@ -18,6 +18,7 @@ export const IconDiv = styled.div`
 
 export const CheckIcon = styled(CustomIcon)`
 	display: none;
+	padding-top: 2px;
 `;
 
 export const StyledLabel = styled.label`

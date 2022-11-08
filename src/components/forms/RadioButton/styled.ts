@@ -37,6 +37,7 @@ export const StyledLabel = styled.label`
 
 export const CheckIcon = styled(CustomIcon)`
 	display: none;
+	padding-top: 2px;
 `;
 
 export const ContainerInput = styled.div`
