@@ -1,4 +1,9 @@
-import { IoCheckmarkCircle, IoClose, IoCloseOutline } from 'react-icons/io5';
+import {
+	IoCheckmarkCircle,
+	IoCheckmarkCircleSharp,
+	IoClose,
+	IoCloseOutline,
+} from 'react-icons/io5';
 import styled from 'styled-components';
 import TertiaryButton from '../../../buttons/TertiaryButton';
 import CustomIcon from '../../../graphics/CustomIcon';
@@ -23,11 +28,14 @@ export const Title = styled.div`
 	font-size: 17px;
 	font-weight: 600;
 	color: #3b3b3b;
+	letter-spacing: -0.016em;
 `;
 
 export const SubTitle = styled.div`
 	font-size: 15px;
-	color: #888888;
+	color: #a1a1a1;
+	letter-spacing: -0.026em;
+	font-weight: 400;
 `;
 
 export const Link = styled.a`
@@ -53,8 +61,12 @@ export const ButtonItem = styled(TertiaryButton)`
 	text-decoration: none;
 	align-items: flex-end;
 	box-sizing: border-box;
-
+	color: #a1a1a1;
+	letter-spacing: -0.026em;
+	font-weight: 400;
+	font-size: 15px;
 	svg {
+		margin-bottom: 2px;
 		margin-left: 2px;
 		box-sizing: border-box;
 	}
@@ -74,11 +86,22 @@ export const BoxCurrency = styled.div`
 	outline: none;
 `;
 
-export const CheckIcon = styled(IoCheckmarkCircle)`
+export const Icon = styled.div`
 	position: absolute;
-	font-size: 20px;
-	color: #3bc053;
+	left: -2px;
+	width: 25px;
+	height: 14px;
 	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+
+export const CheckIcon = styled(IoCheckmarkCircleSharp)`
+	color: #00cf57;
+	font-size: 20px;
+	width: 25px;
+	height: 25px;
 `;
 
 export const BoxClear = styled.div`

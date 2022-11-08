@@ -13,8 +13,8 @@ const ProgressBar = ({ active, Icon }: ProgressBarType) => {
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
 			>
-				<path d="M10 100V0" stroke={'#D6D6D6'} strokeWidth="3" />
-				{!active && <circle cx="10" cy="50" r="4" fill="#D9D9D9" />}
+				<path d="M10 100V0" stroke={'#D9D9D9'} strokeWidth="2" />
+				{!active && <circle cx="10" cy="59" r="3" fill="#D9D9D9" />}
 			</svg>
 		</>
 	);

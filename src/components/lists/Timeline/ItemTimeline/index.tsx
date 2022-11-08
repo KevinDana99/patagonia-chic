@@ -14,6 +14,7 @@ import {
 	BoxCurrency,
 	Link,
 	ContentButton,
+	Icon,
 } from './styled';
 import { ItemTimelineType } from './types';
 
@@ -26,9 +27,18 @@ const ItemTimeline = ({
 	id,
 }: ItemTimelineType) => {
 	const [hoverClose, setHoverClose] = useState(false);
+
+	const IconCheck = () => {
+		return (
+			<Icon>
+				<CheckIcon />
+			</Icon>
+		);
+	};
+
 	return (
 		<Container>
-			<ProgressBar Icon={CheckIcon} active={active} />
+			<ProgressBar Icon={IconCheck} active={active} />
 			<BoxItem>
 				<SubTitle>
 					<Text>{secondaryTitle}</Text>
