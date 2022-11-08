@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import TertiaryButton from '../../../buttons/TertiaryButton';
 import Text from '../../../texts/Text';
 import ProgressBar from '../ProgressBar';
 import {

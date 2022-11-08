@@ -80,6 +80,7 @@ export const ButtonItem = styled(TertiaryButton)`
 
 export const BoxCurrency = styled.div`
 	margin-left: 3px;
+	margin-bottom: 3px;
 	height: 15px;
 	font-size: 10px;
 	text-transform: uppercase;
