@@ -2,7 +2,8 @@ export type TimelineType = {
 	steps: Array<{
 		id: number;
 		title?: string;
-		secondaryTitle?: string;
+		dateTime?: Date;
+		secondaryTitle: string;
 		tertiaryTitle?: {
 			options: {
 				title?: string;
@@ -14,4 +15,8 @@ export type TimelineType = {
 		active: boolean;
 	}>;
 	clearReserve: () => void;
+	texts: { textAvaiableDay: string };
+	momentConfig: {
+		locale: 'es' | 'en' | 'fr' | 'br' | 'pr';
+	};
 };

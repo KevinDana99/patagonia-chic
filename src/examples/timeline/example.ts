@@ -7,36 +7,12 @@ export default [
 	{
 		id: 1,
 		title: 'Reserva obtenida',
+		dateTime: new Date(0, 0, 99),
 		secondaryTitle: '28 Junio - 10:00 a.m.',
 		tertiaryTitle: {
 			options: { price: '$ 22.000', currency: 'Ars' },
 			link: 'https://www.google.com.ar',
 		},
 		active: true,
-	},
-
-	{
-		id: 2,
-		title: 'Reserva obtenida',
-		secondaryTitle: '28 Junio - 10:00 a.m.',
-		tertiaryTitle: {
-			options: {
-				price: '$ 22.000',
-				currency: 'Ars',
-			},
-			link: 'https://www.google.com.ar',
-		},
-		active: false,
-	},
-
-	{
-		id: 3,
-		title: 'Reserva obtenida',
-		secondaryTitle: '28 Junio - 10:00 a.m.',
-		tertiaryTitle: {
-			options: { price: '$ 22.000', currency: 'Ars' },
-			link: 'https://www.google.com.ar',
-		},
-		active: false,
 	},
 ];
