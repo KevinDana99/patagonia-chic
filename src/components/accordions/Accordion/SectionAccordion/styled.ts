@@ -12,6 +12,7 @@ export const SectionContainer = styled.div`
 export const SectionTitleContainer = styled.div`
 	padding: 20px;
 	padding-left: 11.46px;
+	padding-bottom: 13px;
 	cursor: pointer;
 	display: flex;
 	justify-content: space-between;
