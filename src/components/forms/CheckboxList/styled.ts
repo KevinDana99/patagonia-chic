@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import CustomIcon from '../../graphics/CustomIcon';
 
 export const IconDiv = styled.div`
 	width: 15px;
@@ -13,6 +14,10 @@ export const IconDiv = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+`;
+
+export const CheckIcon = styled(CustomIcon)`
+	display: none;
 `;
 
 export const StyledLabel = styled.label`
