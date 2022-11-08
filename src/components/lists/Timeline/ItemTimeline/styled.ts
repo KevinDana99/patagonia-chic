@@ -36,6 +36,7 @@ export const SubTitle = styled.div`
 	color: #a1a1a1;
 	letter-spacing: -0.026em;
 	font-weight: 400;
+	text-transform: capitalize;
 `;
 
 export const Link = styled.a`

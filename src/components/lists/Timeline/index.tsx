@@ -14,22 +14,35 @@ const Timeline = ({
 
 	const convertDateToString = (date: Date) => {
 		const monthsToString = moment.months();
+		const currentMonthToString = monthsToString[date.getMonth()];
+		const currentDayToString = date.getDate();
 
-		return 'carlos';
+		return `${currentDayToString} ${currentMonthToString}`;
+	};
+
+	const subtractDays = (date: Date, days: number) => {
+		return new Date().setDate(date.getDate() - days);
+	};
+
+	const addDays = (date: Date, days: number) => {
+		return new Date().setDate(date.getDate() + days);
 	};
 
 	return (
 		<Container>
 			{steps.map((step, index) => {
-				{
-					console.log(step?.dateTime);
-				}
 				return steps.length == 1 ? (
 					<>
 						<ItemTimeline
 							key={index}
 							title={texts.textAvaiableDay}
-							secondaryTitle={'27 Junio'}
+							secondaryTitle={
+								step.dateTime
+									? convertDateToString(
+											new Date(subtractDays(step?.dateTime, 1))
+									  )
+									: step.secondaryTitle
+							}
 							active={false}
 							clear={clearReserve}
 							id={step.id}
@@ -50,7 +63,11 @@ const Timeline = ({
 						<ItemTimeline
 							key={index}
 							title={texts.textAvaiableDay}
-							secondaryTitle={'29 Junio'}
+							secondaryTitle={
+								step.dateTime
+									? convertDateToString(new Date(addDays(step?.dateTime, 1)))
+									: step.secondaryTitle
+							}
 							active={false}
 							clear={clearReserve}
 							id={step.id}
@@ -62,7 +79,13 @@ const Timeline = ({
 							<ItemTimeline
 								key={index}
 								title={texts.textAvaiableDay}
-								secondaryTitle={'27 Junio'}
+								secondaryTitle={
+									step.dateTime
+										? convertDateToString(
+												new Date(subtractDays(step?.dateTime, 1))
+										  )
+										: step.secondaryTitle
+								}
 								active={false}
 								clear={clearReserve}
 								id={step.id}
@@ -71,7 +94,11 @@ const Timeline = ({
 						<ItemTimeline
 							key={index}
 							title={step.title}
-							secondaryTitle={step?.secondaryTitle}
+							secondaryTitle={
+								step.dateTime
+									? convertDateToString(step.dateTime)
+									: step.secondaryTitle
+							}
 							tertiaryTitle={step?.tertiaryTitle}
 							active={step.active}
 							clear={clearReserve}
@@ -81,7 +108,11 @@ const Timeline = ({
 							<ItemTimeline
 								key={index}
 								title={texts.textAvaiableDay}
-								secondaryTitle={'1 Julio'}
+								secondaryTitle={
+									step.dateTime
+										? convertDateToString(new Date(addDays(step?.dateTime, 1)))
+										: step.secondaryTitle
+								}
 								active={false}
 								clear={clearReserve}
 								id={step.id}
