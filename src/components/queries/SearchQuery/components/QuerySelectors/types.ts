@@ -1,18 +1,22 @@
 import React from 'react';
 
+export type CurrentSelectorStateType =
+	| 'none'
+	| 'location'
+	| 'dates'
+	| 'dates/start'
+	| 'dates/end';
+
 export type QuerySelectorsContextType = {
-	showLocationSelector: boolean;
-	showDatesSelector: boolean;
+	currentSelector: CurrentSelectorStateType;
 	renderAsModal: boolean;
-	setShowLocationSelector: (isVisible: boolean) => void;
-	setShowDatesSelector: (isVisible: boolean) => void;
 };
 
 export type QuerySelectorsPropsType = {
+	visible: boolean;
+	closeAction: () => void;
+	currentSelector: CurrentSelectorStateType;
 	renderAsModal: boolean;
-	showLocations: boolean;
-	showDates: boolean;
-	setShowLocations: (show: boolean) => void;
 	children?: React.ReactNode;
 };
 

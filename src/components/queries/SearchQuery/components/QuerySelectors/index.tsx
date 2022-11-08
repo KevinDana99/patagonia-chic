@@ -5,7 +5,7 @@ import React, {
 	useEffect,
 	useState,
 } from 'react';
-import { ContainerModal, PlacesListContainer } from './styled';
+import { PlacesListContainer, DatesContainer } from './styled';
 import {
 	QuerySelectorsPropsType,
 	LocationPropsType,
@@ -19,58 +19,37 @@ const QuerySelectorsContext = createContext<QuerySelectorsContextType>(
 );
 
 export default function QuerySelectors({
+	visible,
+	closeAction,
+	currentSelector: currentSelectorProp = 'none',
 	renderAsModal: renderAsModalProp,
-	showLocations: showLocationProp,
-	setShowLocations,
-	showDates: showDateProp,
 	children,
 }: QuerySelectorsPropsType) {
-	const [showLocationSelector, setShowLocationSelector] =
-		useState(showLocationProp);
-	const [showDatesSelector, setShowDatesSelector] = useState(showDateProp);
+	const [currentSelector, setCurrentSelector] = useState(currentSelectorProp);
 	const [renderAsModal, setRenderAsModal] = useState(renderAsModalProp);
-
-	useEffect(() => {
-		setShowLocationSelector(showLocationProp);
-	}, [showLocationProp]);
-
-	useEffect(() => {
-		setShowDatesSelector(showDateProp);
-	}, [showDateProp]);
 
 	useEffect(() => {
 		setRenderAsModal(renderAsModalProp);
 	}, [renderAsModalProp]);
 
-	const handleModalClose = () => {
-		setShowLocations(false);
-		setShowDatesSelector(false);
-	};
-
-	console.log('showLocationSelector', showLocationSelector);
-	console.log('showLocationProp', showLocationProp);
-
 	return (
 		<QuerySelectorsContext.Provider
 			value={{
-				showLocationSelector,
-				showDatesSelector,
+				currentSelector,
 				renderAsModal,
-				setShowLocationSelector: setShowLocations,
-				setShowDatesSelector,
 			}}
 		>
 			{renderAsModal ? (
 				<Modal
-					visible={showLocationSelector}
-					closeAction={handleModalClose}
+					visible={visible}
+					closeAction={closeAction}
 					closeOnTouchOutside
 					animated
 				>
 					{children}
 				</Modal>
 			) : (
-				children
+				visible && children
 			)}
 		</QuerySelectorsContext.Provider>
 	);
@@ -80,11 +59,9 @@ function Location(
 	{ children }: LocationPropsType,
 	ref: ForwardedRef<HTMLDivElement>
 ) {
-	const { showLocationSelector, renderAsModal } = useContext(
-		QuerySelectorsContext
-	);
+	const { currentSelector, renderAsModal } = useContext(QuerySelectorsContext);
 
-	if (!showLocationSelector) return <></>;
+	if (currentSelector !== 'location') return <></>;
 
 	return (
 		<div ref={ref}>
@@ -99,11 +76,28 @@ function Location(
 	);
 }
 
-function Dates({ children }: DatesPropsType) {
-	return <>{children}</>;
+function Dates(
+	{ children }: DatesPropsType,
+	ref: ForwardedRef<HTMLDivElement>
+) {
+	const { currentSelector, renderAsModal } = useContext(QuerySelectorsContext);
+
+	if (!currentSelector.includes('dates')) return <></>;
+
+	return (
+		<div ref={ref}>
+			{renderAsModal ? (
+				children
+			) : (
+				<>
+					<DatesContainer>{children}</DatesContainer>
+				</>
+			)}
+		</div>
+	);
 }
 
 QuerySelectors.Location = React.forwardRef<HTMLDivElement, LocationPropsType>(
 	Location
 );
-QuerySelectors.Dates = Dates;
+QuerySelectors.Dates = React.forwardRef<HTMLDivElement, DatesPropsType>(Dates);

@@ -28,3 +28,15 @@ export const PlacesListContainer = styled.div`
 		box-shadow: none;
 	}
 `;
+
+export const DatesContainer = styled.div`
+	position: absolute;
+	width: 100%;
+	border-radius: 30px;
+	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
+	overflow: hidden;
+	top: 75px;
+	left: 0px;
+	background-color: #ffffff;
+	z-index: 20;
+`;
