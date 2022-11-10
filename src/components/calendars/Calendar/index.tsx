@@ -31,6 +31,9 @@ const Calendar = ({
 	selectedRange = null,
 	texts,
 	calendarWidth = 400,
+	value,
+	defaultValue,
+	returnValue = 'start',
 }: CalendarType) => {
 	const [selectedDates, setSelectedDates] = useState(selectedRange);
 	const [prevAndNextUnavailableDate, setPrevAndNextUnavailableDate] = useState<
@@ -87,7 +90,9 @@ const Calendar = ({
 						true
 					)
 				}
-				returnValue="start"
+				value={value}
+				defaultValue={defaultValue}
+				returnValue={returnValue}
 			/>
 			{availableDates && (
 				<AvailabilityReferenceContainer>

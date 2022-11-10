@@ -19,6 +19,9 @@ export type CalendarType = {
 	texts?: {
 		availableReference?: string;
 	};
+	value?: SelectedRangeType;
+	defaultValue?: Date | Date[];
+	returnValue?: 'range' | 'start' | 'end';
 };
 
 export type CalendarStyleType = {

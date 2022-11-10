@@ -101,10 +101,21 @@ const SearchQuery = ({
 	};
 
 	const handleEndDateSelected = (selectedDate: Date) => {
-		setQuerySelectedData({
-			...querySelectedData,
-			endDate: selectedDate,
-		});
+		if (
+			querySelectedData.startDate &&
+			querySelectedData.startDate > selectedDate
+		) {
+			setQuerySelectedData({
+				...querySelectedData,
+				startDate: selectedDate,
+				endDate: querySelectedData.startDate,
+			});
+		} else {
+			setQuerySelectedData({
+				...querySelectedData,
+				endDate: selectedDate,
+			});
+		}
 		setCurrentSelector('none');
 	};
 
@@ -159,6 +170,13 @@ const SearchQuery = ({
 									? moment(querySelectedData.endDate).format('MMMM, DD')
 									: ''
 							}
+							onClearFieldClicked={() => {
+								setQuerySelectedData({
+									...querySelectedData,
+									startDate: null,
+									endDate: null,
+								});
+							}}
 							label={texts.labelEndDate}
 							placeholder={texts.placeholderDate}
 							onClick={() => setCurrentSelector('dates/end')}
@@ -205,6 +223,13 @@ const SearchQuery = ({
 						range
 						onRangeStartDateSelected={handleStartDateSelected}
 						onRangeEndDateSelected={handleEndDateSelected}
+						value={
+							querySelectedData.startDate && [
+								querySelectedData.startDate,
+								querySelectedData.endDate,
+							]
+						}
+						returnValue="start"
 					/>
 				</QuerySelectors.Dates>
 			</QuerySelectors>
