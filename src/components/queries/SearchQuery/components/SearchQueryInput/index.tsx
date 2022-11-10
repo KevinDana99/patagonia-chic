@@ -12,6 +12,7 @@ const SearchQueryInput = (
 		onFocusChange,
 		onlyClick = true,
 		onClick,
+		isError = false,
 	}: SearchQueryInputPropsType,
 	ref: ForwardedRef<HTMLInputElement>
 ) => {
@@ -47,6 +48,7 @@ const SearchQueryInput = (
 				onFocus={() => handleFocusChange(true)}
 				onBlur={() => handleFocusChange(false)}
 				onlyClick={onlyClick}
+				isError={isError}
 			/>
 			{inputTextValue.length > 0 && (isFocused || isHovered) && (
 				<CloseIcon onClick={handleClearClicked} />

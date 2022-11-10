@@ -38,3 +38,9 @@ export type QuerySelectedDataType = {
 	startDate: Date | null;
 	endDate: Date | null;
 };
+
+export type ValidationsType = {
+	location: boolean;
+	startDate: boolean;
+	endDate: boolean;
+};

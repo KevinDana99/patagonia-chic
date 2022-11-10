@@ -9,6 +9,7 @@ export default {
 	component: SearchQueryComponent,
 	argTypes: {
 		onClick: { action: 'clicked' },
+		onQuerySubmit: { action: 'submitted' },
 	},
 } as Meta<typeof SearchQueryComponent>;
 
@@ -21,7 +22,6 @@ const Template: Story<SearchQueryPropsType> = (args) => (
 export const SearchQuery = Template.bind({});
 SearchQuery.args = {
 	locationsList: places,
-	onQuerySubmit: (query) => console.log(query),
 	texts: {
 		placeholderPlace: '¿A dónde vas?',
 		labelPlace: 'Lugar',

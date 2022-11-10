@@ -13,6 +13,7 @@ import {
 	SearchQueryPropsType,
 	QuerySelectedDataType,
 	CurrentSelectorStateType,
+	ValidationsType,
 } from './types';
 import SearchQueryInput from './components/SearchQueryInput';
 import useMediaQuery from '../../../hooks/useMediaQuery';
@@ -34,6 +35,12 @@ const SearchQuery = ({
 			startDate: null,
 			endDate: null,
 		});
+
+	const [validations, setValidations] = useState<ValidationsType>({
+		location: false,
+		startDate: false,
+		endDate: false,
+	});
 
 	moment.locale(locale);
 
@@ -91,12 +98,20 @@ const SearchQuery = ({
 	const handleLocationInputChange = (newText: string) => {
 		setLocationSearchText(newText);
 		setLocationShowFullList(false);
+		setValidations({
+			...validations,
+			location: false,
+		});
 	};
 
 	const handleStartDateSelected = (selectedDate: Date) => {
 		setQuerySelectedData({
 			...querySelectedData,
 			startDate: selectedDate,
+		});
+		setValidations({
+			...validations,
+			startDate: false,
 		});
 	};
 
@@ -117,6 +132,25 @@ const SearchQuery = ({
 			});
 		}
 		setCurrentSelector('none');
+		setValidations({
+			...validations,
+			endDate: false,
+		});
+	};
+
+	const handleSubmit = () => {
+		const { location, startDate, endDate } = querySelectedData;
+
+		// validate data
+		setValidations({
+			location: !location,
+			startDate: !startDate,
+			endDate: !endDate,
+		});
+
+		if (location && startDate && endDate) {
+			onQuerySubmit(querySelectedData);
+		}
 	};
 
 	return (
@@ -140,6 +174,7 @@ const SearchQuery = ({
 						}
 						onlyClick={isTablet}
 						onClick={() => isTablet && setCurrentSelector('location')}
+						isError={validations.location}
 					/>
 				)}
 				{!isMobile && (
@@ -162,6 +197,7 @@ const SearchQuery = ({
 							placeholder={texts.placeholderDate}
 							onlyClick
 							onClick={() => setCurrentSelector('dates/start')}
+							isError={validations.startDate}
 						/>
 						<SearchQueryInput
 							ref={dateEndInputRef}
@@ -181,6 +217,7 @@ const SearchQuery = ({
 							placeholder={texts.placeholderDate}
 							onClick={() => setCurrentSelector('dates/end')}
 							onlyClick
+							isError={validations.endDate}
 						/>
 					</>
 				)}
@@ -188,9 +225,7 @@ const SearchQuery = ({
 					<ButtonSearch
 						title={!isTablet ? texts.titleSearchButton : ''}
 						IconComponent={SearchIcon}
-						onClick={() => {
-							console.log('btn clicked');
-						}}
+						onClick={handleSubmit}
 					/>
 				</ButtonContainer>
 			</SearchQueryBarContainer>
@@ -229,7 +264,6 @@ const SearchQuery = ({
 								querySelectedData.endDate,
 							]
 						}
-						returnValue="start"
 					/>
 				</QuerySelectors.Dates>
 			</QuerySelectors>

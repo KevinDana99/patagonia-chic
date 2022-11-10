@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { IoClose } from 'react-icons/io5';
 import fontsConstants from '../../../../../constants/fonts.json';
 import Text from '../../../../texts/Text';
-import { InputContainerType } from './types';
+import { InputContainerType, TextInputType } from './types';
 
 const selectedShadow =
 	'12px 0px 15px -5px rgb(0 0 0 / 20%), -12px 0px 15px -5px rgb(0 0 0 / 20%);';
@@ -73,7 +73,7 @@ export const Label = styled(Text)`
 
 export const TextInput = styled.input.attrs({
 	type: 'text',
-})<{ onlyClick: boolean }>`
+})<TextInputType>`
 	width: 100%;
 	height: 100%;
 	padding: 20px 40px 10px 30px;
@@ -94,15 +94,18 @@ export const TextInput = styled.input.attrs({
 	::-webkit-input-placeholder {
 		/* Edge */
 		font-weight: 300;
+		color: ${({ isError }) => (isError ? '#f00' : '#222')};
 	}
 
 	:-ms-input-placeholder {
 		/* Internet Explorer 10-11 */
 		font-weight: 300;
+		color: ${({ isError }) => (isError ? '#f00' : '#222')};
 	}
 
 	::placeholder {
 		font-weight: 300;
+		color: ${({ isError }) => (isError ? '#f00' : '#222')};
 	}
 `;
 
