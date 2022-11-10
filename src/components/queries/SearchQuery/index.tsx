@@ -113,6 +113,7 @@ const SearchQuery = ({
 			...validations,
 			startDate: false,
 		});
+		setCurrentSelector('dates/end');
 	};
 
 	const handleEndDateSelected = (selectedDate: Date) => {
@@ -198,6 +199,7 @@ const SearchQuery = ({
 							onlyClick
 							onClick={() => setCurrentSelector('dates/start')}
 							isError={validations.startDate}
+							isFocused={currentSelector === 'dates/start'}
 						/>
 						<SearchQueryInput
 							ref={dateEndInputRef}
@@ -215,9 +217,10 @@ const SearchQuery = ({
 							}}
 							label={texts.labelEndDate}
 							placeholder={texts.placeholderDate}
-							onClick={() => setCurrentSelector('dates/end')}
+							onClick={() => setCurrentSelector('dates/start')}
 							onlyClick
 							isError={validations.endDate}
+							isFocused={currentSelector === 'dates/end'}
 						/>
 					</>
 				)}

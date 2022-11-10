@@ -8,6 +8,7 @@ export type SearchQueryInputPropsType = {
 	onlyClick?: boolean;
 	onClick?: React.MouseEventHandler<HTMLDivElement>;
 	isError?: boolean;
+	isFocused?: boolean;
 };
 
 export type InputContainerType = {

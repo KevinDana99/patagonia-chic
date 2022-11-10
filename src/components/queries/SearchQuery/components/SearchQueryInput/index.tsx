@@ -1,4 +1,4 @@
-import React, { ForwardedRef, useState } from 'react';
+import React, { ForwardedRef, useEffect, useState } from 'react';
 import { Container, Label, TextInput, CloseIcon } from './styled';
 import { SearchQueryInputPropsType } from './types';
 
@@ -13,11 +13,16 @@ const SearchQueryInput = (
 		onlyClick = true,
 		onClick,
 		isError = false,
+		isFocused: isFocusedProp = false,
 	}: SearchQueryInputPropsType,
 	ref: ForwardedRef<HTMLInputElement>
 ) => {
-	const [isFocused, setIsFocused] = useState(false);
+	const [isFocused, setIsFocused] = useState(isFocusedProp);
 	const [isHovered, setIsHovered] = useState(false);
+
+	useEffect(() => {
+		setIsFocused(isFocusedProp);
+	}, [isFocusedProp]);
 
 	const handleFocusChange = (isFocused: boolean) => {
 		onFocusChange?.(isFocused);

@@ -35,7 +35,7 @@ export const Container = styled.div<InputContainerType>`
 
 	&:hover::before,
 	&:hover::after,
-	&:hover + &::before {
+	&:hover + ::before {
 		visibility: hidden;
 	}
 
