@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useOutsideClick } from '../../../hooks/useOutsideClick';
+import moment from 'moment';
 
 import {
 	SearchQueryContainer,
@@ -8,7 +9,11 @@ import {
 	ButtonSearch,
 	SearchIcon,
 } from './styled';
-import { SearchQueryPropsType, QuerySelectedDataType } from './types';
+import {
+	SearchQueryPropsType,
+	QuerySelectedDataType,
+	CurrentSelectorStateType,
+} from './types';
 import SearchQueryInput from './components/SearchQueryInput';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import SearchList from '../../lists/SearchList';
@@ -21,6 +26,7 @@ const SearchQuery = ({
 	onQuerySubmit,
 	showLocations = true,
 	texts,
+	locale = 'es',
 }: SearchQueryPropsType) => {
 	const [querySelectedData, setQuerySelectedData] =
 		useState<QuerySelectedDataType>({
@@ -29,11 +35,17 @@ const SearchQuery = ({
 			endDate: null,
 		});
 
-	const [showLocationsListContainer, setShowLocationsListContainer] =
-		useState(false);
+	moment.locale(locale);
+
+	const [currentSelector, setCurrentSelector] =
+		useState<CurrentSelectorStateType>('none');
 
 	const locationInputRef = useRef<HTMLInputElement>(null);
 	const locationListContainerRef = useRef(null);
+
+	const dateStartInputRef = useRef<HTMLInputElement>(null);
+	const dateEndInputRef = useRef<HTMLInputElement>(null);
+	const DatesRangePickerContainerRef = useRef(null);
 
 	const [locationSearchText, setLocationSearchText] = useState('');
 	const [locationShowFullList, setLocationShowFullList] = useState(false);
@@ -43,7 +55,7 @@ const SearchQuery = ({
 
 	useOutsideClick([locationInputRef, locationListContainerRef], () => {
 		if (!isTablet || !isMobile) {
-			setShowLocationsListContainer(false);
+			setCurrentSelector('none');
 			if (locationSearchText.length === 0) {
 				setQuerySelectedData({
 					...querySelectedData,
@@ -54,6 +66,13 @@ const SearchQuery = ({
 		}
 	});
 
+	useOutsideClick(
+		[DatesRangePickerContainerRef, dateStartInputRef, dateEndInputRef],
+		() => {
+			setCurrentSelector('none');
+		}
+	);
+
 	const handleLocationSelect = (selectedItemId: string) => {
 		const selectedLocationItem = locationsList.find(
 			(item) => item.id === selectedItemId
@@ -62,7 +81,8 @@ const SearchQuery = ({
 			...querySelectedData,
 			location: selectedLocationItem ?? null,
 		});
-		setShowLocationsListContainer(false);
+		setCurrentSelector(!!querySelectedData.startDate ? 'none' : 'dates/start');
+
 		locationInputRef?.current?.blur();
 		setLocationSearchText(selectedLocationItem?.name ?? '');
 		setLocationShowFullList(true);
@@ -71,6 +91,21 @@ const SearchQuery = ({
 	const handleLocationInputChange = (newText: string) => {
 		setLocationSearchText(newText);
 		setLocationShowFullList(false);
+	};
+
+	const handleStartDateSelected = (selectedDate: Date) => {
+		setQuerySelectedData({
+			...querySelectedData,
+			startDate: selectedDate,
+		});
+	};
+
+	const handleEndDateSelected = (selectedDate: Date) => {
+		setQuerySelectedData({
+			...querySelectedData,
+			endDate: selectedDate,
+		});
+		setCurrentSelector('none');
 	};
 
 	return (
@@ -90,21 +125,44 @@ const SearchQuery = ({
 							})
 						}
 						onFocusChange={(isFocused) =>
-							isFocused && setShowLocationsListContainer(true)
+							isFocused && setCurrentSelector('location')
 						}
 						onlyClick={isTablet}
-						onClick={() => isTablet && setShowLocationsListContainer(true)}
+						onClick={() => isTablet && setCurrentSelector('location')}
 					/>
 				)}
 				{!isMobile && (
 					<>
 						<SearchQueryInput
+							ref={dateStartInputRef}
+							inputTextValue={
+								querySelectedData.startDate
+									? moment(querySelectedData.startDate).format('MMMM, DD')
+									: ''
+							}
 							label={texts.labelStartDate}
+							onClearFieldClicked={() => {
+								setQuerySelectedData({
+									...querySelectedData,
+									startDate: null,
+									endDate: null,
+								});
+							}}
 							placeholder={texts.placeholderDate}
+							onlyClick
+							onClick={() => setCurrentSelector('dates/start')}
 						/>
 						<SearchQueryInput
+							ref={dateEndInputRef}
+							inputTextValue={
+								querySelectedData.endDate
+									? moment(querySelectedData.endDate).format('MMMM, DD')
+									: ''
+							}
 							label={texts.labelEndDate}
 							placeholder={texts.placeholderDate}
+							onClick={() => setCurrentSelector('dates/end')}
+							onlyClick
 						/>
 					</>
 				)}
@@ -121,9 +179,8 @@ const SearchQuery = ({
 
 			<QuerySelectors
 				renderAsModal={isTablet}
-				visible={showLocationsListContainer}
-				closeAction={() => setShowLocationsListContainer(false)}
-				currentSelector="dates"
+				closeAction={() => setCurrentSelector('none')}
+				currentSelector={currentSelector}
 			>
 				<QuerySelectors.Location ref={locationListContainerRef}>
 					<SearchList
@@ -142,8 +199,13 @@ const SearchQuery = ({
 						emptyStateText="No encontramos este destino, pero te recomendamos..."
 					/>
 				</QuerySelectors.Location>
-				<QuerySelectors.Dates>
-					<Calendar doubleCalendar={!isTablet} range />
+				<QuerySelectors.Dates ref={DatesRangePickerContainerRef}>
+					<Calendar
+						doubleCalendar={!isTablet}
+						range
+						onRangeStartDateSelected={handleStartDateSelected}
+						onRangeEndDateSelected={handleEndDateSelected}
+					/>
 				</QuerySelectors.Dates>
 			</QuerySelectors>
 		</SearchQueryContainer>

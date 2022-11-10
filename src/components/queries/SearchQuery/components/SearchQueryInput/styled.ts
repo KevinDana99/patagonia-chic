@@ -17,6 +17,7 @@ export const Container = styled.div<InputContainerType>`
 	${({ isFocused }) =>
 		isFocused ? `box-shadow: ${selectedShadow}; z-index: 5;` : ''};
 	cursor: ${({ onlyClick }) => (onlyClick ? 'pointer' : 'text')};
+	user-select: none;
 
 	&:hover {
 		background-color: #fff;

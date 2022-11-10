@@ -31,6 +31,7 @@ const SearchQueryInput = (
 
 	return (
 		<Container
+			ref={ref}
 			isFocused={isFocused}
 			onMouseOver={() => setIsHovered(true)}
 			onMouseOut={() => setIsHovered(false)}

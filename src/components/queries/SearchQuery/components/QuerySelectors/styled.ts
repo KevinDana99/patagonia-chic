@@ -32,7 +32,7 @@ export const PlacesListContainer = styled.div`
 export const DatesContainer = styled.div`
 	position: absolute;
 	width: 100%;
-	border-radius: 30px;
+	border-radius: 50px;
 	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
 	overflow: hidden;
 	top: 75px;

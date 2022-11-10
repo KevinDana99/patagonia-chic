@@ -61,8 +61,6 @@ const SearchList = ({
 
 	const inputSearchRef = useRef<HTMLInputElement>(null);
 
-	console.log('inputSearchRef.current', inputSearchRef.current);
-
 	useEffect(() => {
 		if (focusOnRender && inputSearchRef.current) {
 			inputSearchRef.current.focus();

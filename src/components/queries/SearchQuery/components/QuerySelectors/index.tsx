@@ -19,7 +19,6 @@ const QuerySelectorsContext = createContext<QuerySelectorsContextType>(
 );
 
 export default function QuerySelectors({
-	visible,
 	closeAction,
 	currentSelector: currentSelectorProp = 'none',
 	renderAsModal: renderAsModalProp,
@@ -32,6 +31,10 @@ export default function QuerySelectors({
 		setRenderAsModal(renderAsModalProp);
 	}, [renderAsModalProp]);
 
+	useEffect(() => {
+		setCurrentSelector(currentSelectorProp);
+	}, [currentSelectorProp]);
+
 	return (
 		<QuerySelectorsContext.Provider
 			value={{
@@ -41,7 +44,7 @@ export default function QuerySelectors({
 		>
 			{renderAsModal ? (
 				<Modal
-					visible={visible}
+					visible={currentSelector !== 'none'}
 					closeAction={closeAction}
 					closeOnTouchOutside
 					animated
@@ -49,7 +52,7 @@ export default function QuerySelectors({
 					{children}
 				</Modal>
 			) : (
-				visible && children
+				currentSelector !== 'none' && children
 			)}
 		</QuerySelectorsContext.Provider>
 	);

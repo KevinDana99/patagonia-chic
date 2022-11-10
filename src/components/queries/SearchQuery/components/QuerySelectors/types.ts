@@ -1,11 +1,5 @@
 import React from 'react';
-
-export type CurrentSelectorStateType =
-	| 'none'
-	| 'location'
-	| 'dates'
-	| 'dates/start'
-	| 'dates/end';
+import { CurrentSelectorStateType } from '../../types';
 
 export type QuerySelectorsContextType = {
 	currentSelector: CurrentSelectorStateType;
@@ -13,7 +7,6 @@ export type QuerySelectorsContextType = {
 };
 
 export type QuerySelectorsPropsType = {
-	visible: boolean;
 	closeAction: () => void;
 	currentSelector: CurrentSelectorStateType;
 	renderAsModal: boolean;
