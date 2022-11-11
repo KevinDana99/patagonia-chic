@@ -1,6 +1,7 @@
 export type SelectedRangeType = null | [Date, null] | [Date, Date];
+export type CalendarWidthType = number | `${number}${'px' | '%'}`;
 
-export type CalendarType = {
+export type CalendarPropsType = {
 	onDateSelected?: (date: Date) => void;
 	range?: boolean;
 	doubleCalendar?: boolean;
@@ -15,13 +16,14 @@ export type CalendarType = {
 	availableDates?: Date[];
 	minDate?: Date;
 	maxDate?: Date;
-	calendarWidth?: number;
+	calendarWidth?: CalendarWidthType;
 	texts?: {
 		availableReference?: string;
 	};
 	value?: SelectedRangeType;
 	defaultValue?: Date | Date[];
 	returnValue?: 'range' | 'start' | 'end';
+	calendarMargin: number;
 };
 
 export type CalendarStyleType = {
@@ -29,4 +31,7 @@ export type CalendarStyleType = {
 	shadow?: boolean;
 	highlightToday: boolean;
 	calendarWidth: number;
+	width: string;
+	tileHeight: number;
+	calendarMargin: number;
 };

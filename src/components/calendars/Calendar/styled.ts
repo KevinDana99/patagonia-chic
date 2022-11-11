@@ -3,7 +3,7 @@ import { size } from '../../../constants/devicesSizes';
 import { CalendarStyleType } from './types';
 
 export const Container = styled.div<CalendarStyleType>`
-	width: min-content;
+	width: ${({ width }) => width};
 	box-shadow: ${({ shadow }) =>
 		shadow ? '0px 2px 15px rgba(0, 0, 0, 0.15)' : 'none'};
 
@@ -19,6 +19,14 @@ export const Container = styled.div<CalendarStyleType>`
 	}
 	.react-calendar--doubleView {
 		width: ${({ calendarWidth }) => calendarWidth * 2}px;
+	}
+
+	button.react-calendar__tile {
+		height: ${({ tileHeight }) => tileHeight}px !important;
+	}
+
+	.react-calendar__month-view {
+		margin: 0 ${({ calendarMargin }) => calendarMargin}px !important;
 	}
 
 	${({ range }) =>
