@@ -4,10 +4,11 @@ import { CalendarWidthType } from '../types';
 export const useCalendarWidth = (
 	calendarWidthProp: CalendarWidthType,
 	calendarRef: React.RefObject<HTMLDivElement>,
-	margin: number,
 	doubleCalendar?: boolean
 ) => {
 	const { width } = useDimensions(calendarRef);
+
+	const doubleMultiplier = doubleCalendar ? 2 : 1;
 
 	let containerWidth = 'min-content';
 	let calendarWidth = parseFloat(calendarWidthProp as string);
@@ -16,10 +17,10 @@ export const useCalendarWidth = (
 		calendarWidthProp.includes('%')
 	) {
 		containerWidth = calendarWidthProp;
-		calendarWidth = width / (doubleCalendar ? 2 : 1);
+		calendarWidth = width / doubleMultiplier;
 	}
 
-	const tileHeight = (calendarWidth - margin * 2) / 7;
+	const tileHeight = calendarWidth / 7;
 
 	return { containerWidth, calendarWidth, tileHeight };
 };

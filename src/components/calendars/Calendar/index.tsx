@@ -31,11 +31,11 @@ const Calendar = ({
 	locale = 'es',
 	selectedRange = null,
 	texts,
-	calendarWidth: calendarWidthProp = '100%',
+	calendarWidth: calendarWidthProp = 300,
 	value,
 	defaultValue,
 	returnValue = 'start',
-	calendarMargin = 30,
+	doubleCalendarSpaceBetween = 20,
 }: CalendarPropsType) => {
 	const [selectedDates, setSelectedDates] = useState(selectedRange);
 	const [prevAndNextUnavailableDate, setPrevAndNextUnavailableDate] = useState<
@@ -58,7 +58,6 @@ const Calendar = ({
 	const { calendarWidth, containerWidth, tileHeight } = useCalendarWidth(
 		calendarWidthProp,
 		calendarRef,
-		calendarMargin,
 		doubleCalendar
 	);
 
@@ -74,7 +73,7 @@ const Calendar = ({
 			width={containerWidth}
 			tileHeight={tileHeight}
 			calendarWidth={calendarWidth}
-			calendarMargin={calendarMargin}
+			doubleCalendarSpaceBetween={doubleCalendarSpaceBetween}
 			highlightToday={highlightToday}
 			range={range}
 			shadow={shadow}

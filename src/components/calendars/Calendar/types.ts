@@ -23,7 +23,7 @@ export type CalendarPropsType = {
 	value?: SelectedRangeType;
 	defaultValue?: Date | Date[];
 	returnValue?: 'range' | 'start' | 'end';
-	calendarMargin: number;
+	doubleCalendarSpaceBetween: number;
 };
 
 export type CalendarStyleType = {
@@ -33,5 +33,5 @@ export type CalendarStyleType = {
 	calendarWidth: number;
 	width: string;
 	tileHeight: number;
-	calendarMargin: number;
+	doubleCalendarSpaceBetween: number;
 };

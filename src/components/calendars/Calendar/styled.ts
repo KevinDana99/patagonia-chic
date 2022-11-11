@@ -17,16 +17,23 @@ export const Container = styled.div<CalendarStyleType>`
 
 		box-sizing: border-box;
 	}
-	.react-calendar--doubleView {
-		width: ${({ calendarWidth }) => calendarWidth * 2}px;
+	.react-calendar--doubleView,
+	.react-calendar--doubleView .react-calendar__viewContainer {
+		width: ${({ calendarWidth, doubleCalendarSpaceBetween }) =>
+			calendarWidth * 2 + doubleCalendarSpaceBetween}px;
+	}
+
+	.react-calendar--doubleView .react-calendar__viewContainer {
+		justify-content: space-between;
+		box-sizing: border-box;
 	}
 
 	button.react-calendar__tile {
 		height: ${({ tileHeight }) => tileHeight}px !important;
 	}
 
-	.react-calendar__month-view {
-		margin: 0 ${({ calendarMargin }) => calendarMargin}px !important;
+	.react-calendar--doubleView .react-calendar__month-view {
+		width: ${({ calendarWidth }) => calendarWidth}px;
 	}
 
 	${({ range }) =>
@@ -35,7 +42,7 @@ export const Container = styled.div<CalendarStyleType>`
 
 					.react-calendar__tile--rangeEnd, .react-calendar__tile--hoverEnd {
 						background: #1087ff;
-						border-radius: 0 28px 28px 0;
+						border-radius: 0 200px 200px 0;
 						background: #1087ff;
 						color: #fff !important;
 					}
@@ -44,7 +51,7 @@ export const Container = styled.div<CalendarStyleType>`
 						background: rgb(235,244,248);
 						background: linear-gradient(90deg, rgba(235,244,248,1) 0%, rgba(235,244,248,0) 25%);
 						border: 2px solid #1079e3;
-						border-radius: 0 28px 28px 0 !important;
+						border-radius: 0 200px 200px 0 !important;
 						border-left: 2px solid #ebf4f8 !important;
 						color: #000 !important;
 					}
@@ -58,14 +65,14 @@ export const Container = styled.div<CalendarStyleType>`
 						background: rgb(235,244,248);
 						background: linear-gradient(-90deg, rgba(235,244,248,1) 0%, rgba(235,244,248,0) 25%);
 						border: 2px solid #1087ff;
-						border-radius: 28px 0 0 28px !important;
+						border-radius: 200px 0 0 200px !important;
 						border-right: 2px solid #ebf4f8 !important;
 						color: auto !important;
 					}
 
 					.react-calendar__tile--rangeStart {
 						background: #1087ff;
-						border-radius: 28px 0 0 28px;
+						border-radius: 200px 0 0 200px;
 						color: #fff !important;
 					}
 
@@ -86,7 +93,7 @@ export const Container = styled.div<CalendarStyleType>`
 			}
 			.react-calendar__tile--rangeStart {
 				background: #1087ff;
-				border-radius: 28px;
+				border-radius: 200px;
 				background: #1087ff;
 				color: #fff !important;
 			}
