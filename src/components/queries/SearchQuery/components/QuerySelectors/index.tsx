@@ -5,7 +5,11 @@ import React, {
 	useEffect,
 	useState,
 } from 'react';
-import { PlacesListContainer, DatesContainer } from './styled';
+import {
+	PlacesListContainer,
+	DatesContainer,
+	CalendarContainer,
+} from './styled';
 import {
 	QuerySelectorsPropsType,
 	LocationPropsType,
@@ -90,10 +94,13 @@ function Dates(
 	return (
 		<div ref={ref}>
 			{renderAsModal ? (
-				children
+				<CalendarContainer>{children}</CalendarContainer>
 			) : (
 				<>
-					<DatesContainer>{children}</DatesContainer>
+					<DatesContainer>
+						{' '}
+						<CalendarContainer>{children}</CalendarContainer>
+					</DatesContainer>
 				</>
 			)}
 		</div>

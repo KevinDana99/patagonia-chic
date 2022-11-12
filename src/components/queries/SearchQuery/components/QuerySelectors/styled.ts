@@ -39,4 +39,17 @@ export const DatesContainer = styled.div`
 	left: 0px;
 	background-color: #ffffff;
 	z-index: 20;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
+
+export const CalendarContainer = styled.div`
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+
+	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
+		max-width: 350px;
+	}
 `;

@@ -261,6 +261,7 @@ const SearchQuery = ({
 						range
 						onRangeStartDateSelected={handleStartDateSelected}
 						onRangeEndDateSelected={handleEndDateSelected}
+						calendarWidth="100%"
 						value={
 							querySelectedData.startDate && [
 								querySelectedData.startDate,

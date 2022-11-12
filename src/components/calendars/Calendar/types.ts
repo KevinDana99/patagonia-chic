@@ -23,7 +23,7 @@ export type CalendarPropsType = {
 	value?: SelectedRangeType;
 	defaultValue?: Date | Date[];
 	returnValue?: 'range' | 'start' | 'end';
-	doubleCalendarSpaceBetween: number;
+	doubleCalendarSpaceBetween?: number;
 };
 
 export type CalendarStyleType = {
