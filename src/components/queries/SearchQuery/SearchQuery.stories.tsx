@@ -23,11 +23,14 @@ export const SearchQuery = Template.bind({});
 SearchQuery.args = {
 	locationsList: places,
 	texts: {
-		placeholderPlace: '¿A dónde vas?',
-		labelPlace: 'Lugar',
+		placeholderLocation: '¿A dónde vas?',
+		labelLocation: 'Lugar',
 		placeholderDate: 'Seleccione fecha',
 		labelStartDate: 'Fecha de llegada',
 		labelEndDate: 'Fecha de partida',
+		modalLabelLocation: 'Lugar',
+		modalLabelStartDate: 'Llegada',
+		modalLabelEndDate: 'Partida',
 		titleSearchButton: 'Buscar Excursiones',
 		dateAvailableReference: 'disponible',
 	},

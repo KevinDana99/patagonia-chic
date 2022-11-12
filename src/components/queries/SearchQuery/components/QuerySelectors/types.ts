@@ -1,9 +1,15 @@
 import React from 'react';
-import { CurrentSelectorStateType } from '../../types';
+import {
+	CurrentSelectorStateType,
+	QuerySelectedDataType,
+	SearchQueryTexts,
+} from '../../types';
 
 export type QuerySelectorsContextType = {
 	currentSelector: CurrentSelectorStateType;
 	renderAsModal: boolean;
+	querySelectedData: QuerySelectedDataType;
+	texts: SearchQueryTexts;
 };
 
 export type QuerySelectorsPropsType = {
@@ -11,6 +17,8 @@ export type QuerySelectorsPropsType = {
 	currentSelector: CurrentSelectorStateType;
 	renderAsModal: boolean;
 	children?: React.ReactNode;
+	querySelectedData: QuerySelectedDataType;
+	texts: SearchQueryTexts;
 };
 
 export type LocationPropsType = {
@@ -19,4 +27,5 @@ export type LocationPropsType = {
 
 export type DatesPropsType = {
 	children?: React.ReactNode;
+	handleSubmit: () => void;
 };

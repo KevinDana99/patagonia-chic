@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { size } from '../../../../../constants/devicesSizes';
+import PrimaryButton from '../../../../buttons/PrimaryButton';
 
 export const ContainerModal = styled.div`
 	width: 100%;
@@ -52,4 +53,9 @@ export const CalendarContainer = styled.div`
 	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
 		max-width: 350px;
 	}
+`;
+
+export const ModalSubmitButton = styled(PrimaryButton)`
+	align-self: center;
+	margin: 50px auto 30px;
 `;

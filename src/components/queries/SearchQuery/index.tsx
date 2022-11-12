@@ -88,7 +88,9 @@ const SearchQuery = ({
 			...querySelectedData,
 			location: selectedLocationItem ?? null,
 		});
-		setCurrentSelector(!!querySelectedData.startDate ? 'none' : 'dates/start');
+		setCurrentSelector(
+			!!querySelectedData.startDate && !isMobile ? 'none' : 'dates/start'
+		);
 
 		locationInputRef?.current?.blur();
 		setLocationSearchText(selectedLocationItem?.name ?? '');
@@ -132,7 +134,7 @@ const SearchQuery = ({
 				endDate: selectedDate,
 			});
 		}
-		setCurrentSelector('none');
+		!isTablet && setCurrentSelector('none');
 		setValidations({
 			...validations,
 			endDate: false,
@@ -142,15 +144,20 @@ const SearchQuery = ({
 	const handleSubmit = () => {
 		const { location, startDate, endDate } = querySelectedData;
 
-		// validate data
-		setValidations({
-			location: !location,
-			startDate: !startDate,
-			endDate: !endDate,
-		});
-
 		if (location && startDate && endDate) {
 			onQuerySubmit(querySelectedData);
+			setCurrentSelector('none');
+		} else {
+			if (!isTablet) {
+				// validate data
+				setValidations({
+					location: !location,
+					startDate: !startDate,
+					endDate: !endDate,
+				});
+			} else {
+				setCurrentSelector('location');
+			}
 		}
 	};
 
@@ -160,8 +167,8 @@ const SearchQuery = ({
 				{showLocations && (
 					<SearchQueryInput
 						ref={locationInputRef}
-						label={texts.labelPlace}
-						placeholder={texts.placeholderPlace}
+						label={texts.labelLocation}
+						placeholder={texts.placeholderLocation}
 						inputTextValue={locationSearchText}
 						onInputTextChange={handleLocationInputChange}
 						onClearFieldClicked={() =>
@@ -237,6 +244,8 @@ const SearchQuery = ({
 				renderAsModal={isTablet}
 				closeAction={() => setCurrentSelector('none')}
 				currentSelector={currentSelector}
+				querySelectedData={querySelectedData}
+				texts={texts}
 			>
 				<QuerySelectors.Location ref={locationListContainerRef}>
 					<SearchList
@@ -250,12 +259,15 @@ const SearchQuery = ({
 							edgesItemsAddedPadding: 10,
 							horizontalPadding: isTablet && !isMobile ? 40 : 20,
 						}}
-						searchPlaceholder={texts.placeholderPlace}
+						searchPlaceholder={texts.placeholderLocation}
 						searchText={locationShowFullList ? '' : locationSearchText}
 						emptyStateText="No encontramos este destino, pero te recomendamos..."
 					/>
 				</QuerySelectors.Location>
-				<QuerySelectors.Dates ref={DatesRangePickerContainerRef}>
+				<QuerySelectors.Dates
+					ref={DatesRangePickerContainerRef}
+					handleSubmit={handleSubmit}
+				>
 					<Calendar
 						doubleCalendar={!isTablet}
 						range

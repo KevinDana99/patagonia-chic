@@ -25,11 +25,14 @@ export type SearchQueryPropsType = {
 };
 
 export type SearchQueryTexts = {
-	placeholderPlace: string;
-	labelPlace: string;
+	placeholderLocation: string;
+	labelLocation: string;
 	placeholderDate: string;
 	labelStartDate: string;
 	labelEndDate: string;
+	modalLabelLocation: string;
+	modalLabelStartDate: string;
+	modalLabelEndDate: string;
 	titleSearchButton: string;
 };
 

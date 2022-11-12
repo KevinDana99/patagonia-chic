@@ -8,7 +8,7 @@ export type PrimaryButtonType = {
 	disabled?: boolean;
 	IconComponent?: IconType;
 	className?: string;
-	theme: 'color' | 'mono';
+	theme?: 'color' | 'mono';
 	color?: string;
 };
 
