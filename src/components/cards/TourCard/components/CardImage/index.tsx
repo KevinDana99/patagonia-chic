@@ -47,25 +47,23 @@ const CardImage = ({
 				coverImage={typeof coverImage === 'string' ? coverImage : undefined}
 			>
 				{typeof coverImage !== 'string' && coverImage}
-
-				
 			</ContainerImage>
 		)}
 		{!coverImage && imageList && <Swiper imageList={exampleList} />}
 
-        {!isAvailable && date && (
-					<ContainerVector>
-						<VectorCard color={isAddedToCart ? ActiveTheme : '#1079E3'} />
-						<TextVector>
-							<TextVectorDay>
-								<Text color="white">{date?.day}</Text>
-							</TextVectorDay>
-							<TextVectorMonth>
-								<Text color="white">{date?.month}</Text>
-							</TextVectorMonth>
-						</TextVector>
-					</ContainerVector>
-				)}
+		{!isAvailable && date && (
+			<ContainerVector>
+				<VectorCard color={isAddedToCart ? ActiveTheme : '#1079E3'} />
+				<TextVector>
+					<TextVectorDay>
+						<Text color="white">{date?.day}</Text>
+					</TextVectorDay>
+					<TextVectorMonth>
+						<Text color="white">{date?.month}</Text>
+					</TextVectorMonth>
+				</TextVector>
+			</ContainerVector>
+		)}
 	</>
 );
 

@@ -6,7 +6,6 @@ import {
 	ButtonPrimaryText,
 	Icon,
 } from './styled';
-import Spinner from '../../spinners/PrimarySpinner';
 import { PrimaryButtonType } from './types';
 import Text from '../../texts/Text';
 import { PrimaryButtonLight } from './themes/styled';
@@ -26,6 +25,10 @@ const PrimaryButton = (props: PrimaryButtonType) => {
 		className,
 		theme = 'color',
 		color = '#3b3b3b',
+		textLoadingButton,
+		icon,
+		width = 200,
+		height = 48,
 	} = props;
 
 	const ButtonComponent = components[`${theme}`];
@@ -36,18 +39,18 @@ const PrimaryButton = (props: PrimaryButtonType) => {
 			onClick={onClick}
 			className={className}
 			color={color}
+			width={width}
+			height={height}
 		>
 			{!loading ? (
 				<ButtonPrimaryContent>
 					<ButtonPrimaryText>
-						{IconComponent && <Icon component={<IconComponent />} />}
+						{icon && IconComponent && <Icon component={<IconComponent />} />}
 						<Text>{title}</Text>
 					</ButtonPrimaryText>
 				</ButtonPrimaryContent>
 			) : (
-				<BoxLoading>
-					<Spinner theme="light" />
-				</BoxLoading>
+				<BoxLoading>{textLoadingButton}</BoxLoading>
 			)}
 		</ButtonComponent>
 	);

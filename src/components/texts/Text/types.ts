@@ -1,24 +1,4 @@
-export type TextWeightsType =
-	| 'ultra-light'
-	| 'medium-light'
-	| 'light'
-	| 'regular'
-	| 'medium'
-	| 'semi-bold'
-	| 'bold'
-	| 'heavy';
-
-export type FontFamilyType = 'SF Pro Text';
-
-export type StyledTextPropsType = {
-	fontFamily?: string;
-	size?: number;
-	color?: string;
-	weight?: TextWeightsType;
-	italic?: boolean;
-	center?: boolean;
-	right?: boolean;
-};
+import { TextWeightsType } from '../../../types/fontTypes';
 
 export type TextPropsType = {
 	className?: string;

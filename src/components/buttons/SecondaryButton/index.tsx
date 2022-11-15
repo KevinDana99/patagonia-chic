@@ -1,7 +1,14 @@
 import React from 'react';
-import { ButtonSecondaryStyled, SpinnerStyled, StyledText } from './styled';
+import {
+	ArrowDownIcon,
+	ArrowLeftIcon,
+	ArrowRightIcon,
+	ArrowUpIcon,
+	ButtonSecondaryStyled,
+	SpinnerStyled,
+	StyledText,
+} from './styled';
 import { SecondaryButtonType } from './types';
-import { IoChevronForwardSharp as ForwardIcon } from 'react-icons/io5';
 
 const SecondaryButton = ({
 	title,
@@ -9,8 +16,26 @@ const SecondaryButton = ({
 	onClick,
 	disabled = false,
 	className,
+	arrowIconDirection = 'right',
 }: SecondaryButtonType) => {
 	disabled = disabled || loading;
+
+	const arrowDirectionSelect = () => {
+		switch (arrowIconDirection) {
+			case 'right':
+				return <ArrowRightIcon />;
+
+			case 'left':
+				return <ArrowLeftIcon />;
+
+			case 'bottom':
+				return <ArrowDownIcon />;
+
+			case 'top':
+				return <ArrowUpIcon />;
+		}
+	};
+
 	return (
 		<ButtonSecondaryStyled
 			disabled={disabled}
@@ -18,8 +43,8 @@ const SecondaryButton = ({
 			className={className}
 		>
 			<StyledText>{title}</StyledText>
-
-			{loading ? <SpinnerStyled size={17} /> : <ForwardIcon />}
+			{!loading && arrowDirectionSelect()}
+			{loading && <SpinnerStyled size={17} />}
 		</ButtonSecondaryStyled>
 	);
 };

@@ -24,7 +24,7 @@ const Swiper = ({ imageList }: SwiperType) => {
 	const navigationNextRef = React.useRef(null);
 
 	const paginationOptions: PaginationOptions = {
-		dynamicMainBullets: 4,
+		dynamicMainBullets: 3,
 		dynamicBullets: true,
 	};
 
