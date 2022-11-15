@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { deviceSize } from '../../../constants/devicesSizes';
 import {
 	BoxHeaderType,
 	BoxModalTextType,
@@ -33,7 +34,7 @@ export const BoxModal = styled.div<BoxModalType>`
 `;
 
 export const Container = styled.div<ModalContainerType>`
-	width: 100%;
+	width: 80%;
 	min-width: 350px;
 	max-width: ${(props) => (props.width ? props.width : '570px')};
 	border-radius: 12px;
@@ -46,9 +47,9 @@ export const Container = styled.div<ModalContainerType>`
 	flex-direction: column;
 	justify-content: space-between;
 
-	@media (max-width: 500px) {
+	@media (${deviceSize.mobileL}) {
 		bottom: 0;
-		max-height: 90vh;
+		width: 100%;
 		visibility: visible;
 		min-width: auto;
 		transform: ${(props) =>
@@ -71,7 +72,6 @@ export const BoxTop = styled.div`
 export const BoxScroll = styled.div`
 	overflow-y: scroll;
 	scroll-behavior: smooth;
-	min-height: 200px;
 	height: 70vh;
 	max-height: 495px;
 
@@ -86,6 +86,11 @@ export const BoxScroll = styled.div`
 	}
 	&::-webkit-scrollbar-track {
 		background: transparent;
+	}
+
+	@media (${deviceSize.mobileL}) {
+		height: 80vh;
+		max-height: 80vh;
 	}
 `;
 
