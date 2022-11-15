@@ -20,6 +20,7 @@ export const BoxModal = styled.div<BoxModalType>`
 	justify-content: center;
 	align-items: center;
 	transition: all ${({ transitionTime }) => transitionTime / 2}ms ease;
+
 	${(props) =>
 		props.animate
 			? `background-color: rgba(35, 37, 38, 0.7);

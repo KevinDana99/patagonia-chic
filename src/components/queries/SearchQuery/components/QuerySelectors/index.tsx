@@ -65,7 +65,6 @@ export default function QuerySelectors({
 					visible={currentSelector !== 'none'}
 					closeAction={closeAction}
 					closeOnTouchOutside
-					animated
 				>
 					{children}
 				</Modal>
