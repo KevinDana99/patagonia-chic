@@ -5,6 +5,7 @@ import GroupCardIcon from './GroupCardIcon';
 import RayCardIcon from './RayCardIcon';
 import { CustomIconsComponentPropsType } from './types';
 import ShipIcon from './ShipIcon';
+import CloseIcon from './CloseIcon';
 
 const icons = {
 	'check-circle': (props: CustomIconsComponentPropsType) => (
@@ -20,6 +21,7 @@ const icons = {
 		<RayCardIcon {...props} />
 	),
 	ship: (props: CustomIconsComponentPropsType) => <ShipIcon {...props} />,
+	close: (props: CustomIconsComponentPropsType) => <CloseIcon {...props} />,
 } as const;
 
 export default icons;
