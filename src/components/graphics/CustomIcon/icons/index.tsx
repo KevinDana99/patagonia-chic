@@ -4,9 +4,9 @@ import IslandParadise from './IslandParadise';
 import GroupCardIcon from './GroupCardIcon';
 import RayCardIcon from './RayCardIcon';
 import CloseIcon from './CloseIcon';
-
-import { CustomIconsComponentPropsType } from './types';
 import ShipIcon from './ShipIcon';
+import CheckIcon from './CheckIcon';
+import { CustomIconsComponentPropsType } from './types';
 
 const icons = {
 	'check-circle': (props: CustomIconsComponentPropsType) => (
@@ -25,6 +25,7 @@ const icons = {
 		<CloseIcon {...props} />
 	),
 	ship: (props: CustomIconsComponentPropsType) => <ShipIcon {...props} />,
+	check: (props: CustomIconsComponentPropsType) => <CheckIcon {...props} />,
 } as const;
 
 export default icons;

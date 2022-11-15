@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PrimaryButtonStyledType } from './types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const ButtonPrimaryStyled: any = styled.button`
+export const Container = styled.div`
+	height: 800px;
+`;
+
+export const ButtonPrimaryStyled = styled.button<PrimaryButtonStyledType>`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	box-sizing: border-box;
@@ -11,7 +15,10 @@ export const ButtonPrimaryStyled: any = styled.button`
 	display: inline-block;
 	padding: 0 16px;
 	padding-right: 17px;
-	height: 48px;
+	width: ${({ width }) =>
+		width && typeof width == 'number' ? width + 'px' : width};
+	height: ${({ height }) =>
+		height && typeof height == 'number' ? height + 'px' : height};
 	outline: none;
 	border: none;
 	background-size: 200% 200% !important;
@@ -26,30 +33,28 @@ export const ButtonPrimaryStyled: any = styled.button`
 		rgba(168, 88, 224, 0.37)
 	);
 	color: #fff;
-	width: 200px;
+
 	border-radius: 28px;
 	margin: 8px 0;
 	background-repeat: no-repeat;
 	font-weight: 600;
 	transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95),
 		background-size 800ms ease-out, background-position 800ms ease-out;
-	opacity: ${(props) => (props.disabled ? 0.75 : 1)};
-	cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+	cursor: ${(props) => (props.disabled ? 'initial' : 'pointer')};
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	box-sizing: border-box;
 	${(props) =>
-		!props.disabled
-			? `&:hover {
+		!props.disabled &&
+		`&:hover {
 		transform: perspective(1px) scale3d(1.014, 1.014, 1) translateZ(0) !important;
 		transition: background-size 800ms ease-out,
 			background-position 800ms ease-out;
 		background-size: 500% 200% !important;
 		background-position-x: 50%;
 		
-	}`
-			: `&:hover`}
+	}`}
 `;
 
 export const BoxLoading = styled.div`

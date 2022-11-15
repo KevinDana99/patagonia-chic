@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BsCheck2 } from 'react-icons/bs';
+import CustomIcon from '../../graphics/CustomIcon';
 
 export const IconDiv = styled.div`
 	width: 15px;
@@ -16,9 +16,9 @@ export const IconDiv = styled.div`
 	justify-content: center;
 `;
 
-export const CheckIcon = styled(BsCheck2)`
+export const CheckIcon = styled(CustomIcon)`
 	display: none;
-	color: #ffffff;
+	padding-top: 2px;
 `;
 
 export const StyledLabel = styled.label`
