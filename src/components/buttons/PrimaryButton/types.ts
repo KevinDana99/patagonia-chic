@@ -10,9 +10,21 @@ export type PrimaryButtonType = {
 	IconComponent?: IconType;
 	className?: string;
 	theme: 'color' | 'mono';
-	color?: StyleColorType;
+	color?: string;
+	textLoadingButton?: string;
+	icon?: boolean;
+	width?: number | string;
+	height?: number | string;
+};
+
+export type PrimaryButtonStyledType = {
+	color?: string;
+	width?: number | string;
+	height?: number | string;
 };
 
 export type PrimaryButtonLightType = {
-	color: StyleColorType;
+	color?: string;
+	width?: number | string;
+	height?: number | string;
 };
