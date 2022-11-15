@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useIsElementScrollable } from '../../../hooks/useIsElementScrollable';
 import CloseButton from '../../buttons/iconButtons/CloseButton';
 import SecondaryButton from '../../buttons/SecondaryButton';
 import Text from '../../texts/Text';
@@ -37,6 +38,9 @@ const PrimaryModal = ({
 		visible: visibleProp,
 		animate: false,
 	});
+
+	const scrollBoxRef = useRef(null);
+	const isContentScrollable = useIsElementScrollable(scrollBoxRef);
 
 	const close = useCallback(() => {
 		setState({ animate: false, visible: true });
@@ -87,7 +91,7 @@ const PrimaryModal = ({
 						)}
 					</BoxTop>
 
-					<BoxScroll>
+					<BoxScroll ref={scrollBoxRef}>
 						{coverImage && (
 							<BoxHeader coverImage={coverImage}>
 								{headerText && (
@@ -108,7 +112,7 @@ const PrimaryModal = ({
 							<BoxChildren>
 								{children}
 
-								<BoxDownModal />
+								{isContentScrollable && <BoxDownModal />}
 							</BoxChildren>
 						)}
 					</BoxScroll>

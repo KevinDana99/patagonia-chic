@@ -157,4 +157,5 @@ export const BoxDownModal = styled.div`
 	right: 0.05%;
 	border-radius: 0em 0em 12px 12px;
 	overflow: hidden;
+	pointer-events: none;
 `;
