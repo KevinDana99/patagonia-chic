@@ -1,10 +1,11 @@
-import React from 'react';
 import { IconType } from 'react-icons';
+import { onClickButtonType } from '../../../types/eventTypes';
+import { StyleColorType } from '../../../types/styleTypes';
 
 export type PrimaryButtonType = {
 	title: string;
 	loading?: boolean;
-	onClick?: React.MouseEventHandler<HTMLButtonElement>;
+	onClick?: onClickButtonType;
 	disabled?: boolean;
 	IconComponent?: IconType;
 	className?: string;
