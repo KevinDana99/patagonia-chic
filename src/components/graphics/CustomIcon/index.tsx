@@ -1,5 +1,6 @@
 import React from 'react';
 import icons from './icons';
+import { Container } from './styled';
 import { CustomIconType } from './types';
 
 const CustomIcon = ({
@@ -11,9 +12,9 @@ const CustomIcon = ({
 	const SelectedIcon = icons[`${name}`];
 
 	return (
-		<div className={className}>
+		<Container className={className}>
 			<SelectedIcon size={size} color={color} />
-		</div>
+		</Container>
 	);
 };
 

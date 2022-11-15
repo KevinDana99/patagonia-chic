@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import CloseButton from '../../buttons/iconButtons/CloseButton';
 import SecondaryButton from '../../buttons/SecondaryButton';
 import Text from '../../texts/Text';
 import {
@@ -56,11 +57,6 @@ const PrimaryModal = ({
 		(visibleProp ? open : close)();
 	}, [close, open, visibleProp]);
 
-	const touchOutside = () => {
-		closeOnTouchOutside && closeAction && closeAction();
-		closeOnTouchOutside && close();
-	};
-
 	return (
 		<>
 			{renderOpenButton && (
@@ -71,7 +67,7 @@ const PrimaryModal = ({
 				visible={state.visible}
 				transitionTime={ANIMATION_TIME_MILLIS}
 				animate={state.animate}
-				onClick={touchOutside}
+				onClick={closeOnTouchOutside ? closeAction ?? close : undefined}
 			>
 				<Container
 					width={width}
@@ -85,11 +81,7 @@ const PrimaryModal = ({
 						<BoxTitle>
 							<Text size={17}>{title}</Text>
 						</BoxTitle>
-						{!disableClose && (
-							<ButtonClose>
-								{<CloseIcon onClick={closeAction ? touchOutside : close} />}
-							</ButtonClose>
-						)}
+						{!disableClose && <CloseButton onClick={closeAction ?? close} />}
 					</BoxTop>
 
 					<BoxScroll>

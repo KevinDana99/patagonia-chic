@@ -61,7 +61,7 @@ export const Container = styled.div<ModalContainerType>`
 
 export const BoxTop = styled.div`
 	position: sticky;
-	padding: 15px;
+	padding: 15px 22px;
 	top: 0;
 	bottom: 0px;
 	box-sizing: border-box;

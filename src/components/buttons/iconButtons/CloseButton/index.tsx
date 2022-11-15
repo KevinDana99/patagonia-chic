@@ -14,7 +14,7 @@ const CloseButton = ({ onClick }: CloseButtonPropsType) => {
 		>
 			<CustomIcon
 				name="close"
-				size={19}
+				size={17}
 				color={hover ? '#808080' : '#bfbfbf'}
 			/>
 		</Container>
