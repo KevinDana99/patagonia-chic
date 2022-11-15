@@ -5,7 +5,6 @@ import {
 	BoxModalType,
 	ModalContainerType,
 } from './types';
-import { IoCloseOutline as CloseI } from 'react-icons/io5';
 
 export const BoxModal = styled.div<BoxModalType>`
 	position: fixed;
@@ -60,10 +59,6 @@ export const Container = styled.div<ModalContainerType>`
 `;
 
 export const BoxTop = styled.div`
-	position: sticky;
-	padding: 15px 22px;
-	top: 0;
-	bottom: 0px;
 	box-sizing: border-box;
 	border-bottom: 1px solid #d4d4d4;
 	width: 100%;
@@ -71,7 +66,6 @@ export const BoxTop = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	color: #444;
 `;
 
 export const BoxScroll = styled.div`
@@ -95,26 +89,22 @@ export const BoxScroll = styled.div`
 `;
 
 export const BoxTitle = styled.div`
-	min-height: 30px;
-	position: relative;
-	font-size: 17px;
-	display: flex;
-	justify-content: center;
+	box-sizing: border-box;
+	padding-left: 24px;
+	flex: 1;
+	justify-content: flex-start;
 	align-items: center;
-`;
-export const ButtonClose = styled.div`
-	font-size: 1.5rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	filter: contrast(50%);
-	cursor: pointer;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 `;
 
-export const CloseIcon = styled(CloseI)`
+export const ButtonCloseContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 100%;
+	width: 60px;
 `;
 
 export const BoxHeader = styled.div<BoxHeaderType>`

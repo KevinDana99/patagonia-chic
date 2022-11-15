@@ -6,12 +6,11 @@ import {
 	BoxModal,
 	BoxTitle,
 	BoxTop,
-	ButtonClose,
+	ButtonCloseContainer,
 	Container,
 	BoxHeader,
 	BoxChildren,
 	BoxScroll,
-	CloseIcon,
 	BoxHeaderText,
 	BoxDownModal,
 } from './styled';
@@ -81,7 +80,11 @@ const PrimaryModal = ({
 						<BoxTitle>
 							<Text size={17}>{title}</Text>
 						</BoxTitle>
-						{!disableClose && <CloseButton onClick={closeAction ?? close} />}
+						{!disableClose && (
+							<ButtonCloseContainer>
+								<CloseButton onClick={closeAction ?? close} />
+							</ButtonCloseContainer>
+						)}
 					</BoxTop>
 
 					<BoxScroll>
