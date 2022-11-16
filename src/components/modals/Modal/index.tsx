@@ -3,6 +3,7 @@ import { useIsElementScrollable } from '../../../hooks/useIsElementScrollable';
 import CloseButton from '../../buttons/iconButtons/CloseButton';
 import SecondaryButton from '../../buttons/SecondaryButton';
 import Text from '../../texts/Text';
+import { useShowOverflowGradient } from './hooks/useShowOverflowGradient';
 import {
 	BoxModal,
 	BoxTitle,
@@ -40,7 +41,8 @@ const PrimaryModal = ({
 	});
 
 	const scrollBoxRef = useRef(null);
-	const isContentScrollable = useIsElementScrollable(scrollBoxRef);
+	const [showOverflowGradient, setScrollTop] =
+		useShowOverflowGradient(scrollBoxRef);
 
 	const close = useCallback(() => {
 		setState({ animate: false, visible: true });
@@ -91,7 +93,7 @@ const PrimaryModal = ({
 						)}
 					</BoxTop>
 
-					<BoxScroll ref={scrollBoxRef}>
+					<BoxScroll ref={scrollBoxRef} onScroll={setScrollTop}>
 						{coverImage && (
 							<BoxHeader coverImage={coverImage}>
 								{headerText && (
@@ -112,7 +114,7 @@ const PrimaryModal = ({
 							<BoxChildren>
 								{children}
 
-								{isContentScrollable && <BoxDownModal />}
+								{showOverflowGradient && <BoxDownModal />}
 							</BoxChildren>
 						)}
 					</BoxScroll>
