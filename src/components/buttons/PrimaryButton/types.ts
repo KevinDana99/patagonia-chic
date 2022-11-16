@@ -10,8 +10,14 @@ export type PrimaryButtonType = {
 	className?: string;
 	theme?: 'color' | 'mono';
 	color?: string;
+	invertGradient?: boolean;
 };
 
 export type PrimaryButtonLightType = {
 	color: string;
+};
+
+export type ButtonPrimaryStyledPropsType = {
+	disabled: boolean;
+	invertGradient: boolean;
 };

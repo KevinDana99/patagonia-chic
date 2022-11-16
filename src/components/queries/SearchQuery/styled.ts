@@ -20,6 +20,7 @@ export const SearchQueryBarContainer = styled.div`
 	border-radius: 50px;
 	background-color: #fff;
 	box-sizing: border-box;
+	border: 1px solid #ddd;
 
 	&:hover {
 		background-color: #f8f8f8;

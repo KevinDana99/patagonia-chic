@@ -93,19 +93,22 @@ export const TextInput = styled.input.attrs({
 
 	::-webkit-input-placeholder {
 		/* Edge */
-		font-weight: 300;
-		color: ${({ isError }) => (isError ? '#f00' : '#222')};
+		font-weight: 200;
+		color: ${({ isError }) => (isError ? '#f00' : '#777')};
+		font-size: 14px;
 	}
 
 	:-ms-input-placeholder {
 		/* Internet Explorer 10-11 */
-		font-weight: 300;
-		color: ${({ isError }) => (isError ? '#f00' : '#222')};
+		font-weight: 200;
+		color: ${({ isError }) => (isError ? '#f00' : '#777')};
+		font-size: 14px;
 	}
 
 	::placeholder {
-		font-weight: 300;
-		color: ${({ isError }) => (isError ? '#f00' : '#222')};
+		font-weight: 200;
+		color: ${({ isError }) => (isError ? '#f00' : '#777')};
+		font-size: 14px;
 	}
 `;
 
