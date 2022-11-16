@@ -14,6 +14,7 @@ import { PaginationOptions } from 'swiper/types';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { deviceSize } from '../../../constants/devicesSizes';
+import { SwiperSlide } from 'swiper/react';
 
 const Swiper = ({ imageList }: SwiperType) => {
 	const [swiperCurrentIndex, setSwiperCurrentIndex] = useState(0);
@@ -65,9 +66,9 @@ const Swiper = ({ imageList }: SwiperType) => {
 				}}
 			>
 				{imageList.map((image, key) => (
-					<Slide key={key}>
+					<SwiperSlide key={key}>
 						<Image
-							data-src={image.uri}
+							src={image.uri}
 							className="swiper-lazy"
 							alt={image.alt}
 							onError={(e) =>
@@ -75,7 +76,7 @@ const Swiper = ({ imageList }: SwiperType) => {
 							}
 						/>
 						<div className="swiper-lazy-preloader swiper-lazy-preloader-blue"></div>
-					</Slide>
+					</SwiperSlide>
 				))}
 			</SwiperContainer>
 			{!isTablet && !isMobile && (
