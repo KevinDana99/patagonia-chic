@@ -72,7 +72,7 @@ export const BoxTop = styled.div`
 export const BoxScroll = styled.div`
 	overflow-y: scroll;
 	scroll-behavior: smooth;
-	max-height: 495px;
+	max-height: 75vh;
 
 	&::-webkit-scrollbar {
 		width: 9px;
