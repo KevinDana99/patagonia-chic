@@ -3,7 +3,6 @@ import { OptionalItemListState } from './OptionalListItem/types';
 
 export type OptionalsListType = {
 	list: Array<OptionalsListItemData>;
-	optionalType: 'checkbox' | 'radio';
 	onSelectedChange: (list: OptionalItemListState) => void;
 	texts: OptionalsListTexts;
 };

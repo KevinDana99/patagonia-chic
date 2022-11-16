@@ -20,10 +20,10 @@ const icons = {
 	'ray-circle': (props: CustomIconsComponentPropsType) => (
 		<RayCardIcon {...props} />
 	),
-	ship: (props: CustomIconsComponentPropsType) => <ShipIcon {...props} />,
 	'close-icon': (props: CustomIconsComponentPropsType) => (
 		<CloseIcon {...props} />
 	),
+	ship: (props: CustomIconsComponentPropsType) => <ShipIcon {...props} />,
 } as const;
 
 export default icons;

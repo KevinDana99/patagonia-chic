@@ -1,7 +1,7 @@
 import React from 'react';
 import { CustomStyleIconType } from '../types';
 
-const IslandParadise = ({ color, size }: CustomStyleIconType) => {
+const IslandParadise = ({ size }: CustomStyleIconType) => {
 	return (
 		<svg
 			width={size}
