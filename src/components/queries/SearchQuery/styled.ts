@@ -28,8 +28,10 @@ export const SearchQueryBarContainer = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
+	display: flex;
+	align-items: center;
 	margin-left: 10px;
-	margin-right: 10px;
+	margin-right: 8px;
 `;
 
 export const ButtonSearch = styled(PrimaryButton)`

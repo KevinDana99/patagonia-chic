@@ -20,6 +20,7 @@ export const PlacesListContainer = styled.div`
 	top: 75px;
 	left: 0px;
 	background-color: #ffffff;
+	border: 1px solid #ddd;
 	z-index: 20;
 
 	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
@@ -33,7 +34,7 @@ export const PlacesListContainer = styled.div`
 export const DatesContainer = styled.div`
 	position: absolute;
 	width: 100%;
-	border-radius: 50px;
+	border-radius: 32px;
 	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
 	overflow: hidden;
 	top: 75px;
@@ -42,6 +43,7 @@ export const DatesContainer = styled.div`
 	z-index: 20;
 	display: flex;
 	flex-direction: column;
+	border: 1px solid #ddd;
 	align-items: center;
 `;
 
