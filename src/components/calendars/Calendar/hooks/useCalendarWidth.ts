@@ -1,24 +1,30 @@
 import { useDimensions } from '../../../../hooks/useDimensions';
-import { CalendarWidthType } from '../types';
+import { CalendarContainerWidthType } from '../types';
 
 export const useCalendarWidth = (
-	calendarWidthProp: CalendarWidthType,
+	containerWidthProp: CalendarContainerWidthType,
 	calendarRef: React.RefObject<HTMLDivElement>,
+	doubleCalendarSpaceBetween: number,
 	doubleCalendar?: boolean
 ) => {
 	const { width } = useDimensions(calendarRef);
 
-	const doubleMultiplier = doubleCalendar ? 2 : 1;
+	let containerWidth =
+		containerWidthProp + (typeof containerWidthProp === 'number' ? 'px' : '');
+	const calendarSpaceBetween = doubleCalendar ? doubleCalendarSpaceBetween : 0;
+	let calendarContainerUsedWidth = parseFloat(containerWidthProp as string);
 
-	let containerWidth = 'min-content';
-	let calendarWidth = parseFloat(calendarWidthProp as string);
 	if (
-		typeof calendarWidthProp === 'string' &&
-		calendarWidthProp.includes('%')
+		typeof containerWidthProp === 'string' &&
+		containerWidthProp.includes('%')
 	) {
-		containerWidth = calendarWidthProp;
-		calendarWidth = width / doubleMultiplier;
+		containerWidth = containerWidthProp;
+		calendarContainerUsedWidth = width;
 	}
+
+	const calendarWidth =
+		(calendarContainerUsedWidth - calendarSpaceBetween) /
+		(doubleCalendar ? 2 : 1);
 
 	const tileHeight = calendarWidth / 7;
 

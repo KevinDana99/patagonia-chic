@@ -31,7 +31,7 @@ const Calendar = ({
 	locale = 'es',
 	selectedRange = null,
 	texts,
-	calendarWidth: calendarWidthProp = 300,
+	width: containerWidthProp = 300,
 	value,
 	defaultValue,
 	returnValue = 'start',
@@ -56,8 +56,9 @@ const Calendar = ({
 	});
 
 	const { calendarWidth, containerWidth, tileHeight } = useCalendarWidth(
-		calendarWidthProp,
+		containerWidthProp,
 		calendarRef,
+		doubleCalendarSpaceBetween,
 		doubleCalendar
 	);
 
@@ -78,35 +79,37 @@ const Calendar = ({
 			range={range}
 			shadow={shadow}
 		>
-			<ReactCalendar
-				navigationLabel={({ label }) => replaceMonthText(label)}
-				defaultActiveStartDate={
-					defaultActiveStartDate || getMinDateOfArray(availableDates)
-				}
-				showDoubleView={doubleCalendar}
-				nextLabel={<IoChevronForward size={15} />}
-				prevLabel={<IoChevronBack size={15} />}
-				next2Label={null}
-				prev2Label={null}
-				showNeighboringMonth={false}
-				locale={locale}
-				onClickDay={handleOnChange}
-				minDate={minDate}
-				maxDate={maxDate}
-				selectRange={range}
-				tileContent={availableDates ? TileElement : undefined}
-				tileDisabled={({ date }) =>
-					!isDateAvailable(
-						date,
-						availableDates,
-						prevAndNextUnavailableDate,
-						true
-					)
-				}
-				value={value}
-				defaultValue={defaultValue}
-				returnValue={returnValue}
-			/>
+			{!!calendarRef.current && (
+				<ReactCalendar
+					navigationLabel={({ label }) => replaceMonthText(label)}
+					defaultActiveStartDate={
+						defaultActiveStartDate || getMinDateOfArray(availableDates)
+					}
+					showDoubleView={doubleCalendar}
+					nextLabel={<IoChevronForward size={15} />}
+					prevLabel={<IoChevronBack size={15} />}
+					next2Label={null}
+					prev2Label={null}
+					showNeighboringMonth={false}
+					locale={locale}
+					onClickDay={handleOnChange}
+					minDate={minDate}
+					maxDate={maxDate}
+					selectRange={range}
+					tileContent={availableDates ? TileElement : undefined}
+					tileDisabled={({ date }) =>
+						!isDateAvailable(
+							date,
+							availableDates,
+							prevAndNextUnavailableDate,
+							true
+						)
+					}
+					value={value}
+					defaultValue={defaultValue}
+					returnValue={returnValue}
+				/>
+			)}
 			{availableDates && (
 				<AvailabilityReferenceContainer>
 					<div style={{ display: 'flex', flex: '1' }}>

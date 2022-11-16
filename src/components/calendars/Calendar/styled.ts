@@ -13,14 +13,13 @@ export const Container = styled.div<CalendarStyleType>`
 	padding: 15px 0;
 
 	.react-calendar {
-		width: ${({ calendarWidth }) => calendarWidth}px;
+		width: ${({ width }) => width};
 
 		box-sizing: border-box;
 	}
 	.react-calendar--doubleView,
 	.react-calendar--doubleView .react-calendar__viewContainer {
-		width: ${({ calendarWidth, doubleCalendarSpaceBetween }) =>
-			calendarWidth * 2 + doubleCalendarSpaceBetween}px;
+		width: ${({ width }) => width};
 	}
 
 	.react-calendar--doubleView .react-calendar__viewContainer {

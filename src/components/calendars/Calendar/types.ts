@@ -1,5 +1,5 @@
 export type SelectedRangeType = null | [Date, null] | [Date, Date];
-export type CalendarWidthType = number | `${number}${'px' | '%'}`;
+export type CalendarContainerWidthType = number | `${number}${'px' | '%'}`;
 
 export type CalendarPropsType = {
 	onDateSelected?: (date: Date) => void;
@@ -16,7 +16,7 @@ export type CalendarPropsType = {
 	availableDates?: Date[];
 	minDate?: Date;
 	maxDate?: Date;
-	calendarWidth?: CalendarWidthType;
+	width?: CalendarContainerWidthType;
 	texts?: {
 		availableReference?: string;
 	};
