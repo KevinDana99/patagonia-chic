@@ -31,7 +31,7 @@ const PrimaryButton = (props: PrimaryButtonType) => {
 		height = 48,
 	} = props;
 
-	const ButtonComponent = components[theme];
+	const ButtonComponent = components[`${theme}`];
 
 	return (
 		<ButtonComponent

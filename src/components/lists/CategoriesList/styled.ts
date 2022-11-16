@@ -5,6 +5,7 @@ import { StyledSwiperSlideType } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CategoriesListGlobalStyle: any = createGlobalStyle`
+
 .swiper-button-disabled {
   display: none;
 }

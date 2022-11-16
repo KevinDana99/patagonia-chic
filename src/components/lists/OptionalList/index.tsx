@@ -6,12 +6,7 @@ import {
 } from './OptionalListItem/types';
 import { OptionalsListType } from './types';
 
-const OptionalList = ({
-	list,
-	optionalType,
-	onSelectedChange,
-	texts,
-}: OptionalsListType) => {
+const OptionalList = ({ list, onSelectedChange, texts }: OptionalsListType) => {
 	const [listItems, setListItems] = useState<OptionalItemListState>([]);
 
 	useEffect(() => {
