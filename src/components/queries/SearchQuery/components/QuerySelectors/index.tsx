@@ -118,6 +118,7 @@ function Dates(
 						IconComponent={SearchIcon}
 						onClick={handleSubmit}
 						disabled={!location || !startDate || !endDate}
+						invertGradient={!!location && !!startDate && !!endDate}
 					/>
 				</>
 			) : (
