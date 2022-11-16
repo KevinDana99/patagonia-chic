@@ -5,9 +5,8 @@
 	"includeMatches": false,
 	"includeScore": true,
 	"useExtendedSearch": false,
-	"threshold": 0.4,
-	"location": 0,
-	"distance": 2,
+	"threshold": 0.2,
+	"ignoreLocation": true,
 	"maxPatternLength": 32,
 	"minMatchCharLength": 1,
 	"keys": ["name", "province", "keywords"]
