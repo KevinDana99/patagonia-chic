@@ -15,46 +15,26 @@ export const Container = styled.div<PrimaryCalendarStyleType>`
 	${(props) =>
 		!props.disableRange
 			? `
+				.react-calendar__tile:enabled:hover {
+					border: 2px solid #1079e3;
+					border-left: none;
+					border-radius: 0px 28px 28px 0px;
 
-.react-calendar__tile:enabled:hover {
-    border: 2px solid #1079e3;
-    border-left: none;
-    border-radius: 0px 28px 28px 0px;
-
-@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})){
-
-	border: none;
-
-}
-}
-
-
-`
+				@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})){
+					border: none;
+				}
+			}`
 			: `
-    .react-calendar__tile--hover {
-         background-color : transparent;
-
-    
-    }
-
-            
-    .react-calendar__tile--rangeStart {
-
-background: #1087ff;
-
-    }
-            
-.react-calendar__tile:enabled:hover {
-    border: 2px solid #1079e3;
-
-
-   
-}
-
-
-
-
-`}
+			.react-calendar__tile--hover {
+				background-color : transparent;			
+			}
+			.react-calendar__tile--rangeStart {
+				background: #1087ff;
+			}
+			.react-calendar__tile:enabled:hover {
+				border: 2px solid #1079e3; 
+			}
+	`}
 
 	${(prop) =>
 		prop.markCurrentDay &&

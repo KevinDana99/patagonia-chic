@@ -1,5 +1,5 @@
-import { BsCheck2 } from 'react-icons/bs';
 import styled from 'styled-components';
+import CustomIcon from '../../graphics/CustomIcon';
 
 export const IconDiv = styled.div`
 	width: 15px;
@@ -7,11 +7,13 @@ export const IconDiv = styled.div`
 	height: 15px;
 	margin: 16px 24px;
 	text-align: center;
-	display: inline-block;
+	display: flex;
 	border: 2px solid #0077b9;
 	background-color: #fff;
 	border-radius: 10px;
 	cursor: pointer;
+	justify-content: center;
+	align-items: center;
 `;
 
 export const StyledLabel = styled.label`
@@ -33,9 +35,9 @@ export const StyledLabel = styled.label`
 	}
 `;
 
-export const CheckIcon = styled(BsCheck2)`
+export const CheckIcon = styled(CustomIcon)`
 	display: none;
-	color: #ffffff;
+	padding-top: 2px;
 `;
 
 export const ContainerInput = styled.div`

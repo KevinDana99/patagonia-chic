@@ -1,9 +1,4 @@
-import {
-	IoCheckmarkCircle,
-	IoCheckmarkCircleSharp,
-	IoClose,
-	IoCloseOutline,
-} from 'react-icons/io5';
+import { IoCheckmarkCircleSharp } from 'react-icons/io5';
 import styled from 'styled-components';
 import TertiaryButton from '../../../buttons/TertiaryButton';
 import CustomIcon from '../../../graphics/CustomIcon';

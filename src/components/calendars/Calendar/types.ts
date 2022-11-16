@@ -1,3 +1,5 @@
+import { LocaleType } from '../../../types/languageTypes';
+
 export type PrimaryCalendarType = {
 	onDaySelected?: (day: Date) => void;
 	range?: boolean;
@@ -9,7 +11,7 @@ export type PrimaryCalendarType = {
 	onRangeEndDateSelected?: (day: Date[]) => void;
 	shadow?: boolean;
 	markCurrentDay?: boolean;
-	locale?: 'es' | 'en' | 'fr';
+	locale?: LocaleType;
 	selectedRange?: Array<Date>;
 };
 

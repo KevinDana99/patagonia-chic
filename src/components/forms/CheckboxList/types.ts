@@ -1,3 +1,5 @@
+import { onChangeInputType } from '../../../types/eventTypes';
+
 export type CheckboxListItemType = {
 	label: string;
 	value?: string | number;
@@ -21,5 +23,5 @@ export type CheckboxItemPropsType = {
 	name: string;
 	value: string | number;
 	label: string;
-	handleChange: React.ChangeEventHandler<HTMLInputElement>;
+	handleChange: onChangeInputType;
 };

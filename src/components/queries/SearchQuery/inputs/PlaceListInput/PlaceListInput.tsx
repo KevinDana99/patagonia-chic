@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { CloseIcon, Divider, Input, Label, OptionContent } from '../../styled';
 import { PlaceListInputType } from '../../types';
 import PlaceList from './PlaceList';
-import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
+import  useOutsideClick from '../../../../../hooks/useOutsideClick';
 import useToggle from '../../../../../hooks/useToggle';
 import { OptionContainerPlaceList } from './styled';
-import PlaceListMobile from '../../mobile/wrappers/PlaceListMobile';
-import Modal from '../../../../modals/Modal';
 import SearchList from '../../../../lists/SearchList';
 import Text from '../../../../texts/Text';
 
@@ -35,7 +33,7 @@ export const PlaceListInput = ({
 
 	useEffect(() => {
 		offToggle();
-	}, [values]);
+	}, [offToggle, values]);
 
 	return (
 		<OptionContainerPlaceList
@@ -71,7 +69,7 @@ export const PlaceListInput = ({
 						onChangeSelect={setPlaceData}
 						selectedAction={(item) => {
 							setPlaceData({ ...values, place: item });
-							closeList();
+							closeList && closeList();
 							openCalendar();
 						}}
 					/>
