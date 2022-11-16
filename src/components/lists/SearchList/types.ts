@@ -38,6 +38,7 @@ export type SearchListPropsType = {
 	loadingComponent?: JSX.Element;
 	emptyStateComponent?: JSX.Element;
 	errorComponent?: JSX.Element;
+	showItemSubtitle?: boolean;
 	configs?: SearchListConfigsType;
 };
 

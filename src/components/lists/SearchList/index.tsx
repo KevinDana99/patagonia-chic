@@ -39,6 +39,7 @@ const SearchList = ({
 	emptyStateComponent,
 	errorComponent,
 	searchPlaceholder,
+	showItemSubtitle = true,
 	configs = {},
 }: SearchListPropsType) => {
 	const {
@@ -176,18 +177,20 @@ const SearchList = ({
 														{item.name}
 													</Text>
 												</Title>
-												<BoxSubtitle>
-													<SubTitle>
-														<Text
-															size={14}
-															weight={'regular'}
-															color={'#888888'}
-														>
-															{item.category ||
-																`${item.province} - ${item.country}`}
-														</Text>
-													</SubTitle>
-												</BoxSubtitle>
+												{showItemSubtitle && (
+													<BoxSubtitle>
+														<SubTitle>
+															<Text
+																size={14}
+																weight={'regular'}
+																color={'#888888'}
+															>
+																{item.category ||
+																	`${item.province} - ${item.country}`}
+															</Text>
+														</SubTitle>
+													</BoxSubtitle>
+												)}
 											</Description>
 										</ItemList>
 									);
