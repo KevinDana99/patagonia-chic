@@ -27,6 +27,10 @@ export const InputSearch = styled.input`
 	font-size: 15px;
 	border: none;
 	outline: none;
+
+	&:placeholder-shown {
+		text-overflow: ellipsis;
+	}
 `;
 
 export const BoxItemList = styled.div`
@@ -55,6 +59,7 @@ export const ItemList = styled.div<ItemListStyleType>`
 
 export const BoxImage = styled.div`
 	width: 50px;
+	min-width: 50px;
 	height: 50px;
 	background-color: #f1f4f7;
 	border-radius: 8px;
