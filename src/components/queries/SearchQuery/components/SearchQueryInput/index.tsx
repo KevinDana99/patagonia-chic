@@ -18,7 +18,6 @@ const SearchQueryInput = (
 	ref: ForwardedRef<HTMLInputElement>
 ) => {
 	const [isFocused, setIsFocused] = useState(isFocusedProp);
-	const [isHovered, setIsHovered] = useState(false);
 
 	useEffect(() => {
 		setIsFocused(isFocusedProp);
@@ -37,16 +36,14 @@ const SearchQueryInput = (
 
 	return (
 		<Container
-			ref={ref}
+			ref={onlyClick ? ref : undefined}
 			isFocused={isFocused}
-			onMouseOver={() => setIsHovered(true)}
-			onMouseOut={() => setIsHovered(false)}
 			onlyClick={onlyClick}
 			onClick={onClick}
 		>
 			<Label>{label}</Label>
 			<TextInput
-				ref={ref}
+				ref={!onlyClick ? ref : undefined}
 				placeholder={placeholder}
 				onChange={(e) => onInputTextChange?.(e.target.value)}
 				value={inputTextValue}
@@ -55,9 +52,7 @@ const SearchQueryInput = (
 				onlyClick={onlyClick}
 				isError={isError}
 			/>
-			{inputTextValue.length > 0 && (isFocused || isHovered) && (
-				<CloseIcon onClick={handleClearClicked} />
-			)}
+			{inputTextValue.length > 0 && <CloseIcon onClick={handleClearClicked} />}
 		</Container>
 	);
 };

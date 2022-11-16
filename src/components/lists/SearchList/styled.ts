@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import CustomIcon from '../../graphics/CustomIcon';
 import { ItemListStyleType } from './types';
 
 export const Container = styled.div`
@@ -30,6 +31,23 @@ export const InputSearch = styled.input`
 
 	&:placeholder-shown {
 		text-overflow: ellipsis;
+	}
+`;
+
+export const CloseIcon = styled(CustomIcon).attrs({
+	name: 'close',
+	size: 9,
+})`
+	background-color: #e6e7e7;
+	border-radius: 100px;
+	min-height: 20px;
+	min-width: 20px;
+	color: #a9a9a9;
+	margin: 0 10px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #dbdcdc;
 	}
 `;
 

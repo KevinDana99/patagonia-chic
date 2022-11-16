@@ -8,11 +8,12 @@ const CustomIcon = ({
 	color = '#666',
 	size = 12,
 	className,
+	onClick,
 }: CustomIconType) => {
 	const SelectedIcon = icons[`${name}`];
 
 	return (
-		<Container className={className}>
+		<Container className={className} onClick={onClick}>
 			<SelectedIcon size={size} color={color} />
 		</Container>
 	);

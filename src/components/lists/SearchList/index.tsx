@@ -4,6 +4,7 @@ import {
 	BoxImage,
 	BoxItemList,
 	BoxSearch,
+	CloseIcon,
 	BoxSubtitle,
 	Container,
 	HeaderContainer,
@@ -134,6 +135,9 @@ const SearchList = ({
 										handleSearchTextChange(e.target.value);
 									}}
 								/>
+								{searchTextValue.length > 0 && (
+									<CloseIcon onClick={() => handleSearchTextChange('')} />
+								)}
 							</BoxSearch>
 						)}
 					</HeaderContainer>

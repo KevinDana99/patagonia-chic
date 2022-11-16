@@ -3,6 +3,7 @@ import { IoClose } from 'react-icons/io5';
 import fontsConstants from '../../../../../constants/fonts.json';
 import Text from '../../../../texts/Text';
 import { InputContainerType, TextInputType } from './types';
+import CustomIcon from '../../../../graphics/CustomIcon';
 
 const selectedShadow =
 	'12px 0px 15px -5px rgb(0 0 0 / 20%), -12px 0px 15px -5px rgb(0 0 0 / 20%);';
@@ -112,8 +113,10 @@ export const TextInput = styled.input.attrs({
 	}
 `;
 
-export const CloseIcon = styled(IoClose)`
-	font-size: 9;
+export const CloseIcon = styled(CustomIcon).attrs({
+	name: 'close',
+	size: 9,
+})`
 	background-color: #e6e7e7;
 	border-radius: 100px;
 	height: 20px;
@@ -123,4 +126,8 @@ export const CloseIcon = styled(IoClose)`
 	top: 22px;
 	right: 10px;
 	cursor: pointer;
+
+	&:hover {
+		background-color: #dbdcdc;
+	}
 `;
