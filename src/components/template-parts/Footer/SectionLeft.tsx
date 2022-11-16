@@ -11,7 +11,7 @@ import {
 	LeftSideContainer,
 	DescriptionContainer,
 } from './styled';
-import { SectionLeftType, SectionType } from './types';
+import { SectionLeftType } from './types';
 import { SectionMobile } from './SectionMobile';
 import Text from '../../texts/Text';
 

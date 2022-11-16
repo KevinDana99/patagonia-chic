@@ -1,0 +1,25 @@
+[
+	{
+
+		"id": "0",
+		"title": "Paga con tarjeta en cuotas fijas, con transferencia o en efectivo",
+		"keywordColor": "lightgreen",
+		"keywords": ["cuotas", "fijas"],
+		"icon": "island"
+	},
+	{
+		"id": "1",
+		"title": "La excursion a tu medida. Inclui translado, comida y mucho mas. Es tu decision.",
+		"keywordColor": "pink",
+		"keywords": ["excursion", "a", "tu", "medida"],
+		"icon": "island"
+	},
+	{
+
+		"id": "2",
+		"title": "Reserva al menor precio garantizado o te devolvemos la diferencia.",
+		"keywordColor": "blue",
+		"keywords": ["precio", "menor", "garantizado"],
+		"icon": "island"
+	}
+]

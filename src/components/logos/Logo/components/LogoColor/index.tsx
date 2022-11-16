@@ -12,9 +12,7 @@ const LogoCommon = ({ size }: LogoType) => {
 			y="0px"
 			viewBox="0 0 558.7 149.9"
 			enableBackground="0 0 558.7 149.9"
-			style={{
-				width: `${size}`,
-			}}
+			width={size}
 			xmlSpace="preserve"
 		>
 			<GlobalStyle />

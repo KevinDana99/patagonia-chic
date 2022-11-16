@@ -9,23 +9,29 @@ const Input = ({
 	name,
 	defaultValue,
 	error,
+	className,
+	inputProps,
+	disabled,
+	labelTextWeight = 'regular',
+	labelTextColor = '#777',
 }: InputPropsType) => {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange && onChange(e.target.value);
 	};
 
 	return (
-		<DataInputContainer>
+		<DataInputContainer className={className}>
 			<DataInput
-				type="text"
+				{...inputProps}
 				placeholder=" "
 				onChange={handleChange}
 				name={name}
 				value={defaultValue}
 				error={!!error}
+				disabled={disabled}
 			/>
 			<StyledLabel>
-				<Text size={15} weight={'regular'} color={'#777'}>
+				<Text weight={labelTextWeight} color={labelTextColor}>
 					{label}
 				</Text>
 			</StyledLabel>

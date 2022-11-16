@@ -12,9 +12,9 @@ const LogoWhite = ({ size }: LogoType) => {
 			y="0px"
 			viewBox="0 0 558.7 149.9"
 			enableBackground="0 0 558.7 149.9"
+			width={size}
 			style={{
 				backgroundColor: 'transparent',
-				width: `${size}`,
 			}}
 			xmlSpace="preserve"
 		>

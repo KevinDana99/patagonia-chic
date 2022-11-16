@@ -20,7 +20,6 @@ export const SearchQueryContainer = styled.div`
 	justify-content: space-between;
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
 	border-radius: 50px;
-	background: #ffffff;
 	box-sizing: border-box;
 `;
 

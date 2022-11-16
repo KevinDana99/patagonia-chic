@@ -48,7 +48,6 @@ export type CalendarInputType = {
 	openCalendar: () => void;
 	labels: string[];
 	titles: string[];
-	onClick?: React.MouseEventHandler;
 	values?: StateSearchQueryType;
 	clearData?: () => void;
 	isSelected?: boolean | string;
@@ -56,12 +55,10 @@ export type CalendarInputType = {
 	calendarFocusedInput: string;
 	showCalendar: boolean;
 	isMobile: boolean;
-	closeList: () => void;
 	setDates: React.Dispatch<StateSearchQueryType>;
 	data: StateSearchQueryType;
 	setFocused: React.Dispatch<SetStateAction<string>>;
 	closeCalendar: () => void;
-	sendData: () => void;
 	disableSearch: { place: boolean; startDate: boolean; endDate: boolean };
 };
 
@@ -81,7 +78,6 @@ export type PlaceListInputType = {
 	closeModal: () => void;
 	label: string;
 	placeholder: string;
-	onClick?: React.MouseEventHandler;
 	values: StateSearchQueryType;
 	clearData: () => void;
 	isSelected: boolean;
@@ -91,9 +87,11 @@ export type PlaceListInputType = {
 	setPlaceData: React.Dispatch<SetStateAction<StateSearchQueryType>>;
 	isMobile: boolean;
 	openCalendar: () => void;
-	closeList: () => void;
 	showPlaceList: boolean;
 	placeFilter?: string | undefined;
+	showCalendar: boolean;
+	onClick: () => void;
+	closeList?: () => void;
 };
 
 export type PlaceListType = {
@@ -129,13 +127,11 @@ export type CalendarMobileType = {
 	setCalendarFocusedInput: React.Dispatch<React.SetStateAction<string>>;
 	calendarFocusedInput: string;
 	isMobile?: boolean;
-	sendData: () => void;
 	labelEndDate: string;
 	labelPlace: string;
 	labelStartDate: string;
-	placeholderDate: string;
-	placeholderPlace: string;
 	titleSearchButton: string;
+	sendData: () => void;
 };
 
 export type ListModalType = {

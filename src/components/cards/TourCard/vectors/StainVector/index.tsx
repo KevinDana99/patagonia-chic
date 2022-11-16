@@ -2,11 +2,7 @@ import React from 'react';
 
 import { StainVectorType } from './types';
 
-const StainVector = ({
-	className,
-	color = '#1079E3',
-	text,
-}: StainVectorType) => {
+const StainVector = ({ className, color = '#1079E3' }: StainVectorType) => {
 	return (
 		<svg
 			className={className}
