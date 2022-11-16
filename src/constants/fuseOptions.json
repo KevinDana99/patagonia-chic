@@ -9,5 +9,5 @@
 	"ignoreLocation": true,
 	"maxPatternLength": 32,
 	"minMatchCharLength": 1,
-	"keys": ["name", "province", "keywords"]
+	"keys": ["name", "province", "country", "category", "keywords"]
 }
