@@ -1,6 +1,7 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 
-// Import Swiper styles
+import React from 'react';
 import 'swiper/swiper.min.css';
 
 import { Swiper } from 'swiper/react';

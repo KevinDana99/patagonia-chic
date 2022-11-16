@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import styled, { keyframes } from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
 import { SwiperOptions } from 'swiper/types';
 import 'swiper/swiper.min.css';
 import 'swiper/modules/lazy/lazy.min.css';

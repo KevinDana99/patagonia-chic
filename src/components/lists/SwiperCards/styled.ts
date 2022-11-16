@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+
 import styled, { createGlobalStyle } from 'styled-components';
 import { SwiperSlide } from 'swiper/react';
 import { deviceSize } from '../../../constants/devicesSizes';

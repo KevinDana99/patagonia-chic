@@ -1,6 +1,5 @@
 import { IconType } from 'react-icons';
 import { onClickButtonType } from '../../../types/eventTypes';
-import { StyleColorType } from '../../../types/styleTypes';
 
 export type PrimaryButtonType = {
 	title: string;

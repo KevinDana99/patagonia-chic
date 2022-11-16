@@ -5,4 +5,4 @@ export type SwiperType = {
 type ImageListArray = {
 	alt: string;
 	uri: string;
-}
+};

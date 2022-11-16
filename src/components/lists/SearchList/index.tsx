@@ -168,7 +168,7 @@ const SearchList = ({
 								return (
 									<ItemList
 										key={index}
-										onClick={(e) => {
+										onClick={() => {
 											selectItem(item);
 											onItemClick?.(item.id);
 											selectedAction && selectedAction(item);

@@ -3,7 +3,6 @@ import { Story, Meta } from '@storybook/react';
 
 import SelectComponent from '.';
 import { SelectPropsType } from './types';
-import styled from 'styled-components';
 
 export default {
 	title: 'Components/forms',
@@ -36,5 +35,5 @@ Select.args = {
 		},
 	],
 	placeholder: 'Seleccione talle',
-	disabled: true
+	disabled: true,
 };

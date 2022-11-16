@@ -1,6 +1,7 @@
 import React from 'react';
 import CustomIcon from '../../../../graphics/CustomIcon';
 import Text from '../../../../texts/Text';
+import { ActiveTheme } from '../../constants';
 import {
 	Description,
 	TitleContainer,
@@ -12,7 +13,6 @@ import {
 	SubPrice,
 	ButtonReserve,
 	Currency,
-	ActiveTheme,
 	ActiveButton,
 	DescriptionActive,
 	Details,

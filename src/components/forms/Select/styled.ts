@@ -7,7 +7,6 @@ export const Container = styled.div`
 	margin-top: 9px;
 	position: relative;
 	cursor: pointer;
-	
 `;
 
 export const SpanTitleStyled = styled.span`
@@ -23,7 +22,6 @@ export const SpanTitleStyled = styled.span`
 	padding: 0 0 0 8px;
 	transition: all 20ms linear;
 	z-index: 1;
-	
 
 	font-size: 12px !important;
 	top: 5px;

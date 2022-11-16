@@ -34,7 +34,7 @@ const StyledCard = styled(TourCard)`
 	height: 500px;
 	align-items: center;
 	margin: 25px;
-`
+`;
 
 export default {
 	title: 'Components/cards',

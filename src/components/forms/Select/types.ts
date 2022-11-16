@@ -1,5 +1,5 @@
 import { SelectHTMLAttributes } from 'react';
-import { TextWeightsType } from '../../texts/Text/types';
+import { TextWeightsType } from '../../../types/fontTypes';
 
 export type SelectOptionType = {
 	value?: string | number;

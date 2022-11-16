@@ -2,7 +2,6 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { SwiperCardsType } from './types';
 import SwiperCards from '.';
-import exampleList from '../../../examples/swiperCards/list.json';
 
 export default {
 	title: 'Components/lists',

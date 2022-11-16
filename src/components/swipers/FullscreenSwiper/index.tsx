@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import React, { useState } from 'react';
 import { FullscreenSwiperType } from './types';
 import { Lazy, Pagination, Navigation, EffectFade } from 'swiper';
 import {
-    CloseIcon,
+	CloseIcon,
 	CloseIconContainer,
 	Container,
 	CounterStatusText,
@@ -10,13 +12,13 @@ import {
 	Image,
 	ImageCounterStatus,
 	ImageDescription,
-	Slide,
 	SwiperContainer,
 	SwiperContent,
 } from './styled';
 import { PaginationOptions } from 'swiper/types';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { deviceSize } from '../../../constants/devicesSizes';
+import { SwiperSlide } from 'swiper/react';
 
 const FullscreenSwiper = ({
 	imageList,
@@ -62,14 +64,14 @@ const FullscreenSwiper = ({
 					}}
 				>
 					{imageList.map((image, key) => (
-						<Slide key={key}>
+						<SwiperSlide key={key}>
 							<Image
 								data-src={image.uri}
 								className="swiper-lazy"
 								alt={image.alt}
 							/>
 							<div className="swiper-lazy-preloader swiper-lazy-preloader-blue"></div>
-						</Slide>
+						</SwiperSlide>
 					))}
 				</SwiperContainer>
 				<ImageDescription>

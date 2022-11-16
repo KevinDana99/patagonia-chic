@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import CustomIcon from '../../graphics/CustomIcon';
 import { CustomIconType } from '../../graphics/CustomIcon/types';
 import {

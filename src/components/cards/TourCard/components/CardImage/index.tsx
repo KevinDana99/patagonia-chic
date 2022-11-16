@@ -3,7 +3,6 @@ import {
 	ContainerImage,
 	VectorCard,
 	ContainerVector,
-	ActiveTheme,
 	TextVector,
 	TextVectorDay,
 	TextVectorMonth,
@@ -11,6 +10,7 @@ import {
 import Text from '../../../../texts/Text';
 import { CardImageTypes } from './types';
 import Swiper from '../../../../swipers/Swiper';
+import { ActiveTheme } from '../../constants';
 
 const exampleList = [
 	{

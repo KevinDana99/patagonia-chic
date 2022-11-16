@@ -1,6 +1,3 @@
-import { IoCheckmarkCircle } from 'react-icons/io5';
-import { TbPlayerEject } from 'react-icons/tb';
-
 export default [
 	{
 		id: 3,

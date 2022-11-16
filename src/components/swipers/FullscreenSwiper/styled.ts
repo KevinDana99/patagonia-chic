@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import styled, { keyframes } from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
 import { SwiperOptions } from 'swiper/types';
 import 'swiper/swiper.min.css';
 import 'swiper/modules/lazy/lazy.min.css';
@@ -115,8 +117,8 @@ export const CloseIconContainer = styled.div`
 `;
 
 export const CloseIcon = styled(CustomIcon)`
-    display: flex;
-`
+	display: flex;
+`;
 
 export const SwiperContainer = styled(Swiper)<
 	Pick<SwiperOptions, 'pagination'>
@@ -148,10 +150,6 @@ export const SwiperContainer = styled(Swiper)<
 		height: 35%;
 		background: red;
 	}
-`;
-
-export const Slide = styled(SwiperSlide)`
-	height: 100%;
 `;
 
 export const Image = styled.img`

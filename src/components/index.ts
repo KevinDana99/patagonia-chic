@@ -34,7 +34,6 @@ export { default as Logo } from './logos/Logo';
 export { default as Modal } from './modals/Modal';
 
 // QUERIES
-export { default as SearchQuery } from './queries/SearchQuery';
 
 // SPINNERS
 export { default as Spinner } from './spinners/PrimarySpinner';

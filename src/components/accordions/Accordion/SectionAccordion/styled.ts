@@ -1,6 +1,5 @@
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import styled from 'styled-components';
-import { SectionType } from './types';
 
 export const SectionContainer = styled.div`
 	display: flex;

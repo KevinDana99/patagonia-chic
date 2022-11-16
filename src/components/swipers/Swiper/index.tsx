@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import React, { useState } from 'react';
 import { SwiperType } from './types';
 import { Lazy, Pagination, Navigation } from 'swiper';
@@ -6,7 +8,6 @@ import {
 	Image,
 	PaginationLeftButton,
 	PaginationRightButton,
-	Slide,
 	SliderPaginationContainer,
 	SwiperContainer,
 } from './styled';

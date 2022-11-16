@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from 'react';
-import { TextWeightsType } from '../../texts/Text/types';
+import { TextWeightsType } from '../../../types/fontTypes';
 
-export type InputPropsType =  {
+export type InputPropsType = {
 	label: string;
 	onChange?: (newValue: string | number) => void;
 	name?: string;

@@ -1,6 +1,5 @@
 import { BsCheck2 } from 'react-icons/bs';
 import styled from 'styled-components';
-import SecondaryButton from '../../../buttons/SecondaryButton';
 import { OptionalListItemContainer } from './types';
 
 export const Container = styled.div<
@@ -69,8 +68,6 @@ export const Description = styled.p`
 	font-size: 12px;
 	margin: 10px 0px 0px 0px;
 `;
-
-export const InformationButton = styled(SecondaryButton)``;
 
 export const InformationButtonContainer = styled.div`
 	& > button {
