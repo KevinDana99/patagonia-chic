@@ -34,6 +34,7 @@ export const PlacesListContainer = styled.div`
 export const DatesContainer = styled.div`
 	position: absolute;
 	width: 100%;
+	height: 410px;
 	border-radius: 32px;
 	box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
 	overflow: hidden;
@@ -49,6 +50,7 @@ export const DatesContainer = styled.div`
 
 export const CalendarContainer = styled.div`
 	width: 100%;
+	min-height: 360px;
 	max-width: 700px;
 	margin: 0 auto;
 
