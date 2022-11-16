@@ -12,7 +12,7 @@ const useKeyboardNavigation = (
 
 			switch (key) {
 				case 'Enter':
-					selectedAction?.(index);
+					if (index > -1) selectedAction?.(index);
 					break;
 				case 'ArrowDown':
 					if (index < listLength - 1) {
@@ -28,6 +28,9 @@ const useKeyboardNavigation = (
 						newItemIndex = listLength - 1;
 					}
 					break;
+				default: {
+					newItemIndex = -1;
+				}
 			}
 
 			setNewIndex(newItemIndex);
