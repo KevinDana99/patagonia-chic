@@ -13,7 +13,7 @@ const fontWeightsMap = {
 	heavy: 800,
 };
 
-export const StyledText = styled.span<StyledTextPropsType	>`
+export const StyledText = styled.span<StyledTextPropsType>`
 	font-family: ${({ fontFamily }) => fontFamily},
 		${fontsConstants.defaultFontName}, -apple-system, system-ui,
 		BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue',
