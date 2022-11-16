@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { deviceSize, size } from '../../../../../constants/devicesSizes';
+import { size } from '../../../../../constants/devicesSizes';
 import { OptionContainerType, PlaceContainerType } from '../../types';
 const selectedShadow =
 	'12px 0px 15px -5px rgb(0 0 0 / 20%), -12px 0px 15px -5px rgb(0 0 0 / 20%);';

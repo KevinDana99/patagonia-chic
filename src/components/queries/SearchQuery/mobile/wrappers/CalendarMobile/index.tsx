@@ -25,8 +25,6 @@ const CalendarMobile = ({
 	labelEndDate,
 	labelPlace,
 	labelStartDate,
-	placeholderDate,
-	placeholderPlace,
 	titleSearchButton,
 }: CalendarMobileType) => {
 	const CalendarData = ({

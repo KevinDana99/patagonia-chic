@@ -20,7 +20,7 @@ const TertiaryButton = ({
 		>
 			{title && <StyledText>{title}</StyledText>}
 			{children}
-			{loading ? <SpinnerStyled size={14} /> : <ForwardIcon />}
+			{loading ? <SpinnerStyled size={17} /> : <ForwardIcon />}
 		</ButtonTertiaryStyled>
 	);
 };

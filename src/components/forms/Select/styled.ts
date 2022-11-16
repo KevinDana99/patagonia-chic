@@ -7,6 +7,7 @@ export const Container = styled.div`
 	margin-top: 9px;
 	position: relative;
 	cursor: pointer;
+	
 `;
 
 export const SpanTitleStyled = styled.span`
@@ -22,6 +23,7 @@ export const SpanTitleStyled = styled.span`
 	padding: 0 0 0 8px;
 	transition: all 20ms linear;
 	z-index: 1;
+	
 
 	font-size: 12px !important;
 	top: 5px;
@@ -34,7 +36,7 @@ export const OptionStyled = styled.option`
 	color: #333;
 	&:disabled {
 		color: #ddd !important;
-		cursor: not-allowed;
+		cursor: default;
 	}
 `;
 
@@ -64,7 +66,7 @@ export const SelectStyled = styled.select`
 	width: 100%;
 	height: 44px;
 	color: #333;
-	padding: 15px 30px 0 18px;
+	padding: 15px 30px 0 18.5px;
 	text-align: left;
 	background: #fff;
 	background-clip: border-box;
@@ -81,17 +83,21 @@ export const SelectStyled = styled.select`
 	appearance: none;
 	min-height: 60px;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 40px !important;
+	-moz-padding-start: 14px !important;
+
 	&:hover ~ ${IconStyled} {
 		background-repeat: no-repeat;
 		background-image: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMTg1LjM0NCAxODUuMzQ0IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxODUuMzQ0IDE4NS4zNDQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBzdHlsZT0iZmlsbDojMzMzOyIgZD0iTTkyLjY3MiwxNDQuMzczYy0yLjc1MiwwLTUuNDkzLTEuMDQ0LTcuNTkzLTMuMTM4TDMuMTQ1LDU5LjMwMWMtNC4xOTQtNC4xOTktNC4xOTQtMTAuOTkyLDAtMTUuMTgNCgkJCWM0LjE5NC00LjE5OSwxMC45ODctNC4xOTksMTUuMTgsMGw3NC4zNDcsNzQuMzQxbDc0LjM0Ny03NC4zNDFjNC4xOTQtNC4xOTksMTAuOTg3LTQuMTk5LDE1LjE4LDANCgkJCWM0LjE5NCw0LjE5NCw0LjE5NCwxMC45ODEsMCwxNS4xOGwtODEuOTM5LDgxLjkzNEM5OC4xNjYsMTQzLjMyOSw5NS40MTksMTQ0LjM3Myw5Mi42NzIsMTQ0LjM3M3oiLz4NCgk8L2c+DQo8L2c+DQo8L3N2Zz4NCg==');
 	}
 	&:hover {
 		cursor: pointer;
+		-moz-padding-start: 14px;
 	}
 	&:focus-within {
 		outline: 0;
 		border: 2px solid #0077b9;
-		padding: 14px 30px 0 16px;
+		padding: 14px 30px 0 16.5px;
+		-moz-padding-start: 12px !important;
 	}
 	&option {
 		color: #333;
@@ -103,9 +109,14 @@ export const SelectStyled = styled.select`
 	&:-moz-focusring {
 		color: transparent;
 		text-shadow: 0 0 0 #333;
+		-moz-padding-start: 14px;
 	}
 	&:-moz-focusring * {
 		color: #333;
 		text-shadow: none;
+		-moz-padding-start: 14px;
+	}
+	&:disabled {
+		cursor: default;
 	}
 `;
