@@ -40,12 +40,9 @@ export const ButtonSearch = styled(PrimaryButton)`
 	display: flex;
 	justify-content: space-around;
 
-	@media (min-width: ${size.mobileS}) {
-		width: 48px;
-		height: 48px;
-	}
 	@media (max-width: ${size.tabletL}) {
 		min-width: 48px;
+		width: 48px;
 		height: 48px;
 	}
 `;

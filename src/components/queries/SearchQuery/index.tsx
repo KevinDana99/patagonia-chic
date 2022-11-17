@@ -36,12 +36,6 @@ const SearchQuery = ({
 			endDate: null,
 		});
 
-	const [validations, setValidations] = useState<ValidationsType>({
-		location: false,
-		startDate: false,
-		endDate: false,
-	});
-
 	moment.locale(locale);
 
 	const [currentSelector, setCurrentSelector] =
@@ -100,20 +94,12 @@ const SearchQuery = ({
 	const handleLocationInputChange = (newText: string) => {
 		setLocationSearchText(newText);
 		setLocationShowFullList(false);
-		setValidations({
-			...validations,
-			location: false,
-		});
 	};
 
 	const handleStartDateSelected = (selectedDate: Date) => {
 		setQuerySelectedData({
 			...querySelectedData,
 			startDate: selectedDate,
-		});
-		setValidations({
-			...validations,
-			startDate: false,
 		});
 		setCurrentSelector('dates/end');
 	};
@@ -135,26 +121,18 @@ const SearchQuery = ({
 			});
 		}
 		!isTablet && setCurrentSelector('none');
-		setValidations({
-			...validations,
-			endDate: false,
-		});
 	};
 
 	const handleSubmit = () => {
 		const { location, startDate, endDate } = querySelectedData;
 
-		if (location && startDate && endDate) {
+		if ((showLocations ? location : true) && startDate && endDate) {
 			onQuerySubmit(querySelectedData);
 			setCurrentSelector('none');
 		} else {
-			if (!isTablet) {
-				// validate data
-				setValidations({
-					location: !location,
-					startDate: !startDate,
-					endDate: !endDate,
-				});
+			if (!isMobile) {
+				if (showLocations && !location) setCurrentSelector('location');
+				else setCurrentSelector('dates/start');
 			} else {
 				setCurrentSelector('location');
 			}
@@ -182,7 +160,6 @@ const SearchQuery = ({
 						}
 						onlyClick={isTablet}
 						onClick={() => isTablet && setCurrentSelector('location')}
-						isError={validations.location}
 					/>
 				)}
 				{!isMobile && (
@@ -205,7 +182,6 @@ const SearchQuery = ({
 							placeholder={texts.placeholderDate}
 							onlyClick
 							onClick={() => setCurrentSelector('dates/start')}
-							isError={validations.startDate}
 							isFocused={currentSelector === 'dates/start'}
 						/>
 						<SearchQueryInput
@@ -226,7 +202,6 @@ const SearchQuery = ({
 							placeholder={texts.placeholderDate}
 							onClick={() => setCurrentSelector('dates/start')}
 							onlyClick
-							isError={validations.endDate}
 							isFocused={currentSelector === 'dates/end'}
 						/>
 					</>
