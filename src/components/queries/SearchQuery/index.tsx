@@ -13,7 +13,6 @@ import {
 	SearchQueryPropsType,
 	QuerySelectedDataType,
 	CurrentSelectorStateType,
-	ValidationsType,
 } from './types';
 import SearchQueryInput from './components/SearchQueryInput';
 import useMediaQuery from '../../../hooks/useMediaQuery';

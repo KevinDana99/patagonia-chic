@@ -13,11 +13,7 @@ import Fuse from 'fuse.js';
 import defaultFuseOptions from '../../../constants/fuseOptions.json';
 import { IoSearch } from 'react-icons/io5';
 import { ListItemType, SearchListPropsType } from './types';
-import CustomIcon from '../../graphics/CustomIcon';
-import SearchListSkeleton from './components/SearchListLoaderSkeleton';
 import Text from '../../texts/Text';
-import useKeyboardNavigation from './hooks/useKeyboardNavigation';
-import NotFoundState from './components/NotFoundState';
 import ListWrapper from './components/ListWrapper';
 import List from './components/List';
 
@@ -51,7 +47,10 @@ const SearchList = ({
 		} = {},
 	} = configs;
 
-	const [listValue, setListValue] = useState<Array<ListItemType>>(list);
+	const featuredList = list.filter((item) => item.featured);
+	const [listValue, setListValue] = useState<Array<ListItemType>>(
+		featuredList.length > 0 ? featuredList : list
+	);
 	const [searchTextValue, setSearchTextValue] = useState(searchText);
 
 	const inputSearchRef = useRef<HTMLInputElement>(null);
@@ -73,7 +72,16 @@ const SearchList = ({
 			const filteredList = filteredResult.map(
 				(filteredPlace) => filteredPlace.item
 			);
-			setListValue(query.length === 0 ? list : filteredList);
+
+			const featuredList = list.filter((item) => item.featured);
+
+			setListValue(
+				query.length === 0
+					? featuredList.length > 0
+						? featuredList
+						: list
+					: filteredList
+			);
 		},
 		[fuseConfigs, list]
 	);

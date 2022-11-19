@@ -15,7 +15,6 @@ export type SearchListConfigsType = {
 	showSearchBar?: boolean;
 	engine?: 'fuse' | 'custom';
 	fuseConfigs?: Fuse.IFuseOptions<ListItemType>;
-	featuredElements?: ListItemType[];
 	horizontalPadding?: number;
 	focusOnRender?: boolean;
 	edgesItemsAddedPadding?: number;

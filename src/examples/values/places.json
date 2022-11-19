@@ -14,7 +14,7 @@
 		"province": "Misiones",
 		"country": "Argentina",
 		"keywords": ["ciudad"],
-		"featured": true
+		"featured": false
 	},
 	{
 		"name": "El Calafate",
@@ -34,7 +34,7 @@
 		"category": "Aventura",
 		"country": "Argentina",
 		"keywords": ["monte", "ciudad"],
-		"featured": false
+		"featured": true
 	},
 	{
 		"name": "El Faro",

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import CustomIcon from '../../graphics/CustomIcon';
-import { ItemListStyleType } from './types';
 
 export const Container = styled.div`
 	width: 100%;
