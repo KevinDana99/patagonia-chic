@@ -1,19 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
-	BoxImage,
-	BoxItemList,
 	BoxSearch,
 	CloseIcon,
-	BoxSubtitle,
 	Container,
 	HeaderContainer,
-	Description,
 	InputSearch,
-	ItemList,
-	SubTitle,
-	Title,
-	LoadingContainer,
 	OptionalTitle,
 } from './styled';
 
@@ -26,6 +18,8 @@ import SearchListSkeleton from './components/SearchListLoaderSkeleton';
 import Text from '../../texts/Text';
 import useKeyboardNavigation from './hooks/useKeyboardNavigation';
 import NotFoundState from './components/NotFoundState';
+import ListWrapper from './components/ListWrapper';
+import List from './components/List';
 
 const SearchList = ({
 	list,
@@ -35,19 +29,18 @@ const SearchList = ({
 	onItemSelected,
 	loading,
 	error,
-	emptyStateText,
 	loadingComponent,
 	emptyStateComponent,
 	errorComponent,
 	searchPlaceholder,
 	showItemSubtitle = true,
+	texts,
 	configs = {},
 }: SearchListPropsType) => {
 	const {
 		showSearchBar = true,
 		engine = 'fuse',
 		fuseConfigs = defaultFuseOptions,
-		featuredElements = [],
 		horizontalPadding = 20,
 		edgesItemsAddedPadding = 0,
 		focusOnRender = false,
@@ -96,11 +89,6 @@ const SearchList = ({
 		}
 	};
 
-	const [keyboardSelectedIndex, setKeyboardSelectedIndex] =
-		useKeyboardNavigation(listValue.length, (index) =>
-			handleItemSelected(listValue[index])
-		);
-
 	const handleSearchTextChange = useCallback(
 		(newText: string) => {
 			setSearchTextValue(newText);
@@ -142,76 +130,26 @@ const SearchList = ({
 						)}
 					</HeaderContainer>
 				)}
-
-				{error && errorComponent ? (
-					errorComponent
-				) : !loading ? (
-					(listValue.length === 0 &&
-						!(featuredElements?.length > 0) &&
-						emptyStateText) ||
-					emptyStateComponent ? (
-						emptyStateComponent || (
-							<NotFoundState values={{ queryText: searchTextValue }} />
-						)
-					) : (
-						<BoxItemList>
-							{(listValue.length > 0 ? listValue : featuredElements).map(
-								(item, index) => {
-									return (
-										<ItemList
-											key={index}
-											onMouseOver={() => setKeyboardSelectedIndex(index)}
-											onMouseMove={() => setKeyboardSelectedIndex(index)}
-											onMouseOut={() => setKeyboardSelectedIndex(-1)}
-											onClick={() => handleItemSelected(item)}
-											selected={index === keyboardSelectedIndex}
-											horizontalPadding={horizontalPadding}
-											edgesItemsAddedPadding={edgesItemsAddedPadding}
-										>
-											<BoxImage>
-												{item.img ? (
-													<img src={item.img} />
-												) : (
-													<CustomIcon name="island" size={25} />
-												)}
-											</BoxImage>
-											<Description>
-												<Title>
-													<Text size={17} weight={'medium'}>
-														{item.name}
-													</Text>
-												</Title>
-												{showItemSubtitle && (
-													<BoxSubtitle>
-														<SubTitle>
-															<Text
-																size={14}
-																weight={'regular'}
-																color={'#888888'}
-															>
-																{item.category ||
-																	`${item.province} - ${item.country}`}
-															</Text>
-														</SubTitle>
-													</BoxSubtitle>
-												)}
-											</Description>
-										</ItemList>
-									);
-								}
-							)}
-						</BoxItemList>
-					)
-				) : loadingComponent ? (
-					loadingComponent
-				) : (
-					<LoadingContainer
+				<ListWrapper
+					list={listValue}
+					error={error}
+					errorComponent={errorComponent}
+					loading={loading}
+					loadingComponent={loadingComponent}
+					emptyStateText={texts.emptyStateText}
+					emptyStateComponent={emptyStateComponent}
+					horizontalPadding={horizontalPadding}
+					edgesItemsAddedPadding={edgesItemsAddedPadding}
+					searchTextValue={searchTextValue}
+				>
+					<List
+						list={listValue}
+						handleItemSelected={handleItemSelected}
 						horizontalPadding={horizontalPadding}
 						edgesItemsAddedPadding={edgesItemsAddedPadding}
-					>
-						<SearchListSkeleton />
-					</LoadingContainer>
-				)}
+						showItemSubtitle={showItemSubtitle}
+					/>
+				</ListWrapper>
 			</Container>
 		</>
 	);

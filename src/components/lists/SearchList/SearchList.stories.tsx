@@ -30,7 +30,6 @@ SearchList.args = {
 	title: 'Hello world',
 	error: false,
 	errorComponent: <>error</>,
-	emptyStateText: 'No se encontraron resultados para tu busqueda :(',
 	searchPlaceholder: 'Placeholder desde prop en storybook',
 	featuredElements: [
 		{
@@ -52,6 +51,10 @@ SearchList.args = {
 			keywords: ['monte', 'sierras'],
 		},
 	],
+	texts: {
+		emptyStateText:
+			'No se enconntraron resultados para <b>"{{queryText}}"</b>.',
+	},
 	configs: {
 		showSearchBar: true,
 	},

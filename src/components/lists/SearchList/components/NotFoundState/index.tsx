@@ -2,10 +2,7 @@ import React from 'react';
 import { Container, StyledText } from './styled';
 import { NotFoundStatePropsType } from './types';
 
-const NotFoundState = ({
-	message = 'No se encontraron resultados para "<b>{{queryText}}</b>"',
-	values,
-}: NotFoundStatePropsType) => {
+const NotFoundState = ({ message, values }: NotFoundStatePropsType) => {
 	const formatMessage = (message: string) => {
 		if (!values) return message;
 		return Object.keys(values).reduce((acc, curr) => {

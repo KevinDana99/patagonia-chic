@@ -34,6 +34,7 @@ export type SearchQueryTexts = {
 	modalLabelStartDate: string;
 	modalLabelEndDate: string;
 	titleSearchButton: string;
+	emptyStateText: string;
 };
 
 export type QuerySelectedDataType = {

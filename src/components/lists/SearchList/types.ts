@@ -8,6 +8,7 @@ export type ListItemType = {
 	category?: string;
 	country?: string;
 	keywords?: Array<string>;
+	featured?: boolean;
 };
 
 export type SearchListConfigsType = {
@@ -39,6 +40,9 @@ export type SearchListPropsType = {
 	emptyStateComponent?: JSX.Element;
 	errorComponent?: JSX.Element;
 	showItemSubtitle?: boolean;
+	texts: {
+		emptyStateText: string;
+	};
 	configs?: SearchListConfigsType;
 };
 

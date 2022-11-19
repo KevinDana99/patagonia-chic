@@ -1,5 +1,5 @@
 export type NotFoundStatePropsType = {
-	message?: string;
+	message: string;
 	values?: {
 		[key: string]: string;
 	};

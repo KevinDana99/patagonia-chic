@@ -235,13 +235,14 @@ const SearchQuery = ({
 						}
 						configs={{
 							showSearchBar: isTablet,
-							focusOnRender: isTablet,
+							focusOnRender: false,
 							edgesItemsAddedPadding: 10,
 							horizontalPadding: isTablet && !isMobile ? 40 : 20,
 						}}
 						searchPlaceholder={texts.placeholderLocation}
 						searchText={locationShowFullList ? '' : locationSearchText}
 						emptyStateText="No encontramos este destino, pero te recomendamos..."
+						texts={texts}
 					/>
 				</QuerySelectors.Location>
 				<QuerySelectors.Dates
