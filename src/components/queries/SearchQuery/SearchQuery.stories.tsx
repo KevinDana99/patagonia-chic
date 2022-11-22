@@ -33,7 +33,6 @@ SearchQuery.args = {
 		modalLabelEndDate: 'Partida',
 		titleSearchButton: 'Buscar Excursiones',
 		dateAvailableReference: 'disponible',
-		emptyStateText:
-			'No se enconntraron resultados para <b>"{{queryText}}"</b>.',
+		emptyStateText: 'No se encontraron resultados para <b>"{{queryText}}"</b>.',
 	},
 };

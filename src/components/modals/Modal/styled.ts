@@ -36,6 +36,7 @@ export const BoxModal = styled.div<BoxModalType>`
 export const Container = styled.div<ModalContainerType>`
 	width: 80%;
 	min-width: 350px;
+	max-height: 80vh;
 	max-width: ${(props) => (props.width ? props.width : '570px')};
 	border-radius: 12px;
 	position: absolute;
@@ -45,7 +46,11 @@ export const Container = styled.div<ModalContainerType>`
 
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
+
+	@media ((min-height: 550px)) {
+		min-height: 500px;
+	}
 
 	@media (${deviceSize.mobileL}) {
 		bottom: 0;
@@ -63,7 +68,7 @@ export const BoxTop = styled.div`
 	box-sizing: border-box;
 	border-bottom: 1px solid #d4d4d4;
 	width: 100%;
-	height: 55px;
+	height: 55px !important;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -72,7 +77,7 @@ export const BoxTop = styled.div`
 export const BoxScroll = styled.div`
 	overflow-y: scroll;
 	scroll-behavior: smooth;
-	max-height: 75vh;
+	flex: 1;
 
 	&::-webkit-scrollbar {
 		width: 9px;
