@@ -29,3 +29,5 @@ export function useOutsideClick(
 		};
 	}, [outsideClick, ref]);
 }
+
+export default useOutsideClick;

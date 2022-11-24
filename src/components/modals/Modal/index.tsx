@@ -65,7 +65,11 @@ const PrimaryModal = ({
 	return (
 		<>
 			{renderOpenButton && (
-				<SecondaryButton title={texts?.buttonTitle ?? ''} onClick={open} />
+				<SecondaryButton
+					title={texts?.buttonTitle ?? ''}
+					onClick={open}
+					arrowIconDirection={'right'}
+				/>
 			)}
 
 			<BoxModal

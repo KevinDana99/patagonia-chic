@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import fontsConstants from '../../../constants/fonts.json';
-import { StyledTextPropsType } from './types';
+import { StyledTextPropsType } from '../../../types/fontTypes';
 
 const fontWeightsMap = {
 	'ultra-light': 100,

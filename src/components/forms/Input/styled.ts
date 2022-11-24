@@ -25,7 +25,7 @@ export const DataInputContainer = styled.div`
 export const StyledLabel = styled.label`
 	font-size: 15px;
 	line-height: 30px;
-	font-weight: 300;
+	font-weight: 400;
 	letter-spacing: -0.01em;
 	position: absolute;
 	top: 15px;
@@ -60,6 +60,7 @@ export const DataInput = styled.input<InputProps>`
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 40px !important;
 	user-select: auto !important;
 	outline: none !important;
+	border-bottom: 1px solid #ddd;
 
 	&:focus {
 		border: 2px solid #0077b9;

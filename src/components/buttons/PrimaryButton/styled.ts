@@ -12,6 +12,10 @@ const hoverGradientStyle = `
 	background-position-x: 50%;
 `;
 
+export const Container = styled.div`
+	height: 800px;
+`;
+
 export const ButtonPrimaryStyled = styled.button<ButtonPrimaryStyledPropsType>`
 	box-sizing: border-box;
 	user-select: none;
@@ -19,7 +23,10 @@ export const ButtonPrimaryStyled = styled.button<ButtonPrimaryStyledPropsType>`
 	display: inline-block;
 	padding: 0 16px;
 	padding-right: 17px;
-	height: 48px;
+	width: ${({ width }) =>
+		width && typeof width == 'number' ? width + 'px' : width};
+	height: ${({ height }) =>
+		height && typeof height == 'number' ? height + 'px' : height};
 	outline: none;
 	border: none;
 	background-color: rgb(35, 132, 229);
@@ -35,13 +42,15 @@ export const ButtonPrimaryStyled = styled.button<ButtonPrimaryStyledPropsType>`
 	transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95),
 		background-size 800ms ease-out, background-position 800ms ease-out;
 	color: #fff;
-	width: 200px;
+
 	border-radius: 28px;
 	margin: 8px 0;
 	background-repeat: no-repeat;
 	font-weight: 600;
 	opacity: ${({ disabled }) => (disabled ? 0.75 : 1)};
 	cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+	transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95),
+		background-size 800ms ease-out, background-position 800ms ease-out;
 	display: flex;
 	justify-content: center;
 	align-items: center;

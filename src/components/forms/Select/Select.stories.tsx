@@ -35,4 +35,5 @@ Select.args = {
 		},
 	],
 	placeholder: 'Seleccione talle',
+	disabled: true,
 };

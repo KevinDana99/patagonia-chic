@@ -1,7 +1,5 @@
-import { IconType } from 'react-icons';
-
 export type ProgressBarType = {
-	Icon?: IconType;
+	Icon?: React.FC;
 	color?: string;
 	active: boolean;
 };

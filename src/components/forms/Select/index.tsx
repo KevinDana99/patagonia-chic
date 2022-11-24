@@ -15,6 +15,11 @@ const Select: FC<SelectPropsType> = ({
 	label,
 	placeholder,
 	onChange,
+	className,
+	selectProps,
+	disabled,
+	labelTextWeight = 'regular',
+	labelTextColor = '#777',
 }) => {
 	const [list, setList] = useState<SelectOptionType[]>(ListSelectOptions);
 
@@ -30,8 +35,12 @@ const Select: FC<SelectPropsType> = ({
 	};
 
 	return (
-		<Container>
-			<SelectStyled onChange={(e) => handleChange(e)}>
+		<Container className={className}>
+			<SelectStyled
+				{...selectProps}
+				onChange={(e) => handleChange(e)}
+				disabled={disabled}
+			>
 				<option hidden={true}>{placeholder}</option>
 
 				{list.map((item, index) => {
@@ -50,7 +59,7 @@ const Select: FC<SelectPropsType> = ({
 			<IconStyled aria-hidden="true">&nbsp;</IconStyled>
 
 			<SpanTitleStyled>
-				<Text size={15} color={'#777'} weight={'regular'}>
+				<Text size={12} weight={labelTextWeight} color={labelTextColor}>
 					{label}
 				</Text>
 			</SpanTitleStyled>

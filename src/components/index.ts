@@ -8,6 +8,7 @@ export { default as TertiaryButton } from './buttons/TertiaryButton';
 
 // CARDS
 export { default as Card } from './cards/PrimaryCard';
+export { default as TourCard } from './cards/TourCard';
 
 // FORMS
 export { default as CheckboxList } from './forms/CheckboxList';
@@ -24,6 +25,7 @@ export { default as IncludedItems } from './lists/IncludedItems';
 export { default as OptionalList } from './lists/OptionalList';
 export { default as SearchList } from './lists/SearchList';
 export { default as Timeline } from './lists/Timeline';
+export { default as CategoriesList } from './lists/CategoriesList';
 
 // LOGO
 export { default as Logo } from './logos/Logo';
@@ -32,7 +34,6 @@ export { default as Logo } from './logos/Logo';
 export { default as Modal } from './modals/Modal';
 
 // QUERIES
-export { default as SearchQuery } from './queries/SearchQuery';
 
 // SPINNERS
 export { default as Spinner } from './spinners/PrimarySpinner';
@@ -44,3 +45,8 @@ export { default as Footer } from './template-parts/Footer';
 
 // TEXTS
 export { default as Text } from './texts/Text';
+
+//JUMBOBOX
+export { default as JumboBox } from './alerts/JumboBox';
+
+export { default as useMediaQuery } from '../hooks/useMediaQuery';

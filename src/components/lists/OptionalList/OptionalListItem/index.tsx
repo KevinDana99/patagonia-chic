@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import CounterSelect from '../../../forms/CounterSelect';
+import { SecondaryButton } from '../../../index';
 import Text from '../../../texts/Text';
 import {
 	CheckIcon,
 	Container,
 	Description,
 	Footer,
-	InformationButton,
 	InformationButtonContainer,
 	InputContainer,
 	ItemContent,
@@ -84,7 +84,7 @@ const OptionalListItem = ({
 					)}
 					{texts && moreInformationContent && (
 						<InformationButtonContainer>
-							<InformationButton
+							<SecondaryButton
 								title={
 									!showInformation
 										? texts.moreInformation
@@ -94,6 +94,7 @@ const OptionalListItem = ({
 									e.stopPropagation();
 									setShowInformation(!showInformation);
 								}}
+								arrowIconDirection={'right'}
 							/>
 						</InformationButtonContainer>
 					)}
