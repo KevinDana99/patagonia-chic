@@ -37,7 +37,7 @@ definitions:
 
 pipelines:
   branches:
-    master:
+    main:
       - step: *push-gcp
       - step: *merge-step
       - step: *publish-npm-package
