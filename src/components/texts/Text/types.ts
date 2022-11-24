@@ -10,4 +10,5 @@ export type TextPropsType = {
 	italic?: boolean;
 	center?: boolean;
 	right?: boolean;
+	style?: React.CSSProperties;
 };

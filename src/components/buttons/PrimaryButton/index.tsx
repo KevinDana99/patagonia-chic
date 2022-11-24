@@ -25,6 +25,7 @@ const PrimaryButton = (props: PrimaryButtonType) => {
 		className,
 		theme = 'color',
 		color = '#3b3b3b',
+		invertGradient = false,
 		textLoadingButton,
 		icon,
 		width = 200,
@@ -39,6 +40,7 @@ const PrimaryButton = (props: PrimaryButtonType) => {
 			onClick={onClick}
 			className={className}
 			color={color}
+			invertGradient={invertGradient}
 			width={width}
 			height={height}
 		>

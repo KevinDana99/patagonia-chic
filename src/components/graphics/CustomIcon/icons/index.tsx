@@ -25,6 +25,7 @@ const icons = {
 		<CloseIcon {...props} />
 	),
 	ship: (props: CustomIconsComponentPropsType) => <ShipIcon {...props} />,
+	close: (props: CustomIconsComponentPropsType) => <CloseIcon {...props} />,
 	check: (props: CustomIconsComponentPropsType) => <CheckIcon {...props} />,
 } as const;
 

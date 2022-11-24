@@ -8,15 +8,18 @@ export type PrimaryButtonType = {
 	disabled?: boolean;
 	IconComponent?: IconType;
 	className?: string;
-	theme: 'color' | 'mono';
+	theme?: 'color' | 'mono';
 	color?: string;
+	invertGradient?: boolean;
 	textLoadingButton?: string;
 	icon?: boolean;
 	width?: number | string;
 	height?: number | string;
 };
 
-export type PrimaryButtonStyledType = {
+export type ButtonPrimaryStyledPropsType = {
+	disabled: boolean;
+	invertGradient: boolean;
 	color?: string;
 	width?: number | string;
 	height?: number | string;

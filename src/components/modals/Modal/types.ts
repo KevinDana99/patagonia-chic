@@ -1,6 +1,8 @@
+import React from 'react';
+
 export type ModalType = {
 	renderOpenButton?: { title: string };
-	children?: JSX.Element | string;
+	children?: React.ReactNode;
 	width?: string;
 	visible?: boolean;
 	title?: string;
@@ -11,7 +13,6 @@ export type ModalType = {
 	closeOnTouchOutside?: boolean;
 	closeAction?: () => void;
 	disableClose?: boolean;
-	animated?: boolean;
 	texts?: ModalTextsType;
 };
 
@@ -22,12 +23,15 @@ export type ModalStateType = {
 };
 
 export type BoxModalType = {
-	visible: boolean | undefined;
+	visible?: boolean;
+	animate?: boolean;
+	transitionTime: number;
 };
 
 export type ModalContainerType = {
 	width?: string;
 	animate?: boolean;
+	transitionTime: number;
 };
 
 export type BoxHeaderType = {

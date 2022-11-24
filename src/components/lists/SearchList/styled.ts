@@ -1,8 +1,13 @@
 import styled from 'styled-components';
-import { ItemListStyleType } from './types';
+import CustomIcon from '../../graphics/CustomIcon';
 
 export const Container = styled.div`
 	width: 100%;
+`;
+
+export const HeaderContainer = styled.div<{ horizontalPadding: number }>`
+	padding: 15px ${({ horizontalPadding }) => horizontalPadding}px 19px;
+	box-sizing: border-box;
 `;
 
 export const BoxSearch = styled.div`
@@ -22,69 +27,31 @@ export const InputSearch = styled.input`
 	font-size: 15px;
 	border: none;
 	outline: none;
-`;
 
-export const BoxItemList = styled.div`
-	margin-top: 35px;
-	width: 100%;
-`;
-
-export const ItemList = styled.div<ItemListStyleType>`
-	margin-top: 21px;
-	width: 100%;
-	display: flex;
-	align-items: center;
-	background-color: ${(props) => (props.selected ? '#f7f8f8' : '#ffffff')};
-
-	&:hover {
-		background: #f7f8f8;
+	&:placeholder-shown {
+		text-overflow: ellipsis;
 	}
 `;
 
-export const BoxImage = styled.div`
-	width: 50px;
-	height: 50px;
-	background-color: #f1f4f7;
-	border-radius: 8px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+export const CloseIcon = styled(CustomIcon).attrs({
+	name: 'close',
+	size: 9,
+})`
+	background-color: #e6e7e7;
+	border-radius: 100px;
+	min-height: 20px;
+	min-width: 20px;
+	color: #a9a9a9;
+	margin: 0 10px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #dbdcdc;
+	}
 `;
 
-export const Description = styled.div`
-	margin-left: 13px;
-`;
-
-export const Title = styled.div`
+export const OptionalTitle = styled.div`
 	font-weight: 500;
-	font-size: 17px;
-`;
-
-export const BoxSubtitle = styled.div`
-	display: flex;
-	align-items: center;
-	color: #888888;
-`;
-
-export const SubTitle = styled.div`
-	font-weight: 300;
-	font-size: 14px;
-`;
-
-export const Divisor = styled.div`
-	margin: 0px 3px;
-`;
-
-export const LoadingContainer = styled.div`
-	margin-top: 35px;
-	width: 100%;
-	height: 500px;
-	display: flex;
-	justify-content: flex-start;
-	align-items: flex;
-`;
-
-export const OptionalTitle = styled(Title)`
 	font-size: 20px;
 	margin-bottom: 18px;
 `;

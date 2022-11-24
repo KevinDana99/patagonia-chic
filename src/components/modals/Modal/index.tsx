@@ -1,20 +1,24 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useIsElementScrollable } from '../../../hooks/useIsElementScrollable';
+import CloseButton from '../../buttons/iconButtons/CloseButton';
 import SecondaryButton from '../../buttons/SecondaryButton';
 import Text from '../../texts/Text';
+import { useShowOverflowGradient } from './hooks/useShowOverflowGradient';
 import {
 	BoxModal,
 	BoxTitle,
 	BoxTop,
-	ButtonClose,
+	ButtonCloseContainer,
 	Container,
 	BoxHeader,
 	BoxChildren,
 	BoxScroll,
-	CloseIcon,
 	BoxHeaderText,
 	BoxDownModal,
 } from './styled';
 import { ModalStateType, ModalType } from './types';
+
+const ANIMATION_TIME_MILLIS = 300;
 
 const PrimaryModal = ({
 	renderOpenButton,
@@ -28,39 +32,35 @@ const PrimaryModal = ({
 	onClose,
 	onOpen,
 	title,
-	visible = false,
+	visible: visibleProp = false,
 	texts,
-	animated,
 }: ModalType) => {
 	const [state, setState] = useState<ModalStateType>({
-		visible: visible,
+		visible: visibleProp,
 		animate: false,
 	});
 
-	const close = () => {
-		setState({ animate: false, visible: false });
-		onClose && onClose();
-	};
+	const scrollBoxRef = useRef(null);
+	const [showOverflowGradient, setScrollTop] =
+		useShowOverflowGradient(scrollBoxRef);
+
+	const close = useCallback(() => {
+		setState({ animate: false, visible: true });
+		setTimeout(
+			() => setState({ animate: false, visible: false }),
+			ANIMATION_TIME_MILLIS
+		);
+		onClose?.();
+	}, [onClose]);
 
 	const open = useCallback(() => {
-		setState((prevState) => ({ ...prevState, visible: true }));
-		onOpen && onOpen();
+		setState({ animate: true, visible: true });
+		onOpen?.();
 	}, [onOpen]);
 
-	const openWithAnimation = useCallback(() => {
-		setState((prevState) => ({ ...prevState, animate: true }));
-		open();
-	}, [open]);
-
 	useEffect(() => {
-		!animated && visible && open();
-		animated && visible && openWithAnimation();
-	}, [animated, open, openWithAnimation, visible]);
-
-	const touchOutside = () => {
-		closeOnTouchOutside && closeAction && closeAction();
-		closeOnTouchOutside && close();
-	};
+		(visibleProp ? open : close)();
+	}, [close, open, visibleProp]);
 
 	return (
 		<>
@@ -72,10 +72,16 @@ const PrimaryModal = ({
 				/>
 			)}
 
-			<BoxModal visible={state.visible} onClick={touchOutside}>
+			<BoxModal
+				visible={state.visible}
+				transitionTime={ANIMATION_TIME_MILLIS}
+				animate={state.animate}
+				onClick={closeOnTouchOutside ? closeAction ?? close : undefined}
+			>
 				<Container
 					width={width}
 					animate={state.animate}
+					transitionTime={ANIMATION_TIME_MILLIS}
 					onClick={(e) => {
 						e.stopPropagation();
 					}}
@@ -85,13 +91,13 @@ const PrimaryModal = ({
 							<Text size={17}>{title}</Text>
 						</BoxTitle>
 						{!disableClose && (
-							<ButtonClose>
-								{<CloseIcon onClick={closeAction ? touchOutside : close} />}
-							</ButtonClose>
+							<ButtonCloseContainer>
+								<CloseButton onClick={closeAction ?? close} />
+							</ButtonCloseContainer>
 						)}
 					</BoxTop>
 
-					<BoxScroll>
+					<BoxScroll ref={scrollBoxRef} onScroll={setScrollTop}>
 						{coverImage && (
 							<BoxHeader coverImage={coverImage}>
 								{headerText && (
@@ -112,7 +118,7 @@ const PrimaryModal = ({
 							<BoxChildren>
 								{children}
 
-								<BoxDownModal />
+								{showOverflowGradient && <BoxDownModal />}
 							</BoxChildren>
 						)}
 					</BoxScroll>

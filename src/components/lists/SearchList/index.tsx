@@ -1,241 +1,163 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
-	BoxImage,
-	BoxItemList,
 	BoxSearch,
-	BoxSubtitle,
+	CloseIcon,
 	Container,
-	Description,
+	HeaderContainer,
 	InputSearch,
-	ItemList,
-	SubTitle,
-	Title,
-	Divisor,
-	LoadingContainer,
 	OptionalTitle,
 } from './styled';
 
 import Fuse from 'fuse.js';
 import defaultFuseOptions from '../../../constants/fuseOptions.json';
 import { IoSearch } from 'react-icons/io5';
-import { ItemListDataType, ListItemType, ListType } from './types';
-import CustomIcon from '../../graphics/CustomIcon';
-import Skeleton from '../../skeletons/Skeleton';
+import { ListItemType, SearchListPropsType } from './types';
 import Text from '../../texts/Text';
+import ListWrapper from './components/ListWrapper';
+import List from './components/List';
 
 const SearchList = ({
 	list,
 	title,
-	onSearchChange,
-	engine = 'fuse',
-	search = false,
+	searchText = '',
+	onSearchTextChange,
+	onItemSelected,
 	loading,
-	onItemClick,
-	fuseConfigs = defaultFuseOptions,
-	featuredElements = [],
+	error,
 	loadingComponent,
-	emptyStateText,
 	emptyStateComponent,
 	errorComponent,
-	error,
-	onChangeSelect,
-	selectedAction,
-	searchPlaceHolder,
-	onSearchItem,
-}: ListType) => {
-	const [listValue, setListValue] = useState<Array<ListItemType>>(list);
-	const [data, setData] = useState<ItemListDataType>({
-		place: null,
-		startDate: null,
-		endDate: null,
-	});
+	searchPlaceholder,
+	showItemSubtitle = true,
+	texts,
+	configs = {},
+}: SearchListPropsType) => {
+	const {
+		showSearchBar = true,
+		engine = 'fuse',
+		fuseConfigs = defaultFuseOptions,
+		horizontalPadding = 20,
+		edgesItemsAddedPadding = 0,
+		focusOnRender = false,
+		onItemSelectedConfigs: {
+			updateSearchTextValue = true,
+			itemKeySearchText = defaultFuseOptions.keys[0] as keyof ListItemType,
+			resetListValue = true,
+		} = {},
+	} = configs;
+
+	const featuredList = list.filter((item) => item.featured);
+	const [listValue, setListValue] = useState<Array<ListItemType>>(
+		featuredList.length > 0 ? featuredList : list
+	);
+	const [searchTextValue, setSearchTextValue] = useState(searchText);
+
+	const inputSearchRef = useRef<HTMLInputElement>(null);
+
+	useEffect(() => {
+		if (focusOnRender && inputSearchRef.current) {
+			inputSearchRef.current.focus();
+		}
+	}, [inputSearchRef, focusOnRender]);
 
 	useEffect(() => {
 		setListValue(list);
 	}, [list]);
 
-	useEffect(() => {
-		onChangeSelect && onChangeSelect(data);
-	}, [data, onChangeSelect]);
+	const filterPlaceList = useCallback(
+		(query: string) => {
+			const fusePlaceList = new Fuse(list, fuseConfigs);
+			const filteredResult = fusePlaceList.search(query);
+			const filteredList = filteredResult.map(
+				(filteredPlace) => filteredPlace.item
+			);
 
-	const selectItem = (item: ListItemType) => {
-		setData({ ...data, place: item });
-	};
+			const featuredList = list.filter((item) => item.featured);
 
-	const filterPlaceList = (query: string) => {
-		onSearchItem && onSearchItem(query);
-		const fusePlaceList = new Fuse(list, fuseConfigs);
-		const filteredResult = fusePlaceList.search(query);
-		const filteredList =
-			filteredResult.length > 0
-				? filteredResult.map((filteredPlace) => filteredPlace.item)
-				: featuredElements.filter((item) => item.featured == true);
-
-		console.log(filteredList, 'list');
-
-		setListValue(filteredList);
-		query.length == 0 && setListValue(list);
-	};
-
-	const [showCurrentPosition, setShowCurrentPosition] =
-		useState<boolean>(false);
-	const [cursorPosition, setCursorPosition] = useState<number>(0);
-
-	const setCurrentPlace = useCallback(
-		(position: number) => {
-			setData({
-				...data,
-				place: list.at(position),
-			});
+			setListValue(
+				query.length === 0
+					? featuredList.length > 0
+						? featuredList
+						: list
+					: filteredList
+			);
 		},
-		[list, setData, data]
+		[fuseConfigs, list]
 	);
 
-	const keyHandler = useCallback(
-		({ key }: { key: string }) => {
-			setCursorPosition((prevState) => {
-				const cursorIncrease = prevState < list.length - 1 ? prevState + 1 : 0;
+	const handleItemSelected = (selectedItem: ListItemType) => {
+		onItemSelected?.(selectedItem);
+		if (updateSearchTextValue) {
+			setSearchTextValue(selectedItem[itemKeySearchText] as string);
+			onSearchTextChange?.(selectedItem[itemKeySearchText] as string);
+		}
+		if (resetListValue) {
+			setListValue(list);
+		}
+	};
 
-				const cursorDecrease = prevState > 0 ? prevState - 1 : list.length - 1;
-
-				switch (true) {
-					case key === 'Enter':
-						selectedAction && selectedAction();
-						break;
-
-					case key === 'ArrowDown' && !showCurrentPosition:
-						!showCurrentPosition && setShowCurrentPosition(true);
-						setCurrentPlace(0);
-						return 0;
-
-					case key === 'ArrowDown' && showCurrentPosition:
-						setCurrentPlace(cursorIncrease);
-						return cursorIncrease;
-
-					case key === 'ArrowUp' && !showCurrentPosition:
-						!showCurrentPosition && setShowCurrentPosition(true);
-						setCurrentPlace(list.length - 1);
-						return list.length - 1;
-
-					case key === 'ArrowUp' && showCurrentPosition:
-						setCurrentPlace(cursorDecrease);
-						return cursorDecrease;
-				}
-				return prevState;
-			});
+	const handleSearchTextChange = useCallback(
+		(newText: string) => {
+			setSearchTextValue(newText);
+			if (engine === 'fuse') filterPlaceList(newText);
+			onSearchTextChange?.(newText);
 		},
-		[list.length, selectedAction, setCurrentPlace, showCurrentPosition]
+		[engine, filterPlaceList, onSearchTextChange]
 	);
 
 	useEffect(() => {
-		document.addEventListener('keydown', keyHandler);
-		return () => {
-			document.removeEventListener('keydown', keyHandler);
-		};
-	}, [keyHandler]);
+		handleSearchTextChange(searchText);
+	}, [searchText, handleSearchTextChange]);
 
 	return (
 		<>
 			<Container>
-				{title && (
-					<OptionalTitle>
-						<Text size={20}>{title}</Text>
-					</OptionalTitle>
+				{(title || showSearchBar) && (
+					<HeaderContainer horizontalPadding={horizontalPadding}>
+						{title && (
+							<OptionalTitle>
+								<Text size={20}>{title}</Text>
+							</OptionalTitle>
+						)}
+						{showSearchBar && (
+							<BoxSearch>
+								<IoSearch />
+								<InputSearch
+									ref={inputSearchRef}
+									value={searchTextValue}
+									placeholder={searchPlaceholder}
+									onChange={(e) => {
+										handleSearchTextChange(e.target.value);
+									}}
+								/>
+								{searchTextValue.length > 0 && (
+									<CloseIcon onClick={() => handleSearchTextChange('')} />
+								)}
+							</BoxSearch>
+						)}
+					</HeaderContainer>
 				)}
-				{search && (
-					<BoxSearch>
-						<IoSearch />
-						<InputSearch
-							placeholder={searchPlaceHolder}
-							onChange={(e) => {
-								engine === 'fuse'
-									? filterPlaceList(e.target.value)
-									: onSearchChange?.(e.target.value);
-							}}
-						/>
-					</BoxSearch>
-				)}
-
-				{error && errorComponent ? (
-					errorComponent
-				) : !loading ? (
-					(listValue.length == 0 && emptyStateText) || emptyStateComponent ? (
-						emptyStateComponent || <Text>{emptyStateText}</Text>
-					) : (
-						<BoxItemList>
-							{listValue.map((item, index) => {
-								return (
-									<ItemList
-										key={index}
-										onClick={() => {
-											selectItem(item);
-											onItemClick?.(item.id);
-											selectedAction && selectedAction(item);
-										}}
-										selected={showCurrentPosition && index === cursorPosition}
-									>
-										<BoxImage>
-											{item.img ? (
-												<img src={item.img} />
-											) : (
-												<CustomIcon name="island" size={25} />
-											)}
-										</BoxImage>
-										<Description>
-											<Title>
-												<Text size={17} weight={'medium'}>
-													{item.name}
-												</Text>
-											</Title>
-											<BoxSubtitle>
-												{item.category ? (
-													<SubTitle>
-														<Text
-															size={14}
-															weight={'regular'}
-															color={'#888888'}
-														>
-															{item.category}
-														</Text>
-													</SubTitle>
-												) : (
-													<>
-														<SubTitle>
-															<Text
-																size={14}
-																weight={'regular'}
-																color={'#888888'}
-															>
-																{item.province}
-															</Text>
-														</SubTitle>
-														<Divisor>-</Divisor>
-														<SubTitle>
-															<Text
-																size={14}
-																weight={'regular'}
-																color={'#888888'}
-															>
-																{item.country}
-															</Text>
-														</SubTitle>
-													</>
-												)}
-											</BoxSubtitle>
-										</Description>
-									</ItemList>
-								);
-							})}
-						</BoxItemList>
-					)
-				) : loadingComponent ? (
-					loadingComponent
-				) : (
-					<LoadingContainer>
-						<Skeleton />
-					</LoadingContainer>
-				)}
+				<ListWrapper
+					list={listValue}
+					error={error}
+					errorComponent={errorComponent}
+					loading={loading}
+					loadingComponent={loadingComponent}
+					emptyStateText={texts.emptyStateText}
+					emptyStateComponent={emptyStateComponent}
+					horizontalPadding={horizontalPadding}
+					edgesItemsAddedPadding={edgesItemsAddedPadding}
+					searchTextValue={searchTextValue}
+				>
+					<List
+						list={listValue}
+						handleItemSelected={handleItemSelected}
+						horizontalPadding={horizontalPadding}
+						edgesItemsAddedPadding={edgesItemsAddedPadding}
+						showItemSubtitle={showItemSubtitle}
+					/>
+				</ListWrapper>
 			</Container>
 		</>
 	);

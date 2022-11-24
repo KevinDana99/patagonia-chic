@@ -1,9 +1,8 @@
 import Fuse from 'fuse.js';
 
 export type ListItemType = {
-	name: string;
-	onClick: () => void;
 	id: string;
+	name: string;
 	img?: string;
 	province?: string;
 	category?: string;
@@ -12,33 +11,42 @@ export type ListItemType = {
 	featured?: boolean;
 };
 
-export type ListType = {
-	list: [ListItemType];
+export type SearchListConfigsType = {
+	showSearchBar?: boolean;
+	engine?: 'fuse' | 'custom';
+	fuseConfigs?: Fuse.IFuseOptions<ListItemType>;
+	horizontalPadding?: number;
+	focusOnRender?: boolean;
+	edgesItemsAddedPadding?: number;
+	onItemSelectedConfigs?: {
+		updateSearchTextValue?: boolean;
+		itemKeySearchText?: keyof ListItemType;
+		resetListValue?: boolean;
+	};
+};
+
+export type SearchListPropsType = {
+	list: ListItemType[];
 	title?: string;
-	search?: boolean;
-	onSearchChange?: (query: string) => ListItemType[];
+	searchText?: string;
+	searchPlaceholder?: string;
+	onSearchTextChange?: (query: string) => void;
+	onItemSelected?: (selectedItem: ListItemType) => void;
 	loading?: boolean;
 	error?: boolean;
 	emptyStateText?: string;
 	loadingComponent?: JSX.Element;
 	emptyStateComponent?: JSX.Element;
 	errorComponent?: JSX.Element;
-	engine?: 'fuse' | 'custom';
-	onItemClick?: (itemId: string) => void;
-	fuseConfigs?: Fuse.IFuseOptions<ListItemType>;
-	featuredElements?: ListItemType[];
-	onChangeSelect?: React.Dispatch<{}>;
-	selectedAction?: (item?: Object) => void;
-	searchPlaceHolder?: string;
-	onSearchItem: (query: string) => void;
+	showItemSubtitle?: boolean;
+	texts: {
+		emptyStateText: string;
+	};
+	configs?: SearchListConfigsType;
 };
 
 export type ItemListStyleType = {
-	selected: boolean;
-};
-
-export type ItemListDataType = {
-	place: ListItemType | null | undefined;
-	startDate: unknown;
-	endDate: unknown;
+	selected?: boolean;
+	horizontalPadding: number;
+	edgesItemsAddedPadding: number;
 };

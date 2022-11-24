@@ -13,8 +13,10 @@ const Text = ({
 	italic = false,
 	center = false,
 	right = false,
+	style,
 }: TextPropsType) => (
 	<StyledText
+		style={style}
 		className={className}
 		fontFamily={fontFamily}
 		size={size}
