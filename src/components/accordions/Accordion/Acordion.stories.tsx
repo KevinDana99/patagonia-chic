@@ -2,6 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Accordion from './index';
 import { AccordionType } from './types';
+import Text from '../../texts/Text';
 
 export default {
 	title: 'Components/accordions',
@@ -15,7 +16,11 @@ export const accodion: Story<AccordionType> = Template.bind({});
 accodion.args = {
 	sections: [
 		{
-			content: <div>Hello world</div>,
+			content: (
+				<div>
+					<Text>Hello world</Text>
+				</div>
+			),
 			title: 'Esta es una seccion',
 		},
 		{

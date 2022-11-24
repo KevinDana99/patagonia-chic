@@ -1,9 +1,8 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 
-// Import Swiper styles
+import React from 'react';
 import 'swiper/swiper.min.css';
-import 'swiper/modules/free-mode/free-mode.min.css';
-import 'swiper/modules/navigation/navigation.min.css';
 
 import { Swiper } from 'swiper/react';
 import { Navigation, FreeMode, Mousewheel } from 'swiper';
@@ -35,7 +34,7 @@ const CategoriesList = ({
 
 	React.useEffect(() => {
 		onSelectedChange(selectedItemId);
-	}, [selectedItemId]);
+	}, [onSelectedChange, selectedItemId]);
 
 	const handleSwiperInit = (swiper: SwiperType) => {
 		(swiper.params.navigation as NavigationOptions).prevEl = prevRef.current;

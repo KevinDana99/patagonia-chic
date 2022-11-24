@@ -19,7 +19,7 @@ import {
 import Fuse from 'fuse.js';
 import defaultFuseOptions from '../../../constants/fuseOptions.json';
 import { IoSearch } from 'react-icons/io5';
-import { ListItemType, ListType } from './types';
+import { ItemListDataType, ListItemType, ListType } from './types';
 import CustomIcon from '../../graphics/CustomIcon';
 import Skeleton from '../../skeletons/Skeleton';
 import Text from '../../texts/Text';
@@ -44,8 +44,8 @@ const SearchList = ({
 	searchPlaceHolder,
 	onSearchItem,
 }: ListType) => {
-	const [listValue, setListValue] = useState(list);
-	const [data, setData] = useState({
+	const [listValue, setListValue] = useState<Array<ListItemType>>(list);
+	const [data, setData] = useState<ItemListDataType>({
 		place: null,
 		startDate: null,
 		endDate: null,
@@ -57,14 +57,14 @@ const SearchList = ({
 
 	useEffect(() => {
 		onChangeSelect && onChangeSelect(data);
-	}, [data]);
+	}, [data, onChangeSelect]);
 
 	const selectItem = (item: ListItemType) => {
 		setData({ ...data, place: item });
 	};
 
 	const filterPlaceList = (query: string) => {
-		onSearchItem(query);
+		onSearchItem && onSearchItem(query);
 		const fusePlaceList = new Fuse(list, fuseConfigs);
 		const filteredResult = fusePlaceList.search(query);
 		const filteredList =
@@ -72,7 +72,9 @@ const SearchList = ({
 				? filteredResult.map((filteredPlace) => filteredPlace.item)
 				: featuredElements.filter((item) => item.featured == true);
 
-		setListValue(filteredList as ListItemType[]);
+		console.log(filteredList, 'list');
+
+		setListValue(filteredList);
 		query.length == 0 && setListValue(list);
 	};
 
@@ -123,7 +125,7 @@ const SearchList = ({
 				return prevState;
 			});
 		},
-		[list.length, setCurrentPlace, showCurrentPosition]
+		[list.length, selectedAction, setCurrentPlace, showCurrentPosition]
 	);
 
 	useEffect(() => {
@@ -166,7 +168,7 @@ const SearchList = ({
 								return (
 									<ItemList
 										key={index}
-										onClick={(e) => {
+										onClick={() => {
 											selectItem(item);
 											onItemClick?.(item.id);
 											selectedAction && selectedAction(item);

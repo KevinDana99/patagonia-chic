@@ -1,23 +1,27 @@
 import React from 'react';
+import CustomIcon from '../../../graphics/CustomIcon';
 import Text from '../../../texts/Text';
 import {
 	Container,
 	Requirements,
 	Title,
 	StyledCustomIcon,
-	IconClose,
 	SectionTitle,
 	NotIncludeContainer,
 	ButtonItem,
+	IconClose,
+	Linked,
 } from './styled';
 import { SectionItemType } from './types';
 const SectionItem = ({ title, subTitle, included }: SectionItemType) => {
 	return (
 		<Container>
 			{included.status ? (
-				<StyledCustomIcon name="check-circle" color="#3BC053" size={15} />
+				<StyledCustomIcon name="check-circle" color="#00cf57" size={15} />
 			) : (
-				<IconClose size={20} />
+				<IconClose>
+					<CustomIcon name={'close-icon'} size={10} />
+				</IconClose>
 			)}
 
 			{included.status ? (
@@ -27,11 +31,11 @@ const SectionItem = ({ title, subTitle, included }: SectionItemType) => {
 							{title}
 						</Text>
 					</Title>
-					{subTitle && <div>-</div>}
+
 					{subTitle && (
 						<Requirements>
 							<Text size={12} weight={'regular'} color="#888">
-								{subTitle}
+								{'- ' + subTitle}
 							</Text>
 						</Requirements>
 					)}
@@ -45,9 +49,9 @@ const SectionItem = ({ title, subTitle, included }: SectionItemType) => {
 					</Title>
 
 					{included.details && (
-						<a href={included.details.target}>
+						<Linked href={included.details.target}>
 							<ButtonItem title={included.details.title} />
-						</a>
+						</Linked>
 					)}
 				</NotIncludeContainer>
 			)}

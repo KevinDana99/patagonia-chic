@@ -73,7 +73,7 @@ const Navbar = ({
 					<CartIcon size={25} colorTheme={color} />
 					{cartProductCount && cartProductCount > 0 ? (
 						<CartStatus>
-							<CartCount>{cartProductCount}</CartCount>
+							<CartCount>{`${cartProductCount}`}</CartCount>
 						</CartStatus>
 					) : null}
 				</ItemMenuContainer>
