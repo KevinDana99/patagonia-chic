@@ -67,7 +67,7 @@ export const Label = styled(Text)`
 	font-weight: 600;
 	position: absolute;
 	color: #222;
-	top: 11px;
+	top: 13px;
 	left: 30px;
 	text-overflow: ellipsis;
 `;
@@ -77,7 +77,7 @@ export const TextInput = styled.input.attrs({
 })<TextInputType>`
 	width: 100%;
 	height: 100%;
-	padding: 20px 40px 10px 30px;
+	padding: 26px 40px 10px 30px;
 	font-family: ${fontsConstants.defaultFontName}, -apple-system, system-ui,
 		BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue',
 		'Lucida Grande', sans-serif;

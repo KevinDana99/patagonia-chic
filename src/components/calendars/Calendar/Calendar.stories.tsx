@@ -11,6 +11,7 @@ export default {
 		onRangeSelected: { action: 'onRangeSelected' },
 		onRangeStartDateSelected: { action: 'onRangeStartDateSelected' },
 		onRangeEndDateSelected: { action: 'onRangeEndDateSelected' },
+		// width: { control: 'string' },
 	},
 } as Meta<typeof Calendar>;
 
