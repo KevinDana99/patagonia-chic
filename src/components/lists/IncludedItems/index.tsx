@@ -1,10 +1,9 @@
 import React from 'react';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import SectionItem from './SectionItem';
 import { Container } from './styled';
 import { IncludedItemsType } from './types';
 
-const Included = ({ items }: IncludedItemsType) => {
+const IncludedItems = ({ items }: IncludedItemsType) => {
 	return (
 		<Container>
 			{items.map((item, index) => {
@@ -20,7 +19,5 @@ const Included = ({ items }: IncludedItemsType) => {
 		</Container>
 	);
 };
-
-const IncludedItems = withFontStyles(Included);
 
 export default IncludedItems;

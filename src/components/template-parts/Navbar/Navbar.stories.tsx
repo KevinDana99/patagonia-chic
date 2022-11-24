@@ -28,4 +28,7 @@ export const navbar: Story<NavbarType> = template.bind({});
 
 navbar.args = {
 	cartProductCount: 75,
+	texts: {
+		helpOption: 'Ayuda',
+	},
 };

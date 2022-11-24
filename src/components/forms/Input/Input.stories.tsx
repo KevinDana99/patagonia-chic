@@ -18,4 +18,8 @@ export const Input: Story<InputPropsType> = Template.bind({});
 
 Input.args = {
 	label: 'Apellido',
+	inputProps: {
+		type: 'text',
+	},
+	disabled: true,
 };

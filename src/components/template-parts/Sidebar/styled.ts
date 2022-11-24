@@ -6,15 +6,18 @@ import { deviceSize } from '../../../constants/devicesSizes';
 import { TbWorld } from 'react-icons/tb';
 
 export const BoxBackground = styled.div<SidebarComponentType>`
-	position: absolute;
+	position: fixed;
 	width: 100%;
-	min-height: 100vh;
+	height: 100vh;
 	left: 0px;
 	top: 0px;
+	right: 0px;
+	bottom: 0px;
 	background: rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(3px);
 	display: ${(props) => (props.activeSidebar ? 'flex' : 'none')};
 	justify-content: flex-end;
+	z-index: 2;
 `;
 
 export const SidebarContainer = styled.div<SidebarComponentType>`
@@ -29,6 +32,11 @@ export const SidebarContainer = styled.div<SidebarComponentType>`
 	transition: all 200ms ease-out;
 	display: flex;
 	flex-direction: column;
+	overflow-y: scroll;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 
 	@media ${deviceSize.mobileL} {
 		width: 90%;

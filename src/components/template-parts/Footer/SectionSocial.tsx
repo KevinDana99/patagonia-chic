@@ -1,17 +1,20 @@
 import React from 'react';
-import { footerTexts } from './footerTexts';
+import Text from '../../texts/Text';
 import {
 	ContainerSocial,
 	CopyrightText,
 	IconContainer,
 	LinkStyled,
 } from './styled';
+import { SectionSocialType } from './types';
 import { icons } from './utils';
 
-export const SectionSocial = () => {
+export const SectionSocial = ({ texts }: SectionSocialType) => {
 	return (
 		<ContainerSocial>
-			<CopyrightText>{footerTexts.copyrightMessage}</CopyrightText>
+			<CopyrightText>
+				<Text>{texts.copyrightMessage}</Text>
+			</CopyrightText>
 			<IconContainer>
 				{icons.map(({ Icon, url }, index) => (
 					<LinkStyled href={url} key={index} target="_blank">

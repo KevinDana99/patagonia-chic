@@ -15,13 +15,12 @@ import { getSectionList, icons } from './utils';
 import { deviceSize } from '../../../constants/devicesSizes';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { SectionSocial } from './SectionSocial';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
-const Footer = ({ language, places }: FooterPropsType) => {
+const Footer = ({ language, places, texts }: FooterPropsType) => {
 	const isMobile = useMediaQuery(deviceSize.mobileL);
 	const isTablet = useMediaQuery(deviceSize.tablet);
 
-	const sections = getSectionList(places);
+	const sections = getSectionList(places, texts);
 
 	return (
 		<Container>
@@ -32,6 +31,7 @@ const Footer = ({ language, places }: FooterPropsType) => {
 					sections={sections}
 					isMobile={isMobile}
 					isTablet={isTablet}
+					texts={texts}
 				/>
 				<ContainerSectionsCommon>
 					{sections.map((item, index) => (
@@ -49,9 +49,9 @@ const Footer = ({ language, places }: FooterPropsType) => {
 				</IconsMovil>
 			</ContainerIcons>
 			<Divider />
-			<SectionSocial />
+			<SectionSocial texts={texts} />
 		</Container>
 	);
 };
 
-export default withFontStyles(Footer);
+export default Footer;

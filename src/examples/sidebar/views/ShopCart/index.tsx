@@ -11,6 +11,7 @@ const ShopCart = ({ next, navigationNode }: SidebarPropsType) => {
 						title={e.name}
 						key={index}
 						onClick={() => next && next(e.content, { title: e.name, next })}
+						arrowIconDirection={'right'}
 					/>
 				);
 			})}

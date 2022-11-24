@@ -1,23 +1,52 @@
 import React from 'react';
-import { ButtonSecondaryStyled, SpinnerStyled } from './styled';
+import {
+	ArrowDownIcon,
+	ArrowLeftIcon,
+	ArrowRightIcon,
+	ArrowUpIcon,
+	ButtonSecondaryStyled,
+	SpinnerStyled,
+	StyledText,
+} from './styled';
 import { SecondaryButtonType } from './types';
-import { IoChevronForwardSharp as ForwardIcon } from 'react-icons/io5';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
 const SecondaryButton = ({
 	title,
 	loading = false,
 	onClick,
 	disabled = false,
+	className,
+	arrowIconDirection = 'right',
 }: SecondaryButtonType) => {
 	disabled = disabled || loading;
-	return (
-		<ButtonSecondaryStyled disabled={disabled} onClick={onClick}>
-			{title}
 
-			{loading ? <SpinnerStyled size={17} /> : <ForwardIcon />}
+	const arrowDirectionSelect = () => {
+		switch (arrowIconDirection) {
+			case 'right':
+				return <ArrowRightIcon />;
+
+			case 'left':
+				return <ArrowLeftIcon />;
+
+			case 'bottom':
+				return <ArrowDownIcon />;
+
+			case 'top':
+				return <ArrowUpIcon />;
+		}
+	};
+
+	return (
+		<ButtonSecondaryStyled
+			disabled={disabled}
+			onClick={onClick}
+			className={className}
+		>
+			<StyledText>{title}</StyledText>
+			{!loading && arrowDirectionSelect()}
+			{loading && <SpinnerStyled size={17} />}
 		</ButtonSecondaryStyled>
 	);
 };
 
-export default withFontStyles(SecondaryButton);
+export default SecondaryButton;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
 	NavBarContainer,
@@ -13,10 +13,10 @@ import {
 } from './styled';
 import { themesMap } from './themes_map';
 import { NavbarType } from './types';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Logo from '../../logos/Logo';
 import { deviceSize } from '../../../constants/devicesSizes';
 import useMediaQuery from '../../../hooks/useMediaQuery';
+import Text from '../../texts/Text';
 
 const Navbar = ({
 	cartProductCount,
@@ -24,6 +24,7 @@ const Navbar = ({
 	onClickMenu,
 	onClickCart,
 	onClickHelp,
+	texts,
 }: NavbarType) => {
 	const [scrollStatus, setScrollStatus] = useState({
 		activeNavBar: false,
@@ -46,7 +47,7 @@ const Navbar = ({
 
 		window.addEventListener('scroll', listenScroll);
 		return () => window.removeEventListener('scroll', listenScroll);
-	}, []);
+	}, [scrollStatus]);
 
 	const { background, color } = themesMap(scrollStatus.theme);
 
@@ -61,14 +62,18 @@ const Navbar = ({
 			<MenuContainer>
 				{!isMobile && (
 					<ItemMenuContainer onClick={onClickHelp}>
-						<MenuItemText colorTheme={color}>Ayuda</MenuItemText>
+						<MenuItemText colorTheme={color}>
+							<Text size={15} weight={'semi-bold'} color={color}>
+								{texts.helpOption}
+							</Text>
+						</MenuItemText>
 					</ItemMenuContainer>
 				)}
 				<ItemMenuContainer onClick={onClickCart}>
 					<CartIcon size={25} colorTheme={color} />
 					{cartProductCount && cartProductCount > 0 ? (
 						<CartStatus>
-							<CartCount>{cartProductCount}</CartCount>
+							<CartCount>{`${cartProductCount}`}</CartCount>
 						</CartStatus>
 					) : null}
 				</ItemMenuContainer>
@@ -80,4 +85,4 @@ const Navbar = ({
 	);
 };
 
-export default withFontStyles(Navbar);
+export default Navbar;

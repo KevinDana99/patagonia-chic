@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { RadioButtonItemPropsType } from './types';
 import {
 	StyledInput,
@@ -8,6 +8,7 @@ import {
 	TextDiv,
 	CheckIcon,
 } from './styled';
+import Text from '../../texts/Text';
 
 const RadioButtonItem = ({
 	index,
@@ -29,9 +30,13 @@ const RadioButtonItem = ({
 			/>
 			<StyledLabel htmlFor={index.toString().concat('radio')}>
 				<IconDiv>
-					<CheckIcon />
+					<CheckIcon name="check" color="#fff" size={11} />
 				</IconDiv>
-				<TextDiv>{item.label ? item.label : `Opcion ${index + 1}`}</TextDiv>
+				<TextDiv>
+					<Text size={17} weight={'regular'} color={'#333'}>
+						{item.label ? item.label : `Opcion ${index + 1}`}
+					</Text>
+				</TextDiv>
 			</StyledLabel>
 		</ContainerInput>
 	);

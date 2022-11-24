@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
+import Text from '../../texts/Text';
 import {
 	Container,
 	SelectStyled,
@@ -15,6 +15,11 @@ const Select: FC<SelectPropsType> = ({
 	label,
 	placeholder,
 	onChange,
+	className,
+	selectProps,
+	disabled,
+	labelTextWeight = 'regular',
+	labelTextColor = '#777',
 }) => {
 	const [list, setList] = useState<SelectOptionType[]>(ListSelectOptions);
 
@@ -30,8 +35,12 @@ const Select: FC<SelectPropsType> = ({
 	};
 
 	return (
-		<Container>
-			<SelectStyled onChange={(e) => handleChange(e)}>
+		<Container className={className}>
+			<SelectStyled
+				{...selectProps}
+				onChange={(e) => handleChange(e)}
+				disabled={disabled}
+			>
 				<option hidden={true}>{placeholder}</option>
 
 				{list.map((item, index) => {
@@ -49,9 +58,13 @@ const Select: FC<SelectPropsType> = ({
 
 			<IconStyled aria-hidden="true">&nbsp;</IconStyled>
 
-			<SpanTitleStyled>{label}</SpanTitleStyled>
+			<SpanTitleStyled>
+				<Text size={12} weight={labelTextWeight} color={labelTextColor}>
+					{label}
+				</Text>
+			</SpanTitleStyled>
 		</Container>
 	);
 };
 
-export default withFontStyles(Select);
+export default Select;

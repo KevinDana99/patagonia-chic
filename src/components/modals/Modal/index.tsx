@@ -1,26 +1,30 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useIsElementScrollable } from '../../../hooks/useIsElementScrollable';
+import CloseButton from '../../buttons/iconButtons/CloseButton';
 import SecondaryButton from '../../buttons/SecondaryButton';
+import Text from '../../texts/Text';
+import { useShowOverflowGradient } from './hooks/useShowOverflowGradient';
 import {
 	BoxModal,
 	BoxTitle,
 	BoxTop,
-	ButtonClose,
+	ButtonCloseContainer,
 	Container,
 	BoxHeader,
 	BoxChildren,
 	BoxScroll,
-	CloseIcon,
 	BoxHeaderText,
 	BoxDownModal,
 } from './styled';
-import { ModalType } from './types';
+import { ModalStateType, ModalType } from './types';
+
+const ANIMATION_TIME_MILLIS = 300;
 
 const PrimaryModal = ({
 	renderOpenButton,
 	width,
 	headerText,
-	Children,
+	children,
 	closeAction,
 	closeOnTouchOutside,
 	coverImage,
@@ -28,74 +32,93 @@ const PrimaryModal = ({
 	onClose,
 	onOpen,
 	title,
-	visible = false,
+	visible: visibleProp = false,
+	texts,
 }: ModalType) => {
-	const [state, setState] = useState<ModalType>({
-		visible,
-		closeOnTouchOutside,
+	const [state, setState] = useState<ModalStateType>({
+		visible: visibleProp,
 		animate: false,
 	});
 
-	const close = () => {
-		setState({ ...state, animate: false, visible: false });
+	const scrollBoxRef = useRef(null);
+	const [showOverflowGradient, setScrollTop] =
+		useShowOverflowGradient(scrollBoxRef);
 
-		onClose && onClose();
-	};
+	const close = useCallback(() => {
+		setState({ animate: false, visible: true });
+		setTimeout(
+			() => setState({ animate: false, visible: false }),
+			ANIMATION_TIME_MILLIS
+		);
+		onClose?.();
+	}, [onClose]);
 
 	const open = useCallback(() => {
-		setState({ ...state, visible: true, animate: true });
-		onOpen && onOpen();
-	}, [onOpen, state]);
-
-	const touchOutside = () => {
-		closeOnTouchOutside && close();
-	};
+		setState({ animate: true, visible: true });
+		onOpen?.();
+	}, [onOpen]);
 
 	useEffect(() => {
-		setState({ ...state, visible });
-	}, [visible]);
+		(visibleProp ? open : close)();
+	}, [close, open, visibleProp]);
 
 	return (
 		<>
 			{renderOpenButton && (
-				<SecondaryButton title="Abrir Modal" onClick={open} />
+				<SecondaryButton
+					title={texts?.buttonTitle ?? ''}
+					onClick={open}
+					arrowIconDirection={'right'}
+				/>
 			)}
 
-			<BoxModal visible={state.visible} onClick={touchOutside}>
+			<BoxModal
+				visible={state.visible}
+				transitionTime={ANIMATION_TIME_MILLIS}
+				animate={state.animate}
+				onClick={closeOnTouchOutside ? closeAction ?? close : undefined}
+			>
 				<Container
 					width={width}
 					animate={state.animate}
+					transitionTime={ANIMATION_TIME_MILLIS}
 					onClick={(e) => {
 						e.stopPropagation();
 					}}
 				>
 					<BoxTop>
-						<BoxTitle>{title}</BoxTitle>
+						<BoxTitle>
+							<Text size={17}>{title}</Text>
+						</BoxTitle>
 						{!disableClose && (
-							<ButtonClose>
-								{<CloseIcon onClick={closeAction ? closeAction : close} />}
-							</ButtonClose>
+							<ButtonCloseContainer>
+								<CloseButton onClick={closeAction ?? close} />
+							</ButtonCloseContainer>
 						)}
 					</BoxTop>
-					<BoxScroll>
+
+					<BoxScroll ref={scrollBoxRef} onScroll={setScrollTop}>
 						{coverImage && (
 							<BoxHeader coverImage={coverImage}>
 								{headerText && (
 									<BoxHeaderText coverImage={coverImage}>
-										{headerText}
+										<Text color="white">{headerText}</Text>
 									</BoxHeaderText>
 								)}
 							</BoxHeader>
 						)}
 
 						{!coverImage && headerText && (
-							<BoxHeaderText>{headerText}</BoxHeaderText>
+							<BoxHeaderText>
+								<Text color="white">{headerText}</Text>
+							</BoxHeaderText>
 						)}
 
-						{Children && (
+						{children && (
 							<BoxChildren>
-								<Children />
-								<BoxDownModal />
+								{children}
+
+								{showOverflowGradient && <BoxDownModal />}
 							</BoxChildren>
 						)}
 					</BoxScroll>
@@ -105,4 +128,4 @@ const PrimaryModal = ({
 	);
 };
 
-export default withFontStyles(PrimaryModal);
+export default PrimaryModal;

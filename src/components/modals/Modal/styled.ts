@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import { ModalType } from './types';
-import { IoCloseOutline as CloseI } from 'react-icons/io5';
+import { deviceSize } from '../../../constants/devicesSizes';
+import {
+	BoxHeaderType,
+	BoxModalTextType,
+	BoxModalType,
+	ModalContainerType,
+} from './types';
 
-const paddingSpace = '3.5%';
-
-export const BoxModal = styled.div<ModalType>`
-	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+export const BoxModal = styled.div<BoxModalType>`
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -18,51 +19,65 @@ export const BoxModal = styled.div<ModalType>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: rgba(35, 37, 38, 0.7);
-	-webkit-backdrop-filter: blur(3px);
-	backdrop-filter: blur(3px);
-	z-index: 5;
+	transition: all ${({ transitionTime }) => transitionTime / 2}ms ease;
+
+	${(props) =>
+		props.animate
+			? `background-color: rgba(35, 37, 38, 0.7);
+			-webkit-backdrop-filter: blur(3px);
+			backdrop-filter: blur(3px);
+			`
+			: `background-color: rgba(35, 37, 38, 0);
+			-webkit-backdrop-filter: blur(0px);
+			backdrop-filter: blur(0px);`};
+	z-index: 100;
 `;
 
-export const Container = styled.div<ModalType>`
-	width: 100%;
+export const Container = styled.div<ModalContainerType>`
+	width: 80%;
 	min-width: 350px;
+	max-height: 80vh;
 	max-width: ${(props) => (props.width ? props.width : '570px')};
-	min-height: 500px;
-	height: calc(100% - 120px);
 	border-radius: 12px;
 	position: absolute;
+	overflow: hidden;
 	background-color: #fff;
+	visibility: ${(props) => (props.animate ? 'visible' : 'hidden')};
+
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 
-	@media (max-width: 500px) {
-		margin-top: 120px;
+	@media ((min-height: 550px)) {
+		min-height: 500px;
+	}
+
+	@media (${deviceSize.mobileL}) {
+		bottom: 0;
+		width: 100%;
+		visibility: visible;
+		min-width: auto;
 		transform: ${(props) =>
-			props.animate ? 'translateY(20px)' : 'translateY(600px)'};
-		transition: all 400ms ease;
+			props.animate ? 'translateY(0vh)' : 'translateY(90vh)'};
+		border-radius: 12px 12px 0 0;
+		transition: all ${({ transitionTime }) => transitionTime}ms ease;
 	}
 `;
 
 export const BoxTop = styled.div`
-	position: sticky;
-	top: 0;
-	bottom: 0px;
-	padding: ${paddingSpace};
 	box-sizing: border-box;
 	border-bottom: 1px solid #d4d4d4;
 	width: 100%;
-	height: 60px;
+	height: 55px !important;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	color: #444;
 `;
 
 export const BoxScroll = styled.div`
 	overflow-y: scroll;
 	scroll-behavior: smooth;
+	flex: 1;
 
 	&::-webkit-scrollbar {
 		width: 9px;
@@ -76,34 +91,34 @@ export const BoxScroll = styled.div`
 	&::-webkit-scrollbar-track {
 		background: transparent;
 	}
+
+	@media (${deviceSize.mobileL}) {
+		max-height: 80vh;
+	}
 `;
 
 export const BoxTitle = styled.div`
-	min-height: 30px;
-	position: relative;
-	font-size: 17px;
-	display: flex;
-	justify-content: center;
+	box-sizing: border-box;
+	padding-left: 24px;
+	flex: 1;
+	justify-content: flex-start;
 	align-items: center;
-`;
-export const ButtonClose = styled.div`
-	font-size: 1.5rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	filter: contrast(50%);
-	cursor: pointer;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 `;
 
-export const CloseIcon = styled(CloseI)`
+export const ButtonCloseContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-`;
-
-export const BoxHeader = styled.div<ModalType>`
-	width: 100%;
 	height: 100%;
+	width: 60px;
+`;
+
+export const BoxHeader = styled.div<BoxHeaderType>`
+	width: 100%;
+	min-height: 280px;
 	max-height: 280px;
 	background-image: ${({ coverImage }) =>
 		coverImage ? `url(${coverImage})` : 'none'};
@@ -112,8 +127,8 @@ export const BoxHeader = styled.div<ModalType>`
 	background-size: cover;
 `;
 
-export const BoxHeaderText = styled.div<ModalType>`
-	padding: 3.5%;
+export const BoxHeaderText = styled.div<BoxModalTextType>`
+	padding: 20px;
 	box-sizing: border-box;
 	width: 100%;
 	height: ${(props) => (props.coverImage ? '100%' : 'auto')};
@@ -128,7 +143,6 @@ export const BoxHeaderText = styled.div<ModalType>`
 `;
 
 export const BoxChildren = styled.div`
-	padding: 0% ${paddingSpace};
 	box-sizing: border-box;
 `;
 
@@ -145,4 +159,6 @@ export const BoxDownModal = styled.div`
 	bottom: 0px;
 	right: 0.05%;
 	border-radius: 0em 0em 12px 12px;
+	overflow: hidden;
+	pointer-events: none;
 `;

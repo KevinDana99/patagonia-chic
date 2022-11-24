@@ -1,49 +1,48 @@
-import { PlaceType, SocialNetworks } from './types';
+import { FooterTextsType, PlaceType, SocialNetworks } from './types';
 import { FaFacebookF } from 'react-icons/fa';
 import { AiFillInstagram, AiFillYoutube } from 'react-icons/ai';
-import { footerTexts } from './footerTexts';
 
-export const getSectionList = (places: [PlaceType]) => {
+export const getSectionList = (places: [PlaceType], texts: FooterTextsType) => {
 	return [
 		{
-			title: 'Ayuda',
+			title: texts.helpTitle,
 			label: [
 				{
-					label: footerTexts.helpCenterLabel,
+					label: texts.helpCenterLabel,
 					url: 'https://www.patagoniachic.com/contacto/',
 				},
 				{
-					label: footerTexts.cancellationPolicesLabel,
+					label: texts.cancellationPolicesLabel,
 					url: '', // TO DO: add cancelation polices
 				},
 				{
-					label: footerTexts.termsAndConditionsLabel,
+					label: texts.termsAndConditionsLabel,
 					url: 'https://www.patagoniachic.com/terminos-y-condiciones/',
 					target: '_blank',
 				},
 			],
 		},
 		{
-			title: 'Destino',
+			title: texts.destinyTitle,
 			label: places,
 		},
 		{
-			title: 'Enlaces útiles',
+			title: texts.usefulLinks,
 			label: [
 				{
-					label: 'Medios de pago y promociones',
+					label: texts.paymentMethodsAndPromotions,
 					url: 'https://www.patagoniachic.com/medios-de-pago/',
 				},
 				{
-					label: 'Mapa de excursiones',
+					label: texts.excursionMap,
 					url: 'https://www.patagoniachic.com/mapa-excursiones/',
 				},
 				{
-					label: 'Quienes somos',
+					label: texts.about,
 					url: 'https://www.patagoniachic.com/quienes-somos/',
 				},
 				{
-					label: 'Descargue gratis catalogo de excursiones',
+					label: texts.downloadExcursionCatalog,
 					url: 'https://www.patagoniachic.com/el-calafate/excursiones/catalogo-de-excursiones/',
 				},
 			],

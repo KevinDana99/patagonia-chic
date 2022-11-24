@@ -1,5 +1,5 @@
 import React from 'react';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
+import Text from '../../texts/Text';
 import { DataInputContainer, DataInput, StyledLabel } from './styled';
 import { InputPropsType } from './types';
 
@@ -9,24 +9,34 @@ const Input = ({
 	name,
 	defaultValue,
 	error,
+	className,
+	inputProps,
+	disabled,
+	labelTextWeight = 'regular',
+	labelTextColor = '#777',
 }: InputPropsType) => {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange && onChange(e.target.value);
 	};
 
 	return (
-		<DataInputContainer>
+		<DataInputContainer className={className}>
 			<DataInput
-				type="text"
+				{...inputProps}
 				placeholder=" "
 				onChange={handleChange}
 				name={name}
 				value={defaultValue}
 				error={!!error}
+				disabled={disabled}
 			/>
-			<StyledLabel>{label}</StyledLabel>
+			<StyledLabel>
+				<Text weight={labelTextWeight} color={labelTextColor}>
+					{label}
+				</Text>
+			</StyledLabel>
 		</DataInputContainer>
 	);
 };
 
-export default withFontStyles(Input);
+export default Input;

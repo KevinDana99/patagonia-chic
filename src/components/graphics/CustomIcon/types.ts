@@ -5,6 +5,7 @@ export type CustomIconType = {
 	className?: string;
 	color?: string;
 	size?: number;
+	onClick?: React.MouseEventHandler<HTMLDivElement>;
 };
 
 export type CustomStyleIconType = {

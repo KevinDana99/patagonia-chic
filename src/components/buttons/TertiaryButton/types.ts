@@ -1,7 +1,10 @@
+import { onClickButtonType } from '../../../types/eventTypes';
+
 export type TertiaryButtonType = {
 	className?: string;
-	title: string;
+	title?: string;
 	loading?: boolean;
-	onClick?: React.MouseEventHandler<HTMLButtonElement>;
+	onClick?: onClickButtonType;
 	disabled?: boolean;
+	children?: JSX.Element;
 };
