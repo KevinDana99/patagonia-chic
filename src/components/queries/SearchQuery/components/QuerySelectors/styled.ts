@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { size } from '../../../../../constants/devicesSizes';
 import PrimaryButton from '../../../../buttons/PrimaryButton';
+import { SearchIcon } from '../../styled';
 
 export const ContainerModal = styled.div`
 	width: 100%;
@@ -55,12 +56,14 @@ export const CalendarContainer = styled.div`
 	margin: 0 auto;
 
 	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
-		& {
-			max-width: 350px;
-		}
+		max-width: 350px;
 	}
 `;
 
 export const ModalSubmitButton = styled(PrimaryButton)`
 	margin: 50px auto 30px;
+`;
+
+export const ModalSearchIcon = styled(SearchIcon)`
+	margin-right: 5px !important;
 `;

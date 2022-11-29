@@ -53,4 +53,8 @@ export const SearchIcon = styled(IoSearch).attrs({
 	padding: 0px;
 	margin: 0px;
 	margin-right: 5px;
+
+	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
+		margin: 0px;
+	}
 `;
