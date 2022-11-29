@@ -115,7 +115,7 @@ function Dates(
 					<ModalSelections {...querySelectedData} texts={texts} />
 					<ModalSubmitButton
 						title={texts.titleSearchButton}
-						IconComponent={SearchIcon}
+						iconComponent={SearchIcon}
 						onClick={handleSubmit}
 						disabled={!location || !startDate || !endDate}
 						invertGradient={!!location && !!startDate && !!endDate}

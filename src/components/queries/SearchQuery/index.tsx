@@ -208,7 +208,7 @@ const SearchQuery = ({
 				<ButtonContainer>
 					<ButtonSearch
 						title={!isTablet ? texts.titleSearchButton : ''}
-						IconComponent={SearchIcon}
+						iconComponent={SearchIcon}
 						invertGradient={
 							!!querySelectedData.location &&
 							!!querySelectedData.startDate &&
