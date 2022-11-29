@@ -14,6 +14,7 @@ import {
 } from '../../../utils/dates';
 import { useComponentLogic } from './hooks/useComponentLogic';
 import { useCalendarWidth } from './hooks/useCalendarWidth';
+import moment from 'moment';
 
 const Calendar = ({
 	onDateSelected,
@@ -26,7 +27,6 @@ const Calendar = ({
 	onRangeSelected,
 	onRangeStartDateSelected,
 	onRangeEndDateSelected,
-	shadow = false,
 	highlightToday = false,
 	locale = 'es',
 	selectedRange = null,
@@ -37,6 +37,7 @@ const Calendar = ({
 	returnValue = 'start',
 	doubleCalendarSpaceBetween = 20,
 }: CalendarPropsType) => {
+	moment.locale(locale);
 	const [selectedDates, setSelectedDates] = useState(selectedRange);
 	const [prevAndNextUnavailableDate, setPrevAndNextUnavailableDate] = useState<
 		[Date, Date] | null
@@ -77,11 +78,11 @@ const Calendar = ({
 			doubleCalendarSpaceBetween={doubleCalendarSpaceBetween}
 			highlightToday={highlightToday}
 			range={range}
-			shadow={shadow}
 		>
 			{!!calendarRef.current && (
 				<ReactCalendar
 					navigationLabel={({ label }) => replaceMonthText(label)}
+					formatShortWeekday={(_, date) => moment(date).format('dd')}
 					defaultActiveStartDate={
 						defaultActiveStartDate || getMinDateOfArray(availableDates)
 					}

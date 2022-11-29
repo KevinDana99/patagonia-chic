@@ -266,6 +266,7 @@ const SearchQuery = ({
 								querySelectedData.endDate,
 							]
 						}
+						locale={locale}
 					/>
 				</QuerySelectors.Dates>
 			</QuerySelectors>

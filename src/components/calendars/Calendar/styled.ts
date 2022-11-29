@@ -4,8 +4,6 @@ import { CalendarStyleType } from './types';
 
 export const Container = styled.div<CalendarStyleType>`
 	width: ${({ width }) => width};
-	box-shadow: ${({ shadow }) =>
-		shadow ? '0px 2px 15px rgba(0, 0, 0, 0.15)' : 'none'};
 
 	overflow: hidden;
 
