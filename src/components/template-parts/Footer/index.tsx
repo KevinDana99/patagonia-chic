@@ -1,6 +1,6 @@
 import React from 'react';
-import SectionCommon from './SectionCommon';
-import SectionLeft from './SectionLeft';
+import SectionCommon from './SectionCommon/SectionCommon';
+import SectionLeft from './SectionLeft/SectionLeft';
 import { FooterPropsType } from './types';
 import {
 	Container,
@@ -14,10 +14,10 @@ import {
 import { getSectionList, icons } from './utils';
 import { deviceSize } from '../../../constants/devicesSizes';
 import useMediaQuery from '../../../hooks/useMediaQuery';
-import { SectionSocial } from './SectionSocial';
+import { SectionSocial } from './SectionSocial/SectionSocial';
 
 const Footer = ({ language, places, texts }: FooterPropsType) => {
-	const isMobile = useMediaQuery(deviceSize.mobileL);
+	const isMobile = useMediaQuery(deviceSize.mobile);
 	const isTablet = useMediaQuery(deviceSize.tablet);
 
 	const sections = getSectionList(places, texts);

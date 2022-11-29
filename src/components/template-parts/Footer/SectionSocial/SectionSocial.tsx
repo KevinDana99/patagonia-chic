@@ -1,13 +1,9 @@
 import React from 'react';
-import Text from '../../texts/Text';
-import {
-	ContainerSocial,
-	CopyrightText,
-	IconContainer,
-	LinkStyled,
-} from './styled';
-import { SectionSocialType } from './types';
-import { icons } from './utils';
+import Text from '../../../texts/Text/index';
+import { LinkStyled } from '../styled';
+import { ContainerSocial, CopyrightText, IconContainer } from './styled';
+import { SectionSocialType } from '../types';
+import { icons } from '../utils';
 
 export const SectionSocial = ({ texts }: SectionSocialType) => {
 	return (

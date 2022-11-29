@@ -10,9 +10,6 @@ export const size = {
 };
 
 export const deviceSize = {
-	mobileS: `(max-width: ${size.mobileS})`,
-	mobileM: `(max-width: ${size.mobileM})`,
-	mobileL: `(max-width: ${size.mobileL})`,
-	mobile: `(min-width: ${size.mobileS}) and (max-width: ${size.tabletL})`,
-	tablet: `(min-width: ${size.tablet}) and (max-width: ${size.tabletL})`,
+	mobile: `(min-width: ${size.mobileS}) and (max-width: ${size.tablet})`,
+	tablet: `(min-width: ${size.tablet}) and (max-width: ${size.laptop})`,
 };

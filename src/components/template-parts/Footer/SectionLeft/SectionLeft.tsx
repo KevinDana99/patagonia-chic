@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../logos/Logo';
+import Logo from '../../../logos/Logo/index';
 import {
 	LeftSection,
 	Language,
@@ -11,9 +11,9 @@ import {
 	LeftSideContainer,
 	DescriptionContainer,
 } from './styled';
-import { SectionLeftType } from './types';
-import { SectionMobile } from './SectionMobile';
-import Text from '../../texts/Text';
+import { SectionLeftType } from '../types';
+import Text from '../../../texts/Text/index';
+import { Accordion } from '../../../index';
 
 const SectionLeft = ({
 	logo,
@@ -37,7 +37,7 @@ const SectionLeft = ({
 				</DescriptionContainer>
 
 				<SocialMobileContainer>
-					{isTablet || isMobile ? <SectionMobile sections={sections} /> : null}
+					{(isMobile || isTablet) && <Accordion sections={sections} />}
 				</SocialMobileContainer>
 			</LeftSideContainer>
 			<Language>
