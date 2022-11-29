@@ -55,11 +55,12 @@ export const CalendarContainer = styled.div`
 	margin: 0 auto;
 
 	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
-		max-width: 350px;
+		& {
+			max-width: 350px;
+		}
 	}
 `;
 
 export const ModalSubmitButton = styled(PrimaryButton)`
-	align-self: center;
 	margin: 50px auto 30px;
 `;

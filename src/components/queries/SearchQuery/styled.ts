@@ -47,12 +47,10 @@ export const ButtonSearch = styled(PrimaryButton)`
 	}
 `;
 
-export const SearchIcon = styled(IoSearch)`
+export const SearchIcon = styled(IoSearch).attrs({
+	size: 20,
+})`
 	padding: 0px;
 	margin: 0px;
 	margin-right: 5px;
-
-	@media ((min-width: ${size.mobileS}) and (max-width: ${size.tabletL})) {
-		margin: 0px;
-	}
 `;
