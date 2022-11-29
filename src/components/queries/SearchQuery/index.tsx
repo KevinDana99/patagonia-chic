@@ -21,6 +21,13 @@ import QuerySelectors from './components/QuerySelectors';
 import { size } from '../../../constants/devicesSizes';
 import Calendar from '../../calendars/Calendar';
 
+export const getFormattedDate = (date: Date) => {
+	let formattedDate = moment(date).format('MMMM, DD');
+	formattedDate =
+		formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+	return formattedDate;
+};
+
 const SearchQuery = ({
 	locationsList,
 	onQuerySubmit,
@@ -167,7 +174,7 @@ const SearchQuery = ({
 							ref={dateStartInputRef}
 							inputTextValue={
 								querySelectedData.startDate
-									? moment(querySelectedData.startDate).format('MMMM, DD')
+									? getFormattedDate(querySelectedData.startDate)
 									: ''
 							}
 							label={texts.labelStartDate}
@@ -187,7 +194,7 @@ const SearchQuery = ({
 							ref={dateEndInputRef}
 							inputTextValue={
 								querySelectedData.endDate
-									? moment(querySelectedData.endDate).format('MMMM, DD')
+									? getFormattedDate(querySelectedData.endDate)
 									: ''
 							}
 							onClearFieldClicked={() => {
@@ -240,7 +247,6 @@ const SearchQuery = ({
 						}}
 						searchPlaceholder={texts.placeholderLocation}
 						searchText={locationShowFullList ? '' : locationSearchText}
-						emptyStateText="No encontramos este destino, pero te recomendamos..."
 						texts={texts}
 					/>
 				</QuerySelectors.Location>

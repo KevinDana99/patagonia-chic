@@ -1,6 +1,6 @@
-import moment from 'moment';
 import React from 'react';
 import Text from '../../../../../../texts/Text';
+import { getFormattedDate } from '../../../../';
 import { Container, ItemContainer } from './styled';
 import { SelectionItemPropsType, ModalSelectionsPropsType } from './types';
 
@@ -28,11 +28,11 @@ export const ModalSelections = ({
 			<SelectionItem label={texts.modalLabelLocation} value={location?.name} />
 			<SelectionItem
 				label={texts.modalLabelStartDate}
-				value={startDate && moment(startDate).format('MMMM, DD')}
+				value={startDate && getFormattedDate(startDate)}
 			/>
 			<SelectionItem
 				label={texts.modalLabelEndDate}
-				value={endDate && moment(endDate).format('MMMM, DD')}
+				value={endDate && getFormattedDate(endDate)}
 			/>
 		</Container>
 	);
