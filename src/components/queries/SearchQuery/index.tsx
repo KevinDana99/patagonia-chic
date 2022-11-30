@@ -122,7 +122,7 @@ const SearchQuery = ({
 	};
 
 	const handleStartDateSelected = (selectedDate: Date) => {
-		if (currentSelector === 'dates/end') {
+		if (!isTablet && currentSelector === 'dates/end') {
 			handleEndDateSelected(selectedDate);
 		} else {
 			setQuerySelectedData({
@@ -270,6 +270,7 @@ const SearchQuery = ({
 						onRangeEndDateSelected={handleEndDateSelected}
 						width="100%"
 						value={
+							!isTablet &&
 							currentSelector === 'dates/start' &&
 							!querySelectedData.endDate &&
 							querySelectedData.startDate
