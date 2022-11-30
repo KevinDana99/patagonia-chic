@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactCalendar, { CalendarTileProperties } from 'react-calendar';
 import './styles.css';
 import { AvailabilityReferenceContainer, Container } from './styled';
@@ -29,19 +29,22 @@ const Calendar = ({
 	onRangeEndDateSelected,
 	highlightToday = false,
 	locale = 'es',
-	selectedRange = null,
 	texts,
 	width: containerWidthProp = 300,
-	value,
+	value = null,
 	defaultValue,
-	returnValue = 'start',
 	doubleCalendarSpaceBetween = 20,
 }: CalendarPropsType) => {
 	moment.locale(locale);
-	const [selectedDates, setSelectedDates] = useState(selectedRange);
+	const [selectedDates, setSelectedDates] = useState(value);
 	const [prevAndNextUnavailableDate, setPrevAndNextUnavailableDate] = useState<
 		[Date, Date] | null
 	>(null);
+
+	useEffect(() => {
+		setSelectedDates(value);
+	}, [value]);
+
 	const calendarRef = useRef<HTMLDivElement>(null);
 
 	const { handleOnChange } = useComponentLogic({
@@ -106,9 +109,12 @@ const Calendar = ({
 							true
 						)
 					}
-					value={value}
+					value={
+						selectedDates?.[1] ? selectedDates : selectedDates?.[0] ?? null
+					}
 					defaultValue={defaultValue}
-					returnValue={returnValue}
+					allowPartialRange
+					returnValue="start"
 				/>
 			)}
 			{availableDates && (

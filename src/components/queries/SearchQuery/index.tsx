@@ -102,14 +102,6 @@ const SearchQuery = ({
 		setLocationShowFullList(false);
 	};
 
-	const handleStartDateSelected = (selectedDate: Date) => {
-		setQuerySelectedData({
-			...querySelectedData,
-			startDate: selectedDate,
-		});
-		setCurrentSelector('dates/end');
-	};
-
 	const handleEndDateSelected = (selectedDate: Date) => {
 		if (
 			querySelectedData.startDate &&
@@ -129,6 +121,19 @@ const SearchQuery = ({
 		!isTablet && setCurrentSelector('none');
 	};
 
+	const handleStartDateSelected = (selectedDate: Date) => {
+		if (currentSelector === 'dates/end') {
+			handleEndDateSelected(selectedDate);
+		} else {
+			setQuerySelectedData({
+				...querySelectedData,
+				endDate: null,
+				startDate: selectedDate,
+			});
+			setCurrentSelector('dates/end');
+		}
+	};
+
 	const handleSubmit = () => {
 		const { location, startDate, endDate } = querySelectedData;
 
@@ -138,7 +143,8 @@ const SearchQuery = ({
 		} else {
 			if (!isMobile) {
 				if (showLocations && !location) setCurrentSelector('location');
-				else setCurrentSelector('dates/start');
+				else if (!startDate) setCurrentSelector('dates/start');
+				else setCurrentSelector('dates/end');
 			} else {
 				setCurrentSelector('location');
 			}
@@ -200,13 +206,16 @@ const SearchQuery = ({
 							onClearFieldClicked={() => {
 								setQuerySelectedData({
 									...querySelectedData,
-									startDate: null,
 									endDate: null,
 								});
 							}}
 							label={texts.labelEndDate}
 							placeholder={texts.placeholderDate}
-							onClick={() => setCurrentSelector('dates/start')}
+							onClick={() =>
+								setCurrentSelector(
+									querySelectedData.startDate ? 'dates/end' : 'dates/start'
+								)
+							}
 							onlyClick
 							isFocused={currentSelector === 'dates/end'}
 						/>
@@ -261,10 +270,14 @@ const SearchQuery = ({
 						onRangeEndDateSelected={handleEndDateSelected}
 						width="100%"
 						value={
-							querySelectedData.startDate && [
-								querySelectedData.startDate,
-								querySelectedData.endDate,
-							]
+							currentSelector === 'dates/start' &&
+							!querySelectedData.endDate &&
+							querySelectedData.startDate
+								? [querySelectedData.startDate, querySelectedData.startDate]
+								: querySelectedData.startDate && [
+										querySelectedData.startDate,
+										querySelectedData.endDate,
+								  ]
 						}
 						locale={locale}
 					/>
