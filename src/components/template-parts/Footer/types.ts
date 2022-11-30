@@ -20,6 +20,7 @@ export type SectionLeftType = {
 	}[];
 	isTablet: boolean;
 	texts: FooterTextsType;
+	devMode: StyleDevModeType['devMode'];
 };
 
 export type LabelLinkType = {
@@ -31,6 +32,7 @@ export type LabelLinkType = {
 export type SectionType = {
 	title: string;
 	label: LabelLinkType[];
+	devMode: StyleDevModeType['devMode'];
 };
 
 export type SocialNetworks = {
@@ -47,6 +49,7 @@ export type FooterPropsType = {
 	language: LanguageType;
 	places: [PlaceType];
 	texts: FooterTextsType;
+	devMode: boolean;
 };
 
 export type FooterTextsType = {
@@ -67,6 +70,7 @@ export type FooterTextsType = {
 
 export type SectionSocialType = {
 	texts: FooterTextsType;
+	devMode: StyleDevModeType['devMode'];
 };
 export interface SectionInterface {
 	sections: {
@@ -86,4 +90,8 @@ export type SectionMobileType = {
 			| { label: string; url: string; target: string }
 		)[];
 	}[];
+};
+
+export type StyleDevModeType = {
+	devMode?: boolean;
 };

@@ -22,11 +22,12 @@ const SectionLeft = ({
 	sections,
 	isTablet,
 	texts,
+	devMode,
 }: SectionLeftType) => {
 	return (
-		<LeftSection>
+		<LeftSection devMode={devMode}>
 			<LeftSideContainer>
-				<DescriptionContainer>
+				<DescriptionContainer devMode={devMode}>
 					<Logo {...logo} />
 					<Description>
 						<Text>{texts.description}</Text>
@@ -36,7 +37,7 @@ const SectionLeft = ({
 					</Direction>
 				</DescriptionContainer>
 
-				<SocialMobileContainer>
+				<SocialMobileContainer devMode={devMode}>
 					{(isMobile || isTablet) && <Accordion sections={sections} />}
 				</SocialMobileContainer>
 			</LeftSideContainer>

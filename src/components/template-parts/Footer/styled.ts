@@ -1,29 +1,36 @@
 import styled from 'styled-components';
 import { deviceSize } from '../../../constants/devicesSizes';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { FooterPropsType, StyleDevModeType } from './types';
 
 export const Container = styled.div`
-	width: -webkit-fill-available;
-
+	width: 100%;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	background-color: #ffffff;
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 `;
 
-export const ContainerSectionsTop = styled.div`
+export const Wrapper = styled.div`
+	max-width: 1000px;
 	display: flex;
-	background-color: orange;
+	flex-direction: column;
+`;
+
+export const ContainerSectionsTop = styled.div<StyleDevModeType>`
+	display: flex;
+	background-color: ${({ devMode }) => (devMode ? 'orange' : 'none')};
 	width: 100%;
 	justify-content: center;
 `;
 
-export const ContainerSectionsCommon = styled.div`
+export const ContainerSectionsCommon = styled.div<StyleDevModeType>`
 	display: flex;
 	justify-content: flex-end;
 	width: fit-content;
-	background-color: blue;
+	background-color: ${({ devMode }) => (devMode ? 'blue' : 'none')};
 `;
 
 export const LanguageMovil = styled.div`
@@ -66,16 +73,16 @@ export const IconsMovil = styled.div`
 	display: none;
 `;
 
-export const SectionContainer = styled.div`
+export const SectionContainer = styled.div<StyleDevModeType>`
 	display: flex;
 	width: 100%;
 	flex-direction: column;
 
 	@media (${deviceSize.mobile}) {
-		background: red;
+		background-color: ${({ devMode }) => (devMode ? 'red' : 'none')};
 	}
 	@media (${deviceSize.tablet}) {
-		background: blue;
+		background-color: ${({ devMode }) => (devMode ? 'blue' : 'none')};
 	}
 `;
 

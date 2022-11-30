@@ -1,8 +1,18 @@
 import styled from 'styled-components';
+import { deviceSize } from '../../../../constants/devicesSizes';
 import { FooterText } from '../styled';
+import { StyleDevModeType } from '../types';
 
-export const ContainerSectionCommon = styled.div`
+export const ContainerSectionCommon = styled.div<StyleDevModeType>`
 	width: 200px;
+	background-color: ${({ devMode }) => (devMode ? 'violet' : 'none')};
+	display: flex;
+	@media (${deviceSize.tablet}) {
+		display: none;
+	}
+	@media (${deviceSize.mobile}) {
+		display: none;
+	}
 `;
 
 export const DesktopSectionCommon = styled.div``;

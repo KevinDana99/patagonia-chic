@@ -9,9 +9,9 @@ import {
 } from './styled';
 import { SectionType } from '../types';
 
-const SectionCommon = ({ title, label }: SectionType) => {
+const SectionCommon = ({ title, label, devMode }: SectionType) => {
 	return (
-		<ContainerSectionCommon>
+		<ContainerSectionCommon devMode={devMode}>
 			<DesktopSectionCommon>
 				<SectionTitle>
 					<Text size={15} weight={'semi-bold'}>

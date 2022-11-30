@@ -1,11 +1,14 @@
 import { TbWorld } from 'react-icons/tb';
 import styled from 'styled-components';
+import { deviceSize } from '../../../../constants/devicesSizes';
 import { FooterText } from '../styled';
+import { StyleDevModeType } from '../types';
 
-export const LeftSection = styled.div`
-	width: 350px;
+export const LeftSection = styled.div<StyleDevModeType>`
+	width: 100%;
 	display: flex;
 	flex-direction: column;
+	background-color: ${({ devMode }) => (devMode ? 'lightblue' : 'none')};
 `;
 
 export const Language = styled.div`
@@ -27,9 +30,11 @@ export const LanguageLabel = styled.p`
 	margin: 0px;
 `;
 
-export const DescriptionContainer = styled.div`
+export const DescriptionContainer = styled.div<StyleDevModeType>`
+	width: 100%;
 	display: flex;
 	flex-direction: column;
+	background-color: ${({ devMode }) => (devMode ? 'brown' : 'none')};
 `;
 
 export const Description = styled(FooterText)`
@@ -46,11 +51,24 @@ export const WorldIcon = styled(TbWorld)`
 	font-size: 25px;
 `;
 
-export const SocialMobileContainer = styled.div`
-	margin: 60px 0px;
+export const SocialMobileContainer = styled.div<StyleDevModeType>`
+	width: 100%;
+	height: 100%;
+	background-color: ${({ devMode }) => (devMode ? 'green' : 'none')};
+	display: none;
+	@media (${deviceSize.mobile}) {
+		display: flex;
+	}
+	@media (${deviceSize.tablet}) {
+		display: flex;
+	}
 `;
 
-export const LeftSideContainer = styled.div`
+export const LeftSideContainer = styled.div<StyleDevModeType>`
 	display: flex;
 	width: 100%;
+	background-color: ${({ devMode }) => (devMode ? 'red' : 'none')};
+	@media (${deviceSize.mobile}) {
+		flex-direction: column;
+	}
 `;

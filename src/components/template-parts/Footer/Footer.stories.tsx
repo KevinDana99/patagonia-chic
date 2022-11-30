@@ -43,4 +43,5 @@ Footer.args = {
 		about: 'Quienes somos',
 		downloadExcursionCatalog: 'Descargue gratis catalogo de excursiones',
 	},
+	devMode: false,
 };

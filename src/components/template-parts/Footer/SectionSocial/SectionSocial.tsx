@@ -5,9 +5,9 @@ import { ContainerSocial, CopyrightText, IconContainer } from './styled';
 import { SectionSocialType } from '../types';
 import { icons } from '../utils';
 
-export const SectionSocial = ({ texts }: SectionSocialType) => {
+export const SectionSocial = ({ texts, devMode }: SectionSocialType) => {
 	return (
-		<ContainerSocial>
+		<ContainerSocial devMode={devMode}>
 			<CopyrightText>
 				<Text>{texts.copyrightMessage}</Text>
 			</CopyrightText>
