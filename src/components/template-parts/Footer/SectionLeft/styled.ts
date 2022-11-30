@@ -31,7 +31,7 @@ export const LanguageLabel = styled.p`
 `;
 
 export const DescriptionContainer = styled.div<StyleDevModeType>`
-	width: 100%;
+	min-width: 300px;
 	display: flex;
 	flex-direction: column;
 	background-color: ${({ devMode }) => (devMode ? 'brown' : 'none')};
@@ -52,15 +52,19 @@ export const WorldIcon = styled(TbWorld)`
 `;
 
 export const SocialMobileContainer = styled.div<StyleDevModeType>`
+	margin-top: 20px;
 	width: 100%;
 	height: 100%;
 	background-color: ${({ devMode }) => (devMode ? 'green' : 'none')};
 	display: none;
 	@media (${deviceSize.mobile}) {
 		display: flex;
+		width: 100%;
+		margin: 89px 0px;
 	}
 	@media (${deviceSize.tablet}) {
 		display: flex;
+		margin-left: 85px;
 	}
 `;
 

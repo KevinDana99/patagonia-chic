@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { deviceSize } from '../../../../constants/devicesSizes';
 import { FooterText } from '../styled';
+import { StyleDevModeType } from '../types';
 
 export const ContainerSocial = styled.div<StyleDevModeType>`
 	display: flex;

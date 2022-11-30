@@ -4,7 +4,8 @@ import { FooterText } from '../styled';
 import { StyleDevModeType } from '../types';
 
 export const ContainerSectionCommon = styled.div<StyleDevModeType>`
-	width: 200px;
+	margin-right: 21px;
+	width: 215px;
 	background-color: ${({ devMode }) => (devMode ? 'violet' : 'none')};
 	display: flex;
 	@media (${deviceSize.tablet}) {

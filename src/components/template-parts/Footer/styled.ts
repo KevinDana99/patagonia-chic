@@ -4,19 +4,25 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { FooterPropsType, StyleDevModeType } from './types';
 
 export const Container = styled.div`
-	width: 100%;
+	width: auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	background-color: #ffffff;
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+	box-sizing: border-box;
 `;
 
 export const Wrapper = styled.div`
-	max-width: 1000px;
+	width: 100%;
+	max-width: 1300px;
 	display: flex;
 	flex-direction: column;
+	box-sizing: border-box;
+	@media (${deviceSize.mobile}) {
+		padding: 55px 20px 21px;
+	}
 `;
 
 export const ContainerSectionsTop = styled.div<StyleDevModeType>`
@@ -31,6 +37,13 @@ export const ContainerSectionsCommon = styled.div<StyleDevModeType>`
 	justify-content: flex-end;
 	width: fit-content;
 	background-color: ${({ devMode }) => (devMode ? 'blue' : 'none')};
+	margin-left: 135px;
+	@media (${deviceSize.tablet}) {
+		margin: 0px;
+	}
+	@media (${deviceSize.mobile}) {
+		margin: 0px;
+	}
 `;
 
 export const LanguageMovil = styled.div`
