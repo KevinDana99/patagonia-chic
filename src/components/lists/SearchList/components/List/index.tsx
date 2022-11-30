@@ -4,6 +4,7 @@ import Text from '../../../../texts/Text';
 import useKeyboardNavigation from '../../hooks/useKeyboardNavigation';
 import {
 	BoxImage,
+	Image,
 	BoxItemList,
 	BoxSubtitle,
 	Description,
@@ -41,7 +42,7 @@ const List = ({
 					>
 						<BoxImage>
 							{item.img ? (
-								<img src={item.img} />
+								<Image src={item.img} />
 							) : (
 								<CustomIcon name="island" size={25} />
 							)}
