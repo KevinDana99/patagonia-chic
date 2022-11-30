@@ -48,7 +48,6 @@ export const Description = styled.div`
 
 export const Title = styled.div`
 	font-weight: 500;
-	font-size: 17px;
 `;
 
 export const BoxSubtitle = styled.div`
@@ -59,5 +58,4 @@ export const BoxSubtitle = styled.div`
 
 export const SubTitle = styled.div`
 	font-weight: 300;
-	font-size: 14px;
 `;
