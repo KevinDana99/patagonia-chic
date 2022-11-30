@@ -41,7 +41,7 @@ const PrimaryModal = ({
 	});
 
 	const scrollBoxRef = useRef(null);
-	const [showOverflowGradient, setScrollTop] =
+	const [showOverflowGradient, setScrollTop, isScrollable] =
 		useShowOverflowGradient(scrollBoxRef);
 
 	const close = useCallback(() => {
@@ -97,7 +97,11 @@ const PrimaryModal = ({
 						)}
 					</BoxTop>
 
-					<BoxScroll ref={scrollBoxRef} onScroll={setScrollTop}>
+					<BoxScroll
+						ref={scrollBoxRef}
+						onScroll={setScrollTop}
+						isScrollable={isScrollable}
+					>
 						{coverImage && (
 							<BoxHeader coverImage={coverImage}>
 								{headerText && (

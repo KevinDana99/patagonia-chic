@@ -4,6 +4,7 @@ import {
 	BoxHeaderType,
 	BoxModalTextType,
 	BoxModalType,
+	BoxScrollPropsType,
 	ModalContainerType,
 } from './types';
 
@@ -48,10 +49,6 @@ export const Container = styled.div<ModalContainerType>`
 	flex-direction: column;
 	justify-content: flex-start;
 
-	@media ((min-height: 550px)) {
-		min-height: 500px;
-	}
-
 	@media (${deviceSize.mobileL}) {
 		bottom: 0;
 		width: 100%;
@@ -69,18 +66,19 @@ export const BoxTop = styled.div`
 	border-bottom: 1px solid #d4d4d4;
 	width: 100%;
 	height: 55px !important;
+	min-height: 55px !important;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 `;
 
-export const BoxScroll = styled.div`
+export const BoxScroll = styled.div<BoxScrollPropsType>`
 	overflow-y: scroll;
 	scroll-behavior: smooth;
 	flex: 1;
 
 	&::-webkit-scrollbar {
-		width: 9px;
+		width: ${({ isScrollable }) => (isScrollable ? '9px' : '0')};
 		height: 8px;
 	}
 

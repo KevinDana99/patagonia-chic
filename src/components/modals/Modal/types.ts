@@ -50,3 +50,7 @@ export type ModalStyleType = {
 	width?: string;
 	animate?: boolean;
 };
+
+export type BoxScrollPropsType = {
+	isScrollable: boolean;
+};
