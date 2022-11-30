@@ -14,6 +14,7 @@ export type ModalType = {
 	closeAction?: () => void;
 	disableClose?: boolean;
 	texts?: ModalTextsType;
+	className?: string;
 };
 
 export type ModalStateType = {
