@@ -2,11 +2,11 @@ export const size = {
 	mobileS: '320px',
 	mobileM: '375px',
 	mobileL: '425px',
-	tablet: '600px',
+	tablet: '723px',
 	tabletL: '850px',
-	laptop: '1024px',
+	laptop: '1053px',
 	laptopL: '1440px',
-	desktop: '2560px',
+	desktop: '1280px',
 };
 
 export const deviceSize = {
