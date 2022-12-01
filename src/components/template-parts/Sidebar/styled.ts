@@ -38,7 +38,7 @@ export const SidebarContainer = styled.div<SidebarComponentType>`
 		display: none;
 	}
 
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		width: 90%;
 	}
 `;
@@ -46,6 +46,12 @@ export const SidebarContainer = styled.div<SidebarComponentType>`
 export const SidebarHeader = styled.div`
 	display: flex;
 	flex-direction: column;
+`;
+
+export const LanguageLabel = styled.p`
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0px;
 `;
 
 export const SidebarHeaderContent = styled.div`
@@ -173,7 +179,7 @@ export const Language = styled.div`
 	background-color: #f1f4f7;
 	align-self: center;
 
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		margin-bottom: 60px;
 	}
 

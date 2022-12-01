@@ -25,6 +25,7 @@ const Navbar = ({
 	onClickCart,
 	onClickHelp,
 	texts,
+	initialTransparent,
 }: NavbarType) => {
 	const [scrollStatus, setScrollStatus] = useState({
 		activeNavBar: false,
@@ -32,7 +33,7 @@ const Navbar = ({
 		theme: 'transparent',
 	});
 
-	const isMobile = useMediaQuery(deviceSize.mobileL);
+	const isMobile = useMediaQuery(deviceSize.mobile);
 
 	useEffect(() => {
 		const listenScroll = () => {
@@ -41,7 +42,7 @@ const Navbar = ({
 			setScrollStatus({
 				...scrollStatus,
 				scrolling: scroll,
-				theme: scroll > 0 ? 'light' : 'transparent',
+				theme: scroll > 0 && !initialTransparent ? 'light' : 'transparent',
 			});
 		};
 
