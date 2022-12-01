@@ -32,5 +32,6 @@ export const IconContainer = styled.div`
 	justify-content: space-between;
 	@media (${deviceSize.mobile}) {
 		order: 0;
+		margin-bottom: 21.65px;
 	}
 `;

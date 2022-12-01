@@ -5,10 +5,16 @@ import { FooterText } from '../styled';
 import { StyleDevModeType } from '../types';
 
 export const LeftSection = styled.div<StyleDevModeType>`
-	width: 100%;
 	display: flex;
 	flex-direction: column;
 	background-color: ${({ devMode }) => (devMode ? 'lightblue' : 'none')};
+
+	@media (${deviceSize.tablet}) {
+		width: 100%;
+	}
+	@media (${deviceSize.mobile}) {
+		width: 100%;
+	}
 `;
 
 export const Language = styled.div`
@@ -31,10 +37,14 @@ export const LanguageLabel = styled.p`
 `;
 
 export const DescriptionContainer = styled.div<StyleDevModeType>`
-	min-width: 300px;
+	max-width: 300px;
 	display: flex;
 	flex-direction: column;
 	background-color: ${({ devMode }) => (devMode ? 'brown' : 'none')};
+	@media (${deviceSize.mobile}) {
+		width: 100%;
+		max-width: 1000px;
+	}
 `;
 
 export const Description = styled(FooterText)`
@@ -52,7 +62,7 @@ export const WorldIcon = styled(TbWorld)`
 `;
 
 export const SocialMobileContainer = styled.div<StyleDevModeType>`
-	margin-top: 20px;
+	margin-top: 21px;
 	width: 100%;
 	height: 100%;
 	background-color: ${({ devMode }) => (devMode ? 'green' : 'none')};

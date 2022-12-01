@@ -26,7 +26,7 @@ const Footer = ({ language, places, texts, devMode }: FooterPropsType) => {
 
 	return (
 		<Container>
-			<Wrapper>
+			<Wrapper devMode={devMode}>
 				<ContainerSectionsTop devMode={devMode}>
 					<SectionLeft
 						devMode={devMode}

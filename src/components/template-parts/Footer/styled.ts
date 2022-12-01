@@ -14,30 +14,37 @@ export const Container = styled.div`
 	box-sizing: border-box;
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<StyleDevModeType>`
 	width: 100%;
-	max-width: 1300px;
+	max-width: 1120px;
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
+	background-color: ${({ devMode }) => (devMode ? 'black' : 'none')};
+	@media (${deviceSize.tablet}) {
+		padding: 55px 20px 21px;
+		width: 100%;
+	}
 	@media (${deviceSize.mobile}) {
 		padding: 55px 20px 21px;
+		width: 100%;
 	}
 `;
 
 export const ContainerSectionsTop = styled.div<StyleDevModeType>`
+	width: 100%;
 	display: flex;
 	background-color: ${({ devMode }) => (devMode ? 'orange' : 'none')};
-	width: 100%;
+	width: auto;
 	justify-content: center;
 `;
 
 export const ContainerSectionsCommon = styled.div<StyleDevModeType>`
 	display: flex;
 	justify-content: flex-end;
-	width: fit-content;
 	background-color: ${({ devMode }) => (devMode ? 'blue' : 'none')};
-	margin-left: 135px;
+	margin-left: auto;
+	box-sizing: border-box;
 	@media (${deviceSize.tablet}) {
 		margin: 0px;
 	}
@@ -76,7 +83,7 @@ export const LinkStyled = styled.a`
 	text-decoration: none;
 	color: #000000;
 	:hover {
-		text-decoration: underline;
+		text-decoration: none;
 	}
 `;
 export const ContainerIcons = styled.div`

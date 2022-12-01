@@ -4,8 +4,8 @@ import { FooterText } from '../styled';
 import { StyleDevModeType } from '../types';
 
 export const ContainerSectionCommon = styled.div<StyleDevModeType>`
-	margin-right: 21px;
 	width: 215px;
+	margin-left: 21px;
 	background-color: ${({ devMode }) => (devMode ? 'violet' : 'none')};
 	display: flex;
 	@media (${deviceSize.tablet}) {
@@ -21,6 +21,10 @@ export const DesktopSectionCommon = styled.div``;
 export const SectionLabel = styled(FooterText)`
 	margin: 13px 0px;
 	font-size: 15px;
+	&:hover {
+		color: #0090e0;
+		text-decoration: none;
+	}
 `;
 
 export const SectionTitle = styled.h3`
