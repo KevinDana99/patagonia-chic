@@ -45,4 +45,4 @@ pipelines:
       - step: *push-gcp
       - step: *merge-step
     add-publish-to-ci:
-      - step: *publish-npm-package
+      # - step: *publish-npm-package
