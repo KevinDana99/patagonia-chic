@@ -13,5 +13,5 @@ npm publish --access public
 
 ## commit updated package.json with version bump
 git add package.json
-git commit -m "Bump version ${NPM_VERSION}" 
+git commit -m "PSA-334 Bump version ${NPM_VERSION}" 
 git push
