@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { size } from '../../../../../constants/devicesSizes';
 import PrimaryButton from '../../../../buttons/PrimaryButton';
+import { SearchIcon } from '../../styled';
 
 export const ContainerModal = styled.div`
 	width: 100%;
@@ -60,6 +61,9 @@ export const CalendarContainer = styled.div`
 `;
 
 export const ModalSubmitButton = styled(PrimaryButton)`
-	align-self: center;
 	margin: 50px auto 30px;
+`;
+
+export const ModalSearchIcon = styled(SearchIcon)`
+	margin-right: 5px !important;
 `;

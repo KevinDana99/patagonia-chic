@@ -4,8 +4,6 @@ import { CalendarStyleType } from './types';
 
 export const Container = styled.div<CalendarStyleType>`
 	width: ${({ width }) => width};
-	box-shadow: ${({ shadow }) =>
-		shadow ? '0px 2px 15px rgba(0, 0, 0, 0.15)' : 'none'};
 
 	overflow: hidden;
 
@@ -51,7 +49,7 @@ export const Container = styled.div<CalendarStyleType>`
 						background: linear-gradient(90deg, rgba(235,244,248,1) 0%, rgba(235,244,248,0) 25%);
 						border: 2px solid #1079e3;
 						border-radius: 0 200px 200px 0 !important;
-						border-left: 2px solid #ebf4f8 !important;
+						border-left: none !important;
 						color: #000 !important;
 					}
 
@@ -65,7 +63,7 @@ export const Container = styled.div<CalendarStyleType>`
 						background: linear-gradient(-90deg, rgba(235,244,248,1) 0%, rgba(235,244,248,0) 25%);
 						border: 2px solid #1087ff;
 						border-radius: 200px 0 0 200px !important;
-						border-right: 2px solid #ebf4f8 !important;
+						border-right: none !important;
 						color: auto !important;
 					}
 

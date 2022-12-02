@@ -26,14 +26,20 @@ export const ItemList = styled.div<ItemListStyleType>`
 `;
 
 export const BoxImage = styled.div`
-	width: 50px;
-	min-width: 50px;
-	height: 50px;
+	width: 45px;
+	min-width: 45px;
+	height: 45px;
 	background-color: #f1f4f7;
 	border-radius: 8px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+`;
+
+export const Image = styled.img`
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 `;
 
 export const Description = styled.div`
@@ -42,7 +48,6 @@ export const Description = styled.div`
 
 export const Title = styled.div`
 	font-weight: 500;
-	font-size: 17px;
 `;
 
 export const BoxSubtitle = styled.div`
@@ -53,5 +58,4 @@ export const BoxSubtitle = styled.div`
 
 export const SubTitle = styled.div`
 	font-weight: 300;
-	font-size: 14px;
 `;

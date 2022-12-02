@@ -9,6 +9,7 @@ import {
 	PlacesListContainer,
 	DatesContainer,
 	CalendarContainer,
+	ModalSearchIcon,
 	ModalSubmitButton,
 } from './styled';
 import {
@@ -19,7 +20,6 @@ import {
 } from './types';
 import Modal from '../../../../modals/Modal';
 import { ModalSelections } from './components/ModalSelections';
-import { SearchIcon } from '../../styled';
 
 const QuerySelectorsContext = createContext<QuerySelectorsContextType>(
 	{} as QuerySelectorsContextType
@@ -115,7 +115,7 @@ function Dates(
 					<ModalSelections {...querySelectedData} texts={texts} />
 					<ModalSubmitButton
 						title={texts.titleSearchButton}
-						IconComponent={SearchIcon}
+						iconComponent={ModalSearchIcon}
 						onClick={handleSubmit}
 						disabled={!location || !startDate || !endDate}
 						invertGradient={!!location && !!startDate && !!endDate}

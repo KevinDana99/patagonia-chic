@@ -6,13 +6,12 @@ export type PrimaryButtonType = {
 	loading?: boolean;
 	onClick?: onClickButtonType;
 	disabled?: boolean;
-	IconComponent?: IconType;
+	iconComponent?: IconType;
 	className?: string;
 	theme?: 'color' | 'mono';
 	color?: string;
 	invertGradient?: boolean;
 	textLoadingButton?: string;
-	icon?: boolean;
 	width?: number | string;
 	height?: number | string;
 };

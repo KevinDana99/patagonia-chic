@@ -14,6 +14,7 @@ export type ModalType = {
 	closeAction?: () => void;
 	disableClose?: boolean;
 	texts?: ModalTextsType;
+	className?: string;
 };
 
 export type ModalStateType = {
@@ -49,4 +50,8 @@ type ModalTextsType = {
 export type ModalStyleType = {
 	width?: string;
 	animate?: boolean;
+};
+
+export type BoxScrollPropsType = {
+	isScrollable: boolean;
 };

@@ -21,23 +21,23 @@ const SearchListSkeleton = ({
 				<>
 					<rect
 						x="0"
-						y={idx * (MARGIN_TOP + 50)}
+						y={idx * (MARGIN_TOP + 45)}
 						rx="8"
 						ry="8"
-						width="50"
-						height="50"
+						width="45"
+						height="45"
 					/>
 					<rect
-						x="62"
-						y={idx * (MARGIN_TOP + 50) + 11}
+						x="57"
+						y={idx * (MARGIN_TOP + 45) + 6}
 						rx="7"
 						ry="7"
 						width="88"
 						height="14"
 					/>
 					<rect
-						x="62"
-						y={idx * (MARGIN_TOP + 50) + 30}
+						x="57"
+						y={idx * (MARGIN_TOP + 45) + 25}
 						rx="7"
 						ry="7"
 						width="120"
