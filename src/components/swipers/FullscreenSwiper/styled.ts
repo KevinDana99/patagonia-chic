@@ -3,11 +3,11 @@
 import styled, { keyframes } from 'styled-components';
 import { Swiper } from 'swiper/react';
 import { SwiperOptions } from 'swiper/types';
-import 'swiper/swiper.min.css';
-import 'swiper/modules/lazy/lazy.min.css';
-import 'swiper/modules/pagination/pagination.min.css';
-import 'swiper/modules/navigation/navigation.min.css';
-import 'swiper/modules/effect-fade/effect-fade.min.css';
+import 'swiper/css';
+import 'swiper/css/lazy';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-fade';
 import Text from '../../texts/Text';
 import { deviceSize } from '../../../constants/devicesSizes';
 import CustomIcon from '../../graphics/CustomIcon';

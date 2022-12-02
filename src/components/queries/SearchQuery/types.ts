@@ -20,8 +20,8 @@ export type SearchQueryPropsType = {
 	locationsList: locationsListItemType[];
 	texts: SearchQueryTexts;
 	onQuerySubmit: Function;
-	showLocations: boolean;
-	locale: 'en' | 'es';
+	showLocations?: boolean;
+	locale?: 'en' | 'es';
 };
 
 export type SearchQueryTexts = {

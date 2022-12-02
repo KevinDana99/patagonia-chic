@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 
 // Import Swiper styles
-import 'swiper/swiper.min.css';
-import 'swiper/modules/free-mode/free-mode.min.css';
-import 'swiper/modules/navigation/navigation.min.css';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
 
 import { Swiper } from 'swiper/react';
 import { Navigation, FreeMode, Mousewheel } from 'swiper';
