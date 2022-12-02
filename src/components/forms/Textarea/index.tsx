@@ -1,5 +1,5 @@
 import React from 'react';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
+import Text from '../../texts/Text';
 import { StyledTextarea, StyledLabel, TextareaContainer } from './styled';
 import { TextareaPropsType } from './types';
 
@@ -22,9 +22,13 @@ const Textarea = ({
 				value={defaultValue}
 				error={!!error}
 			/>
-			<StyledLabel>{label}</StyledLabel>
+			<StyledLabel>
+				<Text color="#777" size={15} weight={'regular'}>
+					{label}
+				</Text>
+			</StyledLabel>
 		</TextareaContainer>
 	);
 };
 
-export default withFontStyles(Textarea);
+export default Textarea;

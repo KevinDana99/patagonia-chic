@@ -1,13 +1,19 @@
 import styled from 'styled-components';
-import { ItemMenuType, NavbarContainerType, NavbarIconType } from './types';
+import {
+	ItemMenuType,
+	LogoClickType,
+	NavbarContainerType,
+	NavbarIconType,
+} from './types';
 import { HiOutlineShoppingBag, HiMenu } from 'react-icons/hi';
 import { deviceSize } from '../../../constants/devicesSizes';
+import Text from '../../texts/Text';
 
 export const NavBarContainer = styled.div<NavbarContainerType>`
 	width: 100%;
 	height: 99px;
 	color: ${(props) => props.colorTheme};
-	background-color: ${(props) => props.backgroundTheme};
+	background: ${(props) => props.backgroundTheme};
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -15,13 +21,14 @@ export const NavBarContainer = styled.div<NavbarContainerType>`
 	top: 0px;
 	left: 0px;
 	transition: all 0.2s ease-in;
+	z-index: 2;
 
 	@media ${deviceSize.mobileL} {
 		justify-content: space-between;
 	}
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.div<LogoClickType>`
 	cursor: pointer;
 	@media ${deviceSize.mobileL} {
 		margin-left: 20px;
@@ -75,7 +82,7 @@ export const CartStatus = styled.div`
 	}
 `;
 
-export const CartCount = styled.p`
+export const CartCount = styled(Text)`
 	margin: 0;
 	color: #ffffff;
 `;

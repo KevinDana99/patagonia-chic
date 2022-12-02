@@ -1,4 +1,3 @@
-import { IoCloseOutline } from 'react-icons/io5';
 import styled from 'styled-components';
 import TertiaryButton from '../../../buttons/TertiaryButton';
 import CustomIcon from '../../../graphics/CustomIcon';
@@ -6,6 +5,7 @@ import CustomIcon from '../../../graphics/CustomIcon';
 export const Container = styled.div`
 	margin-top: 5px;
 	display: flex;
+	justify-content: flex-start;
 `;
 
 export const Title = styled.div`
@@ -14,23 +14,24 @@ export const Title = styled.div`
 	line-height: 1.3;
 	font-weight: 400;
 	color: #000;
+
 	letter-spacing: -0em;
 `;
 
 export const Requirements = styled.div`
-	margin-left: 5px;
 	font-size: 12px;
 	min-width: 74px;
 	color: #888;
 	font-weight: 200;
-	white-space: nowrap;
 	letter-spacing: -0.01em;
 	display: flex;
 	justify-content: space-between;
 `;
 
 export const SectionTitle = styled(Requirements)`
+	margin-left: 5px;
 	display: flex;
+	flex-wrap: wrap;
 `;
 
 export const NotIncludeContainer = styled.div`
@@ -41,21 +42,26 @@ export const NotIncludeContainer = styled.div`
 	align-items: flex-start;
 `;
 
+export const Linked = styled.a`
+	text-decoration: none;
+`;
+
 export const ButtonItem = styled(TertiaryButton)`
 	padding: 0px;
 `;
 
 export const StyledCustomIcon = styled(CustomIcon)`
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: flex-start;
-	width: 20px;
+	width: 15px;
 `;
-export const IconClose = styled(IoCloseOutline)`
-	padding: 0px;
-	font-size: 15px;
-	display: inline-block;
-	justify-content: center;
-	align-items: center;
-	color: rgb(203, 203, 203);
+export const IconClose = styled.div`
+	height: 10px;
+
+	margin-left: 2.2px;
+
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
 `;

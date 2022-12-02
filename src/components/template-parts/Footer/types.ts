@@ -19,6 +19,7 @@ export type SectionLeftType = {
 		)[];
 	}[];
 	isTablet: boolean;
+	texts: FooterTextsType;
 };
 
 export type LabelLinkType = {
@@ -45,4 +46,44 @@ export type PlaceType = {
 export type FooterPropsType = {
 	language: LanguageType;
 	places: [PlaceType];
+	texts: FooterTextsType;
+};
+
+export type FooterTextsType = {
+	description: string;
+	direction: string;
+	copyrightMessage: string;
+	helpCenterLabel: string;
+	cancellationPolicesLabel: string;
+	termsAndConditionsLabel: string;
+	helpTitle: string;
+	destinyTitle: string;
+	usefulLinks: string;
+	paymentMethodsAndPromotions: string;
+	excursionMap: string;
+	about: string;
+	downloadExcursionCatalog: string;
+};
+
+export type SectionSocialType = {
+	texts: FooterTextsType;
+};
+export interface SectionInterface {
+	sections: {
+		title: string;
+		label: (
+			| { label: string; url: string; target?: undefined }
+			| { label: string; url: string; target: string }
+		)[];
+	}[];
+}
+
+export type SectionMobileType = {
+	sections: {
+		title: string;
+		label: (
+			| { label: string; url: string; target?: undefined }
+			| { label: string; url: string; target: string }
+		)[];
+	}[];
 };

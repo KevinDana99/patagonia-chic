@@ -1,11 +1,10 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	RadioButtonItemType,
 	RadioButtonListPropsType,
 	RestrictedRadioButtonItemType,
 } from './types';
 import RadioButtonItem from './RadioButtonItem';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 
 const RadioButtonList = ({
 	list,
@@ -52,4 +51,4 @@ const RadioButtonList = ({
 	);
 };
 
-export default withFontStyles(RadioButtonList);
+export default RadioButtonList;

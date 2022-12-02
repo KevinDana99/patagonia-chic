@@ -19,16 +19,16 @@ import {
 	Language,
 	WorldIcon,
 } from './styled';
-import { withFontStyles } from '../../../helpers/hocs/withFontStyles';
 import Logo from '../../logos/Logo';
-import { sidebarTexts } from './sidebarTexts';
 import { LanguageLabel } from '../Footer/styled';
+import Text from '../../texts/Text';
 
 const Sidebar = ({
 	closeAction,
 	activeSidebar,
 	mapToViews,
 	language,
+	texts,
 }: SideBarType) => {
 	const [viewStack, setViewStack] = useState<ViewType>({
 		views: [],
@@ -53,7 +53,7 @@ const Sidebar = ({
 
 	return (
 		<>
-			<BoxBackground activeSidebar={activeSidebar} onClick={closeAction}>
+			<BoxBackground activeSidebar={activeSidebar} onClick={() => closeAction}>
 				<SidebarContainer activeSidebar={activeSidebar}>
 					<SidebarHeader>
 						<SidebarHeaderContent>
@@ -64,7 +64,7 @@ const Sidebar = ({
 							) : (
 								<ButtonBack onClick={back}>
 									<IconBack />
-									{sidebarTexts.goBack}
+									<Text weight="regular">{texts.goBack}</Text>
 								</ButtonBack>
 							)}
 							<CloseIconContainer>
@@ -73,7 +73,9 @@ const Sidebar = ({
 						</SidebarHeaderContent>
 						<SidebarHeaderDivider />
 						{viewStack.views.length === 1 && (
-							<SidebarMenuTitle>{viewStack.props[0]?.title}</SidebarMenuTitle>
+							<SidebarMenuTitle>
+								<Text>{viewStack.props[0]?.title}</Text>
+							</SidebarMenuTitle>
 						)}
 					</SidebarHeader>
 					<SidebarContent>
@@ -117,7 +119,12 @@ const Sidebar = ({
 					</SidebarContent>
 					<Language>
 						<WorldIcon />
-						<LanguageLabel>{`${language.label} - ${language.symbol} ${language.currency}`}</LanguageLabel>
+						<LanguageLabel>
+							<Text
+								size={14}
+								weight={'semi-bold'}
+							>{`${language.label} - ${language.symbol} ${language.currency}`}</Text>
+						</LanguageLabel>
 					</Language>
 				</SidebarContainer>
 			</BoxBackground>
@@ -125,4 +132,4 @@ const Sidebar = ({
 	);
 };
 
-export default withFontStyles(Sidebar);
+export default Sidebar;

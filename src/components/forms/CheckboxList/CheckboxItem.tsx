@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { CheckboxItemPropsType } from './types';
 import {
 	StyledInput,
@@ -8,6 +8,7 @@ import {
 	TextDiv,
 	CheckIcon,
 } from './styled';
+import Text from '../../texts/Text';
 
 const CheckboxItem = ({
 	index,
@@ -27,9 +28,13 @@ const CheckboxItem = ({
 
 		<StyledLabel htmlFor={index.toString().concat('checkbox')}>
 			<IconDiv>
-				<CheckIcon />
+				<CheckIcon name="check" color="#fff" size={11.5} />
 			</IconDiv>
-			<TextDiv>{label}</TextDiv>
+			<TextDiv>
+				<Text size={17} weight={'regular'} color={'#333'}>
+					{label}
+				</Text>
+			</TextDiv>
 		</StyledLabel>
 	</ContainerInput>
 );

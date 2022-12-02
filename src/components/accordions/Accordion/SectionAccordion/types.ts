@@ -1,5 +1,3 @@
-import React from 'react';
-
 export type LabelLinkType = {
 	label: string;
 	url: string;

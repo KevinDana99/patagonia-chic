@@ -1,2 +1,2 @@
 declare module '*.json';
-declare module '*.otf';
+declare module '*.css';

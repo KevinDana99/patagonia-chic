@@ -1,45 +1,43 @@
 import React, { useState } from 'react';
-import { withFontStyles } from '../../../../helpers/hocs/withFontStyles';
+import Section from '../Section';
 
-import {
-	ArrowIconDown,
-	SectionContainer,
-	SectionTitleContainer,
-	SectionTitle,
-	SectionDivider,
-	LinkStyled,
-	SectionLabel,
-	ArrowIconUp,
-} from './styled';
+import { ArrowIconDown, Divider, ArrowIconUp } from './styled';
 import { SectionType } from './types';
 
-export const Section = ({ title, label, content }: SectionType) => {
+export const SectionAccordion = ({ title, label, content }: SectionType) => {
 	const [openSection, setOpenSection] = useState(false);
 
 	return (
-		<SectionContainer onClick={() => setOpenSection(!openSection)}>
-			<SectionTitleContainer>
-				<SectionTitle>{title}</SectionTitle>
-				{openSection ? <ArrowIconUp /> : <ArrowIconDown />}
-			</SectionTitleContainer>
-			{openSection &&
-				label &&
-				label.map((labelItem, index) => (
-					<LinkStyled
-						href={labelItem.url}
-						key={index}
-						target={labelItem.target}
-					>
-						<SectionLabel>{labelItem.label}</SectionLabel>
-					</LinkStyled>
-				))}
-
-			{openSection && content && content}
-			<SectionDivider />
-		</SectionContainer>
+		<Section.Container>
+			<>
+				<Section.BoxTitle onClick={() => setOpenSection(!openSection)}>
+					<>
+						<Section.Title title={title} />
+						{openSection ? <ArrowIconUp /> : <ArrowIconDown />}
+					</>
+				</Section.BoxTitle>
+				<Section.BoxLink>
+					<>
+						{openSection &&
+							label &&
+							label.map((labelItem, index) => (
+								<Section.Link
+									href={labelItem.url}
+									key={index}
+									target={labelItem.target}
+								>
+									<Section.Label label={labelItem.label} />
+								</Section.Link>
+							))}
+						{openSection && content && (
+							<Section.Content>{content}</Section.Content>
+						)}
+					</>
+				</Section.BoxLink>
+				<Divider />
+			</>
+		</Section.Container>
 	);
 };
-
-const SectionAccordion = withFontStyles(Section);
 
 export default SectionAccordion;

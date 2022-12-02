@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
 	stories: [
 		'../src/**/*.stories.mdx',
@@ -14,4 +16,8 @@ module.exports = {
 	features: {
 		previewMdx2: true,
 	},
+	core: {
+		builder: 'webpack5',
+	},
+	staticDirs: [{ from: './assets/fonts', to: '/fonts' }],
 };
