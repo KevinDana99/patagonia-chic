@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 import React from 'react';
-import 'swiper/swiper.min.css';
+import 'swiper/css';
 
 import { Swiper } from 'swiper/react';
 import { Navigation, FreeMode, Mousewheel } from 'swiper';

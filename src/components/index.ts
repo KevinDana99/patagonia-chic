@@ -34,6 +34,7 @@ export { default as Logo } from './logos/Logo';
 export { default as Modal } from './modals/Modal';
 
 // QUERIES
+export { default as SearchQuery } from './queries/SearchQuery';
 
 // SPINNERS
 export { default as Spinner } from './spinners/PrimarySpinner';
@@ -48,5 +49,3 @@ export { default as Text } from './texts/Text';
 
 //JUMBOBOX
 export { default as JumboBox } from './alerts/JumboBox';
-
-export { default as useMediaQuery } from '../hooks/useMediaQuery';

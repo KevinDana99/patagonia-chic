@@ -21,6 +21,13 @@ import QuerySelectors from './components/QuerySelectors';
 import { size } from '../../../constants/devicesSizes';
 import Calendar from '../../calendars/Calendar';
 
+export const getFormattedDate = (date: Date) => {
+	let formattedDate = moment(date).format('MMMM, DD');
+	formattedDate =
+		formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+	return formattedDate;
+};
+
 const SearchQuery = ({
 	locationsList,
 	onQuerySubmit,
@@ -95,14 +102,6 @@ const SearchQuery = ({
 		setLocationShowFullList(false);
 	};
 
-	const handleStartDateSelected = (selectedDate: Date) => {
-		setQuerySelectedData({
-			...querySelectedData,
-			startDate: selectedDate,
-		});
-		setCurrentSelector('dates/end');
-	};
-
 	const handleEndDateSelected = (selectedDate: Date) => {
 		if (
 			querySelectedData.startDate &&
@@ -122,6 +121,19 @@ const SearchQuery = ({
 		!isTablet && setCurrentSelector('none');
 	};
 
+	const handleStartDateSelected = (selectedDate: Date) => {
+		if (!isTablet && currentSelector === 'dates/end') {
+			handleEndDateSelected(selectedDate);
+		} else {
+			setQuerySelectedData({
+				...querySelectedData,
+				endDate: null,
+				startDate: selectedDate,
+			});
+			setCurrentSelector('dates/end');
+		}
+	};
+
 	const handleSubmit = () => {
 		const { location, startDate, endDate } = querySelectedData;
 
@@ -131,7 +143,8 @@ const SearchQuery = ({
 		} else {
 			if (!isMobile) {
 				if (showLocations && !location) setCurrentSelector('location');
-				else setCurrentSelector('dates/start');
+				else if (!startDate) setCurrentSelector('dates/start');
+				else setCurrentSelector('dates/end');
 			} else {
 				setCurrentSelector('location');
 			}
@@ -167,7 +180,7 @@ const SearchQuery = ({
 							ref={dateStartInputRef}
 							inputTextValue={
 								querySelectedData.startDate
-									? moment(querySelectedData.startDate).format('MMMM, DD')
+									? getFormattedDate(querySelectedData.startDate)
 									: ''
 							}
 							label={texts.labelStartDate}
@@ -187,19 +200,22 @@ const SearchQuery = ({
 							ref={dateEndInputRef}
 							inputTextValue={
 								querySelectedData.endDate
-									? moment(querySelectedData.endDate).format('MMMM, DD')
+									? getFormattedDate(querySelectedData.endDate)
 									: ''
 							}
 							onClearFieldClicked={() => {
 								setQuerySelectedData({
 									...querySelectedData,
-									startDate: null,
 									endDate: null,
 								});
 							}}
 							label={texts.labelEndDate}
 							placeholder={texts.placeholderDate}
-							onClick={() => setCurrentSelector('dates/start')}
+							onClick={() =>
+								setCurrentSelector(
+									querySelectedData.startDate ? 'dates/end' : 'dates/start'
+								)
+							}
 							onlyClick
 							isFocused={currentSelector === 'dates/end'}
 						/>
@@ -208,7 +224,7 @@ const SearchQuery = ({
 				<ButtonContainer>
 					<ButtonSearch
 						title={!isTablet ? texts.titleSearchButton : ''}
-						IconComponent={SearchIcon}
+						iconComponent={SearchIcon}
 						invertGradient={
 							!!querySelectedData.location &&
 							!!querySelectedData.startDate &&
@@ -240,7 +256,6 @@ const SearchQuery = ({
 						}}
 						searchPlaceholder={texts.placeholderLocation}
 						searchText={locationShowFullList ? '' : locationSearchText}
-						emptyStateText="No encontramos este destino, pero te recomendamos..."
 						texts={texts}
 					/>
 				</QuerySelectors.Location>
@@ -255,11 +270,17 @@ const SearchQuery = ({
 						onRangeEndDateSelected={handleEndDateSelected}
 						width="100%"
 						value={
-							querySelectedData.startDate && [
-								querySelectedData.startDate,
-								querySelectedData.endDate,
-							]
+							!isTablet &&
+							currentSelector === 'dates/start' &&
+							!querySelectedData.endDate &&
+							querySelectedData.startDate
+								? [querySelectedData.startDate, querySelectedData.startDate]
+								: querySelectedData.startDate && [
+										querySelectedData.startDate,
+										querySelectedData.endDate,
+								  ]
 						}
+						locale={locale}
 					/>
 				</QuerySelectors.Dates>
 			</QuerySelectors>

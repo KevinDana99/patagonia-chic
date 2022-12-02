@@ -16,5 +16,8 @@ module.exports = {
 	features: {
 		previewMdx2: true,
 	},
+	core: {
+		builder: 'webpack5',
+	},
 	staticDirs: [{ from: './assets/fonts', to: '/fonts' }],
 };

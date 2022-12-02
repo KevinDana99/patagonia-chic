@@ -4,6 +4,7 @@ import Text from '../../../../texts/Text';
 import useKeyboardNavigation from '../../hooks/useKeyboardNavigation';
 import {
 	BoxImage,
+	Image,
 	BoxItemList,
 	BoxSubtitle,
 	Description,
@@ -41,21 +42,21 @@ const List = ({
 					>
 						<BoxImage>
 							{item.img ? (
-								<img src={item.img} />
+								<Image src={item.img} />
 							) : (
 								<CustomIcon name="island" size={25} />
 							)}
 						</BoxImage>
 						<Description>
 							<Title>
-								<Text size={17} weight={'medium'}>
+								<Text size={15} weight={'medium'}>
 									{item.name}
 								</Text>
 							</Title>
 							{showItemSubtitle && (
 								<BoxSubtitle>
 									<SubTitle>
-										<Text size={14} weight={'regular'} color={'#888888'}>
+										<Text size={12} weight={'regular'} color={'#888888'}>
 											{item.category || `${item.province} - ${item.country}`}
 										</Text>
 									</SubTitle>

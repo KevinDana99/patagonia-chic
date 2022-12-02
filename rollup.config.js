@@ -28,9 +28,11 @@ export default [
 				babelHelpers: 'bundled',
 				configFile: './babel.config.js',
 			}),
-			nodeResolve(),
-			styles(),
+			nodeResolve({
+				mainFields: ['module', 'main', 'exports'],
+			}),
 			commonjs(),
+			styles(),
 			json(),
 			typescript({
 				tsconfig: './tsconfig.json',

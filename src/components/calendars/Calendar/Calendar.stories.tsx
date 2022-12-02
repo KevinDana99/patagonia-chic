@@ -19,7 +19,6 @@ const Template: Story<CalendarPropsType> = (args) => <Calendar {...args} />;
 
 export const calendar = Template.bind({});
 calendar.args = {
-	shadow: true,
 	range: false,
 	// minDate: new Date(2022, 9, 2),
 	maxDate: new Date(2023, 2, 1, 0, 0, 0),

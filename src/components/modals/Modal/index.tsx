@@ -34,6 +34,7 @@ const PrimaryModal = ({
 	title,
 	visible: visibleProp = false,
 	texts,
+	className,
 }: ModalType) => {
 	const [state, setState] = useState<ModalStateType>({
 		visible: visibleProp,
@@ -41,7 +42,7 @@ const PrimaryModal = ({
 	});
 
 	const scrollBoxRef = useRef(null);
-	const [showOverflowGradient, setScrollTop] =
+	const [showOverflowGradient, setScrollTop, isScrollable] =
 		useShowOverflowGradient(scrollBoxRef);
 
 	const close = useCallback(() => {
@@ -79,6 +80,7 @@ const PrimaryModal = ({
 				onClick={closeOnTouchOutside ? closeAction ?? close : undefined}
 			>
 				<Container
+					className={className}
 					width={width}
 					animate={state.animate}
 					transitionTime={ANIMATION_TIME_MILLIS}
@@ -97,7 +99,11 @@ const PrimaryModal = ({
 						)}
 					</BoxTop>
 
-					<BoxScroll ref={scrollBoxRef} onScroll={setScrollTop}>
+					<BoxScroll
+						ref={scrollBoxRef}
+						onScroll={setScrollTop}
+						isScrollable={isScrollable}
+					>
 						{coverImage && (
 							<BoxHeader coverImage={coverImage}>
 								{headerText && (

@@ -23,9 +23,8 @@ color.args = {
 	title: 'Buscar excursiones',
 	loading: false,
 	disabled: false,
-	IconComponent: IoSearch,
+	iconComponent: IoSearch,
 	textLoadingButton: 'Cargando...',
-	icon: false,
 	width: '80%',
 	height: '50%',
 };
@@ -35,6 +34,6 @@ light.args = {
 	title: 'Buscar excursiones',
 	loading: false,
 	disabled: false,
-	IconComponent: IoSearch,
+	iconComponent: IoSearch,
 	theme: 'mono',
 };
