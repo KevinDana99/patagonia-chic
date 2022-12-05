@@ -26,7 +26,7 @@ const CategoriesList = ({
 	selected,
 	onSelectedChange,
 }: CategoriesListType) => {
-	const isMobile = useMediaQuery(deviceSize.mobileL);
+	const isMobile = useMediaQuery(deviceSize.mobile);
 	const [selectedItemId, setSelectedItemId] = React.useState(selected);
 	const prevRef = React.useRef(null);
 	const nextRef = React.useRef(null);

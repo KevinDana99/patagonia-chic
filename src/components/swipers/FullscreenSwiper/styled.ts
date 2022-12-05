@@ -4,10 +4,6 @@ import styled, { keyframes } from 'styled-components';
 import { Swiper } from 'swiper/react';
 import { SwiperOptions } from 'swiper/types';
 import 'swiper/swiper.min.css';
-import 'swiper/modules/lazy/lazy.min.css';
-import 'swiper/modules/pagination/pagination.min.css';
-import 'swiper/modules/navigation/navigation.min.css';
-import 'swiper/modules/effect-fade/effect-fade.min.css';
 import Text from '../../texts/Text';
 import { deviceSize } from '../../../constants/devicesSizes';
 import CustomIcon from '../../graphics/CustomIcon';
@@ -58,7 +54,7 @@ export const Container = styled.div`
 		font-size: 16px;
 	}
 
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		justify-content: flex-start;
 		font-size: 12px;
 	}
@@ -88,7 +84,7 @@ export const Header = styled.div`
 		width: 90%;
 	}
 
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		margin-bottom: 75px;
 		width: 90%;
 	}
@@ -145,7 +141,7 @@ export const SwiperContainer = styled(Swiper)<
 		width: 100%;
 	}
 
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		width: 100%;
 		height: 35%;
 		background: red;
@@ -186,7 +182,7 @@ export const Image = styled.img`
 		height: 90%;
 	}
 
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		width: 100%;
 		height: 100%;
 	}

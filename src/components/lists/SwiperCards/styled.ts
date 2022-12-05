@@ -16,7 +16,7 @@ html{
   display: none;
 }
 
-@media ${deviceSize.mobileL} {
+@media ${deviceSize.mobile} {
   .navigation-buttons {
     pointer-events: none;
 

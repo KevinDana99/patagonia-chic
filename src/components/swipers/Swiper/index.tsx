@@ -19,7 +19,7 @@ import { SwiperSlide } from 'swiper/react';
 
 const Swiper = ({ imageList }: SwiperType) => {
 	const [swiperCurrentIndex, setSwiperCurrentIndex] = useState(0);
-	const isMobile = useMediaQuery(deviceSize.mobileL);
+	const isMobile = useMediaQuery(deviceSize.mobile);
 	const isTablet = useMediaQuery(deviceSize.tablet);
 
 	const navigationPrevRef = React.useRef(null);

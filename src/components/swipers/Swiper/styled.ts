@@ -4,9 +4,6 @@ import styled, { keyframes } from 'styled-components';
 import { Swiper } from 'swiper/react';
 import { SwiperOptions } from 'swiper/types';
 import 'swiper/swiper.min.css';
-import 'swiper/modules/lazy/lazy.min.css';
-import 'swiper/modules/pagination/pagination.min.css';
-import 'swiper/modules/navigation/navigation.min.css';
 
 const fadeIn = keyframes`
 	from {
