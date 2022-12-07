@@ -24,31 +24,34 @@ const TourCard = ({
 	onAddedToCart,
 	onViewDetails,
 	className,
+	onClickCard,
 }: ExcursionCardType) => {
 	return (
 		<Container>
-			<Card hover={true} className={className}>
-				<CardImage
-					coverImage={coverImage}
-					imageList={imageList}
-					date={date}
-					isAvailable={isAvailable}
-					isAddedToCart={isAddedToCart}
-				/>
-				<CardDescription
-					title={title}
-					subTitle={subTitle}
-					isAddedToCart={isAddedToCart}
-					isAvailable={isAvailable}
-					currencySymbol={currencySymbol}
-					currencyCode={currencyCode}
-					price={price}
-					subPrice={subPrice}
-					texts={texts}
-					onViewCart={onViewCart}
-					onViewDetails={onViewDetails}
-					onAddedToCart={onAddedToCart}
-				/>
+			<Card hover={true} className={className} onClick={onClickCard}>
+				<>
+					<CardImage
+						coverImage={coverImage}
+						imageList={imageList}
+						date={date}
+						isAvailable={isAvailable}
+						isAddedToCart={isAddedToCart}
+					/>
+					<CardDescription
+						title={title}
+						subTitle={subTitle}
+						isAddedToCart={isAddedToCart}
+						isAvailable={isAvailable}
+						currencySymbol={currencySymbol}
+						currencyCode={currencyCode}
+						price={price}
+						subPrice={subPrice}
+						texts={texts}
+						onViewCart={onViewCart}
+						onViewDetails={onViewDetails}
+						onAddedToCart={onAddedToCart}
+					/>
+				</>
 			</Card>
 			<CardOptions
 				bookingsThisWeekCount={bookingsThisWeekCount}

@@ -43,6 +43,7 @@ export default {
 		onViewCart: { action: 'onViewCart' },
 		onAddedToCart: { action: 'onAddedToCart' },
 		onViewDetails: { action: 'onViewDetails' },
+		onClickCard: { action: 'onClickCard' },
 	},
 } as Meta<typeof TourCard>;
 
