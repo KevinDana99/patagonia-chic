@@ -23,12 +23,13 @@ const SectionLeft = ({
 	isTablet,
 	texts,
 	devMode,
+	onClickLogo,
 }: SectionLeftType) => {
 	return (
 		<LeftSection devMode={devMode}>
 			<LeftSideContainer>
 				<DescriptionContainer devMode={devMode}>
-					<Logo {...logo} />
+					<Logo {...logo} onClick={onClickLogo} />
 					<Description>
 						<Text>{texts.description}</Text>
 					</Description>

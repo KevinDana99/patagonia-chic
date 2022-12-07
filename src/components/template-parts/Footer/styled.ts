@@ -12,6 +12,7 @@ export const Container = styled.div`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
 	box-sizing: border-box;
+	cursor: default;
 `;
 
 export const Wrapper = styled.div<StyleDevModeType>`

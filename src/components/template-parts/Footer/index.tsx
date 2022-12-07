@@ -18,7 +18,13 @@ import useMediaQuery from '../../../hooks/useMediaQuery';
 import { SectionSocial } from './SectionSocial/SectionSocial';
 import { Accordion } from '../../index';
 
-const Footer = ({ language, places, texts, devMode }: FooterPropsType) => {
+const Footer = ({
+	language,
+	places,
+	texts,
+	devMode,
+	onClickLogo,
+}: FooterPropsType) => {
 	const isMobile = useMediaQuery(deviceSize.mobile);
 	const isTablet = useMediaQuery(deviceSize.tablet);
 
@@ -36,6 +42,7 @@ const Footer = ({ language, places, texts, devMode }: FooterPropsType) => {
 						isMobile={isMobile}
 						isTablet={isTablet}
 						texts={texts}
+						onClickLogo={onClickLogo}
 					/>
 					<ContainerSectionsCommon devMode={devMode}>
 						{sections.map((item, index) => (

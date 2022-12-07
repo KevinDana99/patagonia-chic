@@ -7,6 +7,9 @@ import moment from 'moment';
 export default {
 	title: 'Components/template-parts',
 	component: FooterComponent,
+	argTypes: {
+		onClickLogo: { action: 'go to home' },
+	},
 } as Meta<typeof Footer>;
 
 const Template: Story<FooterPropsType> = (args) => (

@@ -6,4 +6,5 @@ export const Container = styled.div<Omit<LogoType, 'size'>>`
 	display: flex;
 	justify-content: ${(props) =>
 		props.containerFullWidth && props.align ? props.align : 'left'};
+	cursor: pointer;
 `;

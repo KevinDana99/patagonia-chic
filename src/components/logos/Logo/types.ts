@@ -7,4 +7,5 @@ export type LogoType = {
 	theme?: ThemeLogoType;
 	containerFullWidth?: boolean;
 	align?: AlignLogoType;
+	onClick?: () => void;
 };

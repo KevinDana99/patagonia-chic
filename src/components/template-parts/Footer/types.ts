@@ -21,6 +21,7 @@ export type SectionLeftType = {
 	isTablet: boolean;
 	texts: FooterTextsType;
 	devMode: StyleDevModeType['devMode'];
+	onClickLogo: () => void;
 };
 
 export type LabelLinkType = {
@@ -50,6 +51,7 @@ export type FooterPropsType = {
 	places: [PlaceType];
 	texts: FooterTextsType;
 	devMode: boolean;
+	onClickLogo: () => void;
 };
 
 export type FooterTextsType = {
