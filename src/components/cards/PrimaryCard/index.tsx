@@ -6,9 +6,14 @@ const PrimaryCard = ({
 	children,
 	className,
 	hover = false,
+	onClick,
 }: PrimaryCardType) => {
 	return (
-		<Container hover={hover} className={className && className}>
+		<Container
+			hover={hover}
+			className={className && className}
+			onClick={onClick}
+		>
 			{children}
 		</Container>
 	);
