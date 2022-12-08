@@ -25,12 +25,12 @@ const Navbar = ({
 	onClickCart,
 	onClickHelp,
 	texts,
-	initialTransparent,
+	initialLightTheme,
 }: NavbarType) => {
 	const [scrollStatus, setScrollStatus] = useState({
 		activeNavBar: false,
 		scrolling: 0,
-		theme: 'transparent',
+		theme: initialLightTheme ? 'light' : 'transparent',
 	});
 
 	const isMobile = useMediaQuery(deviceSize.mobile);
@@ -39,16 +39,25 @@ const Navbar = ({
 		const listenScroll = () => {
 			const scroll = window.scrollY;
 
-			setScrollStatus({
-				...scrollStatus,
-				scrolling: scroll,
-				theme: scroll > 0 && !initialTransparent ? 'light' : 'transparent',
-			});
+			if (initialLightTheme) {
+				setScrollStatus({
+					...scrollStatus,
+					scrolling: scroll,
+					theme: 'light',
+				});
+			}
+			if (!initialLightTheme) {
+				setScrollStatus({
+					...scrollStatus,
+					scrolling: scroll,
+					theme: scroll > 0 ? 'light' : 'transparent',
+				});
+			}
 		};
 
 		window.addEventListener('scroll', listenScroll);
 		return () => window.removeEventListener('scroll', listenScroll);
-	}, [scrollStatus]);
+	}, [scrollStatus, initialLightTheme]);
 
 	const { background, color } = themesMap(scrollStatus.theme);
 

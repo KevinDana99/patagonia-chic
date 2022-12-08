@@ -5,7 +5,7 @@ export type NavbarType = {
 	onClickCart: React.MouseEventHandler<HTMLLIElement>;
 	onClickHelp: React.MouseEventHandler<HTMLLIElement>;
 	texts: NavbarTexts;
-	initialTransparent: boolean;
+	initialLightTheme: boolean;
 };
 
 export type NavbarContainerType = {

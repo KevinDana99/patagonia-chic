@@ -9,7 +9,7 @@ export const themesMap = (name: string) => {
 
 		default:
 			return {
-				background: 'rgba(255, 255, 255, 0.72)',
+				background: 'rgba(255, 255, 255, 0.5)',
 				color: '#3B3B3B',
 			};
 	}

@@ -31,5 +31,5 @@ navbar.args = {
 	texts: {
 		helpOption: 'Ayuda',
 	},
-	initialTransparent: false,
+	initialLightTheme: true,
 };
