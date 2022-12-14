@@ -16,6 +16,7 @@ export type ExcursionCardType = {
 	onAddedToCart?: () => void;
 	texts: ExcursionCardTexts;
 	className?: string;
+	onClickCard: React.MouseEventHandler<HTMLDivElement>;
 };
 
 export type ExcursionCardTexts = {

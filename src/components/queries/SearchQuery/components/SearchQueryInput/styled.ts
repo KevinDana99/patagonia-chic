@@ -87,6 +87,7 @@ export const TextInput = styled.input.attrs({
 	color: #000000;
 	background-color: transparent;
 	border: none;
+	cursor: pointer;
 	outline: none;
 	box-shadow: none;
 	text-overflow: ellipsis;

@@ -89,19 +89,28 @@ const CardDescription = ({
 					<ActiveButton
 						title={texts.buttonAddedToCartText ?? ''}
 						color={'#3b3b3b'}
-						onClick={onViewCart}
+						onClick={(e) => {
+							e.stopPropagation();
+							onViewCart && onViewCart();
+						}}
 					/>
 				)}
 				{!isAddedToCart && !isAvailable && (
 					<ButtonReserve
 						title={texts.buttonDefaultText ?? ''}
-						onClick={onAddedToCart}
+						onClick={(e) => {
+							e.stopPropagation();
+							onAddedToCart && onAddedToCart();
+						}}
 					/>
 				)}
 				{!isAddedToCart && isAvailable && (
 					<ActiveButton
 						title={texts.buttonAvailableText ?? ''}
-						onClick={onViewDetails}
+						onClick={(e) => {
+							e.stopPropagation();
+							onViewDetails && onViewDetails();
+						}}
 					/>
 				)}
 			</ButtonContainer>

@@ -16,6 +16,10 @@ import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { deviceSize } from '../../../constants/devicesSizes';
 import { SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/lazy';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const Swiper = ({ imageList }: SwiperType) => {
 	const [swiperCurrentIndex, setSwiperCurrentIndex] = useState(0);

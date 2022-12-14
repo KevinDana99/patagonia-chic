@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactCalendar, { CalendarTileProperties } from 'react-calendar';
 import './styles.css';
 import { AvailabilityReferenceContainer, Container } from './styled';
@@ -14,6 +14,7 @@ import {
 } from '../../../utils/dates';
 import { useComponentLogic } from './hooks/useComponentLogic';
 import { useCalendarWidth } from './hooks/useCalendarWidth';
+import moment from 'moment';
 
 const Calendar = ({
 	onDateSelected,
@@ -26,21 +27,24 @@ const Calendar = ({
 	onRangeSelected,
 	onRangeStartDateSelected,
 	onRangeEndDateSelected,
-	shadow = false,
 	highlightToday = false,
 	locale = 'es',
-	selectedRange = null,
 	texts,
 	width: containerWidthProp = 300,
-	value,
+	value = null,
 	defaultValue,
-	returnValue = 'start',
 	doubleCalendarSpaceBetween = 20,
 }: CalendarPropsType) => {
-	const [selectedDates, setSelectedDates] = useState(selectedRange);
+	moment.locale(locale);
+	const [selectedDates, setSelectedDates] = useState(value);
 	const [prevAndNextUnavailableDate, setPrevAndNextUnavailableDate] = useState<
 		[Date, Date] | null
 	>(null);
+
+	useEffect(() => {
+		setSelectedDates(value);
+	}, [value]);
+
 	const calendarRef = useRef<HTMLDivElement>(null);
 
 	const { handleOnChange } = useComponentLogic({
@@ -77,11 +81,11 @@ const Calendar = ({
 			doubleCalendarSpaceBetween={doubleCalendarSpaceBetween}
 			highlightToday={highlightToday}
 			range={range}
-			shadow={shadow}
 		>
 			{!!calendarRef.current && (
 				<ReactCalendar
 					navigationLabel={({ label }) => replaceMonthText(label)}
+					formatShortWeekday={(_, date) => moment(date).format('dd')}
 					defaultActiveStartDate={
 						defaultActiveStartDate || getMinDateOfArray(availableDates)
 					}
@@ -105,9 +109,12 @@ const Calendar = ({
 							true
 						)
 					}
-					value={value}
+					value={
+						selectedDates?.[1] ? selectedDates : selectedDates?.[0] ?? null
+					}
 					defaultValue={defaultValue}
-					returnValue={returnValue}
+					allowPartialRange
+					returnValue="start"
 				/>
 			)}
 			{availableDates && (

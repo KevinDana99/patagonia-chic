@@ -3,7 +3,6 @@
 import styled, { keyframes } from 'styled-components';
 import { Swiper } from 'swiper/react';
 import { SwiperOptions } from 'swiper/types';
-import 'swiper/swiper.min.css';
 
 const fadeIn = keyframes`
 	from {

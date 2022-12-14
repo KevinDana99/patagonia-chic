@@ -21,13 +21,12 @@ const PrimaryButton = (props: PrimaryButtonType) => {
 		loading = false,
 		onClick,
 		disabled = false,
-		IconComponent,
+		iconComponent: IconComponent,
 		className,
 		theme = 'color',
 		color = '#3b3b3b',
 		invertGradient = false,
 		textLoadingButton,
-		icon,
 		width = 200,
 		height = 48,
 	} = props;
@@ -47,7 +46,7 @@ const PrimaryButton = (props: PrimaryButtonType) => {
 			{!loading ? (
 				<ButtonPrimaryContent>
 					<ButtonPrimaryText>
-						{icon && IconComponent && <Icon component={<IconComponent />} />}
+						{IconComponent && <Icon component={<IconComponent />} />}
 						<Text>{title}</Text>
 					</ButtonPrimaryText>
 				</ButtonPrimaryContent>

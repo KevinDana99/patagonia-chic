@@ -3,7 +3,7 @@ import { useIsElementScrollable } from '../../../../hooks/useIsElementScrollable
 
 export const useShowOverflowGradient = (
 	scrollDivRef: React.RefObject<HTMLDivElement>
-): [boolean, React.UIEventHandler<HTMLDivElement>] => {
+): [boolean, React.UIEventHandler<HTMLDivElement>, boolean] => {
 	const isScrollable = useIsElementScrollable(scrollDivRef);
 	const [showOverflowGradient, setShowOverflowGradient] = useState(false);
 	const [scrollTop, setScrollTop] = useState(0);
@@ -21,5 +21,5 @@ export const useShowOverflowGradient = (
 		}
 	}, [scrollDivRef, scrollTop, isScrollable]);
 
-	return [showOverflowGradient, setScrollTopFromOutside];
+	return [showOverflowGradient, setScrollTopFromOutside, isScrollable];
 };

@@ -12,7 +12,6 @@ export type CalendarPropsType = {
 	shadow?: boolean;
 	highlightToday?: boolean;
 	locale?: 'es' | 'en' | 'fr';
-	selectedRange?: SelectedRangeType;
 	availableDates?: Date[];
 	minDate?: Date;
 	maxDate?: Date;
@@ -22,7 +21,6 @@ export type CalendarPropsType = {
 	};
 	value?: SelectedRangeType;
 	defaultValue?: Date | Date[];
-	returnValue?: 'range' | 'start' | 'end';
 	doubleCalendarSpaceBetween?: number;
 };
 

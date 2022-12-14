@@ -26,12 +26,23 @@ definitions:
           - apk add git openssh
           - echo "About to execute script"
           - ./src/utils/scripts/merge-spec-editor.sh
+    - step: &publish-npm-package
+        name: Publish NPM package
+        image: node:16-alpine
+        script:
+          - apk add --update alpine-sdk
+          - apk add yq --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+          - apk add git
+          - ./src/utils/scripts/npm-publish.sh
 
 pipelines:
   branches:
-    master:
+    main:
       - step: *push-gcp
       - step: *merge-step
+      - step: *publish-npm-package
     develop:
       - step: *push-gcp
       - step: *merge-step
+    add-publish-to-ci:
+      # - step: *publish-npm-package

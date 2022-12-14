@@ -1,10 +1,13 @@
 .react-calendar {
 	background: white;
-	font-family: 'SF Pro Text' !important;
 	/* line-height: 1.125em; */
 	padding: 0;
 
 	box-sizing: border-box;
+}
+
+.react-calendar * {
+	font-family: 'SF Pro Text' !important;
 }
 
 .react-calendar__navigation {
@@ -61,8 +64,8 @@
 	justify-content: center;
 	align-items: center;
 	font-size: 15px;
-	font-family: 'SF Pro Text' !important;
-	font-weight: 700;
+	font-weight: 600;
+	line-height: 12px;
 }
 
 .react-calendar__navigation__label__divider {
@@ -94,8 +97,9 @@
 	text-align: center;
 	text-transform: capitalize;
 	color: #999;
-	font-weight: 200;
+	font-weight: 500;
 	font-size: 12px;
+	letter-spacing: -0.016em;
 }
 
 abbr {
@@ -107,23 +111,6 @@ abbr {
 	font-size: 12px;
 	font-weight: 300;
 }
-.react-calendar__month-view__weekNumbers .react-calendar__tile {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 0.75em;
-	font-weight: 500;
-}
-
-.react-calendar__month-view__days {
-	width: auto;
-}
-
-/* .react-calendar__year-view .react-calendar__tile,
-.react-calendar__decade-view .react-calendar__tile,
-.react-calendar__century-view .react-calendar__tile {
-	padding: 2em 0.5em;
-} */
 
 .react-calendar__tile {
 	font-family: 'SF Pro Text' !important;
@@ -132,9 +119,10 @@ abbr {
 
 	background: none;
 	text-align: center;
-	/* line-height: 16px; */
 	font-size: 12px;
-	color: black;
+	line-height: 12px;
+	letter-spacing: -0.016em;
+	font-weight: 500;
 }
 .react-calendar__month-view__days__day--neighboringMonth {
 	visibility: hidden;
