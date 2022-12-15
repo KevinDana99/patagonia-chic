@@ -27,7 +27,7 @@ const FullscreenSwiper = ({
 }: FullscreenSwiperType) => {
 	const [imageIndex, setImageIndex] = useState(0);
 
-	const isMobile = useMediaQuery(deviceSize.mobileL);
+	const isMobile = useMediaQuery(deviceSize.mobile);
 	const isTablet = useMediaQuery(deviceSize.tablet);
 
 	const paginationOptions: PaginationOptions = {

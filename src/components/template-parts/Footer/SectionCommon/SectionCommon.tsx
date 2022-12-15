@@ -1,17 +1,17 @@
 import React from 'react';
-import Text from '../../texts/Text';
+import Text from '../../../texts/Text/index';
+import { LinkStyled } from '../styled';
 import {
 	ContainerSectionCommon,
-	LinkStyled,
 	DesktopSectionCommon,
 	SectionLabel,
 	SectionTitle,
 } from './styled';
-import { SectionType } from './types';
+import { SectionType } from '../types';
 
-const SectionCommon = ({ title, label }: SectionType) => {
+const SectionCommon = ({ title, label, devMode }: SectionType) => {
 	return (
-		<ContainerSectionCommon>
+		<ContainerSectionCommon devMode={devMode}>
 			<DesktopSectionCommon>
 				<SectionTitle>
 					<Text size={15} weight={'semi-bold'}>

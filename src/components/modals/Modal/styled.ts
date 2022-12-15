@@ -49,7 +49,7 @@ export const Container = styled.div<ModalContainerType>`
 	flex-direction: column;
 	justify-content: flex-start;
 
-	@media (${deviceSize.mobileL}) {
+	@media (${deviceSize.mobile}) {
 		bottom: 0;
 		width: 100%;
 		visibility: visible;
@@ -90,7 +90,7 @@ export const BoxScroll = styled.div<BoxScrollPropsType>`
 		background: transparent;
 	}
 
-	@media (${deviceSize.mobileL}) {
+	@media (${deviceSize.mobile}) {
 		max-height: 80vh;
 	}
 `;

@@ -58,7 +58,7 @@ export const Container = styled.div`
 		font-size: 16px;
 	}
 
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		justify-content: flex-start;
 		font-size: 12px;
 	}
@@ -88,7 +88,7 @@ export const Header = styled.div`
 		width: 90%;
 	}
 
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		margin-bottom: 75px;
 		width: 90%;
 	}
@@ -145,7 +145,7 @@ export const SwiperContainer = styled(Swiper)<
 		width: 100%;
 	}
 
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		width: 100%;
 		height: 35%;
 		background: red;
@@ -186,7 +186,7 @@ export const Image = styled.img`
 		height: 90%;
 	}
 
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		width: 100%;
 		height: 100%;
 	}

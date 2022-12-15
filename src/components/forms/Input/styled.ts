@@ -17,7 +17,7 @@ export const DataInputContainer = styled.div`
 			padding-bottom: 3px;
 		}
 	}
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		width: 100%;
 	}
 `;

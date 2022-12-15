@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../logos/Logo';
+import Logo from '../../../logos/Logo/index';
 import {
 	LeftSection,
 	Language,
@@ -11,9 +11,9 @@ import {
 	LeftSideContainer,
 	DescriptionContainer,
 } from './styled';
-import { SectionLeftType } from './types';
-import { SectionMobile } from './SectionMobile';
-import Text from '../../texts/Text';
+import { SectionLeftType } from '../types';
+import Text from '../../../texts/Text/index';
+import { Accordion } from '../../../index';
 
 const SectionLeft = ({
 	logo,
@@ -22,12 +22,14 @@ const SectionLeft = ({
 	sections,
 	isTablet,
 	texts,
+	devMode,
+	onClickLogo,
 }: SectionLeftType) => {
 	return (
-		<LeftSection>
+		<LeftSection devMode={devMode}>
 			<LeftSideContainer>
-				<DescriptionContainer>
-					<Logo {...logo} />
+				<DescriptionContainer devMode={devMode}>
+					<Logo {...logo} onClick={onClickLogo} />
 					<Description>
 						<Text>{texts.description}</Text>
 					</Description>
@@ -36,8 +38,8 @@ const SectionLeft = ({
 					</Direction>
 				</DescriptionContainer>
 
-				<SocialMobileContainer>
-					{isTablet || isMobile ? <SectionMobile sections={sections} /> : null}
+				<SocialMobileContainer devMode={devMode}>
+					{(isMobile || isTablet) && <Accordion sections={sections} />}
 				</SocialMobileContainer>
 			</LeftSideContainer>
 			<Language>

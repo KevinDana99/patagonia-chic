@@ -9,9 +9,14 @@ const Logo = ({
 	theme = 'color',
 	containerFullWidth = false,
 	align = 'left',
+	onClick,
 }: LogoType) => {
 	return (
-		<Container containerFullWidth={containerFullWidth} align={align}>
+		<Container
+			onClick={onClick}
+			containerFullWidth={containerFullWidth}
+			align={align}
+		>
 			{theme === 'light' ? (
 				<LogoWhite size={size} />
 			) : (

@@ -18,9 +18,9 @@ import {
 	SidebarMenuTitle,
 	Language,
 	WorldIcon,
+	LanguageLabel,
 } from './styled';
 import Logo from '../../logos/Logo';
-import { LanguageLabel } from '../Footer/styled';
 import Text from '../../texts/Text';
 
 const Sidebar = ({

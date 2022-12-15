@@ -23,14 +23,14 @@ export const NavBarContainer = styled.div<NavbarContainerType>`
 	transition: all 0.2s ease-in;
 	z-index: 2;
 
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		justify-content: space-between;
 	}
 `;
 
 export const LogoContainer = styled.div<LogoClickType>`
 	cursor: pointer;
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		margin-left: 20px;
 	}
 `;
@@ -38,7 +38,7 @@ export const MenuContainer = styled.ul`
 	display: flex;
 	align-items: center;
 	list-style: none;
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		margin-right: 10px;
 	}
 `;
@@ -48,7 +48,7 @@ export const ItemMenuContainer = styled.li<ItemMenuType>`
 	align-items: center;
 	margin: 0px 15px;
 	cursor: pointer;
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		margin: 0px 10px;
 	}
 `;
@@ -57,6 +57,7 @@ export const MenuItemText = styled.p<NavbarIconType>`
 	font-weight: 600;
 	font-size: 14px;
 	color: ${(props) => props.colorTheme};
+	color: red;
 `;
 
 export const CartIcon = styled(HiOutlineShoppingBag)<NavbarIconType>`
@@ -77,7 +78,7 @@ export const CartStatus = styled.div`
 	min-width: 16px;
 	box-sizing: content-box;
 
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		display: none;
 	}
 `;

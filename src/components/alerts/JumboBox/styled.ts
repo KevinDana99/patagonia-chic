@@ -20,7 +20,7 @@ export const Container = styled.div<JumboBoxType>`
 		rgba(168, 88, 224, 0.1) 98.44%
 	)`};
 
-	@media (max-width: ${size.mobileL}) {
+	@media (max-width: ${size.mobile}) {
 		width: 100%;
 		border-radius: 0px;
 	}

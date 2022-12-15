@@ -1,133 +1,61 @@
-import { TbWorld } from 'react-icons/tb';
 import styled from 'styled-components';
 import { deviceSize } from '../../../constants/devicesSizes';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { FooterPropsType, StyleDevModeType } from './types';
 
 export const Container = styled.div`
-	width: -webkit-fill-available;
-	padding-top: 50px;
-	padding-bottom: 40px;
+	width: auto;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	background-color: #ffffff;
-	padding: 50px 10% 0px 10%;
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Ubuntu, 'Helvetica Neue', 'Lucida Grande', sans-serif;
-
-	@media ${deviceSize.mobileL} {
-		padding: 50px 10px 0px 10px;
-	}
-	@media ${deviceSize.tablet} {
-		padding: 30px 50px;
-	}
+	box-sizing: border-box;
+	cursor: default;
 `;
 
-export const ContainerSectionsTop = styled.div`
+export const Wrapper = styled.div<StyleDevModeType>`
+	width: 100%;
+	max-width: 1120px;
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	@media ${deviceSize.tablet} {
-		flex-direction: row;
+	flex-direction: column;
+	box-sizing: border-box;
+	background-color: ${({ devMode }) => (devMode ? 'black' : 'none')};
+	@media (${deviceSize.tablet}) {
+		padding: 55px 20px 21px;
+		width: 100%;
+	}
+	@media (${deviceSize.mobile}) {
+		padding: 55px 20px 21px;
+		width: 100%;
 	}
 `;
 
-export const ContainerSectionsCommon = styled.div`
+export const ContainerSectionsTop = styled.div<StyleDevModeType>`
+	width: 100%;
+	display: flex;
+	background-color: ${({ devMode }) => (devMode ? 'orange' : 'none')};
+	width: auto;
+	justify-content: center;
+`;
+
+export const ContainerSectionsCommon = styled.div<StyleDevModeType>`
 	display: flex;
 	justify-content: flex-end;
-	width: fit-content;
-`;
-
-export const ContainerSocial = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	margin-top: 25px;
-	margin-bottom: 25px;
-	width: 100%;
-`;
-export const Language = styled.div`
-	background-color: #ffffff;
-	width: fit-content;
-	border-radius: 25px;
-	padding: 7px 10px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	margin-top: 50px;
-	margin-bottom: 40px;
-	background-color: #f1f4f7;
-
-	@media ${deviceSize.mobileL} {
-		margin-top: 0px;
-		margin-bottom: 0px;
+	background-color: ${({ devMode }) => (devMode ? 'blue' : 'none')};
+	margin-left: auto;
+	box-sizing: border-box;
+	@media (${deviceSize.tablet}) {
+		margin: 0px;
 	}
-
-	@media ${deviceSize.tablet} {
-		margin-top: 0px;
-		margin-bottom: 0px;
+	@media (${deviceSize.mobile}) {
+		margin: 0px;
 	}
 `;
+
 export const LanguageMovil = styled.div`
 	display: none;
-	@media screen and (max-width: 450px) {
-		display: flex;
-		background-color: #ffffff;
-		width: 6.5rem;
-		border-radius: 3rem;
-		padding: 0.5rem;
-		flex-direction: row;
-		align-items: center;
-		gap: 10px;
-		margin-top: 89px;
-	}
-`;
-
-export const WorldIcon = styled(TbWorld)`
-	color: #3b3b3b;
-	font-size: 25px;
-`;
-
-export const LeftSection = styled.div`
-	width: 350px;
-	display: flex;
-	flex-direction: column;
-
-	@media ${deviceSize.mobileL} {
-		flex-direction: column;
-	}
-
-	@media ${deviceSize.tablet} {
-		width: initial;
-	}
-`;
-
-export const LeftSideContainer = styled.div`
-	display: flex;
-	width: 100%;
-
-	@media ${deviceSize.mobileL} {
-		flex-direction: column;
-	}
-`;
-
-export const DescriptionContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-
-	@media ${deviceSize.tablet} {
-		width: 50%;
-	}
-`;
-
-export const ContainerSectionCommon = styled.div`
-	width: 200px;
-	@media ${deviceSize.mobileL} {
-		display: none;
-	}
-	@media ${deviceSize.tablet} {
-		display: none;
-	}
 `;
 
 export const Divider = styled.div`
@@ -152,98 +80,31 @@ export const FooterText = styled.p`
 	margin: 0px;
 `;
 
-export const Description = styled(FooterText)`
-	margin-top: 20px;
-`;
-
-export const Direction = styled(Description)`
-	color: #383838;
-	margin-top: 13px;
-`;
-export const CopyrightText = styled(FooterText)`
-	display: flex;
-	justify-self: flex-start;
-`;
-
-export const SectionLabel = styled(FooterText)`
-	margin: 13px 0px;
-	font-size: 15px;
-`;
-
-export const IconContainer = styled.div`
-	width: 100px;
-	display: flex;
-	justify-content: space-between;
-	@media screen and (max-width: 450px) {
-		display: none;
-	}
-`;
-
 export const LinkStyled = styled.a`
 	text-decoration: none;
 	color: #000000;
 	:hover {
-		text-decoration: underline;
+		text-decoration: none;
 	}
 `;
-
-export const SectionTitle = styled.h3`
-	margin-top: 2.5rem;
-	font-weight: 600;
-	font-size: 15px;
-`;
-
-export const LanguageLabel = styled.p`
-	font-size: 14px;
-	font-weight: 600;
-	margin: 0px;
-`;
-
 export const ContainerIcons = styled.div`
 	display: none;
-	@media screen and (max-width: 1120px) {
-		margin-top: 21px;
-		display: flex;
-		width: 80%;
-		justify-content: 'left';
-	}
-	@media screen and (max-width: 450px) {
-	}
 `;
 export const IconsMovil = styled.div`
 	display: none;
-	@media screen and (max-width: 450px) {
-		width: 100px;
-		display: flex;
-		justify-content: space-between;
-	}
 `;
 
-export const DesktopSectionCommon = styled.div`
-	@media screen and (max-width: 1120px) {
-		display: none;
-	}
-	@media screen and (max-width: 450px) {
-	}
-`;
-
-export const SocialMobileContainer = styled.div`
-	margin: 60px 0px;
-	@media ${deviceSize.tablet} {
-		width: 50%;
-		margin: 30px 0px 0px 0px;
-	}
-	@media ${deviceSize.mobileL} {
-		display: flex;
-		flex-direction: column;
-	}
-`;
-
-export const SectionContainer = styled.div`
+export const SectionContainer = styled.div<StyleDevModeType>`
 	display: flex;
-	flex: 1;
 	width: 100%;
 	flex-direction: column;
+
+	@media (${deviceSize.mobile}) {
+		background-color: ${({ devMode }) => (devMode ? 'red' : 'none')};
+	}
+	@media (${deviceSize.tablet}) {
+		background-color: ${({ devMode }) => (devMode ? 'blue' : 'none')};
+	}
 `;
 
 export const SectionTitleContainer = styled.div`

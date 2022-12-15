@@ -17,7 +17,7 @@ export const TextareaContainer = styled.div`
 			padding-bottom: 3px;
 		}
 	}
-	@media ${deviceSize.mobileL} {
+	@media ${deviceSize.mobile} {
 		text-align: center;
 		width: 100%;
 	}
